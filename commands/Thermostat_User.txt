@@ -1,0 +1,42 @@
+$ Thermostat user
+# [TC-TSUIC-1.1] Global attributes with server as DUT
+./chip-tool thermostatuserinterfaceconfiguration read cluster-revision 1 1
+./chip-tool thermostatuserinterfaceconfiguration read feature-map 1 1
+./chip-tool thermostatuserinterfaceconfiguration read attribute-list 1 1
+./chip-tool thermostatuserinterfaceconfiguration read accepted-command-list 1 1
+./chip-tool thermostatuserinterfaceconfiguration read  generated-command-list 1 1
+End
+# [TC-TSUIC-2.1] Attributes with server as DUT	
+./chip-tool thermostatuserinterfaceconfiguration read temperature-display-mode 1 1
+./chip-tool thermostatuserinterfaceconfiguration read keypad-lockout 1 1
+./chip-tool thermostatuserinterfaceconfiguration read schedule-programming-visibility 1 1
+End
+# [TC-TSUIC-2.2] Primary functionality with server as DUT
+./chip-tool thermostatuserinterfaceconfiguration write temperature-display-mode 0 1 1
+./chip-tool thermostatuserinterfaceconfiguration read temperature-display-mode 1 1
+./chip-tool thermostatuserinterfaceconfiguration write temperature-display-mode 1 1 1
+./chip-tool thermostatuserinterfaceconfiguration read temperature-display-mode 1 1
+./chip-tool thermostatuserinterfaceconfiguration write temperature-display-mode 2 1 1
+./chip-tool thermostatuserinterfaceconfiguration read temperature-display-mode 1 1
+./chip-tool thermostatuserinterfaceconfiguration write keypad-lockout 0 1 1 
+./chip-tool thermostatuserinterfaceconfiguration read keypad-lockout 1 1 
+./chip-tool thermostatuserinterfaceconfiguration write keypad-lockout 1 1 1 
+./chip-tool thermostatuserinterfaceconfiguration read keypad-lockout 1 1 
+./chip-tool thermostatuserinterfaceconfiguration write keypad-lockout 2 1 1 
+./chip-tool thermostatuserinterfaceconfiguration read keypad-lockout 1 1 
+./chip-tool thermostatuserinterfaceconfiguration write keypad-lockout 3 1 1 
+./chip-tool thermostatuserinterfaceconfiguration read keypad-lockout 1 1 
+./chip-tool thermostatuserinterfaceconfiguration write keypad-lockout 4 1 1 
+./chip-tool thermostatuserinterfaceconfiguration read keypad-lockout 1 1 
+./chip-tool thermostatuserinterfaceconfiguration write keypad-lockout 5 1 1 
+./chip-tool thermostatuserinterfaceconfiguration read keypad-lockout 1 1 
+./chip-tool thermostatuserinterfaceconfiguration write keypad-lockout 6 1 1 
+./chip-tool thermostatuserinterfaceconfiguration read keypad-lockout 1 1
+./chip-tool thermostatuserinterfaceconfiguration write schedule-programming-visibility 0 1 1
+./chip-tool thermostatuserinterfaceconfiguration read schedule-programming-visibility  1 1
+./chip-tool thermostatuserinterfaceconfiguration write schedule-programming-visibility 1 1 1
+./chip-tool thermostatuserinterfaceconfiguration read schedule-programming-visibility  1 1
+./chip-tool thermostatuserinterfaceconfiguration write schedule-programming-visibility 2 1 1
+./chip-tool thermostatuserinterfaceconfiguration read schedule-programming-visibility  1 1
+End
+

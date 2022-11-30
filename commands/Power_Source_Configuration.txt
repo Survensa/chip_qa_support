@@ -1,0 +1,17 @@
+$ Power Source Configuration
+# [TC-PSCFG-1.1] Global attributes with server as DUT
+./chip-tool powersourceconfiguration read cluster-revision 1 0
+./chip-tool powersourceconfiguration read feature-map 1 0
+./chip-tool powersourceconfiguration read attribute-list 1 0
+./chip-tool powersourceconfiguration read accepted-command-list 1 0
+./chip-tool powersourceconfiguration read generated-command-list 1 0
+End
+# [TC-PSCFG-2.1] Global attributes with server as DUT
+./chip-tool powersourceconfiguration read sources 1 0
+End
+# [TC-PSCFG-2.2] Primary functionality with server as DUT
+./chip-tool powersourceconfiguration read sources 1 0
+./chip-tool powersource read order 1 2
+./chip-tool powersource read order 1 1
+./chip-tool powersource read order 1 0
+End

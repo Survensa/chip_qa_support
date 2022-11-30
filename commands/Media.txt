@@ -1,0 +1,138 @@
+$ Media Cluster
+# [TC-LOWPOWER-1.1] Global attributes - Low Power Cluster (DUT as Server)
+./chip-tool lowpower read cluster-revision 1 1
+./chip-tool lowpower read feature-map 1 1
+./chip-tool lowpower read attribute-list 1 1
+./chip-tool lowpower read accepted-command-list 1 1
+./chip-tool lowpower read generated-command-list 1 1
+End
+# [TC-KEYPADINPUT-1.2] Global attributes - Keypad Input Cluster (DUT as Server)
+./chip-tool keypadinput read cluster-revision 1 1
+./chip-tool keypadinput read feature-map 1 1
+./chip-tool keypadinput read attribute-list 1 1
+./chip-tool keypadinput read accepted-command-list 1 1
+./chip-tool keypadinput read  generated-command-list 1 1
+End
+# [TC-APPLAUNCHER-1.3] Global attributes - Application Launcher Cluster (DUT as Server)
+./chip-tool applicationlauncher read cluster-revision 1 1
+./chip-tool applicationlauncher read feature-map 1 1
+./chip-tool applicationlauncher read attribute-list  1 1
+./chip-tool applicationlauncher read  accepted-command-list   1 1
+./chip-tool applicationlauncher read  generated-command-list 1 1
+End
+# [TC-MEDIAINPUT-1.4] Global attributes - Media Input Cluster (DUT as Server)
+./chip-tool  mediainput read cluster-revision 1 1
+./chip-tool  mediainput read feature-map 1 1
+./chip-tool  mediainput read attribute-list  1 1
+./chip-tool  mediainput read accepted-command-list 1 1
+./chip-tool  mediainput read generated-command-list 1 1
+End
+# [TC-WAKEONLAN-1.5] Global attributes - Wake on LAN Cluster (DUT as Server)
+./chip-tool wakeonlan read cluster-revision 1 1
+./chip-tool wakeonlan read feature-map 1 1
+./chip-tool wakeonlan read attribute-list  1 1
+./chip-tool wakeonlan read accepted-command-list  1 1
+./chip-tool wakeonlan read generated-command-list  1 1
+End
+# [TC-CHANNEL-1.6] Global attributes - Channel Cluster (DUT as Server)
+./chip-tool channel read cluster-revision 1 1
+./chip-tool channel read feature-map 1 1
+./chip-tool channel read attribute-list 1 1
+./chip-tool channel read accepted-command-list 1 1 
+./chip-tool channel read generated-command-list 1 1
+End
+# [TC-MEDIAPLAYBACK-1.7] Global attributes - Media Playback Cluster (DUT as Server)
+./chip-tool mediaplayback read  cluster-revision 1 3
+./chip-tool mediaplayback read feature-map 1 3
+./chip-tool mediaplayback read attribute-list 1 3
+./chip-tool mediaplayback read accepted-command-list  1 3
+./chip-tool mediaplayback read generated-command-list  1 3  
+End
+ # [TC-AUDIOOUTPUT-1.8] Global attributes - Audio Output Cluster (DUT as Server)
+./chip-tool audiooutput read cluster-revision 1 1
+./chip-tool audiooutput read feature-map 1 1
+./chip-tool audiooutput read attribute-list 1 1
+./chip-tool audiooutput read  accepted-command-list 1 1
+./chip-tool audiooutput read generated-command-list 1 1
+End
+# [TC-TGTNAV-1.9] Global attributes - Target Navigator Cluster (DUT as Server)
+./chip-tool targetnavigator read cluster-revision   1 1
+./chip-tool targetnavigator read feature-map 1 1
+./chip-tool targetnavigator read attribute-list 1 1
+./chip-tool targetnavigator read accepted-command-list 1 1
+./chip-tool targetnavigator read generated-command-list   1 1
+End
+# [TC-APBSC-1.10] Global attributes - Application Basic Cluster (DUT as Server)
+./chip-tool applicationbasic read cluster-revision 1 3
+./chip-tool applicationbasic read feature-map 1 3
+./chip-tool applicationbasic read attribute-list 1 3
+./chip-tool applicationbasic read accepted-command-list 1 3
+./chip-tool applicationbasic read  generated-command-list 1 3
+End
+# [TC-CONTENTLAUNCHER-1.11] Global attributes - Content Launcher Cluster (DUT as Server)
+./chip-tool contentlauncher read cluster-revision 1 3
+./chip-tool contentlauncher read feature-map 1 3
+./chip-tool contentlauncher read attribute-list 1 3
+./chip-tool contentlauncher read accepted-command-list   1 3
+./chip-tool contentlauncher read generated-command-list 1 3
+End
+# [TC-ALOGIN-1.12] Global attributes - Account Login Cluster (DUT as Server)
+./chip-tool accountlogin read cluster-revision 1 3
+./chip-tool accountlogin read feature-map 1 3
+./chip-tool accountlogin read  attribute-list 1 3
+./chip-tool accountlogin read accepted-command-list 1 3
+./chip-tool accountlogin read generated-command-list 1 3
+End
+# [TC-LOWPOWER-2.1] Low Power Mode Verification (DUT as Server)
+./chip-tool lowpower sleep 1 1
+End
+# [TC-KEYPADINPUT-3.2] Location Keys Verification
+./chip-tool keypadinput send-key 10 1 1
+./chip-tool keypadinput send-key 9 1 1 
+End
+#  [TC-KEYPADINPUT-3.3] Number Keys Verification
+./chip-tool keypadinput send-key 0x20 1 1 
+./chip-tool keypadinput send-key 0x21 1 1 
+./chip-tool keypadinput send-key 0x22 1 1 
+./chip-tool keypadinput send-key 0x23 1 1 
+./chip-tool keypadinput send-key 0x24 1 1 
+./chip-tool keypadinput send-key 0x25 1 1 
+./chip-tool keypadinput send-key 0x26 1 1 
+./chip-tool keypadinput send-key 0x27 1 1 
+./chip-tool keypadinput send-key 0x28 1 1 
+./chip-tool keypadinput send-key 0x29 1 1 
+End
+# [TC-APPLAUNCHER-3.5] Catalog List Verification
+./chip-tool applicationlauncher read catalog-list 1 1
+End
+# [TC-APPLAUNCHER-3.6] Current App Verification
+./chip-tool applicationlauncher read current-app 1 1
+End
+# [TC-APPLAUNCHER-3.7] Launch Application Verification
+./chip-tool applicationlauncher launch-app '{"catalogVendorId": 123, "applicationId": "exampleid"}' 1 1
+./chip-tool applicationlauncher launch-app '{"catalogVendorId": 5, "applicationId": "missing-app" }' 1 1
+End
+[TC-APPLAUNCHER-3.8] Stop Application Verification
+./chip-tool applicationlauncher stop-app '{"catalogVendorId": 123, "applicationId": "exampleid"}' 1 1
+End
+# [TC-APPLAUNCHER-3.9] Hide Application Verification
+./chip-tool applicationlauncher hide-app '{"catalogVendorId": 123, "applicationId": "exampleid"}' 1 1
+End
+# [TC-MEDIAINPUT-3.10] Input List Verification
+ ./chip-tool mediainput read input-list 1 1
+ End
+ # [TC-MEDIAINPUT-3.11] Select Input Verification
+./chip-tool mediainput read input-list 1 1
+./chip-tool mediainput select-input 2 1 1
+./chip-tool mediainput read current-input 1 1 
+End
+# [TC-MEDIAINPUT-3.12] Show and Hide Input Status Verification
+./chip-tool mediainput read input-list 1 1
+./chip-tool mediainput show-input-status 1 1
+./chip-tool mediainput hide-input-status 1 1
+End
+# [TC-MEDIAINPUT-3.13] Rename Input Verification
+./chip-tool mediainput read input-list 1 1
+./chip-tool mediainput rename-input 2 newname 1 1
+./chip-tool mediainput read input-list 1 1
+End

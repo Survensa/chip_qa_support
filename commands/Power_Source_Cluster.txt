@@ -1,0 +1,16 @@
+$ Power Source Cluster
+# [TC-PS-1.1] Global attributes with server as DUT	
+./chip-tool powersource read cluster-revision 1 1
+./chip-tool powersource read feature-map 1 1
+./chip-tool powersource read attribute-list 1 1
+./chip-tool powersource read accepted-command-list  1 1
+./chip-tool powersource read  generated-command-list 1 1
+End
+# [TC-PS-2.1] Attributes with server as DUT
+./chip-tool powersource read status 1 1
+./chip-tool powersource read order 1 1
+./chip-tool powersource read description 1 1
+./chip-tool powersource read bat-charge-level 1 1
+./chip-tool powersource read bat-replacement-needed 1 1
+./chip-tool powersource read bat-replaceability 1 1
+End

@@ -1,0 +1,30 @@
+$ Unit localization
+# [TC-LUNIT-1.1] Global Attributes [{DUT_Client}]
+./chip-tool unitlocalization read  cluster-revision 1 0
+./chip-tool unitlocalization read  feature-map 1 0
+./chip-tool unitlocalization read attribute-list 1 0
+./chip-tool unitlocalization read accepted-command-list 1 0
+./chip-tool unitlocalization read generated-command-list 1 0
+End
+# [TC-LUNIT-1.2|]Global Attributes [DUT as Server]
+./chip-tool unitlocalization read  cluster-revision 1 0
+./chip-tool unitlocalization read  feature-map 1 0
+./chip-tool unitlocalization read attribute-list 1 0
+./chip-tool unitlocalization read accepted-command-list 1 0
+./chip-tool unitlocalization read generated-command-list 1 0
+End
+# [TC-LUNIT-2.1] Read and Write Unit Localization Cluster Attributes [DUT as Client]
+./chip-tool unitlocalization read temperature-unit 1 0
+./chip-tool unitlocalization write temperature-unit 3 1 0
+./chip-tool unitlocalization read temperature-unit 1 0
+End
+# [TC-LUNIT-3.1] Read and Write Unit Localization Cluster Attributes [{DUT_Server}]
+./chip-tool unitlocalization read temperature-unit 1 0
+./chip-tool unitlocalization write temperature-unit 0 1 0
+./chip-tool unitlocalization read temperature-unit 1 0
+./chip-tool unitlocalization write temperature-unit 1 1 0
+./chip-tool unitlocalization read temperature-unit 1 0
+./chip-tool unitlocalization write temperature-unit 2 1 0
+./chip-tool unitlocalization read temperature-unit 1 0
+./chip-tool unitlocalization write temperature-unit 5 1 0
+End

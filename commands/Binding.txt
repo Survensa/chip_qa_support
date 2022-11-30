@@ -1,0 +1,9 @@
+$ Binding Cluster
+# [TC-BIND-1.1] Global Attributes [DUT-Controllee]
+./chip-tool binding read cluster-revision 1 1
+./chip-tool binding read  feature-map 1 1
+./chip-tool binding read attribute-list 1 1
+./chip-tool binding read accepted-command-list 1 1
+./chip-tool binding read generated-command-list 1 1
+End
+

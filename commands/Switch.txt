@@ -1,0 +1,13 @@
+$ Switch Cluster
+# [TC-SWTCH-1.1] Global attributes with server as DUT			
+./chip-tool switch read feature-map 1 1
+./chip-tool switch read cluster-revision 1 1
+./chip-tool switch read attribute-list 1 1
+./chip-tool switch read  accepted-command-list 1 1
+./chip-tool switch read  generated-command-list   1 1
+End
+# [TC-SWTCH-2.1] Attributes with server as DUT			
+./chip-tool switch read number-of-positions 1 1
+./chip-tool switch read current-position 1 1
+./chip-tool switch read multi-press-max 1 1
+End
