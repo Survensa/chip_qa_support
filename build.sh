@@ -3,7 +3,7 @@
 echo "Hello..!" $USER
 sleep 2
 echo
-read -p "Confirm wheather you have updated build_config.json inputs (Y/N)?:" -n 1 -r
+read -p "Confirm wheather you have updated build_config.json inputs (Y/N)?" -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
@@ -22,4 +22,4 @@ else
     python chip_build.py
 fi
 echo
-echo " Check apps folder for successfull buil "
+echo "Check apps folder for successfull build"
