@@ -16,7 +16,7 @@ os.chdir(path)
 def run_command(commands, testcase):
     file_path = os.path.join(os.path.expanduser('~'), build, "connectedhomeip", "examples", "chip-tool", "out",
                              "debug")  # Chip tool run directory
-    save_path = os.path.join(os.path.expanduser('~'), "SDK_Automation", "BackendLogs")  # Chip tool log directory
+    save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "BackendLogs")  # Chip tool log directory
     os.chdir(file_path)
     date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
     while "" in commands:
@@ -75,7 +75,7 @@ def filter_commands(commands):
 for file in os.listdir():
     # Check whether file is in text format or not
     if file.endswith(".txt"):
-        file_path = os.path.join(os.path.expanduser('~'), "SDK_Automation", "commands",
+        file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands",
                                  file)  # Chip tool commands txt directory
         # call read text file function
         read_text_file(file_path)
