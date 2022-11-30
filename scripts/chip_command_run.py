@@ -3,10 +3,10 @@ import sys
 from datetime import datetime
 import subprocess
 
-build = raw_input("What is your connectedhomeip folder name :")
+build = input("What is your connectedhomeip folder name : ")
 
 # Folder Path
-path = "commands"
+path = "../commands"
 
 # Change the directory
 os.chdir(path)
