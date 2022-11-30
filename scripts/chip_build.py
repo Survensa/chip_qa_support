@@ -2,7 +2,7 @@ import json
 import subprocess
 
 # Build inputs
-with open('/home/ubuntu/CHIP_Automation/SDK_Automation/build_config.json', 'r') as file:
+with open('/home/ubuntu/chip_command_run/build_config.json', 'r') as file:
     json_info = file.read()
     user_input = json.loads(json_info)
     folder = user_input["folder"]
