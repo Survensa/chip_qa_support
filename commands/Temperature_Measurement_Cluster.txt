@@ -1,0 +1,14 @@
+$ Temperature_Measurement_Cluster
+# [TC-TMP-1.1] Global attributes with server as DUT
+./chip-tool temperaturemeasurement read cluster-revision 1 1
+./chip-tool temperaturemeasurement read feature-map 1 1
+./chip-tool temperaturemeasurement read attribute-list 1 1
+./chip-tool temperaturemeasurement read accepted-command-list  1 1
+./chip-tool temperaturemeasurement read generated-command-list    1 1
+End
+# [TC-TMP-2.1] Attributes with server as DUT
+./chip-tool temperaturemeasurement read min-measured-value 1 1
+./chip-tool temperaturemeasurement read max-measured-value 1 1
+./chip-tool temperaturemeasurement read measured-value 1 1
+./chip-tool temperaturemeasurement read tolerance  1 1
+End

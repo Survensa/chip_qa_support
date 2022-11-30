@@ -1,0 +1,30 @@
+$ Userlabel
+# [TC-ULABEL-1.1] Global Attributes [DUT-server]
+./chip-tool userlabel read cluster-revision 1 0
+./chip-tool userlabel read feature-map 1 0
+./chip-tool userlabel read attribute-list 1 0
+./chip-tool userlabel read accepted-command-list 1 0
+./chip-tool userlabel read generated-command-list 1 0
+End
+# [TC-ULABEL-2.1] User label cluster read verification [DUT-server]
+./chip-tool userlabel read label-list 1 0
+End
+# [TC-ULABEL-2.2] User Label cluster write verification [DUT-server]
+./chip-tool userlabel write label-list '[{"label":"roomName", "value":"master bedroom 1"}, {"label":"orientation", "value":"east"}, {"label":"floor", "value":"2"}, {"label":"roomType", "value":"bedroom"}]' 1 0
+./chip-tool userlabel read label-list 1 0
+End
+# [TC-ULABEL-2.3] User Label cluster constraint_error verification [DUT-server]
+./chip-tool userlabel write label-list '[{"label":"room", "value":"17_bytesIsTooLongforuserlabelnotexpected"}]' 1 0
+./chip-tool userlabel write label-list '[{"label":"17_bytesIsTooLongforuserlabelnotexpected", "value":"foobar"}]' 1 0 
+End
+# [TC-ULABEL-2.4] User Label cluster empty entry verification [DUT-server]
+./chip-tool userlabel write label-list '[{"label":"room", "value":"bedroom 1"}, {"label":"orientation", "value":"east"}]' 1 0
+./chip-tool userlabel read label-list 1 0
+./chip-tool userlabel write label-list '[{"label":"", "value":""}, {"label":"", "value":""}, {"label":"", "value":""},{"label":"", "value":""},{"label":"", "value":""},{"label":"", "value":""},{"label":"", "value":""}]' 1 0
+./chip-tool userlabel read label-list 1 0
+End
+# [TC-ULABEL-3.1] User label cluster [DUT-client]
+./chip-tool userlabel read label-list 1 0
+./chip-tool userlabel write label-list '[{"label":"room", "value":"bedroom 1"}, {"label":"orientation", "value":"east"}]' 1 0
+
+

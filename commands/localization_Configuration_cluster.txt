@@ -1,0 +1,22 @@
+$ localization configuration cluster
+# [TC-LCFG-1.1]Global Attributes [DUT-Server]
+./chip-tool localizationconfiguration read cluster-revision 1 0
+./chip-tool localizationconfiguration read feature-map 1 0
+./chip-tool localizationconfiguration read  attribute-list 1 0
+./chip-tool localizationconfiguration read accepted-command-list 1 0
+./chip-tool localizationconfiguration read  generated-command-list 1 0
+End
+# [TC-LCFG-2.1] Localization Configuration Cluster Attributes
+./chip-tool localizationconfiguration read supported-locales 1 0
+./chip-tool any write-by-id 0x002B 1 '"xx-XX"' 1 0
+./chip-tool localizationconfiguration read supported-locales 1 0
+./chip-tool localizationconfiguration read active-locale 1 0
+./chip-tool localizationconfiguration write active-locale fw-GB 1 0
+./chip-tool localizationconfiguration write active-locale fr-FR 1 0
+./chip-tool localizationconfiguration read active-locale 1 0
+End
+# [TC-LCFG-3.1]Localization Configuration Cluster Attributes[DUT-Client]
+./chip-tool localizationconfiguration read supported-locales 1 0
+./chip-tool localizationconfiguration read active-locale 1 0
+End
+

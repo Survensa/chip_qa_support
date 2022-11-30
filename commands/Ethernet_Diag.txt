@@ -1,0 +1,56 @@
+$ Ethernet diagnostics
+# [TC-DGETH-1.1] Global attributes with server as DUT
+./chip-tool ethernetnetworkdiagnostics read cluster-revision 1 0
+./chip-tool ethernetnetworkdiagnostics read feature-map 1 0
+./chip-tool ethernetnetworkdiagnostics read attribute-list 1 0
+./chip-tool ethernetnetworkdiagnostics read accepted-command-list 1 0
+./chip-tool ethernetnetworkdiagnostics read generated-command-list 1 0
+End
+# [TC-DGETH-2.1] Attributes with server as DUT	
+./chip-tool ethernetnetworkdiagnostics read phyrate 1 0
+./chip-tool ethernetnetworkdiagnostics read full-duplex 1 0
+./chip-tool ethernetnetworkdiagnostics read packet-rx-count 1 0
+./chip-tool ethernetnetworkdiagnostics read packet-tx-count 1 0
+./chip-tool ethernetnetworkdiagnostics read tx-err-count 1 0
+./chip-tool ethernetnetworkdiagnostics read collision-count 1 0
+./chip-tool ethernetnetworkdiagnostics read overrun-count 1 0
+./chip-tool ethernetnetworkdiagnostics read carrier-detect 1 0
+./chip-tool ethernetnetworkdiagnostics read  time-since-reset 1 0
+End
+# [TC-DGETH-2.2] Command received functionality with server as DUT
+./chip-tool ethernetnetworkdiagnostics read phyrate 1 0
+./chip-tool ethernetnetworkdiagnostics read phyrate 1 0
+./chip-tool ethernetnetworkdiagnostics read phyrate 1 0
+./chip-tool ethernetnetworkdiagnostics read phyrate 1 0
+./chip-tool ethernetnetworkdiagnostics read phyrate 1 0
+./chip-tool ethernetnetworkdiagnostics read phyrate 1 0
+./chip-tool ethernetnetworkdiagnostics read phyrate 1 0
+./chip-tool ethernetnetworkdiagnostics read phyrate 1 0
+./chip-tool ethernetnetworkdiagnostics read phyrate 1 0
+./chip-tool ethernetnetworkdiagnostics read phyrate 1 0
+./chip-tool ethernetnetworkdiagnostics read packet-rx-count 1 0
+./chip-tool ethernetnetworkdiagnostics read packet-tx-count 1 0
+./chip-tool ethernetnetworkdiagnostics read tx-err-count 1 0
+./chip-tool ethernetnetworkdiagnostics read collision-count 1 0
+./chip-tool ethernetnetworkdiagnostics read overrun-count 1 0
+./chip-tool ethernetnetworkdiagnostics reset-counts 1 0
+./chip-tool ethernetnetworkdiagnostics read packet-rx-count 1 0
+./chip-tool ethernetnetworkdiagnostics read packet-tx-count 1 0
+./chip-tool ethernetnetworkdiagnostics read tx-err-count 1 0
+./chip-tool ethernetnetworkdiagnostics read collision-count 1 0
+./chip-tool ethernetnetworkdiagnostics read overrun-count 1 0
+End
+# [TC-DGETH-3.1] Attributes [{DUT_Client}]
+./chip-tool ethernetnetworkdiagnostics read phyrate 1 0
+./chip-tool ethernetnetworkdiagnostics read full-duplex 1 0
+./chip-tool ethernetnetworkdiagnostics read packet-rx-count 1 0
+./chip-tool ethernetnetworkdiagnostics read packet-tx-count 1 0
+./chip-tool ethernetnetworkdiagnostics read tx-err-count 1 0
+./chip-tool ethernetnetworkdiagnostics read collision-count 1 0
+./chip-tool ethernetnetworkdiagnostics read overrun-count 1 0
+./chip-tool ethernetnetworkdiagnostics read carrier-detect 1 0
+./chip-tool ethernetnetworkdiagnostics read  time-since-reset 1 0
+End
+# [TC-DGETH-3.2] Command Generated {DUT_Client}]
+./chip-tool ethernetnetworkdiagnostics reset-counts 1 0
+End

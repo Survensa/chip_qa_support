@@ -1,0 +1,9 @@
+$ General Diagnostics Cluster
+# [TC-DGGEN-1.1] Global attributes with server as DUT				
+./chip-tool generaldiagnostics read  cluster-revision 1 0
+./chip-tool generaldiagnostics read feature-map 1 0
+./chip-tool generaldiagnostics read attribute-list 1 0
+./chip-tool generaldiagnostics read accepted-command-list 1 0 
+./chip-tool generaldiagnostics read generated-command-list 1 0
+End
+

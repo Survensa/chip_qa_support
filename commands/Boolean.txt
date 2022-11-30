@@ -1,0 +1,11 @@
+$ Boolean State 
+# [TC-BOOL-1.1] Global attributes with server as DUT	
+./chip-tool booleanstate read cluster-revision 1 1
+./chip-tool booleanstate read feature-map 1 1
+./chip-tool booleanstate read attribute-list 1 1
+./chip-tool booleanstate read accepted-command-list 1 1
+./chip-tool booleanstate read generated-command-list 1 1
+End
+# [TC-BOOL-2.1] Attributes with server as DUT			
+./chip-tool booleanstate read state-value  1 1
+End

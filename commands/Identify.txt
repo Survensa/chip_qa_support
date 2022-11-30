@@ -1,0 +1,21 @@
+$ Identify Cluster
+# [TC-I-1.1] Global attributes with server as DUT				
+./chip-tool identify  read cluster-revision 1 1
+./chip-tool identify read feature-map 1 1
+./chip-tool identify read attribute-list 1 1
+./chip-tool identify read accepted-command-list 1 1
+./chip-tool identify read generated-command-list 1 1
+End
+# [TC-I-2.1] Attributes with server as DUT				
+./chip-tool identify read identify-time 1 1
+./chip-tool identify read identify-type 1 1
+End
+# [TC-I-2.2] Primary functionality with server as DUT				
+./chip-tool identify identify 60 1 1
+./chip-tool identify read identify-time 1 1
+./chip-tool identify read identify-time 1 1
+./chip-tool identify identify 0 1 1
+./chip-tool identify read identify-time 1 1
+./chip-tool identify write identify-time 15 1 1
+./chip-tool identify read identify-time 1 1
+End

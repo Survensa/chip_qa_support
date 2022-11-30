@@ -1,0 +1,20 @@
+$ Pressure measurement
+# [TC-PRS-1.1] Global attributes with server as DUT	
+./chip-tool pressuremeasurement read cluster-revision 1 1
+./chip-tool pressuremeasurement read feature-map 1 1
+./chip-tool pressuremeasurement read  attribute-list 1 1
+./chip-tool pressuremeasurement read accepted-command-list 1 1
+./chip-tool pressuremeasurement read generated-command-list 1 1
+End
+# [TC-PRS-2.1] Attributes with server as DUT		
+./chip-tool pressuremeasurement read min-measured-value 1 1
+./chip-tool pressuremeasurement read max-measured-value  1 1
+./chip-tool pressuremeasurement read measured-value 1 1
+./chip-tool pressuremeasurement read  tolerance 1 1
+./chip-tool pressuremeasurement read scaled-value 1 1
+./chip-tool pressuremeasurement read  min-scaled-value  1 1
+./chip-tool pressuremeasurement read  max-scaled-value  1 1
+./chip-tool pressuremeasurement read scaled-tolerance 1 1
+./chip-tool pressuremeasurement read scale 1 1
+End
+
