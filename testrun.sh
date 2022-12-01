@@ -4,7 +4,7 @@ sleep 2
 echo
 echo " These are the list of commands you have choosed for execution :"
 echo
-ls -1 commands/
+ls -1 ~/chip_command_run/commands/
 read -p "Confirm wheather the list of commands can be executed (Y/N)?" -n 1 -r
 sleep 10
 echo
@@ -21,10 +21,11 @@ else
     echo
     sleep 5
     echo "Your Execution Starts here..."
-    cd scripts/
-    python chip_command_run.py
+    cd ~/chip_command_run/scripts/
+    python3 chip_command_run.py
 fi
 echo
 echo "Execution completed"
 echo
 echo "Get execution logs from Backendlosg directory"
+exit
