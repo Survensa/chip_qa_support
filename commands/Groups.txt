@@ -1,23 +1,19 @@
 $ Groups Cluster
-# [TC-G-1.1]Global Attributes [DUT-Server]
+# [TC-G-1.1] Global Attributes [DUT-Server]
 ./chip-tool groups read cluster-revision 1 1 
 ./chip-tool groups read feature-map 1 1 
 ./chip-tool groups read attribute-list 1 1 
 ./chip-tool groups read accepted-command-list 1 1
 ./chip-tool groups read generated-command-list 1 1
 End
-# [TC-G-2.1]Groups Cluster Attributes [DUT-Server]
+# [TC-G-2.1] Groups Cluster Attributes [DUT-Server]
 ./chip-tool groups read name-support 1 1
 ./chip-tool groups write-by-id 0x0000 128 1 1
 ./chip-tool groups read name-support 1 1
 End
-# [TC-G-2.2]Groups Cluster Commands [DUT-Server]
- ./chip-tool groupkeymanagement read max-groups-per-fabric 1 0
- ./chip-tool groupkeymanagement key-set-write '{"groupKeySetID": 1,
-"groupKeySecurityPolicy": 0, "epochKey0":
-"d0d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime0": 2220000,"epochKey1":
-"d1d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime1": 2220001,"epochKey2":
-"d2d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime2": 2220002 }' 1 0
+# [TC-G-2.2] Groups Cluster Commands [DUT-Server]
+./chip-tool groupkeymanagement read max-groups-per-fabric 1 0
+./chip-tool groupkeymanagement key-set-write '{"groupKeySetID": 1,"groupKeySecurityPolicy": 0, "epochKey0":"d0d1d2d3d4d5d6d7d8d9dadbdcdddedf","epochStartTime0": 2220000,"epochKey1":"d1d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime1": 2220001,"epochKey2":"d2d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime2": 2220002 }' 1 0
 ./chip-tool groupkeymanagement write group-key-map '[{"groupId": 1, "groupKeySetID": 1, "fabricIndex": 1},{"groupId":2, "groupKeySetID": 1, "fabricIndex": 1} ]' 1 0
 ./chip-tool groups add-group 0x0001 grp1 1 1
 ./chip-tool groupkeymanagement read group-table 1 0
@@ -45,11 +41,7 @@ End
 End
 # [TC-G-2.3] Commands - GetGroupMembership, AddGroupIfIdentifying [DUT-Server]
 ./chip-tool groupkeymanagement read max-groups-per-fabric 1 0
-./chip-tool groupkeymanagement key-set-write '{"groupKeySetID": 1,
-"groupKeySecurityPolicy": 0, "epochKey0":
-"d0d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime0": 2220000,"epochKey1":
-"d1d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime1": 2220001,"epochKey2":
-"d2d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime2": 2220002 }' 1 0
+./chip-tool groupkeymanagement key-set-write '{"groupKeySetID": 1,"groupKeySecurityPolicy": 0, "epochKey0":"d0d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime0": 2220000,"epochKey1":"d1d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime1": 2220001,"epochKey2":"d2d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime2": 2220002 }' 1 0
 ./chip-tool groupkeymanagement write group-key-map '[{"groupId":2, "groupKeySetID": 1, "fabricIndex": 1},{"groupId": 3, "groupKeySetID": 1,"fabricIndex": 1} ]' 1 0
 ./chip-tool groups add-group 0x0002 gp2 1 1
 ./chip-tool groupkeymanagement read group-table 1 0
@@ -77,17 +69,13 @@ End
 ./chip-tool identify identify 0x0000 1 1
 ./chip-tool identify read identify-time 1 1
 ./chip-tool groups  add-group-if-identifying 0x0004 gp4 1 1
- ./chip-tool groupkeymanagement read group-table 1 0
- End
+./chip-tool groupkeymanagement read group-table 1 0
+End
 # [TC-G-3.1] Attributes [DUT-Client]
 ./chip-tool groups read name-support 1 1
 End
-# [TC-G-3.2]Groups Cluster Commands [DUT-Client]
-./chip-tool groupkeymanagement key-set-write '{"groupKeySetID": 1,
-"groupKeySecurityPolicy": 0, "epochKey0":
-"d0d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime0": 2220000,"epochKey1":
-"d1d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime1": 2220001,"epochKey2":
-"d2d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime2": 2220002 }' 1 0
+# [TC-G-3.2] Groups Cluster Commands [DUT-Client]
+./chip-tool groupkeymanagement key-set-write '{"groupKeySetID": 1,"groupKeySecurityPolicy": 0, "epochKey0":"d0d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime0": 2220000,"epochKey1":"d1d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime1": 2220001,"epochKey2":"d2d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime2": 2220002 }' 1 0
 ./chip-tool groupkeymanagement write group-key-map '[{"groupId":2, "groupKeySetID": 1, "fabricIndex": 1},{"groupId": 3, "groupKeySetID": 1,"fabricIndex": 1} ]' 1 0
 ./chip-tool groups add-group 0x0002 gp2 1 1
 ./chip-tool groups add-group 0x0003 gp3 1 1 
