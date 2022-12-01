@@ -4,7 +4,7 @@ from datetime import datetime
 import subprocess
 import json
 
-# Build inputs
+# chip-tool path
 homedir = os.path.join(os.path.expanduser('~'), "chip_command_run","config.json")
 with open(homedir,'r') as file:
     json_info = file.read()
