@@ -2,8 +2,9 @@ echo "Hello..!" $USER
 sleep 2
 echo
 read -p "Confirm wheather you have updated chip_tool_directory in build_config.json(Y/N)?" -n 1 -r
+sleep 10
 echo
-if [[ ! $REPLY =~ ^[Yy]$ ]]
+if [[ ! $REPLY =~ ^[Yn]$ ]]
 then
 	sleep 2
 	echo
@@ -24,6 +25,7 @@ then
 		echo "Bye...!"
 		exit
 	else
+		echo
 		sleep 5
 		echo "Your Execution Starts here..."
 		cd ~/chip_command_run/scripts/
