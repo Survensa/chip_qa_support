@@ -1,8 +1,11 @@
+import os
+import sys
 import json
 import subprocess
 
 # Build inputs
-with open('~/chip_command_run/config.json', 'r') as file:
+homedir = os.path.join(os.path.expanduser('~'), "chip_command_run","config.json")
+with open(homedir,'r') as file:
     json_info = file.read()
     user_input = json.loads(json_info)
     folder = user_input["folder"]
