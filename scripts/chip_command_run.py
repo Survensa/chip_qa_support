@@ -5,6 +5,7 @@ import subprocess
 import json
 
 # Build inputs
+homedir = os.path.join(os.path.expanduser('~'), "chip_command_run","config.json")
 with open(homedir,'r') as file:
     json_info = file.read()
     user_input = json.loads(json_info)
@@ -15,7 +16,6 @@ path = "../commands"
 
 # Change the directory
 os.chdir(path)
-homedir = os.path.join(os.path.expanduser('~'), "chip_command_run","config.json")
 
 # Fn to run chip commands in terminal
 def run_command(commands, testcase):
