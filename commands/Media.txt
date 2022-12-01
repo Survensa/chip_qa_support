@@ -136,3 +136,133 @@ End
 ./chip-tool mediainput rename-input 2 newname 1 1
 ./chip-tool mediainput read input-list 1 1
 End
+# [TC-WAKEONLAN-4.1] Wake-On LAN Verification
+./chip-tool wakeonlan read macaddress 1 1
+./chip-tool lowpower sleep 1 1
+./chip-tool lowpower read accepted-command-list 1 1
+End
+# [TC-CHANNEL-5.1] List TV Channels Verification
+./chip-tool channel read channel-list 1 1 
+End
+# [TC-CHANNEL-5.2] Change Channel by Number Verification
+./chip-tool channel read channel-list 1 1 
+./chip-tool channel change-channel-by-number 9 1 1 1  
+./chip-tool channel  read current-channel 1 1
+End
+# [TC-CHANNEL-5.3] Skip Channel Verification
+./chip-tool channel read channel-list 1 1 
+./chip-tool channel read channel-list 1 1 
+./chip-tool channel read  current-channel   1 1    
+./chip-tool channel  skip-channel 1 1 1
+./chip-tool channel read current-channel 1 1
+End
+# [TC-MEDIAPLAYBACK-6.1] Mandatory Media Playback Verification
+./chip-tool mediaplayback pause 1 3
+./chip-tool mediaplayback read current-state 1 3
+./chip-tool mediaplayback play 1 3
+./chip-tool mediaplayback read current-state 1 3
+./chip-tool mediaplayback  pause 1 3
+./chip-tool mediaplayback read current-state 1 3
+./chip-tool mediaplayback  stop-playback 1 3
+./chip-tool mediaplayback read current-state 1 3
+End
+# [TC-MEDIAPLAYBACK-6.2] Optional Media Playback Verification
+./chip-tool mediaplayback pause 1 3
+./chip-tool mediaplayback read current-state 1 3
+./chip-tool mediaplayback  play 1 3
+./chip-tool mediaplayback read current-state 1 3
+./chip-tool mediaplayback start-over 1 3
+./chip-tool mediaplayback  next 1 3
+./chip-tool mediaplayback  previous 1 3
+./chip-tool mediaplayback skip-forward 10000 1 3
+./chip-tool mediaplayback read sampled-position 1 3
+./chip-tool mediaplayback skip-backward 10000 1 3
+./chip-tool mediaplayback read sampled-position 1 3
+End  
+# [TC-MEDIAPLAYBACK-6.3] Advanced Seek Media Playback Verification
+./chip-tool mediaplayback seek 10000 1 3
+./chip-tool mediaplayback read sampled-position 1 3
+./chip-tool mediaplayback read seek-range-end 1 1
+./chip-tool mediaplayback read seek-range-start 1 1
+./chip-tool mediaplayback read duration 1 1
+./chip-tool mediaplayback seek 100000000 1 3
+End
+# [TC-MEDIAPLAYBACK-6.4] Variable Speed Media Playback Verification
+./chip-tool mediaplayback pause 1 3
+./chip-tool mediaplayback read  current-state  1 3
+./chip-tool mediaplayback fast-forward 1 3
+./chip-tool mediaplayback read  current-state  1 3
+./chip-tool mediaplayback read playback-speed 1 3
+./chip-tool mediaplayback read playback-speed 1 3
+./chip-tool mediaplayback rewind 1 3
+./chip-tool mediaplayback read  current-state  1 3
+./chip-tool mediaplayback read playback-speed 1 3
+./chip-tool mediaplayback rewind 1 3
+./chip-tool mediaplayback read playback-speed 1 3
+./chip-tool mediaplayback  play 1 3
+./chip-tool mediaplayback read playback-speed 1 3
+./chip-tool mediaplayback fast-forward 1 3
+./chip-tool mediaplayback rewind 1 3
+End
+# [TC-AUDIOOUTPUT-7.1] Select Output Verification
+./chip-tool audiooutput read output-list 1 1
+./chip-tool audiooutput select-output 1 1 1
+./chip-tool audiooutput read current-output 1 1
+End
+# [TC-AUDIOOUTPUT-7.2] Rename Output Verification
+./chip-tool audiooutput read output-list 1 1
+./chip-tool audiooutput rename-output  1 CertTest 1 1
+./chip-tool audiooutput read output-list 1 1
+End
+#  [TC-TGTNAV-8.1] Navigate Target Verification
+./chip-tool targetnavigator read current-target 1 1
+./chip-tool targetnavigator read target-list 1 1
+./chip-tool targetnavigator navigate-target 1 1 1
+./chip-tool targetnavigator read current-target 1 1
+End
+#  [TC-APBSC-9.1] Application Basic Attribute Verification
+./chip-tool applicationbasic read vendor-name 1 3 
+./chip-tool applicationbasic read vendor-id 1 3 
+./chip-tool applicationbasic read application-name 1 3
+./chip-tool applicationbasic read product-id 1 3
+./chip-tool applicationbasic read application 1 3 
+./chip-tool applicationbasic read status 1 3
+./chip-tool applicationbasic read application-version 1 3
+./chip-tool applicationbasic read allowed-vendor-list 1 3 
+End
+#  [TC-CONTENTLAUNCHER-10.1] Read Content Launcher Attributes
+./chip-tool contentlauncher read accept-header 1 1
+./chip-tool contentlauncher read supported-streaming-protocols 1 1
+End
+#  [TC-CONTENTLAUNCHER-10.3] Launch Content Verification
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 0, "value": "exampleString", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 0, "value": "exampleString", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 1 1 1
+End
+# [TC-CONTENTLAUNCHER-10.5] Launch URL Verification
+./chip-tool contentlauncher launch-url "exampleUrl"   '{"providerName":  "exampleName", "background": { "imageUrl": "exampleUrl", "color": "blue", "size" : {"width": 1.0, "height": 1.0,  "metric": 0} }}' 1 1
+./chip-tool contentlauncher launch-url "https://csa-iot.org/"   '{"providerName":  "exampleName", "background": { "imageUrl": "exampleUrl", "color": "blue", "size" : {"width": 1.0, "height": 1.0,  "metric": 0} }}' 1 1 --DisplayString "Custom Display String"
+./chip-tool contentlauncher launch-url "https://csa-iot.org/"   '{"providerName":  "exampleName", "background": { "imageUrl": "exampleUrl", "color": "blue", "size" : {"width": 1.0, "height": 1.0,  "metric": 0} }}' 1 1
+./chip-tool contentlauncher launch-url "https://badurl"   '{"providerName":  "exampleName", "background": { "imageUrl": "exampleUrl", "color": "blue", "size" : {"width": 1.0, "height": 1.0,  "metric": 0} }}' 1 1
+./chip-tool contentlauncher launch-url "https://csa-iot.org/badauth"   '{"providerName":  "exampleName", "background": { "imageUrl": "exampleUrl", "color": "blue", "size" : {"width": 1.0, "height": 1.0,  "metric": 0} }}' 1 1
+End
+# [TC-CONTENTLAUNCHER-10.7] Content Search Verification
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 0, "value": "Gaby sHoffman", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1 
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 1, "value": "PBS", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 2, "value": "Snow White", "externalIDList": [ { "name": "foo", "value": "2"} ] } ] }' 0 1 1
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 3, "value": "Spike Lee", "externalIDList": [ { "name": "Spike Lee", "value": "3"} ] } ] }' 0 1 1
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 4, "value": "Football games", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 5, "value": "Star Wars", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 6, "value": "Horror", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 7, "value": "NCAA", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 8, "value": "Popularity", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 9, "value": "Netflix", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 10, "value": "football", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 11, "value": "Arsenel", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1
+./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 12, "value": "TVSeries", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1
+End
+# [TC-ALOGIN-12.1] Account Login Verification
+./chip-tool applicationlauncher launch-app '{"catalogVendorId": 123, "applicationId": "exampleid"}' 1 1
+./chip-tool accountlogin get-setup-pin 1111 1 4 --timedInteractionTimeoutMs 1000
+./chip-tool accountlogin login 11111 34567890 1 4 --timedInteractionTimeoutMs 1000
+./chip-tool accountlogin logout  1 4 --timedInteractionTimeoutMs 1000
+End
