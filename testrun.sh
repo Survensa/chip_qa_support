@@ -42,3 +42,4 @@ else
 	sleep 2
 	echo "Bye...!"
 	exit
+fi	
