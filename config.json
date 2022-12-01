@@ -20,5 +20,8 @@
      "ota_provider_app":"N",
      "ota_requestor_app":"N",
      "chip_tool":"Y"
+    
+    
+"chip_tool_directory" : "v1.1/apps"    
      
 }
