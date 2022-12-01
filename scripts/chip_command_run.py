@@ -2,8 +2,13 @@ import os
 import sys
 from datetime import datetime
 import subprocess
+import json
 
-build = input("What is your connectedhomeip folder name : ")
+# Build inputs
+with open('~/chip_command_run/config.json', 'r') as file:
+    json_info = file.read()
+    user_input = json.loads(json_info)
+    build = user_input["chip_tool_directory"]
 
 # Folder Path
 path = "../commands"
@@ -14,8 +19,7 @@ os.chdir(path)
 
 # Fn to run chip commands in terminal
 def run_command(commands, testcase):
-    file_path = os.path.join(os.path.expanduser('~'), build, "connectedhomeip", "examples", "chip-tool", "out",
-                             "debug")  # Chip tool run directory
+    file_path = os.path.join(os.path.expanduser('~'), build)  # Chip tool run directory
     save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "BackendLogs")  # Chip tool log directory
     os.chdir(file_path)
     date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
