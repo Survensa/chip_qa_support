@@ -18,8 +18,9 @@ else
     echo
     sleep 5
     echo "Your build Starts here..."
-    cd scripts/
+    cd ~/chip_command_run/scripts/
     python chip_build.py
 fi
 echo
 echo "Check apps folder for successfull build"
+exit
