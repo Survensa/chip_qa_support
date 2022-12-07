@@ -128,6 +128,10 @@ End
 ./chip-tool doorlock read number-of-credentials-supported-per-user 1 1
 End
 # [TC-DRLK-2.2] Verification for Door lock command[DUT-Server]
+./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
+./chip-tool doorlock get-user 1 1 1
+./chip-tool doorlock set-credential 0 '{ "credentialType" : 1 , "credentialIndex" : 1 }' 123456 1 null null 1 1 --timedInteractionTimeoutMs 1000
+./chip-tool doorlock get-credential-status '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock write require-pinfor-remote-operation 0 1 1
 ./chip-tool doorlock read require-pinfor-remote-operation  1 1
 ./chip-tool doorlock lock-door 1 1  --timedInteractionTimeoutMs 1000
@@ -148,8 +152,13 @@ End
 ./chip-tool doorlock read user-code-temporary-disable-time 1 1
 ./chip-tool doorlock write user-code-temporary-disable-time 15 1 1
 ./chip-tool doorlock clear-credential  '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
+./chip-tool doorlock clear-user 1 1 1  --timedInteractionTimeoutMs 1000
 End
 # [TC-DRLK-2.3] Verification for Unlock Door command [DUT-Server]
+./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
+./chip-tool doorlock get-user 1 1 1
+./chip-tool doorlock set-credential 0 '{ "credentialType" : 1 , "credentialIndex" : 1 }' 123456 1 null null 1 1 --timedInteractionTimeoutMs 1000
+./chip-tool doorlock get-credential-status '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock write require-pinfor-remote-operation 0 1 1
 ./chip-tool doorlock read require-pinfor-remote-operation 1 1
 ./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000
@@ -171,8 +180,13 @@ End
 ./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 123456
 ./chip-tool doorlock read lock-state 1 1
 ./chip-tool doorlock clear-credential  '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
+./chip-tool doorlock clear-user 1 1 1  --timedInteractionTimeoutMs 1000
 End
 # [TC-DRLK-2.4] Verification for Unlock with Timeout command [DUT-Server]
+./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
+./chip-tool doorlock get-user 1 1 1
+./chip-tool doorlock set-credential 0 '{ "credentialType" : 1 , "credentialIndex" : 1 }' 123456 1 null null 1 1 --timedInteractionTimeoutMs 1000
+./chip-tool doorlock get-credential-status '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock write auto-relock-time 60 1 1
 ./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock set-credential 0 '{ "credentialType" : 1 , "credentialIndex" : 1 }' 123456 1 null null 1 1 --timedInteractionTimeoutMs 1000
@@ -182,6 +196,8 @@ End
 ./chip-tool doorlock clear-user 1 1 1  --timedInteractionTimeoutMs 1000
 End
 # [TC-DRLK-2.5] Verification for the following Commands - Set Week Day Schedule, Get Week Day Schedule , Get Week Day Schedule Response, Clear Week Day Schedule [DUT-Server]
+./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
+./chip-tool doorlock get-user 1 1 1
 ./chip-tool doorlock read number-of-week-day-schedules-supported-per-user 1 1
 ./chip-tool doorlock read number-of-total-users-supported 1 1
 ./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
@@ -204,6 +220,8 @@ End
 ./chip-tool doorlock get-holiday-schedule 1 1 1
 End
 # [TC-DRLK-2.7] Verification for the following Commands - Set Year Schedule, Get Year Schedule, Get Year Day Schedule Response and Clear Year Day Schedule[DUT-Server
+./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
+./chip-tool doorlock get-user 1 1 1
 ./chip-tool doorlock read number-of-year-day-schedules-supported-per-user 1 1
 ./chip-tool doorlock read number-of-total-users-supported 1 1
 ./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
@@ -234,6 +252,8 @@ End
 ./chip-tool doorlock get-user 1 1 1  --timedInteractionTimeoutMs 1000
 End
 # [TC-DRLK-2.9] Verification for the following Commands - Set Credential , Set Credential Response, Get Credential Status, Get Credential Status Response, Clear Credential [DUT-Server]
+./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
+./chip-tool doorlock get-user 1 1 1
 ./chip-tool doorlock read number-of-total-users-supported 1 1
 ./chip-tool doorlock set-credential 0 '{ "credentialType" : 1 , "credentialIndex" : 1 }' 123456 1 null null 1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock get-credential-status '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
