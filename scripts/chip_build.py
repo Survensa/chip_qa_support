@@ -1,6 +1,6 @@
 import os
 import sys
-import pyyaml 
+import yaml 
 import subprocess
 
 # Build inputs
