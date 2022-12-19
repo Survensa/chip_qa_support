@@ -1,10 +1,7 @@
 #! /usr/bin/env bash
 
 echo "Hello . . . !" $USER
-sleep 2
-echo
 read -p "Confirm wheather you have updated chip_tool_directory in config.yaml (Y/N)?" ANSWER1
-echo
 if [ "$ANSWER1" == "Y" ] || [ "$ANSWER1" == "y" ]
 then
 	echo
@@ -14,11 +11,9 @@ then
 	ls -1 ~/chip_command_run/commands/
 	echo
 	read -p "Confirm wheather the list of commands can be executed (Y/N)?" ANSWER2
-	echo
 	if [ "$ANSWER2" == "Y" ] || [ "$ANSWER2" == "y" ]
 	then
 		echo
-		sleep 2
 		echo "Your Execution Starts here . . ."
 		cd ~/chip_command_run/scripts/
 		python3 chip_command_run.py
