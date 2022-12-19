@@ -3,7 +3,7 @@
 echo "Hello . . . !" $USER
 sleep 2
 echo
-read -p "Confirm wheather you have updated chip_tool_directory in build_config.json(Y/N)?" ANSWER1
+read -p "Confirm wheather you have updated chip_tool_directory in config.yaml (Y/N)?" ANSWER1
 echo
 if [ "$ANSWER1" == "Y" ] || [ "$ANSWER1" == "y" ]
 then
@@ -36,7 +36,7 @@ then
 	fi
 elif [ "$ANSWER1" == "N" ] || [ "$ANSWER1" == "n" ]
 	echo
-	echo "Execution Aborted . . . Please update chip_tool_directory in build_config.json"
+	echo "Execution Aborted . . . Please update chip_tool_directory in config.yaml"
 	exit
 else	
 	echo
