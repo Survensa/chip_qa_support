@@ -1,7 +1,16 @@
-folder: v1.1
+# Provide the folder name to build the connectedhopeip
+folder: v1.1 # NOTE : Make a directory named apps inside this folder
+
+# Want to build connectedhomeip...?
 Connectedhomeip: 'Y'
+
+# Provide the branch name :
 branch: master
+
+# Need to switch commit provide the commit, if not N :
 commit: 'N'
+
+# Choose the sample apps to be build with Y, if not N :
 all_clusters_app: 'Y'
 all_clusters_minimal_app: 'Y'
 bridge_app: 'N'
@@ -13,4 +22,6 @@ thermostat: 'N'
 ota_provider_app: 'N'
 ota_requestor_app: 'N'
 chip_tool: 'Y'
+
+# Path where chip-tool is located
 chip_tool_directory: v1.1/apps
