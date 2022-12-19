@@ -2,7 +2,7 @@ import os
 import sys
 from datetime import datetime
 import subprocess
-import PyYAML 
+import pyyaml 
 
 # chip-tool path
 homedir = os.path.join(os.path.expanduser('~'), "chip_command_run","config.yaml")
