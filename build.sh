@@ -1,14 +1,11 @@
 #! /usr/bin/env bash
 
 echo "Hello..!" $USER
-sleep 2
 echo
 read -p "Confirm wheather you have updated config.yaml inputs (Y/N)?" ANSWER1
-echo
 if [ "$ANSWER1" == "Y" ] || [ "$ANSWER1" == "y" ]
 then
     echo
-    sleep 2
     echo "Your build Starts here..."
     cd ~/chip_command_run/scripts/
     python3 chip_build.py
