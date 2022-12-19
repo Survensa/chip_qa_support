@@ -1,6 +1,6 @@
 import os
 import sys
-import json
+import PyYAML 
 import subprocess
 
 # Build inputs
