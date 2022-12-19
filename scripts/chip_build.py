@@ -1,6 +1,6 @@
 import os
 import sys
-import PyYAML 
+import pyyaml 
 import subprocess
 
 # Build inputs
