@@ -3,7 +3,7 @@
 echo "Hello..!" $USER
 sleep 2
 echo
-read -p "Confirm wheather you have updated build_config.json inputs (Y/N)?" ANSWER1
+read -p "Confirm wheather you have updated config.yaml inputs (Y/N)?" ANSWER1
 echo
 if [ "$ANSWER1" == "Y" ] || [ "$ANSWER1" == "y" ]
 then
@@ -17,7 +17,7 @@ then
     exit
 elif [ "$ANSWER1" == "N" ] || [ "$ANSWER1" == "n" ]; then
     echo
-    echo "Execution Aborted . . . Please update your inputs in build_config.json "
+    echo "Execution Aborted . . . Please update your inputs in config.yaml"
     exit
 else
     echo
