@@ -5,11 +5,10 @@ import subprocess
 import json
 
 # chip-tool path
-homedir = os.path.join(os.path.expanduser('~'), "chip_command_run","config.json")
+homedir = os.path.join(os.path.expanduser('~'), "chip_command_run","config.yaml")
 with open(homedir,'r') as file:
-    json_info = file.read()
-    user_input = json.loads(json_info)
-    build = user_input["chip_tool_directory"]
+    yaml_info = yaml.safe_load(file)
+    build = yaml_info["chip_tool_directory"]
 
 # Folder Path
 path = "../commands"
