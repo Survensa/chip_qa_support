@@ -4,25 +4,25 @@ import json
 import subprocess
 
 # Build inputs
-homedir = os.path.join(os.path.expanduser('~'), "chip_command_run","config.json")
-with open(homedir,'r') as file:
-    json_info = file.read()
-    user_input = json.loads(json_info)
-    folder = user_input["folder"]
-    build = user_input["Connectedhomeip"]
-    branch = user_input["branch"]
-    commit = user_input["commit"]
-    all_clusters_app = user_input["all_clusters_app"]
-    all_clusters_minimal_app = user_input["all_clusters_minimal_app"]
-    bridge_app = user_input["bridge_app"]
-    lock_app = user_input["lock_app"]
-    tv_app = user_input["tv_app"]
-    lighting_app = user_input["lighting_app"]
-    thermostat = user_input["thermostat"]
-    tv_casting_app = user_input["tv_casting_app"]
-    ota_provider_app = user_input["ota_provider_app"]
-    ota_requestor_app = user_input["ota_requestor_app"]
-    chip_tool = user_input["chip_tool"]
+homedir = os.path.join(os.path.expanduser('~'), "chip_command_run", "config.yaml")
+
+with open(homedir, 'r') as file:
+    yaml_info = yaml.safe_load(file)
+    folder = yaml_info["folder"]
+    build = yaml_info["Connectedhomeip"]
+    branch = yaml_info["branch"]
+    commit = yaml_info["commit"]
+    all_clusters_app = yaml_info["all_clusters_app"]
+    all_clusters_minimal_app = yaml_info["all_clusters_minimal_app"]
+    bridge_app = yaml_info["bridge_app"]
+    lock_app = yaml_info["lock_app"]
+    tv_app = yaml_info["tv_app"]
+    lighting_app = yaml_info["lighting_app"]
+    thermostat = yaml_info["thermostat"]
+    tv_casting_app = yaml_info["tv_casting_app"]
+    ota_provider_app = yaml_info["ota_provider_app"]
+    ota_requestor_app = yaml_info["ota_requestor_app"]
+    chip_tool = yaml_info["chip_tool"]
 
 Boot1: str = "./scripts/bootstrap.sh"
 Boot2: str = "./scripts/activate.sh"
