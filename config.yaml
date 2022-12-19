@@ -1,0 +1,16 @@
+folder: v1.1
+Connectedhomeip: 'Y'
+branch: master
+commit: 'N'
+all_clusters_app: 'Y'
+all_clusters_minimal_app: 'Y'
+bridge_app: 'N'
+lock_app: 'N'
+tv_app: 'N'
+tv_casting_app: 'N'
+lighting_app: 'N'
+thermostat: 'N'
+ota_provider_app: 'N'
+ota_requestor_app: 'N'
+chip_tool: 'Y'
+chip_tool_directory: v1.1/apps
