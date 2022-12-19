@@ -15,7 +15,7 @@ then
     echo
     echo "Check apps folder for successfull build"
     exit
-elif [ "$ANSWER1" == "N" ] || [ "$ANSWER1" == "n" ]
+elif [ "$ANSWER1" == "N" ] || [ "$ANSWER1" == "n" ]; then
     echo
     echo "Execution Aborted . . . Please update your inputs in build_config.json "
     exit
