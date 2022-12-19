@@ -1,47 +1,43 @@
-echo "Hello..!" $USER
+echo "Hello . . . !" $USER
 sleep 2
 echo
-read -p "Confirm wheather you have updated chip_tool_directory in build_config.json(Y/N)?" -n 1 -r
-sleep 10
+read -p "Confirm wheather you have updated chip_tool_directory in build_config.json(Y/N)?" ANSWER1
 echo
-if [[ ! $REPLY =~ ^[Yn]$ ]]
+if [ "$ANSWER1" == "Y" ] || [ "$ANSWER1" == "y" ]
 then
-	sleep 2
 	echo
+	sleep 2
 	echo " These are the list of commands you have choosed for execution :"
 	echo
 	ls -1 ~/chip_command_run/commands/
 	echo
-	read -p "Confirm wheather the list of commands can be executed (Y/N)?" -n 1 -r
-	sleep 10
+	read -p "Confirm wheather the list of commands can be executed (Y/N)?" ANSWER2
 	echo
-	if [[ ! $REPLY =~ ^[Yy]$ ]]
+	if [ "$ANSWER2" == "Y" ] || [ "$ANSWER2" == "y" ]
 	then
 		echo
-		sleep 5
-		echo "Abort Execution"
-		echo
 		sleep 2
-		echo "Bye...!"
-		exit
-	else
-		echo
-		sleep 5
-		echo "Your Execution Starts here..."
+		echo "Your Execution Starts here . . ."
 		cd ~/chip_command_run/scripts/
 		python3 chip_command_run.py
+		echo
+		echo "Execution completed . . .  Get execution logs from Backendlosg directory"
+		exit
+	elif [ "$ANSWER2" == "N" ] || [ "$ANSWER2" == "n" ]
+		echo
+		echo "Execution Aborted"
+		exit
+	else	
+		echo
+		echo "INVALID INPUT . . . Retry again"
+		exit
 	fi
+elif [ "$ANSWER1" == "N" ] || [ "$ANSWER1" == "n" ]
 	echo
-	echo "Execution completed"
-	echo
-	echo "Get execution logs from Backendlosg directory"
+	echo "Execution Aborted . . . Please update chip_tool_directory in build_config.json"
 	exit
-else
+else	
 	echo
-	sleep 5
-	echo "Execution Aborted please update chip_tool_directory in build_config.json"
-	echo
-	sleep 2
-	echo "Bye...!"
+	echo "INVALID INPUT . . . Retry again"
 	exit
 fi	
