@@ -21,6 +21,6 @@ elif [ "$ANSWER1" == "N" ] || [ "$ANSWER1" == "n" ]
     exit
 else
     echo
-	echo "INVALID INPUT . . . Retry again"
-	exit
+    echo "INVALID INPUT . . . Retry again"
+    exit
 fi
