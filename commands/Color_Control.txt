@@ -211,6 +211,7 @@ sleep 05
 ./chip-tool colorcontrol read enhanced-color-mode 1 1
 End
 # [TC-CC-3.4] Hue functionality with client as DUT
+./chip-tool onoff on 1 1
 ./chip-tool colorcontrol move-to-hue 1 0 300 0 0 1 1
 ./chip-tool colorcontrol read current-hue 1  1
 ./chip-tool colorcontrol move-hue 1 10 0 0 1 1
@@ -314,6 +315,7 @@ sleep 05
 ./chip-tool colorcontrol read enhanced-color-mode 1 1
 End
 # [TC-CC-4.5] Saturation functionality with client as DUT
+./chip-tool onoff on 1 1
 ./chip-tool colorcontrol move-to-saturation 200 300 0 0 1 1
 ./chip-tool colorcontrol read current-saturation 1 1
 ./chip-tool colorcontrol move-saturation 1 10 0 0 1 1
@@ -414,6 +416,7 @@ sleep 05
 ./chip-tool colorcontrol read enhanced-color-mode 1 1
 End
 # [TC-CC-5.4] Color functionality with client as DUT
+./chip-tool onoff on 1 1
 ./chip-tool colorcontrol move-to-color 400 500 300 0 0 1 1
 ./chip-tool colorcontrol read current-x 1 1
 ./chip-tool colorcontrol read current-y 1 1
@@ -453,23 +456,23 @@ End
 ./chip-tool colorcontrol read color-temp-physical-max-mireds 1 1
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
 ./chip-tool colorcontrol move-to-color-temperature 32639 0 0 0 1 1
-./chip-tool colorcontrol move-color-temperature 1 16319 0 65279 0 0 1 1
+./chip-tool colorcontrol move-color-temperature 1 1631 0 65279 0 0 1 1
 sleep 10
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
 sleep 10
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
 sleep 05
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
-./chip-tool colorcontrol move-color-temperature 3 32369 0 65279 0 0 1 1
+./chip-tool colorcontrol move-color-temperature 3 3263 0 65279 0 0 1 1
 sleep 10
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
 sleep 10
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
 sleep 05
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
-./chip-tool colorcontrol move-color-temperature 1 32369 0 65279 0 0 1 1
+./chip-tool colorcontrol move-color-temperature 1 3263 0 65279 0 0 1 1
 sleep 10
-./chip-tool colorcontrol move-color-temperature 0 32369 0 65279 0 0 1 1
+./chip-tool colorcontrol move-color-temperature 0 3263 0 65279 0 0 1 1
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
 sleep 02
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
@@ -501,6 +504,7 @@ sleep 05
 ./chip-tool colorcontrol read enhanced-color-mode 1 1
 End
 # [TC-CC-6.4] Color Temperature functionality with client as DUT
+./chip-tool onoff on 1 1
 ./chip-tool colorcontrol read color-temp-physical-min-mireds 1 1
 ./chip-tool colorcontrol read color-temp-physical-max-mireds 1 1
 ./chip-tool colorcontrol move-to-color-temperature 150 300 0 0 1 1
@@ -632,6 +636,7 @@ sleep 05
 ./chip-tool colorcontrol read enhanced-color-mode 1 1
 End
 # [TC-CC-7.5] Enhanced Hue functionality with client as DUT
+./chip-tool onoff on 1 1
 ./chip-tool colorcontrol enhanced-move-to-hue 1000 3 200 0 0 1 1
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
 ./chip-tool colorcontrol enhanced-move-hue 0 100 0 0 1 1
@@ -640,6 +645,7 @@ End
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
 ./chip-tool colorcontrol enhanced-move-to-hue-and-saturation 2500 100 200 0 0 1 1
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
+./chip-tool colorcontrol read current-saturation 1 1
 ./chip-tool colorcontrol stop-move-step 0 0 1 1
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
 End
@@ -663,7 +669,7 @@ sleep 02
 ./chip-tool colorcontrol read color-temp-physical-min-mireds 1 1
 ./chip-tool colorcontrol read color-temp-physical-max-mireds 1 1
 ./chip-tool colorcontrol move-to-color-temperature 32639 0 0 0 1 1
-./chip-tool colorcontrol move-color-temperature 1 16319 0 65279 0 0 1 1
+./chip-tool colorcontrol move-color-temperature 1 1631 0 65279 0 0 1 1
 sleep 10
 ./chip-tool colorcontrol stop-move-step 0 0 1 1
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
@@ -774,6 +780,7 @@ End
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
 End
 # [TC-CC-9.4] ColorLoopSet Validation with client as DUT
+./chip-tool onoff on 1 1
 ./chip-tool colorcontrol color-loop-set 15 0 0 30 160 0 0 1 1 
 ./chip-tool colorcontrol read color-loop-active 1 1
 ./chip-tool colorcontrol read color-loop-direction 1 1
