@@ -216,7 +216,7 @@ End
 sleep 30
 ./chip-tool colorcontrol read current-hue 1  1
 ./chip-tool colorcontrol move-hue 1 10 0 0 1 1
-sleep 30
+sleep 10
 ./chip-tool colorcontrol read current-hue 1  1
 ./chip-tool colorcontrol step-hue 1 10 200 0 0 1 1
 sleep 20
