@@ -24,7 +24,7 @@ then
 		echo
 		echo "Execution Aborted"
 		exit
-	else	
+	else
 		echo
 		echo "INVALID INPUT . . . Retry again"
 		exit
@@ -33,8 +33,9 @@ elif [ "$ANSWER1" == "N" ] || [ "$ANSWER1" == "n" ]
 	echo
 	echo "Execution Aborted . . . Please update chip_tool_directory in config.yaml"
 	exit
-else	
+else
 	echo
 	echo "INVALID INPUT . . . Retry again"
 	exit
-fi	
+fi
+
