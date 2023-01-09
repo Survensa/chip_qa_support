@@ -29,7 +29,7 @@ def run_command(commands, testcase):
             print(testcase, i)
             cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
         # subprocess module is used to open, append logs and run command in the terminal
-        subprocess.run(i, shell=True, text=True, stdout=open(f"{save_path}/{testcase}.txt", "a+"))
+        subprocess.run(i, shell=True, text=True, stdout=open(f"{save_path}/{testcase}-{date}.txt", "a+"))
     print(f"---------------------{testcase} - Executed----------------------")
 
 
