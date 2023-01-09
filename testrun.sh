@@ -21,6 +21,7 @@ then
 		echo "Execution completed . . .  Get execution logs from Backendlosg directory"
 		exit
 	elif [ "$ANSWER2" == "N" ] || [ "$ANSWER2" == "n" ]
+	then
 		echo
 		echo "Execution Aborted"
 		exit
@@ -30,6 +31,7 @@ then
 		exit
 	fi
 elif [ "$ANSWER1" == "N" ] || [ "$ANSWER1" == "n" ]
+then
 	echo
 	echo "Execution Aborted . . . Please update chip_tool_directory in config.yaml"
 	exit
@@ -38,4 +40,3 @@ else
 	echo "INVALID INPUT . . . Retry again"
 	exit
 fi
-
