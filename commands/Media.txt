@@ -239,11 +239,11 @@ End
 ./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 0, "value": "exampleString", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 1 1 1
 End
 # [TC-CONTENTLAUNCHER-10.5] Launch URL Verification
-./chip-tool contentlauncher launch-url "exampleUrl"   '{"providerName":  "exampleName", "background": { "imageUrl": "exampleUrl", "color": "blue", "size" : {"width": 1.0, "height": 1.0,  "metric": 0} }}' 1 1
-./chip-tool contentlauncher launch-url "https://csa-iot.org/"   '{"providerName":  "exampleName", "background": { "imageUrl": "exampleUrl", "color": "blue", "size" : {"width": 1.0, "height": 1.0,  "metric": 0} }}' 1 1 --DisplayString "Custom Display String"
-./chip-tool contentlauncher launch-url "https://csa-iot.org/"   '{"providerName":  "exampleName", "background": { "imageUrl": "exampleUrl", "color": "blue", "size" : {"width": 1.0, "height": 1.0,  "metric": 0} }}' 1 1
-./chip-tool contentlauncher launch-url "https://badurl"   '{"providerName":  "exampleName", "background": { "imageUrl": "exampleUrl", "color": "blue", "size" : {"width": 1.0, "height": 1.0,  "metric": 0} }}' 1 1
-./chip-tool contentlauncher launch-url "https://csa-iot.org/badauth"   '{"providerName":  "exampleName", "background": { "imageUrl": "exampleUrl", "color": "blue", "size" : {"width": 1.0, "height": 1.0,  "metric": 0} }}' 1 1
+ ./chip-tool applicationlauncher hide-app '{"catalogVendorID": 123, "applicationID": "exampleid"}' 1 1
+  ./chip-tool applicationlauncher hide-app '{"catalogVendorID": 123, "applicationID": "exampleid"}' 1 1
+ ./chip-tool applicationlauncher hide-app '{"catalogVendorID": 123, "applicationID": "exampleid"}' 1 1
+ ./chip-tool contentlauncher launch-url "https://badurl"   '{"providerName":  "exampleName", "background": { "color": "blue", "size" : {"width": 1.0, "height": 1.0,  "metric": 0} }}' 1 1
+ ./chip-tool contentlauncher launch-url "https://csa-iot.org/badauth"   '{"providerName":  "exampleName", "background": {"color": "blue", "size" : {"width": 1.0, "height": 1.0,  "metric": 0} }}' 1 1
 End
 # [TC-CONTENTLAUNCHER-10.7] Content Search Verification
 ./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 0, "value": "Gaby sHoffman", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1 
@@ -261,7 +261,7 @@ End
 ./chip-tool contentlauncher launch-content '{"parameterList": [ { "type": 12, "value": "TVSeries", "externalIDList": [ { "name": "exampleName", "value": "exampleValue"} ] } ] }' 0 1 1
 End
 # [TC-ALOGIN-12.1] Account Login Verification
-./chip-tool applicationlauncher launch-app '{"catalogVendorId": 123, "applicationId": "exampleid"}' 1 1
+./chip-tool applicationlauncher launch-app '{"catalogVendorID": 123, "applicationID": "exampleid"}' 1 1
 ./chip-tool accountlogin get-setup-pin 1111 1 4 --timedInteractionTimeoutMs 1000
 ./chip-tool accountlogin login 11111 34567890 1 4 --timedInteractionTimeoutMs 1000
 ./chip-tool accountlogin logout  1 4 --timedInteractionTimeoutMs 1000
