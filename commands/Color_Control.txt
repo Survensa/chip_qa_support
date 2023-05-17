@@ -3,6 +3,7 @@ $ Color Control
 ./chip-tool colorcontrol read cluster-revision 1 1
 ./chip-tool colorcontrol read feature-map 1 1
 ./chip-tool colorcontrol read attribute-list 1 1
+./chip-tool colorcontrol read event-list 1 1
 ./chip-tool colorcontrol read accepted-command-list 1 1
 ./chip-tool colorcontrol read generated-command-list 1 1
 End
@@ -353,6 +354,7 @@ sleep 05
 ./chip-tool colorcontrol read current-y 1 1
 ./chip-tool colorcontrol write options 0x00 1 1
 ./chip-tool colorcontrol read options 1 1
+./chip-tool onoff on 1 1
 ./chip-tool colorcontrol move-to-color 32768 19660 0 0 0 1 1
 ./chip-tool colorcontrol read current-x 1 1
 ./chip-tool colorcontrol read current-y 1 1
@@ -725,7 +727,9 @@ End
 ./chip-tool colorcontrol color-loop-set 1 1 0 0 0 0 0 1 1
 ./chip-tool colorcontrol read color-loop-active 1 1
 ./chip-tool colorcontrol read color-loop-stored-enhanced-hue 1 1
+sleep 30s
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
+sleep 30s
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
 ./chip-tool colorcontrol color-loop-set 1 0 0 0 0 0 0 1 1
 ./chip-tool colorcontrol read color-loop-active 1 1
@@ -737,7 +741,9 @@ End
 ./chip-tool colorcontrol color-loop-set 1 2 0 0 0 0 0 1 1
 ./chip-tool colorcontrol read color-loop-active 1 1
 ./chip-tool colorcontrol read color-loop-stored-enhanced-hue 1 1
+sleep 30s
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
+sleep 30s
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
 ./chip-tool colorcontrol color-loop-set 1 0 0 0 0 0 0 1 1
 ./chip-tool colorcontrol read color-loop-active 1 1
@@ -747,7 +753,9 @@ End
 ./chip-tool colorcontrol color-loop-set 1 2 0 0 0 0 0 1 1
 ./chip-tool colorcontrol read color-loop-active 1 1
 ./chip-tool colorcontrol read color-loop-stored-enhanced-hue 1 1
+sleep 30s
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
+sleep 30s
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
 ./chip-tool colorcontrol color-loop-set 1 0 0 0 0 0 0 1 1
 ./chip-tool colorcontrol read color-loop-active 1 1
@@ -765,7 +773,9 @@ End
 ./chip-tool colorcontrol color-loop-set 1 1 0 0 0 0 0 1 1
 ./chip-tool colorcontrol read color-loop-active 1 1
 ./chip-tool colorcontrol read color-loop-stored-enhanced-hue 1 1
+sleep 30s
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
+sleep 30s
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
 ./chip-tool colorcontrol color-loop-set 2 0 1 0 0 0 0 1 1
 ./chip-tool colorcontrol read color-loop-direction 1 1
@@ -786,11 +796,16 @@ End
 ./chip-tool colorcontrol read color-loop-start-enhanced-hue 1 1
 ./chip-tool colorcontrol color-loop-set 1 1 0 0 0 0 0 1 1
 ./chip-tool colorcontrol read color-loop-active 1 1
+./chip-tool colorcontrol read color-loop-stored-enhanced-hue 1 1
+sleep 30s
 ./chip-tool colorcontrol read enhanced-current-hue 1  1
+sleep 30s
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
 ./chip-tool colorcontrol color-loop-set 4 0 0 60 0 0 0 1 1
 ./chip-tool colorcontrol read color-loop-time 1 1
+sleep 60s
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
+sleep 60s
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
 ./chip-tool colorcontrol color-loop-set 1 0 0 0 0 0 0 1 1
 ./chip-tool colorcontrol read color-loop-active 1 1
