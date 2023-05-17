@@ -116,7 +116,7 @@ sleep 10
 sleep 10
 ./chip-tool onoff on-with-timed-off 0 0x12c 0x12c 1 1
 sleep 10
-./chip-tool onoff read on-off 1 
+./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
 ./chip-tool onoff off 1 1
