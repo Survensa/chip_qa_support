@@ -15,15 +15,15 @@ End
 ./chip-tool occupancysensing read occupancy 1 1
 ./chip-tool occupancysensing read occupancy-sensor-type 1 1
 ./chip-tool occupancysensing read occupancy-sensor-type-bitmap 1 1
-./chip-tool occupancysensing read pir-occupied-to-unoccupied-delay 1 1
-./chip-tool occupancysensing read  pir-unoccupied-to-occupied-delay  1 1
-./chip-tool occupancysensing read pir-unoccupied-to-occupied-threshold  1 1
+./chip-tool occupancysensing read piroccupied-to-unoccupied-delay 1 1
+./chip-tool occupancysensing read  pirunoccupied-to-occupied-delay  1 1
+./chip-tool occupancysensing read pirunoccupied-to-occupied-threshold  1 1
 ./chip-tool occupancysensing read ultrasonic-occupied-to-unoccupied-delay  1 1
-./chip-tool occupancysensing read  ultrasonic-unoccupied-to-occupied-delay 1 1
+./chip-tool occupancysensing read ultrasonic-unoccupied-to-occupied-delay 1 1
 ./chip-tool occupancysensing read ultrasonic-unoccupied-to-occupied-threshold 1 1
 ./chip-tool occupancysensing read physical-contact-occupied-to-unoccupied-delay 1 1
 ./chip-tool occupancysensing read physical-contact-unoccupied-to-occupied-delay 1 1
-./chip-tool occupancysensing read  physical-contact-unoccupied-to-occupied-threshold 1 1
+./chip-tool occupancysensing read physical-contact-unoccupied-to-occupied-threshold 1 1
 End
 # [TC-OCC-2.3] OccupancySensorTypeBitmap and OccupancySensorType interdependency with server as DUT
 ./chip-tool occupancysensing read occupancy-sensor-type 1 1
