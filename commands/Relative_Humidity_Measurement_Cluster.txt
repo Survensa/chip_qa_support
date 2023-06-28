@@ -5,6 +5,8 @@ $ Relative Humidity Measurement Cluster
 ./chip-tool relativehumiditymeasurement read attribute-list 1 1
 ./chip-tool relativehumiditymeasurement read accepted-command-list 1 1
 ./chip-tool relativehumiditymeasurement read generated-command-list 1 1
+./chip-tool relativehumiditymeasurement read event-list 1 1
+
 End
 # [TC-RH-2.1] Attributes with server as DUT
 ./chip-tool relativehumiditymeasurement read measured-value 1 1
