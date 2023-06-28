@@ -3,6 +3,7 @@ $ Unit localization
 ./chip-tool unitlocalization read  cluster-revision 1 0
 ./chip-tool unitlocalization read  feature-map 1 0
 ./chip-tool unitlocalization read attribute-list 1 0
+./chip-tool unitlocalization read event-list 1 0
 ./chip-tool unitlocalization read accepted-command-list 1 0
 ./chip-tool unitlocalization read generated-command-list 1 0
 End
@@ -10,6 +11,7 @@ End
 ./chip-tool unitlocalization read  cluster-revision 1 0
 ./chip-tool unitlocalization read  feature-map 1 0
 ./chip-tool unitlocalization read attribute-list 1 0
+./chip-tool unitlocalization read event-list 1 0
 ./chip-tool unitlocalization read accepted-command-list 1 0
 ./chip-tool unitlocalization read generated-command-list 1 0
 End
