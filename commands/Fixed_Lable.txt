@@ -3,6 +3,7 @@ $ Fixed label
 ./chip-tool fixedlabel read cluster-revision 1 0
 ./chip-tool fixedlabel read feature-map 1 0
 ./chip-tool fixedlabel read attribute-list 1 0
+./chip-tool fixedlabel read event-list 1 0
 ./chip-tool fixedlabel read accepted-command-list 1 0
 ./chip-tool fixedlabel read generated-command-list 1 0
 End
