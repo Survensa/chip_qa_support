@@ -3,6 +3,7 @@ $ Descriptor
 ./chip-tool descriptor read cluster-revision 1 0
 ./chip-tool descriptor read feature-map 1 0
 ./chip-tool descriptor read attribute-list 1 0
+./chip-tool descriptor read event-list 1 0
 ./chip-tool descriptor read accepted-command-list 1 0
 ./chip-tool descriptor read generated-command-list 1 0
 End
