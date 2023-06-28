@@ -1,13 +1,17 @@
 $ Time Format localization
 # [TC-LTIME-1.1] Global Attributes [DUT as Client]
 ./chip-tool timeformatlocalization read  cluster-revision 1 0
+./chip-tool timeformatlocalization read feature-map 1 0
 ./chip-tool timeformatlocalization read attribute-list 1 0
+./chip-tool timeformatlocalization read event-list 1 0
 ./chip-tool timeformatlocalization read accepted-command-list 1 0
 ./chip-tool timeformatlocalization read generated-command-list 1 0
 End
 # [TC-LTIME-1.2] Global Attributes [DUT as Server]
 ./chip-tool timeformatlocalization read  cluster-revision 1 0
+./chip-tool timeformatlocalization read feature-map 1 0
 ./chip-tool timeformatlocalization read attribute-list 1 0
+./chip-tool timeformatlocalization read event-list 1 0
 ./chip-tool timeformatlocalization read accepted-command-list 1 0
 ./chip-tool timeformatlocalization read generated-command-list 1 0
 End
