@@ -213,14 +213,11 @@ sleep 05
 End
 # [TC-CC-3.4] Hue functionality with client as DUT
 ./chip-tool onoff on 1 1
-./chip-tool colorcontrol move-to-hue 1 0 300 0 0 1 1
-sleep 30
+./chip-tool colorcontrol move-to-hue 1 0 0 0 0 1 1
 ./chip-tool colorcontrol read current-hue 1  1
-./chip-tool colorcontrol move-hue 1 10 0 0 1 1
-sleep 10
+./chip-tool colorcontrol move-hue 1 1 0 0 1 1
 ./chip-tool colorcontrol read current-hue 1  1
-./chip-tool colorcontrol step-hue 1 10 200 0 0 1 1
-sleep 20
+./chip-tool colorcontrol step-hue 1 10 0 0 0 1 1
 ./chip-tool colorcontrol read current-hue 1  1
 ./chip-tool colorcontrol stop-move-step 0 0 1 1
 ./chip-tool colorcontrol read current-hue 1  1
@@ -320,17 +317,13 @@ sleep 05
 End
 # [TC-CC-4.5] Saturation functionality with client as DUT
 ./chip-tool onoff on 1 1
-./chip-tool colorcontrol move-to-saturation 200 300 0 0 1 1
-sleep 30
+./chip-tool colorcontrol step-hue 1 10 0 0 0 1 1
 ./chip-tool colorcontrol read current-saturation 1 1
 ./chip-tool colorcontrol move-saturation 1 10 0 0 1 1
-sleep 10
 ./chip-tool colorcontrol read current-saturation 1 1
-./chip-tool colorcontrol step-saturation 1 10 200 0 0 1 1
-sleep 20
+./chip-tool colorcontrol step-saturation 1 10 0 0 0 1 1
 ./chip-tool colorcontrol read current-saturation 1 1
-./chip-tool colorcontrol move-to-hue-and-saturation 100 200 200 0 0 1 1
-sleep 20
+./chip-tool colorcontrol move-to-hue-and-saturation 100 200 0 0 0 1 1
 ./chip-tool colorcontrol read current-hue 1 1
 ./chip-tool colorcontrol read current-saturation 1 1
 ./chip-tool colorcontrol stop-move-step 0 0 1 1
@@ -426,16 +419,13 @@ sleep 05
 End
 # [TC-CC-5.4] Color functionality with client as DUT
 ./chip-tool onoff on 1 1
-./chip-tool colorcontrol move-to-color 400 500 300 0 0 1 1
-sleep 30
+./chip-tool colorcontrol move-to-color 400 500 0 0 0 1 1
 ./chip-tool colorcontrol read current-x 1 1
 ./chip-tool colorcontrol read current-y 1 1
 ./chip-tool colorcontrol move-color 10 20 0 0 1 1
-sleep 10
 ./chip-tool colorcontrol read current-x 1 1
 ./chip-tool colorcontrol read current-y 1 1
-./chip-tool colorcontrol step-color 100 100 200 0 0 1 1
-sleep 20
+./chip-tool colorcontrol step-color 100 100 0 0 0 1 1
 ./chip-tool colorcontrol read current-x 1 1
 ./chip-tool colorcontrol read current-y 1 1
 ./chip-tool colorcontrol stop-move-step 0 0 1 1
@@ -519,14 +509,11 @@ End
 ./chip-tool onoff on 1 1
 ./chip-tool colorcontrol read color-temp-physical-min-mireds 1 1
 ./chip-tool colorcontrol read color-temp-physical-max-mireds 1 1
-./chip-tool colorcontrol move-to-color-temperature 150 300 0 0 1 1
-sleep 30
+./chip-tool colorcontrol move-to-color-temperature 150 0 0 0 1 1
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
 ./chip-tool colorcontrol move-color-temperature 1 16319 0 65279 0 0 1 1
-sleep 10
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
-./chip-tool colorcontrol step-color-temperature 1 32639 200 0 65279 0 0 1 1
-sleep 20
+./chip-tool colorcontrol step-color-temperature 1 32639 0 0 65279 0 0 1 1
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
 ./chip-tool colorcontrol stop-move-step 0 0 1 1
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
@@ -652,17 +639,13 @@ sleep 05
 End
 # [TC-CC-7.5] Enhanced Hue functionality with client as DUT
 ./chip-tool onoff on 1 1
-./chip-tool colorcontrol enhanced-move-to-hue 1000 3 200 0 0 1 1
-sleep 20
+./chip-tool colorcontrol enhanced-move-to-hue 1000 3 0 0 0 1 1
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
 ./chip-tool colorcontrol enhanced-move-hue 0 100 0 0 1 1
-sleep 10
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
-./chip-tool colorcontrol enhanced-step-hue 1 1000 200 0 0 1 1
-sleep 20
+./chip-tool colorcontrol enhanced-step-hue 1 1000 0 0 0 1 1
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
-./chip-tool colorcontrol enhanced-move-to-hue-and-saturation 2500 100 200 0 0 1 1
-sleep 20
+./chip-tool colorcontrol enhanced-move-to-hue-and-saturation 2500 100 0 0 0 1 1
 ./chip-tool colorcontrol read enhanced-current-hue 1 1
 ./chip-tool colorcontrol read current-saturation 1 1
 ./chip-tool colorcontrol stop-move-step 0 0 1 1
@@ -694,7 +677,7 @@ sleep 10
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
 sleep 02
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
-./chip-tool colorcontrol enhanced-move-to-hue 2000 0 0 0 0 1 1
+./chip-tool colorcontrol enhanced-move-to-hue 20000 0 0 0 0 1 1
 ./chip-tool colorcontrol enhanced-move-hue 1 500 0 0 1 1 
 sleep 10
 ./chip-tool colorcontrol stop-move-step 0 0 1 1
