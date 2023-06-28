@@ -3,6 +3,7 @@ $ Userlabel
 ./chip-tool userlabel read cluster-revision 1 0
 ./chip-tool userlabel read feature-map 1 0
 ./chip-tool userlabel read attribute-list 1 0
+./chip-tool userlabel read event-list 1 0
 ./chip-tool userlabel read accepted-command-list 1 0
 ./chip-tool userlabel read generated-command-list 1 0
 End
