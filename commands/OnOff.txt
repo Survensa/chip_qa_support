@@ -6,6 +6,7 @@ $ OnOff Cluster
 ./chip-tool onoff read attribute-list 1 1
 ./chip-tool onoff read accepted-command-list 1 1
 ./chip-tool onoff read generated-command-list 1 1
+./chip-tool relativehumiditymeasurement read event-list 1 1
 End
 # [TC-OO-2.1] Attributes with server as DUT
 ./chip-tool onoff read on-off 1 1
