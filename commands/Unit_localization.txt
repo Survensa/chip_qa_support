@@ -17,7 +17,7 @@ End
 End
 # [TC-LUNIT-2.1] Read and Write Unit Localization Cluster Attributes [DUT as Client]
 ./chip-tool unitlocalization read temperature-unit 1 0
-./chip-tool unitlocalization write temperature-unit 3 1 0
+./chip-tool unitlocalization write temperature-unit 2 1 0
 ./chip-tool unitlocalization read temperature-unit 1 0
 End
 # [TC-LUNIT-3.1] Read and Write Unit Localization Cluster Attributes [{DUT_Server}]
