@@ -166,10 +166,8 @@ if lock_app == "Y":
 if chip_tool == "Y":
     print("\nBuilding chip_tool\n")
     subprocess.run(
-        "cd ~/" + folder + "/connectedhomeip && gn gen out/debug --args='chip_mdns=\"platform\" "
+        "cd ~/" + folder + "/connectedhomeip && scripts/examples/gn_build_example.sh examples/chip-tool out/chip-tool 'chip_mdns=\"platform\" "
                            "chip_inet_config_enable_ipv4=false'",
         shell=True)
-    subprocess.run("cd ~/" + folder + "/connectedhomeip && ninja -C out/debug", shell=True)
-    subprocess.run("cd ~/" + folder + "/apps && ln -s ../connectedhomeip/out/debug/chip-tool chip-tool", shell=True)
-    subprocess.run("cd ~/" + folder + "/apps && ln -s ../connectedhomeip/out/debug/chip-shell chip-shell", shell=True)
-    subprocess.run("cd ~/" + folder + '/apps && ln -s ../connectedhomeip/out/debug/chip-cert chip-cert', shell=True)
+    subprocess.run("cd ~/" + folder + "/apps && ln -s ../connectedhomeip/out/chip-tool chip-tool", shell=True)
+
