@@ -61,60 +61,6 @@ End
 ./chip-tool colorcontrol read color-point-by   1 1
 ./chip-tool colorcontrol read color-point-bintensity   1 1
 End
-# [TC-CC-2.2]  Attributes with client as DUT
-./chip-tool colorcontrol read current-hue 1 1
-./chip-tool colorcontrol read current-saturation 1 1
-./chip-tool colorcontrol read remaining-time 1 1
-./chip-tool colorcontrol read current-x 1 1
-./chip-tool colorcontrol read current-y 1 1
-./chip-tool colorcontrol read drift-compensation 1 1
-./chip-tool colorcontrol read compensation-text 1 1
-./chip-tool colorcontrol read color-temperature-mireds 1 1
-./chip-tool colorcontrol read color-mode 1 1
-./chip-tool colorcontrol read options 1 1
-./chip-tool colorcontrol read enhanced-current-hue 1 1
-./chip-tool colorcontrol read enhanced-color-mode 1 1
-./chip-tool colorcontrol read color-loop-active 1 1
-./chip-tool colorcontrol read color-loop-direction 1 1
-./chip-tool colorcontrol read color-loop-time 1 1
-./chip-tool colorcontrol read color-loop-start-enhanced-hue 1 1
-./chip-tool colorcontrol read color-loop-stored-enhanced-hue 1 1
-./chip-tool colorcontrol read color-capabilities 1 1
-./chip-tool colorcontrol read color-temp-physical-min-mireds  1 1
-./chip-tool colorcontrol read color-temp-physical-max-mireds 1 1
-./chip-tool colorcontrol read couple-color-temp-to-level-min-mireds 1 1
-./chip-tool colorcontrol read start-up-color-temperature-mireds 1 1
-./chip-tool colorcontrol read number-of-primaries 1 1
-./chip-tool colorcontrol read  primary1x 1 1
-./chip-tool colorcontrol read  primary1y 1 1
-./chip-tool colorcontrol read primary1intensity 1 1
-./chip-tool colorcontrol read primary2x 1 1
-./chip-tool colorcontrol read primary2y 1 1
-./chip-tool colorcontrol read primary2intensity 1 1
-./chip-tool colorcontrol read primary3x 1 1
-./chip-tool colorcontrol read primary3y 1 1
-./chip-tool colorcontrol read primary3intensity 1 1
-./chip-tool colorcontrol read primary4x 1 1
-./chip-tool colorcontrol read primary4y 1 1
-./chip-tool colorcontrol read primary4intensity 1 1
-./chip-tool colorcontrol read primary5x 1 1
-./chip-tool colorcontrol read primary5y 1 1
-./chip-tool colorcontrol read primary5intensity 1 1
-./chip-tool colorcontrol read primary6x 1 1
-./chip-tool colorcontrol read primary6y 1 1
-./chip-tool colorcontrol read primary6intensity 1 1
-./chip-tool colorcontrol read white-point-x   1 1
-./chip-tool colorcontrol read white-point-y 1 1
-./chip-tool colorcontrol read color-point-rx   1 1
-./chip-tool colorcontrol read color-point-ry   1 1
-./chip-tool colorcontrol read color-point-rintensity   1 1
-./chip-tool colorcontrol read color-point-gx   1 1
-./chip-tool colorcontrol read color-point-gy   1 1
-./chip-tool colorcontrol read color-point-gintensity   1 1
-./chip-tool colorcontrol read color-point-bx   1 1
-./chip-tool colorcontrol read color-point-by   1 1
-./chip-tool colorcontrol read color-point-bintensity   1 1
-End
 # [TC-CC-3.1] Hue MoveTo functionality with server as DUT
 ./chip-tool colorcontrol write options 0x00 1 1
 ./chip-tool onoff on 1 1
