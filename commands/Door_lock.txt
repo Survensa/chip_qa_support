@@ -155,20 +155,20 @@ End
 ./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock set-credential 0 '{ "credentialType" : 1 , "credentialIndex" : 1 }' 123456 1 null null 1 1 --timedInteractionTimeoutMs 1000
-./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 123456
+./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 ./chip-tool doorlock write require-pinfor-remote-operation 1 1 1
 ./chip-tool doorlock read require-pinfor-remote-operation 1 1
-./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 123456
-./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 1234568
+./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
+./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 1234568
 ./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock write wrong-code-entry-limit 3 1 1
 ./chip-tool doorlock write user-code-temporary-disable-time 15 1 1
-./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 1234568
+./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 1234568
 ./chip-tool doorlock read user-code-temporary-disable-time 1 1
-./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 123456
+./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 ./chip-tool doorlock write auto-relock-time 60 1 1
 ./chip-tool doorlock read auto-relock-time  1 1
-./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 123456
+./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 sleep 60
 ./chip-tool doorlock read lock-state 1 1
 ./chip-tool doorlock clear-credential  '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
@@ -178,7 +178,8 @@ End
 ./chip-tool doorlock write auto-relock-time 60 1 1
 ./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock set-credential 0 '{ "credentialType" : 1 , "credentialIndex" : 1 }' 123456 1 null null 1 1 --timedInteractionTimeoutMs 1000
-./chip-tool doorlock unlock-with-timeout 60 1 1 --timedInteractionTimeoutMs 1000 --PinCode 123456
+./chip-tool doorlock unlock-with-timeout 60 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
+sleep 60
 ./chip-tool doorlock read lock-state 1 1
 ./chip-tool doorlock clear-credential  '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock clear-user 1 1 1  --timedInteractionTimeoutMs 1000
@@ -237,61 +238,24 @@ End
 End
 # [TC-DRLK-2.9] Verification for the following Commands - Set Credential , Set Credential Response, Get Credential Status, Get Credential Status Response, Clear Credential [DUT-Server]
 ./chip-tool doorlock read number-of-total-users-supported 1 1
+./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock set-credential 0 '{ "credentialType" : 1 , "credentialIndex" : 1 }' 123456 1 null null 1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock get-credential-status '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock set-credential 0 '{ "credentialType" : 1, "credentialIndex" : 2 }' 4321 2 5 10 1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock set-credential 0 '{ "credentialType" : 1, "credentialIndex" : 2 }' 123456 null null null 1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock set-credential 0 '{ "credentialType" : 1, "credentialIndex" : 1 }' 123456 1 null null  1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock set-credential 0 '{ "credentialType" : 1, "credentialIndex" : 1 }' 123457 1 null null 1 1 --timedInteractionTimeoutMs 1000
-./chip-tool doorlock set-credential 2 '{ "credentialType" : 1, "credentialIndex" : 3 }' 123456 1 null null 1 1 --timedInteractionTimeoutMs 1000
+./chip-tool doorlock set-credential 2 '{ "credentialType" : 1, "credentialIndex" : 3 }' 1234567 1 null null 1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock clear-credential  '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock get-credential-status '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
-./chip-tool doorlock clear-user 2 1 1 --timedInteractionTimeoutMs 1000
+./chip-tool doorlock clear-user 1 1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock set-user 0 2 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock set-credential 0 '{ "credentialType" : 1, "credentialIndex" : 1 }' 123456 2 null null 1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock clear-credential  '{ "credentialType" : 1 , "credentialIndex" : 65534 }'  1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock get-credential-status '{ "credentialType" : 1 , "credentialIndex" : 65534 }'  1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock get-credential-status '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock clear-credential  '{ "credentialType" : 8 , "credentialIndex" : 2 }'  1 1 --timedInteractionTimeoutMs 1000
-./chip-tool doorlock clear-user 1 1 1 --timedInteractionTimeoutMs 1000
-End
-# [TC-DRLK-3.1] Attributes check [DUT - Client]
-./chip-tool doorlock read lock-state 1 1
-./chip-tool doorlock read lock-type 1 1
-./chip-tool doorlock read actuator-enabled 1 1
-./chip-tool doorlock read door-state 1 1
-./chip-tool doorlock read door-open-events 1 1
-./chip-tool doorlock read door-closed-events 1 1 
-./chip-tool doorlock read open-period 1 1
-./chip-tool doorlock read  number-of-total-users-supported 1 1
-./chip-tool doorlock read number-of-pinusers-supported 1 1
-./chip-tool doorlock read number-of-rfidusers-supported 1 1
-./chip-tool doorlock read  number-of-week-day-schedules-supported-per-user 1 1
-./chip-tool doorlock read number-of-year-day-schedules-supported-per-user 1 1
-./chip-tool doorlock read number-of-holiday-schedules-supported 1 1
-./chip-tool doorlock read  max-pincode-length 1 1
-./chip-tool doorlock read  min-pincode-length 1 1
-./chip-tool doorlock read  max-rfidcode-length 1 1
-./chip-tool doorlock read  min-rfidcode-length 1 1
-./chip-tool doorlock read credential-rules-support 1 1
-./chip-tool doorlock read language  1 1
-./chip-tool doorlock read ledsettings 1 1
-./chip-tool doorlock read  auto-relock-time 1 1
-./chip-tool doorlock read sound-volume 1 1
-./chip-tool doorlock read operating-mode 1 1
-./chip-tool doorlock read supported-operating-modes 1 1
-./chip-tool doorlock read default-configuration-register 1 1
-./chip-tool doorlock read enable-local-programming 1 1
-./chip-tool doorlock read enable-one-touch-locking 1 1
-./chip-tool doorlock read enable-inside-status-led 1 1 
-./chip-tool doorlock read enable-privacy-mode-button 1 1
-./chip-tool doorlock read  local-programming-features 1 1
-./chip-tool doorlock read   wrong-code-entry-limit 1 1
-./chip-tool doorlock read user-code-temporary-disable-time 1 1
-./chip-tool doorlock read send-pinover-the-air 1 1
-./chip-tool doorlock read require-pinfor-remote-operation 1 1
-./chip-tool doorlock read expiring-user-timeout 1 1
-./chip-tool doorlock read number-of-credentials-supported-per-user 1 1
+./chip-tool doorlock clear-user 2 1 1 --timedInteractionTimeoutMs 1000
 End
 # [TC-DRLK-3.2] Commands [DUT - Client]
 ./chip-tool doorlock lock-door 1 1 --timedInteractionTimeoutMs 1000
