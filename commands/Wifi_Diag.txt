@@ -5,6 +5,7 @@ $ wifi-diagnostics
 ./chip-tool wifinetworkdiagnostics read attribute-list 1 0
 ./chip-tool wifinetworkdiagnostics read accepted-command-list 1 0
 ./chip-tool wifinetworkdiagnostics read generated-command-list 1 0	
+./chip-tool  wifinetworkdiagnostics read event-list 1 0
 End
 # [TC-DGWIFI-2.1] Attributes with server as DUT	
 ./chip-tool wifinetworkdiagnostics read bssid 1 0
@@ -34,4 +35,7 @@ End
 ./chip-tool  wifinetworkdiagnostics read packet-multicast-tx-count 1 0
 ./chip-tool  wifinetworkdiagnostics read packet-unicast-rx-count 1 0
 ./chip-tool  wifinetworkdiagnostics read packet-unicast-tx-count 1 0
+End
+# [TC-DGWIFI-3.2] Command Generated [DUT as Client]
+./chip-tool wifinetworkdiagnostics reset-counts 1 0 --trace_decode 1
 End
