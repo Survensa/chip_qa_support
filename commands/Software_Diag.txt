@@ -3,6 +3,7 @@ $ Software diagnostics
 ./chip-tool softwarediagnostics read cluster-revision 1 0
 ./chip-tool softwarediagnostics read feature-map 1  0
 ./chip-tool softwarediagnostics read attribute-list 1 0
+./chip-tool  softwarediagnostics read event-list 1 0
 ./chip-tool softwarediagnostics read accepted-command-list 1 0
 ./chip-tool softwarediagnostics read generated-command-list 1 0
 End
