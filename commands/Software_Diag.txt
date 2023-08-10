@@ -19,3 +19,6 @@ End
 ./chip-tool softwarediagnostics read current-heap-high-watermark 1 0
 ./chip-tool  softwarediagnostics  read current-heap-used 1 0	
 End
+# [TC-DGSW-3.2] Commands Generated [DUT as Client]
+./chip-tool softwarediagnostics reset-watermarks 1 0 --trace_decode 1
+End
