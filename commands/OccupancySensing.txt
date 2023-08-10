@@ -7,12 +7,7 @@ $ Occupancy sensing
 ./chip-tool occupancysensing read accepted-command-list   1 1
 ./chip-tool occupancysensing read  generated-command-list 1 1
 End
-# [TC-OCC-2.1] Attributes with server as DUT
-./chip-tool occupancysensing read occupancy 1 1
-./chip-tool occupancysensing read occupancy-sensor-type 1 1
-./chip-tool occupancysensing read occupancy-sensor-type-bitmap 1 1
-End
-# [TC-OCC-2.2] Attributes with client as DUT
+# [TC-OCC-2.1] Attributes with client as DUT
 ./chip-tool occupancysensing read occupancy 1 1
 ./chip-tool occupancysensing read occupancy-sensor-type 1 1
 ./chip-tool occupancysensing read occupancy-sensor-type-bitmap 1 1
