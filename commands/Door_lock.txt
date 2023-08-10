@@ -3,6 +3,7 @@ $ Door lock Cluster
 ./chip-tool doorlock read cluster-revision 1 1
 ./chip-tool doorlock read feature-map 1 1
 ./chip-tool doorlock read attribute-list 1 1
+./chip-tool doorlock read event-list 1 1
 ./chip-tool doorlock read accepted-command-list 1 1
 ./chip-tool doorlock read generated-command-list 1 1
 End
@@ -18,8 +19,6 @@ End
 ./chip-tool doorlock read lock-type 1 1
 ./chip-tool doorlock write-by-id 1 10 1 1
 ./chip-tool doorlock read lock-type 1 1
-./chip-tool doorlock read actuator-enabled 1 1
-./chip-tool doorlock write-by-id 2 0 1 1
 ./chip-tool doorlock read actuator-enabled 1 1
 ./chip-tool doorlock write-by-id 2 0 1 1
 ./chip-tool doorlock read actuator-enabled 1 1
@@ -133,17 +132,17 @@ End
 ./chip-tool doorlock lock-door 1 1  --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock set-credential 0 '{ "credentialType" : 1 , "credentialIndex" : 1 }' 123456 1 null null 1 1 --timedInteractionTimeoutMs 1000
-./chip-tool doorlock lock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 123456
+./chip-tool doorlock lock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 ./chip-tool doorlock write require-pinfor-remote-operation 1 1 1
 ./chip-tool doorlock read require-pinfor-remote-operation  1 1
-./chip-tool doorlock lock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 123456
-./chip-tool doorlock lock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 1234568
+./chip-tool doorlock lock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
+./chip-tool doorlock lock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 1234568
 ./chip-tool doorlock lock-door 1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock read wrong-code-entry-limit 1 1
-./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 1234568
-./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 123456
+./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 1234568
+./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 ./chip-tool doorlock read user-code-temporary-disable-time 1 1
-./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 123456
+./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 ./chip-tool doorlock write wrong-code-entry-limit 5 1 1
 ./chip-tool doorlock read user-code-temporary-disable-time 1 1
 ./chip-tool doorlock write user-code-temporary-disable-time 15 1 1
@@ -170,6 +169,7 @@ End
 ./chip-tool doorlock write auto-relock-time 60 1 1
 ./chip-tool doorlock read auto-relock-time  1 1
 ./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PinCode 123456
+sleep 60
 ./chip-tool doorlock read lock-state 1 1
 ./chip-tool doorlock clear-credential  '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock clear-user 1 1 1  --timedInteractionTimeoutMs 1000
