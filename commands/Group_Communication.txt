@@ -1,4 +1,12 @@
 $ Group Communication
+# [TC-GRPKEY-1.1] Global Attributes with DUT as Server
+./chip-tool groupkeymanagement read cluster-revision 1 0
+./chip-tool groupkeymanagement read feature-map 1 0
+./chip-tool groupkeymanagement read attribute-list 1 0
+./chip-tool groupkeymanagement read event-list 1 0
+./chip-tool groupkeymanagement read accepted-command-list 1 0
+./chip-tool groupkeymanagement read generated-command-list 1 0
+End
 # [TC-SC-5.1] Adding member to a group - TH as Admin and DUT as Group Member
 ./chip-tool accesscontrol write acl '[{"fabricIndex": 1, "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null },{"fabricIndex": 1, "privilege": 4, "authMode": 3, "subjects": [1], "targets": null }]' 1 0
 ./chip-tool groupkeymanagement key-set-write '{"groupKeySetID": 42,"groupKeySecurityPolicy": 0, "epochKey0":"d0d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime0": 2220000,"epochKey1":"d1d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime1": 2220001,"epochKey2":"d2d1d2d3d4d5d6d7d8d9dadbdcdddedf", "epochStartTime2": 2220002 }' 1 0
