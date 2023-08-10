@@ -16,8 +16,5 @@ End
 ./chip-tool localizationconfiguration write active-locale fr-FR 1 0
 ./chip-tool localizationconfiguration read active-locale 1 0
 End
-# [TC-LCFG-3.1]Localization Configuration Cluster Attributes[DUT-Client]
-./chip-tool localizationconfiguration read supported-locales 1 0
-./chip-tool localizationconfiguration read active-locale 1 0
-End
+
 
