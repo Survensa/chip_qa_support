@@ -1,0 +1,17 @@
+$ HEPA Filter Monitoring Cluster
+# [TC-HEPAFREMON-1.1] Global attributes with DUT as Server
+./chip-tool hepafiltermonitoring read cluster-revision 1 1
+./chip-tool hepafiltermonitoring read feature-map 1 1
+./chip-tool hepafiltermonitoring read attribute-list 1 1
+./chip-tool hepafiltermonitoring read event-list 1 1
+./chip-tool hepafiltermonitoring read accepted-command-list 1 1
+./chip-tool hepafiltermonitoring read generated-command-list 1 1
+End
+# [TC-HEPAFREMON-2.1] Attributes with DUT as Server
+./chip-tool hepafiltermonitoring read condition 1 1
+./chip-tool hepafiltermonitoring read degradation-direction 1 1
+./chip-tool hepafiltermonitoring read change-indication 1 1
+./chip-tool hepafiltermonitoring read in-place-indicator 1 1
+./chip-tool hepafiltermonitoring read last-changed-time 1 1
+./chip-tool hepafiltermonitoring read replacement-product-list 1 1
+End

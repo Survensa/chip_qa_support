@@ -1,0 +1,21 @@
+$ Carbon Monoxide Concentration Measurement Cluster
+# [TC-CMOCONC-1.1] Global attributes with DUT as Server
+./chip-tool carbonmonoxideconcentrationmeasurement read cluster-revision 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read feature-map 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read attribute-list 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read event-list 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read accepted-command-list 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read generated-command-list 1 1
+End
+# [TC-CMOCONC-2.1] Attributes with DUT as Server
+./chip-tool carbonmonoxideconcentrationmeasurement read min-measured-value 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read max-measured-value 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read measured-value 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read peak-measured-value 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read peak-measured-value-window 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read average-measured-value 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read average-measured-value-window 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read measurement-unit 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read measurement-medium 1 1
+./chip-tool carbonmonoxideconcentrationmeasurement read level-value 1 1
+End
