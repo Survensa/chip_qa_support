@@ -19,5 +19,6 @@ End
 ./chip-tool descriptor read client-list 1 1
 ./chip-tool descriptor read client-list 1 2
 ./chip-tool descriptor read  parts-list 1 0
+./chip-tool descriptor read tag-list 1 0
 End
 
