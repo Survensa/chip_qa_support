@@ -1,4 +1,4 @@
-$ 
+$ Laundry Washer Mode
 # [TC-LWM-1.1] Global attributes with DUT as Server
 ./chip-tool laundrywashermode read cluster-revision 1 1
 ./chip-tool laundrywashermode read feature-map  1 1
