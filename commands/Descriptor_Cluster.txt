@@ -20,9 +20,4 @@ End
 ./chip-tool descriptor read client-list 1 2
 ./chip-tool descriptor read  parts-list 1 0
 End
-# [TC-DESC-2.2] Descriptor Cluster Attributes with DUT as Client
-./chip-tool descriptor read device-type-list 1 0
-./chip-tool descriptor read server-list 1 0
-./chip-tool descriptor read client-list 1 0
-./chip-tool descriptor read  parts-list 1 0
-End
+
