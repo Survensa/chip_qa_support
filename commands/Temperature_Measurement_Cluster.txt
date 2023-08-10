@@ -5,6 +5,8 @@ $ Temperature_Measurement_Cluster
 ./chip-tool temperaturemeasurement read attribute-list 1 1
 ./chip-tool temperaturemeasurement read accepted-command-list  1 1
 ./chip-tool temperaturemeasurement read generated-command-list    1 1
+./chip-tool temperaturemeasurement read event-list 1 1
+
 End
 # [TC-TMP-2.1] Attributes with server as DUT
 ./chip-tool temperaturemeasurement read min-measured-value 1 1
