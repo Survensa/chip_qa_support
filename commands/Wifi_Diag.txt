@@ -21,6 +21,11 @@ End
 ./chip-tool wifinetworkdiagnostics read current-max-rate 1 0
 ./chip-tool wifinetworkdiagnostics read overrun-count 1 0	
 End
+# [TC-DGWIFI-2.2] Event Functionality [DUT as Server]
+./chip-tool wifinetworkdiagnostics read-event disconnection 1 0
+./chip-tool wifinetworkdiagnostics read-event association-failure 1 0
+./chip-tool wifinetworkdiagnostics read-event connection-status 1 0
+End
 # [TC-DGWIFI-2.3] Command Received [DUT as Server]
 ./chip-tool wifinetworkdiagnostics reset-counts 1 0		
 ./chip-tool wifinetworkdiagnostics read beacon-lost-count 1 0
