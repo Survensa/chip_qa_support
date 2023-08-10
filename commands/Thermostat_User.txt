@@ -5,6 +5,7 @@ $ Thermostat user
 ./chip-tool thermostatuserinterfaceconfiguration read attribute-list 1 1
 ./chip-tool thermostatuserinterfaceconfiguration read accepted-command-list 1 1
 ./chip-tool thermostatuserinterfaceconfiguration read  generated-command-list 1 1
+./chip-tool thermostatuserinterfaceconfiguration read event-list 1 1
 End
 # [TC-TSUIC-2.1] Attributes with server as DUT	
 ./chip-tool thermostatuserinterfaceconfiguration read temperature-display-mode 1 1
