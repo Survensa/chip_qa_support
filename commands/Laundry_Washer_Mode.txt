@@ -7,7 +7,7 @@ $ Laundry Washer Mode
 ./chip-tool laundrywashermode read accepted-command-list 1 1
 ./chip-tool laundrywashermode read generated-command-list 1 1
 End
-# [TC- LWM-1.2] Cluster attributes with DUT as Server
+# [TC-LWM-1.2] Cluster attributes with DUT as Server
 ./chip-tool laundrywashermode read supported-modes 1 1
 ./chip-tool laundrywashermode read current-mode 1 1
 ./chip-tool laundrywashermode read on-mode 1 1
