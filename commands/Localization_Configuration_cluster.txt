@@ -3,7 +3,6 @@ $ localization configuration cluster
 ./chip-tool localizationconfiguration read cluster-revision 1 0
 ./chip-tool localizationconfiguration read feature-map 1 0
 ./chip-tool localizationconfiguration read  attribute-list 1 0
-./chip-tool localizationconfiguration read  attribute-list 1 0
 ./chip-tool localizationconfiguration read accepted-command-list 1 0
 ./chip-tool localizationconfiguration read  generated-command-list 1 0
 End
