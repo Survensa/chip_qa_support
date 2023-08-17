@@ -140,8 +140,11 @@ End
 ./chip-tool doorlock lock-door 1 1 --timedInteractionTimeoutMs 1000
 ./chip-tool doorlock read wrong-code-entry-limit 1 1
 ./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 1234568
+./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 1234568
+./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 1234568
 ./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 ./chip-tool doorlock read user-code-temporary-disable-time 1 1
+sleep 10
 ./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 ./chip-tool doorlock write wrong-code-entry-limit 5 1 1
 ./chip-tool doorlock read user-code-temporary-disable-time 1 1
