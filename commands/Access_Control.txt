@@ -1,0 +1,119 @@
+$ Access Control Cluster
+# [TC-ACL-1.1] Global Attributes with DUT as Server
+./chip-tool accesscontrol read cluster-revision 1 0
+ ./chip-tool accesscontrol read feature-map 1 0
+ ./chip-tool accesscontrol read attribute-list 1 0
+./chip-tool accesscontrol read event-list 1 0
+./chip-tool accesscontrol read accepted-command-list 1 0
+ ./chip-tool accesscontrol read generated-command-list 1 0
+End
+# [TC-ACL-2.1] Simple attributes
+./chip-tool accesscontrol read subjects-per-access-control-entry 1 0
+./chip-tool accesscontrol read targets-per-access-control-entry 1 0
+./chip-tool accesscontrol read  access-control-entries-per-fabric 1 0
+End
+# [TC-ACL-2.2] Cluster endpoint
+./chip-tool  descriptor read server-list 1 0
+./chip-tool  descriptor read server-list 1 1
+End
+# [TC-ACL-2.3] Extension attribute
+./chip-tool operationalcredentials read current-fabric-index 1 0
+./chip-tool accesscontrol read extension 1 0
+./chip-tool accesscontrol write extension '[{"data":"1718"}]' 1 0
+./chip-tool accesscontrol read extension 1 0
+./chip-tool accesscontrol write extension '[{"data":"17D00000F1FF01003D48656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E74206C6976696E6720617320612063686172737472696E670018"}]' 1 0
+./chip-tool accesscontrol read extension 1 0
+./chip-tool accesscontrol write extension '[{"data":"17D00000F1FF01003D48656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E74206C6976696E6720617320612063686172737472696E6700D00000F1FF02003148656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E7420616761696E2E2E2E2E2E0018"}]' 1 0
+./chip-tool accesscontrol read extension 1 0
+./chip-tool accesscontrol write extension '[{"data":"17D00000F1FF01003D48656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E74206C6976696E6720617320612063686172737472696E6700D00000F1FF02003248656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E7420616761696E2E2E2E2E2E2E0018"}]' 1 0
+./chip-tool accesscontrol write extension '[{"data":"1518"}]' 1 0
+./chip-tool accesscontrol write extension '[{"data":"3701D00000F1FF01003D48656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E74206C6976696E6720617320612063686172737472696E670018"}]' 1 0
+./chip-tool accesscontrol write extension '[{"data":"17103D48656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E74206C6976696E6720617320612063686172737472696E670018"}]' 1 0
+./chip-tool accesscontrol write extension '[{"data":"17D00000F1FF01003D48656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E74206C6976696E6720617320612063686172737472696E670018FF"}]' 1 0
+./chip-tool accesscontrol write extension '[{"data":"17D00000F1FF01003D48656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E74206C6976696E6720617320612063686172737472696E6700"}]' 1 0
+./chip-tool accesscontrol write extension '[{"data":""}]' 1 0
+./chip-tool accesscontrol write extension '[{"data":"1718"},{"data":"17D00000F1FF01003D48656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E74206C6976696E6720617320612063686172737472696E670018"}]' 1 0
+./chip-tool accesscontrol read extension 1 0
+./chip-tool accesscontrol write extension '[]' 1 0
+./chip-tool accesscontrol read extension 1 0
+End
+# [TC-ACL-2.4] ACL attribute
+./chip-tool operationalcredentials read current-fabric-index 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 1, "authMode": 3, "subjects": [111,222,333,444], "targets": [{"cluster":11 , "endpoint":22, "deviceType": null}]},{ "privilege": 3, "authMode": 3, "subjects": [555,666,777,888], "targets": [{"cluster": 55, "endpoint": 66, "deviceType":null }]}]' 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 4, "authMode": 3, "subjects": [444,333,222,111], "targets": [{"cluster":44 , "endpoint":33, "deviceType":null}]},{ "privilege":5, "authMode":2, "subjects": [888,777,666,555], "targets": [{"cluster": 88, "endpoint": 77, "deviceType":null}]}]' 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 1, "authMode": 2, "subjects": [111,222,333,444], "targets":[{ "cluster": 11, "endpoint": 22, "deviceType": null },{ "cluster": 33, "endpoint": null, "deviceType": 44 }]}, { "privilege": 3, "authMode": 3, "subjects": [555,666,777,888], "targets":[{ "cluster": 55, "endpoint": 66, "deviceType": null },{ "cluster": 77, "endpoint": null, "deviceType": 88 }]}]' 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 1, "authMode": 2, "subjects": null, "targets":[{ "cluster": 11, "endpoint": 22, "deviceType": null },{ "cluster": 33, "endpoint": null, "deviceType": 44 }]}, { "privilege": 3, "authMode": 3, "subjects": null, "targets":[{ "cluster": 55, "endpoint": 66, "deviceType": null },{ "cluster": 77, "endpoint": null, "deviceType": 88 }]}]' 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 1, "authMode": 2, "subjects":  [111, 222, 333, 444], "targets": null}, { "privilege": 3, "authMode": 3, "subjects":  [555, 666, 777, 888], "targets": null}]' 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 3, "subjects": null, "targets": null}]' 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 2, "authMode": 2, "subjects": null, "targets": null}]' 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol read subjects-per-access-control-entry 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects":[33,44,55,66] , "targets": null}]' 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects":[65520,65521,65522,65523] , "targets": null}]' 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol read  targets-per-access-control-entry 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects": null, "targets":[{ "cluster": 40, "endpoint": null, "deviceType": null },{ "cluster": 28, "endpoint": null, "deviceType": null },{ "cluster": 30, "endpoint": null, "deviceType": null }]}]' 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol read access-control-entries-per-fabric 1 0 
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects": null, "targets":null}, { "privilege": 3, "authMode": 2, "subjects": null, "targets":null},{ "privilege": 3, "authMode": 2, "subjects": null, "targets":null}]' 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol write acl '[{"privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 1, "subjects": null, "targets":null}]' 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 5, "authMode": 3, "subjects": null, "targets":null}]' 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 6, "authMode": 2, "subjects": null, "targets":null}]' 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 4, "subjects": null, "targets":null}]' 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects": [0], "targets":null}]' 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects": [18446744073709551615], "targets":null}]' 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects": [18446744060824649728], "targets": null}]' 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects": [18446744073709486080], "targets":null}]' 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects": null, "targets":[{ "cluster": null, "endpoint": null, "deviceType": null }]}]' 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects": null, "targets":[{ "cluster": 4294967295, "endpoint": null, "deviceType": null }]}]' 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects": null, "targets":[{ "cluster": null, "endpoint": 65535, "deviceType": null }]}]' 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects": null, "targets":[{ "cluster": null, "endpoint": null, "deviceType": 4294967295 }]}]' 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects": null, "targets":[{ "cluster": null, "endpoint": 22, "deviceType": 33 }]}]' 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 2, "subjects": null, "targets":[{ "cluster": 11, "endpoint": 22, "deviceType": 33 }]}]' 1 0
+./chip-tool accesscontrol write acl '[]' 1 0
+End
+# [TC-ACL-2.5] AccessControlExtensionChanged event
+./chip-tool  operationalcredentials read current-fabric-index 1 0
+./chip-tool   accesscontrol  read-event  access-control-extension-changed 1 0
+./chip-tool   accesscontrol  write extension '[{"data":"1718"}]' 1 0
+./chip-tool   accesscontrol  read-event  access-control-extension-changed 1 0
+./chip-tool   accesscontrol  write extension '[{"data":"17D00000F1FF01003D48656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E74206C6976696E6720617320612063686172737472696E670018"}]' 1 0
+./chip-tool   accesscontrol  read-event  access-control-extension-changed 1 0
+./chip-tool   accesscontrol  write extension '[{"data":"17D00000F1FF01003D48656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E74206C6976696E6720617320612063686172737472696E6700D00000F1FF02003248656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E7420616761696E2E2E2E2E2E2E0018"}]' 1 0
+./chip-tool   accesscontrol  read-event  access-control-extension-changed 1 0
+./chip-tool   accesscontrol  write extension '[{"data":"1718"},{"data":"17D00000F1FF01003D48656C6C6F20576F726C642E205468697320697320612073696E676C6520656C656D656E74206C6976696E6720617320612063686172737472696E670018"}]' 1 0
+./chip-tool   accesscontrol  read-event  access-control-extension-changed 1 0
+./chip-tool accesscontrol write extension '[]' 1 0
+./chip-tool   accesscontrol  read-event  access-control-extension-changed 1 0
+End
+# [TC-ACL-2.6] AccessControlEntryChanged event
+./chip-tool operationalcredentials  read  current-fabric-index 1 0
+./chip-tool accesscontrol  read-event access-control-entry-changed 1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 3, "subjects": null, "targets":null}]' 1 0
+./chip-tool  accesscontrol  read-event  access-control-entry-changed  1 0
+./chip-tool accesscontrol write acl '[{ "privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}, { "privilege": 3, "authMode": 3, "subjects": [0], "targets":null}]' 1 0
+./chip-tool accesscontrol read-event access-control-entry-changed 1 0
+End
+# [TC-ACL-2.9] Cluster access
+./chip-tool accesscontrol write acl '[{ "privilege": 4, "authMode": 2, "subjects": [112233], "targets": null}]' 1 0
+./chip-tool accesscontrol read acl 1 0
+./chip-tool accesscontrol write acl '[{"privilege": 5, "authMode": 2, "subjects": [112233], "targets": null}]' 1 0
+./chip-tool accesscontrol read  extension 1 0
+./chip-tool accesscontrol write extension [] 1 0
+./chip-tool accesscontrol read subjects-per-access-control-entry 1 0
+./chip-tool accesscontrol read targets-per-access-control-entry 1 0
+./chip-tool accesscontrol read access-control-entries-per-fabric 1 0
+./chip-tool accesscontrol read-event access-control-entry-changed 1 0
+./chip-tool accesscontrol read-event  access-control-extension-changed 1 0
+End
+
