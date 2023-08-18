@@ -1,0 +1,9 @@
+$Operational State Cluster
+# [TC-OPSTATE-1.1] Global attributes with server as DUT
+./chip-tool operationalstate read cluster-revision 1 1
+./chip-tool operationalstate read feature-map 1 1
+./chip-tool operationalstate read attribute-list 1 1
+./chip-tool operationalstate read event-list 1 1
+ ./chip-tool operationalstate read accepted-command-list 1 1
+./chip-tool operationalstate read generated-command-list 1 1
+end
