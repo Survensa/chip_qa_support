@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout Source Repository 1
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: CHIP-Specifications/chip-test-plans
           ref: gh-site
@@ -26,7 +26,7 @@ jobs:
           pandoc -s chip-test-plans/html/index.html -o "Docs/Test_Plan_Adoc/index.adoc"
 
       - name: Checkout Source Repository 2
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: CHIP-Specifications/connectedhomeip-spec
           ref: build-sample
