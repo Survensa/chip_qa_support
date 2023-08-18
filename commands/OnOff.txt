@@ -17,35 +17,27 @@ End
 End
 # [TC-OO-2.3] Secondary functionality with server as DUT
 ./chip-tool onoff on 1 1
-sleep 02
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read global-scene-control 1 1
 ./chip-tool onoff off-with-effect 0 0 1 1
-sleep 02
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read global-scene-control 1 1
 ./chip-tool onoff on-with-recall-global-scene 1 1
-sleep 02
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read global-scene-control 1 1
 ./chip-tool onoff off-with-effect 0 0 1 1
-sleep 02
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read global-scene-control 1 1
 ./chip-tool onoff on 1 1
-sleep 02
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read global-scene-control 1 1
 ./chip-tool onoff off-with-effect 1 0 1 1
-sleep 02
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read global-scene-control 1 1
 ./chip-tool onoff on 1 1
-sleep 02
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read global-scene-control 1 1
 ./chip-tool onoff on-with-recall-global-scene 1 1
-sleep 02
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read global-scene-control 1 1
 ./chip-tool onoff read on-time 1 1
@@ -55,68 +47,65 @@ sleep 02
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
 ./chip-tool onoff on-with-timed-off 1 300 300 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff on-with-timed-off 1 300 300 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff on-with-timed-off 1 300 300 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff on-with-timed-off 1 300 300 1 1
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff off-with-effect 0 0 1 1
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff on-with-timed-off 1 300 300 1 1
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff on 1 1
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff on-with-timed-off 1 300 300 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff off 1 1
 ./chip-tool onoff read on-off 1 1
-./chip-tool onoff read on-time 1 1 
+./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
-sleep 30
+sleep 30s
 ./chip-tool onoff read on-off 1 1
-./chip-tool onoff read on-time 1 1 
+./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff on-with-timed-off 1 300 300 1 1
 ./chip-tool onoff read on-off 1 1
-./chip-tool onoff read on-time 1 1 
+./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
 ./chip-tool onoff on 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff on-with-timed-off 1 300 300 1 1
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
-sleep 40
+sleep 40s
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff on-with-timed-off 0 0x12c 0x12c 1 1
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
-./chip-tool onoff read on-off 1 1
-./chip-tool onoff read on-time 1 1
-./chip-tool onoff read off-wait-time 1 1
 ./chip-tool onoff on-with-timed-off 0 0x12c 0x12c 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff on-with-timed-off 0 0x12c 0x12c 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
@@ -125,7 +114,7 @@ sleep 10
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
 ./chip-tool onoff on-with-timed-off 0 0x12c 0x12c 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
@@ -133,13 +122,13 @@ sleep 10
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
-sleep 10
+sleep 10s
 ./chip-tool onoff on-with-timed-off 0 0x12c 0x12c 1 1
 ./chip-tool onoff off 1 1
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
-sleep 40
+sleep 40s
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
@@ -147,7 +136,7 @@ sleep 40
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
-sleep 40
+sleep 40s
 ./chip-tool onoff read on-off 1 1
 ./chip-tool onoff read on-time 1 1
 ./chip-tool onoff read off-wait-time 1 1
