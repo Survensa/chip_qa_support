@@ -14,6 +14,8 @@ jobs:
           repository: CHIP-Specifications/chip-test-plans
           ref: gh-site
           path: chip-test-plans
+        env:
+          TOKEN: ${{ secrets.SOURCE_PAT }}  # Use your secret name for the PAT  
           
       - name: Convert allclusters.html to AsciiDoc
         run: |
@@ -29,6 +31,8 @@ jobs:
           repository: CHIP-Specifications/connectedhomeip-spec
           ref: build-sample
           path: connectedhomeip-spec
+        env:
+          TOKEN: ${{ secrets.SOURCE_PAT }}  # Use your secret name for the PAT  
 
       - name: Convert appclusters.html to AsciiDoc
         run: |
