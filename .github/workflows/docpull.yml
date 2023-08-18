@@ -12,11 +12,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: CHIP-Specifications/chip-test-plans
+          ref: gh-site
           path: chip-test-plans
-          ref: gh-site/html
-        env:
-          TOKEN: ${{ secrets.SOURCE_PAT }}  # Use your secret name for the PAT
-
+          
       - name: Convert allclusters.html to AsciiDoc
         run: |
           pandoc -s chip-test-plans/html/allclusters.html -o "Docs/Test_Plan_Adoc/allclusters.adoc"
@@ -29,10 +27,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: CHIP-Specifications/connectedhomeip-spec
+          ref: build-sample
           path: connectedhomeip-spec
-          ref: build-sample/html
-        env:
-          TOKEN: ${{ secrets.SOURCE_PAT }}  # Use your secret name for the PAT
 
       - name: Convert appclusters.html to AsciiDoc
         run: |
