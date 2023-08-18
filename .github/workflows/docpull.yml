@@ -1,0 +1,51 @@
+name: Convert and Push Adoc
+
+on:
+  workflow_dispatch:  # Manually triggered
+
+jobs:
+  convert_and_push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Repository 1
+        uses: actions/checkout@v2
+        with:
+          repository: CHIP-Specifications/chip-test-plans
+          path: chip-test-plans
+          ref: gh-site/html
+        env:
+          TOKEN: ${{ secrets.SOURCE_PAT }}  # Use your secret name for the PAT
+
+      - name: Convert allclusters.html to AsciiDoc
+        run: |
+          pandoc -s chip-test-plans/html/allclusters.html -o "Docs/Test_Plan_Adoc/allclusters.adoc"
+
+      - name: Convert index.html to AsciiDoc
+        run: |
+          pandoc -s chip-test-plans/html/index.html -o "Docs/Test_Plan_Adoc/index.adoc"
+
+      - name: Checkout Source Repository 2
+        uses: actions/checkout@v2
+        with:
+          repository: CHIP-Specifications/connectedhomeip-spec
+          path: connectedhomeip-spec
+          ref: build-sample/html
+        env:
+          TOKEN: ${{ secrets.SOURCE_PAT }}  # Use your secret name for the PAT
+
+      - name: Convert appclusters.html to AsciiDoc
+        run: |
+          pandoc -s connectedhomeip-spec/html/appclusters.html -o "Docs/SPEC_Adoc/appclusters.adoc"
+
+      - name: Convert index.html to AsciiDoc
+        run: |
+          pandoc -s connectedhomeip-spec/html/index.html -o "Docs/SPEC_Adoc/index2.adoc"
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add "Docs/Test_Plan_Adoc/" "Docs/SPEC_Adoc/"
+          git commit -m "Convert and push AsciiDoc files"
+          git push
