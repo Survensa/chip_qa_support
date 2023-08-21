@@ -35,9 +35,10 @@ jobs:
 
           pandoc -f html -t asciidoc Docs/Test_Plan_Adoc/allclusters.html -o Docs/Test_Plan_Adoc/allclusters.adoc
 
+          # Check status and commit only if changes exist
+          git add .
           git_status=$(git status --porcelain)
           if [ -n "$git_status" ]; then
-            git add Docs/Test_Plan_Adoc/allclusters.adoc
             git commit -m "Added allclusters.adoc"
             git push
           fi
@@ -48,9 +49,10 @@ jobs:
 
           pandoc -f html -t asciidoc Docs/Test_Plan_Adoc/index.html -o Docs/Test_Plan_Adoc/index.adoc
 
+          # Check status and commit only if changes exist
+          git add .
           git_status=$(git status --porcelain)
           if [ -n "$git_status" ]; then
-            git add Docs/Test_Plan_Adoc/index.adoc
             git commit -m "Added index.adoc"
             git push
           fi
@@ -65,9 +67,10 @@ jobs:
           
           pandoc -f html -t asciidoc Docs/SPEC_Adoc/appclusters.html -o Docs/SPEC_Adoc/appclusters.adoc
 
+          # Check status and commit only if changes exist
+          git add .
           git_status=$(git status --porcelain)
           if [ -n "$git_status" ]; then
-            git add Docs/SPEC_Adoc/appclusters.adoc
             git commit -m "Added appclusters.adoc"
             git push
           fi
@@ -78,9 +81,10 @@ jobs:
           
           pandoc -f html -t asciidoc Docs/SPEC_Adoc/index.html -o Docs/SPEC_Adoc/index.adoc
 
+          # Check status and commit only if changes exist
+          git add .
           git_status=$(git status --porcelain)
           if [ -n "$git_status" ]; then
-            git add Docs/SPEC_Adoc/index.adoc
             git commit -m "Added index.adoc"
             git push
           fi
