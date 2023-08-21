@@ -9,7 +9,16 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2  # Use v2 version for private repositories
+        with:
+          repository: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.SOURCE_PAT }}
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
       - name: Convert and Push Test Plan Adoc
         run: |
