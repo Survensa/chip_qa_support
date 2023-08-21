@@ -28,24 +28,32 @@ jobs:
       - name: Fetch and Convert Test Plan HTML
         run: |
           access_token="${{ secrets.SOURCE_PAT }}"
-          
+
           curl -H "Authorization: token $access_token" \
                -o Docs/Test_Plan_Adoc/allclusters.html \
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/gh-site/html/allclusters.html"
 
           pandoc -f html -t asciidoc Docs/Test_Plan_Adoc/allclusters.html -o Docs/Test_Plan_Adoc/allclusters.adoc
-          git add Docs/Test_Plan_Adoc/allclusters.adoc
-          git commit -m "Added allclusters.adoc"
-          git push
+
+          git_status=$(git status --porcelain)
+          if [ -n "$git_status" ]; then
+            git add Docs/Test_Plan_Adoc/allclusters.adoc
+            git commit -m "Added allclusters.adoc"
+            git push
+          fi
 
           curl -H "Authorization: token $access_token" \
                -o Docs/Test_Plan_Adoc/index.html \
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/gh-site/html/index.html"
 
           pandoc -f html -t asciidoc Docs/Test_Plan_Adoc/index.html -o Docs/Test_Plan_Adoc/index.adoc
-          git add Docs/Test_Plan_Adoc/index.adoc
-          git commit -m "Added index.adoc"
-          git push
+
+          git_status=$(git status --porcelain)
+          if [ -n "$git_status" ]; then
+            git add Docs/Test_Plan_Adoc/index.adoc
+            git commit -m "Added index.adoc"
+            git push
+          fi
           
       - name: Fetch and Convert SPEC HTML
         run: |
@@ -56,16 +64,23 @@ jobs:
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/connectedhomeip-spec/build-sample/html/appclusters.html"
           
           pandoc -f html -t asciidoc Docs/SPEC_Adoc/appclusters.html -o Docs/SPEC_Adoc/appclusters.adoc
-          git add Docs/SPEC_Adoc/appclusters.adoc
-          git commit -m "Added appclusters.adoc"
-          git push
+
+          git_status=$(git status --porcelain)
+          if [ -n "$git_status" ]; then
+            git add Docs/SPEC_Adoc/appclusters.adoc
+            git commit -m "Added appclusters.adoc"
+            git push
+          fi
 
           curl -H "Authorization: token $access_token" \
                -o Docs/SPEC_Adoc/index.html \
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/connectedhomeip-spec/build-sample/html/index.html"
           
           pandoc -f html -t asciidoc Docs/SPEC_Adoc/index.html -o Docs/SPEC_Adoc/index.adoc
-          git add Docs/SPEC_Adoc/index.adoc
-          git commit -m "Added index.adoc"
-          git push
-          
+
+          git_status=$(git status --porcelain)
+          if [ -n "$git_status" ]; then
+            git add Docs/SPEC_Adoc/index.adoc
+            git commit -m "Added index.adoc"
+            git push
+          fi
