@@ -1,51 +1,40 @@
 name: Convert and Push Adoc
 
 on:
-  workflow_dispatch:  # Manually triggered
+  workflow_dispatch:
 
 jobs:
   convert_and_push:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Source Repository 1
+      - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          repository: CHIP-Specifications/chip-test-plans
-          ref: gh-site
-          path: chip-test-plans
-        env:
-          TOKEN: ${{ secrets.SOURCE_PAT }}  # Use your secret name for the PAT  
-          
-      - name: Convert allclusters.html to AsciiDoc
-        run: |
-          pandoc -s chip-test-plans/html/allclusters.html -o "Docs/Test_Plan_Adoc/allclusters.adoc"
 
-      - name: Convert index.html to AsciiDoc
+      - name: Convert and Push Test Plan Adoc
         run: |
-          pandoc -s chip-test-plans/html/index.html -o "Docs/Test_Plan_Adoc/index.adoc"
+          wget https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/main/html/allclusters.html
+          pandoc -f html -t adoc allclusters.html -o Docs/Test_Plan_Adoc/allclusters.adoc
+          git add Docs/Test_Plan_Adoc/allclusters.adoc
+          git commit -m "Added allclusters.adoc"
+          git push
 
-      - name: Checkout Source Repository 2
-        uses: actions/checkout@v3
-        with:
-          repository: CHIP-Specifications/connectedhomeip-spec
-          ref: build-sample
-          path: connectedhomeip-spec
-        env:
-          TOKEN: ${{ secrets.SOURCE_PAT }}  # Use your secret name for the PAT  
+          wget https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/main/html/index.html
+          pandoc -f html -t adoc index.html -o Docs/Test_Plan_Adoc/index.adoc
+          git add Docs/Test_Plan_Adoc/index.adoc
+          git commit -m "Added index.adoc"
+          git push
 
-      - name: Convert appclusters.html to AsciiDoc
+      - name: Convert and Push SPEC Adoc
         run: |
-          pandoc -s connectedhomeip-spec/html/appclusters.html -o "Docs/SPEC_Adoc/appclusters.adoc"
+          wget https://raw.githubusercontent.com/CHIP-Specifications/connectedhomeip-spec/main/html/appclusters.html
+          pandoc -f html -t adoc appclusters.html -o Docs/SPEC_Adoc/appclusters.adoc
+          git add Docs/SPEC_Adoc/appclusters.adoc
+          git commit -m "Added appclusters.adoc"
+          git push
 
-      - name: Convert index.html to AsciiDoc
-        run: |
-          pandoc -s connectedhomeip-spec/html/index.html -o "Docs/SPEC_Adoc/index2.adoc"
-
-      - name: Commit and Push Changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add "Docs/Test_Plan_Adoc/" "Docs/SPEC_Adoc/"
-          git commit -m "Convert and push AsciiDoc files"
+          wget https://raw.githubusercontent.com/CHIP-Specifications/connectedhomeip-spec/main/html/index.html
+          pandoc -f html -t adoc index.html -o Docs/SPEC_Adoc/index.adoc
+          git add Docs/SPEC_Adoc/index.adoc
+          git commit -m "Added index.adoc"
           git push
