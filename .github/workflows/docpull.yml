@@ -36,8 +36,6 @@ jobs:
           pandoc -f html -t asciidoc Docs/Test_Plan_Adoc/allclusters.html -o Docs/Test_Plan_Adoc/allclusters.adoc
 
           git add Docs/Test_Plan_Adoc/allclusters.adoc
-          git commit -m "Added allclusters.adoc"
-          git push
 
           curl -H "Authorization: token $access_token" \
                -o Docs/Test_Plan_Adoc/index.html \
@@ -46,8 +44,6 @@ jobs:
           pandoc -f html -t asciidoc Docs/Test_Plan_Adoc/index.html -o Docs/Test_Plan_Adoc/index.adoc
 
           git add Docs/Test_Plan_Adoc/index.adoc
-          git commit -m "Added index.adoc"
-          git push
           
       - name: Fetch and Convert SPEC HTML
         run: |
@@ -60,8 +56,6 @@ jobs:
           pandoc -f html -t asciidoc Docs/SPEC_Adoc/appclusters.html -o Docs/SPEC_Adoc/appclusters.adoc
 
           git add Docs/SPEC_Adoc/appclusters.adoc
-          git commit -m "Added appclusters.adoc"
-          git push
 
           curl -H "Authorization: token $access_token" \
                -o Docs/SPEC_Adoc/index.html \
@@ -70,5 +64,8 @@ jobs:
           pandoc -f html -t asciidoc Docs/SPEC_Adoc/index.html -o Docs/SPEC_Adoc/index.adoc
 
           git add Docs/SPEC_Adoc/index.adoc
-          git commit -m "Added index.adoc"
+          
+      - name: Commit and Push Changes
+        run: |
+          git commit -m "Added converted files"
           git push
