@@ -20,6 +20,11 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
       - name: Fetch and Convert Test Plan HTML
         run: |
           access_token="${{ secrets.SOURCE_PAT }}"
@@ -27,6 +32,7 @@ jobs:
           curl -H "Authorization: token $access_token" \
                -o Docs/Test_Plan_Adoc/allclusters.html \
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/gh-site/html/allclusters.html"
+
           pandoc -f html -t adoc Docs/Test_Plan_Adoc/allclusters.html -o Docs/Test_Plan_Adoc/allclusters.adoc
           git add Docs/Test_Plan_Adoc/allclusters.adoc
           git commit -m "Added allclusters.adoc"
@@ -35,27 +41,8 @@ jobs:
           curl -H "Authorization: token $access_token" \
                -o Docs/Test_Plan_Adoc/index.html \
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/gh-site/html/index.html"
+
           pandoc -f html -t adoc Docs/Test_Plan_Adoc/index.html -o Docs/Test_Plan_Adoc/index.adoc
           git add Docs/Test_Plan_Adoc/index.adoc
-          git commit -m "Added index.adoc"
-          git push
-
-      - name: Fetch and Convert SPEC HTML
-        run: |
-          access_token="${{ secrets.SOURCE_PAT }}"
-
-          curl -H "Authorization: token $access_token" \
-               -o Docs/SPEC_Adoc/appclusters.html \
-               -LJO "https://raw.githubusercontent.com/CHIP-Specifications/connectedhomeip-spec/build-sample/html/appclusters.html"
-          pandoc -f html -t adoc Docs/SPEC_Adoc/appclusters.html -o Docs/SPEC_Adoc/appclusters.adoc
-          git add Docs/SPEC_Adoc/appclusters.adoc
-          git commit -m "Added appclusters.adoc"
-          git push
-
-          curl -H "Authorization: token $access_token" \
-               -o Docs/SPEC_Adoc/index.html \
-               -LJO "https://raw.githubusercontent.com/CHIP-Specifications/connectedhomeip-spec/build-sample/html/index.html"
-          pandoc -f html -t adoc Docs/SPEC_Adoc/index.html -o Docs/SPEC_Adoc/index.adoc
-          git add Docs/SPEC_Adoc/index.adoc
           git commit -m "Added index.adoc"
           git push
