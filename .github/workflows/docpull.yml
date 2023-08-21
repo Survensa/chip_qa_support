@@ -19,30 +19,26 @@ jobs:
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-
       - name: Convert and Push Test Plan Adoc
         run: |
-          wget https://github.com/CHIP-Specifications/chip-test-plans/blob/gh-site/html/allclusters.html
+          wget https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/gh-site/html/allclusters.html
           pandoc -f html -t adoc allclusters.html -o Docs/Test_Plan_Adoc/allclusters.adoc
           git add Docs/Test_Plan_Adoc/allclusters.adoc
           git commit -m "Added allclusters.adoc"
           git push
-
-          wget https://github.com/CHIP-Specifications/chip-test-plans/blob/gh-site/html/index.html
+          wget https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/gh-site/html/index.html
           pandoc -f html -t adoc index.html -o Docs/Test_Plan_Adoc/index.adoc
           git add Docs/Test_Plan_Adoc/index.adoc
           git commit -m "Added index.adoc"
           git push
-
       - name: Convert and Push SPEC Adoc
         run: |
-          wget https://github.com/CHIP-Specifications/connectedhomeip-spec/blob/build-sample/html/appclusters.html
+          wget https://raw.githubusercontent.com/CHIP-Specifications/connectedhomeip-spec/build-sample/html/appclusters.html
           pandoc -f html -t adoc appclusters.html -o Docs/SPEC_Adoc/appclusters.adoc
           git add Docs/SPEC_Adoc/appclusters.adoc
           git commit -m "Added appclusters.adoc"
           git push
-
-          wget https://github.com/CHIP-Specifications/connectedhomeip-spec/blob/build-sample/html/index.html
+          wget https://raw.githubusercontent.com/CHIP-Specifications/connectedhomeip-spec/build-sample/html/index.html
           pandoc -f html -t adoc index.html -o Docs/SPEC_Adoc/index.adoc
           git add Docs/SPEC_Adoc/index.adoc
           git commit -m "Added index.adoc"
