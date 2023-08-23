@@ -263,7 +263,7 @@ sleep 05
 End
 # [TC-CC-4.5] Saturation functionality with client as DUT
 ./chip-tool onoff on 1 1
-./chip-tool colorcontrol step-hue 1 10 0 0 0 1 1
+./chip-tool colorcontrol move-to-saturation 200 0 0 0 1 1
 ./chip-tool colorcontrol read current-saturation 1 1
 ./chip-tool colorcontrol move-saturation 1 10 0 0 1 1
 ./chip-tool colorcontrol read current-saturation 1 1
