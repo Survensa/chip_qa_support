@@ -1,4 +1,4 @@
-name: Pull TC_Summary
+name: Run Python Script on HTML File Change
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  convert_and_push:
+  run:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,31 +17,18 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.x
+          python-version: 3.x  # Replace with your desired Python version
 
       - name: Install dependencies
         run: pip install openpyxl beautifulsoup4
 
       - name: Run Python Script
         run: |
-          python src/tcd.py
+          python src/tcd.py  # Replace with your script file name
         working-directory: ${{ github.workspace }}
 
-      - name: Install Pandoc
+      - name: Commit and Push Excel File
         run: |
-          sudo apt-get update
-          sudo apt-get install pandoc
-        working-directory: ${{ github.workspace }}
-
-      - name: Convert XLSX to MD
-        run: |
-          pandoc -f xlsx TC_Summary.xlsx -o TC_Summary.md
-        working-directory: ${{ github.workspace }}
-
-      - name: Commit and Push Changes
-        run: |
-          git add TC_Summary.xlsx
-          git add TC_Summary.md
-          git commit -m "Add XLSX and MD files"
+          git add Docs/output.xlsx
+          git commit -m "Update output Excel file"
           git push
-        working-directory: ${{ github.workspace }}
