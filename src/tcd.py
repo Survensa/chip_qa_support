@@ -7,7 +7,7 @@ print("Process Starts")
 
 # Create an Excel workbook and define the filename
 workbook = openpyxl.Workbook()
-filename = 'Docs/TC_Summary.xlsx'
+filename = 'TC_Summary.xlsx'
 
 app_html = 'Docs/Test_Plan_HTML/allclusters.html'
 main_html = 'Docs/Test_Plan_HTML/index.html'
@@ -30,8 +30,7 @@ for cell in sheet1[1]:
     cell.alignment = Alignment(horizontal='center', vertical='center')
 
 # Define a function to extract test case details
-def extract_tc_details(h1_tags, a):
-    row_number = 1  # Initialize row_number outside the loop
+def extract_tc_details(h1_tags, a, row_number):
     for i, h1_tag in enumerate(h1_tags):
         h1 = h1_tag.text
         cluster_name = h1.replace('Cluster Test Plan', '')
@@ -96,7 +95,10 @@ print("Parsing 'app' HTML...")
 with open(app_html, encoding='utf-8') as f1:
     soup1 = BeautifulSoup(f1, 'html.parser')
     h1_tags1 = soup1.find_all('h1', {'id': True})
-    extract_tc_details(h1_tags1, 1)
+    extract_tc_details(h1_tags1, 1, 1)  # Pass initial row_number as 1
+
+# Calculate the next row_number after parsing the first HTML
+row_number = sheet1.max_row + 1
 
 # Parse 'main' HTML
 print("^" * 40)
@@ -104,7 +106,7 @@ print("Parsing 'main' HTML...")
 with open(main_html, encoding='utf-8') as f2:
     soup2 = BeautifulSoup(f2, 'html.parser')
     h1_tags2 = soup2.find_all('h1', {'id': True})
-    extract_tc_details(h1_tags2, 0)
+    extract_tc_details(h1_tags2, 0, row_number)  # Pass the updated row_number
 
 # Set the font for the entire sheet to Times New Roman
 for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=1, max_col=sheet1.max_column):
