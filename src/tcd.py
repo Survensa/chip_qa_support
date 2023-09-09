@@ -3,11 +3,11 @@ import openpyxl
 from openpyxl.styles import Font, Alignment
 import re
 
-print("Ready")
+print("Process Starts")
 
 # Create an Excel workbook and define the filename
 workbook = openpyxl.Workbook()
-filename = 'Docs/output.xlsx'
+filename = 'output.xlsx'
 
 app_html = 'Docs/Test_Plan_HTML/allclusters.html'
 main_html = 'Docs/Test_Plan_HTML/index.html'
@@ -35,6 +35,9 @@ def extract_tc_details(h1_tags, a):
     for i, h1_tag in enumerate(h1_tags):
         h1 = h1_tag.text
         cluster_name = h1.replace('Cluster Test Plan', '')
+
+        print("-" * 40)
+        print(f"Fetching details for cluster: {cluster_name}")
 
         first_h1 = h1_tag
         if i == (len(h1_tags) - 1):
@@ -81,17 +84,23 @@ def extract_tc_details(h1_tags, a):
                 # Modify row_values list to include "Test case name"
                 row_values = [row_number, cluster_name, head_text, testcase_name, test_plan]
                 sheet1.append(row_values)
+                
+                print(f"Fetching details for Test Case: {testcase_name}")
 
                 # Increment row_number for each new row
                 row_number += 1
 
 # Parse 'app' HTML
+print("^" * 40)
+print("Parsing 'app' HTML...")
 with open(app_html, encoding='utf-8') as f1:
     soup1 = BeautifulSoup(f1, 'html.parser')
     h1_tags1 = soup1.find_all('h1', {'id': True})
     extract_tc_details(h1_tags1, 1)
 
 # Parse 'main' HTML
+print("^" * 40)
+print("Parsing 'main' HTML...")
 with open(main_html, encoding='utf-8') as f2:
     soup2 = BeautifulSoup(f2, 'html.parser')
     h1_tags2 = soup2.find_all('h1', {'id': True})
@@ -114,4 +123,7 @@ for column, width in column_widths.items():
     sheet1.column_dimensions[column].width = width
 
 # Save the workbook
+print("Saving Excel workbook...")
 workbook.save(filename)
+
+print("Process completed. Excel file saved as 'output.xlsx'.")
