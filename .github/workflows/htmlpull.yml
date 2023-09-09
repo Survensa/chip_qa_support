@@ -1,10 +1,10 @@
-name: Convert and Push Adoc
+name: Push HTML Files
 
 on:
   workflow_dispatch:
 
 jobs:
-  convert_and_push:
+  push_html:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,52 +20,39 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
-      - name: Install Pandoc
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc
-
-      - name: Fetch and Convert Test Plan HTML
+      - name: Fetch and Push Test Plan HTML
         run: |
           access_token="${{ secrets.SOURCE_PAT }}"
           
           curl -H "Authorization: token $access_token" \
-               -o Docs/Test_Plan_Adoc/allclusters.html \
+               -o Docs/Test_Plan_HTML/allclusters.html \
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/gh-site/html/allclusters.html"
 
-          pandoc -f html -t asciidoc Docs/Test_Plan_Adoc/allclusters.html -o Docs/Test_Plan_Adoc/allclusters.adoc
-
-          git add Docs/Test_Plan_Adoc/allclusters.adoc
+          git add Docs/Test_Plan_HTML/allclusters.html
 
           curl -H "Authorization: token $access_token" \
-               -o Docs/Test_Plan_Adoc/index.html \
+               -o Docs/Test_Plan_HTML/index.html \
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/gh-site/html/index.html"
 
-          pandoc -f html -t asciidoc Docs/Test_Plan_Adoc/index.html -o Docs/Test_Plan_Adoc/index.adoc
-
-          git add Docs/Test_Plan_Adoc/index.adoc
+          git add Docs/Test_Plan_HTML/index.html
           
-      - name: Fetch and Convert SPEC HTML
+      - name: Fetch and Push SPEC HTML
         run: |
           access_token="${{ secrets.SOURCE_PAT }}"
           
           curl -H "Authorization: token $access_token" \
-               -o Docs/SPEC_Adoc/appclusters.html \
+               -o Docs/SPEC_HTML/appclusters.html \
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/connectedhomeip-spec/build-sample/html/appclusters.html"
           
-          pandoc -f html -t asciidoc Docs/SPEC_Adoc/appclusters.html -o Docs/SPEC_Adoc/appclusters.adoc
-
-          git add Docs/SPEC_Adoc/appclusters.adoc
+          git add Docs/SPEC_HTML/appclusters.html
 
           curl -H "Authorization: token $access_token" \
-               -o Docs/SPEC_Adoc/index.html \
+               -o Docs/SPEC_HTML/index.html \
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/connectedhomeip-spec/build-sample/html/index.html"
           
-          pandoc -f html -t asciidoc Docs/SPEC_Adoc/index.html -o Docs/SPEC_Adoc/index.adoc
-
-          git add Docs/SPEC_Adoc/index.adoc
+          git add Docs/SPEC_HTML/index.html
           
       - name: Commit and Push Changes
         run: |
-          git commit -m "Added converted files"
+          git commit -m "Added HTML files"
           git push
