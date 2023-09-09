@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - 'Docs/Test_Plan_HTML/*'  # Specify the path to your HTML files
-  workflow_dispatch:    
+  workflow_dispatch:
 
 jobs:
   run:
@@ -24,5 +24,11 @@ jobs:
 
       - name: Run Python Script
         run: |
-          python src/tcd.py  # Replace with your script file name
+          python tcd.py  # Replace with your script file name
         working-directory: ${{ github.workspace }}
+        
+      - name: Upload Excel File
+        uses: actions/upload-artifact@v2
+        with:
+          name: excel-output
+          path: Docs/output.xlsx
