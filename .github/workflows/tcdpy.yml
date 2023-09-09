@@ -26,9 +26,15 @@ jobs:
         run: |
           python src/tcd.py  # Replace with your script file name
         working-directory: ${{ github.workspace }}
-        
-      - name: Upload Excel File
-        uses: actions/upload-artifact@v2
-        with:
-          name: excel-output
-          path: Docs/output.xlsx
+
+      - name: Convert XLSX to MD with Pandoc
+        run: |
+          # Convert XLSX to MD using Pandoc with font settings
+          pandoc output.xlsx -o output.md --variable mainfont="Times New Roman"
+        working-directory: ${{ github.workspace }}
+
+      - name: Move Files to Docs Directory
+        run: |
+          mv output.xlsx Docs/
+          mv output.md Docs/
+        working-directory: ${{ github.workspace }}
