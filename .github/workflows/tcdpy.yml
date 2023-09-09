@@ -1,4 +1,4 @@
-name: Run Python Script on HTML File Change
+name: Convert XLSX to MD and Push
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  run:
+  convert_and_push:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,24 +17,36 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.x  # Replace with your desired Python version
+          python-version: 3.x  
 
       - name: Install dependencies
         run: pip install openpyxl beautifulsoup4
 
       - name: Run Python Script
         run: |
-          python src/tcd.py  # Replace with your script file name
+          python src/tcd.py  
         working-directory: ${{ github.workspace }}
 
-      - name: Convert XLSX to MD with Pandoc
+      - name: Install Pandoc
         run: |
-          # Convert XLSX to MD using Pandoc with font settings
-          pandoc output.xlsx -o output.md --variable mainfont="Times New Roman"
+          sudo apt-get update
+          sudo apt-get install pandoc
         working-directory: ${{ github.workspace }}
 
-      - name: Move Files to Docs Directory
+      - name: Move XLSX File to Docs Directory
         run: |
           mv output.xlsx Docs/
-          mv output.md Docs/
+        working-directory: ${{ github.workspace }}
+
+      - name: Convert XLSX to MD
+        run: |
+          pandoc Docs/output.xlsx -o Docs/output.md
+        working-directory: ${{ github.workspace }}
+
+      - name: Commit and Push Changes
+        run: |
+          git add Docs/output.xlsx
+          git add Docs/output.md
+          git commit -m "Add XLSX and MD files"
+          git push
         working-directory: ${{ github.workspace }}
