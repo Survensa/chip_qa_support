@@ -2,6 +2,8 @@ name: Push HTML Files
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'  # Run every 6 hours
 
 jobs:
   push_html:
