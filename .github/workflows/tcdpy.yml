@@ -35,7 +35,7 @@ jobs:
 
       - name: Convert XLSX to MD
         run: |
-          pandoc TC_Summary.xlsx -o TC_Summary.md
+          pandoc -f xlsx TC_Summary.xlsx -o TC_Summary.md
         working-directory: ${{ github.workspace }}
 
       - name: Commit and Push Changes
