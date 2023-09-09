@@ -7,7 +7,7 @@ print("Process Starts")
 
 # Create an Excel workbook and define the filename
 workbook = openpyxl.Workbook()
-filename = 'TC_Summary.xlsx'
+filename = 'Docs/TC_Summary.xlsx'
 
 app_html = 'Docs/Test_Plan_HTML/allclusters.html'
 main_html = 'Docs/Test_Plan_HTML/index.html'
