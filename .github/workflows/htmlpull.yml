@@ -20,7 +20,7 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
-      - name: Fetch and Push Test Plan HTML
+      - name: Fetch and add Test Plan HTML
         run: |
           access_token="${{ secrets.SOURCE_PAT }}"
           
@@ -36,7 +36,7 @@ jobs:
 
           git add Docs/Test_Plan_HTML/index.html
           
-      - name: Fetch and Push SPEC HTML
+      - name: Fetch and add SPEC HTML
         run: |
           access_token="${{ secrets.SOURCE_PAT }}"
           
@@ -54,5 +54,9 @@ jobs:
           
       - name: Commit and Push Changes
         run: |
-          git commit -m "Added HTML files"
-          git push
+          if [[ -n $(git status --porcelain) ]]; then
+            git commit -m "Added HTML files"
+            git push
+          else
+            echo "No changes to commit."
+          fi
