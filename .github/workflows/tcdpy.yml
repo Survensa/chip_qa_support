@@ -34,3 +34,20 @@ jobs:
           git add Docs/TC_Summary.xlsx
           git commit -m "Update TC_Summary Excel file"
           git push
+
+      - name: Convert Excel to Markdown
+        run: |
+          # Install pandoc if not already installed
+          if ! command -v pandoc &> /dev/null; then
+            sudo apt-get install -y pandoc
+          fi
+          # Convert Excel to Markdown
+          pandoc Docs/TC_Summary.xlsx -o Docs/TC_Summary.md
+
+      - name: Commit and Push Markdown File
+        run: |
+          git config user.email "you@example.com"
+          git config user.name "Your Name"
+          git add Docs/TC_Summary.md
+          git commit -m "Update TC_Summary Markdown file"
+          git push
