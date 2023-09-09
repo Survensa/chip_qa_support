@@ -1,4 +1,4 @@
-name: Run Python Script on HTML File Change
+name: Pull TC_Summary
 
 on:
   push:
@@ -29,6 +29,6 @@ jobs:
 
       - name: Commit and Push Excel File
         run: |
-          git add Docs/output.xlsx
-          git commit -m "Update output Excel file"
+          git add Docs/TC_Summary.xlsx
+          git commit -m "Update TC_Summary Excel file"
           git push
