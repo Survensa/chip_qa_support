@@ -1,0 +1,27 @@
+name: Run Python Script on HTML File Change
+
+on:
+  push:
+    paths:
+      - 'Docs/Test_Plan_HTML/*'  # Specify the path to your HTML files
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x  # Replace with your desired Python version
+
+      - name: Install dependencies
+        run: pip install openpyxl beautifulsoup4
+
+      - name: Run Python Script
+        run: |
+          python tcd.py  # Replace with your script file name
+        working-directory: ${{ github.workspace }}
