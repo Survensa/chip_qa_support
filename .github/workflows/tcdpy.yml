@@ -1,4 +1,4 @@
-name: Convert XLSX to MD and Push
+name: Pull TC_Summary
 
 on:
   push:
