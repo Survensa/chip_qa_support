@@ -9,11 +9,15 @@ def xlsx_to_md(input_file, output_file):
 
     # Open the output file in write mode
     with open(output_file, 'w') as md_file:
-        for i, row in enumerate(sheet.iter_rows(), start=1):
-            # Iterate through the cells in the row
-            md_row = "|".join(f"**{cell.value}**" if cell.value is not None and i == 1 else str(cell.value) if cell.value is not None else "" for cell in row)
-            # Write the Markdown row to the output file
-            md_file.write(md_row + "\n")
+        # Write the table header
+        headers = ["**" + cell.value + "**" if cell.value is not None else "" for cell in next(sheet.iter_rows())]
+        md_file.write("|".join(headers) + "|\n")
+        md_file.write("|".join(["---"] * len(headers)) + "|\n")
+
+        # Write the table rows
+        for row in sheet.iter_rows(min_row=2):
+            md_row = [str(cell.value) if cell.value is not None else "" for cell in row]
+            md_file.write("|".join(md_row) + "|\n")
 
 if __name__ == "__main__":
     input_file = "Docs/TC_Summary.xlsx"  # Replace with your input Excel file
