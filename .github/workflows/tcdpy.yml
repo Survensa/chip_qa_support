@@ -24,7 +24,7 @@ jobs:
 
       - name: Run Python Script
         run: |
-          python tcd.py  # Replace with your script file name
+          python src/tcd.py  # Replace with your script file name
         working-directory: ${{ github.workspace }}
         
       - name: Upload Excel File
