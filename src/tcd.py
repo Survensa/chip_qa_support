@@ -126,4 +126,4 @@ for column, width in column_widths.items():
 print("Saving Excel workbook...")
 workbook.save(filename)
 
-print("Process completed. Excel file saved as 'output.xlsx'.")
+print("Process completed. Excel file saved as 'TC_Summary.xlsx'.")
