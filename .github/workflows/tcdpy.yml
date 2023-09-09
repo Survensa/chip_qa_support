@@ -29,6 +29,8 @@ jobs:
 
       - name: Commit and Push Excel File
         run: |
+          git config user.email "you@example.com"
+          git config user.name "Your Name"
           git add Docs/TC_Summary.xlsx
           git commit -m "Update TC_Summary Excel file"
           git push
