@@ -17,36 +17,26 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.x  
+          python-version: 3.x
 
       - name: Install dependencies
         run: pip install openpyxl beautifulsoup4
 
       - name: Run Python Script
         run: |
-          python src/tcd.py  
+          python src/tcd.py
         working-directory: ${{ github.workspace }}
 
-      - name: Install Pandoc
-        run: |
-          sudo apt-get update
-          sudo apt-get install pandoc
-        working-directory: ${{ github.workspace }}
-
-      - name: Move XLSX File to Docs Directory
+      - name: Move XLSX and MD Files to Docs Directory
         run: |
           mv TC_Summary.xlsx Docs/
-        working-directory: ${{ github.workspace }}
-
-      - name: Convert XLSX to MD
-        run: |
-          pandoc Docs/TC_Summary.xlsx -o Docs/TC_Summary.md
+          mv TC_Summary.md Docs/
         working-directory: ${{ github.workspace }}
 
       - name: Commit and Push Changes
         run: |
           git add Docs/TC_Summary.xlsx
           git add Docs/TC_Summary.md
-          git commit -m "Add XLSX and MD files"
+          git commit -m "Add XLSX and MD files to Docs directory"
           git push
         working-directory: ${{ github.workspace }}
