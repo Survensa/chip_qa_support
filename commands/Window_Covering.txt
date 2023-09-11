@@ -60,48 +60,50 @@ End
 ./chip-tool windowcovering read end-product-type 1 1 
 End
 # [TC-WNCV-3.1] UpOrOpen command & Report Verification [DUT as Server]
-./chip-tool windowcovering subscribe operational-status 1 2 1 1
 ./chip-tool windowcovering down-or-close 1 1
-
+sleep 10
 ./chip-tool windowcovering read current-position-lift-percent100ths 1 1
 ./chip-tool windowcovering read current-position-lift-percentage 1 1
 ./chip-tool windowcovering read current-position-tilt-percent100ths 1 1
 ./chip-tool windowcovering read current-position-tilt-percentage 1 1
 ./chip-tool windowcovering up-or-open 1 1
+sleep 0.5
 ./chip-tool windowcovering read target-position-lift-percent100ths 1 1
 ./chip-tool windowcovering read target-position-tilt-percent100ths 1 1
+sleep 1
 ./chip-tool windowcovering read operational-status  1 1
-
 ./chip-tool windowcovering read current-position-lift-percent100ths 1 1
 ./chip-tool windowcovering read current-position-lift-percentage 1 1
 ./chip-tool windowcovering read current-position-tilt-percent100ths 1 1
 ./chip-tool windowcovering read current-position-tilt-percentage 1 1
 ./chip-tool windowcovering stop-motion 1 1
+ sleep 1
 ./chip-tool windowcovering read operational-status 1 1
+sleep 0.5
 ./chip-tool windowcovering read target-position-lift-percent100ths 1 1
 ./chip-tool windowcovering read target-position-tilt-percent100ths 1 1
 End
 # [TC-WNCV-3.2] DownOrClose command & Report Verification [DUT as Server]
-./chip-tool windowcovering subscribe operational-status 1 5 1 1
 ./chip-tool windowcovering up-or-open 1 1
-
+sleep 10
 ./chip-tool windowcovering read current-position-lift-percent100ths 1 1
 ./chip-tool windowcovering read current-position-lift-percentage 1 1
 ./chip-tool windowcovering read current-position-tilt-percent100ths 1 1
 ./chip-tool windowcovering read current-position-tilt-percentage 1 1
-
 ./chip-tool windowcovering down-or-close 1 1
+sleep 0.5
 ./chip-tool windowcovering read target-position-lift-percent100ths 1 1
 ./chip-tool windowcovering read target-position-tilt-percent100ths 1 1
+sleep 1
 ./chip-tool windowcovering read operational-status 1 1
-
 ./chip-tool windowcovering read current-position-lift-percent100ths 1 1
 ./chip-tool windowcovering read current-position-lift-percentage 1 1
 ./chip-tool windowcovering read current-position-tilt-percent100ths 1 1
 ./chip-tool windowcovering read current-position-tilt-percentage 1 1
-
 ./chip-tool windowcovering stop-motion 1 1
+sleep 1
 ./chip-tool windowcovering read operational-status 1 1
+sleep 0.5 
 ./chip-tool windowcovering read target-position-lift-percent100ths 1 1
 ./chip-tool windowcovering read target-position-tilt-percent100ths 1 1
 End
