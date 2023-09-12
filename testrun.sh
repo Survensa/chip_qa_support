@@ -18,7 +18,7 @@ then
 		cd ~/chip_command_run/scripts/
 		python3 chip_command_run.py
 		echo
-		echo "Execution completed . . .  Get execution logs from Backendlosg directory"
+		echo "Execution completed . . .  Logs are ready for validation in Logs/Executionlogs directory"
 		exit
 	elif [ "$ANSWER2" == "N" ] || [ "$ANSWER2" == "n" ]
 	then
