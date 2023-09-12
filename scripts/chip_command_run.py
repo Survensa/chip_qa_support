@@ -46,7 +46,7 @@ def process_log_files(input_dir, output_dir):
 # Fn to run chip commands in terminal
 def run_command(commands, testcase):
     file_path = os.path.join(os.path.expanduser('~'), build)
-    save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "BackendLogs")
+    save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
     os.chdir(file_path)
     date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
     while "" in commands:
@@ -59,8 +59,8 @@ def run_command(commands, testcase):
         subprocess.run(i, shell=True, text=True, stdout=open(f"{save_path}/{testcase}-{date}.txt", "a+"))
     
     # Process the log file immediately after running the commands
-    input_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "BackendLogs")
-    output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "ExecutionLogs")
+    input_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
+    output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "ExecutionLogs")
     process_log_files(input_directory, output_directory)
 
     print(f"---------------------{testcase} - Executed----------------------")
