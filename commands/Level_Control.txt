@@ -106,7 +106,7 @@ sleep 10
 ./chip-tool levelcontrol read current-level 1 1
 sleep 10
 ./chip-tool levelcontrol read current-level 1 1
-sleep 12
+sleep 19
 ./chip-tool levelcontrol read current-level 1 1
 End
 # [TC-LVL-5.1] Step Verification (DUT as Server)
