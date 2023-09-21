@@ -9,6 +9,14 @@ def xlsx_to_html(input_file, output_file):
 
     # Open the output file in write mode
     with open(output_file, 'w') as html_file:
+        # Write the HTML document header
+        html_file.write("<!DOCTYPE html>\n")
+        html_file.write("<html>\n")
+        html_file.write("<head>\n")
+        html_file.write("<title>Excel to HTML</title>\n")
+        html_file.write("</head>\n")
+        html_file.write("<body>\n")
+
         # Write the table opening tag with CSS styling for borders and header background color
         html_file.write('<table style="border-collapse: collapse; width: 100%;">\n')
 
@@ -23,6 +31,10 @@ def xlsx_to_html(input_file, output_file):
 
         # Write the table closing tag
         html_file.write("</table>\n")
+
+        # Write the HTML document closing tags
+        html_file.write("</body>\n")
+        html_file.write("</html>\n")
 
 if __name__ == "__main__":
     input_file = "Docs/TC_Summary.xlsx"  # Replace with your input Excel file
