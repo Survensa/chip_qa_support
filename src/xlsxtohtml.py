@@ -13,7 +13,7 @@ def xlsx_to_html(input_file, output_file):
         html_file.write("<!DOCTYPE html>\n")
         html_file.write("<html>\n")
         html_file.write("<head>\n")
-        html_file.write("<title>Excel to HTML</title>\n")
+        html_file.write("<title>Test Case Summary</title>\n")
         html_file.write("</head>\n")
         html_file.write("<body>\n")
 
