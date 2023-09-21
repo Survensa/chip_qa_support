@@ -5,7 +5,7 @@ on:
     branches:
       -  main
     paths:
-      - 'Docs/Test_Plan_HTML/*'  # Specify the path to your HTML files
+      - 'Docs/Test_Plan_HTML/*'  
   workflow_dispatch:
 
 jobs:
@@ -19,14 +19,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.x  # Replace with your desired Python version
+          python-version: 3.x  
 
       - name: Install dependencies
         run: pip install openpyxl beautifulsoup4
 
       - name: Run Python Script
         run: |
-          python src/tcd.py  # Replace with your script file name
+          python src/tcd.py  
         working-directory: ${{ github.workspace }}
 
       - name: Commit and Push Excel File
@@ -43,7 +43,7 @@ jobs:
 
       - name: Convert Excel to Markdown
         run: |
-          python src/xlsxtomd.py  # Replace with your script file name
+          python src/xlsxtomd.py  
         working-directory: ${{ github.workspace }}
 
       - name: Commit and Push Markdown File
