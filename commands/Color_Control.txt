@@ -433,8 +433,8 @@ End
 ./chip-tool colorcontrol read color-temp-physical-min-mireds 1 1
 ./chip-tool colorcontrol read color-temp-physical-max-mireds 1 1
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
-./chip-tool colorcontrol move-to-color-temperature 32639 0 0 0 1 1
-./chip-tool colorcontrol step-color-temperature 1 32639 200 0 65279 0 0 1 1
+./chip-tool colorcontrol move-to-color-temperature 32640 0 0 0 1 1
+./chip-tool colorcontrol step-color-temperature 1 32640 200 0 65279 0 0 1 1
 sleep 10
 ./chip-tool colorcontrol read color-temperature-mireds 1 1
 sleep 10
