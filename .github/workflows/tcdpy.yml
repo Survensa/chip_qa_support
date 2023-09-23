@@ -22,7 +22,7 @@ jobs:
           python-version: 3.x  
 
       - name: Install dependencies
-        run: pip install openpyxl beautifulsoup4
+        run: pip install openpyxl beautifulsoup4 difflib
 
       - name: Run Python Script
         run: |
