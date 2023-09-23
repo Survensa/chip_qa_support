@@ -106,6 +106,7 @@ with open(app_html, encoding='utf-8') as f1:
     app_html_content = f1.readlines()
     soup1 = BeautifulSoup(''.join(app_html_content), 'html.parser')
     h1_tags1 = soup1.find_all('h1', {'id': True})
+    main_html_content = ""  # Initialize main_html_content
     extract_tc_details(h1_tags1, 1, 1, sheets["All_TC_Details"], sheets["The Line Changes"], app_html_content, main_html_content)
 
 # Calculate the next row_number after parsing the first HTML
@@ -126,7 +127,7 @@ for sheet in sheets.values():
             cell.alignment = Alignment(vertical='center')
 
 # Set alignment to center for columns A and E for all sheets
-columns_to_center = ['A', 'E']
+columns_to center = ['A', 'E']
 for sheet in sheets.values():
     for column_letter in columns_to_center:
         for cell in sheet[column_letter]:
