@@ -2,37 +2,38 @@ from bs4 import BeautifulSoup
 import openpyxl
 from openpyxl.styles import Font, Alignment
 import re
-import difflib
 
 print("Process Starts")
 
-# Define filenames and sheet names
+# Create an Excel workbook and define the filename
+workbook = openpyxl.Workbook()
 filename = 'Docs/TC_Summary.xlsx'
+
 app_html = 'Docs/Test_Plan_HTML/allclusters.html'
 main_html = 'Docs/Test_Plan_HTML/index.html'
-sheet_names = ["All_TC_Details", "The Line Changes"]
 
-# Create an Excel workbook
-workbook = openpyxl.Workbook()
-
-# Create separate sheets for "All_TC_Details" and "The Line Changes"
-sheets = {name: workbook.create_sheet(name) for name in sheet_names}
+# Create an Excel sheet
+sheet1 = workbook.active
+sheet1.title = "All_TC_Details"
 
 # Define column headers
 headers = ['S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan']
 
-# Set the font for headers
+# Add headers to the first row and set the font to bold for the headings
 header_font = Font(name='Times New Roman', bold=True)
+for col_num, header in enumerate(headers, 1):
+    cell = sheet1.cell(row=1, column=col_num, value=header)
+    cell.font = header_font
 
-# Populate headers for all sheets
-for sheet in sheets.values():
-    for col_num, header in enumerate(headers, 1):
-        cell = sheet.cell(row=1, column=col_num, value=header)
-        cell.font = header_font
-        cell.alignment = Alignment(horizontal='center', vertical='center')
+# Set header row alignment to center
+for cell in sheet1[1]:
+    cell.alignment = Alignment(horizontal='center', vertical='center')
 
-# Function to extract test case details and check for line changes
-def extract_tc_details(h1_tags, a, row_number, all_tc_sheet, line_changes_sheet, app_html_content, main_html_content):
+# Create a sheet for changes
+sheet2 = workbook.create_sheet("TC Change")
+
+# Define a function to extract test case details and check for changes
+def extract_tc_details(h1_tags, a, row_number, change_sheet):
     for i, h1_tag in enumerate(h1_tags):
         h1 = h1_tag.text
         cluster_name = h1.replace('Cluster Test Plan', '')
@@ -73,7 +74,7 @@ def extract_tc_details(h1_tags, a, row_number, all_tc_sheet, line_changes_sheet,
                 # Extract the "Test case name" using regular expressions
                 testcase_match = re.search(r'\[(.*?)\]', head_text)
                 if testcase_match:
-                    testcase_name = testcase_match.group(1)
+                    testcase_name = testcase_match.group(1)  # Extract the first group (inside parentheses)
                 else:
                     testcase_name = ''
 
@@ -84,59 +85,55 @@ def extract_tc_details(h1_tags, a, row_number, all_tc_sheet, line_changes_sheet,
 
                 # Modify row_values list to include "Test case name"
                 row_values = [row_number, cluster_name, head_text, testcase_name, test_plan]
-
-                # Compare app and main HTML content
-                line_changes = list(difflib.unified_diff(app_html_content, main_html_content, lineterm=''))
-
-                # Check for line changes
-                line_changed = any(line.startswith('-') or line.startswith('+') for line in line_changes)
-
-                if line_changed:
-                    line_changes_sheet.append(row_values)
-
-                all_tc_sheet.append(row_values)
-
+                sheet1.append(row_values)
+                
                 print(f"Fetching details for Test Case: {testcase_name}")
+
+                # Check for changes and append to the "TC Change" sheet
+                if row_number <= change_sheet.max_row:
+                    old_row_values = [cell.value for cell in change_sheet[row_number]]
+                    if row_values != old_row_values:
+                        change_sheet.append(['Removed' if cell.value != new_val else new_val for cell, new_val in zip(change_sheet[row_number], row_values)])
+                else:
+                    change_sheet.append(row_values)
 
                 # Increment row_number for each new row
                 row_number += 1
 
-# Parse 'app' HTML and 'main' HTML
-with open(app_html, encoding='utf-8') as f1, open(main_html, encoding='utf-8') as f2:
-    app_html_content = f1.readlines()
-    main_html_content = f2.readlines()
-    soup1 = BeautifulSoup(''.join(app_html_content), 'html.parser')
-    soup2 = BeautifulSoup(''.join(main_html_content), 'html.parser')
-    
+# Parse 'app' HTML
+print("^" * 40)
+print("Parsing 'app' HTML...")
+with open(app_html, encoding='utf-8') as f1:
+    soup1 = BeautifulSoup(f1, 'html.parser')
     h1_tags1 = soup1.find_all('h1', {'id': True})
+    extract_tc_details(h1_tags1, 1, 1, sheet2)  # Pass initial row_number as 1 and the change_sheet
+
+# Calculate the next row_number after parsing the first HTML
+row_number = sheet1.max_row + 1
+
+# Parse 'main' HTML
+print("^" * 40)
+print("Parsing 'main' HTML...")
+with open(main_html, encoding='utf-8') as f2:
+    soup2 = BeautifulSoup(f2, 'html.parser')
     h1_tags2 = soup2.find_all('h1', {'id': True})
-    
-    extract_tc_details(h1_tags1, 1, 1, sheets["All_TC_Details"], sheets["The Line Changes"], app_html_content, main_html_content)
-    
-    # Calculate the next row_number after parsing the first HTML
-    row_number = sheets["All_TC_Details"].max_row + 1
-    
-    extract_tc_details(h1_tags2, 0, row_number, sheets["All_TC_Details"], sheets["The Line Changes"], app_html_content, main_html_content)
+    extract_tc_details(h1_tags2, 0, row_number, sheet2)  # Pass the updated row_number and the change_sheet
 
-# Set the font and alignment for the entire sheets
-for sheet in sheets.values():
-    for row in sheet.iter_rows(min_row=2, max_row=sheet.max_row, min_col=1, max_col=sheet.max_column):
-        for cell in row:
-            cell.font = Font(name='Times New Roman')
-            cell.alignment = Alignment(vertical='center')  # Center-align vertically
+# Set the font for the entire sheet to Times New Roman
+for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=1, max_col=sheet1.max_column):
+    for cell in row:
+        cell.font = Font(name='Times New Roman')
+        cell.alignment = Alignment(vertical='center')  # Center-align vertically
 
-# Set alignment to center for columns A and E for all sheets
-columns_to_center = ['A', 'E']
-for sheet in sheets.values():
-    for column_letter in columns_to_center:
-        for cell in sheet[column_letter]:
-            cell.alignment = Alignment(horizontal='center', vertical='center')
+# Set alignment to center for columns A and E
+for column_letter in ['A', 'E']:
+    for cell in sheet1[column_letter]:
+        cell.alignment = Alignment(horizontal='center', vertical='center')
 
-# Set column widths for all sheets
+# Set column widths
 column_widths = {'A': 5, 'B': 30, 'C': 100, 'D': 25, 'E': 15}
-for sheet in sheets.values():
-    for column, width in column_widths.items():
-        sheet.column_dimensions[column].width = width
+for column, width in column_widths.items():
+    sheet1.column_dimensions[column].width = width
 
 # Save the workbook
 print("Saving Excel workbook...")
