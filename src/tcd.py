@@ -87,7 +87,7 @@ def extract_tc_details(h1_tags, a, row_number, all_tc_sheet, line_changes_sheet,
 
                 # Compare app and main HTML content
                 line_changes = list(difflib.unified_diff(app_html_content, main_html_content, lineterm=''))
-                
+
                 # Check for line changes
                 line_changed = any(line.startswith('-') or line.startswith('+') for line in line_changes)
 
