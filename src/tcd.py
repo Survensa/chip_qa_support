@@ -127,7 +127,7 @@ for sheet in sheets.values():
             cell.alignment = Alignment(vertical='center')
 
 # Set alignment to center for columns A and E for all sheets
-columns_to center = ['A', 'E']
+columns_to_center = ['A', 'E']
 for sheet in sheets.values():
     for column_letter in columns_to_center:
         for cell in sheet[column_letter]:
