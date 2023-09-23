@@ -101,22 +101,21 @@ def extract_tc_details(h1_tags, a, row_number, all_tc_sheet, line_changes_sheet,
                 # Increment row_number for each new row
                 row_number += 1
 
-# Parse 'app' HTML
-with open(app_html, encoding='utf-8') as f1:
+# Parse 'app' HTML and 'main' HTML
+with open(app_html, encoding='utf-8') as f1, open(main_html, encoding='utf-8') as f2:
     app_html_content = f1.readlines()
-    soup1 = BeautifulSoup(''.join(app_html_content), 'html.parser')
-    h1_tags1 = soup1.find_all('h1', {'id': True})
-    main_html_content = ""  # Initialize main_html_content
-    extract_tc_details(h1_tags1, 1, 1, sheets["All_TC_Details"], sheets["The Line Changes"], app_html_content, main_html_content)
-
-# Calculate the next row_number after parsing the first HTML
-row_number = sheets["All_TC_Details"].max_row + 1
-
-# Parse 'main' HTML
-with open(main_html, encoding='utf-8') as f2:
     main_html_content = f2.readlines()
+    soup1 = BeautifulSoup(''.join(app_html_content), 'html.parser')
     soup2 = BeautifulSoup(''.join(main_html_content), 'html.parser')
+    
+    h1_tags1 = soup1.find_all('h1', {'id': True})
     h1_tags2 = soup2.find_all('h1', {'id': True})
+    
+    extract_tc_details(h1_tags1, 1, 1, sheets["All_TC_Details"], sheets["The Line Changes"], app_html_content, main_html_content)
+    
+    # Calculate the next row_number after parsing the first HTML
+    row_number = sheets["All_TC_Details"].max_row + 1
+    
     extract_tc_details(h1_tags2, 0, row_number, sheets["All_TC_Details"], sheets["The Line Changes"], app_html_content, main_html_content)
 
 # Set the font and alignment for the entire sheets
@@ -124,7 +123,7 @@ for sheet in sheets.values():
     for row in sheet.iter_rows(min_row=2, max_row=sheet.max_row, min_col=1, max_col=sheet.max_column):
         for cell in row:
             cell.font = Font(name='Times New Roman')
-            cell.alignment = Alignment(vertical='center')
+            cell.alignment = Alignment(vertical='center')  # Center-align vertically
 
 # Set alignment to center for columns A and E for all sheets
 columns_to_center = ['A', 'E']
