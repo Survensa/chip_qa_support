@@ -5,6 +5,7 @@ $ Boolean State
 ./chip-tool booleanstate read attribute-list 1 1
 ./chip-tool booleanstate read accepted-command-list 1 1
 ./chip-tool booleanstate read generated-command-list 1 1
+./chip-tool booleanstate read event-list 1 1
 End
 # [TC-BOOL-2.1] Attributes with server as DUT			
 ./chip-tool booleanstate read state-value  1 1
