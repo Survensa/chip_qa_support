@@ -5,17 +5,33 @@ $ Identify Cluster
 ./chip-tool identify read attribute-list 1 1
 ./chip-tool identify read accepted-command-list 1 1
 ./chip-tool identify read generated-command-list 1 1
+./chip-tool identify read event-list 1 1
 End
 # [TC-I-2.1] Attributes with server as DUT				
 ./chip-tool identify read identify-time 1 1
 ./chip-tool identify read identify-type 1 1
 End
-# [TC-I-2.2] Primary functionality with server as DUT				
+# [TC-I-2.2] Primary functionality with server as DUT
+./chip-tool identify read identify-type 1 1
 ./chip-tool identify identify 60 1 1
 ./chip-tool identify read identify-time 1 1
+sleep 10
 ./chip-tool identify read identify-time 1 1
 ./chip-tool identify identify 0 1 1
 ./chip-tool identify read identify-time 1 1
 ./chip-tool identify write identify-time 15 1 1
+sleep 15
 ./chip-tool identify read identify-time 1 1
+End
+# [TC-I-2.3] Secondary functionality with server as DUT
+./chip-tool identify trigger-effect 0 0 1 1
+./chip-tool identify trigger-effect 1 0 1 1
+./chip-tool identify trigger-effect 2 0 1 1
+./chip-tool identify trigger-effect 11 0 1 1
+./chip-tool identify trigger-effect 1 0 1 1
+./chip-tool identify trigger-effect 254 0 1 1
+./chip-tool identify trigger-effect 1 0 1 1
+./chip-tool identify trigger-effect 255 0 1 1
+./chip-tool identify trigger-effect 0 66 1 1
+./chip-tool identify trigger-effect 255 0 1 1
 End
