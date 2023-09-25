@@ -5,6 +5,7 @@ $ Thermostat
 ./chip-tool thermostat read attribute-list 1 1
 ./chip-tool thermostat read accepted-command-list  1 1
 ./chip-tool thermostat read generated-command-list 1 1
+./chip-tool thermostat read event-list 1 1
 End
 # [TC-TSTAT-2.1] Attributes with server as DUT	
 ./chip-tool thermostat read local-temperature 1 1
@@ -14,13 +15,13 @@ End
 ./chip-tool thermostat read abs-max-heat-setpoint-limit 1 1
 ./chip-tool thermostat read abs-min-cool-setpoint-limit 1 1
 ./chip-tool thermostat read abs-max-cool-setpoint-limit 1 1
-./chip-tool thermostat read  picooling-demand 1 1
-./chip-tool thermostat read  piheating-demand 1 1
+./chip-tool thermostat read  picooling-demand     1 1
+./chip-tool thermostat read  piheating-demand     1 1
 ./chip-tool thermostat read hvacsystem-type-configuration  1 1
 ./chip-tool thermostat read local-temperature-calibration 1 1
 ./chip-tool thermostat read occupied-cooling-setpoint 1 1
 ./chip-tool thermostat read occupied-heating-setpoint 1 1
-./chip-tool thermostat read un ./chip-tool thermostat read occupied-cooling-setpoint  1 1occupied-cooling-setpoint 1 1
+./chip-tool thermostat read unoccupied-cooling-setpoint 1 1
 ./chip-tool thermostat read unoccupied-heating-setpoint 1 1
 ./chip-tool thermostat read min-heat-setpoint-limit 1 1
 ./chip-tool thermostat read max-heat-setpoint-limit 1 1
@@ -46,9 +47,9 @@ End
 ./chip-tool thermostat read  occupied-setback-min 1 1
 ./chip-tool thermostat read  occupied-setback-max 1 1
 ./chip-tool thermostat read   unoccupied-setback 1 1
-./chip-tool thermos ./chip-tool thermostat read occupied-cooling-setpoint  1 1tat read   unoccupied-setback-min 1 1
-./chip-tool thermostat read   unoccupied-setback-max 1 1
-./chip-tool thermostat read   emergency-heat-delta 1 1
+./chip-tool thermostat read   unoccupied-setback-min 1 1
+./chip-tool thermostat read   UnoccupiedSetbackMax attribute 1 1
+./chip-tool thermostat read   emergency-heat-delta     1 1
 ./chip-tool thermostat read actype 1 1
 ./chip-tool thermostat read accapacity 1 1
 ./chip-tool thermostat read acrefrigerant-type 1 1
@@ -59,72 +60,104 @@ End
 ./chip-tool thermostat read accapacityformat  1 1
 End
 # [TC-TSTAT-2.2] Setpoint Test Cases with server as DUT							
-./chip-tool thermostat read min-cool-setpoint-limit 1 1
+./chip-tool thermostat read abs-min-heat-setpoint-limit 1 1
+./chip-tool thermostat read abs-max-heat-setpoint-limit 1 1
+./chip-tool thermostat read abs-min-cool-setpoint-limit 1 1
+./chip-tool thermostat read abs-max-cool-setpoint-limit 1 1
+./chip-tool thermostat read max-heat-setpoint-limit 1 1
+./chip-tool thermostat read min-heat-setpoint-limit 1 1
 ./chip-tool thermostat read max-cool-setpoint-limit 1 1
+./chip-tool thermostat read min-cool-setpoint-limit 1 1
 ./chip-tool thermostat read occupied-cooling-setpoint 1 1
-./chip-tool thermostat write occupied-cooling-setpoint 2300  1 1
+./chip-tool thermostat write occupied-cooling-setpoint 2300 1 1
 ./chip-tool thermostat read occupied-cooling-setpoint 1 1
 ./chip-tool thermostat write occupied-cooling-setpoint 3600 1 1
-./chip-tool thermost ./chip-tool thermostat read occupied-cooling-setpoint  1 1at write occupied-cooling-setpoint 1600 1 1
-./chip-tool thermostat read min-heat-setpoint-limit 1 1
-./chip-tool thermostat read max-heat-setpoint-limit 1 1
+./chip-tool thermostat write occupied-cooling-setpoint 1000 1 1
+./chip-tool thermostat write occupied-cooling-setpoint 1600 1 1
+./chip-tool thermostat write occupied-cooling-setpoint 3200 1 1
 ./chip-tool thermostat read  occupied-heating-setpoint 1 1
 ./chip-tool thermostat write  occupied-heating-setpoint 2300 1 1
 ./chip-tool thermostat read  occupied-heating-setpoint 1 1
+./chip-tool thermostat write  occupied-heating-setpoint 500 1 1
 ./chip-tool thermostat write  occupied-heating-setpoint 5000 1 1
-./chip-tool thermostat write occupied-heating-setpoint 2200 1 1
-./chip-tool thermostat read occupied-heating-setpoint 1 1
+./chip-tool thermostat write occupied-heating-setpoint 3000 1 1
+./chip-tool thermostat write occupied-heating-setpoint 700 1 1
 ./chip-tool thermostat read unoccupied-cooling-setpoint   1 1
-./chip-tool thermostat write unoccupied-cooling-setpoint 2200  1 1
-./chip-tool thermostat read unoccupied-cooling-setpoint   1 1
-./chip-tool thermostat write unoccupied-cooling-setpoint 2200  1 1
-./chip-tool thermostat read unoccupied-cooling-setpoint   1 1
-./chip-tool thermostat read unoccupied-heating-setpoint  1 1
-./chip-tool thermostat read unoccupied-heating-setpoint  1 1
-./chip-tool thermostat read unoccupied-heating-setpoint  1 1
-./chip-tool thermostat read min-heat-setpoint-limit    1 1
-./chip-tool thermostat read  abs-min-heat-setpoint-limit   1 1
-./chip-tool thermostat read  abs-max-heat-setpoint-limit   1 1
-./chip-tool thermostat write min-heat-setpoint-limit 950  1 1
-./chip-tool thermostat read min-heat-setpoint-limit    1 1
-./chip-tool thermostat write min-heat-setpoint-limit 9000  1 1
-./chip-tool thermostat write min-heat-setpoint-limit 300  1 1
-./chip-tool thermostat write min-heat-setpoint-limit 1000  1 1
-./chip-tool thermostat read  max-heat-setpoint-limit  1 1
-./chip-tool thermostat read  abs-max-heat-setpoint-limit  1 1
+./chip-tool thermostat write  unoccupied-cooling-setpoint 500 1 1
+./chip-tool thermostat write  unoccupied-cooling-setpoint 5000 1 1
+./chip-tool thermostat write unoccupied-cooling-setpoint 2000  1 1
+./chip-tool thermostat write unoccupied-cooling-setpoint 3200  1 1
+./chip-tool thermostat read unoccupied-heating-setpoint   1 1
+./chip-tool thermostat write  unoccupied-heating-setpoint 500 1 1
+./chip-tool thermostat write  unoccupied-heating-setpoint 5000 1 1
+./chip-tool thermostat write unoccupied-heating-setpoint 2000  1 1
+./chip-tool thermostat write unoccupied-heating-setpoint 1200  1 1
 ./chip-tool thermostat read min-heat-setpoint-limit  1 1
-./chip-tool thermostat write  max-heat-setpoint-limit 1200 1 1
-./chip-tool thermostat read  max-heat-setpoint-limit  1 1
-./chip-tool thermostat write  max-heat-setpoint-limit 7000 1 1
-./chip-tool thermostat write  max-heat-setpoint-limit 100 1 1
-./chip-tool thermostat write  max-heat-setpoint-limit 2000 1 1
+./chip-tool thermostat write min-heat-setpoint-limit   1000 1 1
+./chip-tool thermostat read  min-heat-setpoint-limit  1 1
+./chip-tool thermostat write min-heat-setpoint-limit 300  1 1
+./chip-tool thermostat write min-heat-setpoint-limit 9000  1 1
+./chip-tool thermostat write min-heat-setpoint-limit 1200  1 1
+./chip-tool thermostat write min-heat-setpoint-limit 700  1 1
 ./chip-tool thermostat read max-heat-setpoint-limit 1 1
-./chip-tool thermostat write max-heat-setpoint-limit 9000  1 1
-./chip-tool thermostat write max-heat-setpoint-limit 2000 1 1
+./chip-tool thermostat write max-heat-setpoint-limit    1200 1 1
+./chip-tool thermostat read  max-heat-setpoint-limit  1 1
+./chip-tool thermostat write  max-heat-setpoint-limit 100 1 1
+./chip-tool thermostat write  max-heat-setpoint-limit 7000 1 1
+./chip-tool thermostat write  max-heat-setpoint-limit 2000 1 1
+./chip-tool thermostat write  max-heat-setpoint-limit 700 1 1
+./chip-tool thermostat read min-cool-setpoint-limit 1 1
+./chip-tool thermostat write min-cool-setpoint-limit 1700 1 1
+./chip-tool thermostat read  min-cool-setpoint-limit   1 1
+./chip-tool thermostat write min-cool-setpoint-limit 400  1 1
+./chip-tool thermostat write min-cool-setpoint-limit 9000  1 1
+./chip-tool thermostat write min-cool-setpoint-limit 2600 1 1
+./chip-tool thermostat write min-cool-setpoint-limit 1600 1 1
 ./chip-tool thermostat read max-cool-setpoint-limit 1 1
-./chip-tool thermostat read  abs-max-cool-setpoint-limit 1 1
-./chip-tool thermostat read min-cool-setpoint-limit  1 1
+./chip-tool thermostat write max-cool-setpoint-limit 2800 1 1
+./chip-tool thermostat read  max-cool-setpoint-limit   1 1
+./chip-tool thermostat write max-cool-setpoint-limit 100 1 1
 ./chip-tool thermostat write max-cool-setpoint-limit 9100 1 1
-./chip-tool thermostat write max-cool-setpoint-limit 1600 1 1
+./chip-tool thermostat write max-cool-setpoint-limit 2000 1 1
+./chip-tool thermostat write max-cool-setpoint-limit 3200 1 1
 ./chip-tool thermostat write min-heat-setpoint-limit 700 1 1
 ./chip-tool thermostat write max-heat-setpoint-limit 3000 1 1
 ./chip-tool thermostat write min-cool-setpoint-limit 1600 1 1
 ./chip-tool thermostat write max-cool-setpoint-limit 3200 1 1
+./chip-tool thermostat read min-setpoint-dead-band 1 1
+./chip-tool thermostat write min-setpoint-dead-band  12 1 1
+./chip-tool thermostat read min-setpoint-dead-band 1 1
+./chip-tool thermostat write min-setpoint-dead-band 30 1 1
+./chip-tool thermostat write min-setpoint-dead-band -10 1 1
+./chip-tool thermostat write min-setpoint-dead-band 0 1 1
+./chip-tool thermostat write min-setpoint-dead-band 25 1 1
 ./chip-tool thermostat read control-sequence-of-operation   1 1
 ./chip-tool thermostat write control-sequence-of-operation 1  1 1
 ./chip-tool thermostat read control-sequence-of-operation   1 1
-./chip-tool thermostat write occupied-heating-setpoint -30 1 1
-./chip-tool thermostat write occupied-heating-setpoint 30 1 1
-./chip-tool thermostat write occupied-cooling-setpoint -30  1 1
+./chip-tool thermostat write occupied-heating-setpoint 1000 1 1
+./chip-tool thermostat read  occupied-heating-setpoint 1 1
+./chip-tool thermostat setpoint-raise-lower 0x00 -30 1 1
+./chip-tool thermostat read  occupied-heating-setpoint 1 1
+./chip-tool thermostat write occupied-heating-setpoint 1200 1 1
+./chip-tool thermostat read  occupied-heating-setpoint 1 1
+./chip-tool thermostat setpoint-raise-lower 0x00 +30 1 1
+./chip-tool thermostat read  occupied-heating-setpoint 1 1
+./chip-tool thermostat write occupied-cooling-setpoint 2000 1 1
+./chip-tool thermostat read  occupied-cooling-setpoint 1 1
 ./chip-tool thermostat setpoint-raise-lower 0x01 -30 1 1
-./chip-tool thermostat read occupied-cooling-setpoint  1 1
-./chip-tool thermostat write occupied-cooling-setpoint 30  1 1
-./chip-tool thermostat setpoint-raise-lower 0x01 30 1 1
-./chip-tool thermostat read occupied-cooling-setpoint  1 1
-./chip-tool thermostat write occupied-cooling-setpoint -30  1 1
+./chip-tool thermostat read  occupied-cooling-setpoint 1 1
+./chip-tool thermostat write occupied-cooling-setpoint 2000 1 1
+./chip-tool thermostat read  occupied-cooling-setpoint 1 1
+./chip-tool thermostat setpoint-raise-lower 0x01 +30 1 1
+./chip-tool thermostat read  occupied-cooling-setpoint 1 1
+./chip-tool thermostat write occupied-heating-setpoint 1200 1 1
+./chip-tool thermostat write occupied-cooling-setpoint 2000 1 1
 ./chip-tool thermostat setpoint-raise-lower 0x02 -30 1 1
-./chip-tool thermostat read occupied-cooling-setpoint  1 1
-./chip-tool thermostat write occupied-cooling-setpoint 30  1 1
-./chip-tool thermostat setpoint-raise-lower 0x02 30 1 1
-./chip-tool thermostat read occupied-cooling-setpoint  1 1
+./chip-tool thermostat read  occupied-heating-setpoint 1 1
+./chip-tool thermostat read  occupied-cooling-setpoint 1 1
+./chip-tool thermostat write occupied-heating-setpoint 1000 1 1
+./chip-tool thermostat write occupied-cooling-setpoint 2000 1 1
+./chip-tool thermostat setpoint-raise-lower 0x02 +30 1 1
+./chip-tool thermostat read  occupied-heating-setpoint 1 1
+./chip-tool thermostat read  occupied-cooling-setpoint 1 1
 End
