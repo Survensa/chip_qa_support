@@ -1,70 +1,74 @@
 $ Basic Information Cluster
-# [TC-BINFO-1.1] Global attributes for Basic Information Cluster[DUT-Server]
-./chip-tool basic read cluster-revision 1 0
-./chip-tool basic read feature-map 1 0
-./chip-tool basic read attribute-list 1 0
-./chip-tool basic read accepted-command-list 1 0
-./chip-tool basic read generated-command-list 1 0
+# [TC-BINFO-1.1] Global attributes for basicinformation Information Cluster[DUT-Server]
+./chip-tool basicinformation read cluster-revision 1 0
+./chip-tool basicinformation read feature-map 1 0
+./chip-tool basicinformation read attribute-list 1 0
+./chip-tool basicinformation read event-list 1 0
+./chip-tool basicinformation read accepted-command-list 1 0
+./chip-tool basicinformation read generated-command-list 1 0
 End
 # [TC-BINFO-2.1] Attributes [DUT-Server]
-./chip-tool basic read data-model-revision 1 0 
-./chip-tool basic write-by-id 0x0000 0x1124 1 0
-./chip-tool basic read data-model-revision 1 0 
-./chip-tool basic read vendor-name 1 0
-./chip-tool basic write-by-id 0x0001 '"sample"' 1 0
-./chip-tool basic read vendor-name 1 0
-./chip-tool basic read vendor-id 1 0
-./chip-tool basic write-by-id 0x0002 0x0011 1 0
-./chip-tool basic read vendor-id 1 0
-./chip-tool basic read product-name 1 0
-./chip-tool basic write-by-id 0x0003 '"newproduct"' 1 0
-./chip-tool basic read product-name 1 0
-./chip-tool basic read product-id 1 0
-./chip-tool basic write-by-id 0x0004 0x4521 1 0
-./chip-tool basic read product-id 1 0
-./chip-tool basic read node-label 1 0
-./chip-tool basic write node-label '"newnode"' 1 0
-./chip-tool basic read node-label 1 0
-./chip-tool basic read location 1 0
-./chip-tool basic write location in 1 0
-./chip-tool basic read location 1 0
-./chip-tool basic read hardware-version 1 0
-./chip-tool basic write-by-id 0x7 0x4531 1 0
-./chip-tool basic read hardware-version 1 0
-./chip-tool basic read  hardware-version-string 1 0
-./chip-tool basic write-by-id 0x0008 '"newhardwareversionstring"' 1 0
-./chip-tool basic read  hardware-version-string 1 0
-./chip-tool basic read  software-version 1 0
-./chip-tool basic write-by-id 0x9 0x8213 1 0
-./chip-tool basic read  software-version 1 0
-./chip-tool basic read  software-version-string 1 0
-./chip-tool basic write-by-id 0x000a 1.0 1 0
-./chip-tool basic read  software-version-string 1 0
-./chip-tool basic read manufacturing-date 1 0
-./chip-tool basic write-by-id 0x000b '"20220214789452IN"' 1 0
-./chip-tool basic read manufacturing-date 1 0
-./chip-tool basic read part-number 1 0
-./chip-tool basic write-by-id 0x000c '"newpart"' 1 0
-./chip-tool basic read part-number 1 0
-./chip-tool basic read product-url 1 0
-./chip-tool basic write-by-id 0x000d '"www.example.com"' 1 0
-./chip-tool basic read product-url 1 0
-./chip-tool basic read product-label 1 0
-./chip-tool basic write-by-id 0x000e '"newproductlabel"' 1 0
-./chip-tool basic read product-label 1 0
-./chip-tool basic read serial-number 1 0
-./chip-tool basic write-by-id 0x000f '"newserialnumber"' 1 0
-./chip-tool basic read serial-number 1 0
-./chip-tool basic read local-config-disabled  1 0
-./chip-tool basic write local-config-disabled 1 1 0
-./chip-tool basic read local-config-disabled  1 0
-./chip-tool basic read reachable 1 0
-./chip-tool basic write-by-id 0x0011 0 1 0
-./chip-tool basic read reachable 1 0
-./chip-tool basic read unique-id 1 0
-./chip-tool basic write-by-id 0x0012 '"newid"' 1 0
-./chip-tool basic read unique-id 1 0
-./chip-tool basic read capability-minima 1 0
-./chip-tool basic write-by-id 0x0013 '[4,4]' 1 0
-./chip-tool basic read capability-minima 1 0
+./chip-tool basicinformation read data-model-revision 1 0 
+./chip-tool basicinformation write-by-id 0x0000 0x1124 1 0
+./chip-tool basicinformation read data-model-revision 1 0 
+./chip-tool basicinformation read vendor-name 1 0
+./chip-tool basicinformation write-by-id 0x0001 '"sample"' 1 0
+./chip-tool basicinformation read vendor-name 1 0
+./chip-tool basicinformation read vendor-id 1 0
+./chip-tool basicinformation write-by-id 0x0002 0x0011 1 0
+./chip-tool basicinformation read vendor-id 1 0
+./chip-tool basicinformation read product-name 1 0
+./chip-tool basicinformation write-by-id 0x0003 '"newproduct"' 1 0
+./chip-tool basicinformation read product-name 1 0
+./chip-tool basicinformation read product-id 1 0
+./chip-tool basicinformation write-by-id 0x0004 0x4521 1 0
+./chip-tool basicinformation read product-id 1 0
+./chip-tool basicinformation read node-label 1 0
+./chip-tool basicinformation write node-label '"newnode"' 1 0
+./chip-tool basicinformation read node-label 1 0
+./chip-tool basicinformation read location 1 0
+./chip-tool basicinformation write location in 1 0
+./chip-tool basicinformation read location 1 0
+./chip-tool basicinformation read hardware-version 1 0
+./chip-tool basicinformation write-by-id 0x7 0x4531 1 0
+./chip-tool basicinformation read hardware-version 1 0
+./chip-tool basicinformation read  hardware-version-string 1 0
+./chip-tool basicinformation write-by-id 0x0008 '"newhardwareversionstring"' 1 0
+./chip-tool basicinformation read  hardware-version-string 1 0
+./chip-tool basicinformation read  software-version 1 0
+./chip-tool basicinformation write-by-id 0x9 0x8213 1 0
+./chip-tool basicinformation read  software-version 1 0
+./chip-tool basicinformation read  software-version-string 1 0
+./chip-tool basicinformation write-by-id 0x000a 1.0 1 0
+./chip-tool basicinformation read  software-version-string 1 0
+./chip-tool basicinformation read manufacturing-date 1 0
+./chip-tool basicinformation write-by-id 0x000b '"20220214789452IN"' 1 0
+./chip-tool basicinformation read manufacturing-date 1 0
+./chip-tool basicinformation read part-number 1 0
+./chip-tool basicinformation write-by-id 0x000c '"newpart"' 1 0
+./chip-tool basicinformation read part-number 1 0
+./chip-tool basicinformation read product-url 1 0
+./chip-tool basicinformation write-by-id 0x000d '"www.example.com"' 1 0
+./chip-tool basicinformation read product-url 1 0
+./chip-tool basicinformation read product-label 1 0
+./chip-tool basicinformation write-by-id 0x000e '"newproductlabel"' 1 0
+./chip-tool basicinformation read product-label 1 0
+./chip-tool basicinformation read serial-number 1 0
+./chip-tool basicinformation write-by-id 0x000f '"newserialnumber"' 1 0
+./chip-tool basicinformation read serial-number 1 0
+./chip-tool basicinformation read local-config-disabled  1 0
+./chip-tool basicinformation write local-config-disabled 1 1 0
+./chip-tool basicinformation read local-config-disabled  1 0
+./chip-tool basicinformation read reachable 1 0
+./chip-tool basicinformation write-by-id 0x0011 0 1 0
+./chip-tool basicinformation read reachable 1 0
+./chip-tool basicinformation read unique-id 1 0
+./chip-tool basicinformation write-by-id 0x0012 '"newid"' 1 0
+./chip-tool basicinformation read unique-id 1 0
+./chip-tool basicinformation read capability-minima 1 0
+./chip-tool basicinformation write-by-id 0x0013 '[4,4]' 1 0
+./chip-tool basicinformation read capability-minima 1 0
+./chip-tool basicinformation read product-appearance 1 0
+./chip-tool basicinformation write-by-id 0x0014 '[3,4]' 1 0
+./chip-tool basicinformation read product-appearance 1 0
 End
