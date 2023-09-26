@@ -280,15 +280,17 @@ End
 ./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 ./chip-tool doorlock write require-pinfor-remote-operation 1 1 1
 ./chip-tool doorlock read require-pinfor-remote-operation 1 1
-./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 ./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 12345678
 ./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000
+./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 ./chip-tool doorlock write wrong-code-entry-limit 3 1 1
+./chip-tool doorlock read wrong-code-entry-limit 1 1
 ./chip-tool doorlock write user-code-temporary-disable-time 15 1 1
-./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 12345678
-./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 12345678
-./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 12345678
 ./chip-tool doorlock read user-code-temporary-disable-time 1 1
+./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 12345678
+./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 12345678
+./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 12345678
+./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 12345678
 ./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 sleep 15
 ./chip-tool doorlock write auto-relock-time 60 1 1
