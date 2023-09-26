@@ -11,9 +11,11 @@ End
 ./chip-tool doorlock read lock-state 1 1
 ./chip-tool doorlock write-by-id 0 2 1 1
 ./chip-tool doorlock read lock-state 1 1
-./chip-tool doorlock lock-door 1 1  --timedInteractionTimeoutMs 1000
+./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000
+./chip-tool doorlock set-credential 0 '{ "credentialType" : 1 , "credentialIndex" : 1 }' 123456 1 null null 1 1 --timedInteractionTimeoutMs 1000
+./chip-tool doorlock lock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 ./chip-tool doorlock read lock-state 1 1
-./chip-tool doorlock  unlock-door 1 1  --timedInteractionTimeoutMs 1000
+./chip-tool doorlock unlock-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 123456
 ./chip-tool doorlock read lock-state 1 1
 ./chip-tool doorlock read lock-state 1 1
 ./chip-tool doorlock read lock-type 1 1
@@ -125,6 +127,8 @@ End
 ./chip-tool doorlock read number-of-credentials-supported-per-user 1 1
 ./chip-tool doorlock  write-by-id 28 85 1 1
 ./chip-tool doorlock read number-of-credentials-supported-per-user 1 1
+./chip-tool doorlock clear-credential  '{ "credentialType" : 1 , "credentialIndex" : 1 }'  1 1 --timedInteractionTimeoutMs 1000
+./chip-tool doorlock clear-user 1 1 1  --timedInteractionTimeoutMs 1000
 End
 # [TC-DRLK-2.2] Verification for Door lock command[DUT-Server]
 ./chip-tool doorlock write require-pinfor-remote-operation 0 1 1
