@@ -204,6 +204,7 @@ End
 ./chip-tool doorlock get-week-day-schedule 1 1 1 1
 ./chip-tool doorlock set-week-day-schedule 0 1 7 15 45 16 55 1 1
 ./chip-tool doorlock get-week-day-schedule 0 1 1 1
+./chip-tool doorlock get-week-day-schedule 1 2 1 1
 ./chip-tool doorlock clear-week-day-schedule 1 1 1 1
 ./chip-tool doorlock get-week-day-schedule 1 1 1 1
 ./chip-tool doorlock clear-user 1 1 1 --timedInteractionTimeoutMs 1000
@@ -232,6 +233,7 @@ End
 ./chip-tool doorlock get-year-day-schedule 1 1 1 1
 ./chip-tool doorlock set-year-day-schedule 1 1 1080 2100 1 1
 ./chip-tool doorlock get-year-day-schedule 1 1 1 1
+./chip-tool doorlock get-year-day-schedule 1 2 1 1
 ./chip-tool doorlock clear-year-day-schedule 0 0 1 1
 ./chip-tool doorlock clear-user 1 1 1 --timedInteractionTimeoutMs 1000
 End
