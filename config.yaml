@@ -1,3 +1,6 @@
+# Path where chip-tool is located for execution 
+chip_tool_directory: v1.1/apps
+
 # Provide the folder name to build the connectedhopeip
 folder: v1.1 # NOTE : Make a directory named apps inside this folder
 
@@ -22,6 +25,3 @@ thermostat: 'N'
 ota_provider_app: 'N'
 ota_requestor_app: 'N'
 chip_tool: 'Y'
-
-# Path where chip-tool is located
-chip_tool_directory: v1.1/apps
