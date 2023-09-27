@@ -49,15 +49,12 @@ def extract_tc_details(h1_tags, a, row_number):
 
         if second_h1:
             for h5_tag in h5_tags:
-                if h5_tag.find_previous('h1') == first_h1:
-                    if h5_tag.find_next('h1') == second_h1:
-                        result.append(h5_tag)
+                if h5_tag.find_previous('h1') == first_h1 and h5_tag.find_next('h1') == second_h1:
+                    result.append(h5_tag)
         else:
-            h5_tags = first_h1.find_all_next('h6', {'id': lambda x: x and x.startswith('_test_procedure')})
             for h5_tag in h5_tags:
                 if h5_tag.find_previous('h1') == first_h1:
-                    if h5_tag.find_next('h1') == second_h1:
-                        result.append(h5_tag)
+                    result.append(h5_tag)
 
         if result:
             for j in range(len(result)):
@@ -83,7 +80,7 @@ def extract_tc_details(h1_tags, a, row_number):
                 # Modify row_values list to include "Test case name"
                 row_values = [row_number, cluster_name, head_text, testcase_name, test_plan]
                 sheet1.append(row_values)
-                
+
                 print(f"Fetching details for Test Case: {testcase_name}")
 
                 # Increment row_number for each new row
