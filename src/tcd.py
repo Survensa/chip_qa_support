@@ -29,11 +29,8 @@ for col_num, header in enumerate(headers, 1):
 for cell in sheet1[1]:
     cell.alignment = Alignment(horizontal='center', vertical='center')
 
-# Create a sheet for changes
-sheet2 = workbook.create_sheet("TC Change")
-
-# Define a function to extract test case details and check for changes
-def extract_tc_details(h1_tags, a, row_number, change_sheet):
+# Define a function to extract test case details
+def extract_tc_details(h1_tags, a, row_number):
     for i, h1_tag in enumerate(h1_tags):
         h1 = h1_tag.text
         cluster_name = h1.replace('Cluster Test Plan', '')
@@ -89,14 +86,6 @@ def extract_tc_details(h1_tags, a, row_number, change_sheet):
                 
                 print(f"Fetching details for Test Case: {testcase_name}")
 
-                # Check for changes and append to the "TC Change" sheet
-                if row_number <= change_sheet.max_row:
-                    old_row_values = [cell.value for cell in change_sheet[row_number]]
-                    if row_values != old_row_values:
-                        change_sheet.append(['Removed' if cell.value != new_val else new_val for cell, new_val in zip(change_sheet[row_number], row_values)])
-                else:
-                    change_sheet.append(row_values)
-
                 # Increment row_number for each new row
                 row_number += 1
 
@@ -106,7 +95,7 @@ print("Parsing 'app' HTML...")
 with open(app_html, encoding='utf-8') as f1:
     soup1 = BeautifulSoup(f1, 'html.parser')
     h1_tags1 = soup1.find_all('h1', {'id': True})
-    extract_tc_details(h1_tags1, 1, 1, sheet2)  # Pass initial row_number as 1 and the change_sheet
+    extract_tc_details(h1_tags1, 1, 1)  # Pass initial row_number as 1
 
 # Calculate the next row_number after parsing the first HTML
 row_number = sheet1.max_row + 1
@@ -117,7 +106,7 @@ print("Parsing 'main' HTML...")
 with open(main_html, encoding='utf-8') as f2:
     soup2 = BeautifulSoup(f2, 'html.parser')
     h1_tags2 = soup2.find_all('h1', {'id': True})
-    extract_tc_details(h1_tags2, 0, row_number, sheet2)  # Pass the updated row_number and the change_sheet
+    extract_tc_details(h1_tags2, 0, row_number)  # Pass the updated row_number
 
 # Set the font for the entire sheet to Times New Roman
 for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=1, max_col=sheet1.max_column):
