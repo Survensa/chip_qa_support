@@ -2,8 +2,17 @@ from bs4 import BeautifulSoup
 import openpyxl
 from openpyxl.styles import Font, Alignment
 import re
+import json
 
 print("Process Starts")
+
+# Load existing JSON data or create an empty dictionary if it doesn't exist
+json_filename = 'src/TC_Summary.json'
+try:
+    with open(json_filename, 'r') as json_file:
+        existing_data = json.load(json_file)
+except FileNotFoundError:
+    existing_data = {}
 
 # Create an Excel workbook and define the filename
 workbook = openpyxl.Workbook()
@@ -120,6 +129,34 @@ for column_letter in ['A', 'E']:
 column_widths = {'A': 5, 'B': 30, 'C': 100, 'D': 25, 'E': 15}
 for column, width in column_widths.items():
     sheet1.column_dimensions[column].width = width
+
+# Compare the current data with existing data to identify added and removed test cases
+current_data = {}
+for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=2, max_col=5, values_only=True):
+    current_data[row[1]] = {'Test Case Name': row[2], 'Test Case ID': row[3], 'Test Plan': row[4]}
+
+added_test_cases = {}
+removed_test_cases = {}
+
+for cluster_name, cluster_data in current_data.items():
+    if cluster_name not in existing_data:
+        added_test_cases[cluster_name] = cluster_data
+    elif cluster_data != existing_data[cluster_name]:
+        removed_test_cases[cluster_name] = existing_data[cluster_name]
+
+# Save the current data as the new reference data in the JSON file
+with open(json_filename, 'w') as json_file:
+    json.dump(current_data, json_file, indent=4)
+
+# Add the added and removed test cases to a new sheet named "TC_Changes"
+changes_sheet = workbook.create_sheet(title="TC_Changes")
+changes_sheet.append(['Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type'])
+
+for cluster_name, cluster_data in added_test_cases.items():
+    changes_sheet.append([cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Added'])
+
+for cluster_name, cluster_data in removed_test_cases.items():
+    changes_sheet.append([cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Removed'])
 
 # Save the workbook
 print("Saving Excel workbook...")
