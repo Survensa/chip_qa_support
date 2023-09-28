@@ -3,7 +3,7 @@ name: Pull TC_Summary
 on:
   push:
     branches:
-      - main
+      -  main
     paths:
       - 'Docs/Test_Plan_HTML/*'  
   workflow_dispatch:
@@ -35,7 +35,7 @@ jobs:
           git config user.name "Your Name"
           git add Docs/TC_Summary.xlsx
           if [[ -n $(git status --porcelain) ]]; then
-            git commit -m "Update TC_Summary Excel file - $(date +'%Y-%m-%d %H:%M:%S')"
+            git commit -m "Added TC_Summary Excel file"
             git push
           else
             echo "No changes to commit."
@@ -52,19 +52,7 @@ jobs:
           git config user.name "Your Name"
           git add Docs/TC_Summary.html
           if [[ -n $(git status --porcelain) ]]; then
-            git commit -m "Update TC_Summary HTML file - $(date +'%Y-%m-%d %H:%M:%S')"
-            git push
-          else
-            echo "No changes to commit."
-          fi
-
-      - name: Commit and Push JSON File
-        run: |
-          git config user.email "you@example.com"
-          git config user.name "Your Name"
-          git add existing_data.json
-          if [[ -n $(git status --porcelain) ]]; then
-            git commit -m "Update existing_data JSON file - $(date +'%Y-%m-%d %H:%M:%S')"
+            git commit -m "Added TC_Summary html file"
             git push
           else
             echo "No changes to commit."
