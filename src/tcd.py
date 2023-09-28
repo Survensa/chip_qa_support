@@ -7,7 +7,7 @@ import json
 print("Process Starts")
 
 # Load existing JSON data or create an empty dictionary if it doesn't exist
-json_filename = 'src/TC_Summary.json'
+json_filename = 'Docs/TC_Summary.json'
 try:
     with open(json_filename, 'r') as json_file:
         existing_data = json.load(json_file)
@@ -150,6 +150,9 @@ print("JSON check completed. Added and removed test cases identified.")
 # Save the current data as the new reference data in the JSON file
 with open(json_filename, 'w') as json_file:
     json.dump(current_data, json_file, indent=4)
+
+# Print a message indicating that the JSON file is created
+print(f"JSON file saved as '{json_filename}'.")
 
 # Add the added and removed test cases to a new sheet named "TC_Changes"
 changes_sheet = workbook.create_sheet(title="TC_Changes")
