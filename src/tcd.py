@@ -5,13 +5,6 @@ import re
 
 print("Process Starts")
 
-# Load existing workbook if it exists
-existing_filename = 'Docs/TC_Summary.xlsx'
-try:
-    existing_workbook = openpyxl.load_workbook(existing_filename)
-except FileNotFoundError:
-    existing_workbook = None
-
 # Create an Excel workbook and define the filename
 workbook = openpyxl.Workbook()
 filename = 'Docs/TC_Summary.xlsx'
@@ -19,46 +12,79 @@ filename = 'Docs/TC_Summary.xlsx'
 app_html = 'Docs/Test_Plan_HTML/allclusters.html'
 main_html = 'Docs/Test_Plan_HTML/index.html'
 
-# Create or load the "All_TC_Details" sheet
-sheet_name = "All_TC_Details"
-if existing_workbook and sheet_name in existing_workbook.sheetnames:
-    sheet1 = existing_workbook[sheet_name]
-else:
-    sheet1 = workbook.active
-    sheet1.title = sheet_name
+# Create an Excel sheet
+sheet1 = workbook.active
+sheet1.title = "All_TC_Details"
 
-    # Define column headers
-    headers = ['S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan']
+# Define column headers
+headers = ['S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan']
 
-    # Add headers to the first row and set the font to bold for the headings
-    header_font = Font(name='Times New Roman', bold=True)
-    for col_num, header in enumerate(headers, 1):
-        cell = sheet1.cell(row=1, column=col_num, value=header)
-        cell.font = header_font
+# Add headers to the first row and set the font to bold for the headings
+header_font = Font(name='Times New Roman', bold=True)
+for col_num, header in enumerate(headers, 1):
+    cell = sheet1.cell(row=1, column=col_num, value=header)
+    cell.font = header_font
 
-    # Set header row alignment to center
-    for cell in sheet1[1]:
-        cell.alignment = Alignment(horizontal='center', vertical='center')
+# Set header row alignment to center
+for cell in sheet1[1]:
+    cell.alignment = Alignment(horizontal='center', vertical='center')
 
-# Create or load the "TC_Changes" sheet
-change_sheet_name = "TC_Changes"
-if existing_workbook and change_sheet_name in existing_workbook.sheetnames:
-    change_sheet = existing_workbook[change_sheet_name]
-else:
-    change_sheet = workbook.create_sheet(title=change_sheet_name)
+# Define a function to extract test case details
+def extract_tc_details(h1_tags, a, row_number):
+    for i, h1_tag in enumerate(h1_tags):
+        h1 = h1_tag.text
+        cluster_name = h1.replace('Cluster Test Plan', '')
 
-    # Define column headers for TC_Changes sheet
-    change_headers = ['Action', 'S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan']
+        print("-" * 40)
+        print(f"Fetching details for cluster: {cluster_name}")
 
-    # Add headers to the first row and set the font to bold for the headings
-    header_font = Font(name='Times New Roman', bold=True)
-    for col_num, header in enumerate(change_headers, 1):
-        cell = change_sheet.cell(row=1, column=col_num, value=header)
-        cell.font = header_font
+        first_h1 = h1_tag
+        if i == (len(h1_tags) - 1):
+            second_h1 = False
+        else:
+            second_h1 = h1_tags[i + 1]
 
-    # Set header row alignment to center
-    for cell in change_sheet[1]:
-        cell.alignment = Alignment(horizontal='center', vertical='center')
+        h5_tags = first_h1.find_all_next('h5', {'id': lambda x: x and x.startswith('_test_procedure')})
+        result = []
+
+        if second_h1:
+            for h5_tag in h5_tags:
+                if h5_tag.find_previous('h1') == first_h1 and h5_tag.find_next('h1') == second_h1:
+                    result.append(h5_tag)
+        else:
+            for h5_tag in h5_tags:
+                if h5_tag.find_previous('h1') == first_h1:
+                    result.append(h5_tag)
+
+        if result:
+            for j in range(len(result)):
+                h4_tag = result[j].find_previous('h4')
+                head_text_match = re.search(r'\[(.*?)\]\s*(.*)', h4_tag.text)
+                if head_text_match:
+                    head_text = '[' + head_text_match.group(1) + '] ' + head_text_match.group(2)
+                else:
+                    head_text = ''
+
+                # Extract the "Test case name" using regular expressions
+                testcase_match = re.search(r'\[(.*?)\]', head_text)
+                if testcase_match:
+                    testcase_name = testcase_match.group(1)  # Extract the first group (inside parentheses)
+                else:
+                    testcase_name = ''
+
+                if a == 0:
+                    test_plan = "Core Test Case"
+                else:
+                    test_plan = "App Test Case"
+
+                # Modify row_values list to include "Test case name"
+                row_values = [row_number, cluster_name, head_text, testcase_name, test_plan]
+                sheet1.append(row_values)
+
+                print(f"Fetching details for Test Case: {testcase_name}")
+
+                # Increment row_number for each new row
+                row_number += 1
 
 # Parse 'app' HTML
 print("^" * 40)
@@ -66,7 +92,7 @@ print("Parsing 'app' HTML...")
 with open(app_html, encoding='utf-8') as f1:
     soup1 = BeautifulSoup(f1, 'html.parser')
     h1_tags1 = soup1.find_all('h1', {'id': True})
-    extract_tc_details(h1_tags1, 1, 1, sheet1)
+    extract_tc_details(h1_tags1, 1, 1)  # Pass initial row_number as 1
 
 # Calculate the next row_number after parsing the first HTML
 row_number = sheet1.max_row + 1
@@ -77,7 +103,7 @@ print("Parsing 'main' HTML...")
 with open(main_html, encoding='utf-8') as f2:
     soup2 = BeautifulSoup(f2, 'html.parser')
     h1_tags2 = soup2.find_all('h1', {'id': True})
-    extract_tc_details(h1_tags2, 0, row_number, sheet1)
+    extract_tc_details(h1_tags2, 0, row_number)  # Pass the updated row_number
 
 # Set the font for the entire sheet to Times New Roman
 for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=1, max_col=sheet1.max_column):
@@ -94,27 +120,6 @@ for column_letter in ['A', 'E']:
 column_widths = {'A': 5, 'B': 30, 'C': 100, 'D': 25, 'E': 15}
 for column, width in column_widths.items():
     sheet1.column_dimensions[column].width = width
-
-# Extracted test case details
-extracted_data = []
-
-# Compare with existing data
-existing_data = []
-for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=1, max_col=sheet1.max_column):
-    row_data = [cell.value for cell in row]
-    existing_data.append(row_data)
-
-# Identify added and removed test cases
-added_test_cases = [row for row in extracted_data if row not in existing_data]
-removed_test_cases = [row for row in existing_data if row not in extracted_data]
-
-# Write added test cases to "TC_Changes" sheet
-for added_row in added_test_cases:
-    change_sheet.append(['Added'] + added_row)
-
-# Write removed test cases to "TC_Changes" sheet
-for removed_row in removed_test_cases:
-    change_sheet.append(['Removed'] + removed_row)
 
 # Save the workbook
 print("Saving Excel workbook...")
