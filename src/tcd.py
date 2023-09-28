@@ -73,10 +73,15 @@ def find_and_append_changes(html_tags, a):
                 test_plan = "Core Test Case" if a == 0 else "App Test Case"
 
                 # Check if the row already exists in the All_TC_Details sheet
-                existing_row = sheet1.find(testcase_name, column=3)
+                existing_row = None
+                for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=4, max_col=4):
+                    if row[0].value == testcase_name:
+                        existing_row = row[0].row
+                        break
+
                 if existing_row:
                     # Row exists, compare values
-                    existing_values = [cell.value for cell in sheet1[existing_row.row]]
+                    existing_values = [cell.value for cell in sheet1[existing_row]]
                     new_values = [row_number, cluster_name, head_text, testcase_name, test_plan]
 
                     if existing_values != new_values:
@@ -106,11 +111,11 @@ with open(main_html, encoding='utf-8') as f2:
     find_and_append_changes(h1_tags2, 0)
 
 # Identify removed items
-for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=1, max_col=sheet1.max_column):
-    testcase_name = row[3].value
+for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=4, max_col=4):
+    testcase_name = row[0].value
     if not any(testcase_name in h1_tag.text for h1_tag in h1_tags1 + h1_tags2):
         # Test case not found in HTML data, append to the changes sheet as removed
-        changes_sheet.append([row[0].value, row[1].value, row[2].value, row[3].value, row[4].value, "Removed"])
+        changes_sheet.append([row[0].row, row[1].value, row[2].value, row[3].value, row[4].value, "Removed"])
 
 # Set the font for the entire sheet to Times New Roman
 for row in changes_sheet.iter_rows(min_row=2, max_row=changes_sheet.max_row, min_col=1, max_col=changes_sheet.max_column):
