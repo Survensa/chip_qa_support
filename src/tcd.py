@@ -144,6 +144,9 @@ for cluster_name, cluster_data in current_data.items():
     elif cluster_data != existing_data[cluster_name]:
         removed_test_cases[cluster_name] = existing_data[cluster_name]
 
+# Print a message indicating that the JSON check is done
+print("JSON check completed. Added and removed test cases identified.")
+
 # Save the current data as the new reference data in the JSON file
 with open(json_filename, 'w') as json_file:
     json.dump(current_data, json_file, indent=4)
