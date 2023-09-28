@@ -133,7 +133,13 @@ for column, width in column_widths.items():
 # Compare the current data with existing data to identify added and removed test cases
 current_data = {}
 for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=2, max_col=5, values_only=True):
-    current_data[row[1]] = {'Test Case Name': row[2], 'Test Case ID': row[3], 'Test Plan': row[4]}
+    # Set default values for missing elements
+    cluster_name = row[1] if len(row) >= 2 else None
+    test_case_name = row[2] if len(row) >= 3 else None
+    test_case_id = row[3] if len(row) >= 4 else None
+    test_plan = row[4] if len(row) >= 5 else None
+
+    current_data[cluster_name] = {'Test Case Name': test_case_name, 'Test Case ID': test_case_id, 'Test Plan': test_plan}
 
 added_test_cases = {}
 removed_test_cases = {}
@@ -151,18 +157,18 @@ print("JSON check completed. Added and removed test cases identified.")
 with open(json_filename, 'w') as json_file:
     json.dump(current_data, json_file, indent=4)
 
-# Print a message indicating that the JSON file is created
-print(f"JSON file saved as '{json_filename}'.")
-
 # Add the added and removed test cases to a new sheet named "TC_Changes"
 changes_sheet = workbook.create_sheet(title="TC_Changes")
 changes_sheet.append(['Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type'])
 
-for cluster_name, cluster_data in added_test_cases.items():
-    changes_sheet.append([cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Added'])
+if not added_test_cases and not removed_test_cases:
+    changes_sheet.append(['No change found', '', '', '', ''])
+else:
+    for cluster_name, cluster_data in added_test_cases.items():
+        changes_sheet.append([cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Added'])
 
-for cluster_name, cluster_data in removed_test_cases.items():
-    changes_sheet.append([cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Removed'])
+    for cluster_name, cluster_data in removed_test_cases.items():
+        changes_sheet.append([cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Removed'])
 
 # Save the workbook
 print("Saving Excel workbook...")
