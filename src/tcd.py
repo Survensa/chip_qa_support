@@ -134,10 +134,10 @@ for column, width in column_widths.items():
 current_data = {}
 for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=2, max_col=5, values_only=True):
     # Set default values for missing elements
-    cluster_name = row[0] if len(row) >= 1 else None
-    test_case_name = row[1] if len(row) >= 2 else None
-    test_case_id = row[2] if len(row) >= 3 else None
-    test_plan = row[3] if len(row) >= 4 else None
+    cluster_name = row[0] if len(row) >= 0 else None
+    test_case_name = row[1] if len(row) >= 1 else None
+    test_case_id = row[2] if len(row) >= 2 else None
+    test_plan = row[3] if len(row) >= 3 else None
 
     current_data[cluster_name] = {'Test Case Name': test_case_name, 'Test Case ID': test_case_id, 'Test Plan': test_plan}
 
