@@ -1,421 +1,421 @@
 {
     "On/Off ": {
-        "Test Case Name": "[TC-OO-3.2] Functionality with client as DUT",
+        "Test Case Name": "[TC-OO-3.2]Functionality with client as DUT",
         "Test Case ID": "TC-OO-3.2",
         "Test Plan": "App Test Case"
     },
     "Temperature Measurement ": {
-        "Test Case Name": "[TC-TMP-2.2] Primary functionality with server as DUT",
+        "Test Case Name": "[TC-TMP-2.2]Primary functionality with server as DUT",
         "Test Case ID": "TC-TMP-2.2",
         "Test Plan": "App Test Case"
     },
     "Relative Humidity Measurement ": {
-        "Test Case Name": "[TC-RH-2.2] Primary Functionality with Server as DUT",
+        "Test Case Name": "[TC-RH-2.2]Primary Functionality with Server as DUT",
         "Test Case ID": "TC-RH-2.2",
         "Test Plan": "App Test Case"
     },
     "Thermostat User Configuration ": {
-        "Test Case Name": "[TC-TSUIC-2.2] Primary functionality with server as DUT",
+        "Test Case Name": "[TC-TSUIC-2.2]Primary functionality with server as DUT",
         "Test Case ID": "TC-TSUIC-2.2",
         "Test Plan": "App Test Case"
     },
     "Pump Configuration and Control ": {
-        "Test Case Name": "[TC-PCC-2.4] Life Time Counters with Server as DUT",
+        "Test Case Name": "[TC-PCC-2.4]Life Time Counters with Server as DUT",
         "Test Case ID": "TC-PCC-2.4",
         "Test Plan": "App Test Case"
     },
     "Media ": {
-        "Test Case Name": "[TC-ALOGIN-12.2] Account Login Verification (DUT as Client)",
+        "Test Case Name": "[TC-ALOGIN-12.2]Account Login Verification (DUT as Client)",
         "Test Case ID": "TC-ALOGIN-12.2",
         "Test Plan": "App Test Case"
     },
     "Level Control ": {
-        "Test Case Name": "[TC-LVL-7.1] Verification of MoveToClosestFrequency command (DUT as Server)",
+        "Test Case Name": "[TC-LVL-7.1]Verification of MoveToClosestFrequency command (DUT as Server)",
         "Test Case ID": "TC-LVL-7.1",
         "Test Plan": "App Test Case"
     },
     "Color Control ": {
-        "Test Case Name": "[TC-CC-9.4] ColorLoopSet Validation with client as DUT",
+        "Test Case Name": "[TC-CC-9.4]ColorLoopSet Validation with client as DUT",
         "Test Case ID": "TC-CC-9.4",
         "Test Plan": "App Test Case"
     },
     "Occupancy Sensing ": {
-        "Test Case Name": "[TC-OCC-3.1] Primary functionality with server as DUT",
+        "Test Case Name": "[TC-OCC-3.1]Primary functionality with server as DUT",
         "Test Case ID": "TC-OCC-3.1",
         "Test Plan": "App Test Case"
     },
     "Flow Measurement ": {
-        "Test Case Name": "[TC-FLW-2.2] Primary Functionality with Server as DUT",
+        "Test Case Name": "[TC-FLW-2.2]Primary Functionality with Server as DUT",
         "Test Case ID": "TC-FLW-2.2",
         "Test Plan": "App Test Case"
     },
     "Pressure Measurement ": {
-        "Test Case Name": "[TC-PRS-2.2] Primary Functionality with Server as DUT",
+        "Test Case Name": "[TC-PRS-2.2]Primary Functionality with Server as DUT",
         "Test Case ID": "TC-PRS-2.2",
         "Test Plan": "App Test Case"
     },
     "Window Covering ": {
-        "Test Case Name": "[TC-WNCV-7.1] GoToPercentage Commands Verification [DUT as Client]",
+        "Test Case Name": "[TC-WNCV-7.1]GoToPercentage Commands Verification [DUT as Client]",
         "Test Case ID": "TC-WNCV-7.1",
         "Test Plan": "App Test Case"
     },
     "Thermostat ": {
-        "Test Case Name": "[TC-TSTAT-3.2] Functionality with client as DUT",
+        "Test Case Name": "[TC-TSTAT-3.2]Functionality with client as DUT",
         "Test Case ID": "TC-TSTAT-3.2",
         "Test Plan": "App Test Case"
     },
     "Software Diagnostics ": {
-        "Test Case Name": "[TC-DGSW-3.2] Commands Generated [DUT as Client]",
+        "Test Case Name": "[TC-DGSW-3.2]Commands Generated [DUT as Client]",
         "Test Case ID": "TC-DGSW-3.2",
         "Test Plan": "App Test Case"
     },
     "Ethernet Network Diagnostics ": {
-        "Test Case Name": "[TC-DGETH-3.2] Command Generated DUT as Client]",
+        "Test Case Name": "[TC-DGETH-3.2]Command Generated DUT as Client]",
         "Test Case ID": "TC-DGETH-3.2",
         "Test Plan": "App Test Case"
     },
     "Thread Network Diagnostics ": {
-        "Test Case Name": "[TC-DGTHREAD-3.4] ResetCounts Command[DUT-Client]",
+        "Test Case Name": "[TC-DGTHREAD-3.4]ResetCounts Command[DUT-Client]",
         "Test Case ID": "TC-DGTHREAD-3.4",
         "Test Plan": "App Test Case"
     },
     "Wi-Fi Network Diagnostics ": {
-        "Test Case Name": "[TC-DGWIFI-3.2] Command Generated [DUT as Client]",
+        "Test Case Name": "[TC-DGWIFI-3.2]Command Generated [DUT as Client]",
         "Test Case ID": "TC-DGWIFI-3.2",
         "Test Plan": "App Test Case"
     },
     "Diagnostics Logs ": {
-        "Test Case Name": "[TC-DLOG-3.1] Diagnostic Logs Cluster Commands Checks[DUT-Client] - REMOVED",
+        "Test Case Name": "[TC-DLOG-3.1]Diagnostic Logs Cluster Commands Checks[DUT-Client] - REMOVED",
         "Test Case ID": "TC-DLOG-3.1",
         "Test Plan": "App Test Case"
     },
     "Identify ": {
-        "Test Case Name": "[TC-I-3.2] Functionality with Client as DUT",
+        "Test Case Name": "[TC-I-3.2]Functionality with Client as DUT",
         "Test Case ID": "TC-I-3.2",
         "Test Plan": "App Test Case"
     },
     "Power Source ": {
-        "Test Case Name": "[TC-PS-3.1] Endpoint composition and EndpointList",
+        "Test Case Name": "[TC-PS-3.1]Endpoint composition and EndpointList",
         "Test Case ID": "TC-PS-3.1",
         "Test Plan": "App Test Case"
     },
     "Power Source Configuration ": {
-        "Test Case Name": "[TC-PSCFG-2.2] Primary functionality with server as DUT",
+        "Test Case Name": "[TC-PSCFG-2.2]Primary functionality with server as DUT",
         "Test Case ID": "TC-PSCFG-2.2",
         "Test Plan": "App Test Case"
     },
     "Boolean State ": {
-        "Test Case Name": "[TC-BOOL-2.2] Primary Functionality with Server as DUT",
+        "Test Case Name": "[TC-BOOL-2.2]Primary Functionality with Server as DUT",
         "Test Case ID": "TC-BOOL-2.2",
         "Test Plan": "App Test Case"
     },
     "Illuminance Measurement ": {
-        "Test Case Name": "[TC-ILL-2.2] Primary Functionality with Server as DUT",
+        "Test Case Name": "[TC-ILL-2.2]Primary Functionality with Server as DUT",
         "Test Case ID": "TC-ILL-2.2",
         "Test Plan": "App Test Case"
     },
     "Switch ": {
-        "Test Case Name": "[TC-SWTCH-3.2] Primary functionality with client as DUT",
+        "Test Case Name": "[TC-SWTCH-3.2]Primary functionality with client as DUT",
         "Test Case ID": "TC-SWTCH-3.2",
         "Test Plan": "App Test Case"
     },
     "Actions ": {
-        "Test Case Name": "[TC-ACT-3.2] Functionality with client as DUT",
+        "Test Case Name": "[TC-ACT-3.2]Functionality with client as DUT",
         "Test Case ID": "TC-ACT-3.2",
         "Test Plan": "App Test Case"
     },
     "Mode Select ": {
-        "Test Case Name": "[TC-MOD-3.4] OnMode Overwriting StartUpMode (DUT as Server)",
+        "Test Case Name": "[TC-MOD-3.4]OnMode Overwriting StartUpMode (DUT as Server)",
         "Test Case ID": "TC-MOD-3.4",
         "Test Plan": "App Test Case"
     },
     "RVC Run Mode ": {
-        "Test Case Name": "[TC-RVCRUNM-3.3] On Mode and Startup Mode functionality with DUT as Server ",
+        "Test Case Name": "[TC-RVCRUNM-3.3]On Mode and Startup Mode functionality with DUT as Server ",
         "Test Case ID": "TC-RVCRUNM-3.3",
         "Test Plan": "App Test Case"
     },
     "RVC Clean Mode ": {
-        "Test Case Name": "[TC-RVCCLEANM-3.3] On Mode and Startup Mode functionality with DUT as Server ",
+        "Test Case Name": "[TC-RVCCLEANM-3.3]On Mode and Startup Mode functionality with DUT as Server ",
         "Test Case ID": "TC-RVCCLEANM-3.3",
         "Test Plan": "App Test Case"
     },
     "Descriptor Cluster TestPlan": {
-        "Test Case Name": "[TC-DESC-2.2] Descriptor Cluster Duplicate Condition with DUT as Server",
+        "Test Case Name": "[TC-DESC-2.2]Descriptor Cluster Duplicate Condition with DUT as Server",
         "Test Case ID": "TC-DESC-2.2",
         "Test Plan": "App Test Case"
     },
     "General Diagnostics ": {
-        "Test Case Name": "[TC-DGGEN-2.3] Command Received [DUT as Server]",
+        "Test Case Name": "[TC-DGGEN-2.3]Command Received [DUT as Server]",
         "Test Case ID": "TC-DGGEN-2.3",
         "Test Plan": "App Test Case"
     },
     "General Commissioning ": {
-        "Test Case Name": "[TC-CGEN-2.4] Verification For CommissioningError on response message [DUT as Server]",
+        "Test Case Name": "[TC-CGEN-2.4]Verification For CommissioningError on response message [DUT as Server]",
         "Test Case ID": "TC-CGEN-2.4",
         "Test Plan": "App Test Case"
     },
     "User Label ": {
-        "Test Case Name": "[TC-ULABEL-2.4] User Label cluster empty entry verification [DUT-server]",
+        "Test Case Name": "[TC-ULABEL-2.4]User Label cluster empty entry verification [DUT-server]",
         "Test Case ID": "TC-ULABEL-2.4",
         "Test Plan": "App Test Case"
     },
     "Fixed Label ": {
-        "Test Case Name": "[TC-FLABEL-2.1] Fixed Label cluster [DUT-server]",
+        "Test Case Name": "[TC-FLABEL-2.1]Fixed Label cluster [DUT-server]",
         "Test Case ID": "TC-FLABEL-2.1",
         "Test Plan": "App Test Case"
     },
     "Localization Configuration ": {
-        "Test Case Name": "[TC-LCFG-2.1] Localization Configuration Cluster Attributes[DUT-Server]",
+        "Test Case Name": "[TC-LCFG-2.1]Localization Configuration Cluster Attributes[DUT-Server]",
         "Test Case ID": "TC-LCFG-2.1",
         "Test Plan": "App Test Case"
     },
     "Unit Localization ": {
-        "Test Case Name": "[TC-LUNIT-3.1] Read and Write Unit Localization Cluster Attributes [DUT as Server]",
+        "Test Case Name": "[TC-LUNIT-3.1]Read and Write Unit Localization Cluster Attributes [DUT as Server]",
         "Test Case ID": "TC-LUNIT-3.1",
         "Test Plan": "App Test Case"
     },
     "Time Format Localization ": {
-        "Test Case Name": "[TC-LTIME-3.1] Read and Write Time Format Localization Cluster Attributes [DUT as Server]",
+        "Test Case Name": "[TC-LTIME-3.1]Read and Write Time Format Localization Cluster Attributes [DUT as Server]",
         "Test Case ID": "TC-LTIME-3.1",
         "Test Plan": "App Test Case"
     },
     "Door lock Test Plan": {
-        "Test Case Name": "[TC-DRLK-3.2] Commands [DUT - Client]",
+        "Test Case Name": "[TC-DRLK-3.2]Commands [DUT - Client]",
         "Test Case ID": "TC-DRLK-3.2",
         "Test Plan": "App Test Case"
     },
     "Binding ": {
-        "Test Case Name": "[TC-BIND-2.3] Binding Cluster Attributes-TH1 enables DUT to handle its Group settings [DUT-Controller]",
+        "Test Case Name": "[TC-BIND-2.3]Binding Cluster Attributes-TH1 enables DUT to handle its Group settings [DUT-Controller]",
         "Test Case ID": "TC-BIND-2.3",
         "Test Plan": "App Test Case"
     },
     "Groups ": {
-        "Test Case Name": "[TC-G-3.2] Commands [DUT-Client]",
+        "Test Case Name": "[TC-G-3.2]Commands [DUT-Client]",
         "Test Case ID": "TC-G-3.2",
         "Test Plan": "App Test Case"
     },
     "Scenes ": {
-        "Test Case Name": "[TC-S-2.6] RemainingCapacity functionality with DUT as Server - Multi-Fabric",
+        "Test Case Name": "[TC-S-2.6]RemainingCapacity functionality with DUT as Server - Multi-Fabric",
         "Test Case ID": "TC-S-2.6",
         "Test Plan": "App Test Case"
     },
     "Access Control cluster": {
-        "Test Case Name": "[TC-ACL-2.10] Persistence",
+        "Test Case Name": "[TC-ACL-2.10]Persistence",
         "Test Case ID": "TC-ACL-2.10",
         "Test Plan": "App Test Case"
     },
     "Bridged Device Basic Information Test Plan": {
-        "Test Case Name": "[TC-BRBINFO-3.1] Appearance Attribute DUT as Server",
+        "Test Case Name": "[TC-BRBINFO-3.1]Appearance Attribute DUT as Server",
         "Test Case ID": "TC-BRBINFO-3.1",
         "Test Plan": "App Test Case"
     },
     "Time Synchronization ": {
-        "Test Case Name": "[TC-TIMESYNC-3.1] Endpoint composition with DUT as Server",
+        "Test Case Name": "[TC-TIMESYNC-3.1]Endpoint composition with DUT as Server",
         "Test Case ID": "TC-TIMESYNC-3.1",
         "Test Plan": "App Test Case"
     },
     "Carbon Monoxide Concentration Measurement ": {
-        "Test Case Name": "[TC-CMOCONC-2.1] Attributes with DUT as Server",
+        "Test Case Name": "[TC-CMOCONC-2.1]Attributes with DUT as Server",
         "Test Case ID": "TC-CMOCONC-2.1",
         "Test Plan": "App Test Case"
     },
     "Carbon Dioxide Concentration Measurement ": {
-        "Test Case Name": "[TC-CDOCONC-2.1] Attributes with DUT as Server",
+        "Test Case Name": "[TC-CDOCONC-2.1]Attributes with DUT as Server",
         "Test Case ID": "TC-CDOCONC-2.1",
         "Test Plan": "App Test Case"
     },
     "Nitrogen Dioxide Concentration Measurement ": {
-        "Test Case Name": "[TC-NDOCONC-2.1] Attributes with DUT as Server",
+        "Test Case Name": "[TC-NDOCONC-2.1]Attributes with DUT as Server",
         "Test Case ID": "TC-NDOCONC-2.1",
         "Test Plan": "App Test Case"
     },
     "Ozone Concentration Measurement ": {
-        "Test Case Name": "[TC-OZCONC-2.1] Attributes with DUT as Server",
+        "Test Case Name": "[TC-OZCONC-2.1]Attributes with DUT as Server",
         "Test Case ID": "TC-OZCONC-2.1",
         "Test Plan": "App Test Case"
     },
     "PM2.5 Concentration Measurement ": {
-        "Test Case Name": "[TC-PMICONC-2.1] Attributes with DUT as Server",
+        "Test Case Name": "[TC-PMICONC-2.1]Attributes with DUT as Server",
         "Test Case ID": "TC-PMICONC-2.1",
         "Test Plan": "App Test Case"
     },
     "Formaldehyde Concentration Measurement ": {
-        "Test Case Name": "[TC-FLDCONC-2.1] Attributes with DUT as Server",
+        "Test Case Name": "[TC-FLDCONC-2.1]Attributes with DUT as Server",
         "Test Case ID": "TC-FLDCONC-2.1",
         "Test Plan": "App Test Case"
     },
     "PM1 Concentration Measurement ": {
-        "Test Case Name": "[TC-PMHCONC-2.1] Attributes with DUT as Server",
+        "Test Case Name": "[TC-PMHCONC-2.1]Attributes with DUT as Server",
         "Test Case ID": "TC-PMHCONC-2.1",
         "Test Plan": "App Test Case"
     },
     "PM10 Concentration Measurement ": {
-        "Test Case Name": "[TC-PMKCONC-2.1] Attributes with DUT as Server",
+        "Test Case Name": "[TC-PMKCONC-2.1]Attributes with DUT as Server",
         "Test Case ID": "TC-PMKCONC-2.1",
         "Test Plan": "App Test Case"
     },
     "Total Volatile Organic Compounds Concentration Measurement ": {
-        "Test Case Name": "[TC-TVOCCONC-2.1] Attributes with DUT as Server",
+        "Test Case Name": "[TC-TVOCCONC-2.1]Attributes with DUT as Server",
         "Test Case ID": "TC-TVOCCONC-2.1",
         "Test Plan": "App Test Case"
     },
     "Radon Concentration Measurement ": {
-        "Test Case Name": "[TC-RNCONC-2.1] Attributes with DUT as Server",
+        "Test Case Name": "[TC-RNCONC-2.1]Attributes with DUT as Server",
         "Test Case ID": "TC-RNCONC-2.1",
         "Test Plan": "App Test Case"
     },
     "Temperature Control ": {
-        "Test Case Name": "[TC-TCTL-3.3] Optional temperature level functionality with DUT as Server",
+        "Test Case Name": "[TC-TCTL-3.3]Optional temperature level functionality with DUT as Server",
         "Test Case ID": "TC-TCTL-3.3",
         "Test Plan": "App Test Case"
     },
     "Laundry Washer Mode ": {
-        "Test Case Name": "[TC-LWM-3.3] On Mode and Startup Mode functionality with DUT as Server - REMOVED",
+        "Test Case Name": "[TC-LWM-3.3]On Mode and Startup Mode functionality with DUT as Server - REMOVED",
         "Test Case ID": "TC-LWM-3.3",
         "Test Plan": "App Test Case"
     },
     "Washer Controls ": {
-        "Test Case Name": "[TC-WASHERCTRL-2.2] Optional rinse attributes with DUT as Server",
+        "Test Case Name": "[TC-WASHERCTRL-2.2]Optional rinse attributes with DUT as Server",
         "Test Case ID": "TC-WASHERCTRL-2.2",
         "Test Plan": "App Test Case"
     },
     "Fan Control ": {
-        "Test Case Name": "[TC-FAN-3.6] Optional direction functionality with DUT as Server",
+        "Test Case Name": "[TC-FAN-3.6]Optional direction functionality with DUT as Server",
         "Test Case ID": "TC-FAN-3.6",
         "Test Plan": "App Test Case"
     },
     "Dishwasher Mode ": {
-        "Test Case Name": "[TC-DISHM-3.3] On Mode and Startup Mode functionality with DUT as Server - REMOVED",
+        "Test Case Name": "[TC-DISHM-3.3]On Mode and Startup Mode functionality with DUT as Server - REMOVED",
         "Test Case ID": "TC-DISHM-3.3",
         "Test Plan": "App Test Case"
     },
     "Dishwasher Alarm ": {
-        "Test Case Name": "[TC-DISHALM-3.6] Water Level alarm functionality with DUT as Server",
+        "Test Case Name": "[TC-DISHALM-3.6]Water Level alarm functionality with DUT as Server",
         "Test Case ID": "TC-DISHALM-3.6",
         "Test Plan": "App Test Case"
     },
     "Operational State ": {
-        "Test Case Name": "[TC-OPSTATE-2.4] Mandatory Events with DUT as Server",
+        "Test Case Name": "[TC-OPSTATE-2.4]Mandatory Events with DUT as Server",
         "Test Case ID": "TC-OPSTATE-2.4",
         "Test Plan": "App Test Case"
     },
     "Air Quality ": {
-        "Test Case Name": "[TC-AIRQUAL-2.1] Attributes with DUT as Server",
+        "Test Case Name": "[TC-AIRQUAL-2.1]Attributes with DUT as Server",
         "Test Case ID": "TC-AIRQUAL-2.1",
         "Test Plan": "App Test Case"
     },
     "HEPA Filter Monitoring ": {
-        "Test Case Name": "[TC-HEPAFREMON-2.1] Attributes with DUT as Server",
+        "Test Case Name": "[TC-HEPAFREMON-2.1]Attributes with DUT as Server",
         "Test Case ID": "TC-HEPAFREMON-2.1",
         "Test Plan": "App Test Case"
     },
     "Activated Carbon Filter Monitoring ": {
-        "Test Case Name": "[TC-ACFREMON-2.1] Attributes with DUT as Server",
+        "Test Case Name": "[TC-ACFREMON-2.1]Attributes with DUT as Server",
         "Test Case ID": "TC-ACFREMON-2.1",
         "Test Plan": "App Test Case"
     },
     "ICD Management ": {
-        "Test Case Name": "[TC-ICDM-2.3] Secondary functionality with DUT as Server - REMOVED",
+        "Test Case Name": "[TC-ICDM-2.3]Secondary functionality with DUT as Server - REMOVED",
         "Test Case ID": "TC-ICDM-2.3",
         "Test Plan": "App Test Case"
     },
     "Refrigerator and Temperature Controlled Cabinet Mode ": {
-        "Test Case Name": "[TC-TCCM-3.3] On Mode and Startup Mode functionality with DUT as Server - REMOVED",
+        "Test Case Name": "[TC-TCCM-3.3]On Mode and Startup Mode functionality with DUT as Server - REMOVED",
         "Test Case ID": "TC-TCCM-3.3",
         "Test Plan": "App Test Case"
     },
     "Refrigerator Alarm ": {
-        "Test Case Name": "[TC-REFALM-2.3] Local suppression of the door alarm with DUT as Server",
+        "Test Case Name": "[TC-REFALM-2.3]Local suppression of the door alarm with DUT as Server",
         "Test Case ID": "TC-REFALM-2.3",
         "Test Plan": "App Test Case"
     },
     "RVC Operational State ": {
-        "Test Case Name": "[TC-RVCOPSTATE-2.3] Pause and Resume commands [DUT as Server]",
+        "Test Case Name": "[TC-RVCOPSTATE-2.3]Pause and Resume commands [DUT as Server]",
         "Test Case ID": "TC-RVCOPSTATE-2.3",
         "Test Plan": "App Test Case"
     },
     "Smoke CO Alarm ": {
-        "Test Case Name": "[TC-SMOKECO-2.6] ExpressedState Attribute - Multiple Alarms with DUT as Server",
+        "Test Case Name": "[TC-SMOKECO-2.6]ExpressedState Attribute - Multiple Alarms with DUT as Server",
         "Test Case ID": "TC-SMOKECO-2.6",
         "Test Plan": "App Test Case"
     },
     "Device Discovery Test Plan": {
-        "Test Case Name": "[TC-DD-3.21] Commissioning Flow - Commission Multiple-Endpoint Device [DUT - Commissioner]",
+        "Test Case Name": "[TC-DD-3.21]Commissioning Flow - Commission Multiple-Endpoint Device [DUT - Commissioner]",
         "Test Case ID": "TC-DD-3.21",
         "Test Plan": "Core Test Case"
     },
     "Basic Information Test Plan": {
-        "Test Case Name": "[TC-BINFO-3.1] Appearance Attribute DUT as Server",
+        "Test Case Name": "[TC-BINFO-3.1]Appearance Attribute DUT as Server",
         "Test Case ID": "TC-BINFO-3.1",
         "Test Plan": "Core Test Case"
     },
     "Node Operational Credentials Test Plan": {
-        "Test Case Name": "[TC-OPCREDS-3.3] Attribute-NOCs, Commands [DUT-Client]",
+        "Test Case Name": "[TC-OPCREDS-3.3]Attribute-NOCs, Commands [DUT-Client]",
         "Test Case ID": "TC-OPCREDS-3.3",
         "Test Plan": "Core Test Case"
     },
     "Network Commissioning Test Plan": {
-        "Test Case Name": "[TC-CNET-4.21] [Thread] Verification for commands check  [DUT-Client]",
+        "Test Case Name": "[TC-CNET-4.21][Thread] Verification for commands check  [DUT-Client]",
         "Test Case ID": "TC-CNET-4.21",
         "Test Plan": "Core Test Case"
     },
     "Secure Channel Test Plan": {
-        "Test Case Name": "[TC-SC-4.10] Operational Discovery - SIT ICD Node [DUT as Commissionee]",
+        "Test Case Name": "[TC-SC-4.10]Operational Discovery - SIT ICD Node [DUT as Commissionee]",
         "Test Case ID": "TC-SC-4.10",
         "Test Plan": "Core Test Case"
     },
     "Group Communication": {
-        "Test Case Name": "[TC-SC-6.1] Adding member to a group - DUT as Admin and TH as Group Member [DUT-Client]",
+        "Test Case Name": "[TC-SC-6.1]Adding member to a group - DUT as Admin and TH as Group Member [DUT-Client]",
         "Test Case ID": "TC-SC-6.1",
         "Test Plan": "Core Test Case"
     },
     "Device Attestation Test Plan": {
-        "Test Case Name": "[TC-DA-1.8] Device Attestation Request Validation-Success Scenario [DUT-Commissioner]",
+        "Test Case Name": "[TC-DA-1.8]Device Attestation Request Validation-Success Scenario [DUT-Commissioner]",
         "Test Case ID": "TC-DA-1.8",
         "Test Plan": "Core Test Case"
     },
     "Interaction Data Model Test Plan": {
-        "Test Case Name": "[TC-IDM-11.1] Data types - attribute strings [DUT as Server] - data model",
+        "Test Case Name": "[TC-IDM-11.1]Data types - attribute strings [DUT as Server] - data model",
         "Test Case ID": "TC-IDM-11.1",
         "Test Plan": "Core Test Case"
     },
     "Administrator Commissioning ": {
-        "Test Case Name": "[TC-CADMIN-1.26] Subscription to the attributes - verify subscription response [BCM] [DUT - Commissionee]",
+        "Test Case Name": "[TC-CADMIN-1.26]Subscription to the attributes - verify subscription response [BCM] [DUT - Commissionee]",
         "Test Case ID": "TC-CADMIN-1.26",
         "Test Plan": "Core Test Case"
     },
     "Bridge Test Plan": {
-        "Test Case Name": "[TC-BR-4] DUT client handling of bridges (DUT client)",
+        "Test Case Name": "[TC-BR-4]DUT client handling of bridges (DUT client)",
         "Test Case ID": "TC-BR-4",
         "Test Plan": "Core Test Case"
     },
     "Bulk Data Exchange Protocol Test Plan": {
-        "Test Case Name": "[TC-BDX-2.5] Asynchronous File Receiving - REMOVED",
+        "Test Case Name": "[TC-BDX-2.5]Asynchronous File Receiving - REMOVED",
         "Test Case ID": "TC-BDX-2.5",
         "Test Plan": "Core Test Case"
     },
     "OTA Software Update Test Plan": {
-        "Test Case Name": "[TC-SU-4.2] Verifying Cluster Attributes from Admin(DUT)",
+        "Test Case Name": "[TC-SU-4.2]Verifying Cluster Attributes from Admin(DUT)",
         "Test Case ID": "TC-SU-4.2",
         "Test Plan": "Core Test Case"
     },
     "Access Control Enforcement Test Plan": {
-        "Test Case Name": "[TC-ACE-1.6] Group auth mode",
+        "Test Case Name": "[TC-ACE-1.6]Group auth mode",
         "Test Case ID": "TC-ACE-1.6",
         "Test Plan": "Core Test Case"
     },
     "Minimal Resource Requirements Test Plan": {
-        "Test Case Name": "[TC-RR-1.1] Minimal Resource Requirements for Matter Node",
+        "Test Case Name": "[TC-RR-1.1]Minimal Resource Requirements for Matter Node",
         "Test Case ID": "TC-RR-1.1",
         "Test Plan": "Core Test Case"
     },
     "System Model Test Plan": {
-        "Test Case Name": "[TC-SM-1.2] Device composition - Topology [DUT as Server]",
+        "Test Case Name": "[TC-SM-1.2]Device composition - Topology [DUT as Server]",
         "Test Case ID": "TC-SM-1.2",
         "Test Plan": "Core Test Case"
     },
     "Device Types Test Plan": {
-        "Test Case Name": "[TC-DT-1.1] Base Device Type [DUT as Server]",
+        "Test Case Name": "[TC-DT-1.1]Base Device Type [DUT as Server]",
         "Test Case ID": "TC-DT-1.1",
         "Test Plan": "Core Test Case"
     }
