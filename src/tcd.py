@@ -42,7 +42,10 @@ for cell in sheet1[1]:
 def extract_tc_details(h1_tags, a, row_number):
     for i, h1_tag in enumerate(h1_tags):
         h1 = h1_tag.text
-        cluster_name = h1.replace(' Cluster Test Plan', '')
+        cluster_name = h1.replace(' Cluster Test Plan', '') \
+                 .replace(' Cluster TestPlan', '') \
+                 .replace(' Cluster', '') \
+                 .replace(' Test Plan', '')
 
         print("-" * 40)
         print(f"Fetching details for cluster: {cluster_name}")
