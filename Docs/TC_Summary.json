@@ -139,7 +139,7 @@
         "Test Case ID": "TC-RVCCLEANM-3.3",
         "Test Plan": "App Test Case"
     },
-    "Descriptor Cluster TestPlan": {
+    "Descriptor": {
         "Test Case Name": "[TC-DESC-2.2] Descriptor Cluster Duplicate Condition with DUT as Server",
         "Test Case ID": "TC-DESC-2.2",
         "Test Plan": "App Test Case"
@@ -179,7 +179,7 @@
         "Test Case ID": "TC-LTIME-3.1",
         "Test Plan": "App Test Case"
     },
-    "Door lock Test Plan": {
+    "Door lock": {
         "Test Case Name": "[TC-DRLK-3.2] Commands [DUT - Client]",
         "Test Case ID": "TC-DRLK-3.2",
         "Test Plan": "App Test Case"
@@ -204,7 +204,7 @@
         "Test Case ID": "TC-ACL-2.10",
         "Test Plan": "App Test Case"
     },
-    "Bridged Device Basic Information Test Plan": {
+    "Bridged Device Basic Information": {
         "Test Case Name": "[TC-BRBINFO-3.1] Appearance Attribute DUT as Server",
         "Test Case ID": "TC-BRBINFO-3.1",
         "Test Plan": "App Test Case"
@@ -339,27 +339,27 @@
         "Test Case ID": "TC-SMOKECO-2.6",
         "Test Plan": "App Test Case"
     },
-    "Device Discovery Test Plan": {
+    "Device Discovery": {
         "Test Case Name": "[TC-DD-3.21] Commissioning Flow - Commission Multiple-Endpoint Device [DUT - Commissioner]",
         "Test Case ID": "TC-DD-3.21",
         "Test Plan": "Core Test Case"
     },
-    "Basic Information Test Plan": {
+    "Basic Information": {
         "Test Case Name": "[TC-BINFO-3.1] Appearance Attribute DUT as Server",
         "Test Case ID": "TC-BINFO-3.1",
         "Test Plan": "Core Test Case"
     },
-    "Node Operational Credentials Test Plan": {
+    "Node Operational Credentials": {
         "Test Case Name": "[TC-OPCREDS-3.3] Attribute-NOCs, Commands [DUT-Client]",
         "Test Case ID": "TC-OPCREDS-3.3",
         "Test Plan": "Core Test Case"
     },
-    "Network Commissioning Test Plan": {
+    "Network Commissioning": {
         "Test Case Name": "[TC-CNET-4.21] [Thread] Verification for commands check  [DUT-Client]",
         "Test Case ID": "TC-CNET-4.21",
         "Test Plan": "Core Test Case"
     },
-    "Secure Channel Test Plan": {
+    "Secure Channel": {
         "Test Case Name": "[TC-SC-4.10] Operational Discovery - SIT ICD Node [DUT as Commissionee]",
         "Test Case ID": "TC-SC-4.10",
         "Test Plan": "Core Test Case"
@@ -369,12 +369,12 @@
         "Test Case ID": "TC-SC-6.1",
         "Test Plan": "Core Test Case"
     },
-    "Device Attestation Test Plan": {
+    "Device Attestation": {
         "Test Case Name": "[TC-DA-1.8] Device Attestation Request Validation-Success Scenario [DUT-Commissioner]",
         "Test Case ID": "TC-DA-1.8",
         "Test Plan": "Core Test Case"
     },
-    "Interaction Data Model Test Plan": {
+    "Interaction Data Model": {
         "Test Case Name": "[TC-IDM-11.1] Data types - attribute strings [DUT as Server] - data model",
         "Test Case ID": "TC-IDM-11.1",
         "Test Plan": "Core Test Case"
@@ -384,37 +384,37 @@
         "Test Case ID": "TC-CADMIN-1.26",
         "Test Plan": "Core Test Case"
     },
-    "Bridge Test Plan": {
+    "Bridge": {
         "Test Case Name": "[TC-BR-4] DUT client handling of bridges (DUT client)",
         "Test Case ID": "TC-BR-4",
         "Test Plan": "Core Test Case"
     },
-    "Bulk Data Exchange Protocol Test Plan": {
+    "Bulk Data Exchange Protocol": {
         "Test Case Name": "[TC-BDX-2.5] Asynchronous File Receiving - REMOVED",
         "Test Case ID": "TC-BDX-2.5",
         "Test Plan": "Core Test Case"
     },
-    "OTA Software Update Test Plan": {
+    "OTA Software Update": {
         "Test Case Name": "[TC-SU-4.2] Verifying Cluster Attributes from Admin(DUT)",
         "Test Case ID": "TC-SU-4.2",
         "Test Plan": "Core Test Case"
     },
-    "Access Control Enforcement Test Plan": {
+    "Access Control Enforcement": {
         "Test Case Name": "[TC-ACE-1.6] Group auth mode",
         "Test Case ID": "TC-ACE-1.6",
         "Test Plan": "Core Test Case"
     },
-    "Minimal Resource Requirements Test Plan": {
+    "Minimal Resource Requirements": {
         "Test Case Name": "[TC-RR-1.1] Minimal Resource Requirements for Matter Node",
         "Test Case ID": "TC-RR-1.1",
         "Test Plan": "Core Test Case"
     },
-    "System Model Test Plan": {
+    "System Model": {
         "Test Case Name": "[TC-SM-1.2] Device composition - Topology [DUT as Server]",
         "Test Case ID": "TC-SM-1.2",
         "Test Plan": "Core Test Case"
     },
-    "Device Types Test Plan": {
+    "Device Types": {
         "Test Case Name": "[TC-DT-1.1] Base Device Type [DUT as Server]",
         "Test Case ID": "TC-DT-1.1",
         "Test Plan": "Core Test Case"
