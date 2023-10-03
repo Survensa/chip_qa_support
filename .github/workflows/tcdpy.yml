@@ -29,25 +29,16 @@ jobs:
           python src/tcd.py
         working-directory: ${{ github.workspace }}
 
-      - name: Commit and Push JSON File
-        run: |
-          git config user.email "you@example.com"
-          git config user.name "Your Name"
-          git add Docs/TC_Summary.json
-          if [[ -n $(git status --porcelain) ]]; then
-            git commit -m "Added TC_Summary JSON file"
-            git push
-          else
-            echo "No changes to commit."
-          fi
+      - name: Stage changes
+        run: git add -A
+        working-directory: ${{ github.workspace }}
 
-      - name: Commit and Push Excel File
+      - name: Commit and Push changes
         run: |
           git config user.email "you@example.com"
           git config user.name "Your Name"
-          git add Docs/TC_Summary.xlsx
           if [[ -n $(git status --porcelain) ]]; then
-            git commit -m "Added TC_Summary Excel file"
+            git commit -m "Update TC_Summary files"
             git push
           else
             echo "No changes to commit."
@@ -58,11 +49,14 @@ jobs:
           python src/xlsxtohtml.py
         working-directory: ${{ github.workspace }}
 
+      - name: Stage changes for HTML file
+        run: git add Docs/TC_Summary.html
+        working-directory: ${{ github.workspace }}
+
       - name: Commit and Push HTML File
         run: |
           git config user.email "you@example.com"
           git config user.name "Your Name"
-          git add Docs/TC_Summary.html
           if [[ -n $(git status --porcelain) ]]; then
             git commit -m "Added TC_Summary HTML file"
             git push
