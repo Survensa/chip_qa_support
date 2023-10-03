@@ -3,9 +3,9 @@ name: Pull TC_Summary
 on:
   push:
     branches:
-      -  main
+      - main
     paths:
-      - 'Docs/Test_Plan_HTML/*'  
+      - 'Docs/Test_Plan_HTML/*'
   workflow_dispatch:
 
 jobs:
@@ -19,14 +19,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.x  
+          python-version: 3.x
 
       - name: Install dependencies
         run: pip install openpyxl beautifulsoup4
 
       - name: Run Python Script
         run: |
-          python src/tcd.py  
+          python src/tcd.py
         working-directory: ${{ github.workspace }}
 
       - name: Commit and Push Excel File
@@ -43,7 +43,7 @@ jobs:
 
       - name: Convert Excel to HTML
         run: |
-          python src/xlsxtohtml.py  
+          python src/xlsxtohtml.py
         working-directory: ${{ github.workspace }}
 
       - name: Commit and Push HTML File
@@ -52,7 +52,19 @@ jobs:
           git config user.name "Your Name"
           git add Docs/TC_Summary.html
           if [[ -n $(git status --porcelain) ]]; then
-            git commit -m "Added TC_Summary html file"
+            git commit -m "Added TC_Summary HTML file"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: Commit and Push JSON File
+        run: |
+          git config user.email "you@example.com"
+          git config user.name "Your Name"
+          git add Docs/TC_Summary.json
+          if [[ -n $(git status --porcelain) ]]; then
+            git commit -m "Added TC_Summary JSON file"
             git push
           else
             echo "No changes to commit."
