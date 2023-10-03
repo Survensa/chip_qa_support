@@ -70,7 +70,7 @@ def extract_tc_details(h1_tags, a, row_number):
                 h4_tag = result[j].find_previous('h4')
                 head_text_match = re.search(r'\[(.*?)\]\s*(.*)', h4_tag.text)
                 if head_text_match:
-                    head_text = '[' + head_text_match.group(1) + '] ' + head_text_match.group(2)
+                    head_text = '[' + head_text_match.group(1) + ']' + head_text_match.group(2)
                 else:
                     head_text = ''
 
