@@ -29,6 +29,18 @@ jobs:
           python src/tcd.py
         working-directory: ${{ github.workspace }}
 
+      - name: Commit and Push JSON File
+        run: |
+          git config user.email "you@example.com"
+          git config user.name "Your Name"
+          git add Docs/TC_Summary.json
+          if [[ -n $(git status --porcelain) ]]; then
+            git commit -m "Added TC_Summary JSON file"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
       - name: Commit and Push Excel File
         run: |
           git config user.email "you@example.com"
@@ -53,18 +65,6 @@ jobs:
           git add Docs/TC_Summary.html
           if [[ -n $(git status --porcelain) ]]; then
             git commit -m "Added TC_Summary HTML file"
-            git push
-          else
-            echo "No changes to commit."
-          fi
-
-      - name: Commit and Push JSON File
-        run: |
-          git config user.email "you@example.com"
-          git config user.name "Your Name"
-          git add Docs/TC_Summary.json
-          if [[ -n $(git status --porcelain) ]]; then
-            git commit -m "Added TC_Summary JSON file"
             git push
           else
             echo "No changes to commit."
