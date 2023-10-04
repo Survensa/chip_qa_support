@@ -211,7 +211,7 @@ else:
 
     # Insert all rows at once in reverse order
     for row_values in reversed(rows_to_insert):
-        changes_sheet.insert_rows(2, row_values)
+        changes_sheet.append(row_values)
 
 # Save the workbook
 print("Saving Excel workbook...")
