@@ -16,29 +16,50 @@ try:
 except FileNotFoundError:
     existing_data = {}
 
-# Create an Excel workbook and define the filename
-workbook = openpyxl.Workbook()
+# Define the filename
 filename = 'Docs/TC_Summary.xlsx'
 
-app_html = 'Docs/Test_Plan_HTML/allclusters.html'
-main_html = 'Docs/Test_Plan_HTML/index.html'
+# Check if the file exists
+if os.path.exists(filename):
+    # Load the existing workbook
+    workbook = openpyxl.load_workbook(filename)
+    print(f"Existing workbook '{filename}' loaded.")
+else:
+    # Create a new workbook if the file doesn't exist
+    workbook = openpyxl.Workbook()
+    print(f"New workbook '{filename}' created.")
 
-# Create an Excel sheet
-sheet1 = workbook.active
-sheet1.title = "All_TC_Details"
+# Check if 'All_TC_Details' sheet exists, and if not, create it
+if 'All_TC_Details' not in workbook.sheetnames:
+    sheet1 = workbook.active
+    sheet1.title = "All_TC_Details"
 
-# Define column headers
-headers = ['S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan']
+    # Define column headers
+    headers = ['S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan']
 
-# Add headers to the first row and set the font to bold for the headings
-header_font = Font(name='Times New Roman', bold=True)
-for col_num, header in enumerate(headers, 1):
-    cell = sheet1.cell(row=1, column=col_num, value=header)
-    cell.font = header_font
+    # Add headers to the first row and set the font to bold for the headings
+    header_font = Font(name='Times New Roman', bold=True)
+    for col_num, header in enumerate(headers, 1):
+        cell = sheet1.cell(row=1, column=col_num, value=header)
+        cell.font = header_font
 
-# Set header row alignment to center
-for cell in sheet1[1]:
-    cell.alignment = Alignment(horizontal='center', vertical='center')
+    # Set header row alignment to center
+    for cell in sheet1[1]:
+        cell.alignment = Alignment(horizontal='center', vertical='center')
+
+    print("Sheet 'All_TC_Details' created.")
+
+# Check if 'TC_Changes' sheet exists, and if not, create it
+if 'TC_Changes' not in workbook.sheetnames:
+    changes_sheet = workbook.create_sheet(title="TC_Changes")
+    print("Sheet 'TC_Changes' created.")
+
+    changes_headers = ['Date of Run', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
+    # Add headers to the first row and set the font to bold for the headings
+    for col_num, header in enumerate(changes_headers, 1):
+        cell = changes_sheet.cell(row=1, column=col_num, value=header)
+        cell.font = Font(name='Times New Roman', bold=True)
+        cell.alignment = Alignment(horizontal='center', vertical='center')
 
 # Define a function to extract test case details
 def extract_tc_details(h1_tags, a, row_number):
@@ -104,6 +125,7 @@ def extract_tc_details(h1_tags, a, row_number):
 # Parse 'app' HTML
 print("^" * 40)
 print("Parsing 'app' HTML...")
+app_html = 'Docs/Test_Plan_HTML/allclusters.html'
 with open(app_html, encoding='utf-8') as f1:
     soup1 = BeautifulSoup(f1, 'html.parser')
     h1_tags1 = soup1.find_all('h1', {'id': True})
@@ -115,6 +137,7 @@ row_number = sheet1.max_row + 0
 # Parse 'main' HTML
 print("^" * 40)
 print("Parsing 'main' HTML...")
+main_html = 'Docs/Test_Plan_HTML/index.html'
 with open(main_html, encoding='utf-8') as f2:
     soup2 = BeautifulSoup(f2, 'html.parser')
     h1_tags2 = soup2.find_all('h1', {'id': True})
