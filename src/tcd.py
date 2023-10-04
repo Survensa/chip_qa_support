@@ -1,10 +1,8 @@
 from bs4 import BeautifulSoup
 import openpyxl
-from openpyxl.styles import Font, Alignment
+from openpyxl.styles import Font, Alignment, PatternFill
 import re
 import json
-
-print("Process Starts")
 
 # Load existing JSON data or create an empty dictionary if it doesn't exist
 json_filename = 'src/TC_Summary.json'
@@ -48,9 +46,6 @@ def extract_tc_details(h1_tags, a, row_number):
             .replace(' cluster', '') \
             .replace(' Test Plan', '')
 
-        print("-" * 40)
-        print(f"Fetching details for cluster: {cluster_name}")
-
         first_h1 = h1_tag
         if i == (len(h1_tags) - 1):
             second_h1 = False
@@ -93,8 +88,6 @@ def extract_tc_details(h1_tags, a, row_number):
                 # Modify row_values list to include "Test case name"
                 row_values = [row_number, cluster_name, head_text, testcase_name, test_plan]
                 sheet1.append(row_values)
-
-                print(f"Fetching details for Test Case: {testcase_name}")
 
                 # Increment row_number for each new row
                 row_number += 1
@@ -166,23 +159,59 @@ print("JSON check completed. Added and removed test cases identified.")
 with open(json_filename, 'w') as json_file:
     json.dump(current_data, json_file, indent=4)
 
-# Add the added and removed test cases to a new sheet named "TC_Changes"
-changes_sheet = workbook.create_sheet(title="TC_Changes")
-changes_sheet.append(['Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type'])
+# Function to create addition and deletion sheet
+def create_addition_deletion_sheet(workbook, added_test_cases, removed_test_cases):
+    # Create a new sheet named "TC_Changes"
+    changes_sheet = workbook.create_sheet(title="TC_Changes")
 
-if not added_test_cases and not removed_test_cases:
-    changes_sheet.append(['No change found', '', '', '', ''])
-else:
+    # Define column headers
+    change_headers = ['Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
+
+    # Add headers to the first row and set the font to bold for the headings
+    header_font = Font(name='Times New Roman', bold=True)
+    for col_num, header in enumerate(change_headers, 1):
+        cell = changes_sheet.cell(row=1, column=col_num, value=header)
+        cell.font = header_font
+
+    # Set header row alignment to center
+    for cell in changes_sheet[1]:
+        cell.alignment = Alignment(horizontal='center', vertical='center')
+
+    # Add data to the sheet for added test cases
     for cluster_name, cluster_data_list in added_test_cases.items():
         for cluster_data in cluster_data_list:
             changes_sheet.append([cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Added'])
 
+    # Add data to the sheet for removed test cases
     for cluster_name, cluster_data_list in removed_test_cases.items():
         for cluster_data in cluster_data_list:
             changes_sheet.append([cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Removed'])
 
+    # Apply cell formatting for added and removed test cases
+    for row in changes_sheet.iter_rows(min_row=2, max_row=changes_sheet.max_row, min_col=1, max_col=5):
+        for cell in row:
+            cell.fill = PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
+
+    # Set the font for the entire sheet to Times New Roman
+    for row in changes_sheet.iter_rows(min_row=2, max_row=changes_sheet.max_row, min_col=1, max_col=changes_sheet.max_column):
+        for cell in row:
+            cell.font = Font(name='Times New Roman')
+            cell.alignment = Alignment(vertical='center')  # Center-align vertically
+
+    # Set alignment to center for columns A and E
+    for column_letter in ['A', 'E']:
+        for cell in changes_sheet[column_letter]:
+            cell.alignment = Alignment(horizontal='center', vertical='center')
+
+    # Set column widths
+    column_widths = {'A': 30, 'B': 100, 'C': 25, 'D': 15, 'E': 15}
+    for column, width in column_widths.items():
+        changes_sheet.column_dimensions[column].width = width
+
+# Create addition and deletion sheet
+create_addition_deletion_sheet(workbook, added_test_cases, removed_test_cases)
+
 # Save the workbook
-print("Saving Excel workbook...")
 workbook.save(filename)
 
 print("Process completed. Excel file saved as 'TC_Summary.xlsx'.")
