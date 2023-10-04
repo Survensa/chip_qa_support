@@ -165,7 +165,7 @@ def create_addition_deletion_sheet(workbook, added_test_cases, removed_test_case
     changes_sheet = workbook.create_sheet(title="TC_Changes")
 
     # Define column headers
-    change_headers = ['Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
+    change_headers = ['S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
 
     # Add headers to the first row and set the font to bold for the headings
     header_font = Font(name='Times New Roman', bold=True)
@@ -178,17 +178,20 @@ def create_addition_deletion_sheet(workbook, added_test_cases, removed_test_case
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
     # Add data to the sheet for added test cases
+    s_no = 1
     for cluster_name, cluster_data_list in added_test_cases.items():
         for cluster_data in cluster_data_list:
-            changes_sheet.append([cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Added'])
+            changes_sheet.append([s_no, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Added'])
+            s_no += 1
 
     # Add data to the sheet for removed test cases
     for cluster_name, cluster_data_list in removed_test_cases.items():
         for cluster_data in cluster_data_list:
-            changes_sheet.append([cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Removed'])
+            changes_sheet.append([s_no, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Removed'])
+            s_no += 1
 
     # Apply cell formatting for added and removed test cases
-    for row in changes_sheet.iter_rows(min_row=2, max_row=changes_sheet.max_row, min_col=1, max_col=5):
+    for row in changes_sheet.iter_rows(min_row=2, max_row=changes_sheet.max_row, min_col=1, max_col=6):
         for cell in row:
             cell.fill = PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
 
@@ -198,13 +201,13 @@ def create_addition_deletion_sheet(workbook, added_test_cases, removed_test_case
             cell.font = Font(name='Times New Roman')
             cell.alignment = Alignment(vertical='center')  # Center-align vertically
 
-    # Set alignment to center for columns A and E
-    for column_letter in ['A', 'E']:
+    # Set alignment to center for columns A and F
+    for column_letter in ['A', 'F']:
         for cell in changes_sheet[column_letter]:
             cell.alignment = Alignment(horizontal='center', vertical='center')
 
     # Set column widths
-    column_widths = {'A': 30, 'B': 100, 'C': 25, 'D': 15, 'E': 15}
+    column_widths = {'A': 5, 'B': 30, 'C': 100, 'D': 25, 'E': 15, 'F': 15}
     for column, width in column_widths.items():
         changes_sheet.column_dimensions[column].width = width
 
