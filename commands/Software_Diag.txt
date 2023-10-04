@@ -7,7 +7,7 @@ $ Software diagnostics
 ./chip-tool softwarediagnostics read accepted-command-list 1 0
 ./chip-tool softwarediagnostics read generated-command-list 1 0
 End
-# [TC-DGSWD-2.1] Attributes with server as DUT (client as TH)	
+# [TC-DGSW-2.1] Attributes with server as DUT (client as TH)	
 ./chip-tool softwarediagnostics read thread-metrics 1 0
 ./chip-tool softwarediagnostics read current-heap-free 1 0
 ./chip-tool  softwarediagnostics  read current-heap-used 1 0
