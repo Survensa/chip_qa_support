@@ -196,16 +196,21 @@ current_date = datetime.now().strftime("%Y-%m-%d")
 # Add the added and removed test cases to the "TC_Changes" sheet
 if not added_test_cases and not removed_test_cases:
     # No changes found, print "No change" in all columns except the date column
-    changes_sheet.insert_rows(2, [current_date, 'No change', '', '', '', ''])
+    changes_sheet.append([current_date, 'No change', '', '', '', ''])
 else:
     # Changes found, insert the new data at the beginning
+    rows_to_insert = []
+
     for cluster_name, cluster_data_list in added_test_cases.items():
         for cluster_data in cluster_data_list:
-            changes_sheet.insert_rows(2, [current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Added'])
+            rows_to_insert.append([current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Added'])
 
     for cluster_name, cluster_data_list in removed_test_cases.items():
         for cluster_data in cluster_data_list:
-            changes_sheet.insert_rows(2, [current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Removed'])
+            rows_to_insert.append([current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Removed'])
+
+    # Insert all rows at once
+    changes_sheet.insert_rows(2, rows_to_insert)
 
 # Save the workbook
 print("Saving Excel workbook...")
