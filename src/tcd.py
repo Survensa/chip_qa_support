@@ -179,7 +179,11 @@ for cluster_name, current_tests in current_data.items():
 if 'TC_Changes' not in workbook.sheetnames:
     changes_sheet = workbook.create_sheet(title="TC_Changes")
 
+    # Add "Date of Run" as the first column header
     changes_headers = ['Date of Run', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
+
+    # Add headers to the first row and set the font to bold for the headings
+    changes_header_font = Font(name='Times New Roman', bold=True)
     # Add headers to the first row and set the font to bold for the headings
     for col_num, header in enumerate(changes_headers, 1):
         cell = changes_sheet.cell(row=1, column=col_num, value=header)
