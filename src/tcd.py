@@ -25,6 +25,7 @@ try:
 except FileNotFoundError:
     # Create a new workbook if it doesn't exist
     workbook = openpyxl.Workbook()
+    print("Workbook created:", filename)
 
 # Check if the "All_TC_Details" sheet exists
 if "All_TC_Details" in workbook.sheetnames:
@@ -33,6 +34,7 @@ else:
     # Create an Excel sheet
     sheet1 = workbook.active
     sheet1.title = "All_TC_Details"
+    print("Sheet created:", sheet1.title)
 
     # Define column headers
     headers = ['S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan']
@@ -175,6 +177,7 @@ with open(json_filename, 'w') as json_file:
 date_of_run = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 if 'TC_Changes' not in workbook.sheetnames:
     changes_sheet = workbook.create_sheet(title="TC_Changes")
+    print("Sheet created:", changes_sheet.title)
     changes_sheet.append(['Date of Run:', date_of_run, '', '', '', ''])
     changes_sheet.append(['S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type'])
 else:
