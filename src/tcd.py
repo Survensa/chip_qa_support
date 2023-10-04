@@ -1,9 +1,12 @@
 from bs4 import BeautifulSoup
 import openpyxl
-from openpyxl.styles import Font, Alignment, PatternFill
+from openpyxl.styles import Font, Alignment
 import re
 import json
+import os
 from datetime import datetime
+
+print("Process Starts")
 
 # Load existing JSON data or create an empty dictionary if it doesn't exist
 json_filename = 'src/TC_Summary.json'
@@ -14,40 +17,28 @@ except FileNotFoundError:
     existing_data = {}
 
 # Create an Excel workbook and define the filename
+workbook = openpyxl.Workbook()
 filename = 'Docs/TC_Summary.xlsx'
 
 app_html = 'Docs/Test_Plan_HTML/allclusters.html'
 main_html = 'Docs/Test_Plan_HTML/index.html'
 
-# Check if the workbook already exists
-try:
-    workbook = openpyxl.load_workbook(filename)
-except FileNotFoundError:
-    # Create a new workbook if it doesn't exist
-    workbook = openpyxl.Workbook()
-    print("Workbook created:", filename)
+# Create an Excel sheet
+sheet1 = workbook.active
+sheet1.title = "All_TC_Details"
 
-# Check if the "All_TC_Details" sheet exists
-if "All_TC_Details" in workbook.sheetnames:
-    sheet1 = workbook["All_TC_Details"]
-else:
-    # Create an Excel sheet
-    sheet1 = workbook.active
-    sheet1.title = "All_TC_Details"
-    print("Sheet created:", sheet1.title)
+# Define column headers
+headers = ['S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan']
 
-    # Define column headers
-    headers = ['S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan']
+# Add headers to the first row and set the font to bold for the headings
+header_font = Font(name='Times New Roman', bold=True)
+for col_num, header in enumerate(headers, 1):
+    cell = sheet1.cell(row=1, column=col_num, value=header)
+    cell.font = header_font
 
-    # Add headers to the first row and set the font to bold for the headings
-    header_font = Font(name='Times New Roman', bold=True)
-    for col_num, header in enumerate(headers, 1):
-        cell = sheet1.cell(row=1, column=col_num, value=header)
-        cell.font = header_font
-
-    # Set header row alignment to center
-    for cell in sheet1[1]:
-        cell.alignment = Alignment(horizontal='center', vertical='center')
+# Set header row alignment to center
+for cell in sheet1[1]:
+    cell.alignment = Alignment(horizontal='center', vertical='center')
 
 # Define a function to extract test case details
 def extract_tc_details(h1_tags, a, row_number):
@@ -92,7 +83,7 @@ def extract_tc_details(h1_tags, a, row_number):
                 # Extract the "Test case name" using regular expressions
                 testcase_match = re.search(r'\[(.*?)\]', head_text)
                 if testcase_match:
-                    testcase_name = testcase_match.group(1)
+                    testcase_name = testcase_match.group(1)  # Extract the first group (inside parentheses)
                 else:
                     testcase_name = ''
 
@@ -101,11 +92,13 @@ def extract_tc_details(h1_tags, a, row_number):
                 else:
                     test_plan = "App Test Case"
 
+                # Modify row_values list to include "Test case name"
                 row_values = [row_number, cluster_name, head_text, testcase_name, test_plan]
                 sheet1.append(row_values)
 
                 print(f"Fetching details for Test Case: {testcase_name}")
 
+                # Increment row_number for each new row
                 row_number += 1
 
 # Parse 'app' HTML
@@ -114,7 +107,7 @@ print("Parsing 'app' HTML...")
 with open(app_html, encoding='utf-8') as f1:
     soup1 = BeautifulSoup(f1, 'html.parser')
     h1_tags1 = soup1.find_all('h1', {'id': True})
-    extract_tc_details(h1_tags1, 1, 1)
+    extract_tc_details(h1_tags1, 1, 1)  # Pass initial row_number as 1
 
 # Calculate the next row_number after parsing the first HTML
 row_number = sheet1.max_row + 0
@@ -125,7 +118,7 @@ print("Parsing 'main' HTML...")
 with open(main_html, encoding='utf-8') as f2:
     soup2 = BeautifulSoup(f2, 'html.parser')
     h1_tags2 = soup2.find_all('h1', {'id': True})
-    extract_tc_details(h1_tags2, 0, row_number)
+    extract_tc_details(h1_tags2, 0, row_number)  # Pass the updated row_number
 
 # Set the font for the entire sheet to Times New Roman
 for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=1, max_col=sheet1.max_column):
@@ -152,19 +145,12 @@ for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=2, max_co
     test_case_id = row[2] if len(row) >= 2 else None
     test_plan = row[3] if len(row) >= 3 else None
 
+    # Check if the cluster_name is already in the dictionary
     if cluster_name not in current_data:
         current_data[cluster_name] = []
 
+    # Append the test case details to the list under the cluster_name
     current_data[cluster_name].append({'Test Case Name': test_case_name, 'Test Case ID': test_case_id, 'Test Plan': test_plan})
-
-added_test_cases = {}
-removed_test_cases = {}
-
-for cluster_name, cluster_data_list in current_data.items():
-    if cluster_name not in existing_data:
-        added_test_cases[cluster_name] = cluster_data_list
-    elif cluster_data_list != existing_data[cluster_name]:
-        removed_test_cases[cluster_name] = existing_data[cluster_name]
 
 # Print a message indicating that the JSON check is done
 print("JSON check completed. Added and removed test cases identified.")
@@ -173,38 +159,40 @@ print("JSON check completed. Added and removed test cases identified.")
 with open(json_filename, 'w') as json_file:
     json.dump(current_data, json_file, indent=4)
 
-# Add the added and removed test cases to the sheet
-date_of_run = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-if 'TC_Changes' not in workbook.sheetnames:
-    changes_sheet = workbook.create_sheet(title="TC_Changes")
-    print("Sheet created:", changes_sheet.title)
-    changes_sheet.append(['Date of Run:', date_of_run, '', '', '', ''])
-    changes_sheet.append(['S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type'])
-else:
-    changes_sheet = workbook['TC_Changes']
+# Add the added and removed test cases to a new sheet named "TC_Changes"
+changes_sheet = workbook.create_sheet(title="TC_Changes")
 
+# Add "Date of Run" as the first column header
+changes_headers = ['Date of Run', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
+
+# Add headers to the first row and set the font to bold for the headings
+changes_header_font = Font(name='Times New Roman', bold=True)
+for col_num, header in enumerate(changes_headers, 1):
+    cell = changes_sheet.cell(row=1, column=col_num, value=header)
+    cell.font = changes_header_font
+
+    # Set header row alignment to center
+    cell.alignment = Alignment(horizontal='center', vertical='center')
+
+# Get the current date (without time)
+current_date = datetime.now().strftime("%Y-%m-%d")
+
+# Add the added and removed test cases to the "TC_Changes" sheet
 if not added_test_cases and not removed_test_cases:
-    changes_sheet.append(['No change found', '', '', '', '', ''])
+    # No changes found, print "No change" in all columns except the date column
+    changes_sheet.insert_rows(2, [current_date, 'No change', '', '', '', ''])
 else:
-    # Add data to the sheet for added test cases at the top
-    s_no = 1
+    # Changes found, insert the new data at the beginning
     for cluster_name, cluster_data_list in added_test_cases.items():
         for cluster_data in cluster_data_list:
-            changes_sheet.append([s_no, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Added'])
-            s_no += 1
+            changes_sheet.insert_rows(2, [current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Added'])
 
-    # Add data to the sheet for removed test cases
     for cluster_name, cluster_data_list in removed_test_cases.items():
         for cluster_data in cluster_data_list:
-            changes_sheet.append([s_no, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Removed'])
-            s_no += 1
-
-    # Apply cell formatting for added and removed test cases
-    for row in changes_sheet.iter_rows(min_row=2, max_row=changes_sheet.max_row, min_col=2, max_col=7):
-        for cell in row:
-            cell.fill = PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
+            changes_sheet.insert_rows(2, [current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Removed'])
 
 # Save the workbook
+print("Saving Excel workbook...")
 workbook.save(filename)
 
 print("Process completed. Excel file saved as 'TC_Summary.xlsx'.")
