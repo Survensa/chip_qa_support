@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'Docs/Test_Plan_HTML/*'
+      - 'Docs/Test_Plan_HTML/*.html'
   workflow_dispatch:
 
 jobs:
