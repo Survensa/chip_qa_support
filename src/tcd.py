@@ -108,7 +108,7 @@ with open(app_html, encoding='utf-8') as f1:
     extract_tc_details(h1_tags1, 1, 1)  # Pass initial row_number as 1
 
 # Calculate the next row_number after parsing the first HTML
-row_number = sheet1.max_row + 0
+row_number = sheet1.max_row + 1
 
 # Parse 'main' HTML
 print("^" * 40)
