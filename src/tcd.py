@@ -159,23 +159,23 @@ print("JSON check completed. Added and removed test cases identified.")
 with open(json_filename, 'w') as json_file:
     json.dump(current_data, json_file, indent=4)
 
-# Add the added and removed test cases to a new sheet named "TC_Changes"
-changes_sheet = workbook.create_sheet(title="TC_Changes")
+# Define added_test_cases and removed_test_cases before the check
+added_test_cases = {}
+removed_test_cases = {}
 
-# Add "Date of Run" as the first column header
-changes_headers = ['Date of Run', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
+# Iterate through existing_data and current_data to identify added and removed test cases
+for cluster_name, current_tests in current_data.items():
+    existing_tests = existing_data.get(cluster_name, [])
 
-# Add headers to the first row and set the font to bold for the headings
-changes_header_font = Font(name='Times New Roman', bold=True)
-for col_num, header in enumerate(changes_headers, 1):
-    cell = changes_sheet.cell(row=1, column=col_num, value=header)
-    cell.font = changes_header_font
+    added_tests = [test for test in current_tests if test not in existing_tests]
+    removed_tests = [test for test in existing_tests if test not in current_tests]
 
-    # Set header row alignment to center
-    cell.alignment = Alignment(horizontal='center', vertical='center')
+    if added_tests:
+        added_test_cases[cluster_name] = added_tests
+    if removed_tests:
+        removed_test_cases[cluster_name] = removed_tests
 
-# Get the current date (without time)
-current_date = datetime.now().strftime("%Y-%m-%d")
+# Rest of your code...
 
 # Add the added and removed test cases to the "TC_Changes" sheet
 if not added_test_cases and not removed_test_cases:
