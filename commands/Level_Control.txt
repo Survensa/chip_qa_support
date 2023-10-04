@@ -153,15 +153,5 @@ End
 ./chip-tool levelcontrol read min-frequency 1 1
 ./chip-tool levelcontrol read max-frequency 1 1
 End
-# [TC-LVL-8.1] Verification of commands (DUT as Client)
-./chip-tool levelcontrol move-to-level 125 10 0 0 1 1
-./chip-tool levelcontrol move 1 5 0 0 1 1
-./chip-tool levelcontrol step 1 10 0   0 0 1 1
-./chip-tool levelcontrol stop 0 0 1 1
-./chip-tool levelcontrol move-to-level-with-on-off 1 0 0 0 1 1
-./chip-tool levelcontrol move-with-on-off 1 5 0 0 1 1
-./chip-tool levelcontrol step-with-on-off 1 15 123 0 0 1 1
-./chip-tool levelcontrol stop-with-on-off 0 0 1 1
-End
 
 
