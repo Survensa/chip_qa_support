@@ -175,7 +175,23 @@ for cluster_name, current_tests in current_data.items():
     if removed_tests:
         removed_test_cases[cluster_name] = removed_tests
 
-# Rest of your code...
+# Add the added and removed test cases to a new sheet named "TC_Changes"
+changes_sheet = workbook.create_sheet(title="TC_Changes")
+
+# Add "Date of Run" as the first column header
+changes_headers = ['Date of Run', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
+
+# Add headers to the first row and set the font to bold for the headings
+changes_header_font = Font(name='Times New Roman', bold=True)
+for col_num, header in enumerate(changes_headers, 1):
+    cell = changes_sheet.cell(row=1, column=col_num, value=header)
+    cell.font = changes_header_font
+
+    # Set header row alignment to center
+    cell.alignment = Alignment(horizontal='center', vertical='center')
+
+# Get the current date (without time)
+current_date = datetime.now().strftime("%Y-%m-%d")
 
 # Add the added and removed test cases to the "TC_Changes" sheet
 if not added_test_cases and not removed_test_cases:
