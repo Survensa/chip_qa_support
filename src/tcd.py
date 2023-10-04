@@ -62,7 +62,7 @@ if 'TC_Changes' not in workbook.sheetnames:
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
 # Define a function to extract test case details
-def extract_tc_details(h1_tags, a, row_number):
+def extract_tc_details(h1_tags, a, row_number, sheet):
     for i, h1_tag in enumerate(h1_tags):
         h1 = h1_tag.text
         cluster_name = h1.replace(' Cluster Test Plan', '') \
@@ -115,7 +115,7 @@ def extract_tc_details(h1_tags, a, row_number):
 
                 # Modify row_values list to include "Test case name"
                 row_values = [row_number, cluster_name, head_text, testcase_name, test_plan]
-                sheet1.append(row_values)
+                sheet.append(row_values)
 
                 print(f"Fetching details for Test Case: {testcase_name}")
 
@@ -129,7 +129,7 @@ app_html = 'Docs/Test_Plan_HTML/allclusters.html'
 with open(app_html, encoding='utf-8') as f1:
     soup1 = BeautifulSoup(f1, 'html.parser')
     h1_tags1 = soup1.find_all('h1', {'id': True})
-    extract_tc_details(h1_tags1, 1, 1)  # Pass initial row_number as 1
+    extract_tc_details(h1_tags1, 1, 1, sheet1)  # Pass initial row_number and sheet1
 
 # Calculate the next row_number after parsing the first HTML
 row_number = sheet1.max_row + 0
@@ -141,7 +141,7 @@ main_html = 'Docs/Test_Plan_HTML/index.html'
 with open(main_html, encoding='utf-8') as f2:
     soup2 = BeautifulSoup(f2, 'html.parser')
     h1_tags2 = soup2.find_all('h1', {'id': True})
-    extract_tc_details(h1_tags2, 0, row_number)  # Pass the updated row_number
+    extract_tc_details(h1_tags2, 0, row_number, sheet1)  # Pass the updated row_number and sheet1
 
 # Set the font for the entire sheet to Times New Roman
 for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=1, max_col=sheet1.max_column):
