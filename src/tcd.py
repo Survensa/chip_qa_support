@@ -136,22 +136,27 @@ for column, width in column_widths.items():
 
 # Compare the current data with existing data to identify added and removed test cases
 current_data = {}
+
 for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=2, max_col=5, values_only=True):
-    # Set default values for missing elements
     cluster_name = row[0] if len(row) >= 0 else None
     test_case_name = row[1] if len(row) >= 1 else None
     test_case_id = row[2] if len(row) >= 2 else None
     test_plan = row[3] if len(row) >= 3 else None
 
-    current_data[cluster_name] = {'Test Case Name': test_case_name, 'Test Case ID': test_case_id, 'Test Plan': test_plan}
+    # Check if the cluster_name is already in the dictionary
+    if cluster_name not in current_data:
+        current_data[cluster_name] = []
+
+    # Append the test case details to the list under the cluster_name
+    current_data[cluster_name].append({'Test Case Name': test_case_name, 'Test Case ID': test_case_id, 'Test Plan': test_plan})
 
 added_test_cases = {}
 removed_test_cases = {}
 
-for cluster_name, cluster_data in current_data.items():
+for cluster_name, cluster_data_list in current_data.items():
     if cluster_name not in existing_data:
-        added_test_cases[cluster_name] = cluster_data
-    elif cluster_data != existing_data[cluster_name]:
+        added_test_cases[cluster_name] = cluster_data_list
+    elif cluster_data_list != existing_data[cluster_name]:
         removed_test_cases[cluster_name] = existing_data[cluster_name]
 
 # Print a message indicating that the JSON check is done
