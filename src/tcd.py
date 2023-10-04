@@ -30,9 +30,9 @@ else:
     print(f"New workbook '{filename}' created.")
 
 # Check if 'All_TC_Details' sheet exists, and if not, create it
-if 'All_TC_Details' not in workbook.sheetnames:
-    sheet1 = workbook.active
-    sheet1.title = "All_TC_Details"
+sheet1_name = 'All_TC_Details'
+if sheet1_name not in workbook.sheetnames:
+    sheet1 = workbook.create_sheet(title=sheet1_name)
 
     # Define column headers
     headers = ['S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan']
@@ -47,12 +47,15 @@ if 'All_TC_Details' not in workbook.sheetnames:
     for cell in sheet1[1]:
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
-    print("Sheet 'All_TC_Details' created.")
+    print(f"Sheet '{sheet1_name}' created.")
+else:
+    sheet1 = workbook[sheet1_name]
+    print(f"Sheet '{sheet1_name}' already exists.")
 
 # Check if 'TC_Changes' sheet exists, and if not, create it
-if 'TC_Changes' not in workbook.sheetnames:
-    changes_sheet = workbook.create_sheet(title="TC_Changes")
-    print("Sheet 'TC_Changes' created.")
+changes_sheet_name = 'TC_Changes'
+if changes_sheet_name not in workbook.sheetnames:
+    changes_sheet = workbook.create_sheet(title=changes_sheet_name)
 
     changes_headers = ['Date of Run', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
     # Add headers to the first row and set the font to bold for the headings
@@ -60,6 +63,11 @@ if 'TC_Changes' not in workbook.sheetnames:
         cell = changes_sheet.cell(row=1, column=col_num, value=header)
         cell.font = Font(name='Times New Roman', bold=True)
         cell.alignment = Alignment(horizontal='center', vertical='center')
+
+    print(f"Sheet '{changes_sheet_name}' created.")
+else:
+    changes_sheet = workbook[changes_sheet_name]
+    print(f"Sheet '{changes_sheet_name}' already exists.")
 
 # Define a function to extract test case details
 def extract_tc_details(h1_tags, a, row_number, sheet):
