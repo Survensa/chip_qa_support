@@ -186,10 +186,6 @@ for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=2, max_co
 # Print a message indicating that the JSON check is done
 print("JSON check completed. Added and removed test cases identified.")
 
-# Save the current data as the new reference data in the JSON file
-with open(json_filename, 'w') as json_file:
-    json.dump(current_data, json_file, indent=4)
-
 # Define added_test_cases and removed_test_cases before the check
 added_test_cases = {}
 removed_test_cases = {}
@@ -205,22 +201,6 @@ for cluster_name, current_tests in current_data.items():
         added_test_cases[cluster_name] = added_tests
     if removed_tests:
         removed_test_cases[cluster_name] = removed_tests
-
-# Add the added and removed test cases to a new sheet named "TC_Changes"
-if 'TC_Changes' not in workbook.sheetnames:
-    changes_sheet = workbook.create_sheet(title="TC_Changes")
-
-    changes_headers = ['Date of Run', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
-    # Add headers to the first row and set the font to bold for the headings
-    for col_num, header in enumerate(changes_headers, 1):
-        cell = changes_sheet.cell(row=1, column=col_num, value=header)
-        cell.font = Font(name='Times New Roman', bold=True)
-        cell.alignment = Alignment(horizontal='center', vertical='center')
-else:
-    changes_sheet = workbook['TC_Changes']
-
-# Get the current date (without time)
-current_date = datetime.now().strftime("%Y-%m-%d")
 
 # Add the added and removed test cases to the "TC_Changes" sheet
 rows_to_insert = []
@@ -245,8 +225,8 @@ for row_values in rows_to_insert:
 print("Saving Excel workbook...")
 workbook.save(filename)
 
-# Update the JSON file with the latest data
+# Update the JSON file with the latest data, excluding the history
 with open(json_filename, 'w') as json_file:
     json.dump(current_data, json_file, indent=4)
 
-print("Process completed. Excel file saved as 'TC_Summary.xlsx'.")
+print(f"Process completed. Excel file saved as '{filename}' and '{json_filename}' updated.")
