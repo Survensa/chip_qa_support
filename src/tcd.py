@@ -176,45 +176,45 @@ for cluster_name, current_tests in current_data.items():
         removed_test_cases[cluster_name] = removed_tests
 
 # Add the added and removed test cases to a new sheet named "TC_Changes"
-changes_sheet = workbook.create_sheet(title="TC_Changes")
-
-# Add "Date of Run" as the first column header
-changes_headers = ['Date of Run', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
-
-# Add headers to the first row and set the font to bold for the headings
-changes_header_font = Font(name='Times New Roman', bold=True)
-for col_num, header in enumerate(changes_headers, 1):
-    cell = changes_sheet.cell(row=1, column=col_num, value=header)
-    cell.font = changes_header_font
-
-    # Set header row alignment to center
-    cell.alignment = Alignment(horizontal='center', vertical='center')
+if 'TC_Changes' not in workbook.sheetnames:
+    changes_sheet = workbook.create_sheet(title="TC_Changes")
+    
+    # Add headers to the first row and set the font to bold for the headings
+    for col_num, header in enumerate(changes_headers, 1):
+        cell = changes_sheet.cell(row=1, column=col_num, value=header)
+        cell.font = changes_header_font
+        cell.alignment = Alignment(horizontal='center', vertical='center')
+else:
+    changes_sheet = workbook['TC_Changes']
 
 # Get the current date (without time)
 current_date = datetime.now().strftime("%Y-%m-%d")
 
 # Add the added and removed test cases to the "TC_Changes" sheet
-if not added_test_cases and not removed_test_cases:
-    # No changes found, print "No change" in all columns except the date column
-    changes_sheet.append([current_date, 'No change', '', '', '', ''])
-else:
-    # Changes found, insert the new data at the beginning
-    rows_to_insert = []
+rows_to_insert = []
 
-    for cluster_name, cluster_data_list in added_test_cases.items():
-        for cluster_data in cluster_data_list:
-            rows_to_insert.append([current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Added'])
+for cluster_name, cluster_data_list in added_test_cases.items():
+    for cluster_data in cluster_data_list:
+        rows_to_insert.append([current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'ADDED'])
 
-    for cluster_name, cluster_data_list in removed_test_cases.items():
-        for cluster_data in cluster_data_list:
-            rows_to_insert.append([current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Removed'])
+for cluster_name, cluster_data_list in removed_test_cases.items():
+    for cluster_data in cluster_data_list:
+        rows_to_insert.append([current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'REMOVED'])
 
-    # Insert all rows at once in reverse order
-    for row_values in reversed(rows_to_insert):
-        changes_sheet.append(row_values)
+# Check if there are no changes and append a row indicating "No change"
+if not rows_to_insert:
+    changes_sheet.append([current_date, '', '', '', '', 'NO CHANGE'])
+
+# Insert all rows at once
+for row_values in rows_to_insert:
+    changes_sheet.append(row_values)
 
 # Save the workbook
 print("Saving Excel workbook...")
 workbook.save(filename)
+
+# Update the JSON file with the latest data
+with open(json_filename, 'w') as json_file:
+    json.dump(current_data, json_file, indent=4)
 
 print("Process completed. Excel file saved as 'TC_Summary.xlsx'.")
