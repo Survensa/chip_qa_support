@@ -162,4 +162,27 @@ for cluster_name, cluster_data_list in current_data.items():
 # Print a message indicating that the JSON check is done
 print("JSON check completed. Added and removed test cases identified.")
 
-# Save the current data as the
+# Save the current data as the new reference data in the JSON file
+with open(json_filename, 'w') as json_file:
+    json.dump(current_data, json_file, indent=4)
+
+# Add the added and removed test cases to a new sheet named "TC_Changes"
+changes_sheet = workbook.create_sheet(title="TC_Changes")
+changes_sheet.append(['Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type'])
+
+if not added_test_cases and not removed_test_cases:
+    changes_sheet.append(['No change found', '', '', '', ''])
+else:
+    for cluster_name, cluster_data_list in added_test_cases.items():
+        for cluster_data in cluster_data_list:
+            changes_sheet.append([cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Added'])
+
+    for cluster_name, cluster_data_list in removed_test_cases.items():
+        for cluster_data in cluster_data_list:
+            changes_sheet.append([cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Removed'])
+
+# Save the workbook
+print("Saving Excel workbook...")
+workbook.save(filename)
+
+print("Process completed. Excel file saved as 'TC_Summary.xlsx'.")
