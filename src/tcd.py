@@ -209,8 +209,9 @@ else:
         for cluster_data in cluster_data_list:
             rows_to_insert.append([current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'Removed'])
 
-    # Insert all rows at once
-    changes_sheet.insert_rows(2, rows_to_insert)
+    # Insert all rows at once in reverse order
+    for row_values in reversed(rows_to_insert):
+        changes_sheet.insert_rows(2, [row_values])
 
 # Save the workbook
 print("Saving Excel workbook...")
