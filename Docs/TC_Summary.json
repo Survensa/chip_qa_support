@@ -130,12 +130,12 @@
         "Test Plan": "App Test Case"
     },
     "RVC Run Mode": {
-        "Test Case Name": "[TC-RVCRUNM-3.3] On Mode and Startup Mode functionality with DUT as Server ",
+        "Test Case Name": "[TC-RVCRUNM-3.3] On Mode and Startup Mode functionality with DUT as Server - REMOVED",
         "Test Case ID": "TC-RVCRUNM-3.3",
         "Test Plan": "App Test Case"
     },
     "RVC Clean Mode": {
-        "Test Case Name": "[TC-RVCCLEANM-3.3] On Mode and Startup Mode functionality with DUT as Server ",
+        "Test Case Name": "[TC-RVCCLEANM-3.3] On Mode and Startup Mode functionality with DUT as Server - REMOVED",
         "Test Case ID": "TC-RVCCLEANM-3.3",
         "Test Plan": "App Test Case"
     },
@@ -199,13 +199,13 @@
         "Test Case ID": "TC-S-2.6",
         "Test Plan": "App Test Case"
     },
-    "Access Control cluster": {
+    "Access Control": {
         "Test Case Name": "[TC-ACL-2.10] Persistence",
         "Test Case ID": "TC-ACL-2.10",
         "Test Plan": "App Test Case"
     },
     "Bridged Device Basic Information": {
-        "Test Case Name": "[TC-BRBINFO-3.1] Appearance Attribute DUT as Server",
+        "Test Case Name": "[TC-BRBINFO-3.1] Appearance Attribute DUT as Server - REMOVED",
         "Test Case ID": "TC-BRBINFO-3.1",
         "Test Plan": "App Test Case"
     },
@@ -290,7 +290,7 @@
         "Test Plan": "App Test Case"
     },
     "Dishwasher Alarm": {
-        "Test Case Name": "[TC-DISHALM-3.6] Water Level alarm functionality with DUT as Server",
+        "Test Case Name": "[TC-DISHALM-3.6] Water Level alarm functionality with DUT as Server - REMOVED",
         "Test Case ID": "TC-DISHALM-3.6",
         "Test Plan": "App Test Case"
     },
