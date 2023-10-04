@@ -7,7 +7,7 @@ import json
 print("Process Starts")
 
 # Load existing JSON data or create an empty dictionary if it doesn't exist
-json_filename = 'Docs/TC_Summary.json'
+json_filename = 'src/TC_Summary.json'
 try:
     with open(json_filename, 'r') as json_file:
         existing_data = json.load(json_file)
@@ -108,7 +108,7 @@ with open(app_html, encoding='utf-8') as f1:
     extract_tc_details(h1_tags1, 1, 1)  # Pass initial row_number as 1
 
 # Calculate the next row_number after parsing the first HTML
-row_number = sheet1.max_row + 1
+row_number = sheet1.max_row + 0
 
 # Parse 'main' HTML
 print("^" * 40)
