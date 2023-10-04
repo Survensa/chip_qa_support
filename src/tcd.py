@@ -213,9 +213,12 @@ for cluster_name, cluster_data_list in removed_test_cases.items():
     for cluster_data in cluster_data_list:
         rows_to_insert.append([current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'REMOVED'])
 
+# Get the current date (without time)
+current_date = datetime.now().strftime("%Y-%m-%d")
+
 # Check if there are no changes and append a row indicating "No change"
 if not rows_to_insert:
-    changes_sheet.append([current_date, '', '', '', '', 'NO CHANGE'])
+    changes_sheet.append([current_date, '-', '-', '-', '-', 'NO CHANGE'])
 
 # Insert all rows at once
 for row_values in rows_to_insert:
