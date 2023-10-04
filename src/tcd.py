@@ -178,7 +178,8 @@ for cluster_name, current_tests in current_data.items():
 # Add the added and removed test cases to a new sheet named "TC_Changes"
 if 'TC_Changes' not in workbook.sheetnames:
     changes_sheet = workbook.create_sheet(title="TC_Changes")
-    
+
+    changes_headers = ['Date of Run', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
     # Add headers to the first row and set the font to bold for the headings
     for col_num, header in enumerate(changes_headers, 1):
         cell = changes_sheet.cell(row=1, column=col_num, value=header)
