@@ -1,7 +1,7 @@
 {
     "On/Off": [
         {
-            "Test Case Name": "[TC-OO-1.1] Global Attributes with DUT as Server",
+            "Test Case Name": "[TC-OO-1.1] Global Attributes with DUT",
             "Test Case ID": "TC-OO-1.1",
             "Test Plan": "App Test Case"
         },
@@ -17,7 +17,7 @@
         },
         {
             "Test Case Name": "[TC-OO-2.3] Secondary functionality with server as DUT",
-            "Test Case ID": "TC-OO-2.3",
+            "Test Case ID": "",
             "Test Plan": "App Test Case"
         },
         {
@@ -153,11 +153,6 @@
         {
             "Test Case Name": "[TC-TGTNAV-1.9] Global attributes - Target Navigator Cluster (DUT as Server)",
             "Test Case ID": "TC-TGTNAV-1.9",
-            "Test Plan": "App Test Case"
-        },
-        {
-            "Test Case Name": "[TC-APBSC-1.10] Global attributes - Application Basic Cluster (DUT as Server)",
-            "Test Case ID": "TC-APBSC-1.10",
             "Test Plan": "App Test Case"
         },
         {
@@ -3143,11 +3138,6 @@
         {
             "Test Case Name": "[TC-ACE-1.4] Targets",
             "Test Case ID": "TC-ACE-1.4",
-            "Test Plan": "Core Test Case"
-        },
-        {
-            "Test Case Name": "[TC-ACE-1.5] Multi-fabric",
-            "Test Case ID": "TC-ACE-1.5",
             "Test Plan": "Core Test Case"
         },
         {
