@@ -223,15 +223,8 @@ for cluster_name, cluster_data_list in removed_test_cases.items():
 if not rows_to_insert:
     changes_sheet.append([current_date, '-', '-', '-', '-', 'NO CHANGE'])
 
-# Reverse the order of rows before inserting into the sheet
-rows_to_insert.reverse()
-
 # Insert all rows at once
 for row_values in rows_to_insert:
-    changes_sheet.append(row_values)
-
-# Reverse the order of rows in the "TC_Changes" sheet
-for row_values in reversed(rows_to_insert):
     changes_sheet.append(row_values)
 
 # Save the workbook
