@@ -145,12 +145,12 @@ if changes_sheet_name not in workbook.sheetnames:
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
     # Set column widths for TC_Changes sheet
-    column_widths = {'A': 30, 'B': 30, 'C': 100, 'D': 25, 'E': 15, 'F': 15}  # Adjusted widths for Date of Run and Change Type
+    column_widths = {'A': 15, 'B': 30, 'C': 100, 'D': 25, 'E': 15, 'F': 15}  # Adjusted widths for Date of Run and Change Type
     for column, width in column_widths.items():
         changes_sheet.column_dimensions[column].width = width
 
-    # Set alignment to center for columns A, E, and F
-    for column_letter in ['A', 'E', 'F']:
+    # Set alignment to center for columns A, D, E, and F
+    for column_letter in ['A', 'D', 'E', 'F']:
         for cell in changes_sheet[column_letter]:
             cell.alignment = Alignment(horizontal='center', vertical='center')
 
@@ -162,6 +162,22 @@ else:
 
 # Get the current date (with time)
 current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+# Define added_test_cases and removed_test_cases before the check
+added_test_cases = {}
+removed_test_cases = {}
+
+# Iterate through existing_data and current_data to identify added and removed test cases
+for cluster_name, current_tests in current_data.items():
+    existing_tests = existing_data.get(cluster_name, [])
+
+    added_tests = [test for test in current_tests if test not in existing_tests]
+    removed_tests = [test for test in existing_tests if test not in current_tests]
+
+    if added_tests:
+        added_test_cases[cluster_name] = added_tests
+    if removed_tests:
+        removed_test_cases[cluster_name] = removed_tests
 
 # Add the added and removed test cases to the "TC_Changes" sheet
 rows_to_insert = []
