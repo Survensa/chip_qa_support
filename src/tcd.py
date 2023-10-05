@@ -221,11 +221,11 @@ for cluster_name, cluster_data_list in removed_test_cases.items():
 
 # Check if there are no changes and append a row indicating "No change"
 if not rows_to_insert:
-    changes_sheet.insert_rows(1, [[current_date, '-', '-', '-', '-', 'NO CHANGE']])
+    changes_sheet.append([current_date, '-', '-', '-', '-', 'NO CHANGE'])
 
 # Insert all rows at once at the top of the sheet
 for row_values in rows_to_insert:
-    changes_sheet.insert_rows(1, [row_values])
+    changes_sheet.insert(1, row_values)
 
 # Save the workbook
 print("Saving Excel workbook...")
