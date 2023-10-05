@@ -213,15 +213,16 @@ rows_to_insert = []
 
 for cluster_name, cluster_data_list in added_test_cases.items():
     for cluster_data in cluster_data_list:
-        rows_to_insert.append([current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'ADDED'])
+        rows_to_insert.insert(0, [current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'ADDED'])
 
 for cluster_name, cluster_data_list in removed_test_cases.items():
     for cluster_data in cluster_data_list:
-        rows_to_insert.append([current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'REMOVED'])
+        rows_to_insert.insert(0, [current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'REMOVED'])
 
 # Check if there are no changes and append a row indicating "No change"
-if not rows_to_insert:
-    changes_sheet.append([current_date, '-', '-', '-', '-', 'NO CHANGE'])
+no_change_row = [current_date, '-', '-', '-', '-', 'NO CHANGE']
+if no_change_row not in rows_to_insert:
+    rows_to_insert.insert(0, no_change_row)
 
 # Insert all rows at once
 for row_values in rows_to_insert:
