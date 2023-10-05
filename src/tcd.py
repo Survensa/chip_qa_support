@@ -29,7 +29,7 @@ else:
     workbook = openpyxl.Workbook()
     print(f"New workbook '{filename}' created.")
 
-# Check if 'All_TC_Details' sheet exists, and if not, create it
+# Check if 'All_TC_Details' sheet exists, and if not, create and configure it
 sheet1_name = 'All_TC_Details'
 if sheet1_name not in workbook.sheetnames:
     sheet1 = workbook.create_sheet(title=sheet1_name)
@@ -51,6 +51,9 @@ if sheet1_name not in workbook.sheetnames:
 else:
     sheet1 = workbook[sheet1_name]
     print(f"Sheet '{sheet1_name}' already exists.")
+
+# Clear existing data in 'All_TC_Details' sheet
+sheet1.delete_rows(sheet1.min_row + 1, sheet1.max_row)
 
 # Check if 'TC_Changes' sheet exists, and if not, create it
 changes_sheet_name = 'TC_Changes'
@@ -201,6 +204,9 @@ for cluster_name, current_tests in current_data.items():
         added_test_cases[cluster_name] = added_tests
     if removed_tests:
         removed_test_cases[cluster_name] = removed_tests
+
+# Clear existing data in 'TC_Changes' sheet
+changes_sheet.delete_rows(changes_sheet.min_row + 1, changes_sheet.max_row)
 
 # Add the added and removed test cases to the "TC_Changes" sheet
 rows_to_insert = []
