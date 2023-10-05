@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import openpyxl
-from openpyxl.styles import Font, Alignment, PatternFill
+from openpyxl.styles import Font, Alignment
 import re
 import json
 import os
@@ -42,7 +42,6 @@ if sheet1_name not in workbook.sheetnames:
     for col_num, header in enumerate(headers, 1):
         cell = sheet1.cell(row=1, column=col_num, value=header)
         cell.font = header_font
-        cell.fill = PatternFill(start_color='FFDDDDDD', end_color='FFDDDDDD', fill_type='solid')
 
     # Set header row alignment to center
     for cell in sheet1[1]:
@@ -199,7 +198,6 @@ if changes_sheet_name not in workbook.sheetnames:
         cell = changes_sheet.cell(row=1, column=col_num, value=header)
         cell.font = Font(name='Times New Roman', bold=True)
         cell.alignment = Alignment(horizontal='center', vertical='center')
-        cell.fill = PatternFill(start_color='FFDDDDDD', end_color='FFDDDDDD', fill_type='solid')
 
     print(f"Sheet '{changes_sheet_name}' created.")
 else:
@@ -207,7 +205,7 @@ else:
     changes_sheet = workbook[changes_sheet_name]
     print(f"Sheet '{changes_sheet_name}' already exists.")
 
-# Get the current date
+# Get the current date (without time)
 current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Add the added and removed test cases to the "TC_Changes" sheet
@@ -223,7 +221,7 @@ for cluster_name, cluster_data_list in removed_test_cases.items():
 
 # Check if there are no changes and append a row indicating "No change"
 if not rows_to_insert:
-    changes_sheet.append([current_date, '', '', '', '', 'NO CHANGE'])
+    changes_sheet.append([current_date, '-', '-', '-', '-', 'NO CHANGE'])
 
 # Insert all rows at once
 for row_values in rows_to_insert:
