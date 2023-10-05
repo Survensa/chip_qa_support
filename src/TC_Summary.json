@@ -21,11 +21,6 @@
             "Test Plan": "App Test Case"
         },
         {
-            "Test Case Name": "[TC-OO-2.4] Startup functionality with server as DUT",
-            "Test Case ID": "TC-OO-2.4",
-            "Test Plan": "App Test Case"
-        },
-        {
             "Test Case Name": "[TC-OO-3.2] Functionality with client as DUT",
             "Test Case ID": "TC-OO-3.2",
             "Test Plan": "App Test Case"
@@ -67,7 +62,7 @@
     ],
     "Thermostat User Configuration": [
         {
-            "Test Case Name": "[TC-TSUIC-1.1] Global attributes with DUT as Server",
+            "Test Case Name": "[TC-TSUIC-1.1] Global attributes",
             "Test Case ID": "TC-TSUIC-1.1",
             "Test Plan": "App Test Case"
         },
@@ -153,11 +148,6 @@
         {
             "Test Case Name": "[TC-TGTNAV-1.9] Global attributes - Target Navigator Cluster (DUT as Server)",
             "Test Case ID": "TC-TGTNAV-1.9",
-            "Test Plan": "App Test Case"
-        },
-        {
-            "Test Case Name": "[TC-APBSC-1.10] Global attributes - Application Basic Cluster (DUT as Server)",
-            "Test Case ID": "TC-APBSC-1.10",
             "Test Plan": "App Test Case"
         },
         {
