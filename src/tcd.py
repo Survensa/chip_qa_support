@@ -166,6 +166,7 @@ current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 # Define added_test_cases and removed_test_cases before the check
 added_test_cases = {}
 removed_test_cases = {}
+current_data = {}
 
 # Iterate through existing_data and current_data to identify added and removed test cases
 for cluster_name, current_tests in current_data.items():
