@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import openpyxl
-from openpyxl.styles import Font, Alignment, PatternFill
+from openpyxl.styles import Font, Alignment
 import re
 import json
 import os
@@ -42,14 +42,10 @@ if sheet1_name not in workbook.sheetnames:
     for col_num, header in enumerate(headers, 1):
         cell = sheet1.cell(row=1, column=col_num, value=header)
         cell.font = header_font
-        cell.fill = PatternFill(start_color='FFDDDDDD', end_color='FFDDDDDD', fill_type='solid')  # Light Grey Fill
 
     # Set header row alignment to center
     for cell in sheet1[1]:
         cell.alignment = Alignment(horizontal='center', vertical='center')
-
-    # Set column width for S.No.
-    sheet1.column_dimensions['A'].width = 5  # Set column width for S.No.
 
     print(f"Sheet '{sheet1_name}' created.")
 else:
@@ -131,42 +127,53 @@ with open(app_html, encoding='utf-8') as f1:
 # Calculate the next row_number after parsing the first HTML
 row_number = sheet1.max_row + 0
 
-# Check if 'TC_Changes' sheet exists, and if not, create it
-changes_sheet_name = 'TC_Changes'
-if changes_sheet_name not in workbook.sheetnames:
-    changes_sheet = workbook.create_sheet(title=changes_sheet_name)
+# Parse 'main' HTML
+print("^" * 40)
+print("Parsing 'main' HTML...")
+main_html = 'Docs/Test_Plan_HTML/index.html'
+with open(main_html, encoding='utf-8') as f2:
+    soup2 = BeautifulSoup(f2, 'html.parser')
+    h1_tags2 = soup2.find_all('h1', {'id': True})
+    extract_tc_details(h1_tags2, 0, row_number, sheet1)  # Pass the updated row_number and sheet1
 
-    changes_headers = ['Date of Run', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
-    # Add headers to the first row and set the font to bold for the headings
-    for col_num, header in enumerate(changes_headers, 1):
-        cell = changes_sheet.cell(row=1, column=col_num, value=header)
-        cell.font = header_font
-        cell.fill = PatternFill(start_color='FFDDDDDD', end_color='FFDDDDDD', fill_type='solid')  # Light Grey Fill
+# Set the font for the entire sheet to Times New Roman
+for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=1, max_col=sheet1.max_column):
+    for cell in row:
+        cell.font = Font(name='Times New Roman')
+        cell.alignment = Alignment(vertical='center')  # Center-align vertically
+
+# Set alignment to center for columns A and E
+for column_letter in ['A', 'E']:
+    for cell in sheet1[column_letter]:
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
-    # Set column widths for TC_Changes sheet
-    column_widths = {'A': 15, 'B': 30, 'C': 100, 'D': 25, 'E': 15, 'F': 15}  # Adjusted widths for Date of Run and Change Type
-    for column, width in column_widths.items():
-        changes_sheet.column_dimensions[column].width = width
+# Set column widths
+column_widths = {'A': 5, 'B': 30, 'C': 100, 'D': 25, 'E': 15}
+for column, width in column_widths.items():
+    sheet1.column_dimensions[column].width = width
 
-    # Set alignment to center for columns A, D, E, and F
-    for column_letter in ['A', 'D', 'E', 'F']:
-        for cell in changes_sheet[column_letter]:
-            cell.alignment = Alignment(horizontal='center', vertical='center')
+# Compare the current data with existing data to identify added and removed test cases
+current_data = {}
 
-    print(f"Sheet '{changes_sheet_name}' created.")
-else:
-    # If the sheet exists, do not clear existing data
-    changes_sheet = workbook[changes_sheet_name]
-    print(f"Sheet '{changes_sheet_name}' already exists.")
+for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=2, max_col=5, values_only=True):
+    cluster_name = row[0] if len(row) >= 0 else None
+    test_case_name = row[1] if len(row) >= 1 else None
+    test_case_id = row[2] if len(row) >= 2 else None
+    test_plan = row[3] if len(row) >= 3 else None
 
-# Get the current date (with time)
-current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # Check if the cluster_name is already in the dictionary
+    if cluster_name not in current_data:
+        current_data[cluster_name] = []
+
+    # Append the test case details to the list under the cluster_name
+    current_data[cluster_name].append({'Test Case Name': test_case_name, 'Test Case ID': test_case_id, 'Test Plan': test_plan})
+
+# Print a message indicating that the JSON check is done
+print("JSON check completed. Added and removed test cases identified.")
 
 # Define added_test_cases and removed_test_cases before the check
 added_test_cases = {}
 removed_test_cases = {}
-current_data = {}
 
 # Iterate through existing_data and current_data to identify added and removed test cases
 for cluster_name, current_tests in current_data.items():
@@ -179,6 +186,27 @@ for cluster_name, current_tests in current_data.items():
         added_test_cases[cluster_name] = added_tests
     if removed_tests:
         removed_test_cases[cluster_name] = removed_tests
+
+# Check if 'TC_Changes' sheet exists, and if not, create it
+changes_sheet_name = 'TC_Changes'
+if changes_sheet_name not in workbook.sheetnames:
+    changes_sheet = workbook.create_sheet(title=changes_sheet_name)
+
+    changes_headers = ['Date of Run', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
+    # Add headers to the first row and set the font to bold for the headings
+    for col_num, header in enumerate(changes_headers, 1):
+        cell = changes_sheet.cell(row=1, column=col_num, value=header)
+        cell.font = Font(name='Times New Roman', bold=True)
+        cell.alignment = Alignment(horizontal='center', vertical='center')
+
+    print(f"Sheet '{changes_sheet_name}' created.")
+else:
+    # If the sheet exists, do not clear existing data
+    changes_sheet = workbook[changes_sheet_name]
+    print(f"Sheet '{changes_sheet_name}' already exists.")
+
+# Get the current date (without time)
+current_date = datetime.now().strftime("%Y-%m-%d")
 
 # Add the added and removed test cases to the "TC_Changes" sheet
 rows_to_insert = []
@@ -198,22 +226,6 @@ if not rows_to_insert:
 # Insert all rows at once
 for row_values in rows_to_insert:
     changes_sheet.append(row_values)
-
-# Set the font for the entire sheet to Times New Roman
-for row in sheet1.iter_rows(min_row=2, max_row=sheet1.max_row, min_col=1, max_col=sheet1.max_column):
-    for cell in row:
-        cell.font = Font(name='Times New Roman')
-        cell.alignment = Alignment(vertical='center')  # Center-align vertically
-
-# Set alignment to center for columns A and E in sheet1
-for column_letter in ['A', 'E']:
-    for cell in sheet1[column_letter]:
-        cell.alignment = Alignment(horizontal='center', vertical='center')
-
-# Set column widths for sheet1
-column_widths = {'A': 5, 'B': 30, 'C': 100, 'D': 25, 'E': 15}
-for column, width in column_widths.items():
-    sheet1.column_dimensions[column].width = width
 
 # Save the workbook
 print("Saving Excel workbook...")
