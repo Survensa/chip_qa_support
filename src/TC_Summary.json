@@ -11,11 +11,6 @@
             "Test Plan": "App Test Case"
         },
         {
-            "Test Case Name": "[TC-OO-2.2] Primary functionality with server as DUT",
-            "Test Case ID": "TC-OO-2.2",
-            "Test Plan": "App Test Case"
-        },
-        {
             "Test Case Name": "[TC-OO-2.3] Secondary functionality with server as DUT",
             "Test Case ID": "TC-OO-2.3",
             "Test Plan": "App Test Case"
@@ -471,7 +466,7 @@
     "Color Control": [
         {
             "Test Case Name": "[TC-CC-1.1] Global attributes with server as DUT",
-            "Test Case ID": "TC-CC-1.1",
+            "Test Case ID": "TC-Cd-1.1",
             "Test Plan": "App Test Case"
         },
         {
@@ -517,11 +512,6 @@
         {
             "Test Case Name": "[TC-CC-4.4] MoveToHueAndSaturation functionality with server as DUT",
             "Test Case ID": "TC-CC-4.4",
-            "Test Plan": "App Test Case"
-        },
-        {
-            "Test Case Name": "[TC-CC-4.5] Saturation functionality with client as DUT",
-            "Test Case ID": "TC-CC-4.5",
             "Test Plan": "App Test Case"
         },
         {
@@ -723,7 +713,7 @@
             "Test Plan": "App Test Case"
         },
         {
-            "Test Case Name": "[TC-WNCV-3.3] StopMotion command & OperationalStatus attribute Verification [DUT as Server]",
+            "Test Case Name": "[TC-WNCV-3.3] StopMotion command & OperationalStatus attribute Verification [DUT as Server",
             "Test Case ID": "TC-WNCV-3.3",
             "Test Plan": "App Test Case"
         },
