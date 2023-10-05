@@ -208,24 +208,24 @@ else:
 # Get the current date (without time)
 current_date = datetime.now().strftime("%Y-%m-%d")
 
-# Add the added and removed test cases to the "TC_Changes" sheet
+# Add the added and removed test cases to the "TC_Changes" sheet at the top
 rows_to_insert = []
 
 for cluster_name, cluster_data_list in added_test_cases.items():
     for cluster_data in cluster_data_list:
-        rows_to_insert.append([current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'ADDED'])
+        rows_to_insert.insert(0, [current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'ADDED'])
 
 for cluster_name, cluster_data_list in removed_test_cases.items():
     for cluster_data in cluster_data_list:
-        rows_to_insert.append([current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'REMOVED'])
+        rows_to_insert.insert(0, [current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'REMOVED'])
 
 # Check if there are no changes and append a row indicating "No change"
 if not rows_to_insert:
-    changes_sheet.append([current_date, '-', '-', '-', '-', 'NO CHANGE'])
+    changes_sheet.insert_rows(1, [[current_date, '-', '-', '-', '-', 'NO CHANGE']])
 
-# Insert all rows at once
+# Insert all rows at once at the top of the sheet
 for row_values in rows_to_insert:
-    changes_sheet.append(row_values)
+    changes_sheet.insert_rows(1, [row_values])
 
 # Save the workbook
 print("Saving Excel workbook...")
