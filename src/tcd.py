@@ -29,7 +29,7 @@ else:
     workbook = openpyxl.Workbook()
     print(f"New workbook '{filename}' created.")
 
-# Check if 'All_TC_Details' sheet exists, and if not, create and configure it
+# Check if 'All_TC_Details' sheet exists, and if not, create it
 sheet1_name = 'All_TC_Details'
 if sheet1_name not in workbook.sheetnames:
     sheet1 = workbook.create_sheet(title=sheet1_name)
@@ -49,28 +49,10 @@ if sheet1_name not in workbook.sheetnames:
 
     print(f"Sheet '{sheet1_name}' created.")
 else:
+    # If the sheet exists, clear existing data
     sheet1 = workbook[sheet1_name]
-    print(f"Sheet '{sheet1_name}' already exists.")
-
-# Clear existing data in 'All_TC_Details' sheet
-sheet1.delete_rows(sheet1.min_row + 1, sheet1.max_row)
-
-# Check if 'TC_Changes' sheet exists, and if not, create it
-changes_sheet_name = 'TC_Changes'
-if changes_sheet_name not in workbook.sheetnames:
-    changes_sheet = workbook.create_sheet(title=changes_sheet_name)
-
-    changes_headers = ['Date of Run', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
-    # Add headers to the first row and set the font to bold for the headings
-    for col_num, header in enumerate(changes_headers, 1):
-        cell = changes_sheet.cell(row=1, column=col_num, value=header)
-        cell.font = Font(name='Times New Roman', bold=True)
-        cell.alignment = Alignment(horizontal='center', vertical='center')
-
-    print(f"Sheet '{changes_sheet_name}' created.")
-else:
-    changes_sheet = workbook[changes_sheet_name]
-    print(f"Sheet '{changes_sheet_name}' already exists.")
+    sheet1.delete_rows(2, sheet1.max_row)  # Clear existing data
+    print(f"Sheet '{sheet1_name}' already exists. Existing data cleared.")
 
 # Define a function to extract test case details
 def extract_tc_details(h1_tags, a, row_number, sheet):
@@ -205,8 +187,26 @@ for cluster_name, current_tests in current_data.items():
     if removed_tests:
         removed_test_cases[cluster_name] = removed_tests
 
-# Clear existing data in 'TC_Changes' sheet
-changes_sheet.delete_rows(changes_sheet.min_row + 1, changes_sheet.max_row)
+# Check if 'TC_Changes' sheet exists, and if not, create it
+changes_sheet_name = 'TC_Changes'
+if changes_sheet_name not in workbook.sheetnames:
+    changes_sheet = workbook.create_sheet(title=changes_sheet_name)
+
+    changes_headers = ['Date of Run', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan', 'Change Type']
+    # Add headers to the first row and set the font to bold for the headings
+    for col_num, header in enumerate(changes_headers, 1):
+        cell = changes_sheet.cell(row=1, column=col_num, value=header)
+        cell.font = Font(name='Times New Roman', bold=True)
+        cell.alignment = Alignment(horizontal='center', vertical='center')
+
+    print(f"Sheet '{changes_sheet_name}' created.")
+else:
+    # If the sheet exists, do not clear existing data
+    changes_sheet = workbook[changes_sheet_name]
+    print(f"Sheet '{changes_sheet_name}' already exists.")
+
+# Get the current date (without time)
+current_date = datetime.now().strftime("%Y-%m-%d")
 
 # Add the added and removed test cases to the "TC_Changes" sheet
 rows_to_insert = []
@@ -218,9 +218,6 @@ for cluster_name, cluster_data_list in added_test_cases.items():
 for cluster_name, cluster_data_list in removed_test_cases.items():
     for cluster_data in cluster_data_list:
         rows_to_insert.append([current_date, cluster_name, cluster_data['Test Case Name'], cluster_data['Test Case ID'], cluster_data['Test Plan'], 'REMOVED'])
-
-# Get the current date (without time)
-current_date = datetime.now().strftime("%Y-%m-%d")
 
 # Check if there are no changes and append a row indicating "No change"
 if not rows_to_insert:
