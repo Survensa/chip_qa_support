@@ -221,7 +221,12 @@ for cluster_name, cluster_data_list in removed_test_cases.items():
 
 # Check if there are no changes and append a row indicating "No change"
 if not rows_to_insert:
-    changes_sheet.append([current_date, '-', '-', '-', '-', 'NO CHANGE'])
+    no_change_row = [current_date, '-', '-', '-', '-', 'NO CHANGE']
+    changes_sheet.append(no_change_row)
+
+    # Set alignment to center for the "No change" row
+    for cell in changes_sheet[-1]:
+        cell.alignment = Alignment(horizontal='center', vertical='center')
 
 # Insert all rows at once
 for row_values in rows_to_insert:
@@ -234,7 +239,7 @@ for column_letter in columns_to_align:
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
 # Set column widths for 'TC_Changes' sheet
-column_widths_changes = {'A': 15, 'B': 30, 'C': 80, 'D': 25, 'E': 15, 'F': 15}
+column_widths_changes = {'A': 17, 'B': 30, 'C': 80, 'D': 25, 'E': 15, 'F': 15}
 for column, width in column_widths_changes.items():
     changes_sheet.column_dimensions[column].width = width
 
