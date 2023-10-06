@@ -232,6 +232,7 @@ if not rows_to_insert:
     # Set alignment to center for the "No change" row
     for cell in changes_sheet[changes_sheet.max_row]:
         cell.alignment = Alignment(horizontal='center', vertical='center')
+        cell.font = Font(name='Times New Roman')
 
 # Insert all rows at once
 for row_values in rows_to_insert:
