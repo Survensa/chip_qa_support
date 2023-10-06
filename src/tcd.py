@@ -243,6 +243,12 @@ column_widths_changes = {'A': 17, 'B': 30, 'C': 80, 'D': 25, 'E': 15, 'F': 15}
 for column, width in column_widths_changes.items():
     changes_sheet.column_dimensions[column].width = width
 
+# Set the font for the entire 'TC_Changes' sheet to Times New Roman
+for row in changes_sheet.iter_rows(min_row=2, max_row=changes_sheet.max_row, min_col=1, max_col=changes_sheet.max_column):
+    for cell in row:
+        cell.font = Font(name='Times New Roman')
+        cell.alignment = Alignment(vertical='center')
+
 # Save the workbook
 print("Saving Excel workbook...")
 workbook.save(filename)
