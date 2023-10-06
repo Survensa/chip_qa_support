@@ -206,12 +206,13 @@ else:
     print(f"Sheet '{changes_sheet_name}' already exists.")
 
 # Set alignment to center for columns A, E, and F
-for column_letter in ['A', 'E', 'F']:
+columns_to_align = ['A', 'E', 'F']
+for column_letter in columns_to_align:
     for cell in changes_sheet[column_letter]:
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
 # Set column widths for 'TC_Changes' sheet
-column_widths_changes = {'A': 30, 'B': 30, 'C': 100, 'D': 25, 'E': 15, 'F': 15}
+column_widths_changes = {'A': 15, 'B': 30, 'C': 80, 'D': 25, 'E': 15, 'F': 15}
 for column, width in column_widths_changes.items():
     changes_sheet.column_dimensions[column].width = width
 
