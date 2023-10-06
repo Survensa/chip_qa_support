@@ -205,17 +205,6 @@ else:
     changes_sheet = workbook[changes_sheet_name]
     print(f"Sheet '{changes_sheet_name}' already exists.")
 
-# Set alignment to center for columns A, E, and F
-columns_to_align = ['A', 'E', 'F']
-for column_letter in columns_to_align:
-    for cell in changes_sheet[column_letter]:
-        cell.alignment = Alignment(horizontal='center', vertical='center')
-
-# Set column widths for 'TC_Changes' sheet
-column_widths_changes = {'A': 15, 'B': 30, 'C': 80, 'D': 25, 'E': 15, 'F': 15}
-for column, width in column_widths_changes.items():
-    changes_sheet.column_dimensions[column].width = width
-
 # Get the current date (without time)
 current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -237,6 +226,17 @@ if not rows_to_insert:
 # Insert all rows at once
 for row_values in rows_to_insert:
     changes_sheet.append(row_values)
+
+# Set alignment to center for columns A, E, and F
+columns_to_align = ['A', 'E', 'F']
+for column_letter in columns_to_align:
+    for cell in changes_sheet[column_letter]:
+        cell.alignment = Alignment(horizontal='center', vertical='center')
+
+# Set column widths for 'TC_Changes' sheet
+column_widths_changes = {'A': 15, 'B': 30, 'C': 80, 'D': 25, 'E': 15, 'F': 15}
+for column, width in column_widths_changes.items():
+    changes_sheet.column_dimensions[column].width = width
 
 # Save the workbook
 print("Saving Excel workbook...")
