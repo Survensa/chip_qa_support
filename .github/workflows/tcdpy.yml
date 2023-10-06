@@ -5,7 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'Docs/Test_Plan_HTML/*.html'
+      - 'Docs/Test_Plan_HTML/allclusters.html'
+      - 'Docs/Test_Plan_HTML/index.html'
   workflow_dispatch:
 
 jobs:
