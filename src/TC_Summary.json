@@ -964,7 +964,7 @@
     ],
     "Power Source": [
         {
-            "Test Case Name": "[TC-PS-1.1] Global attributes with server as DUT",
+            "Test Case Name": "[TC-PS-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-PS-1.1",
             "Test Plan": "App Test Case"
         },
@@ -1037,7 +1037,7 @@
     ],
     "Switch": [
         {
-            "Test Case Name": "[TC-SWTCH-1.1] Global attributes with server as DUT",
+            "Test Case Name": "[TC-SWTCH-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-SWTCH-1.1",
             "Test Plan": "App Test Case"
         },
@@ -1059,7 +1059,7 @@
     ],
     "Actions": [
         {
-            "Test Case Name": "[TC-ACT-1.1] Global attributes with server as DUT",
+            "Test Case Name": "[TC-ACT-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-ACT-1.1",
             "Test Plan": "App Test Case"
         },
@@ -1304,7 +1304,7 @@
     ],
     "Unit Localization": [
         {
-            "Test Case Name": "[TC-LUNIT-1.2] Global Attributes [DUT as Server]",
+            "Test Case Name": "[TC-LUNIT-1.2] Global Attributes with DUT as Server",
             "Test Case ID": "TC-LUNIT-1.2",
             "Test Plan": "App Test Case"
         },
@@ -1316,7 +1316,7 @@
     ],
     "Time Format Localization": [
         {
-            "Test Case Name": "[TC-LTIME-1.2] Global Attributes [DUT as Server]",
+            "Test Case Name": "[TC-LTIME-1.2] Global Attributes with DUT as Server",
             "Test Case ID": "TC-LTIME-1.2",
             "Test Plan": "App Test Case"
         },
@@ -1831,7 +1831,7 @@
     ],
     "Washer Controls": [
         {
-            "Test Case Name": "[TC-WASHERCTRL-1.1] Global attributes with server as DUT",
+            "Test Case Name": "[TC-WASHERCTRL-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-WASHERCTRL-1.1",
             "Test Plan": "App Test Case"
         },
