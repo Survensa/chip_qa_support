@@ -199,6 +199,11 @@ if changes_sheet_name not in workbook.sheetnames:
         cell.font = Font(name='Times New Roman', bold=True)
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
+    # Set the font for the entire 'TC_Changes' sheet to Times New Roman
+    for row in changes_sheet.iter_rows(min_row=1, max_row=changes_sheet.max_row, min_col=1, max_col=changes_sheet.max_column):
+        for cell in row:
+            cell.font = Font(name='Times New Roman')
+
     print(f"Sheet '{changes_sheet_name}' created.")
 else:
     # If the sheet exists, do not clear existing data
@@ -224,9 +229,8 @@ if not rows_to_insert:
     no_change_row = [current_date, '-', '-', '-', '-', 'NO CHANGE']
     changes_sheet.append(no_change_row)
 
-# Set alignment to center for the "No change" row after it is appended
-for row in changes_sheet.iter_rows(min_row=changes_sheet.max_row, max_row=changes_sheet.max_row, min_col=1, max_col=changes_sheet.max_column):
-    for cell in row:
+    # Set alignment to center for the "No change" row
+    for cell in changes_sheet[changes_sheet.max_row]:
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
 # Insert all rows at once
@@ -243,12 +247,6 @@ for column_letter in columns_to_align:
 column_widths_changes = {'A': 17, 'B': 30, 'C': 80, 'D': 25, 'E': 15, 'F': 15}
 for column, width in column_widths_changes.items():
     changes_sheet.column_dimensions[column].width = width
-
-# Set the font for the entire 'TC_Changes' sheet to Times New Roman
-for row in changes_sheet.iter_rows(min_row=2, max_row=changes_sheet.max_row, min_col=1, max_col=changes_sheet.max_column):
-    for cell in row:
-        cell.font = Font(name='Times New Roman')
-        cell.alignment = Alignment(vertical='center')
 
 # Save the workbook
 print("Saving Excel workbook...")
