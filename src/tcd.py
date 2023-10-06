@@ -225,8 +225,10 @@ if not rows_to_insert:
     changes_sheet.append(no_change_row)
 
     # Set alignment to center for the "No change" row
-    for cell in changes_sheet[changes_sheet.max_row]:
-        cell.alignment = Alignment(horizontal='center', vertical='center')
+    no_change_row_number = changes_sheet.max_row
+    for row in changes_sheet.iter_rows(min_row=no_change_row_number, max_row=no_change_row_number, min_col=1, max_col=changes_sheet.max_column):
+        for cell in row:
+            cell.alignment = Alignment(horizontal='center', vertical='center')
 
 # Insert all rows at once
 for row_values in rows_to_insert:
