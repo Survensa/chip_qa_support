@@ -21,7 +21,7 @@ jobs:
 
       - name: Run Python Script
         run: |
-          python src/tcd.py
+          python src/tcd_e.py
         working-directory: ${{ github.workspace }}
 
       - name: Stage changes
