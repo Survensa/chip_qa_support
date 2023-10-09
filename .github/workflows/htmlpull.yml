@@ -37,7 +37,16 @@ jobs:
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/gh-site/html/index.html"
 
           git add Docs/Test_Plan_HTML/index.html
-          
+
+      - name: Commit and Push Test Plan Changes
+        run: |
+          if [[ -n $(git status --porcelain Docs/Test_Plan_HTML) ]]; then
+            git commit -m "Added Test Plan HTML files"
+            git push
+          else
+            echo "No changes to commit for Test Plan."
+          fi
+
       - name: Fetch and add SPEC HTML
         run: |
           access_token="${{ secrets.SOURCE_PAT }}"
@@ -53,12 +62,12 @@ jobs:
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/connectedhomeip-spec/build-sample/html/index.html"
           
           git add Docs/SPEC_HTML/index.html
-          
-      - name: Commit and Push Changes
+
+      - name: Commit and Push SPEC Changes
         run: |
-          if [[ -n $(git status --porcelain) ]]; then
-            git commit -m "Added HTML files"
+          if [[ -n $(git status --porcelain Docs/SPEC_HTML) ]]; then
+            git commit -m "Added SPEC HTML files"
             git push
           else
-            echo "No changes to commit."
+            echo "No changes to commit for SPEC."
           fi
