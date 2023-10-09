@@ -7,54 +7,23 @@ jobs:
   run:
     runs-on: ubuntu-latest
 
+    env:
+      GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+      TC_SUMMARY_SERVICE_ACCOUNT_JSON: ${{ secrets.TC_SUMMARY_SERVICE_ACCOUNT_JSON }}
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10.11
 
-      - name: Install dependencies
-        run: pip install openpyxl beautifulsoup4
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install beautifulsoup4 gspread oauth2client PyGithub
 
-      - name: Run Python Script
-        run: |
-          python src/tcd.py
-        working-directory: ${{ github.workspace }}
-
-      - name: Stage changes
-        run: git add -A
-        working-directory: ${{ github.workspace }}
-
-      - name: Commit and Push changes
-        run: |
-          git config user.email "suraj@graniteriverlabs.in"
-          git config user.name "Survensa"
-          if [[ -n $(git status --porcelain) ]]; then
-            git commit -m "Update TC_Summary files"
-            git push
-          else
-            echo "No changes to commit."
-          fi
-
-      - name: Convert Excel to HTML
-        run: |
-          python src/xlsxtohtml.py
-        working-directory: ${{ github.workspace }}
-
-      - name: Stage changes for HTML file
-        run: git add Docs/TC_Summary.html
-        working-directory: ${{ github.workspace }}
-
-      - name: Commit and Push HTML File
-        run: |
-          git config user.email "suraj@graniteriverlabs.in"
-          git config user.name "Survensa"
-          if [[ -n $(git status --porcelain) ]]; then
-            git commit -m "Added TC_Summary HTML file"
-            git push
-          else
-            echo "No changes to commit."
-          fi
+    - name: Run Python script
+      run: python -u src/tcd.py
