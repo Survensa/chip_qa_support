@@ -1,12 +1,6 @@
 name: Pull TC_Summary
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'Docs/Test_Plan_HTML/allclusters.html'
-      - 'Docs/Test_Plan_HTML/index.html'
   workflow_dispatch:
 
 jobs:
