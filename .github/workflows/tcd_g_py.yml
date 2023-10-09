@@ -26,4 +26,4 @@ jobs:
         pip install beautifulsoup4 gspread oauth2client PyGithub
 
     - name: Run Python script
-      run: python -u src/tcd.py
+      run: python -u src/tcd_g_py.py
