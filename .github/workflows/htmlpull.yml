@@ -69,16 +69,16 @@ jobs:
           if [[ -n $(git status --porcelain Docs/Test_Plan_HTML) ]]; then
             git commit -m "Added Test Plan HTML files"
             git push
-            echo "::set-output name=has_changes::true"
+            echo "has_changes=true" >> $GITHUB_ENV
           else
             echo "No changes to commit for Test Plan."
-            echo "::set-output name=has_changes::false"
+            echo "has_changes=false" >> $GITHUB_ENV
           fi
 
   trigger_tcdpy:
     needs: push_html
     runs-on: ubuntu-latest
-    if: steps.push_html.outputs.has_changes == 'true'
+    if: env.has_changes == 'true'
     steps:
       - name: Trigger tcdpy.yml workflow
         uses: actions/workflow-dispatch@v2
