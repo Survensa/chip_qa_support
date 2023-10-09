@@ -1,60 +1,12 @@
 from bs4 import BeautifulSoup
-import openpyxl
-from openpyxl.styles import Font, Alignment
-import re
 import json
 import os
 from datetime import datetime
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import github
 
-print("Process Starts")
-
-# Load existing JSON data or create an empty dictionary if it doesn't exist
-json_filename = 'src/TC_Summary.json'
-try:
-    with open(json_filename, 'r') as json_file:
-        existing_data = json.load(json_file)
-except FileNotFoundError:
-    existing_data = {}
-
-# Define the filename
-filename = 'Docs/TC_Summary.xlsx'
-
-# Check if the file exists
-if os.path.exists(filename):
-    # Load the existing workbook
-    workbook = openpyxl.load_workbook(filename)
-    print(f"Existing workbook '{filename}' loaded.")
-else:
-    # Create a new workbook if the file doesn't exist
-    workbook = openpyxl.Workbook()
-    print(f"New workbook '{filename}' created.")
-
-# Check if 'All_TC_Details' sheet exists, and if not, create it
-sheet1_name = 'All_TC_Details'
-if sheet1_name not in workbook.sheetnames:
-    sheet1 = workbook.create_sheet(title=sheet1_name)
-
-    # Define column headers
-    headers = ['S.No', 'Cluster Name', 'Test Case Name', 'Test Case ID', 'Test Plan']
-
-    # Add headers to the first row and set the font to bold for the headings
-    header_font = Font(name='Times New Roman', bold=True)
-    for col_num, header in enumerate(headers, 1):
-        cell = sheet1.cell(row=1, column=col_num, value=header)
-        cell.font = header_font
-
-    # Set header row alignment to center
-    for cell in sheet1[1]:
-        cell.alignment = Alignment(horizontal='center', vertical='center')
-
-    print(f"Sheet '{sheet1_name}' created.")
-else:
-    # If the sheet exists, clear existing data
-    sheet1 = workbook[sheet1_name]
-    sheet1.delete_rows(2, sheet1.max_row)  # Clear existing data
-    print(f"Sheet '{sheet1_name}' already exists. Existing data cleared.")
-
-# Define a function to extract test case details
+# Function to extract test case details
 def extract_tc_details(h1_tags, a, row_number, sheet):
     for i, h1_tag in enumerate(h1_tags):
         h1 = h1_tag.text
@@ -97,7 +49,7 @@ def extract_tc_details(h1_tags, a, row_number, sheet):
                 # Extract the "Test case name" using regular expressions
                 testcase_match = re.search(r'\[(.*?)\]', head_text)
                 if testcase_match:
-                    testcase_name = testcase_match.group(1)  # Extract the first group (inside parentheses)
+                    testcase_name = testcase_match.group(1)
                 else:
                     testcase_name = ''
 
@@ -114,6 +66,41 @@ def extract_tc_details(h1_tags, a, row_number, sheet):
 
                 # Increment row_number for each new row
                 row_number += 1
+
+# Load existing JSON data or create an empty dictionary if it doesn't exist
+json_filename = 'TC_Summary.json'
+try:
+    with open(json_filename, 'r') as json_file:
+        existing_data = json.load(json_file)
+except FileNotFoundError:
+    existing_data = {}
+
+# GitHub and Google Sheets setup
+github_token = os.environ.get("GITHUB_TOKEN")
+service_account_json = os.environ.get("TC_SUMMARY_SERVICE_ACCOUNT_JSON")
+
+g = github.Github(github_token)
+service_account_json_dict = json.loads(service_account_json)
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(service_account_json_dict, scope)
+gc = gspread.authorize(credentials)
+
+# Define the Google Sheets workbook and sheet
+workbook_name = 'Matter_CHIP_Verification_Step_Document'
+sheet1_name = 'TC_Summary_List'
+changes_sheet_name = 'TC_Change_List'
+
+try:
+    workbook = gc.open(workbook_name)
+    sheet1 = workbook.worksheet(sheet1_name)
+    changes_sheet = workbook.worksheet(changes_sheet_name)
+    print(f"Existing workbook '{workbook_name}' and sheets '{sheet1_name}' and '{changes_sheet_name}' loaded.")
+except gspread.SpreadsheetNotFound:
+    workbook = gc.create(workbook_name)
+    sheet1 = workbook.get_worksheet(0)
+    sheet1.title = sheet1_name
+    changes_sheet = workbook.add_worksheet(title=changes_sheet_name, rows="100", cols="10")
+    print(f"New workbook '{workbook_name}' created with sheets '{sheet1_name}' and '{changes_sheet_name}'.")
 
 # Parse 'app' HTML
 print("^" * 40)
@@ -249,12 +236,9 @@ column_widths_changes = {'A': 17, 'B': 30, 'C': 80, 'D': 25, 'E': 15, 'F': 15}
 for column, width in column_widths_changes.items():
     changes_sheet.column_dimensions[column].width = width
 
-# Save the workbook
-print("Saving Excel workbook...")
-workbook.save(filename)
-
+# Save the workbook (Note: Google Sheets are saved automatically)
 # Update the JSON file with the latest data, excluding the history
 with open(json_filename, 'w') as json_file:
     json.dump(current_data, json_file, indent=4)
 
-print(f"Process completed. Excel file saved as '{filename}' and '{json_filename}' updated.")
+print(f"Process completed. Google Sheets workbook updated and '{json_filename}' updated.")
