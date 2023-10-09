@@ -43,6 +43,8 @@ jobs:
 
       - name: Commit and Push SPEC Changes
         run: |
+          git config user.email "suraj@graniteriverlabs.in"
+          git config user.name "Survensa"
           if [[ -n $(git status --porcelain Docs/SPEC_HTML) ]]; then
             git commit -m "Added SPEC HTML files"
             git push
@@ -68,6 +70,8 @@ jobs:
 
       - name: Commit and Push Test Plan Changes
         run: |
+          git config user.email "suraj@graniteriverlabs.in"
+          git config user.name "Survensa"
           if [[ -n $(git status --porcelain Docs/Test_Plan_HTML) ]]; then
             git commit -m "Added Test Plan HTML files"
             git push
