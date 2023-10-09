@@ -22,31 +22,6 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
-      - name: Fetch and add Test Plan HTML
-        run: |
-          access_token="${{ secrets.SOURCE_PAT }}"
-          
-          curl -H "Authorization: token $access_token" \
-               -o Docs/Test_Plan_HTML/allclusters.html \
-               -LJO "https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/gh-site/html/allclusters.html"
-
-          git add Docs/Test_Plan_HTML/allclusters.html
-
-          curl -H "Authorization: token $access_token" \
-               -o Docs/Test_Plan_HTML/index.html \
-               -LJO "https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/gh-site/html/index.html"
-
-          git add Docs/Test_Plan_HTML/index.html
-
-      - name: Commit and Push Test Plan Changes
-        run: |
-          if [[ -n $(git status --porcelain Docs/Test_Plan_HTML) ]]; then
-            git commit -m "Added Test Plan HTML files"
-            git push
-          else
-            echo "No changes to commit for Test Plan."
-          fi
-
       - name: Fetch and add SPEC HTML
         run: |
           access_token="${{ secrets.SOURCE_PAT }}"
@@ -71,3 +46,42 @@ jobs:
           else
             echo "No changes to commit for SPEC."
           fi
+
+      - name: Fetch and add Test Plan HTML
+        run: |
+          access_token="${{ secrets.SOURCE_PAT }}"
+          
+          curl -H "Authorization: token $access_token" \
+               -o Docs/Test_Plan_HTML/allclusters.html \
+               -LJO "https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/gh-site/html/allclusters.html"
+
+          git add Docs/Test_Plan_HTML/allclusters.html
+
+          curl -H "Authorization: token $access_token" \
+               -o Docs/Test_Plan_HTML/index.html \
+               -LJO "https://raw.githubusercontent.com/CHIP-Specifications/chip-test-plans/gh-site/html/index.html"
+
+          git add Docs/Test_Plan_HTML/index.html
+
+      - name: Commit and Push Test Plan Changes
+        id: test_plan_commit
+        run: |
+          if [[ -n $(git status --porcelain Docs/Test_Plan_HTML) ]]; then
+            git commit -m "Added Test Plan HTML files"
+            git push
+            echo "::set-output name=has_changes::true"
+          else
+            echo "No changes to commit for Test Plan."
+            echo "::set-output name=has_changes::false"
+          fi
+
+  trigger_tcdpy:
+    needs: push_html
+    runs-on: ubuntu-latest
+    if: steps.push_html.outputs.has_changes == 'true'
+    steps:
+      - name: Trigger tcdpy.yml workflow
+        uses: actions/workflow-dispatch@v2
+        with:
+          workflow: tcdpy.yml
+          ref: main
