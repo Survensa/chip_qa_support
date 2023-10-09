@@ -7,6 +7,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import github
 import re
 from openpyxl.styles import Font, Alignment
+from gspread_formatting import *
 
 # Function to extract test case details
 def extract_tc_details(h1_tags, a, sheet):
@@ -84,7 +85,7 @@ scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/au
 credentials = ServiceAccountCredentials.from_json_keyfile_dict(service_account_json_dict, scope)
 gc = gspread.authorize(credentials)
 
-# Define the Google Sheets workbook and sheet
+# Define the Google Sheets workbook and sheets
 workbook_name = 'Matter_CHIP_Verification_Step_Document'
 sheet1_name = 'TC_Summary_List'
 changes_sheet_name = 'TC_Change_List'
@@ -154,6 +155,15 @@ if changes_sheet_name not in workbook.worksheets():
 
     changes_headers = ['Date of Run', 'Cluster Name', 'Head Text', 'Test Case Name', 'Test Plan', 'Change Type']
     changes_sheet.insert_row(changes_headers, 1)
+
+    # Apply formatting to the headers of 'TC_Change_List' sheet
+    header_range_changes = f'A1:{chr(ord("A") + len(changes_headers) - 1)}1'
+    format_range(changes_sheet, header_range_changes, {
+        "textFormat": {"bold": True},
+        "horizontalAlignment": "CENTER",
+        "verticalAlignment": "MIDDLE",
+        "backgroundColor": {"red": 0.8, "green": 0.8, "blue": 0.8}
+    })
 
     print(f"Sheet '{changes_sheet_name}' created.")
 else:
