@@ -78,7 +78,7 @@ jobs:
   trigger_tcdpy:
     needs: push_html
     runs-on: ubuntu-latest
-    if: ${{ has_changes == 'true' }}
+    if: ${{ env.has_changes == 'true' }}
     steps:
       - name: Trigger tcdpy.yml workflow
         uses: actions/workflow-dispatch@v2
