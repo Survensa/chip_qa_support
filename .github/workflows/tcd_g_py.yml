@@ -23,7 +23,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install beautifulsoup4 gspread oauth2client PyGithub
+        pip install beautifulsoup4 gspread gspread-formatting oauth2client PyGithub
 
     - name: Run Python script
       run: python -u src/tcd_g.py
