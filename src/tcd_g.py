@@ -1,15 +1,15 @@
 from bs4 import BeautifulSoup
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from gspread_formatting import set_row_height, set_column_width
-from gspread_formatting import set_horizontal_alignment, set_vertical_alignment
-from gspread_formatting import format_cell_ranges
+from gspread_formatting import (
+    set_row_height, set_column_width,
+    set_horizontal_alignment, set_vertical_alignment,
+    format_cell_ranges
+)
 import re
 import json
 import os
 from datetime import datetime
-
-print("Process Starts")
 
 # Load existing JSON data or create an empty dictionary if it doesn't exist
 json_filename = 'src/TC_Summary.json'
