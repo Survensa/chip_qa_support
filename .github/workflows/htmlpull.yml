@@ -64,24 +64,46 @@ jobs:
           git add Docs/Test_Plan_HTML/index.html
 
       - name: Commit and Push Test Plan Changes
-        id: test_plan_commit
         run: |
           if [[ -n $(git status --porcelain Docs/Test_Plan_HTML) ]]; then
             git commit -m "Added Test Plan HTML files"
             git push
-            echo "has_changes=true" >> $GITHUB_ENV
           else
             echo "No changes to commit for Test Plan."
-            echo "has_changes=false" >> $GITHUB_ENV
           fi
 
-  trigger_tcdpy:
+  trigger_pull_tc_summary:
     needs: push_html
     runs-on: ubuntu-latest
-    if: ${{ env.has_changes == 'true' }}
+    if: github.event_name == 'workflow_run' && github.event.workflow == 'Push HTML Files' && github.event.conclusion == 'success' && steps.push_html.outputs.has_changes == 'true'
     steps:
-      - name: Trigger tcdpy.yml workflow
-        uses: actions/workflow-dispatch@v2
+      - name: Trigger Pull TC_Summary workflow
+        uses: actions/github-script@v6
         with:
-          workflow: tcdpy.yml
-          ref: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: workflows } = await github.actions.listRepoWorkflows({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+
+            const workflowName = 'Pull TC_Summary'; 
+            const workflow = workflows.workflows.find(w => w.name === workflowName);
+
+            if (workflow) {
+              const { data: runs } = await github.actions.listWorkflowRuns({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                workflow_id: workflow.id,
+                status: 'success',
+                per_page: 1,
+              });
+
+              if (runs.total_count > 0) {
+                await github.actions.reRunWorkflow({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  run_id: runs.workflow_runs[0].id,
+                });
+              }
+            }
