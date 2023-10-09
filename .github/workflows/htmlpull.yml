@@ -9,6 +9,9 @@ jobs:
   push_html:
     runs-on: ubuntu-latest
 
+    outputs:
+      test_plan_changes: ${{ steps.push_html.outputs.test_plan_changes }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -77,7 +80,7 @@ jobs:
   trigger_pull_tc_summary:
     needs: push_html
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_run' && github.event.workflow == 'Push HTML Files' && github.event.conclusion == 'success' && steps.push_html.outputs.test_plan_changes == 'true'
+    if: needs.push_html.result == 'success' && needs.push_html.outputs.test_plan_changes == 'true'
     steps:
       - name: Trigger Pull TC_Summary workflow
         uses: actions/github-script@v6
@@ -85,8 +88,8 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { data: workflows } = await github.actions.listRepoWorkflows({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
+              owner: github.context.repo.owner,
+              repo: github.context.repo.repo,
             });
 
             const workflowName = 'Pull TC_Summary'; 
@@ -94,8 +97,8 @@ jobs:
 
             if (workflow) {
               const { data: runs } = await github.actions.listWorkflowRuns({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
+                owner: github.context.repo.owner,
+                repo: github.context.repo.repo,
                 workflow_id: workflow.id,
                 status: 'success',
                 per_page: 1,
@@ -103,8 +106,8 @@ jobs:
 
               if (runs.total_count > 0) {
                 await github.actions.reRunWorkflow({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
+                  owner: github.context.repo.owner,
+                  repo: github.context.repo.repo,
                   run_id: runs.workflow_runs[0].id,
                 });
               }
