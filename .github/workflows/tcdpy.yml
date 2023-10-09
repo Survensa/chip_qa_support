@@ -1,4 +1,4 @@
-name: Pull TC_Summary
+name: Pull Test case summary from test plan html
 
 on:
   workflow_dispatch:
