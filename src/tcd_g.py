@@ -20,12 +20,13 @@ except FileNotFoundError:
     existing_data = {}
 
 # Google Sheets credentials
+service_account_json = os.environ.get("SERVICE_ACCOUNT_JSON")
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name('path/to/your/credentials.json', scope)
-client = gspread.authorize(creds)
+credentials = ServiceAccountCredentials.from_json_keyfile_name(service_account_json, scope)
+client = gspread.authorize(credentials)
 
 # Define the Google Sheets workbook
-workbook_title = 'TC_Summary'
+workbook_title = 'Matter_Chip_Verification_Step_Document'
 try:
     workbook = client.open(workbook_title)
     print(f"Existing workbook '{workbook_title}' opened.")
@@ -34,7 +35,7 @@ except gspread.SpreadsheetNotFound:
     print(f"New workbook '{workbook_title}' created.")
 
 # Check if 'All_TC_Details' sheet exists, and if not, create it
-sheet1_name = 'All_TC_Details'
+sheet1_name = 'TC_Summary_List'
 try:
     sheet1 = workbook.add_worksheet(title=sheet1_name, rows=100, cols=10)
     print(f"Sheet '{sheet1_name}' created.")
@@ -190,7 +191,7 @@ for cluster_name, current_tests in current_data.items():
         removed_test_cases[cluster_name] = removed_tests
 
 # Check if 'TC_Changes' sheet exists, and if not, create it
-changes_sheet_name = 'TC_Changes'
+changes_sheet_name = 'TC_Changes_List'
 try:
     changes_sheet = workbook.add_worksheet(title=changes_sheet_name, rows=100, cols=10)
     print(f"Sheet '{changes_sheet_name}' created.")
