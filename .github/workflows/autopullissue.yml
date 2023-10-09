@@ -1,4 +1,4 @@
-name: Pull_issue_from_github
+name: Pull issues from github repos
 
 on:
   schedule:
