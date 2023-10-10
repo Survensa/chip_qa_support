@@ -14,8 +14,9 @@ except FileNotFoundError:
     existing_data = {}
 
 service_account_json = os.environ.get("SERVICE_ACCOUNT_JSON")
-scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-credentials = ServiceAccountCredentials.from_json_keyfile_name(service_account_json, scope)
+service_account_json_dict = json.loads(service_account_json)
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(service_account_json_dict, scope)
 client = gspread.authorize(credentials)
 
 workbook_title = 'Matter_Chip_Verification_Step_Document'
