@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+      SERVICE_ACCOUNT_JSON: ${{ secrets.TC_SUMMARY_SERVICE_ACCOUNT_JSON }}
 
     steps:
     - name: Checkout code
