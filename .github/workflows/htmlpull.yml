@@ -6,12 +6,10 @@ on:
     - cron: '0 */6 * * *'  # Run every 6 hours
 
 jobs:
-  push_html:
+  fetch_html:
     runs-on: ubuntu-latest
-
     outputs:
-      test_plan_changes: ${{ steps.push_html.outputs.test_plan_changes }}
-
+      test_plan_changes: ${{ steps.set_test_plan_changes.outputs.test_plan_changes }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -69,27 +67,28 @@ jobs:
           git add Docs/Test_Plan_HTML/index.html
 
       - name: Commit and Push Test Plan Changes
+        id: set_test_plan_changes
         run: |
           git config user.email "suraj@graniteriverlabs.in"
           git config user.name "Survensa"
           if [[ -n $(git status --porcelain Docs/Test_Plan_HTML) ]]; then
             git commit -m "Added Test Plan HTML files"
             git push
-            echo "true" > test_plan_changes.txt
+            echo "true" >> $GITHUB_ENV
           else
             echo "No changes to commit for Test Plan."
-            echo "No changes to commit for Test Plan." > test_plan_changes.txt
+            echo "false" >> $GITHUB_ENV
           fi
 
   trigger_pull_tc_summary:
-    needs: push_html
+    needs: fetch_html
     runs-on: ubuntu-latest
-    if: needs.push_html.result == 'success' && needs.push_html.outputs.test_plan_changes == 'true'
+    if: needs.fetch_html.result == 'success' && needs.fetch_html.outputs.test_plan_changes == 'true'
     steps:
       - name: Trigger Pull Test case summary from test plan html workflow
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.SOURCE_PAT }}
           script: |
             const { data: workflows } = await github.actions.listRepoWorkflows({
               owner: github.context.repo.owner,
