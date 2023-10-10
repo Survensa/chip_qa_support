@@ -83,7 +83,7 @@ jobs:
   trigger_pull_tc_summary:
     needs: fetch_html
     runs-on: ubuntu-latest
-    if: needs.fetch_html.result == 'success' && needs.fetch_html.outputs.test_plan_changes == 'true'
+    if: success() && needs.fetch_html.outputs.test_plan_changes == 'true'
     steps:
       - name: Trigger Pull Test case summary from test plan html workflow
         uses: actions/github-script@v6
