@@ -74,10 +74,10 @@ jobs:
           if [[ -n $(git status --porcelain Docs/Test_Plan_HTML) ]]; then
             git commit -m "Added Test Plan HTML files"
             git push
-            echo "true" >> $GITHUB_ENV
+            echo "test_plan_changes=true" >> $GITHUB_ENV
           else
             echo "No changes to commit for Test Plan."
-            echo "false" >> $GITHUB_ENV
+            echo "test_plan_changes=false" >> $GITHUB_ENV
           fi
 
   trigger_pull_tc_summary:
