@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 37f6d94,</span>
-<span id="revdate">2023-10-10 11:03:03 -0700</span>
+<span id="revnumber">version master 74b3c3e,</span>
+<span id="revdate">2023-10-10 16:18:56 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1278,6 +1278,9 @@ or notes a section of text with the term "provisional".</p>
 </li>
 <li>
 <p>Support for <a href="#ref_FanControlCluster">Fan Control cluster</a> is provisional.</p>
+</li>
+<li>
+<p>Support for InflowError, DrainError, TempTooLow, TempTooHigh, and WaterLevelError alarms in <a href="#ref_DishwasherAlarmCluster">Dishwasher Alarm Cluster</a> is provisional.</p>
 </li>
 </ul>
 </div>
@@ -16493,7 +16496,7 @@ specification.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0004</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PeakMeasuredValueWindow</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">elapsed-s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Max 604800</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 604800</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -16513,7 +16516,7 @@ specification.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0006</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AverageMeasuredValueWindow</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">elapsed-s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Max 604800</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 604800</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -16533,7 +16536,7 @@ specification.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0008</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MeasurementUnit</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_MeasurementUnitEnum">MeasurementUnitEnum</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -16543,7 +16546,7 @@ specification.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0009</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MeasurementMedium</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_MeasurementMediumEnum">MeasurementMediumEnum</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -16553,7 +16556,7 @@ specification.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x000A</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LevelValue</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_LevelValueEnum">LevelValueEnum</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -21834,7 +21837,7 @@ SHALL be formatted as illustrated in <a href="#ref_Figure_5_18">Format of the Up
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
-<th class="tableblock halign-left valign-top">Name sub-field</th>
+<th class="tableblock halign-left valign-top">Name</th>
 </tr>
 </thead>
 <tbody>
@@ -28396,37 +28399,37 @@ For this setting, the sequence, speeds and duration are MS.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off/Low/Med/High</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan is capable of off, low, medium and high modes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">!AUT.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[!AUT].a</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off/Low/High</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan is capable of off, low and high modes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">!AUT.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[!AUT].a</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off/Low/Med/High/Auto</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan is capable of off, low, medium, high and auto modes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AUT.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[AUT].a</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off/Low/High/Auto</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan is capable of off, low, high and auto modes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AUT.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[AUT].a</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off/High/Auto</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan is capable of off, high and auto modes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AUT.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[AUT].a</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off/High</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan is capable of off and high modes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">!AUT.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[!AUT].a</p></td>
 </tr>
 </tbody>
 </table>
@@ -30502,7 +30505,7 @@ Unlock with Timeout commands.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Boolean Value</th>
-<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -30638,8 +30641,8 @@ supported on this device.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
-<th class="tableblock halign-left valign-top"><a href="#CredentialRuleEnum">CredentialRuleEnum</a></th>
-<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -30720,7 +30723,7 @@ the related bit to be set, as shown below:</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
-<th class="tableblock halign-left valign-top">OperatingMode</th>
+<th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
@@ -30765,8 +30768,8 @@ the related bit to be set, as shown below:</p>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Attribute Identifier</th>
-<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Name</th>
 </tr>
 </thead>
 <tbody>
@@ -30807,8 +30810,8 @@ high and medium volumes, shown below:</p>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Attribute Identifier</th>
-<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Name</th>
 </tr>
 </thead>
 <tbody>
@@ -30864,18 +30867,21 @@ attribute.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Local Programming</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>0 - Enable Local Programming Attribute default value is 0 (disabled)</p>
 </div>
@@ -30885,6 +30891,7 @@ attribute.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keypad Interface</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>0 –Keypad Interface default access is disabled</p>
 </div>
@@ -30894,6 +30901,7 @@ attribute.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remote Interface</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>0 - Remote Interface default access is disabled</p>
 </div>
@@ -30903,6 +30911,7 @@ attribute.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sound Volume</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>0 – Sound Volume attribute default value is 0 (Silent Mode)</p>
 </div>
@@ -30913,6 +30922,7 @@ than 0</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Auto Relock</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>0 – Auto Relock Time attribute default value = 0</p>
 </div>
@@ -30923,11 +30933,12 @@ than 0</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LED Settings</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>0 – Led Settings attribute default value = 0</p>
+<p>0 – LED Settings attribute default value = 0</p>
 </div>
 <div class="paragraph">
-<p>1 – Led Settings attribute default value is equal to something other
+<p>1 – LED Settings attribute default value is equal to something other
 than 0</p>
 </div></div></td>
 </tr>
@@ -30984,33 +30995,39 @@ following bitmap.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add Locally</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0 - The ability to add Users/credentials/Schedules locally is disabled</p>
 <p class="tableblock">1 - The ability to add Users/Credentials/Schedules locally is enabled</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Modify Locally</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0 - The ability to modify Users/credentials/Schedules locally is disabled</p>
 <p class="tableblock">1 - The ability to modify Users/Credentials/Schedules locally is enabled</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clear Locally</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0 - The ability to clear Users/credentials/Schedules locally is disabled</p>
 <p class="tableblock">1 - The ability to clear Users/Credentials/Schedules locally is enabled</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adjust Locally</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0 - The ability to adjust lock settings locally is disabled</p>
 <p class="tableblock">1 - The ability to adjust lock settings locally is enabled</p></td>
 </tr>
@@ -31104,51 +31121,51 @@ by setting or clearing the associated bit in the alarm mask.</p>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Alarm Code</th>
+<th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Bit</th>
-<th class="tableblock halign-left valign-top">Alarm Condition</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alarm Code 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Locking Mechanism Jammed</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alarm Code 1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lock Reset to Factory Defaults</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alarm Code 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Reserved</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alarm Code 3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RF Module Power Cycled</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alarm Code 4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tamper Alarm - wrong code entry limit</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PIN | RID</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alarm Code 5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tamper Alarm - front escutcheon removed from main</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alarm Code 6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Forced Door Open under Door Locked Condition</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
@@ -31176,58 +31193,58 @@ log. This mask only applies to the Operation Event Notification Command.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Event Source</th>
-<th class="tableblock halign-left valign-top">Operation Event Code</th>
-<th class="tableblock halign-left valign-top">Attribute Bitmask</th>
-<th class="tableblock halign-left valign-top">Event Description</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Bit</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(0)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unknown or manufacturer-specific keypad operation event</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(1)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lock, source: keypad</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(2)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unlock, source: keypad</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(3)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lock, source: keypad, error: invalid PIN</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(4)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lock, source: keypad, error: invalid schedule</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(5)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unlock, source: keypad, error: invalid code</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(6)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unlock, source: keypad, error: invalid schedule</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(7)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Non-Access User operation event, source keypad.</p></td>
 </tr>
 </tbody>
@@ -31256,52 +31273,52 @@ log. This mask only applies to the Operation Event Notification Command.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Event Source</th>
-<th class="tableblock halign-left valign-top">Operation Event Code</th>
-<th class="tableblock halign-left valign-top">Attribute Bitmask</th>
-<th class="tableblock halign-left valign-top">Event Description</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Bit</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(0)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unknown or manufacturer-specific remote operation event</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(1)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lock, source: remote</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(2)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unlock, source: remote</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(3)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lock, source: remote, error: invalid code</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(4)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lock, source: remote, error: invalid schedule</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(5)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unlock, source: remote, error: invalid code</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(6)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unlock, source: remote, error: invalid schedule</p></td>
 </tr>
 </tbody>
@@ -31330,76 +31347,76 @@ only applies to the Operation Event Notification Command.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Event Source</th>
-<th class="tableblock halign-left valign-top">Operation Event Code</th>
-<th class="tableblock halign-left valign-top">Attribute Bitmask</th>
-<th class="tableblock halign-left valign-top">Event Description</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Bit</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Even Code 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(0)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unknown or manufacturer-specific manual operation event</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Even Code 1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(1)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Thumbturn Lock</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Even Code 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(2)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Thumbturn Unlock</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(3)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Even Code 7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">One touch lock</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(4)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Even Code 8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Key Lock</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(5)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Even Code 9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Key Unlock</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(6)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Even Code 10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Auto lock</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(7)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Even Code 11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Schedule Lock</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(8)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Even Code 12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Schedule Unlock</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(9)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Even Code 13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Manual Lock (Key or Thumbturn)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(10)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Even Code 14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Manual Unlock (Key or Thumbturn)</p></td>
 </tr>
 </tbody>
@@ -31428,52 +31445,52 @@ applies to the Operation Event Notification Command.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Event Source</th>
-<th class="tableblock halign-left valign-top">Operation Event Code</th>
-<th class="tableblock halign-left valign-top">Attribute Bitmask</th>
-<th class="tableblock halign-left valign-top">Event Description</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Bit</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(0)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unknown or manufacturer-specific keypad operation event</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(1)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lock, source: RFID</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(2)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unlock, source: RFID</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(3)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lock, source: RFID, error: invalid RFID ID</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(4)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lock, source: RFID, error: invalid schedule</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(5)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unlock, source: RFID, error: invalid RFID ID</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation Event Code 6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(6)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unlock, source: RFID, error: invalid schedule</p></td>
 </tr>
 </tbody>
@@ -31502,22 +31519,22 @@ applies to the Programming Event Notification Command.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Event Source</th>
-<th class="tableblock halign-left valign-top">Program Event Code</th>
-<th class="tableblock halign-left valign-top">Attribute Bitmask</th>
-<th class="tableblock halign-left valign-top">Event Description</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Bit</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(0)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unknown or manufacturer-specific keypad programming event</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(1)</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Programming PIN code changed, source: keypad</p>
 </div>
@@ -31536,8 +31553,8 @@ applies to the Programming Event Notification Command.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(2)</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>PIN added, source: keypad</p>
 </div>
@@ -31556,8 +31573,8 @@ applies to the Programming Event Notification Command.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(3)</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>PIN cleared, source: keypad</p>
 </div>
@@ -31576,8 +31593,8 @@ applies to the Programming Event Notification Command.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(4)</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>PIN changed</p>
 </div>
@@ -31623,22 +31640,22 @@ applies to the Programming Event Notification Command.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Event Source</th>
-<th class="tableblock halign-left valign-top">Program Event Code</th>
-<th class="tableblock halign-left valign-top">Attribute Bitmask</th>
-<th class="tableblock halign-left valign-top">Event Description</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Bit</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(0)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unknown or manufacturer-specific remote programming event.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(2)</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>PIN added, source remote</p>
 </div>
@@ -31648,8 +31665,8 @@ applies to the Programming Event Notification Command.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(3)</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>PIN cleared, source remote</p>
 </div>
@@ -31659,8 +31676,8 @@ applies to the Programming Event Notification Command.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(4)</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>PIN changed</p>
 </div>
@@ -31673,14 +31690,14 @@ applies to the Programming Event Notification Command.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(5)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RFID code added, Source remote</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(6)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RFID code cleared, Source remote</p></td>
 </tr>
 </tbody>
@@ -31709,22 +31726,22 @@ applies to the Programming Event Notification Command.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Event Source</th>
-<th class="tableblock halign-left valign-top">Program Event Code</th>
-<th class="tableblock halign-left valign-top">Attribute Bitmask</th>
-<th class="tableblock halign-left valign-top">Event Description</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Bit</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(0)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unknown or manufacturer-specific keypad programming event</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(5)</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>ID Added, Source: RFID</p>
 </div>
@@ -31743,8 +31760,8 @@ applies to the Programming Event Notification Command.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Program Event Code 6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BIT(6)</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>ID cleared, Source: RFID</p>
 </div>
@@ -32681,7 +32698,7 @@ User Status.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -33057,7 +33074,7 @@ is successful, the Status field SHALL be set to SUCCESS.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Id</th>
-<th class="tableblock halign-left valign-top">Field</th>
+<th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Constraint</th>
 <th class="tableblock halign-left valign-top">Quality</th>
@@ -33151,7 +33168,7 @@ when a Week Day schedule is set.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -33223,7 +33240,7 @@ grant access to the user up until 23:59:59.</p>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Id</th>
+<th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Field</th>
 <th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Constraint</th>
@@ -33276,8 +33293,8 @@ grant access to the user up until 23:59:59.</p>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Id</th>
-<th class="tableblock halign-left valign-top">Field</th>
+<th class="tableblock halign-left valign-top">ID</th>
+<th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Constraint</th>
 <th class="tableblock halign-left valign-top">Quality</th>
@@ -33484,7 +33501,7 @@ then EndMinute SHALL be greater than StartMinute.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -33595,7 +33612,7 @@ when a Year Day schedule is set.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -33874,7 +33891,7 @@ UserIndex provided.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -33980,7 +33997,7 @@ time with respect to any Lock Operating Mode.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -34315,7 +34332,7 @@ all existing Year Day and/or Week Day schedules SHALL be applied or enabled.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -34543,7 +34560,7 @@ ID. The values are according to “Set PIN” while not all are supported.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -34850,7 +34867,7 @@ schedules which are supported have to be set to the default values.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CredentialRule</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#CredentialRuleEnum">CredentialRuleEnum</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Single</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -35235,7 +35252,7 @@ FAILURE, INVALID_COMMAND, etc.) as needed otherwise the
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CredentialRule</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#CredentialRuleEnum">CredentialRuleEnum</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#CredentialRulesSupport">CredentialRulesSupport</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Single</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -36773,7 +36790,7 @@ LockUserChange event SHALL be generated for the user being cleared.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -37514,7 +37531,7 @@ the alarm type. The data type of the Alarm Code enum is derived from enum8.</p>
 <th class="tableblock halign-left valign-top">Value</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -37588,7 +37605,7 @@ type of the CredentialRule enum is derived from enum8.</p>
 <th class="tableblock halign-left valign-top">Value</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
-<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -37696,7 +37713,7 @@ the Credential Type enum is derived from enum8.</p>
 <th class="tableblock halign-left valign-top">Value</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
-<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -37757,7 +37774,7 @@ data type of the DataOperationType enum is derived from enum8.</p>
 <th class="tableblock halign-left valign-top">Value</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -37791,16 +37808,14 @@ field is derived from map8.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
@@ -37808,43 +37823,36 @@ field is derived from map8.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sunday</p></td>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Monday</p></td>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tuesday</p></td>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Wednesday</p></td>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Thursday</p></td>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Friday</p></td>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Saturday</p></td>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
@@ -37868,7 +37876,7 @@ type of the DoorState enum field is derived from enum8.</p>
 <th class="tableblock halign-left valign-top">Value</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -37926,7 +37934,7 @@ type of the DoorState enum field is derived from enum8.</p>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
 <th class="tableblock halign-left valign-top">Status Code</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -37975,7 +37983,7 @@ changed. The data type of the DataType enum is derived from enum8.</p>
 <th class="tableblock halign-left valign-top">Value</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -38067,7 +38075,7 @@ enum8.</p>
 <th class="tableblock halign-left valign-top">Value</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
-<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -38122,7 +38130,7 @@ operation performed. The data type of the OperationError enum field is derived f
 <th class="tableblock halign-left valign-top">Value</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
-<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -38183,49 +38191,43 @@ supported, for each mode.</p>
 <th class="tableblock halign-left valign-top">Value</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
-<th class="tableblock halign-left valign-top" colspan="3">Interface Operational (Y = Yes; N = No)</th>
+<th class="tableblock halign-left valign-top">Keypad<sup>*</sup></th>
+<th class="tableblock halign-left valign-top">Remote<sup>*</sup></th>
+<th class="tableblock halign-left valign-top">RFID<sup>*</sup></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Keypad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Remote</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RFID</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Normal</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Vacation</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Privacy</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NoRemoteLockUnlock</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
@@ -38237,6 +38239,9 @@ supported, for each mode.</p>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p><sup>*</sup> Interface Operational: Yes, No or N/A</p>
+</div>
 <div class="paragraph">
 <p><strong>Note:</strong> For modes that disable the remote interface, the door lock SHALL
 respond to Lock, Unlock, Toggle, and Unlock with Timeout commands with a
@@ -38301,7 +38306,7 @@ operation performed. The data type of the OperationSource enum field is derived 
 <th class="tableblock halign-left valign-top">Value</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
-<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
 <tbody>
@@ -38393,8 +38398,8 @@ is for a specific user ID.</p>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Enum</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
@@ -38431,8 +38436,8 @@ for a specific user ID.</p>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Enum</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
@@ -39573,7 +39578,7 @@ Global operational state SHALL always reflect the overall motion of the device.<
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0008</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CurrentPositionLiftPercentage<sup>1</sup></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">percent</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 to 100</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">XNSP</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -39593,7 +39598,7 @@ Global operational state SHALL always reflect the overall motion of the device.<
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x000A</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OperationalStatus</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_OperationalStatusBitmap">OperationalStatusBitmap</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">00xx xxxx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0b00xx xxxx</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -39603,7 +39608,7 @@ Global operational state SHALL always reflect the overall motion of the device.<
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x000B</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TargetPositionLiftPercent100ths<sup>2</sup></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">percent100ths</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 to 10000</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">XSP</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -39613,7 +39618,7 @@ Global operational state SHALL always reflect the overall motion of the device.<
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x000C</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TargetPositionTiltPercent100ths<sup>2</sup></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">percent100ths</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 to 10000</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">XSP</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -39723,7 +39728,7 @@ Global operational state SHALL always reflect the overall motion of the device.<
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0017</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mode</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ModeBitmap">ModeBitmap</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0000 xxxx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0b0000 xxxx</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RW VM</p></td>
@@ -47859,7 +47864,7 @@ such as laundry washers, refrigerators etc.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0052</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_RefrigeratorAndTempCtrldCabinetModeCluster">Refrigerator and Temperature Controlled Cabinet Mode</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_RefrigeratorAndTempCtrldCabinetModeCluster">Refrigerator And Temperature Controlled Cabinet Mode</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commands and attributes for controlling a refrigerator or
                                                                                     a temperature controlled cabinet</p></td>
 </tr>
@@ -48720,13 +48725,13 @@ about the StartUpMode attribute.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>InflowError</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Water inflow is abnormal</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P,O.a+</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DrainError</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Water draining is abnormal</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P,O.a+</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
@@ -48738,19 +48743,19 @@ about the StartUpMode attribute.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TempTooLow</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unable to reach normal temperature</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P,O.a+</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TempTooHigh</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Temperature is too high</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P,O.a+</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>WaterLevelError</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Water level is abnormal</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P,O.a+</p></td>
 </tr>
 </tbody>
 </table>
@@ -49853,8 +49858,8 @@ It SHALL be re-set to 1 if the alarm is re-enabled at the device itself.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 37f6d94<br>
-Last updated 2023-10-10 18:03:21 UTC
+Version master 74b3c3e<br>
+Last updated 2023-10-11 00:00:26 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
