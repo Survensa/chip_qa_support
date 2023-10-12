@@ -124,9 +124,10 @@ sleep 1.5
 End
 # [TC-WNCV-3.4] UpOrOpen command Long-Run Verification [DUT as Server]
 ./chip-tool windowcovering down-or-close 1 1
-sleep 1.5
+sleep 7
 ./chip-tool windowcovering up-or-open 1 1 
 ./chip-tool windowcovering read operational-status 1 1
+
 ./chip-tool windowcovering read current-position-lift-percent100ths 1 1 
 ./chip-tool windowcovering read current-position-lift-percentage 1 1
 ./chip-tool windowcovering read current-position-tilt-percent100ths 1 1
