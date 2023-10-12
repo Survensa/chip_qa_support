@@ -440,14 +440,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 74b3c3e,</span>
-<span id="revdate">2023-10-10 16:18:56 -0700</span>
+<span id="revnumber">version master 472add0 (local changes),</span>
+<span id="revdate">2023-10-12 09:18:58 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_notice_of_use_and_disclosure">Notice of Use and Disclosure</a></li>
+<li><a href="#_copyright_notice_license_and_disclaimer">Copyright Notice, License and Disclaimer</a></li>
+<li><a href="#_revision_history">Revision History</a></li>
 <li><a href="#_introduction">Introduction</a>
 <ul class="sectlevel2">
 <li><a href="#_scope_and_purpose">Scope and Purpose</a></li>
@@ -474,7 +475,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_IdentifyCluster">1.2. Identify Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history">1.2.1. Revision History</a></li>
+<li><a href="#_revision_history_2">1.2.1. Revision History</a></li>
 <li><a href="#_classification">1.2.2. Classification</a></li>
 <li><a href="#_cluster_id">1.2.3. Cluster ID</a></li>
 <li><a href="#_features">1.2.4. Features</a></li>
@@ -485,7 +486,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_GroupsCluster">1.3. Groups Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_2">1.3.1. Revision History</a></li>
+<li><a href="#_revision_history_3">1.3.1. Revision History</a></li>
 <li><a href="#_classification_2">1.3.2. Classification</a></li>
 <li><a href="#_cluster_id_2">1.3.3. Cluster ID</a></li>
 <li><a href="#_features_2">1.3.4. Features</a></li>
@@ -496,7 +497,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_ScenesCluster">1.4. Scenes</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_3">1.4.1. Revision History</a></li>
+<li><a href="#_revision_history_4">1.4.1. Revision History</a></li>
 <li><a href="#_classification_3">1.4.2. Classification</a></li>
 <li><a href="#_cluster_identifiers">1.4.3. Cluster Identifiers</a></li>
 <li><a href="#_features_3">1.4.4. Features</a></li>
@@ -509,7 +510,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_OnOffCluster">1.5. On/Off Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_4">1.5.1. Revision History</a></li>
+<li><a href="#_revision_history_5">1.5.1. Revision History</a></li>
 <li><a href="#_classification_4">1.5.2. Classification</a></li>
 <li><a href="#_cluster_id_3">1.5.3. Cluster ID</a></li>
 <li><a href="#_features_4">1.5.4. Features</a></li>
@@ -521,7 +522,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_LevelControlCluster">1.6. Level Control Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_5">1.6.1. Revision History</a></li>
+<li><a href="#_revision_history_6">1.6.1. Revision History</a></li>
 <li><a href="#_classification_5">1.6.2. Classification</a></li>
 <li><a href="#_cluster_id_4">1.6.3. Cluster ID</a></li>
 <li><a href="#_features_5">1.6.4. Features</a></li>
@@ -533,7 +534,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_BooleanStateCluster">1.7. Boolean State Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_6">1.7.1. Revision History</a></li>
+<li><a href="#_revision_history_7">1.7.1. Revision History</a></li>
 <li><a href="#_classification_6">1.7.2. Classification</a></li>
 <li><a href="#_cluster_id_5">1.7.3. Cluster ID</a></li>
 <li><a href="#_attributes_6">1.7.4. Attributes</a></li>
@@ -542,7 +543,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_ModeSelectCluster">1.8. Mode Select Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_7">1.8.1. Revision History</a></li>
+<li><a href="#_revision_history_8">1.8.1. Revision History</a></li>
 <li><a href="#_classification_7">1.8.2. Classification</a></li>
 <li><a href="#_cluster_id_6">1.8.3. Cluster ID</a></li>
 <li><a href="#_features_6">1.8.4. Features</a></li>
@@ -553,7 +554,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_ModeBaseCluster">1.9. Mode Base Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_8">1.9.1. Revision History</a></li>
+<li><a href="#_revision_history_9">1.9.1. Revision History</a></li>
 <li><a href="#_classification_8">1.9.2. Classification</a></li>
 <li><a href="#_cluster_id_7">1.9.3. Cluster ID</a></li>
 <li><a href="#_features_7">1.9.4. Features</a></li>
@@ -565,7 +566,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_LowPowerCluster">1.10. Low Power Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_9">1.10.1. Revision History</a></li>
+<li><a href="#_revision_history_10">1.10.1. Revision History</a></li>
 <li><a href="#_classification_9">1.10.2. Classification</a></li>
 <li><a href="#_cluster_id_8">1.10.3. Cluster ID</a></li>
 <li><a href="#_commands_7">1.10.4. Commands</a></li>
@@ -573,7 +574,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_WakeOnLanCluster">1.11. Wake On LAN Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_10">1.11.1. Revision History</a></li>
+<li><a href="#_revision_history_11">1.11.1. Revision History</a></li>
 <li><a href="#_classification_10">1.11.2. Classification</a></li>
 <li><a href="#_cluster_id_9">1.11.3. Cluster ID</a></li>
 <li><a href="#_attributes_9">1.11.4. Attributes</a></li>
@@ -581,7 +582,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_SwitchCluster">1.12. Switch Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_11">1.12.1. Revision History</a></li>
+<li><a href="#_revision_history_12">1.12.1. Revision History</a></li>
 <li><a href="#_classification_11">1.12.2. Classification</a></li>
 <li><a href="#_cluster_id_10">1.12.3. Cluster ID</a></li>
 <li><a href="#_features_8">1.12.4. Features</a></li>
@@ -594,7 +595,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_OperationalStateCluster">1.13. Operational State Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_12">1.13.1. Revision History</a></li>
+<li><a href="#_revision_history_13">1.13.1. Revision History</a></li>
 <li><a href="#_classification_12">1.13.2. Classification</a></li>
 <li><a href="#_cluster_id_11">1.13.3. Cluster ID</a></li>
 <li><a href="#_data_types_8">1.13.4. Data Types</a></li>
@@ -605,7 +606,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_AlarmBaseCluster">1.14. Alarm Base Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_13">1.14.1. Revision History</a></li>
+<li><a href="#_revision_history_14">1.14.1. Revision History</a></li>
 <li><a href="#_classification_13">1.14.2. Classification</a></li>
 <li><a href="#_cluster_id_12">1.14.3. Cluster ID</a></li>
 <li><a href="#_features_9">1.14.4. Features</a></li>
@@ -628,7 +629,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_IlluminanceMeasurementCluster">2.2. Illuminance Measurement Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_14">2.2.1. Revision History</a></li>
+<li><a href="#_revision_history_15">2.2.1. Revision History</a></li>
 <li><a href="#_classification_14">2.2.2. Classification</a></li>
 <li><a href="#_cluster_id_13">2.2.3. Cluster ID</a></li>
 <li><a href="#_data_types_10">2.2.4. Data Types</a></li>
@@ -637,7 +638,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_TemperatureMeasurementCluster">2.3. Temperature Measurement Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_15">2.3.1. Revision History</a></li>
+<li><a href="#_revision_history_16">2.3.1. Revision History</a></li>
 <li><a href="#_classification_15">2.3.2. Classification</a></li>
 <li><a href="#_cluster_id_14">2.3.3. Cluster ID</a></li>
 <li><a href="#_attributes_14">2.3.4. Attributes</a></li>
@@ -645,7 +646,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_PressureMeasurementCluster">2.4. Pressure Measurement Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_16">2.4.1. Revision History</a></li>
+<li><a href="#_revision_history_17">2.4.1. Revision History</a></li>
 <li><a href="#_classification_16">2.4.2. Classification</a></li>
 <li><a href="#_cluster_id_15">2.4.3. Cluster ID</a></li>
 <li><a href="#_features_10">2.4.4. Features</a></li>
@@ -654,7 +655,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_FlowMeasurementCluster">2.5. Flow Measurement Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_17">2.5.1. Revision History</a></li>
+<li><a href="#_revision_history_18">2.5.1. Revision History</a></li>
 <li><a href="#_classification_17">2.5.2. Classification</a></li>
 <li><a href="#_cluster_id_16">2.5.3. Cluster ID</a></li>
 <li><a href="#_attributes_16">2.5.4. Attributes</a></li>
@@ -662,7 +663,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_WaterContentMeasurementCluster">2.6. Water Content Measurement Clusters</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_18">2.6.1. Revision History</a></li>
+<li><a href="#_revision_history_19">2.6.1. Revision History</a></li>
 <li><a href="#_classification_18">2.6.2. Classification</a></li>
 <li><a href="#_cluster_ids">2.6.3. Cluster IDs</a></li>
 <li><a href="#_attributes_17">2.6.4. Attributes</a></li>
@@ -670,7 +671,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_OccupancySensingCluster">2.7. Occupancy Sensing Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_19">2.7.1. Revision History</a></li>
+<li><a href="#_revision_history_20">2.7.1. Revision History</a></li>
 <li><a href="#_classification_19">2.7.2. Classification</a></li>
 <li><a href="#_cluster_id_17">2.7.3. Cluster ID</a></li>
 <li><a href="#_data_types_11">2.7.4. Data Types</a></li>
@@ -679,7 +680,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_ResourceMonitoring">2.8. Resource Monitoring Clusters</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_20">2.8.1. Revision History</a></li>
+<li><a href="#_revision_history_21">2.8.1. Revision History</a></li>
 <li><a href="#_classification_20">2.8.2. Classification</a></li>
 <li><a href="#ref_ResourceMonitoringClusterIds">2.8.3. Cluster IDs</a></li>
 <li><a href="#_features_11">2.8.4. Features</a></li>
@@ -690,7 +691,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_AirQuality">2.9. Air Quality Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_21">2.9.1. Revision History</a></li>
+<li><a href="#_revision_history_22">2.9.1. Revision History</a></li>
 <li><a href="#_classification_21">2.9.2. Classification</a></li>
 <li><a href="#_cluster_id_18">2.9.3. Cluster ID</a></li>
 <li><a href="#_features_12">2.9.4. Features</a></li>
@@ -700,7 +701,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_ConcentrationMeasurement">2.10. Concentration Measurement Clusters</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_22">2.10.1. Revision History</a></li>
+<li><a href="#_revision_history_23">2.10.1. Revision History</a></li>
 <li><a href="#_classification_22">2.10.2. Classification</a></li>
 <li><a href="#ref_ConcentrationMeasurementClusterId">2.10.3. Cluster IDs</a></li>
 <li><a href="#_features_13">2.10.4. Features</a></li>
@@ -710,7 +711,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_SmokeCoAlarmCluster">2.11. Smoke CO Alarm Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_23">2.11.1. Revision History</a></li>
+<li><a href="#_revision_history_24">2.11.1. Revision History</a></li>
 <li><a href="#_classification_23">2.11.2. Classification</a></li>
 <li><a href="#_cluster_id_19">2.11.3. Cluster ID</a></li>
 <li><a href="#_features_14">2.11.4. Features</a></li>
@@ -734,7 +735,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#ref_ColorControlCluster">3.2. Color Control Cluster</a>
 <ul class="sectlevel3">
 <li><a href="#_introduction_5">3.2.1. Introduction</a></li>
-<li><a href="#_revision_history_24">3.2.2. Revision History</a></li>
+<li><a href="#_revision_history_25">3.2.2. Revision History</a></li>
 <li><a href="#_classification_24">3.2.3. Classification</a></li>
 <li><a href="#_cluster_identifiers_2">3.2.4. Cluster Identifiers</a></li>
 <li><a href="#_features_15">3.2.5. Features</a></li>
@@ -748,7 +749,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_BallastConfigurationCluster">3.3. Ballast Configuration Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_25">3.3.1. Revision History</a></li>
+<li><a href="#_revision_history_26">3.3.1. Revision History</a></li>
 <li><a href="#_classification_25">3.3.2. Classification</a></li>
 <li><a href="#_cluster_id_20">3.3.3. Cluster ID</a></li>
 <li><a href="#ref_BallastConfigurationDependencies">3.3.4. Dependencies</a></li>
@@ -770,7 +771,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_PumpConfigurationAndControlCluster">4.2. Pump Configuration and Control Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_26">4.2.1. Revision History</a></li>
+<li><a href="#_revision_history_27">4.2.1. Revision History</a></li>
 <li><a href="#_classification_26">4.2.2. Classification</a></li>
 <li><a href="#_cluster_id_21">4.2.3. Cluster ID</a></li>
 <li><a href="#_features_16">4.2.4. Features</a></li>
@@ -782,7 +783,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_ThermostatCluster">4.3. Thermostat Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_27">4.3.1. Revision History</a></li>
+<li><a href="#_revision_history_28">4.3.1. Revision History</a></li>
 <li><a href="#_classification_27">4.3.2. Classification</a></li>
 <li><a href="#_cluster_id_22">4.3.3. Cluster ID</a></li>
 <li><a href="#_features_17">4.3.4. Features</a></li>
@@ -796,7 +797,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_FanControlCluster">4.4. Fan Control Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_28">4.4.1. Revision History</a></li>
+<li><a href="#_revision_history_29">4.4.1. Revision History</a></li>
 <li><a href="#_classification_28">4.4.2. Classification</a></li>
 <li><a href="#_cluster_id_23">4.4.3. Cluster ID</a></li>
 <li><a href="#_features_18">4.4.4. Features</a></li>
@@ -807,7 +808,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_ThermostatUserInterfaceConfigurationCluster">4.5. Thermostat User Interface Configuration Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_29">4.5.1. Revision History</a></li>
+<li><a href="#_revision_history_30">4.5.1. Revision History</a></li>
 <li><a href="#_classification_29">4.5.2. Classification</a></li>
 <li><a href="#_cluster_id_24">4.5.3. Cluster ID</a></li>
 <li><a href="#_conversion_of_temperature_values_for_display">4.5.4. Conversion of Temperature Values for Display</a></li>
@@ -828,7 +829,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#ref_DoorLockCluster">5.2. Door Lock</a>
 <ul class="sectlevel3">
 <li><a href="#_overview">5.2.1. Overview</a></li>
-<li><a href="#_revision_history_30">5.2.2. Revision History</a></li>
+<li><a href="#_revision_history_31">5.2.2. Revision History</a></li>
 <li><a href="#_classification_30">5.2.3. Classification</a></li>
 <li><a href="#_cluster_id_25">5.2.4. Cluster ID</a></li>
 <li><a href="#_features_19">5.2.5. Features</a></li>
@@ -840,7 +841,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_WindowCoveringCluster">5.3. Window Covering Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_31">5.3.1. Revision History</a></li>
+<li><a href="#_revision_history_32">5.3.1. Revision History</a></li>
 <li><a href="#_classification_31">5.3.2. Classification</a></li>
 <li><a href="#_cluster_id_26">5.3.3. Cluster ID</a></li>
 <li><a href="#_features_20">5.3.4. Features</a></li>
@@ -861,7 +862,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_AccountLoginCluster">6.2. Account Login Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_32">6.2.1. Revision History</a></li>
+<li><a href="#_revision_history_33">6.2.1. Revision History</a></li>
 <li><a href="#_classification_32">6.2.2. Classification</a></li>
 <li><a href="#_cluster_id_27">6.2.3. Cluster ID</a></li>
 <li><a href="#_commands_16">6.2.4. Commands</a></li>
@@ -869,7 +870,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_ApplicationBasicCluster">6.3. Application Basic Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_33">6.3.1. Revision History</a></li>
+<li><a href="#_revision_history_34">6.3.1. Revision History</a></li>
 <li><a href="#_classification_33">6.3.2. Classification</a></li>
 <li><a href="#_cluster_id_28">6.3.3. Cluster ID</a></li>
 <li><a href="#_data_types_23">6.3.4. Data Types</a></li>
@@ -878,7 +879,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_ApplicationLauncherCluster">6.4. Application Launcher Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_34">6.4.1. Revision History</a></li>
+<li><a href="#_revision_history_35">6.4.1. Revision History</a></li>
 <li><a href="#_classification_34">6.4.2. Classification</a></li>
 <li><a href="#_cluster_id_29">6.4.3. Cluster ID</a></li>
 <li><a href="#_features_21">6.4.4. Features</a></li>
@@ -889,7 +890,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_AudioOutputCluster">6.5. Audio Output Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_35">6.5.1. Revision History</a></li>
+<li><a href="#_revision_history_36">6.5.1. Revision History</a></li>
 <li><a href="#_classification_35">6.5.2. Classification</a></li>
 <li><a href="#_cluster_id_30">6.5.3. Cluster ID</a></li>
 <li><a href="#_features_22">6.5.4. Features</a></li>
@@ -900,7 +901,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_ChannelCluster">6.6. Channel Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_36">6.6.1. Revision History</a></li>
+<li><a href="#_revision_history_37">6.6.1. Revision History</a></li>
 <li><a href="#_classification_36">6.6.2. Classification</a></li>
 <li><a href="#_cluster_id_31">6.6.3. Cluster ID</a></li>
 <li><a href="#_features_23">6.6.4. Features</a></li>
@@ -911,7 +912,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_ContentLauncherCluster">6.7. Content Launcher Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_37">6.7.1. Revision History</a></li>
+<li><a href="#_revision_history_38">6.7.1. Revision History</a></li>
 <li><a href="#_classification_37">6.7.2. Classification</a></li>
 <li><a href="#_cluster_id_32">6.7.3. Cluster ID</a></li>
 <li><a href="#_features_24">6.7.4. Features</a></li>
@@ -922,7 +923,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_KeypadInputCluster">6.8. Keypad Input Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_38">6.8.1. Revision History</a></li>
+<li><a href="#_revision_history_39">6.8.1. Revision History</a></li>
 <li><a href="#_classification_38">6.8.2. Classification</a></li>
 <li><a href="#_cluster_id_33">6.8.3. Cluster ID</a></li>
 <li><a href="#_features_25">6.8.4. Features</a></li>
@@ -932,7 +933,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_MediaInputCluster">6.9. Media Input Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_39">6.9.1. Revision History</a></li>
+<li><a href="#_revision_history_40">6.9.1. Revision History</a></li>
 <li><a href="#_classification_39">6.9.2. Classification</a></li>
 <li><a href="#_cluster_id_34">6.9.3. Cluster ID</a></li>
 <li><a href="#_features_26">6.9.4. Features</a></li>
@@ -943,7 +944,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_MediaPlaybackCluster">6.10. Media Playback Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_40">6.10.1. Revision History</a></li>
+<li><a href="#_revision_history_41">6.10.1. Revision History</a></li>
 <li><a href="#_classification_40">6.10.2. Classification</a></li>
 <li><a href="#_cluster_id_35">6.10.3. Cluster ID</a></li>
 <li><a href="#_features_27">6.10.4. Features</a></li>
@@ -954,7 +955,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_TargetNavigatorCluster">6.11. Target Navigator Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_41">6.11.1. Revision History</a></li>
+<li><a href="#_revision_history_42">6.11.1. Revision History</a></li>
 <li><a href="#_classification_41">6.11.2. Classification</a></li>
 <li><a href="#_cluster_id_36">6.11.3. Cluster ID</a></li>
 <li><a href="#_data_types_31">6.11.4. Data Types</a></li>
@@ -974,7 +975,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_RvcRunModeCluster">7.2. RVC Run Mode Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_42">7.2.1. Revision History</a></li>
+<li><a href="#_revision_history_43">7.2.1. Revision History</a></li>
 <li><a href="#_classification_42">7.2.2. Classification</a></li>
 <li><a href="#_cluster_id_37">7.2.3. Cluster ID</a></li>
 <li><a href="#_data_types_32">7.2.4. Data Types</a></li>
@@ -985,7 +986,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_RvcCleanModeCluster">7.3. RVC Clean Mode Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_43">7.3.1. Revision History</a></li>
+<li><a href="#_revision_history_44">7.3.1. Revision History</a></li>
 <li><a href="#_classification_43">7.3.2. Classification</a></li>
 <li><a href="#_cluster_id_38">7.3.3. Cluster ID</a></li>
 <li><a href="#_data_types_33">7.3.4. Data Types</a></li>
@@ -995,7 +996,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_RvcOperationalStateCluster">7.4. RVC Operational State Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_44">7.4.1. Revision History</a></li>
+<li><a href="#_revision_history_45">7.4.1. Revision History</a></li>
 <li><a href="#_classification_44">7.4.2. Classification</a></li>
 <li><a href="#_cluster_id_39">7.4.3. Cluster ID</a></li>
 <li><a href="#_data_types_34">7.4.4. Data Types</a></li>
@@ -1013,7 +1014,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_TemperatureControlCluster">8.2. Temperature Control Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_45">8.2.1. Revision History</a></li>
+<li><a href="#_revision_history_46">8.2.1. Revision History</a></li>
 <li><a href="#_classification_45">8.2.2. Classification</a></li>
 <li><a href="#_cluster_id_40">8.2.3. Cluster ID</a></li>
 <li><a href="#_features_28">8.2.4. Features</a></li>
@@ -1023,7 +1024,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_DishwasherModeCluster">8.3. Dishwasher Mode Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_46">8.3.1. Revision History</a></li>
+<li><a href="#_revision_history_47">8.3.1. Revision History</a></li>
 <li><a href="#_classification_46">8.3.2. Classification</a></li>
 <li><a href="#_cluster_id_41">8.3.3. Cluster ID</a></li>
 <li><a href="#_data_types_35">8.3.4. Data Types</a></li>
@@ -1033,7 +1034,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_DishwasherAlarmCluster">8.4. Dishwasher Alarm Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_47">8.4.1. Revision History</a></li>
+<li><a href="#_revision_history_48">8.4.1. Revision History</a></li>
 <li><a href="#_classification_47">8.4.2. Classification</a></li>
 <li><a href="#_cluster_id_42">8.4.3. Cluster ID</a></li>
 <li><a href="#_data_types_36">8.4.4. Data Types</a></li>
@@ -1041,7 +1042,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_LaundryWasherModeCluster">8.5. Laundry Washer Mode Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_48">8.5.1. Revision History</a></li>
+<li><a href="#_revision_history_49">8.5.1. Revision History</a></li>
 <li><a href="#_classification_48">8.5.2. Classification</a></li>
 <li><a href="#_cluster_id_43">8.5.3. Cluster ID</a></li>
 <li><a href="#_data_types_37">8.5.4. Data Types</a></li>
@@ -1052,7 +1053,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_LaundryWasherControlsCluster">8.6. Laundry Washer Controls</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_49">8.6.1. Revision History</a></li>
+<li><a href="#_revision_history_50">8.6.1. Revision History</a></li>
 <li><a href="#_classification_49">8.6.2. Classification</a></li>
 <li><a href="#_cluster_id_44">8.6.3. Cluster ID</a></li>
 <li><a href="#_features_29">8.6.4. Features</a></li>
@@ -1062,7 +1063,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_RefrigeratorAndTempCtrldCabinetModeCluster">8.7. Refrigerator And Temperature Controlled Cabinet Mode Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_50">8.7.1. Revision History</a></li>
+<li><a href="#_revision_history_51">8.7.1. Revision History</a></li>
 <li><a href="#_classification_50">8.7.2. Classification</a></li>
 <li><a href="#_cluster_id_45">8.7.3. Cluster ID</a></li>
 <li><a href="#_data_types_39">8.7.4. Data Types</a></li>
@@ -1073,7 +1074,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_RefrigeratorAlarmCluster">8.8. Refrigerator Alarm Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_51">8.8.1. Revision History</a></li>
+<li><a href="#_revision_history_52">8.8.1. Revision History</a></li>
 <li><a href="#_classification_51">8.8.2. Classification</a></li>
 <li><a href="#_cluster_id_46">8.8.3. Cluster ID</a></li>
 <li><a href="#_features_30">8.8.4. Features</a></li>
@@ -1089,10 +1090,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_notice_of_use_and_disclosure"><a class="anchor" href="#_notice_of_use_and_disclosure"></a>Notice of Use and Disclosure</h2>
+<h2 id="_copyright_notice_license_and_disclaimer"><a class="anchor" href="#_copyright_notice_license_and_disclaimer"></a>Copyright Notice, License and Disclaimer</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright &#169; Connectivity Standards Alliance (2021). All rights reserved.
+<p>Copyright &#169; Connectivity Standards Alliance (2021-2023). All rights reserved.
 The information within this document is the property of the Connectivity
 Standards Alliance and its use and disclosure are restricted, except as
 expressly set forth herein.</p>
@@ -1153,6 +1154,47 @@ are the sole property of their respective owners.</p>
 508 Second Street, Suite 206<br>
 Davis, CA 95616, USA</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_revision_history"><a class="anchor" href="#_revision_history"></a>Revision History</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.6279%;">
+<col style="width: 23.2558%;">
+<col style="width: 44.186%;">
+<col style="width: 20.9303%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Revision</th>
+<th class="tableblock halign-left valign-top">Date</th>
+<th class="tableblock halign-left valign-top">Details</th>
+<th class="tableblock halign-left valign-top">Editor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">September 23, 2022</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version 1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Robert Szewczyk</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">02</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">May 17, 2023</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version 1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Robert Szewczyk</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">03</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">October 18, 2023</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version 1.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Robert Szewczyk</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -1429,7 +1471,7 @@ that is identifying itself to respond to the initiator.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_revision_history"><a class="anchor" href="#_revision_history"></a>1.2.1. Revision History</h4>
+<h4 id="_revision_history_2"><a class="anchor" href="#_revision_history_2"></a>1.2.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -2099,7 +2141,7 @@ achieved using the Message Layer mechanisms where the Group Table is not involve
 Hence this cluster does not play a part in that.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_2"><a class="anchor" href="#_revision_history_2"></a>1.3.1. Revision History</h4>
+<h4 id="_revision_history_3"><a class="anchor" href="#_revision_history_3"></a>1.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -3227,7 +3269,7 @@ Support for Scenes cluster is provisional.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_3"><a class="anchor" href="#_revision_history_3"></a>1.4.1. Revision History</h4>
+<h4 id="_revision_history_4"><a class="anchor" href="#_revision_history_4"></a>1.4.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -6264,7 +6306,7 @@ the same values as in the corresponding fields of the received CopyScene command
 <p>Attributes and commands for turning devices on and off.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_4"><a class="anchor" href="#_revision_history_4"></a>1.5.1. Revision History</h4>
+<h4 id="_revision_history_5"><a class="anchor" href="#_revision_history_5"></a>1.5.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -7198,7 +7240,7 @@ device that can be set to a level, for example the brightness of a
 light, the degree of closure of a door, or the power output of a heater.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_5"><a class="anchor" href="#_revision_history_5"></a>1.6.1. Revision History</h4>
+<h4 id="_revision_history_6"><a class="anchor" href="#_revision_history_6"></a>1.6.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -8832,7 +8874,7 @@ set.</p>
 <p>This cluster provides an interface to a boolean state.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_6"><a class="anchor" href="#_revision_history_6"></a>1.7.1. Revision History</h4>
+<h4 id="_revision_history_7"><a class="anchor" href="#_revision_history_7"></a>1.7.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -9053,7 +9095,7 @@ A manufacturer specific semantic tag SHALL support the derived cluster purpose.
 An anonymous mode SHALL NOT replace the meaning of a standard semantic tag, when one exists, for the cluster purpose.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_7"><a class="anchor" href="#_revision_history_7"></a>1.8.1. Revision History</h4>
+<h4 id="_revision_history_8"><a class="anchor" href="#_revision_history_8"></a>1.8.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -9652,7 +9694,7 @@ For example: A LightBlinking cluster ID supports blinking modes for a light (and
 <p>An anonymous mode SHALL NOT replace the meaning of a standard mode tag, when one exists, for the cluster purpose.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_8"><a class="anchor" href="#_revision_history_8"></a>1.9.1. Revision History</h4>
+<h4 id="_revision_history_9"><a class="anchor" href="#_revision_history_9"></a>1.9.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -10590,7 +10632,7 @@ This can be added in the future.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_9"><a class="anchor" href="#_revision_history_9"></a>1.10.1. Revision History</h4>
+<h4 id="_revision_history_10"><a class="anchor" href="#_revision_history_10"></a>1.10.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -10720,7 +10762,7 @@ This cluster provides the device MAC address which is a required input to the Wa
 <p>The cluster server for Wake on LAN or Wake on WLAN is implemented by a device that supports the Wake on LAN/WLAN protocol, such as a TV, Set-top Box, or Smart Speaker.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_10"><a class="anchor" href="#_revision_history_10"></a>1.11.1. Revision History</h4>
+<h4 id="_revision_history_11"><a class="anchor" href="#_revision_history_11"></a>1.11.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -10875,7 +10917,7 @@ Interactions with the switch device are exposed as attributes (for the latching 
 An interested client MAY subscribe to these attributes/events and thus be informed of the interactions, and can perform actions based on this, for example by sending commands to perform an action such as controlling a light or a window shade.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_11"><a class="anchor" href="#_revision_history_11"></a>1.12.1. Revision History</h4>
+<h4 id="_revision_history_12"><a class="anchor" href="#_revision_history_12"></a>1.12.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -11884,7 +11926,7 @@ the "window blinds control" variation which will always have such an intermediat
 <p>Additionally, this cluster provides events for monitoring the operational state of the device.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_12"><a class="anchor" href="#_revision_history_12"></a>1.13.1. Revision History</h4>
+<h4 id="_revision_history_13"><a class="anchor" href="#_revision_history_13"></a>1.13.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -12825,7 +12867,7 @@ Each derivation SHALL define the values for the AlarmMap data type used in this 
 Each derivation SHALL define which alarms are latched.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_13"><a class="anchor" href="#_revision_history_13"></a>1.14.1. Revision History</h4>
+<h4 id="_revision_history_14"><a class="anchor" href="#_revision_history_14"></a>1.14.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -13517,7 +13559,7 @@ functionality, including configuration and provision of notifications of
 illuminance measurements.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_14"><a class="anchor" href="#_revision_history_14"></a>2.2.1. Revision History</h4>
+<h4 id="_revision_history_15"><a class="anchor" href="#_revision_history_15"></a>2.2.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -13796,7 +13838,7 @@ functionality, including configuration and provision of notifications of
 temperature measurements.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_15"><a class="anchor" href="#_revision_history_15"></a>2.3.1. Revision History</h4>
+<h4 id="_revision_history_16"><a class="anchor" href="#_revision_history_16"></a>2.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -13994,7 +14036,7 @@ functionality, including configuration and provision of notifications of
 pressure measurements.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_16"><a class="anchor" href="#_revision_history_16"></a>2.4.1. Revision History</h4>
+<h4 id="_revision_history_17"><a class="anchor" href="#_revision_history_17"></a>2.4.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -14321,7 +14363,7 @@ ScaledValue (see <a href="#ref_ScaledValue">ScaledValue</a>).</p>
 <p>This cluster provides an interface to flow measurement functionality, including configuration and provision of notifications of flow measurements.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_17"><a class="anchor" href="#_revision_history_17"></a>2.5.1. Revision History</h4>
+<h4 id="_revision_history_18"><a class="anchor" href="#_revision_history_18"></a>2.5.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -14520,7 +14562,7 @@ but are not limited to, leaf wetness, relative humidity, and soil
 moisture.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_18"><a class="anchor" href="#_revision_history_18"></a>2.6.1. Revision History</h4>
+<h4 id="_revision_history_19"><a class="anchor" href="#_revision_history_19"></a>2.6.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -14743,7 +14785,7 @@ functionality, including configuration and provision of notifications of
 occupancy status.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_19"><a class="anchor" href="#_revision_history_19"></a>2.7.1. Revision History</h4>
+<h4 id="_revision_history_20"><a class="anchor" href="#_revision_history_20"></a>2.7.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -15276,7 +15318,7 @@ This cluster is not meant to be used for monitoring of the system resources, suc
 <p>This cluster SHALL be used via an alias to a specific resource type (see <a href="#ref_ResourceMonitoringClusterIds">Cluster IDs</a>).</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_20"><a class="anchor" href="#_revision_history_20"></a>2.8.1. Revision History</h4>
+<h4 id="_revision_history_21"><a class="anchor" href="#_revision_history_21"></a>2.8.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -15783,7 +15825,7 @@ to be updated automatically based on the clock of the server, if the server supp
 <p>This cluster provides an interface to air quality classification using distinct levels with human-readable labels.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_21"><a class="anchor" href="#_revision_history_21"></a>2.9.1. Revision History</h4>
+<h4 id="_revision_history_22"><a class="anchor" href="#_revision_history_22"></a>2.9.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -16040,7 +16082,7 @@ functionality.</p>
 <p>This cluster SHALL to be used via an alias to a specific substance (see <a href="#ref_ConcentrationMeasurementClusterId">Cluster IDs</a>).</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_22"><a class="anchor" href="#_revision_history_22"></a>2.10.1. Revision History</h4>
+<h4 id="_revision_history_23"><a class="anchor" href="#_revision_history_23"></a>2.10.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -16663,7 +16705,7 @@ See <a href="#ref_LevelValueEnum">LevelValueEnum</a>.</p>
 <p>This cluster provides an interface for observing and managing the state of smoke and CO alarms.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_23"><a class="anchor" href="#_revision_history_23"></a>2.11.1. Revision History</h4>
+<h4 id="_revision_history_24"><a class="anchor" href="#_revision_history_24"></a>2.11.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -17944,7 +17986,7 @@ achievable at the current color.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_24"><a class="anchor" href="#_revision_history_24"></a>3.2.2. Revision History</h4>
+<h4 id="_revision_history_25"><a class="anchor" href="#_revision_history_25"></a>3.2.2. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -22534,7 +22576,7 @@ Support for Ballast Configuration cluster is provisional.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_25"><a class="anchor" href="#_revision_history_25"></a>3.3.1. Revision History</h4>
+<h4 id="_revision_history_26"><a class="anchor" href="#_revision_history_26"></a>3.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -23291,7 +23333,7 @@ status information. Note that control of pump speed is not included –
 speed is controlled by the On/Off and Level Control clusters.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_26"><a class="anchor" href="#_revision_history_26"></a>4.2.1. Revision History</h4>
+<h4 id="_revision_history_27"><a class="anchor" href="#_revision_history_27"></a>4.2.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -24555,7 +24597,7 @@ SHALL be returned.</p>
 <p>This cluster provides an interface to the functionality of a thermostat.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_27"><a class="anchor" href="#_revision_history_27"></a>4.3.1. Revision History</h4>
+<h4 id="_revision_history_28"><a class="anchor" href="#_revision_history_28"></a>4.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global <em>ClusterRevision</em> attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -27985,7 +28027,7 @@ Support for Fan Control cluster is provisional.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_28"><a class="anchor" href="#_revision_history_28"></a>4.4.1. Revision History</h4>
+<h4 id="_revision_history_29"><a class="anchor" href="#_revision_history_29"></a>4.4.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -29034,7 +29076,7 @@ interface for a thermostat, or a thermostat controller device, that
 supports a keypad and LCD screen.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_29"><a class="anchor" href="#_revision_history_29"></a>4.5.1. Revision History</h4>
+<h4 id="_revision_history_30"><a class="anchor" href="#_revision_history_30"></a>4.5.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -29417,7 +29459,7 @@ attributes and functions and a list of optional features.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_30"><a class="anchor" href="#_revision_history_30"></a>5.2.2. Revision History</h4>
+<h4 id="_revision_history_31"><a class="anchor" href="#_revision_history_31"></a>5.2.2. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -38583,7 +38625,7 @@ adjusting automatic window coverings such as drapery motors, automatic
 shades, curtains and blinds.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_31"><a class="anchor" href="#_revision_history_31"></a>5.3.1. Revision History</h4>
+<h4 id="_revision_history_32"><a class="anchor" href="#_revision_history_32"></a>5.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -40855,7 +40897,7 @@ Content App on a Video Player device.</p>
 may implement the cluster server for this cluster to simplify account login for its users.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_32"><a class="anchor" href="#_revision_history_32"></a>6.2.1. Revision History</h4>
+<h4 id="_revision_history_33"><a class="anchor" href="#_revision_history_33"></a>6.2.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -41247,7 +41289,7 @@ This command SHOULD be used by clients of a Content App to indicate the end of a
 This cluster provides identification information about the Content App such as vendor and product.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_33"><a class="anchor" href="#_revision_history_33"></a>6.3.1. Revision History</h4>
+<h4 id="_revision_history_34"><a class="anchor" href="#_revision_history_34"></a>6.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -41619,7 +41661,7 @@ the application corresponding to the endpoint on which the cluster is supported 
 it can support launching any application (AP feature supported).</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_34"><a class="anchor" href="#_revision_history_34"></a>6.4.1. Revision History</h4>
+<h4 id="_revision_history_35"><a class="anchor" href="#_revision_history_35"></a>6.4.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -42307,7 +42349,7 @@ like a Video Player device (Smart TV, TV Setup Top Box, Smart Speaker, etc).</p>
 <p>The cluster server for Audio Output is implemented by a device that has configurable audio output.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_35"><a class="anchor" href="#_revision_history_35"></a>6.5.1. Revision History</h4>
+<h4 id="_revision_history_36"><a class="anchor" href="#_revision_history_36"></a>6.5.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -42767,7 +42809,7 @@ This cluster provides a list of available channels and provides commands for abs
 <p>The cluster server for Channel is implemented by an endpoint that controls the current Channel.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_36"><a class="anchor" href="#_revision_history_36"></a>6.6.1. Revision History</h4>
+<h4 id="_revision_history_37"><a class="anchor" href="#_revision_history_37"></a>6.6.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -43554,7 +43596,7 @@ or an endpoint representing a Content App on such a device.</p>
 the Video Player device SHALL launch the application when a client invokes the LaunchContent or LaunchURL commands.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_37"><a class="anchor" href="#_revision_history_37"></a>6.7.1. Revision History</h4>
+<h4 id="_revision_history_38"><a class="anchor" href="#_revision_history_38"></a>6.7.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -44756,7 +44798,7 @@ Feature flags are used to indicate a specific subset that is supported.
 Device MAY support additional codes beyond what is indicated in feature flags.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_38"><a class="anchor" href="#_revision_history_38"></a>6.8.1. Revision History</h4>
+<h4 id="_revision_history_39"><a class="anchor" href="#_revision_history_39"></a>6.8.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -45068,7 +45110,7 @@ The data for this command SHALL be as follows:</p>
 <p>The cluster server for Media Input is implemented by a device that has selectable input, such as a Video Player device.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_39"><a class="anchor" href="#_revision_history_39"></a>6.9.1. Revision History</h4>
+<h4 id="_revision_history_40"><a class="anchor" href="#_revision_history_40"></a>6.9.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -45602,7 +45644,7 @@ This field may be blank, but SHOULD be provided when known.</p>
 This cluster provides an interface for controlling Media Playback.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_40"><a class="anchor" href="#_revision_history_40"></a>6.10.1. Revision History</h4>
+<h4 id="_revision_history_41"><a class="anchor" href="#_revision_history_41"></a>6.10.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -46582,7 +46624,7 @@ It supports listing a set of navigation targets, tracking and changing the curre
 the Video Player device containing the endpoint SHALL launch the Content App when a client invokes the NavigateTarget command.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_41"><a class="anchor" href="#_revision_history_41"></a>6.11.1. Revision History</h4>
+<h4 id="_revision_history_42"><a class="anchor" href="#_revision_history_42"></a>6.11.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -47060,7 +47102,7 @@ such as Robotic Vacuum Cleaners (RVCs).</p>
 It also defines a namespace for the running modes of these devices.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_42"><a class="anchor" href="#_revision_history_42"></a>7.2.1. Revision History</h4>
+<h4 id="_revision_history_43"><a class="anchor" href="#_revision_history_43"></a>7.2.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -47341,7 +47383,7 @@ If currently paused and the device can resume it will continue to clean.</p>
 It also defines a namespace for the cleaning type for these devices.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_43"><a class="anchor" href="#_revision_history_43"></a>7.3.1. Revision History</h4>
+<h4 id="_revision_history_44"><a class="anchor" href="#_revision_history_44"></a>7.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -47587,7 +47629,7 @@ the Mop mode tag in the ModeTags field list.</p>
 <p>This cluster provides an interface for monitoring the operational state of a Robotic Vacuum Cleaner.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_44"><a class="anchor" href="#_revision_history_44"></a>7.4.1. Revision History</h4>
+<h4 id="_revision_history_45"><a class="anchor" href="#_revision_history_45"></a>7.4.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -47891,7 +47933,7 @@ as part of that devices device type definition.</p>
 For example, the value of the Step attribute SHOULD match the incremental value by which the temperature setpoint can be changed on the physical device.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_45"><a class="anchor" href="#_revision_history_45"></a>8.2.1. Revision History</h4>
+<h4 id="_revision_history_46"><a class="anchor" href="#_revision_history_46"></a>8.2.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -48347,7 +48389,7 @@ and the value of SelectedTemperatureLevel SHALL remain unchanged.</p>
 namespaced enumerated values for dishwasher devices.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_46"><a class="anchor" href="#_revision_history_46"></a>8.3.1. Revision History</h4>
+<h4 id="_revision_history_47"><a class="anchor" href="#_revision_history_47"></a>8.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -48627,7 +48669,7 @@ about the StartUpMode attribute.</p>
 <p>This cluster is a derived cluster of the Alarm Base cluster.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_47"><a class="anchor" href="#_revision_history_47"></a>8.4.1. Revision History</h4>
+<h4 id="_revision_history_48"><a class="anchor" href="#_revision_history_48"></a>8.4.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -48769,7 +48811,7 @@ about the StartUpMode attribute.</p>
 namespaced enumerated values for laundry washer devices.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_48"><a class="anchor" href="#_revision_history_48"></a>8.5.1. Revision History</h4>
+<h4 id="_revision_history_49"><a class="anchor" href="#_revision_history_49"></a>8.5.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -49075,7 +49117,7 @@ about the StartUpMode attribute.</p>
 <p>This cluster provides a way to access options associated with the operation of a laundry washer device type.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_49"><a class="anchor" href="#_revision_history_49"></a>8.6.1. Revision History</h4>
+<h4 id="_revision_history_50"><a class="anchor" href="#_revision_history_50"></a>8.6.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -49366,7 +49408,7 @@ defining additional mode tags and namespaced enumerated values
 for refrigerator and temperature controlled cabinet devices.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_50"><a class="anchor" href="#_revision_history_50"></a>8.7.1. Revision History</h4>
+<h4 id="_revision_history_51"><a class="anchor" href="#_revision_history_51"></a>8.7.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -49647,7 +49689,7 @@ A blank field indicates no change.</p>
 <p>This cluster is a derived cluster of Alarm Base cluster.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_51"><a class="anchor" href="#_revision_history_51"></a>8.8.1. Revision History</h4>
+<h4 id="_revision_history_52"><a class="anchor" href="#_revision_history_52"></a>8.8.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -49858,8 +49900,8 @@ It SHALL be re-set to 1 if the alarm is re-enabled at the device itself.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 74b3c3e<br>
-Last updated 2023-10-12 00:00:36 UTC
+Version master 472add0 (local changes)<br>
+Last updated 2023-10-12 16:19:18 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
