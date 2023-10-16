@@ -126,9 +126,11 @@ End
 End
 [TC-APPLAUNCHER-3.8] Stop Application Verification
  ./chip-tool applicationlauncher stop-app '{"catalogVendorID": 123, "applicationID": "exampleid"}' 1 1
+./chip-tool applicationbasic read status 1 3
 End
 # [TC-APPLAUNCHER-3.9] Hide Application Verification
  ./chip-tool applicationlauncher hide-app '{"catalogVendorID": 123, "applicationID": "exampleid"}' 1 1
+./chip-tool applicationbasic read status 1 3
  End
 # [TC-MEDIAINPUT-3.10] Input List Verification
  ./chip-tool mediainput read input-list 1 1
