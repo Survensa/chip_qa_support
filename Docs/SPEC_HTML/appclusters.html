@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master fa9aa02 (local changes),</span>
-<span id="revdate">2023-10-15 17:31:53 -0700</span>
+<span id="revnumber">version master efc9ae8 (local changes),</span>
+<span id="revdate">2023-10-16 09:39:00 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -9749,6 +9749,10 @@ For example: A LightBlinking cluster ID supports blinking modes for a light (and
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Initial version</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChangeToModeResponse command: StatusText must be provided for InvalidInMode status</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -10508,10 +10512,10 @@ with the same semantic as the common code of 0x01 (UnsupportedMode).</p>
 <div class="paragraph">
 <p>If the Status field is not set to Success or UnsupportedMode,
 the StatusText field SHALL include a vendor-defined error description
-which can be used to explain the error to the user.</p>
-</div>
-<div class="paragraph">
-<p>If the Status field is set to InvalidInMode, the StatusText field SHALL be an empty string.</p>
+which can be used to explain the error to the user. For example,
+if the Status field is set to InvalidInMode, the StatusText field SHOULD indicate
+why the transition to the requested mode is not allowed, given the current mode
+of the device, which may involve other clusters.</p>
 </div>
 </div>
 </div>
@@ -49935,8 +49939,8 @@ It SHALL be re-set to 1 if the alarm is re-enabled at the device itself.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master fa9aa02 (local changes)<br>
-Last updated 2023-10-16 00:32:09 UTC
+Version master efc9ae8 (local changes)<br>
+Last updated 2023-10-16 16:39:20 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
