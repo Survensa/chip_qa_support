@@ -1,5 +1,5 @@
 $ Color Control
-# [TC-CC-1.1] Global attributes with server as DUT
+# [TC-CC-1.1] Global attributes with server as  DUT
 ./chip-tool colorcontrol read cluster-revision 1 1
 ./chip-tool colorcontrol read feature-map 1 1
 ./chip-tool colorcontrol read attribute-list 1 1
