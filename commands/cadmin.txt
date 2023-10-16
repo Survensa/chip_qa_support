@@ -1,0 +1,23 @@
+$ CADMIN
+# [TC-CADMIN-1.1] Administrator Behavior using ECM
+./chip-tool  pairing open-commissioning-window 1 1 400 2000 3841
+./chip-tool operationalcredentials read fabrics 1 0 --fabric-filtered 0
+./chip-tool pairing code 2 {code} --commissioner-name beta
+ avahi-browse -rt _matter._tcp
+./chip-tool  basicinformation write node-label te5new 2 0 --commissioner-name beta
+./chip-tool operationalcredentials read fabrics 2 0  --fabric-filtered 0 --commissioner-name beta
+./chip-tool  basicinformation write node-label te8 1 0
+./chip-tool  basicinformation read node-label 1 0
+./chip-tool  basicinformation read node-label 2 0 --commissioner-name beta
+./chip-tool  basicinformation write node-label te5new 2 0 --commissioner-name beta
+./chip-tool  basicinformation read node-label 2 0 --commissioner-name beta
+./chip-tool  pairing open-commissioning-window 2 1 400 2000 3841 --commissioner-name beta
+./chip-tool administratorcommissioning revoke-commissioning 2 0 --timedInteractionTimeoutMs 1000 --commissioner-name beta
+./chip-tool pairing code 3  {code}  --commissioner-name gamma
+./chip-tool  basicinformation write node-label te5new 2 0 --commissioner-name beta
+./chip-tool  basicinformation read node-label 2 0 --commissioner-name beta
+./chip-tool pairing open-commissioning-window 2 1 180 1000 3840 --commissioner-name beta
+sleep 200
+./chip-tool pairing open-commissioning-window 2 1 300 1000 3840 --commissioner-name beta
+./chip-tool pairing code 1 {code}
+End
