@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 472add0 (local changes),</span>
-<span id="revdate">2023-10-12 09:18:58 -0700</span>
+<span id="revnumber">version master fa9aa02 (local changes),</span>
+<span id="revdate">2023-10-15 17:31:53 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -6343,6 +6343,10 @@ revision number in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Addition of Dead Front behavior and associated FeatureMap entry</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Addition of OffOnly feature and associated FeatureMap entry</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -6401,16 +6405,18 @@ revision number in the table below.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
 <th class="tableblock halign-left valign-top">Code</th>
 <th class="tableblock halign-left valign-top">Feature</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 <th class="tableblock halign-left valign-top">Summary</th>
 </tr>
 </thead>
@@ -6419,13 +6425,22 @@ revision number in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LT</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lighting</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[!OFFONLY]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Behavior that supports lighting applications.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DF</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DeadFrontBehaviour</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[!OFFONLY]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Device has <a href="#ref_DeadFrontBehaviour">Dead Front behavior</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OFFONLY</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OffOnly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[!(LT | DF)]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Device supports the <a href="#ref_OffOnly">OffOnly</a> feature</p></td>
 </tr>
 </tbody>
 </table>
@@ -6442,6 +6457,9 @@ attribute to be set to FALSE, the OnTime attribute SHALL be set to 0.</p>
 <p>On receipt of a Level Control cluster command that causes the OnOff
 attribute to be set to TRUE, if the value of the OnTime attribute is
 equal to 0, the server SHALL set the OffWaitTime attribute to 0.</p>
+</div>
+<div class="paragraph">
+<p>An endpoint supporting this feature SHALL NOT support the OFFONLY feature.</p>
 </div>
 </div>
 <div class="sect4">
@@ -6474,6 +6492,23 @@ This "dead front" behavior includes:</p>
 </div>
 <div class="paragraph">
 <p>When this feature is supported, and any change of the "dead front" state leads to changes in attributes of other clusters due to the "dead front" feature, these attribute changes SHALL NOT be skipped or omitted from the usual processing associated with attribute changes. For example, if an attribute changes from value 4 to null on "dead front" behavior due to an Off command being received, this change SHALL be processed for reporting and subscriptions.</p>
+</div>
+<div class="paragraph">
+<p>An endpoint supporting this feature SHALL NOT support the OFFONLY feature.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="ref_OffOnly"><a class="anchor" href="#ref_OffOnly"></a>1.5.4.3. OffOnly Feature</h5>
+<div class="paragraph">
+<p>When this feature is supported, the <a href="#ref_Off">Off</a> command SHALL be supported
+and the <a href="#ref_On">On</a> and <a href="#ref_Toggle">Toggle</a> commands SHALL NOT be supported.</p>
+</div>
+<div class="paragraph">
+<p>This feature is useful for devices which can be turned off via the <a href="#ref_Off">Off</a> command received by an instance of this cluster
+but cannot be turned on via commands received by an instance of this cluster due to regulatory requirements.</p>
+</div>
+<div class="paragraph">
+<p>An endpoint supporting this feature SHALL NOT support the DF or LT features.</p>
 </div>
 </div>
 </div>
@@ -6875,7 +6910,7 @@ the restart.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">!OFFONLY</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x02</p></td>
@@ -6883,7 +6918,7 @@ the restart.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">!OFFONLY</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x40</p></td>
@@ -6912,7 +6947,7 @@ the restart.</p>
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="_off_command"><a class="anchor" href="#_off_command"></a>1.5.7.1. Off Command</h5>
+<h5 id="ref_Off"><a class="anchor" href="#ref_Off"></a>1.5.7.1. Off Command</h5>
 <div class="sect5">
 <h6 id="_effect_on_receipt_21"><a class="anchor" href="#_effect_on_receipt_21"></a>1.5.7.1.1. Effect on Receipt</h6>
 <div class="paragraph">
@@ -6925,7 +6960,7 @@ attribute to 0.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_on_command"><a class="anchor" href="#_on_command"></a>1.5.7.2. On Command</h5>
+<h5 id="ref_On"><a class="anchor" href="#ref_On"></a>1.5.7.2. On Command</h5>
 <div class="sect5">
 <h6 id="_effect_on_receipt_22"><a class="anchor" href="#_effect_on_receipt_22"></a>1.5.7.2.1. Effect on Receipt</h6>
 <div class="paragraph">
@@ -6939,7 +6974,7 @@ the OffWaitTime attribute to 0.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_toggle_command"><a class="anchor" href="#_toggle_command"></a>1.5.7.3. Toggle Command</h5>
+<h5 id="ref_Toggle"><a class="anchor" href="#ref_Toggle"></a>1.5.7.3. Toggle Command</h5>
 <div class="sect5">
 <h6 id="_effect_on_receipt_23"><a class="anchor" href="#_effect_on_receipt_23"></a>1.5.7.3.1. Effect on Receipt</h6>
 <div class="paragraph">
@@ -49900,8 +49935,8 @@ It SHALL be re-set to 1 if the alarm is re-enabled at the device itself.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 472add0 (local changes)<br>
-Last updated 2023-10-15 00:00:37 UTC
+Version master fa9aa02 (local changes)<br>
+Last updated 2023-10-16 00:32:09 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
