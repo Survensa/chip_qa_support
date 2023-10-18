@@ -84,7 +84,7 @@ cluster_name = [field.name for field in clusters]
 
 parser = argparse.ArgumentParser(description='cluster name')
 
-parser.add_argument('-c','--cluster', nargs='+',help='name of the cluster',choices= cluster_name)
+parser.add_argument('-c','--cluster', nargs='+',help='name of the cluster',choices= cluster_name,default= False)
 parser.add_argument('-p','--pairing',help='Auto-pairing function', default= False)
 
 args = parser.parse_args()
@@ -339,10 +339,21 @@ if __name__ == "__main__":
     test = args.cluster
     
     if test:
+        None
+    else:
+        test =[]
+        for clus in cluster_name:
+            e = yaml_info[clus]
+            if e == 'Y':
+                test.append(clus)
+
+    if test:
+
         for c in test:
              file = vars(Cluster)[c]
              file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands",
                                 file )
              read_text_file(file_path)
+
     else:
         all()
