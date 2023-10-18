@@ -94,7 +94,7 @@ args = parser.parse_args()
 pattern1 = re.compile(r'(CHIP:DMG|CHIP:TOO)(.*)')
 pattern2 = re.compile(r'^\./chip-tool')
 pattern3 = re.compile(r'avahi-browse')
-t = ""
+testcase = ""
 # chip-tool path
 homedir = os.path.join(os.path.expanduser('~'), "chip_command_run", "config.yaml")
 with open(homedir, 'r') as file:
@@ -156,13 +156,13 @@ def advertise():
         ssh.close()
         logpath = os.path.join(cd,"../Logs/BackendLogs") 
         date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
-        with open(f"{logpath}/{t}dut-{date}.txt", 'a') as c:
-            c.write(log.stdout)
+        with open(f"{logpath}/{testcase}dut-{date}.txt", 'a') as f:
+            f.write(log.stdout)
         return True
 
-def tc(tc):
-    global t
-    t = tc
+def testcasename(tc):
+    global testcase
+    testcase = tc
     return None
 
 
@@ -200,9 +200,9 @@ def process_log_files(input_dir, output_dir):
 
 def code():
     with open ("temp.txt", 'r') as f:
-        for l in f:
-            l = l.strip()
-            match = re.search(r'Manual pairing code: \[(\d+)\]', l)
+        for line in f:
+            line = line.strip()
+            match = re.search(r'Manual pairing code: \[(\d+)\]', line)
             if match:
                 manualcode = match.group(1)
                 return(str(manualcode))
@@ -215,13 +215,13 @@ def code():
 def run_command(commands, testcase):
     file_path = os.path.join(os.path.expanduser('~'), build)
     save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
-    tc(testcase)
+    testcasename(testcase)
     cd = os.getcwd()
     rpi_path = os.path.join(cd,"../scripts/rpi.json") 
-    p = args.pairing
+    pair = args.pairing
     date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
     manualcode = "34970112332"
-    if p :
+    if pair :
         with open( rpi_path, "r") as f:
             data = json.load(f)
         factory_reset(data)
@@ -272,7 +272,7 @@ def run_command(commands, testcase):
         with open(f"{save_path}/{testcase}-{date}.txt", 'a') as cluster_textfile:
             cluster_textfile.write(log)
 
-    if p :
+    if pair :
         factory_reset(data)
         time.sleep(5)
     
