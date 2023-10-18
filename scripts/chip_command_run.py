@@ -2,8 +2,84 @@ import os
 import sys
 from datetime import datetime
 import subprocess
-import yaml 
+import yaml
 import re
+import argparse
+from dataclasses import dataclass, fields
+
+@dataclass
+class Cluster:
+    
+    TVOCCONC : str = "../commands/Total_Volatile_Organic_Compounds_Concentration_Measurement.txt"
+    NDOCONC : str = "../commands/Nitrogen_Dioxide_Concentration_Measurement.txt"
+    CC : str = "../commands/Color_Control.txt"
+    LUNIT : str = "../commands/Unit_localization.txt"
+    FLDCONC : str = "../commands/Formaldehyde_Concentration_Measurement.txt"
+    SWTCH : str = "../commands/Switch.txt"
+    BRBINFO : str = "../commands/Bridged_Device_Basic_Information.txt"
+    BIND : str = "../commands/Binding.txt"
+    ULABEL : str = "../commands/User_Lable.txt"
+    PMICONC : str = "../commands/PM2.5_Concentration_Measurement.txt"
+    SMOKECO : str = "../commands/Smoke_and_CO_Alarm.txt"
+    DISHM : str = "../commands/Dishwasher_Mode_Cluster.txt"
+    FLABEL : str = "../commands/Fixed_Lable.txt"
+    DRLK : str = "../commands/Door_lock.txt"
+    ACFREMON : str = "../commands/Activated_Carbon_Filter_Monitoring.txt"
+    TSTAT : str = "../commands/Thermostat.txt"
+    DESC : str = "../commands/Descriptor_Cluster.txt"
+    MC : str = "../commands/Media.txt"
+    CDOCONC : str = "../commands/Carbon_Dioxide_Concentration_Measurement.txt"
+    PSCFG : str = "../commands/Power_Source_Configuration.txt"
+    DGETH : str = "../commands/Ethernet_Diag.txt"
+    DGSW : str = "../commands/Software_Diag.txt"
+    HEPAFREMON : str = "../commands/HEPA_Filter_Monitoring.txt"
+    RVCCLEANM : str = "../commands/RVC_Clean_Mode.txt"
+    PRS : str = "../commands/Pressure_measurement.txt"
+    I : str = "../commands/Identify.txt"
+    DGTHREAD : str = "../commands/Thread_diag.txt"
+    BOOL : str = "../commands/Boolean.txt"
+    TSUIC : str = "../commands/Thermostat_User.txt"
+    LCFG : str = "../commands/Localization_Configuration_cluster.txt"
+    WNCV : str = "../commands/Window_Covering.txt"
+    BINFO : str = "../commands/Basic_Information.txt"
+    OCC : str = "../commands/OccupancySensing.txt"
+    DGWIFI : str = "../commands/Wifi_Diag.txt"
+    GRPKEY : str = "../commands/Group_Communication.txt"
+    RH : str = "../commands/Relative_Humidity_Measurement_Cluster.txt"
+    PS : str = "../commands/Power_Source_Cluster.txt"
+    LTIME : str = "../commands/Time_Format_localization.txt"
+    G : str = "../commands/Groups.txt"
+    LWM : str = "../commands/Laundry_Washer_Mode.txt"
+    PMHCONC : str = "../commands/PM1_Concentration_Measurement.txt"
+    PCC : str = "../commands/pump_configuration.txt"
+    ACL : str = "../commands/Access_Control.txt"
+    RVCRUNM : str = "../commands/RVC_Run_Mode.txt"
+    RNCONC : str = "../commands/Radon_Concentration_Measurement.txt"
+    FLW : str = "../commands/Flow_Measurement_Cluster.txt"
+    MOD : str = "../commands/Mode_Select.txt"
+    LVL : str = "../commands/Level_Control.txt"
+    AIRQUAL : str = "../commands/Air_Quality.txt"
+    PMKCONC : str = "../commands/PM10_Concentration_Measurement.txt"
+    TMP : str = "../commands/Temperature_Measurement_Cluster.txt"
+    OZCONC : str = "../commands/Ozone_Concentration_Measurement.txt"
+    FAN : str = "../commands/Fan_Control.txt"
+    OO : str = "../commands/OnOff.txt"
+    CMOCONC : str = "../commands/Carbon_Monoxide_Concentration_Measurement.txt"
+    TCCM : str = "../commands/Refrigerator_And_Temperature_Controlled_Cabinet_Mode.txt"
+    DGGEN: str = "../commands/Gendiag.txt"
+    ILL : str = "../commands/Illuminance_Measurement_Cluster.txt"
+    CADMIN : str = "../commands/cadmin.txt"
+
+clusters = fields(Cluster)
+
+
+cluster_name = [field.name for field in clusters]
+
+parser = argparse.ArgumentParser(description='cluster name')
+
+parser.add_argument('-c','--cluster', nargs='+',help='name of the cluster',choices= cluster_name,default= False)
+
+args = parser.parse_args()
 
 pattern1 = re.compile(r'(CHIP:DMG|CHIP:TOO)(.*)')
 pattern2 = re.compile(r'^\./chip-tool')
@@ -104,11 +180,35 @@ def filter_commands(commands):
         newRes.append(i)
     return newRes
 
+def all():
 # iterate through all files
-for file in os.listdir():
+    for file in os.listdir():
     # Check whether the file is in text format or not
-    if file.endswith(".txt"):
-        file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands",
-                                 file)  # Chip tool commands txt directory
-        # call read text file function
-        read_text_file(file_path)
+        if file.endswith(".txt"):
+            file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)  # Chip tool commands txt directory
+            # call read text file function
+            read_text_file(file_path)
+
+if __name__ == "__main__":
+    
+    test = args.cluster
+    
+    if test:
+        None
+    else:
+        test =[]
+        for clus in cluster_name:
+            e = yaml_info[clus]
+            if e == 'Y':
+                test.append(clus)
+
+    if test:
+
+        for c in test:
+             file = vars(Cluster)[c]
+             file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands",
+                                file )
+             read_text_file(file_path)
+
+    else:
+        all()
