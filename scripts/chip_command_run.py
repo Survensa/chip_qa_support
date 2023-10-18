@@ -2,7 +2,7 @@ import os
 import sys
 from datetime import datetime
 import subprocess
-import yaml
+import yaml 
 import re
 
 pattern1 = re.compile(r'(CHIP:DMG|CHIP:TOO)(.*)')
