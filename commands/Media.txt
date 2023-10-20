@@ -135,7 +135,7 @@ End
 # [TC-MEDIAINPUT-3.10] Input List Verification
  ./chip-tool mediainput read input-list 1 1
  End
- # [TC-MEDIAINPUT-3.11] Select Input Verification
+# [TC-MEDIAINPUT-3.11] Select Input Verification
 ./chip-tool mediainput read input-list 1 1
 ./chip-tool mediainput select-input 2 1 1
 ./chip-tool mediainput read current-input 1 1 
