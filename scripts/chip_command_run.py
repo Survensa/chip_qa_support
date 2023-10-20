@@ -129,15 +129,15 @@ def run_command(commands, testcase):
             stdout_str = stdout.decode('utf-8')
             backend_log_file.write(stdout_str)
 
-            # Include pattern matching in the execution log
+            # Include pattern matching only in the execution log
             match1 = pattern1.search(i)
             match2 = pattern2.search(i)
+            if match2:
+                execution_log_file.write(f'\nCHIP:CMD : {i}\n\n')
             if match1:
                 chip_text = match1.group(1).strip()
                 trailing_text = match1.group(2).strip()
                 execution_log_file.write(f"{chip_text} {trailing_text}\n")
-            if match2:
-                execution_log_file.write(f'\nCHIP:CMD : {i}\n\n')
 
 # Function to read text files
 def read_text_file(file_path):
