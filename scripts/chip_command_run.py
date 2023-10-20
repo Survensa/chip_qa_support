@@ -193,7 +193,6 @@ def process_all_files():
 if __name__ == "__main__":
     # Initialize a list to store logs specific to the current execution
     current_execution_logs = []
-    main()
 
     selected_clusters = args.cluster
 
