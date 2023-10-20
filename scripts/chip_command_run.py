@@ -89,6 +89,7 @@ pattern2 = re.compile(r'^\./chip-tool')
 # Folder Paths
 input_dir = "../commands"
 logs_dir = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
+execution_logs_dir = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "ExecutionLogs")
 
 # Function to get cluster names
 def get_cluster_names():
@@ -111,14 +112,17 @@ def run_command(commands, testcase):
     while "" in commands:
         commands.remove("")
 
-    # Create a log file with the same name for both backend and execution logs
-    log_file_path = os.path.join(logs_dir, f"{testcase}-{date}.txt")
-    with open(log_file_path, 'a') as log_file:
+    # Create a log file with the same name for backend logs
+    backend_log_file_path = os.path.join(logs_dir, f"{testcase}-{date}.txt")
+    execution_log_file_path = os.path.join(execution_logs_dir, f"{testcase}-{date}.txt")
+
+    with open(backend_log_file_path, 'a') as backend_log_file, open(execution_log_file_path, 'a') as execution_log_file:
         for i in commands:
             print(testcase, i)
-            log_file.write('\n' + '\n' + i + '\n' + '\n')
+            backend_log_file.write('\n' + '\n' + i + '\n' + '\n')
+            execution_log_file.write('\n' + '\n' + i + '\n' + '\n')
 
-            subprocess.run(i, shell=True, text=True, stdout=log_file)
+            subprocess.run(i, shell=True, text=True, stdout=backend_log_file)
 
 # Function to read text files
 def read_text_file(file_path):
