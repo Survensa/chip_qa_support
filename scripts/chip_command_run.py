@@ -8,6 +8,7 @@ import yaml
 
 @dataclass
 class Cluster:
+    
     TVOCCONC : str = "../commands/Total_Volatile_Organic_Compounds_Concentration_Measurement.txt"
     NDOCONC : str = "../commands/Nitrogen_Dioxide_Concentration_Measurement.txt"
     CC : str = "../commands/Color_Control.txt"
@@ -68,7 +69,6 @@ class Cluster:
     ILL : str = "../commands/Illuminance_Measurement_Cluster.txt"
     # Add more cluster file paths here...
 
-# Get the names of the clusters from the data class
 clusters = fields(Cluster)
 cluster_name = [field.name for field in clusters]
 
@@ -83,8 +83,7 @@ pattern2 = re.compile(r'^\./chip-tool')
 
 # Folder Paths
 input_dir = "../commands"
-backend_logs_dir = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
-execution_logs_dir = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "ExecutionLogs")
+logs_dir = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
 
 # Function to get cluster names
 def get_cluster_names():
@@ -102,45 +101,19 @@ def get_cluster_names():
 def run_command(commands, testcase):
     file_path = os.path.join(os.path.expanduser('~'), build)
     os.chdir(file_path)
-    
+
     date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
     while "" in commands:
         commands.remove("")
-    
-    for i in commands:
-        with open(f"{backend_logs_dir}/{testcase}-{date}.txt", 'a') as cluster_textfile:
+
+    # Create a log file with the same name for both backend and execution logs
+    log_file_path = os.path.join(logs_dir, f"{testcase}-{date}.txt")
+    with open(log_file_path, 'a') as log_file:
+        for i in commands:
             print(testcase, i)
-            cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
-        
-        subprocess.run(i, shell=True, text=True, stdout=open(f"{backend_logs_dir}/{testcase}-{date}.txt", "a+"))
+            log_file.write('\n' + '\n' + i + '\n' + '\n')
 
-# Function to process log files and save them
-def process_log_files(input_dir, backend_dir, execution_dir):
-    if not os.path.exists(backend_dir):
-        os.makedirs(backend_dir)
-    if not os.path.exists(execution_dir):
-        os.makedirs(execution_dir)
-
-    with pattern1 as pattern1, pattern2 as pattern2:
-        for filename in os.listdir(input_dir):
-            if filename.endswith('.txt'):
-                input_file_path = os.path.join(input_dir, filename)
-                backend_output_path = os.path.join(backend_dir, filename)
-                execution_output_path = os.path.join(execution_dir, filename)
-                
-                with open(input_file_path, 'r') as input_file, open(backend_output_path, 'w') as backend_file, open(execution_output_path, 'w') as execution_file:
-                    for line in input_file:
-                        line = line.strip()
-                        match1 = pattern1.search(line)
-                        match2 = pattern2.search(line)
-                        if match1:
-                            chip_text = match1.group(1).strip()
-                            trailing_text = match1.group(2).strip()
-                            output_line = f"{chip_text} {trailing_text}"
-                            backend_file.write(output_line + '\n')
-                        if match2:
-                            backend_file.write('\n' 'CHIP:CMD : ' + line + '\n\n')
-                        execution_file.write(line + '\n')
+            subprocess.run(i, shell=True, text=True, stdout=log_file)
 
 # Function to read text files
 def read_text_file(file_path):
@@ -150,7 +123,7 @@ def read_text_file(file_path):
         for line in f:
             testsite_array.append(line)
         filter_command = filter_commands(testsite_array)
-        
+
         for command in filter_command:
             for com in command:
                 if "#" in com:
@@ -179,7 +152,7 @@ def filter_commands(commands):
 
 # Function to process all files
 def process_all_files():
-    for file in os.listdir():
+    for file in os.listdir(input_dir):
         if file.endswith(".txt"):
             file_path = os.path.join(input_dir, file)
             read_text_file(file_path)
