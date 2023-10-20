@@ -125,11 +125,11 @@ def run_command(commands, testcase):
     while "" in commands:
         commands.remove("")
     for i in commands:
-        with open(f"{save_path}/{testcase}-{date}.txt", 'a') as cluster_textfile:
+        log_filename = f"{testcase}-{date}.txt"
+        with open(os.path.join(save_path, log_filename), 'a') as cluster_textfile:
             print(testcase, i)
             cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
-        # subprocess module is used to open, append logs and run command in the terminal
-        subprocess.run(i, shell=True, text=True, stdout=open(f"{save_path}/{testcase}-{date}.txt", "a+"))
+        subprocess.run(i, shell=True, text=True, stdout=open(os.path.join(save_path, log_filename), "a+"))
     
     # Process the log file immediately after running the commands
     input_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
