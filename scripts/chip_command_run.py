@@ -125,7 +125,9 @@ def run_command(commands, testcase):
             process = subprocess.Popen(i, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
             stdout, _ = process.communicate()
 
-            backend_log_file.write(stdout)
+            # Convert stdout to a string before writing it to the log
+            stdout_str = stdout.decode('utf-8')
+            backend_log_file.write(stdout_str)
 
             # Include pattern matching only in the execution log
             match1 = pattern1.search(i)
