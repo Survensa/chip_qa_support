@@ -93,13 +93,38 @@ path = "../commands"
 # Change the directory
 os.chdir(path)
 
-# Function to process log files and save them
-def process_log_files(input_dir, output_dir):
+# Function to run chip commands in terminal
+def run_command(commands, testcase, current_execution_logs):
+    file_path = os.path.join(os.path.expanduser('~'), build)
+    save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
+    os.chdir(file_path)
+    date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
+    while "" in commands:
+        commands.remove("")
+    
+    # Create a log file specific to the current execution
+    log_filename = f"{testcase}-{date}.txt"
+    with open(os.path.join(save_path, log_filename), 'w') as execution_log:
+        for i in commands:
+            with open(os.path.join(save_path, log_filename), 'a') as cluster_textfile:
+                print(testcase, i)
+                cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
+            subprocess.run(i, shell=True, text=True, stdout=open(os.path.join(save_path, log_filename), "a+"))
+            execution_log.write(f"Command: {i}\n")
+    
+    # Process the log file immediately after running the commands
+    input_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
+    output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "ExecutionLogs")
+    current_execution_logs.append(log_filename)
+    process_log_files(input_directory, output_directory, current_execution_logs)
+    print(f"---------------------{testcase} - Executed----------------------")
+
+def process_log_files(input_dir, output_dir, current_execution_logs):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     
     for filename in os.listdir(input_dir):
-        if filename.endswith('.txt'):
+        if filename.endswith('.txt') and filename in current_execution_logs:
             input_file_path = os.path.join(input_dir, filename)
             output_file_path = os.path.join(output_dir, filename)
 
@@ -115,27 +140,6 @@ def process_log_files(input_dir, output_dir):
                         output_file.write(output_line + '\n')
                     if match2:
                         output_file.write('\n' 'CHIP:CMD : ' + line + '\n\n')
-
-# Function to run chip commands in terminal
-def run_command(commands, testcase):
-    file_path = os.path.join(os.path.expanduser('~'), build)
-    save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
-    os.chdir(file_path)
-    date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
-    while "" in commands:
-        commands.remove("")
-    for i in commands:
-        log_filename = f"{testcase}-{date}.txt"
-        with open(os.path.join(save_path, log_filename), 'a') as cluster_textfile:
-            print(testcase, i)
-            cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
-        subprocess.run(i, shell=True, text=True, stdout=open(os.path.join(save_path, log_filename), "a+"))
-    
-    # Process the log file immediately after running the commands
-    input_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
-    output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "ExecutionLogs")
-    process_log_files(input_directory, output_directory)
-    print(f"---------------------{testcase} - Executed----------------------")
 
 # Function to read text files
 def read_text_file(file_path):
@@ -187,7 +191,12 @@ def process_all_files():
             read_text_file(file_path)
 
 if __name__ == "__main__":
-    selected_clusters = args.cluster
+    
+	# Initialize a list to store logs specific to the current execution
+    current_execution_logs = []
+    main()
+	
+	selected_clusters = args.cluster
 
     # Ask the user to confirm the Chip-Tool Build Path
     build_confirmation = input(f"Confirm the Chip-Tool Build Path: {build} (Y/Yes to confirm): ").strip().lower()
