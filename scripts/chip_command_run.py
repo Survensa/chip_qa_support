@@ -208,3 +208,6 @@ if __name__ == "__main__":
 
     else:
         process_all_files()
+        
+    print(f"Selected Clusters: {selected_clusters}")
+    print(f"Config Build Path: {build}")
