@@ -117,7 +117,7 @@ def run_command(commands, testcase, common_log_name):
     print(f"---------------------{testcase} - Executed----------------------")
 
 # Function to read text files
-def read_text_file(file_path):
+def read_text_file(file_path, common_log_name):
     testsite_array = []
     filterCommand = []
     with open(file_path, 'r') as f:
