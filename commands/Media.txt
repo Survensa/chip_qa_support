@@ -124,8 +124,8 @@ End
 ./chip-tool applicationlauncher launch-app '{"catalogVendorID": 123, "applicationID": "exampleid"}' 1 1
  ./chip-tool applicationlauncher launch-app '{"catalogVendorID": 5, "applicationID": "missing-app" }' 1 1
 End
-[TC-APPLAUNCHER-3.8] Stop Application Verification
- ./chip-tool applicationlauncher stop-app '{"catalogVendorID": 123, "applicationID": "exampleid"}' 1 1
+# [TC-APPLAUNCHER-3.8] Stop Application Verification
+./chip-tool applicationlauncher stop-app '{"catalogVendorID": 123, "applicationID": "exampleid"}' 1 1
 ./chip-tool applicationbasic read status 1 3
 End
 # [TC-APPLAUNCHER-3.9] Hide Application Verification
