@@ -67,7 +67,6 @@ class Cluster:
     TCCM : str = "../commands/Refrigerator_And_Temperature_Controlled_Cabinet_Mode.txt"
     DGGEN: str = "../commands/Gendiag.txt"
     ILL : str = "../commands/Illuminance_Measurement_Cluster.txt"
-    # Add more cluster file paths here...
 
 clusters = fields(Cluster)
 cluster_name = [field.name for field in clusters]
@@ -76,6 +75,12 @@ cluster_name = [field.name for field in clusters]
 parser = argparse.ArgumentParser(description='Cluster name')
 parser.add_argument('-c', '--cluster', nargs='+', help='Name of the cluster', choices=cluster_name, default=False)
 args = parser.parse_args()
+
+# Load configuration from YAML file
+config_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "config.yaml")
+with open(config_path, 'r') as config_file:
+    yaml_info = yaml.safe_load(config_file)
+    build = yaml_info.get("chip_tool_directory")
 
 # Define regular expressions
 pattern1 = re.compile(r'(CHIP:DMG|CHIP:TOO)(.*)')
@@ -97,7 +102,7 @@ def get_cluster_names():
                 selected_clusters.append(clus)
     return selected_clusters
 
-# Function to run chip commands in terminal
+# Function to run chip commands in terminal and save the log
 def run_command(commands, testcase):
     file_path = os.path.join(os.path.expanduser('~'), build)
     os.chdir(file_path)
@@ -122,16 +127,16 @@ def read_text_file(file_path):
     with open(file_path, 'r') as f:
         for line in f:
             testsite_array.append(line)
-        filter_command = filter_commands(testsite_array)
+    filter_command = filter_commands(testsite_array)
 
-        for command in filter_command:
-            for com in command:
-                if "#" in com:
-                    testcase = com.split()[1]
-                else:
-                    filterCommand.append(com)
-            run_command(filterCommand, testcase)
-            filterCommand = []
+    for command in filter_command:
+        for com in command:
+            if "#" in com:
+                testcase = com.split()[1]
+            else:
+                filterCommand.append(com)
+        run_command(filterCommand, testcase)
+        filterCommand = []
 
 # Function to filter only commands from txt file
 def filter_commands(commands):
