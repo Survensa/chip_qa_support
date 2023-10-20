@@ -112,7 +112,7 @@ def run_command(commands, testcase):
     while "" in commands:
         commands.remove("")
 
-    # Create a log file with the same name for backend logs
+    # Create log files for both backend and execution logs
     backend_log_file_path = os.path.join(logs_dir, f"{testcase}-{date}.txt")
     execution_log_file_path = os.path.join(execution_logs_dir, f"{testcase}-{date}.txt")
 
@@ -129,7 +129,7 @@ def run_command(commands, testcase):
             stdout_str = stdout.decode('utf-8')
             backend_log_file.write(stdout_str)
 
-            # Include pattern matching only in the execution log
+            # Include pattern matching in the execution log
             match1 = pattern1.search(i)
             match2 = pattern2.search(i)
             if match1:
