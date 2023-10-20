@@ -1,10 +1,11 @@
 import os
+import sys
+from datetime import datetime
 import subprocess
+import yaml
 import re
 import argparse
 from dataclasses import dataclass, fields
-from datetime import datetime
-import yaml
 
 @dataclass
 class Cluster:
@@ -72,8 +73,8 @@ clusters = fields(Cluster)
 cluster_name = [field.name for field in clusters]
 
 # Parse command-line arguments
-parser = argparse.ArgumentParser(description='Cluster name')
-parser.add_argument('-c', '--cluster', nargs='+', help='Name of the cluster', choices=cluster_name, default=False)
+parser = argparse.ArgumentParser(description='cluster name')
+parser.add_argument('-c','--cluster', nargs='+', help='name of the cluster', choices=cluster_name, default=False)
 args = parser.parse_args()
 
 # Load configuration from YAML file
@@ -82,62 +83,38 @@ with open(config_path, 'r') as config_file:
     yaml_info = yaml.safe_load(config_file)
     build = yaml_info.get("chip_tool_directory")
 
-# Define regular expressions
+# Define your regular expression patterns
 pattern1 = re.compile(r'(CHIP:DMG|CHIP:TOO)(.*)')
 pattern2 = re.compile(r'^\./chip-tool')
 
-# Folder Paths
-input_dir = "../commands"
-logs_dir = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
-execution_logs_dir = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "ExecutionLogs")
-
-# Function to get cluster names
-def get_cluster_names():
-    if args.cluster:
-        selected_clusters = args.cluster
-    else:
-        selected_clusters = []
-        for clus in cluster_name:
-            e = yaml_info.get(clus)
-            if e in ['Y', 'Yes']:
-                selected_clusters.append(clus)
-    return selected_clusters
-
-# Function to run chip commands in terminal and save the log
-def run_command(commands, testcase):
+# Function to run chip commands and save logs
+def run_command(commands, testcase, common_log_name):
     file_path = os.path.join(os.path.expanduser('~'), build)
-    os.chdir(file_path)
+    log_dir = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs")
 
-    date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
+    # Create a common log file name with the cluster name, date, and time
+    common_log_file = f"{testcase}-{common_log_name}.txt"
+    backend_log_path = os.path.join(log_dir, "BackendLogs", common_log_file)
+    execution_log_path = os.path.join(log_dir, "ExecutionLogs", common_log_file)
+
+    os.chdir(file_path)
     while "" in commands:
         commands.remove("")
-
-    # Create log files for both backend and execution logs
-    backend_log_file_path = os.path.join(logs_dir, f"{testcase}-{date}.txt")
-    execution_log_file_path = os.path.join(execution_logs_dir, f"{testcase}-{date}.txt")
-
-    with open(backend_log_file_path, 'a') as backend_log_file, open(execution_log_file_path, 'a') as execution_log_file:
-        for i in commands:
+    for i in commands:
+        with open(backend_log_path, 'a') as log_file:
             print(testcase, i)
-            backend_log_file.write('\n' + '\n' + i + '\n' + '\n')
-
-            # Run the command and capture the output
-            process = subprocess.Popen(i, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-            stdout, _ = process.communicate()
-
-            # Convert stdout to a string before writing it to the log
-            stdout_str = stdout.decode('utf-8')
-            backend_log_file.write(stdout_str)
-
-            # Include pattern matching only in the execution log
-            match1 = pattern1.search(i)
-            match2 = pattern2.search(i)
-            if match2:
-                execution_log_file.write(f'\nCHIP:CMD : {i}\n\n')
-            if match1:
-                chip_text = match1.group(1).strip()
-                trailing_text = match1.group(2).strip()
-                execution_log_file.write(f"{chip_text} {trailing_text}\n")
+            log_file.write('\n' + '\n' + i + '\n' + '\n')
+        
+        # Execute the command and append logs to both backend and execution logs
+        completed_process = subprocess.run(i, shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
+        
+        # Filter and write the lines matching pattern1 and pattern2
+        with open(backend_log_path, 'a') as backend_log_file, open(execution_log_path, 'a') as execution_log_file:
+            for line in completed_process.stdout.splitlines():
+                if pattern1.match(line) or pattern2.match(line):
+                    execution_log_file.write(line + '\n')
+        
+    print(f"---------------------{testcase} - Executed----------------------")
 
 # Function to read text files
 def read_text_file(file_path):
@@ -146,16 +123,16 @@ def read_text_file(file_path):
     with open(file_path, 'r') as f:
         for line in f:
             testsite_array.append(line)
-    filter_command = filter_commands(testsite_array)
-
-    for command in filter_command:
-        for com in command:
-            if "#" in com:
-                testcase = com.split()[1]
-            else:
-                filterCommand.append(com)
-        run_command(filterCommand, testcase)
-        filterCommand = []
+        filter_command = filter_commands(testsite_array)
+        for command in filter_command:
+            for com in command:
+                # Separate testcase name from the array of commands
+                if "#" in com:
+                    testcase = com.split()[1]
+                else:
+                    filterCommand.append(com)
+            run_command(filterCommand, testcase)
+            filterCommand = []
 
 # Function to filter only commands from txt file
 def filter_commands(commands):
@@ -166,8 +143,12 @@ def filter_commands(commands):
         if "$" not in command:
             newcommand.append(command)
     size = len(newcommand)
-    idx_list = [idx + 1 for idx, val in enumerate(newcommand) if val.lower() == "end"]
-    res = [newcommand[i: j] for i, j in zip([0] + idx_list, idx_list + ([size] if idx_list[-1] != size else []))]
+    # Remove all the "end" in the array
+    idx_list = [idx + 1 for idx, val in
+                enumerate(newcommand) if val.lower() == "end"]
+    res = [newcommand[i: j] for i, j in
+           zip([0] + idx_list, idx_list +
+               ([size] if idx_list[-1] != size else []))]
     newRes = []
     for i in res:
         i.pop()
@@ -176,24 +157,45 @@ def filter_commands(commands):
 
 # Function to process all files
 def process_all_files():
-    for file in os.listdir(input_dir):
+# iterate through all files
+    for file in os.listdir():
+    # Check whether the file is in text format or not
         if file.endswith(".txt"):
-            file_path = os.path.join(input_dir, file)
+            file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)  # Chip tool commands txt directory
+            # call read text file function
             read_text_file(file_path)
 
 if __name__ == "__main__":
-    # Load configuration from YAML file
-    config_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "config.yaml")
-    with open(config_path, 'r') as config_file:
-        yaml_info = yaml.safe_load(config_file)
-        build = yaml_info.get("chip_tool_directory")
+    selected_clusters = args.cluster
 
-    selected_clusters = get_cluster_names()
+    # Ask the user to confirm the Chip-Tool Build Path
+    build_confirmation = input(f"Confirm the Chip-Tool Build Path: {build} (Y/Yes to confirm): ").strip().lower()
 
+    if build_confirmation in ['y', 'yes']:
+        if selected_clusters:
+            None
+        else:
+            selected_clusters = []
+            for clus in cluster_name:
+                e = yaml_info[clus]
+                if e in ['Y', 'Yes']:
+                    selected_clusters.append(clus)
+
+        # Ask the user to confirm the selected clusters for execution
+        clusters_confirmation = input(f"Proceed with selected Clusters for execution: {selected_clusters} (Y/Yes to proceed): ").strip().lower()
+
+        if clusters_confirmation in ['y', 'yes']:
+            if selected_clusters:
+                common_log_name = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
+                for cluster_name in selected_clusters:
+                    file = vars(Cluster)[cluster_name]
+                    file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
+                    read_text_file(file_path, common_log_name)
+        else:
+            print("Execution canceled.")
+    else:
+        print("Execution canceled.")
+
+    # If selected_clusters is empty or execution was canceled, process all files
     if not selected_clusters:
         process_all_files()
-
-    for cluster_name in selected_clusters:
-        file = vars(Cluster)[cluster_name]
-        file_path = os.path.join(input_dir, file)
-        read_text_file(file_path)
