@@ -1,101 +1,95 @@
 import os
 import sys
-from datetime import datetime
 import subprocess
-import yaml 
+import yaml
 import re
 import argparse
+from datetime import datetime
 from dataclasses import dataclass, fields
 
 @dataclass
 class Cluster:
-    
-    TVOCCONC : str = "../commands/Total_Volatile_Organic_Compounds_Concentration_Measurement.txt"
-    NDOCONC : str = "../commands/Nitrogen_Dioxide_Concentration_Measurement.txt"
-    CC : str = "../commands/Color_Control.txt"
-    LUNIT : str = "../commands/Unit_localization.txt"
-    FLDCONC : str = "../commands/Formaldehyde_Concentration_Measurement.txt"
-    SWTCH : str = "../commands/Switch.txt"
-    BRBINFO : str = "../commands/Bridged_Device_Basic_Information.txt"
-    BIND : str = "../commands/Binding.txt"
-    ULABEL : str = "../commands/User_Lable.txt"
-    PMICONC : str = "../commands/PM2.5_Concentration_Measurement.txt"
-    SMOKECO : str = "../commands/Smoke_and_CO_Alarm.txt"
-    DISHM : str = "../commands/Dishwasher_Mode_Cluster.txt"
-    FLABEL : str = "../commands/Fixed_Lable.txt"
-    DRLK : str = "../commands/Door_lock.txt"
-    ACFREMON : str = "../commands/Activated_Carbon_Filter_Monitoring.txt"
-    TSTAT : str = "../commands/Thermostat.txt"
-    DESC : str = "../commands/Descriptor_Cluster.txt"
-    MC : str = "../commands/Media.txt"
-    CDOCONC : str = "../commands/Carbon_Dioxide_Concentration_Measurement.txt"
-    PSCFG : str = "../commands/Power_Source_Configuration.txt"
-    DGETH : str = "../commands/Ethernet_Diag.txt"
-    DGSW : str = "../commands/Software_Diag.txt"
-    HEPAFREMON : str = "../commands/HEPA_Filter_Monitoring.txt"
-    RVCCLEANM : str = "../commands/RVC_Clean_Mode.txt"
-    PRS : str = "../commands/Pressure_measurement.txt"
-    I : str = "../commands/Identify.txt"
-    DGTHREAD : str = "../commands/Thread_diag.txt"
-    BOOL : str = "../commands/Boolean.txt"
-    TSUIC : str = "../commands/Thermostat_User.txt"
-    LCFG : str = "../commands/Localization_Configuration_cluster.txt"
-    WNCV : str = "../commands/Window_Covering.txt"
-    BINFO : str = "../commands/Basic_Information.txt"
-    OCC : str = "../commands/OccupancySensing.txt"
-    DGWIFI : str = "../commands/Wifi_Diag.txt"
-    GRPKEY : str = "../commands/Group_Communication.txt"
-    RH : str = "../commands/Relative_Humidity_Measurement_Cluster.txt"
-    PS : str = "../commands/Power_Source_Cluster.txt"
-    LTIME : str = "../commands/Time_Format_localization.txt"
-    G : str = "../commands/Groups.txt"
-    LWM : str = "../commands/Laundry_Washer_Mode.txt"
-    PMHCONC : str = "../commands/PM1_Concentration_Measurement.txt"
-    PCC : str = "../commands/pump_configuration.txt"
-    ACL : str = "../commands/Access_Control.txt"
-    RVCRUNM : str = "../commands/RVC_Run_Mode.txt"
-    RNCONC : str = "../commands/Radon_Concentration_Measurement.txt"
-    FLW : str = "../commands/Flow_Measurement_Cluster.txt"
-    MOD : str = "../commands/Mode_Select.txt"
-    LVL : str = "../commands/Level_Control.txt"
-    AIRQUAL : str = "../commands/Air_Quality.txt"
-    PMKCONC : str = "../commands/PM10_Concentration_Measurement.txt"
-    TMP : str = "../commands/Temperature_Measurement_Cluster.txt"
-    OZCONC : str = "../commands/Ozone_Concentration_Measurement.txt"
-    FAN : str = "../commands/Fan_Control.txt"
-    OO : str = "../commands/OnOff.txt"
-    CMOCONC : str = "../commands/Carbon_Monoxide_Concentration_Measurement.txt"
-    TCCM : str = "../commands/Refrigerator_And_Temperature_Controlled_Cabinet_Mode.txt"
-    DGGEN: str = "../commands/Gendiag.txt"
-    ILL : str = "../commands/Illuminance_Measurement_Cluster.txt"
+    cluster_paths = {
+        "TVOCCONC": "../commands/Total_Volatile_Organic_Compounds_Concentration_Measurement.txt",
+        "NDOCONC": "../commands/Nitrogen_Dioxide_Concentration_Measurement.txt",
+        "CC": "../commands/Color_Control.txt",
+        "LUNIT": "../commands/Unit_localization.txt",
+        "FLDCONC": "../commands/Formaldehyde_Concentration_Measurement.txt",
+        "SWTCH": "../commands/Switch.txt",
+        "BRBINFO": "../commands/Bridged_Device_Basic_Information.txt",
+        "BIND": "../commands/Binding.txt",
+        "ULABEL": "../commands/User_Lable.txt",
+        "PMICONC": "../commands/PM2.5_Concentration_Measurement.txt",
+        "SMOKECO": "../commands/Smoke_and_CO_Alarm.txt",
+        "DISHM": "../commands/Dishwasher_Mode_Cluster.txt",
+        "FLABEL": "../commands/Fixed_Lable.txt",
+        "DRLK": "../commands/Door_lock.txt",
+        "ACFREMON": "../commands/Activated_Carbon_Filter_Monitoring.txt",
+        "TSTAT": "../commands/Thermostat.txt",
+        "DESC": "../commands/Descriptor_Cluster.txt",
+        "MC": "../commands/Media.txt",
+        "CDOCONC": "../commands/Carbon_Dioxide_Concentration_Measurement.txt",
+        "PSCFG": "../commands/Power_Source_Configuration.txt",
+        "DGETH": "../commands/Ethernet_Diag.txt",
+        "DGSW": "../commands/Software_Diag.txt",
+        "HEPAFREMON": "../commands/HEPA_Filter_Monitoring.txt",
+        "RVCCLEANM": "../commands/RVC_Clean_Mode.txt",
+        "PRS": "../commands/Pressure_measurement.txt",
+        "I": "../commands/Identify.txt",
+        "DGTHREAD": "../commands/Thread_diag.txt",
+        "BOOL": "../commands/Boolean.txt",
+        "TSUIC": "../commands/Thermostat_User.txt",
+        "LCFG": "../commands/Localization_Configuration_cluster.txt",
+        "WNCV": "../commands/Window_Covering.txt",
+        "BINFO": "../commands/Basic_Information.txt",
+        "OCC": "../commands/OccupancySensing.txt",
+        "DGWIFI": "../commands/Wifi_Diag.txt",
+        "GRPKEY": "../commands/Group_Communication.txt",
+        "RH": "../commands/Relative_Humidity_Measurement_Cluster.txt",
+        "PS": "../commands/Power_Source_Cluster.txt",
+        "LTIME": "../commands/Time_Format_localization.txt",
+        "G": "../commands/Groups.txt",
+        "LWM": "../commands/Laundry_Washer_Mode.txt",
+        "PMHCONC": "../commands/PM1_Concentration_Measurement.txt",
+        "PCC": "../commands/pump_configuration.txt",
+        "ACL": "../commands/Access_Control.txt",
+        "RVCRUNM": "../commands/RVC_Run_Mode.txt",
+        "RNCONC": "../commands/Radon_Concentration_Measurement.txt",
+        "FLW": "../commands/Flow_Measurement_Cluster.txt",
+        "MOD": "../commands/Mode_Select.txt",
+        "LVL": "../commands/Level_Control.txt",
+        "AIRQUAL": "../commands/Air_Quality.txt",
+        "PMKCONC": "../commands/PM10_Concentration_Measurement.txt",
+        "TMP": "../commands/Temperature_Measurement_Cluster.txt",
+        "OZCONC": "../commands/Ozone_Concentration_Measurement.txt",
+        "FAN": "../commands/Fan_Control.txt",
+        "OO": "../commands/OnOff.txt",
+        "CMOCONC": "../commands/Carbon_Monoxide_Concentration_Measurement.txt",
+        "TCCM": "../commands/Refrigerator_And_Temperature_Controlled_Cabinet_Mode.txt",
+        "DGGEN": "../commands/Gendiag.txt",
+        "ILL": "../commands/Illuminance_Measurement_Cluster.txt",
+        # Add other cluster paths here
+    }
 
 clusters = fields(Cluster)
+cluster_names = [field.name for field in clusters]
 
-
-cluster_name = [field.name for field in clusters]
-
+# Parse command-line arguments
 parser = argparse.ArgumentParser(description='cluster name')
-
-parser.add_argument('-c','--cluster', nargs='+',help='name of the cluster',choices= cluster_name,default= False)
-
+parser.add_argument('-c', '--cluster', nargs='+', help='name of the cluster', choices=cluster_names, default=False)
 args = parser.parse_args()
 
+# Load configuration from YAML file
+config_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "config.yaml")
+with open(config_path, 'r') as config_file:
+    yaml_info = yaml.safe_load(config_file)
+    build = yaml_info.get("chip_tool_directory")
+
+# Define regular expressions
 pattern1 = re.compile(r'(CHIP:DMG|CHIP:TOO)(.*)')
 pattern2 = re.compile(r'^\./chip-tool')
 
-# chip-tool path
-homedir = os.path.join(os.path.expanduser('~'), "chip_command_run", "config.yaml")
-with open(homedir, 'r') as file:
-    yaml_info = yaml.safe_load(file)
-    build = yaml_info["chip_tool_directory"]
-
-# Folder Path
-path = "../commands"
-
-# Change the directory
-os.chdir(path)
-
-# Fn to process log files and save them
+# Function to process log files and save them
 def process_log_files(input_dir, output_dir):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -118,96 +112,63 @@ def process_log_files(input_dir, output_dir):
                     if match2:
                         output_file.write('\n' 'CHIP:CMD : ' + line + '\n\n')
 
-# Fn to run chip commands in terminal
+# Function to run chip commands in terminal
 def run_command(commands, testcase):
     file_path = os.path.join(os.path.expanduser('~'), build)
     save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
     os.chdir(file_path)
     date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
-    while "" in commands:
-        commands.remove("")
+    commands = [c for c in commands if c != ""]  # Remove empty commands
     for i in commands:
         with open(f"{save_path}/{testcase}-{date}.txt", 'a') as cluster_textfile:
             print(testcase, i)
             cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
-        # subprocess module is used to open, append logs and run command in the terminal
+        # Use subprocess to run the command in the terminal and append logs
         subprocess.run(i, shell=True, text=True, stdout=open(f"{save_path}/{testcase}-{date}.txt", "a+"))
-    
+
     # Process the log file immediately after running the commands
     input_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
     output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "ExecutionLogs")
     process_log_files(input_directory, output_directory)
-
     print(f"---------------------{testcase} - Executed----------------------")
 
-# Read text File
-def read_text_file(file_path):
-    testsite_array = []
-    filterCommand = []
-    with open(file_path, 'r') as f:
-        for line in f:
-            testsite_array.append(line)
-        filter_command = filter_commands(testsite_array)
-        for command in filter_command:
-            for com in command:
-                # Separate testcase name from the array of commands
-                if "#" in com:
-                    testcase = com.split()[1]
-                else:
-                    filterCommand.append(com)
-            run_command(filterCommand, testcase)
-            filterCommand = []
-
-# Fn to filter only commands from txt file
+# Function to filter only commands from txt file
 def filter_commands(commands):
-    newcommand = []
-    for command in commands:
-        if "\n" in command:
-            command = command.replace("\n", "")
-        if "$" not in command:
-            newcommand.append(command)
-    size = len(newcommand)
-    # Remove all the "end" in the array
-    idx_list = [idx + 1 for idx, val in
-                enumerate(newcommand) if val.lower() == "end"]
-    res = [newcommand[i: j] for i, j in
-           zip([0] + idx_list, idx_list +
-               ([size] if idx_list[-1] != size else []))]
-    newRes = []
-    for i in res:
-        i.pop()
-        newRes.append(i)
-    return newRes
+    filtered_commands = [c.strip() for c in commands if "$" not in c]
+    return [filtered_commands[i: j] for i, j in zip([0] + [i+1 for i, c in enumerate(filtered_commands) if c.lower() == "end"], 
+                                                      [i for i, c in enumerate(filtered_commands) if c.lower() == "end"])]
 
-def all():
-# iterate through all files
-    for file in os.listdir():
-    # Check whether the file is in text format or not
+# Function to read text files
+def read_text_file(file_path):
+    with open(file_path, 'r') as f:
+        testsite_array = f.readlines()
+    
+    filter_command = filter_commands(testsite_array)
+    for command in filter_command:
+        testcase = None
+        for com in command:
+            if "#" in com:
+                testcase = com.split()[1]
+            else:
+                testcase = None
+        run_command(command, testcase)
+
+# Function to process all files
+def process_all_files():
+    for file in os.listdir("../commands"):
         if file.endswith(".txt"):
-            file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)  # Chip tool commands txt directory
-            # call read text file function
+            file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
             read_text_file(file_path)
 
-if __name__ == "__main__":
-    
-    test = args.cluster
-    
-    if test:
-        None
+if __name__ == "__main":
+    selected_clusters = args.cluster
+
+    if not selected_clusters:
+        selected_clusters = [clus for clus in cluster_names if yaml_info.get(clus) == 'Y']
+
+    if selected_clusters:
+        for cluster_name in selected_clusters:
+            file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", Cluster.cluster_paths[cluster_name])
+            read_text_file(file_path)
     else:
-        test =[]
-        for clus in cluster_name:
-            e = yaml_info[clus]
-            if e == 'Y':
-                test.append(clus)
-
-    if test:
-
-        for c in test:
-             file = vars(Cluster)[c]
-             file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands",
-                                file )
-             read_text_file(file_path)
-
-    else:
-        all()
+        process_all_files()
