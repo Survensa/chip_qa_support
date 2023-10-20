@@ -191,12 +191,11 @@ def process_all_files():
             read_text_file(file_path)
 
 if __name__ == "__main__":
-    
-	# Initialize a list to store logs specific to the current execution
+    # Initialize a list to store logs specific to the current execution
     current_execution_logs = []
     main()
-	
-	selected_clusters = args.cluster
+
+    selected_clusters = args.cluster
 
     # Ask the user to confirm the Chip-Tool Build Path
     build_confirmation = input(f"Confirm the Chip-Tool Build Path: {build} (Y/Yes to confirm): ").strip().lower()
