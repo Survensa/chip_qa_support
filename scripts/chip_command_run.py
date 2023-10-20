@@ -93,10 +93,6 @@ path = "../commands"
 # Change the directory
 os.chdir(path)
 
-print(f"Proceed with selected Clusters for execution : {selected_clusters}")
-
-print(f"Confirm the Chip-Tool Build Path: {build}")
-
 # Function to process log files and save them
 def process_log_files(input_dir, output_dir):
     if not os.path.exists(output_dir):
