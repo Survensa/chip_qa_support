@@ -4,6 +4,7 @@ import re
 import argparse
 from dataclasses import dataclass, fields
 from datetime import datetime
+import yaml
 
 @dataclass
 class Cluster:
