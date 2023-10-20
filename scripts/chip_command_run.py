@@ -169,7 +169,7 @@ def filter_commands(commands):
             newcommand.append(command)
     size = len(newcommand)
     idx_list = [idx + 1 for idx, val in enumerate(newcommand) if val.lower() == "end"]
-    res = [newcommand[i: j] for i, j in zip([0] + idx_list, idx_list + ([size] if idx_list[-1] != size else []))
+    res = [newcommand[i: j] for i, j in zip([0] + idx_list, idx_list + ([size] if idx_list[-1] != size else []))]
     newRes = []
     for i in res:
         i.pop()
