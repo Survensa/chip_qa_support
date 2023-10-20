@@ -131,7 +131,7 @@ def read_text_file(file_path, common_log_name):
                     testcase = com.split()[1]
                 else:
                     filterCommand.append(com)
-            run_command(filterCommand, testcase)
+            run_command(filterCommand, testcase, common_log_name)
             filterCommand = []
 
 # Function to filter only commands from txt file
