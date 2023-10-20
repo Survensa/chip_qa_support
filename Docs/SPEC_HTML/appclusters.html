@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 26a0ef2 (local changes),</span>
-<span id="revdate">2023-10-19 22:41:47 -0700</span>
+<span id="revnumber">version master 23d618b (local changes),</span>
+<span id="revdate">2023-10-20 00:14:26 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -41603,6 +41603,26 @@ which is represented as an endpoint (see Device Type Library document),
 can use this cluster to help make the user account on the Content App match the user account on the Client.</p>
 </div>
 <div class="paragraph">
+<p>Often a fabric administrator will facilitate commissioning of a Client (such as a Casting Video Client),
+and invoke commands on the AccountLogin cluster on the Content App associated with that client. Specifically:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>GetSetupPIN in order to attempt to obtain the Passcode for commissioning.</p>
+</li>
+<li>
+<p>Login in order to let the Content App know that commissioning has completed.
+The Content App can use information provided in this command in order to determine the user account associated with the client,
+and potentially assume that user account.</p>
+</li>
+<li>
+<p>Logout in order to let the Content App know that client access has been removed,
+and potentially clear the current user account.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
 <p>The cluster server for this cluster may be supported on each endpoint that represents a
 Content App on a Video Player device.</p>
 </div>
@@ -41709,7 +41729,7 @@ may implement the cluster server for this cluster to simplify account login for 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>GetSetupPIN</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Client &#8658; Server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GetSetupPINResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F A T</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -41717,7 +41737,7 @@ may implement the cluster server for this cluster to simplify account login for 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>GetSetupPINResponse</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Server &#8658; Client</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -41725,7 +41745,7 @@ may implement the cluster server for this cluster to simplify account login for 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Login</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Client &#8658; Server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F A T</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -41733,7 +41753,7 @@ may implement the cluster server for this cluster to simplify account login for 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Logout</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Client &#8658; Server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F O T</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
@@ -50892,8 +50912,8 @@ A blank field indicates no change.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 26a0ef2 (local changes)<br>
-Last updated 2023-10-20 05:42:03 UTC
+Version master 23d618b (local changes)<br>
+Last updated 2023-10-20 07:14:45 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
