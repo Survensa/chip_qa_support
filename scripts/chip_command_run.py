@@ -93,6 +93,10 @@ path = "../commands"
 # Change the directory
 os.chdir(path)
 
+print(f"Proceed with selected Clusters for execution : {selected_clusters}")
+
+print(f"Confirm the Chip-Tool Build Path: {build}")
+
 # Function to process log files and save them
 def process_log_files(input_dir, output_dir):
     if not os.path.exists(output_dir):
@@ -187,27 +191,36 @@ def process_all_files():
             read_text_file(file_path)
 
 if __name__ == "__main__":
-    
     selected_clusters = args.cluster
-    
-    if selected_clusters:
-        None
+
+    # Ask the user to confirm the Chip-Tool Build Path
+    build_confirmation = input(f"Confirm the Chip-Tool Build Path: {build} (Y/Yes to confirm): ").strip().lower()
+
+    if build_confirmation in ['y', 'yes']:
+        if selected_clusters:
+            None
+        else:
+            selected_clusters = []
+            for clus in cluster_name:
+                e = yaml_info[clus]
+                if e in ['Y', 'Yes']:
+                    selected_clusters.append(clus)
+
+        # Ask the user to confirm the selected clusters for execution
+        clusters_confirmation = input(f"Proceed with selected Clusters for execution: {selected_clusters} (Y/Yes to proceed): ").strip().lower()
+
+        if clusters_confirmation in ['y', 'yes']:
+            if selected_clusters:
+                for cluster_name in selected_clusters:
+                    file = vars(Cluster)[cluster_name]
+                    file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
+                    read_text_file(file_path)
+        else:
+            print("Execution canceled.")
     else:
-        selected_clusters =[]
-        for clus in cluster_name:
-            e = yaml_info[clus]
-            if e == 'Y':
-                selected_clusters.append(clus)
+        print("Execution canceled.")
 
-    if selected_clusters:
-
-        for cluster_name in selected_clusters:
-             file = vars(Cluster)[cluster_name]
-             file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file )
-             read_text_file(file_path)
-
-    else:
+    # If selected_clusters is empty or execution was canceled, process all files
+    if not selected_clusters:
         process_all_files()
         
-    print(f"Selected Clusters: {selected_clusters}")
-    print(f"Config Build Path: {build}")
