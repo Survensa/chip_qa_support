@@ -120,11 +120,14 @@ def run_command(commands, testcase):
         for i in commands:
             print(testcase, i)
             backend_log_file.write('\n' + '\n' + i + '\n' + '\n')
-            execution_log_file.write('\n' + '\n' + i + '\n' + '\n')
 
-            subprocess.run(i, shell=True, text=True, stdout=backend_log_file)
+            # Run the command and capture the output
+            process = subprocess.Popen(i, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            stdout, _ = process.communicate()
 
-            # Include pattern matching in the execution log
+            backend_log_file.write(stdout)
+
+            # Include pattern matching only in the execution log
             match1 = pattern1.search(i)
             match2 = pattern2.search(i)
             if match1:
