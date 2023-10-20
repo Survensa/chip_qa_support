@@ -156,7 +156,7 @@ def read_text_file(file_path):
                     testcase = com.split()[1]
                 else:
                     filterCommand.append(com)
-            run_command(filterCommand, testcase)
+            run_command(filterCommand, testcase, current_execution_logs)
             filterCommand = []
 
 # Function to filter only commands from txt file
@@ -217,7 +217,7 @@ if __name__ == "__main__":
                 for cluster_name in selected_clusters:
                     file = vars(Cluster)[cluster_name]
                     file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
-                    read_text_file(file_path)
+                    read_text_file(file_path, current_execution_logs)
         else:
             print("Execution canceled.")
     else:
