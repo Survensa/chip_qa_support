@@ -9,7 +9,7 @@ then
 	cd ~/chip_command_run/scripts/
 	python3 chip_command_run.py
 	echo
-	echo "Execution completed . . .  Logs are ready for validation in Logs/Executionlogs directory"
+	echo "Execution completed . . .  Logs are ready for validation in logs/validation_logs directory"
 	exit
 elif [ "$ANSWER1" == "N" ] || [ "$ANSWER1" == "n" ]
 then
