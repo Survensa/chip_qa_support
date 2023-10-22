@@ -117,11 +117,11 @@ def run_command(commands, testcase):
             chip_text = match1.group(1).strip()
             trailing_text = match1.group(2).strip()
             output_line = f"{chip_text} {trailing_text}"
-            output_file.write(output_line + '\n')
+            cluster_textfile.write(output_line + '\n')
 
         if match2:
             # If the line matches pattern2 (starts with ./chip-tool)
-            output_file.write('\n' 'CHIP:CMD : ' + line + '\n\n')
+            cluster_textfile.write('\n' 'CHIP:CMD : ' + i + '\n\n')
 
         # Define your patterns and conditions to match specific commands
         if pattern1.search(i) or pattern2.search(i):
@@ -131,7 +131,7 @@ def run_command(commands, testcase):
             with open(os.path.join(save_path_execution, log_filename_execution), 'w') as execution_logfile:
                 subprocess.run(i, shell=True, text=True, stdout=execution_logfile)
             print(f"---------------------{log_filename_execution} - ExecutionLog----------------------")
-
+            
 # Function to read text files
 def read_text_file(file_path):
     testsite_array = []
