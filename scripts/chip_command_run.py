@@ -106,7 +106,7 @@ def run_command(commands, testcase):
         log_file_path = os.path.join(save_path, log_filename)
         with open(log_file_path, 'a') as cluster_textfile:
             print(testcase, i)
-            cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
+            cluster_textfile.write('\n' + i + '\n' + '\n')
         subprocess.run(i, shell=True, text=True, stdout=open(log_file_path, "a+"))
         # Process the specific log file immediately after running the command
         output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
