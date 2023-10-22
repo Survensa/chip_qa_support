@@ -1,5 +1,5 @@
-# Path where chip-tool is located for execution 
-chip_tool_directory: v1.1/apps
+# ********************************************************************************
+# Application Build Section :
 
 # Provide the folder name to build the connectedhopeip
 folder: v1.1 # NOTE : Make a directory named apps inside this folder
@@ -25,6 +25,12 @@ thermostat: 'N'
 ota_provider_app: 'N'
 ota_requestor_app: 'N'
 chip_tool: 'Y'
+
+# ********************************************************************************
+# Execution Section :
+
+# Path where chip-tool is located for execution 
+chip_tool_directory: v1.1/apps
 
 #Choose a cluster to execute with Y, If not N:
 TVOCCONC: 'N'
@@ -86,3 +92,5 @@ TCCM: 'N'
 DGGEN: 'N'
 ILL: 'N'
 CADMIN: 'N'
+
+# ********************************************************************************
