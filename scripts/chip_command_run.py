@@ -110,6 +110,7 @@ def run_command(commands, testcase):
             cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
             print(f"---------------------{testcase} - Executed----------------------")
             print(f"---------------------{log_filename_backend} - BackendLog----------------------")
+        
         match1 = pattern1.search(i)
         match2 = pattern2.search(i)
         if match1:
@@ -117,11 +118,13 @@ def run_command(commands, testcase):
             chip_text = match1.group(1).strip()
             trailing_text = match1.group(2).strip()
             output_line = f"{chip_text} {trailing_text}"
-            cluster_textfile.write(output_line + '\n')
+            with open(os.path.join(save_path_backend, log_filename_backend), 'a') as cluster_textfile:
+                cluster_textfile.write(output_line + '\n')
 
         if match2:
             # If the line matches pattern2 (starts with ./chip-tool)
-            cluster_textfile.write('\n' 'CHIP:CMD : ' + i + '\n\n')
+            with open(os.path.join(save_path_backend, log_filename_backend), 'a') as cluster_textfile:
+                cluster_textfile.write('\n' 'CHIP:CMD : ' + i + '\n\n')
 
         # Define your patterns and conditions to match specific commands
         if pattern1.search(i) or pattern2.search(i):
