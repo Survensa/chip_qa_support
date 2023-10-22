@@ -26,54 +26,51 @@ with open(homedir, 'r') as file:
     build = yaml_info["chip_tool_directory"]
 
 # Set the folder path
-path = os.path.join(os.getcwd(),"../commands")
+path = os.path.join(os.getcwd(), "../commands")
 
 # Change the directory to the desired path
 os.chdir(path)
 
-def factory_reset( data ):
-
-        ssh = Connection(host= data["host"], user=data["username"], connect_kwargs={"password": data["password"]})
-        # Executing the  'ps aux | grep process_name' command to find the PID value to kill
-        command = f"ps aux | grep {data['command']}"
-        pid_val = ssh.run(command, hide=True)
-        pid_output = pid_val.stdout
-        pid_lines = pid_output.split('\n')
-        for line in pid_lines:
-            if data["command"] in line:
-                pid = line.split()[1]
-                conformance = line.split()[7]
-                if conformance == 'Ssl':
-                    kill_command = f"kill -9 {pid}"
-                    ssh.run(kill_command)
-        ssh.close()
+def factory_reset(data):
+    ssh = Connection(host=data["host"], user=data["username"], connect_kwargs={"password": data["password"]})
+    # Executing the 'ps aux | grep process_name' command to find the PID value to kill
+    command = f"ps aux | grep {data['command']}"
+    pid_val = ssh.run(command, hide=True)
+    pid_output = pid_val.stdout
+    pid_lines = pid_output.split('\n')
+    for line in pid_lines:
+        if data["command"] in line:
+            pid = line.split()[1]
+            conformance = line.split()[7]
+            if conformance == 'Ssl':
+                kill_command = f"kill -9 {pid}"
+                ssh.run(kill_command)
+    ssh.close()
 
 def advertise():
-        
-        cd = os.getcwd()
-        rpi_path = os.path.join(cd,"../scripts/rpi.json") 
-        with open( rpi_path, "r") as f:
-            data = json.load(f)
-        ssh = Connection(host= data["host"], user=data["username"], connect_kwargs={"password": data["password"]})
-        path = data["path"]
-        ssh.run('rm -rf /tmp/chip_*')
-        try:
-            log = ssh.run('cd ' + path + ' && ' + data["command"], warn=True, hide=True, pty=False)
-        except UnexpectedExit as e:
-            if e.result.exited == -1:
-                None
-            else:
-                raise
-        #self.start_logging(log)
-        ssh.close()
-        logpath = os.path.join(cd,"../Logs/BackendLogs") 
-        date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
-        with open(f"{logpath}/{testcase}dut-{date}.txt", 'a') as f:
-            f.write(log.stdout)
-        return True
+    cd = os.getcwd()
+    config_path = os.path.join(cd, "../config.yaml") 
+    with open(config_path, "r") as f:
+        data = yaml.safe_load(f)
+    ssh = Connection(host=data["host"], user=data["username"], connect_kwargs={"password": data["password"])
+    path = data["path"]
+    ssh.run('rm -rf /tmp/chip_*')
+    try:
+        log = ssh.run('cd ' + path + ' && ' + data["command"], warn=True, hide=True, pty=False)
+    except UnexpectedExit as e:
+        if e.result.exited == -1:
+            None
+        else:
+            raise
+    # self.start_logging(log)
+    ssh.close()
+    logpath = os.path.join(cd, "../Logs/BackendLogs")
+    date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
+    with open(f"{logpath}/{testcase}dut-{date}.txt", 'a') as f:
+        f.write(log.stdout)
+    return True
 
 def process_log_files(input_dir, output_dir):
-
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)    
     for filename in os.listdir(input_dir):
@@ -81,7 +78,6 @@ def process_log_files(input_dir, output_dir):
             input_file_path = os.path.join(input_dir, filename)
             output_file_path = os.path.join(output_dir, filename)
             avahi = False
-
             with open(input_file_path, 'r') as input_file, open(output_file_path, 'w') as output_file:
                 for line in input_file:
                     line = line.strip()
@@ -103,40 +99,38 @@ def process_log_files(input_dir, output_dir):
                         output_file.write( line + '\n')
 
 def code():
-
-    with open ("temp.txt", 'r') as f:
+    with open("temp.txt", 'r') as f:
         for line in f:
             line = line.strip()
             match = re.search(r'Manual pairing code: \[(\d+)\]', line)
             if match:
                 manualcode = match.group(1)
-                return(str(manualcode))
-            
+                return str(manualcode)
     return False
 
 def run_command(commands, testcase):
-
     file_path = os.path.join(os.path.expanduser('~'), build)
     save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
     testcasename(testcase)
     cd = os.getcwd()
-    rpi_path = os.path.join(cd,"../scripts/rpi.json") 
-    pair = args.pairing
-    date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
+    config_path = os.path.join(cd, "../config.yaml")  # Update the path to config.yaml
+    with open(config_path, 'r') as file:
+        yaml_info = yaml.safe_load(file)
+    data = yaml_info  # Assuming the necessary data is in 'data' key of config.yaml
+    date = datetime.now().strftime("%m_%Y_%d-%I:M:S_%p")
     manualcode = "34970112332"
-    if pair :
-        with open( rpi_path, "r") as f:
-            data = json.load(f)
+
+    if args.pairing:
         factory_reset(data)
-        thread = threading.Thread(target= advertise)
+        thread = threading.Thread(target=advertise)
         thread.daemon = True
         thread.start()
         time.sleep(5)
         os.chdir(file_path)
         rebootcmd = "rm -rf /tmp/chip_*"
-        subprocess.run(rebootcmd, shell=True, text=True, stdout= subprocess.PIPE, stderr=subprocess.PIPE)
+        subprocess.run(rebootcmd, shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         pairing_cmd = "./chip-tool pairing onnetwork 1 20202021"
-        subprocess.run(pairing_cmd, shell=True, text=True, stdout= subprocess.PIPE, stderr=subprocess.PIPE)
+        subprocess.run(pairing_cmd, shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     else:
         os.chdir(file_path)
 
@@ -146,19 +140,19 @@ def run_command(commands, testcase):
         with open(f"{save_path}/{testcase}-{date}.txt", 'a') as cluster_textfile:
             print(testcase, i)
         # subprocess module is used to open, append logs and run command in the terminal
-            if "open-commissioning-window" in i:
-                cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
-            if "open-basic-commissioning-window" in i:
-                manualcode = "34970112332"
-            elif "{code}" in i:
-                i = i.replace("{code}", manualcode)
-                cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
-            else:
-                cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
-        run = subprocess.run(i, shell=True, text=True, stdout= subprocess.PIPE, stderr=subprocess.PIPE)
-        log = run.stdout                
+        if "open-commissioning-window" in i:
+            cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
+        if "open-basic-commissioning-window" in i:
+            manualcode = "34970112332"
+        elif "{code}" in i:
+            i = i.replace("{code}", manualcode)
+            cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
+        else:
+            cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
+        run = subprocess.run(i, shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        log = run.stdout
         with open("temp.txt", 'w') as f:
-                    f.write(log)
+            f.write(log)
         if "open-commissioning-window" in i:
             cod = code()
             if cod == False:
@@ -168,10 +162,10 @@ def run_command(commands, testcase):
         with open(f"{save_path}/{testcase}-{date}.txt", 'a') as cluster_textfile:
             cluster_textfile.write(log)
 
-    if pair :
+    if args.pairing:
         factory_reset(data)
         time.sleep(5)
-		
+
     # Process the log file immediately after running the commands
     input_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
     output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "ExecutionLogs")
@@ -180,13 +174,11 @@ def run_command(commands, testcase):
     print(f"---------------------{testcase} - Executed----------------------")
 
 def testcasename(tc):
-
     global testcase
     testcase = tc
     return None
 
 def read_text_file(file_path):
-
     testsite_array = []
     filterCommand = []
     with open(file_path, 'r') as f:
@@ -204,7 +196,6 @@ def read_text_file(file_path):
             filterCommand = []
 
 def filter_commands(commands):
-
     newcommand = []
     for command in commands:
         if "\n" in command:
@@ -225,7 +216,6 @@ def filter_commands(commands):
     return newRes
 
 def main():
-
     parser = argparse.ArgumentParser(description='Pairing')
     parser.add_argument('-p', '--pairing', help='Auto-pairing function', default=False)
     args = parser.parse_args()
@@ -234,5 +224,4 @@ def main():
     read_text_file(file_path)
 
 if __name__ == "__main__":
-
     main()
