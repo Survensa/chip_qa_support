@@ -98,7 +98,7 @@ def run_command(commands, testcase):
     file_path = os.path.join(os.path.expanduser('~'), build)
     save_path_backend = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
     save_path_execution = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "ExecutionLogs")
-	
+
     date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
     while "" in commands:
         commands.remove("")
@@ -108,8 +108,8 @@ def run_command(commands, testcase):
         with open(os.path.join(save_path_backend, log_filename_backend), 'a') as cluster_textfile:
             print(testcase, i)
             cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
-		print(f"---------------------{testcase} - Executed----------------------")
-		print(f"---------------------{log_filename_backend} - BackendLog----------------------")
+            print(f"---------------------{testcase} - Executed----------------------")
+            print(f"---------------------{log_filename_backend} - BackendLog----------------------")
         match1 = pattern1.search(i)
         match2 = pattern2.search(i)
         if match1:
@@ -122,16 +122,15 @@ def run_command(commands, testcase):
         if match2:
             # If the line matches pattern2 (starts with ./chip-tool)
             output_file.write('\n' 'CHIP:CMD : ' + line + '\n\n')
-        
+
         # Define your patterns and conditions to match specific commands
         if pattern1.search(i) or pattern2.search(i):
             log_filename_execution = f"{testcase}-{date}.txt"
-            
+
             # Save the execution log file
             with open(os.path.join(save_path_execution, log_filename_execution), 'w') as execution_logfile:
                 subprocess.run(i, shell=True, text=True, stdout=execution_logfile)
-        
-        print(f"---------------------{log_filename_execution} - ExecutionLog----------------------")
+            print(f"---------------------{log_filename_execution} - ExecutionLog----------------------")
 
 # Function to read text files
 def read_text_file(file_path):
