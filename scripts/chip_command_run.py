@@ -96,26 +96,24 @@ os.chdir(path)
 # Function to run chip commands in terminal
 def run_command(commands, testcase):
     file_path = os.path.join(os.path.expanduser('~'), build)
-    save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
+    save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "execution_logs")
     os.chdir(file_path)
     date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
     while "" in commands:
         commands.remove("")
     for i in commands:
         log_filename = f"{testcase}-{date}.txt"
-        log_file_path = os.path.join(save_path, log_filename)  # Full path to the log file
+        log_file_path = os.path.join(save_path, log_filename)
         with open(log_file_path, 'a') as cluster_textfile:
             print(testcase, i)
             cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
         subprocess.run(i, shell=True, text=True, stdout=open(log_file_path, "a+"))
-        print(f"Backend log saved as {log_filename} for {testcase}")
-
         # Process the specific log file immediately after running the command
-        output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "ExecutionLogs")
-        process_log_file(log_file_path, output_directory)  # Process the specific log file
-        print(f"Execution log processed for {testcase}")
-
+        output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
+        process_log_file(log_file_path, output_directory)
     print(f"---------------------{testcase} - Executed----------------------")
+    print(f"Execution log saved as {log_filename} for {testcase}")
+    print(f"Validation log processed for {testcase}")  
 
 # Function to process log files and save them
 def process_log_file(input_file_path, output_directory):
@@ -203,7 +201,7 @@ if __name__ == "__main__":
                 if e in ['Y', 'Yes']:
                     selected_clusters.append(clus)
 
-        clusters_confirmation = input(f"Proceed with selected Clusters for execution: {selected_clusters} (Y/Yes to proceed): ").strip().lower()
+        clusters_confirmation = input(f"Proceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): ").strip().lower()
 
         if clusters_confirmation in ['y', 'yes']:
             if selected_clusters:
