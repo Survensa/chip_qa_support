@@ -13,7 +13,6 @@ import time
 from invoke import UnexpectedExit
 import invoke.exceptions
 
-
 # Define necessary patterns and variables
 pattern1 = re.compile(r'(CHIP:DMG|CHIP:TOO)(.*)')
 pattern2 = re.compile(r'^\./chip-tool')
@@ -27,7 +26,7 @@ with open(homedir, 'r') as file:
     build = yaml_info["chip_tool_directory"]
 
 # Set the folder path
-path = os.path.join(os.getcwd(), "../commands")
+path = os.path.join(os.getcwd(),"../commands")
 
 # Change the directory to the desired path
 os.chdir(path)
