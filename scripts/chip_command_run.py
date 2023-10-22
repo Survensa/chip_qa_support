@@ -111,9 +111,9 @@ def run_command(commands, testcase):
         # Process the specific log file immediately after running the command
         output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
         process_log_file(log_file_path, output_directory)
-    print(f"---------------------{testcase} - Executed----------------------")
-    print(f"Execution log saved as {log_filename} for {testcase}")
-    print(f"Validation log processed for {testcase}")  
+    print(f"\n---------------------{testcase} - Executed----------------------")
+    print(f"\nExecution log saved as {log_filename} for {testcase}")
+    print(f"\nValidation log processed for {testcase}\n")  
 
 # Function to process log files and save them
 def process_log_file(input_file_path, output_directory):
