@@ -112,8 +112,9 @@ def run_command(commands, testcase):
         output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
         process_log_file(log_file_path, output_directory)
     print(f"\n---------------------{testcase} - Executed----------------------")
-    print(f"\nExecution log saved as {log_filename} for {testcase}")
-    print(f"\nValidation log processed for {testcase}\n")  
+    print(f"\nExecution log saved as {log_filename}")
+    print(f"\nValidation log processed for {testcase}\n")
+    print(f"\n----------------------------------------------------------------")
 
 # Function to process log files and save them
 def process_log_file(input_file_path, output_directory):
@@ -189,7 +190,7 @@ def process_all_files():
 if __name__ == "__main__":
     selected_clusters = args.cluster
 
-    build_confirmation = input(f"Confirm the Chip-Tool Build Path: {build} (Y/Yes to confirm): ").strip().lower()
+    build_confirmation = input(f"\nConfirm the Chip-Tool Build Path: {build} (Y/Yes to confirm): ").strip().lower()
 
     if build_confirmation in ['y', 'yes']:
         if selected_clusters:
@@ -201,7 +202,8 @@ if __name__ == "__main__":
                 if e in ['Y', 'Yes']:
                     selected_clusters.append(clus)
 
-        clusters_confirmation = input(f"Proceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): ").strip().lower()
+        clusters_confirmation = input(f"\nProceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): ").strip().lower()
+        print(f"\n****************************************************************")
 
         if clusters_confirmation in ['y', 'yes']:
             if selected_clusters:
