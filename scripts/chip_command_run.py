@@ -93,48 +93,53 @@ path = "../commands"
 # Change the directory
 os.chdir(path)
 
-# Function to run chip commands in terminal and create execution logs for specific patterns
+# Function to process log files and save them
+def process_log_files(input_dir, output_dir):
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    
+    for filename in os.listdir(input_dir):
+        if filename.endswith('.txt'):
+            input_file_path = os.path.join(input_dir, filename)
+            output_file_path = os.path.join(output_dir, filename)
+
+            with open(input_file_path, 'r') as input_file, open(output_file_path, 'w') as output_file:
+                for line in input_file:
+                    line = line.strip()
+                    match1 = pattern1.search(line)
+                    match2 = pattern2.search(line)
+                    if match1:
+                        chip_text = match1.group(1).strip()
+                        trailing_text = match1.group(2).strip()
+                        output_line = f"{chip_text} {trailing_text}"
+                        output_file.write(output_line + '\n')
+                    if match2:
+                        output_file.write('\n' 'CHIP:CMD : ' + line + '\n\n')
+
+# Function to run chip commands in terminal
 def run_command(commands, testcase):
     file_path = os.path.join(os.path.expanduser('~'), build)
-    save_path_backend = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
-    save_path_execution = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "ExecutionLogs")
-
+    save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
+    os.chdir(file_path)
     date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
     while "" in commands:
         commands.remove("")
     for i in commands:
-        log_filename_backend = f"{testcase}-{date}.txt"
-
-        with open(os.path.join(save_path_backend, log_filename_backend), 'a') as cluster_textfile:
+        log_filename = f"{testcase}-{date}.txt"
+        log_file_path = os.path.join(save_path, log_filename)
+        with open(log_file_path, 'a') as cluster_textfile:
             print(testcase, i)
             cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
-            print(f"---------------------{testcase} - Executed----------------------")
-            print(f"---------------------{log_filename_backend} - BackendLog----------------------")
-        
-        match1 = pattern1.search(i)
-        match2 = pattern2.search(i)
-        if match1:
-            # If the line matches pattern1 (contains CHIP:DMG or CHIP:TOO)
-            chip_text = match1.group(1).strip()
-            trailing_text = match1.group(2).strip()
-            output_line = f"{chip_text} {trailing_text}"
-            with open(os.path.join(save_path_backend, log_filename_backend), 'a') as cluster_textfile:
-                cluster_textfile.write(output_line + '\n')
+        subprocess.run(i, shell=True, text=True, stdout=open(log_file_path, "a+"))
+        print(f"Backend log saved as {log_filename} for {testcase}")
 
-        if match2:
-            # If the line matches pattern2 (starts with ./chip-tool)
-            with open(os.path.join(save_path_backend, log_filename_backend), 'a') as cluster_textfile:
-                cluster_textfile.write('\n' 'CHIP:CMD : ' + i + '\n\n')
+        # Process the specific log file immediately after running the command
+        output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "ExecutionLogs")
+        process_log_files(log_file_path, output_directory)
+        print(f"Execution log processed for {testcase}")
 
-        # Define your patterns and conditions to match specific commands
-        if pattern1.search(i) or pattern2.search(i):
-            log_filename_execution = f"{testcase}-{date}.txt"
+    print(f"---------------------{testcase} - Executed----------------------")
 
-            # Save the execution log file
-            with open(os.path.join(save_path_execution, log_filename_execution), 'w') as execution_logfile:
-                subprocess.run(i, shell=True, text=True, stdout=execution_logfile)
-            print(f"---------------------{log_filename_execution} - ExecutionLog----------------------")
-            
 # Function to read text files
 def read_text_file(file_path):
     testsite_array = []
@@ -217,3 +222,5 @@ if __name__ == "__main__":
     # If selected_clusters is empty or execution was canceled, process all files
     if not selected_clusters:
         process_all_files()
+
+        
