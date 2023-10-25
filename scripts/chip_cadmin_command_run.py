@@ -8,7 +8,6 @@ import argparse
 from dataclasses import dataclass, fields
 from chip_command_run import Cluster
 import threading
-import json
 from fabric import Connection
 import time
 from invoke import UnexpectedExit
@@ -72,11 +71,8 @@ def factory_reset( data ):
 #Function to advertise the dut
 def advertise():
         
-        cd = os.getcwd()
-        rpi_path = os.path.join(cd,"../scripts/rpi.json") 
-
-        with open( rpi_path, "r") as f:
-            data = json.load(f)
+        
+        data = yaml_info["Dut_data"]
 
 
         ssh = Connection(host= data["host"], user=data["username"], connect_kwargs={"password": data["password"]})
