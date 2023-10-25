@@ -208,9 +208,9 @@ if __name__ == "__main__":
             clusters_confirmation = input(f"\nProceed with selected Clusters all the clusters for execution (Y/Yes to proceed): ").strip().lower()
             print(f"\n****************************************************************")
             
-
-        clusters_confirmation = input(f"\nProceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): ").strip().lower()
-        print(f"\n****************************************************************")
+        else:
+            clusters_confirmation = input(f"\nProceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): ").strip().lower()
+            print(f"\n****************************************************************")
 
         if clusters_confirmation in ['y', 'yes']:
             if selected_clusters:
