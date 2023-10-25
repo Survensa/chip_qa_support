@@ -1,20 +1,22 @@
 #! /usr/bin/env bash
 
 echo "Hello . . . !" $USER
+echo
 read -p "Confirm whether you have updated the Execution Section in config.yaml (Y/N)?" ANSWER1
-if [ "$ANSWER1" == "Y" ] || [ "$ANSWER1" == "y" ]
-then
-    echo
-    cd ~/chip_command_run/scripts/
-    python3 chip_command_run.py
-    exit
-elif [ "$ANSWER1" == "N" ] || [ "$ANSWER1" == "n" ]
-then
+
+if [ "$ANSWER1" == "Y" ] || [ "$ANSWER1" == "y" ]; then
+    if [ "$1" == "-c" ] && [ -n "$2" ]; then
+        cd ~/chip_command_run/scripts/
+        python3 chip_command_run.py -c "$2"
+    else
+        cd ~/chip_command_run/scripts/
+        python3 chip_command_run.py
+    fi
+elif [ "$ANSWER1" == "N" ] || [ "$ANSWER1" == "n" ]; then
     echo
     echo "Execution Aborted . . . Please update the Execution Section in config.yaml"
-    exit
 else
     echo
     echo "INVALID INPUT . . . Retry again"
-    exit
 fi
+exit
