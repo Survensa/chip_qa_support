@@ -6,7 +6,7 @@ import yaml
 import re
 import argparse
 from dataclasses import dataclass, fields
-from chip_command_run import Cluster, filter_commands , read_text_file
+from chip_command_run import Cluster
 import threading
 import json
 from fabric import Connection
@@ -228,6 +228,44 @@ def run_command(commands, testcase):
     print(f"Validation log processed for {testcase}")
     print(f"\n****************************************************************")
 
+# Function to read text files
+def read_text_file(file_path):
+    testsite_array = []
+    filterCommand = []
+    with open(file_path, 'r') as f:
+        for line in f:
+            testsite_array.append(line)
+        filter_command = filter_commands(testsite_array)
+        for command in filter_command:
+            for com in command:
+                # Separate testcase name from the array of commands
+                if "#" in com:
+                    testcase = com.split()[1]
+                else:
+                    filterCommand.append(com)
+            run_command(filterCommand, testcase)
+            filterCommand = []
+
+# Function to filter only commands from txt file
+def filter_commands(commands):
+    newcommand = []
+    for command in commands:
+        if "\n" in command:
+            command = command.replace("\n", "")
+        if "$" not in command:
+            newcommand.append(command)
+    size = len(newcommand)
+    # Remove all the "end" in the array
+    idx_list = [idx + 1 for idx, val in
+                enumerate(newcommand) if val.lower() == "end"]
+    res = [newcommand[i: j] for i, j in
+           zip([0] + idx_list, idx_list +
+               ([size] if idx_list[-1] != size else []))]
+    newRes = []
+    for i in res:
+        i.pop()
+        newRes.append(i)
+    return newRes
 
 if __name__ == "__main__":
     
