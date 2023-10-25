@@ -203,16 +203,12 @@ if __name__ == "__main__":
                 e = yaml_info[clus]
                 if e in ['Y', 'Yes']:
                     selected_clusters.append(clus)
-
-
         if not selected_clusters:
-            clusters_confirmation = input(f"\nProceed with selected Clusters all the clusters for execution (Y/Yes to proceed): ").strip().lower()
-            print(f"\n****************************************************************")
-            
+            clusters_confirmation = input(f"\nProceed with all the clusters for execution (Y/Yes to proceed): ").strip().lower()
+            print(f"\n****************************************************************")            
         else:
             clusters_confirmation = input(f"\nProceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): ").strip().lower()
             print(f"\n****************************************************************")
-
         if clusters_confirmation in ['y', 'yes']:
             if selected_clusters:
                 for cluster_name in selected_clusters:
@@ -222,10 +218,8 @@ if __name__ == "__main__":
                     print(f"\nExecution completed... Logs are ready for validation in {output_directory}")                        
             else:
                 process_all_files()
-                print(f"\nExecution completed... Logs are ready for validation in {output_directory}")
-                
+                print(f"\nExecution completed... Logs are ready for validation in {output_directory}")                
         else:
-            print(f"\nExecution Canceled With The User Input: {clusters_confirmation}")
-        
+            print(f"\nExecution Canceled With The User Input: {clusters_confirmation}")        
     else:
         print(f"\nExecution Canceled With User The User Input: {build_confirmation}")
