@@ -54,21 +54,3 @@ End
 ./chip-tool groupkeymanagement write group-key-map '[ ]' 1 0
 ./chip-tool groupkeymanagement key-set-remove "0x01a3" 1 0
 End
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
