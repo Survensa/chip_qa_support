@@ -94,7 +94,7 @@ def advertise():
 
         #self.start_logging(log)
         ssh.close()
-        logpath = os.path.join(cd,"../Logs/BackendLogs") 
+        logpath = os.path.join(cd,"../logs/execution_logs") 
         date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
         with open(f"{logpath}/{testcase}dut-{date}.txt", 'a') as f:
             f.write(log.stdout)
@@ -157,7 +157,7 @@ def code():
 # Fn to run chip commands in terminal
 def run_command(commands, testcase):
     file_path = os.path.join(os.path.expanduser('~'), build)
-    save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "BackendLogs")
+    save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "execution_logs")
     testcasename(testcase)
     cd = os.getcwd()
     pair = args.pairing
