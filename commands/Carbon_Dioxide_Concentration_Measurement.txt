@@ -19,4 +19,3 @@ End
 ./chip-tool carbondioxideconcentrationmeasurement read measurement-medium 1 1
 ./chip-tool carbondioxideconcentrationmeasurement read level-value 1 1
 End
-
