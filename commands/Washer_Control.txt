@@ -21,4 +21,3 @@ End
 ./chip-tool laundrywashercontrols read number-of-rinses 1 1
 ./chip-tool laundrywashercontrols write number-of-rinses 3 1 1
 End
-
