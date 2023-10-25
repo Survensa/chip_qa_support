@@ -68,6 +68,7 @@ class Cluster:
     TCCM : str = "../commands/Refrigerator_And_Temperature_Controlled_Cabinet_Mode.txt"
     DGGEN: str = "../commands/Gendiag.txt"
     ILL : str = "../commands/Illuminance_Measurement_Cluster.txt"
+    ACE : str = "../commands/Access_Control_Enforcement.txt"
 
 clusters = fields(Cluster)
 cluster_name = [field.name for field in clusters]
