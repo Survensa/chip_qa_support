@@ -116,4 +116,3 @@ End
 ./chip-tool accesscontrol read-event access-control-entry-changed 1 0
 ./chip-tool accesscontrol read-event  access-control-extension-changed 1 0
 End
-
