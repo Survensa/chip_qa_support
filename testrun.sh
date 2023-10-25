@@ -5,9 +5,10 @@ echo
 read -p "Confirm whether you have updated the Execution Section in config.yaml (Y/N)?" ANSWER1
 
 if [ "$ANSWER1" == "Y" ] || [ "$ANSWER1" == "y" ]; then
-    if [ -n "$2" ]; then
+    if [ "$1" == "-c" ]; then
+        shift
         cd ~/chip_command_run/scripts/
-        python3 chip_command_run.py "$2"
+        python3 chip_command_run.py -c "$@"
     else
         cd ~/chip_command_run/scripts/
         python3 chip_command_run.py
