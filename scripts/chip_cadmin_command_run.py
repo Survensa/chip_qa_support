@@ -71,7 +71,8 @@ def factory_reset( data ):
 #Function to advertise the dut
 def advertise():
         
-        
+        cd = os.getcwd()
+
         data = yaml_info["Dut_data"]
 
 
