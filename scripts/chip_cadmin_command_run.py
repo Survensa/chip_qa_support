@@ -4,27 +4,12 @@ from datetime import datetime
 import subprocess
 import yaml
 import re
-import argparse
 from dataclasses import dataclass, fields
 import threading
 from fabric import Connection
 import time
 from invoke import UnexpectedExit
 import invoke.exceptions
-
-@dataclass
-class Cluster:
-    
-    CADMIN: str = "../commands/cadmin.txt"
-
-clusters = fields(Cluster)
-cluster_name = [field.name for field in clusters]
-
-# Parse command-line arguments
-parser = argparse.ArgumentParser(description='cluster name')
-parser.add_argument('-c','--cluster', nargs='+',help='name of the cluster',choices= cluster_name,default= False)
-parser.add_argument('-p','--pairing',help='Auto-pairing function', default= True)
-args = parser.parse_args()
 
 # Load configuration from YAML file
 config_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "config.yaml")
@@ -121,7 +106,6 @@ def process_log_file(input_file_path, output_directory):
                     elif avahi:
                         output_file.write( line + '\n')
 
-
 # Function to scrap the manualcode from the log
 def code():
     
@@ -133,33 +117,26 @@ def code():
                 manualcode = match.group(1)
                 return(str(manualcode))            
     return False
-
     
-
 # Fn to run chip commands in terminal
 def run_command(commands, testcase):
     file_path = os.path.join(os.path.expanduser('~'), build)
     save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "execution_logs")
     testcasename(testcase)
     cd = os.getcwd()
-    pair = args.pairing
     date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
     manualcode = "34970112332"
-    if pair :
-        data = yaml_info["Dut_data"]
-        factory_reset(data)
-        thread = threading.Thread(target= advertise)
-        thread.daemon = True
-        thread.start()
-        time.sleep(5)
-        os.chdir(file_path)
-        rebootcmd = "rm -rf /tmp/chip_*"
-        subprocess.run(rebootcmd, shell=True, text=True, stdout= subprocess.PIPE, stderr=subprocess.PIPE)
-        pairing_cmd = "./chip-tool pairing onnetwork 1 20202021"
-        subprocess.run(pairing_cmd, shell=True, text=True, stdout= subprocess.PIPE, stderr=subprocess.PIPE)
-    else:
-        os.chdir(file_path)
-
+    data = yaml_info["Dut_data"]
+    factory_reset(data)
+    thread = threading.Thread(target=advertise)
+    thread.daemon = True
+    thread.start()
+    time.sleep(5)
+    os.chdir(file_path)
+    rebootcmd = "rm -rf /tmp/chip_*"
+    subprocess.run(rebootcmd, shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    pairing_cmd = "./chip-tool pairing onnetwork 1 20202021"
+    subprocess.run(pairing_cmd, shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     while "" in commands:
         commands.remove("")
     for i in commands:
@@ -167,7 +144,7 @@ def run_command(commands, testcase):
         log_file_path = os.path.join(save_path, log_filename)
         with open(log_file_path, 'a') as cluster_textfile:
             print(testcase, i)
-        # subprocess module is used to open, append logs and run command in the terminal
+            # subprocess module is used to open, append logs and run command in the terminal
             if "open-commissioning-window" in i:
                 cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
 
@@ -180,10 +157,10 @@ def run_command(commands, testcase):
 
             else:
                 cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
-        run = subprocess.run(i, shell=True, text=True, stdout= subprocess.PIPE, stderr=subprocess.PIPE)
-        log = run.stdout    
+        run = subprocess.run(i, shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        log = run.stdout
         with open("temp.txt", 'w') as f:
-                    f.write(log)
+            f.write(log)
         if "open-commissioning-window" in i:
             cod = code()
             if cod == False:
@@ -192,10 +169,9 @@ def run_command(commands, testcase):
                 manualcode = cod
         with open(log_file_path, 'a') as cluster_textfile:
             cluster_textfile.write(log)
-    if pair :
-        factory_reset(data)
-        time.sleep(5)
-    
+    factory_reset(data)
+    time.sleep(5)
+
     # Process the log file immediately after running the commands
     output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
     process_log_file(log_file_path, output_directory)
@@ -245,26 +221,19 @@ def filter_commands(commands):
     return newRes
 
 if __name__ == "__main__":
-    
-    selected_clusters = args.cluster
-
+    selected_clusters = ["CADMIN"]
     build_confirmation = input(f"\nConfirm the Chip-Tool Build Path: {build} (Y/Yes to confirm): ").strip().lower()
     output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
-    
+
     if build_confirmation in ['y', 'yes']:
-        if selected_clusters:
-            None
-        else:
-            selected_clusters = ["CADMIN"]
         clusters_confirmation = input(f"\nProceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): ").strip().lower()
         print(f"\n****************************************************************")
         if clusters_confirmation in ['y', 'yes']:
-            if selected_clusters:
-                for cluster_name in selected_clusters:
-                    file = vars(Cluster)[cluster_name]
-                    file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
-                    read_text_file(file_path)
-                    print(f"\nExecution completed... Logs are ready for validation in {output_directory}")
+            for cluster_name in selected_clusters:
+                file = "Cadmin.txt"
+                file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
+                read_text_file(file_path)
+                print(f"\nExecution completed... Logs are ready for validation in {output_directory}")
         else:
             print(f"\nExecution Canceled With The User Input: {clusters_confirmation}")
     else:
