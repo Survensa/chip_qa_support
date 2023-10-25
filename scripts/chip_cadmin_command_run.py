@@ -184,7 +184,7 @@ def run_command(commands, testcase):
             if "open-commissioning-window" in i:
                 cluster_textfile.write('\n' + '\n' + i + '\n' + '\n')
 
-            if "open-basic-commissioning-window" in i:
+            elif "open-basic-commissioning-window" in i:
                 manualcode = "34970112332"
 
             elif "{code}" in i:
