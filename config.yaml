@@ -96,10 +96,12 @@ ACE: 'N'
 # ********************************************************************************
 # Cadmin Section :
 
-host: 192.168.8.101
-username: ubuntu
-password: raspberrypi
-command: ./chip-all-clusters-app
-path: /home/ubuntu/oct16/connectedhomeip/examples/all-clusters-app/linux/out/all-clusters-app
+Dut_data: {
+  host: "192.168.8.101",
+  username: "ubuntu",
+  password: "raspberrypi",
+  command: "./chip-all-clusters-app",
+  path: "/home/ubuntu/oct16/connectedhomeip/examples/all-clusters-app/linux/out/all-clusters-app"
+  }
 
 # ********************************************************************************
