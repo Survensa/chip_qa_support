@@ -215,7 +215,7 @@ def run_command(commands, testcase):
         time.sleep(5)
     
     # Process the log file immediately after running the commands
-    output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "Logs", "ExecutionLogs")
+    output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
     process_log_file(log_file_path, output_directory)
     os.chdir(cd)
     print(f"\n---------------------{testcase} - Executed----------------------")
