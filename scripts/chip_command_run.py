@@ -69,7 +69,6 @@ class Cluster:
     DGGEN: str = "../commands/Gendiag.txt"
     ILL : str = "../commands/Illuminance_Measurement_Cluster.txt"
     ACE : str = "../commands/Access_Control_Enforcement.txt"
-    CADMIN: str = "../commands/cadmin.txt"
 
 clusters = fields(Cluster)
 cluster_name = [field.name for field in clusters]
@@ -218,12 +217,21 @@ if __name__ == "__main__":
                 for cluster_name in selected_clusters:
                     file = vars(Cluster)[cluster_name]
                     file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
-                    read_text_file(file_path)
+                    success = read_text_file(file_path)
+                    if not success:
+                        print("Execution of test case '{cluster_name}' failed.")
+                        break
+                if success:
+                    print("Execution completed... Logs are ready for validation in logs/validation_logs directory")
+                        
             else:
-                process_all_files()
+                success = process_all_files()
+                if success:
+                    print("Execution completed... Logs are ready for validation in logs/validation_logs directory")
+                else:
+                    print("Execution completed with errors.")
         else:
-            print("Execution canceled.")
-
+            print("Execution Canceled With The User Input: {clusters_confirmation}")
         
     else:
-        print("Execution canceled.")
+        print("Execution Canceled With User The User Input: {build_confirmation}")
