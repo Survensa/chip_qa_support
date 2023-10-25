@@ -26,4 +26,3 @@ End
 ./chip-tool modeselect read supported-modes 1 1
 ./chip-tool modeselect change-to-mode 4 1 1
 End
-
