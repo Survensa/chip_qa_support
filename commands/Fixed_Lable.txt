@@ -12,4 +12,3 @@ End
 ./chip-tool fixedlabel write-by-id  0x00 '["label","Testlabel", "value","testvalue"]' 1 0
 ./chip-tool fixedlabel read label-list 1 0
 End
-
