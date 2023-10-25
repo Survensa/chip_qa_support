@@ -218,13 +218,13 @@ if __name__ == "__main__":
                     file = vars(Cluster)[cluster_name]
                     file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
                     read_text_file(file_path)
-                    print("Execution completed... Logs are ready for validation in logs/validation_logs directory")                        
+                    print(f"\nExecution completed... Logs are ready for validation in {output_directory}")                        
             else:
                 process_all_files()
-                print("Execution completed... Logs are ready for validation in logs/validation_logs directory")
+                print(f"\nExecution completed... Logs are ready for validation in {output_directory}")
                 
         else:
-            print("Execution Canceled With The User Input: {clusters_confirmation}")
+            print(f"\nExecution Canceled With The User Input: {clusters_confirmation}")
         
     else:
-        print("Execution Canceled With User The User Input: {build_confirmation}")
+        print(f"\nExecution Canceled With User The User Input: {build_confirmation}")
