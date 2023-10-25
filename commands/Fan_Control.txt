@@ -101,19 +101,3 @@ End
 ./chip-tool fancontrol write airflow-direction 1 1 1
 ./chip-tool fancontrol read airflow-direction 1 1
 End
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
