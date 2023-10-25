@@ -60,7 +60,7 @@ RVCCLEANM: 'N'
 PRS: 'N'
 I: 'N'
 DGTHREAD: 'N'
-BOOL: 'Y'
+BOOL: 'N'
 TSUIC: 'N'
 LCFG: 'N'
 WNCV: 'N'
@@ -91,7 +91,7 @@ CMOCONC: 'N'
 TCCM: 'N'
 DGGEN: 'N'
 ILL: 'N'
-CADMIN: 'N'
+ACE: 'N'
 
 # ********************************************************************************
 # Cadmin Section :
