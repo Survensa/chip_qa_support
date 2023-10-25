@@ -68,20 +68,3 @@ End
  ./chip-tool bridgeddevicebasicinformation read product-appearance 1 3
  ./chip-tool bridgeddevicebasicinformation read product-appearance 1 3
 End
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
