@@ -192,6 +192,7 @@ if __name__ == "__main__":
     selected_clusters = args.cluster
 
     build_confirmation = input(f"\nConfirm the Chip-Tool Build Path: {build} (Y/Yes to confirm): ").strip().lower()
+    output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
 
     if build_confirmation in ['y', 'yes']:
         if selected_clusters:
