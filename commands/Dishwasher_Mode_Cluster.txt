@@ -22,3 +22,4 @@ End
 ./chip-tool onoff off 1 1
 ./chip-tool onoff on 1 1
 ./chip-tool dishwashermode read current-mode 1 1
+End
