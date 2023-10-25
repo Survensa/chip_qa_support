@@ -6,4 +6,3 @@ $ General Diagnostics Cluster
 ./chip-tool generaldiagnostics read accepted-command-list 1 0 
 ./chip-tool generaldiagnostics read generated-command-list 1 0
 End
-
