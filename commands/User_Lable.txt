@@ -24,6 +24,3 @@ End
 ./chip-tool userlabel write label-list '[{"label":"", "value":""}, {"label":"", "value":""}, {"label":"", "value":""},{"label":"", "value":""},{"label":"", "value":""},{"label":"", "value":""},{"label":"", "value":""}]' 1 0
 ./chip-tool userlabel read label-list 1 0
 End
-
-
-
