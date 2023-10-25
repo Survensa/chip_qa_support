@@ -69,6 +69,7 @@ class Cluster:
     DGGEN: str = "../commands/Gendiag.txt"
     ILL : str = "../commands/Illuminance_Measurement_Cluster.txt"
     ACE : str = "../commands/Access_Control_Enforcement.txt"
+    CADMIN: str = "../commands/cadmin.txt"
 
 clusters = fields(Cluster)
 cluster_name = [field.name for field in clusters]
@@ -203,8 +204,14 @@ if __name__ == "__main__":
                 if e in ['Y', 'Yes']:
                     selected_clusters.append(clus)
 
-        clusters_confirmation = input(f"\nProceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): ").strip().lower()
-        print(f"\n****************************************************************")
+
+        if not selected_clusters:
+            clusters_confirmation = input(f"\nProceed with selected Clusters all the clusters for execution (Y/Yes to proceed): ").strip().lower()
+            print(f"\n****************************************************************")
+            
+        else:
+            clusters_confirmation = input(f"\nProceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): ").strip().lower()
+            print(f"\n****************************************************************")
 
         if clusters_confirmation in ['y', 'yes']:
             if selected_clusters:
@@ -212,10 +219,11 @@ if __name__ == "__main__":
                     file = vars(Cluster)[cluster_name]
                     file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
                     read_text_file(file_path)
+            else:
+                process_all_files()
         else:
             print("Execution canceled.")
+
+        
     else:
         print("Execution canceled.")
-
-    if not selected_clusters:
-        process_all_files()
