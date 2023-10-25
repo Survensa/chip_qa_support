@@ -29,5 +29,3 @@ End
 ./chip-tool occupancysensing read occupancy-sensor-type 1 1
 ./chip-tool occupancysensing read occupancy-sensor-type-bitmap 1 1
 End
-
-
