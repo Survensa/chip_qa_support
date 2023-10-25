@@ -221,4 +221,3 @@ End
 ./chip-tool smokecoalarm read battery-alert 1 1
 ./chip-tool smokecoalarm read expressed-state 1 1
 End
-
