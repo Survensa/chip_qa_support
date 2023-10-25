@@ -6,4 +6,3 @@ $ Binding Cluster
 ./chip-tool binding read accepted-command-list 1 1
 ./chip-tool binding read generated-command-list 1 1
 End
-
