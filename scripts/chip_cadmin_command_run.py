@@ -164,7 +164,7 @@ def run_command(commands, testcase):
     date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
     manualcode = "34970112332"
     if pair :
-        data = yaml_info.Dut_data
+        data = yaml_info["Dut_data"]
         factory_reset(data)
         thread = threading.Thread(target= advertise)
         thread.daemon = True
