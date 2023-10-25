@@ -69,6 +69,7 @@ class Cluster:
     DGGEN: str = "../commands/Gendiag.txt"
     ILL : str = "../commands/Illuminance_Measurement_Cluster.txt"
     ACE : str = "../commands/Access_Control_Enforcement.txt"
+    CADMIN: str = "../commands/cadmin.txt"
 
 clusters = fields(Cluster)
 cluster_name = [field.name for field in clusters]
