@@ -40,4 +40,3 @@ End
 ./chip-tool thermostatuserinterfaceconfiguration write schedule-programming-visibility 2 1 1
 ./chip-tool thermostatuserinterfaceconfiguration read schedule-programming-visibility  1 1
 End
-
