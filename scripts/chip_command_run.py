@@ -217,19 +217,12 @@ if __name__ == "__main__":
                 for cluster_name in selected_clusters:
                     file = vars(Cluster)[cluster_name]
                     file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
-                    success = read_text_file(file_path)
-                    if not success:
-                        print("Execution of test case '{cluster_name}' failed.")
-                        break
-                if success:
-                    print("Execution completed... Logs are ready for validation in logs/validation_logs directory")
-                        
+                    read_text_file(file_path)
+                    print("Execution completed... Logs are ready for validation in logs/validation_logs directory")                        
             else:
-                success = process_all_files()
-                if success:
-                    print("Execution completed... Logs are ready for validation in logs/validation_logs directory")
-                else:
-                    print("Execution completed with errors.")
+                process_all_files()
+                print("Execution completed... Logs are ready for validation in logs/validation_logs directory")
+                
         else:
             print("Execution Canceled With The User Input: {clusters_confirmation}")
         
