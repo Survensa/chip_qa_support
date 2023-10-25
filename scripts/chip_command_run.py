@@ -203,6 +203,12 @@ if __name__ == "__main__":
                 if e in ['Y', 'Yes']:
                     selected_clusters.append(clus)
 
+
+        if not selected_clusters:
+            clusters_confirmation = input(f"\nProceed with selected Clusters all the clusters for execution (Y/Yes to proceed): ").strip().lower()
+            print(f"\n****************************************************************")
+            
+
         clusters_confirmation = input(f"\nProceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): ").strip().lower()
         print(f"\n****************************************************************")
 
@@ -212,10 +218,11 @@ if __name__ == "__main__":
                     file = vars(Cluster)[cluster_name]
                     file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
                     read_text_file(file_path)
+            else:
+                process_all_files()
         else:
             print("Execution canceled.")
+
+        
     else:
         print("Execution canceled.")
-
-    if not selected_clusters:
-        process_all_files()
