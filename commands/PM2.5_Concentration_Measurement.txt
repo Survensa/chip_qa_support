@@ -19,4 +19,3 @@ End
 ./chip-tool pm25concentrationmeasurement read measurement-medium 1 1
 ./chip-tool pm25concentrationmeasurement read level-value 1 1
 End
-
