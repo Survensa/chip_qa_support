@@ -153,5 +153,3 @@ End
 ./chip-tool levelcontrol read min-frequency 1 1
 ./chip-tool levelcontrol read max-frequency 1 1
 End
-
-
