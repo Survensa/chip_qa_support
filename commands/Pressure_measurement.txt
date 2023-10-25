@@ -17,4 +17,3 @@ End
 ./chip-tool pressuremeasurement read scaled-tolerance 1 1
 ./chip-tool pressuremeasurement read scale 1 1
 End
-
