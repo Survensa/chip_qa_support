@@ -6,6 +6,7 @@ read -p "Confirm whether you have updated the Execution Section in config.yaml (
 
 if [ "$ANSWER1" == "Y" ] || [ "$ANSWER1" == "y" ]; then
     if [[ "$1" == "-c" && "$2" == "CADMIN" ]] || [[ "$1" == "--cluster" && "$2" == "CADMIN" ]]; then
+        echo
         read -p "Confirm whether you have updated the Cadmin Section in config.yaml (Y/N)?" ANSWER2
         if [ "$ANSWER2" == "Y" ] || [ "$ANSWER2" == "y" ]; then
             cd ~/chip_command_run/scripts/
