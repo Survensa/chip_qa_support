@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 495ea66 (local changes),</span>
-<span id="revdate">2023-10-25 23:17:48 -0700</span>
+<span id="revnumber">version master 243ad49 (local changes),</span>
+<span id="revdate">2023-10-26 12:31:58 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -702,7 +702,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#ref_RefrigeratorAndTempCtrldCabinetModeCluster">1.22.7. Refrigerator And Temperature Controlled Cabinet Mode Cluster</a></li>
 <li><a href="#ref_RefrigeratorAlarmCluster">1.22.8. Refrigerator Alarm Cluster</a></li>
 <li><a href="#ref_LaundryDryerControlsCluster">1.22.9. Laundry Dryer Controls</a></li>
-<li><a href="#OvenCavityOperationalStateCluster">1.22.10. Oven Cavity Operational State</a></li>
+<li><a href="#_oven_cavity_operational_state">1.22.10. Oven Cavity Operational State</a></li>
 <li><a href="#ref_OvenModeCluster">1.22.11. Oven Mode</a></li>
 <li><a href="#ref_MicrowaveOvenModeCluster">1.22.12. Microwave Oven Mode Cluster</a></li>
 <li><a href="#ref_MicrowaveOvenControlCluster">1.22.13. Microwave Oven Control Cluster</a></li>
@@ -941,7 +941,7 @@ At the time of publication, the editions indicated were valid. All standards and
 <td class="tableblock halign-left valign-top"><p class="tableblock">A Universally Unique IDentifier (UUID) URN Namespace</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="ISO4217"></a>[ISO&#160;4217]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="ref_Iso4217"></a>[ISO&#160;4217]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iso.org/iso-4217-currency-codes.html" class="bare">https://www.iso.org/iso-4217-currency-codes.html</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Currency Codes</p></td>
 </tr>
@@ -11763,7 +11763,7 @@ Due to the physical constraints, such an event will have a NewPosition field whi
 <div class="paragraph">
 <p>With such a device, the user can press any of the available buttons,
 so this switch does not show the incrementing or decrementing behavior of NewPosition which we discussed for the latching switch with fixed sequence.
-In the example in the figure below, the 5 buttons are labelled "A" through "E" for the user and are associated with values 0 through 4.
+In the example in the figure below, the 5 buttons are labeled "A" through "E" for the user and are associated with values 0 through 4.
 The user first presses the "A" button, and the switch device generates a SwitchLatched event with NewPosition set to 0.
 Then the user first presses the "D" button, and the switch device generates a SwitchLatched event with NewPosition set to 4.</p>
 </div>
@@ -18669,8 +18669,8 @@ currently available, a value of null SHALL be returned.</p>
 by the server, in milliwatt-hours (mWh), over the lifetime of the device.</p>
 </div>
 <div class="paragraph">
-<p>This value SHALL increase monotonically. It represents the total amount
-of energy imported over the lifetime of the device.</p>
+<p>This value SHALL increase monotonically.
+It represents the total amount of energy imported over the lifetime of the device.</p>
 </div>
 <div class="paragraph">
 <p>If the cumulative energy imported cannot currently be determined,
@@ -19727,22 +19727,22 @@ this field is not set to true, then the associated measurement was estimated.</p
 <div class="sect6">
 <h7 id="ref_MeasurementAccuracyStructFixedTypical"><a class="anchor" href="#ref_MeasurementAccuracyStructFixedTypical"></a>1.16.13.5.3.6. FixedTypical Field</h7>
 <div class="paragraph">
-<p>This field SHALL be the +/- fixed accuracy for the associated measurement, in the
-unit indicated by <a href="#ref_MeasurementAccuracyStructMeasurementType">MeasurementType</a>.</p>
+<p>This field SHALL be the +/- fixed accuracy for the associated measurement,
+in the unit indicated by <a href="#ref_MeasurementAccuracyStructMeasurementType">MeasurementType</a>.</p>
 </div>
 </div>
 <div class="sect6">
 <h7 id="ref_MeasurementAccuracyStructFixedMin"><a class="anchor" href="#ref_MeasurementAccuracyStructFixedMin"></a>1.16.13.5.3.7. FixedMin Field</h7>
 <div class="paragraph">
-<p>This field SHALL be the minimum +/- fixed accuracy for the associated measurement, in
-the unit indicated by <a href="#ref_MeasurementAccuracyStructMeasurementType">MeasurementType</a>.</p>
+<p>This field SHALL be the minimum +/- fixed accuracy for the associated measurement,
+in the unit indicated by <a href="#ref_MeasurementAccuracyStructMeasurementType">MeasurementType</a>.</p>
 </div>
 </div>
 <div class="sect6">
 <h7 id="ref_MeasurementAccuracyStructFixedMax"><a class="anchor" href="#ref_MeasurementAccuracyStructFixedMax"></a>1.16.13.5.3.8. FixedMax Field</h7>
 <div class="paragraph">
-<p>This field SHALL be the maximum +/- fixed accuracy for the associated measurement, in
-the unit indicated by <a href="#ref_MeasurementAccuracyStructMeasurementType">MeasurementType</a>.</p>
+<p>This field SHALL be the maximum +/- fixed accuracy for the associated measurement,
+in the unit indicated by <a href="#ref_MeasurementAccuracyStructMeasurementType">MeasurementType</a>.</p>
 </div>
 </div>
 </div>
@@ -20056,7 +20056,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ALTC</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x000a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x000A</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Frequency</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int64</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0 to 1000000</p></td>
@@ -20066,7 +20066,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ALTC</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x000b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x000B</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HarmonicCurrents</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">list[<a href="#ref_HarmonicMeasurementStruct">HarmonicMeasurementStruct</a>]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
@@ -20076,7 +20076,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HARM</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x000c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x000C</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HarmonicPhases</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">list[<a href="#ref_HarmonicMeasurementStruct">HarmonicMeasurementStruct</a>]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
@@ -20086,7 +20086,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PWRQ</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x000d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x000D</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PowerFactor</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int64</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-10000 to +10000</p></td>
@@ -20096,7 +20096,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x000e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x000E</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LineCurrent</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int64</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">min 0</p></td>
@@ -20106,7 +20106,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ALTC</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x000f</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x000F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NeutralCurrent</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int64</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -20155,8 +20155,8 @@ reading in millivolts (mV).</p>
 reading in milliamps (mA).</p>
 </div>
 <div class="paragraph">
-<p>A positive value represents current flowing into the server, while a negative value
-represents current flowing out of the server.</p>
+<p>A positive value represents current flowing into the server,
+while a negative value represents current flowing out of the server.</p>
 </div>
 <div class="paragraph">
 <p>If the current cannot be measured, a value of null SHALL be returned.</p>
@@ -20184,8 +20184,8 @@ combined active power.</p>
 reading in milliamps (mA).</p>
 </div>
 <div class="paragraph">
-<p>A positive value represents current flowing into the server, while a negative value
-represents current flowing out of the server.</p>
+<p>A positive value represents current flowing into the server,
+while a negative value represents current flowing out of the server.</p>
 </div>
 <div class="paragraph">
 <p>If the RMS current cannot be measured, a value of null SHALL be returned.</p>
@@ -20281,8 +20281,7 @@ phase of the harmonic current reading for the harmonic order specified by
 <h6 id="ref_NeutralCurrent"><a class="anchor" href="#ref_NeutralCurrent"></a>1.16.13.6.16. NeutralCurrent Attribute</h6>
 <div class="paragraph">
 <p>This SHALL indicate the most recent <a href="#ref_MeasurementTypeEnumNeutralCurrent">AC neutral current</a>
-reading in milliamps (mA). Typically this is a derived value, taking the magnitude
-of the vector sum of phase currents.</p>
+reading in milliamps (mA). Typically this is a derived value, taking the magnitude of the vector sum of phase currents.</p>
 </div>
 <div class="paragraph">
 <p>If the neutral current cannot be measured or derived, a value of null SHALL be returned.</p>
@@ -40647,7 +40646,7 @@ change. This SHALL NOT be null if the operation source is "Remote".</p>
 <div class="sect6">
 <h7 id="_sourcenode_3"><a class="anchor" href="#_sourcenode_3"></a>1.19.2.9.5.6. SourceNode</h7>
 <div class="paragraph">
-<p>The Node ID that that performed the change (if any). The Node ID of the node
+<p>The Node ID that performed the change (if any). The Node ID of the node
 that performed the change. This SHALL be null if there was no Node involved
 in the change. This SHALL NOT be null if the operation source is "Remote".</p>
 </div>
@@ -50505,13 +50504,16 @@ If currently paused and the device can resume it will continue to clean.</p>
 <div class="sect4">
 <h5 id="_mode_use"><a class="anchor" href="#_mode_use"></a>1.21.2.7. Mode Use</h5>
 <div class="paragraph">
-<p>Starting a cleaning cycle SHALL be done by switching from a mode with the Idle mode tag to a mode with the Cleaning mode tag.</p>
+<p>Starting a cleaning cycle SHALL be done by switching from a mode with the Idle mode tag
+to a mode with the Cleaning mode tag.</p>
 </div>
 <div class="paragraph">
-<p>Stopping a cleaning cycle SHALL be done by switching from a mode with the Cleaning mode tag to a mode with the Idle mode tag.</p>
+<p>Stopping a cleaning cycle SHALL be done by switching from a mode with the Cleaning mode tag
+to a mode with the Idle mode tag.</p>
 </div>
 <div class="paragraph">
-<p>The RVC Run Mode cluster&#8217;s SupportedModes attribute MAY include multiple modes with the Cleaning mode tag and/or modes with neither the Cleaning nor the Idle mode tags.</p>
+<p>The RVC Run Mode cluster&#8217;s SupportedModes attribute MAY include multiple modes with the Cleaning mode tag
+and/or modes with neither the Cleaning nor the Idle mode tags.</p>
 </div>
 </div>
 <div class="sect4">
@@ -50756,8 +50758,9 @@ the Mop mode tag in the ModeTags field list.</p>
 <div class="sect4">
 <h5 id="_mode_change_restrictions_2"><a class="anchor" href="#_mode_change_restrictions_2"></a>1.21.3.6. Mode Change Restrictions</h5>
 <div class="paragraph">
-<p>This cluster SHALL NOT permit changing its mode while the RVC Run Mode cluster&#8217;s CurrentMode attribute is set to a mode without the Idle mode tag.
-The ChangeToModeResponse command SHALL have the StatusCode field set to the InvalidInMode value if this restriction prevents a mode change.</p>
+<p>This cluster SHALL NOT permit changing its mode while the RVC Run Mode cluster&#8217;s CurrentMode attribute is set
+to a mode without the Idle mode tag. The ChangeToModeResponse command SHALL have the StatusCode field set
+to the InvalidInMode value if this restriction prevents a mode change.</p>
 </div>
 </div>
 <div class="sect4">
@@ -53230,7 +53233,7 @@ If the value is null, there will be no dryness level for the current mode.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="OvenCavityOperationalStateCluster"><a class="anchor" href="#OvenCavityOperationalStateCluster"></a>1.22.10. Oven Cavity Operational State</h4>
+<h4 id="_oven_cavity_operational_state"><a class="anchor" href="#_oven_cavity_operational_state"></a>1.22.10. Oven Cavity Operational State</h4>
 <div class="paragraph">
 <p>This cluster provides an interface for monitoring the operational state of an oven.</p>
 </div>
@@ -54350,8 +54353,8 @@ See the <a href="#ref_OperationalStateCluster">Operational State Cluster</a> for
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 495ea66 (local changes)<br>
-Last updated 2023-10-26 06:18:07 UTC
+Version master 243ad49 (local changes)<br>
+Last updated 2023-10-27 00:00:35 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
