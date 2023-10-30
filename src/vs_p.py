@@ -358,7 +358,7 @@ if __name__ == '__main__':
             soup2 = BeautifulSoup(f, 'html.parser')
 
         versiontag = soup1.find ('div', class_='details')
-        versiont = versiontag.find('span' id = "revnumber")
+        versiont = versiontag.find('span', id = "revnumber")
         version = versiont.text
 
 
