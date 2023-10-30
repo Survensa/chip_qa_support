@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 2314b41,</span>
-<span id="revdate">2023-10-27 14:16:03 -0700</span>
+<span id="revnumber">version 1.2,</span>
+<span id="revdate">2023-10-03 10:51:34 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -863,7 +863,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_tc_idm_7_1_multi_fabric_subscription_test_cases_dut_as_server">32.6.5. [TC-IDM-7.1] Multi Fabric Subscription Test Cases. [DUT as Server]</a></li>
 <li><a href="#_tc_idm_8_1_fabric_scoped_test_cases_dut_as_server">32.6.6. [TC-IDM-8.1] Fabric scoped Test Cases. [DUT as Server]</a></li>
 <li><a href="#_tc_idm_9_1_constraint_error_status_response_test_cases_dut_as_server_removed">32.6.7. [TC-IDM-9.1] CONSTRAINT_ERROR status response test cases [DUT as Server] - REMOVED</a></li>
-<li><a href="#_tc_idm_10_1_cluster_requirements_cluster_id_and_global_attribute_conformance_checks_dut_as_server">32.6.8. [TC-IDM-10.1] Cluster requirements - Cluster ID and Global attribute conformance checks [DUT as Server]</a></li>
+<li><a href="#_tc_idm_10_1_cluster_requirements_global_attributes_dut_as_server">32.6.8. [TC-IDM-10.1] Cluster requirements - Global attributes [DUT as Server]</a></li>
 <li><a href="#_tc_idm_11_1_data_types_attribute_strings_dut_as_server_data_model">32.6.9. [TC-IDM-11.1] Data types - attribute strings [DUT as Server] - data model</a></li>
 </ul>
 </li>
@@ -16840,7 +16840,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>Verify that LastNetworkingStatus attribute value is null</p>
+<p>Verify that LastNetworkingStatus attribute value is Success</p>
 </li>
 </ul>
 </div></div></td>
@@ -17300,7 +17300,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>CNET.S.C04.Rsp(RemoveNetwork)</p>
+<p>CNET.S.C02.Rsp(AddOrUpdateWiFiNetwork)</p>
 </li>
 </ul>
 </div></div></td>
@@ -17765,7 +17765,7 @@ and SHALL NOT be included otherwise.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.8.8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork) &amp; CNET.S.C06.Rsp(ConnectNetwork)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends ConnectNetwork command to the DUT with NetworkID field set to PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID and Breadcrumb field set to 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends a ConnectNetworkResponse to the command with the NetworkingStatus field set to NetworkIdNotFound</p></td>
 </tr>
@@ -17793,7 +17793,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0001(Networks)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads Networks attribute from the DUT</p></td>
@@ -17816,7 +17816,7 @@ and SHALL NOT be included otherwise.</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -17832,7 +17832,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -17873,14 +17873,14 @@ and SHALL NOT be included otherwise.</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.9.7.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends the CommissioningComplete command to the DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends CommissioningCompleteResponse with the ErrorCode field set to OK (0)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -17896,7 +17896,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0001(Networks)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads Networks attribute from the DUT</p></td>
@@ -18157,7 +18157,7 @@ and SHALL NOT be included otherwise.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.8.8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork) &amp; CNET.S.C06.Rsp(ConnectNetwork)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends ConnectNetwork command to the DUT with NetworkID field set to the extended PAN ID of PIXIT.CNET.THREAD_1ST_OPERATIONALDATASET and Breadcrumb field set to 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends a ConnectNetworkResponse to the command with the NetworkingStatus field set to NetworkIdNotFound</p></td>
 </tr>
@@ -18208,7 +18208,7 @@ and SHALL NOT be included otherwise.</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -18224,7 +18224,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -18265,14 +18265,14 @@ and SHALL NOT be included otherwise.</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.9.7.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends the CommissioningComplete command to the DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends CommissioningCompleteResponse with the ErrorCode field set to OK (0)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -18288,7 +18288,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0001(Networks)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads Networks attribute from the DUT</p></td>
@@ -27685,7 +27685,7 @@ G.S.F00(GN)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.6.3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.S.A0002(MaxGroupsPerFabric)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH attempts to write MaxGroupsPerFabric attribute of GroupKeyManagement cluster to the same value as read in step 8.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH attempts to write MaxGroupsPerFabric attribute of GroupKeyManagement cluster to the same value as read in step 9.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status UNSUPPORTED_WRITE(0x88)</p></td>
 </tr>
 <tr>
@@ -27699,7 +27699,7 @@ G.S.F00(GN)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.6.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.S.A0003(MaxGroupKeysPerFabric)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH attempts to write MaxGroupKeysPerFabric attribute of GroupKeyManagement cluster on DUT to the same value as read in step 10.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH attempts to write MaxGroupKeysPerFabric attribute of GroupKeyManagement cluster on DUT to the same value as read in step 11.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status UNSUPPORTED_WRITE(0x88)</p></td>
 </tr>
 </tbody>
@@ -37212,7 +37212,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tc_idm_10_1_cluster_requirements_cluster_id_and_global_attribute_conformance_checks_dut_as_server"><a class="anchor" href="#_tc_idm_10_1_cluster_requirements_cluster_id_and_global_attribute_conformance_checks_dut_as_server"></a>32.6.8. [TC-IDM-10.1] Cluster requirements - Cluster ID and Global attribute conformance checks [DUT as Server]</h4>
+<h4 id="_tc_idm_10_1_cluster_requirements_global_attributes_dut_as_server"><a class="anchor" href="#_tc_idm_10_1_cluster_requirements_global_attributes_dut_as_server"></a>32.6.8. [TC-IDM-10.1] Cluster requirements - Global attributes [DUT as Server]</h4>
 <div class="sect4">
 <h5 id="_category_128"><a class="anchor" href="#_category_128"></a>Category</h5>
 
@@ -37325,7 +37325,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>For every cluster on every endpoint verify that the following global attributes do not contain duplicate values and every value in the list is in the required range:</p>
+<p>For every cluster on every endpoint verify that the following global attributes do not contain duplicate values:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -37353,92 +37353,23 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>For every standard cluster on every endpoint, verify that none of the global attributes contain any additional values in their standard or scoped ranges that are not defined in the cluster specification. The global attributes to be checked and their standard and scoped ranges for the are as follows:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>AttributeList: (0x0000_0000 - 0x0000_4FFF) and (0x0000_F000 - 0x0000_FFFE)</p>
-</li>
-<li>
-<p>AcceptedCommandList: 0x0000_0000 - 0x0000_00FF</p>
-</li>
-<li>
-<p>GeneratedCommandList: 0x0000_0000 - 0x0000_00FF</p>
-</li>
-</ul>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The list SHALL NOT contain any additional values in the standard or scoped range: (0x0000_0000 - 0x0000_4FFF) and (0x0000_F000 - 0x0000_FFFE)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>For every cluster on every endpoint, verify that none of the global attributes contain values with prefixes outside the allowed standard, MEI or Test Vendor prefix range. The disallowed range of values for all global attributes is 0xFFF5_0000 - 0xFFFF_FFFF. The set of global attributes to be checked is as follows:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>AttributeList</p>
-</li>
-<li>
-<p>AcceptedCommandList</p>
-</li>
-<li>
-<p>GeneratedCommandList</p>
-</li>
-</ul>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The list MAY contain values in the Manufacturer Extensible Identifier (MEI) range: (0xXXXX_0000 - 0xXXXX_4FFF), where XXXX is the allowed MEI range (0x0001 - 0xFFF0), these values SHALL be ignored. +</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>For every cluster on every endpoint, verify that none of the global attributes contain MEI values outside of the allowed suffix range. The values to be checked and the allowed range of values is as follows:<br>
-* AttributeList: (0xXXXX_0000 -  0xXXXX_0x4FFF ) and (0xXXXX_F000 - 0xXXXX_FFFE)<br>
-* AcceptedCommandList: 0xXXXX_0000 - 0xXXXX_00FF<br>
-* GeneratedCommandList: 0xXXXX_0000 - 0xXXXX_00FF</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>For every cluster on every endpoint, verify that the cluster ID prefix is in the standard, MEI or test vendor range.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>For every cluster on every endpoint, verify that if the cluster ID is in the standard prefix range, that the ID is a known cluster ID.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>For every cluster on every endpoint, verify that if the cluster ID is in the MEI prefix range, that the suffix is in the manufacturer suffix range (0xFC00 - 0xFFFE)</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>For every standard cluster on every endpoint, verify that the FeatureMap contains only known feature flags for that cluster.</p>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The list SHALL NOT contain any values outside the allowed MEI and Test Vendor range or in the invalid range: (0x0000_5000 - 0x0000_EFFF and 0x0000_FFFF), (0xXXXX_5000 - 0xXXXX_FFFF) and (0xFFF4_5000 - 0xFFFF_FFFF), where XXXX is the allowed MEI range (0x0001 - 0xFFF0)<br>
+<br>
+The list SHOULD NOT contain any values in the Test Vendor range (0xFFF1_0000 - 0xFFF4_4FFF)</p></td>
 </tr>
 </tbody>
 </table>
@@ -52884,7 +52815,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>TH1 reads DUT Endpoint 0 Basic Information cluster VendorID attribute</p>
+<p>TH1 reads DUT Endpoint 0 Basic cluster VendorID attribute</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is UNSUPPORTED_ACCESS (0x7e)</p>
@@ -52906,7 +52837,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>TH2 reads DUT Endpoint 0 Basic Information cluster VendorID attribute</p>
+<p>TH2 reads DUT Endpoint 0 Basic cluster VendorID attribute</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is SUCCESS</p>
@@ -54278,8 +54209,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 2314b41<br>
-Last updated 2023-10-27 21:16:17 UTC
+Version 1.2<br>
+Last updated 2023-08-31 04:57:03 UTC
 </div>
 </div>
 </body>
