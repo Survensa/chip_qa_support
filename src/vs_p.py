@@ -9,7 +9,7 @@ import pandas as pd
 import json
 
 today = datetime.date.today().strftime('%Y-%m-%d')
-filename = Docs/test_plan_change.xlsx
+filename = 'Docs/test_plan_change.xlsx'
 
 try:
     workbook = load_workbook(filename)
