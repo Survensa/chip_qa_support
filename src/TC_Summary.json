@@ -780,7 +780,7 @@
     ],
     "Thermostat": [
         {
-            "Test Case Name": "[TC-TSTAT-1.1] Global attributes with server as DUT",
+            "Test Case Name": "[TC-TSTAT-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-TSTAT-1.1",
             "Test Plan": "App Test Case"
         },
@@ -937,7 +937,7 @@
     ],
     "Identify": [
         {
-            "Test Case Name": "[TC-I-1.1] Global Attributes with Server as DUT",
+            "Test Case Name": "[TC-I-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-I-1.1",
             "Test Plan": "App Test Case"
         },
@@ -1226,6 +1226,11 @@
         {
             "Test Case Name": "[TC-DGGEN-2.3] Command Received [DUT as Server]",
             "Test Case ID": "TC-DGGEN-2.3",
+            "Test Plan": "App Test Case"
+        },
+        {
+            "Test Case Name": "[TC-DGGEN-3.1] Matter Specification 1.2 errata [DUT as Server]",
+            "Test Case ID": "TC-DGGEN-3.1",
             "Test Plan": "App Test Case"
         }
     ],
@@ -2826,7 +2831,7 @@
             "Test Plan": "Core Test Case"
         },
         {
-            "Test Case Name": "[TC-IDM-10.1] Cluster requirements - Global attributes [DUT as Server]",
+            "Test Case Name": "[TC-IDM-10.1] Cluster requirements - Cluster ID and Global attribute conformance checks [DUT as Server]",
             "Test Case ID": "TC-IDM-10.1",
             "Test Plan": "Core Test Case"
         },
