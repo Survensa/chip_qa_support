@@ -113,7 +113,7 @@ def run_command_from_yaml(yaml_file_path):
 
         for command_data in commands:
             command = command_data['command']
-            print(f"Executing command: {command}")
+            print(f"EXT:CMD : {command}")
             with open(log_file_path, 'a') as cluster_textfile:
                 cluster_textfile.write(f"Command: {command}\n")
             subprocess.run(command, shell=True, text=True, stdout=open(log_file_path, "a+"))
@@ -121,9 +121,9 @@ def run_command_from_yaml(yaml_file_path):
         # Process the specific log file immediately after running the command
         output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
         process_log_file(log_file_path, output_directory)
-        print(f"\nExecution Completed : {testcase_name} ")
-        print(f"\nExecution logged as : {log_filename}")
-        print(f"\n****************************************************************")
+        print(f"\nEXT:CMP : {testcase_name} ")
+        print(f"\nEXT:LOG : {log_filename}")
+        print(f"\nEXT:COS : ****************************************************************")
 
 # Function to process log files and save them
 def process_log_file(input_file_path, output_directory):
@@ -163,27 +163,27 @@ if __name__ == "__main__":
                 if e in ['Y', 'Yes']:
                     selected_clusters.append(clus)
         if not selected_clusters:
-            clusters_confirmation = input(f"\nProceed with all the clusters for execution (Y/Yes to proceed): ").strip().lower()
-            print(f"\n****************************************************************")
+            clusters_confirmation = input(f"\nEXT:ASK : Proceed with all the clusters for execution (Y/Yes to proceed): ").strip().lower()
+            print(f"\nEXT:COS : ****************************************************************")
         else:
-            clusters_confirmation = input(f"\nProceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): ").strip().lower()
-            print(f"\n****************************************************************")
+            clusters_confirmation = input(f"\nEXT:ASK : Proceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): ").strip().lower()
+            print(f"\nEXT:COS : ****************************************************************")
         if clusters_confirmation in ['y', 'yes']:
             if selected_clusters:
                 for cluster_name in selected_clusters:
                     file = vars(Cluster)[cluster_name]
                     file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
                     if file.endswith('.yaml'):
-                        print(f"Entering run_command_from_yaml for {cluster_name}")
+                        print(f"ExT:STR : {cluster_name}")
                         try:
                             run_command_from_yaml(file_path)
-                            print(f"Exited run_command_from_yaml for {cluster_name}")
+                            print(f"EXT:STP : {cluster_name}")
                         except Exception as e:
-                            print(f"Error executing commands for {cluster_name}: {str(e)}")
-                    print(f"\nExecution completed and Logged in {output_directory}")
+                            print(f"EXT:ERR : {cluster_name}: {str(e)}")
+                    print(f"\nEXT:SUS : Execution completed and Logged in {output_directory}")
             else:
-                print(f"\nNo cluster selected for execution.")
+                print(f"\nEXT:CNL : No cluster selected for execution.")
         else:
-            print(f"\nExecution Canceled With The User Input: {clusters_confirmation}")
+            print(f"\nEXT:CNL : Execution Canceled With The User Input: {clusters_confirmation}")
     else:
-        print(f"\nExecution Canceled With The User Input: {build_confirmation}")
+        print(f"\nEXT:CNL : Execution Canceled With The User Input: {build_confirmation}")
