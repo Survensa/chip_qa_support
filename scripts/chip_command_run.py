@@ -37,7 +37,7 @@ class Cluster:
     PRS : str = "../commands/Pressure_measurement.txt"
     I : str = "../commands/Identify.txt"
     DGTHREAD : str = "../commands/Thread_diag.txt"
-    BOOL : str = "../commands/Boolean.txt"
+    BOOL : str = "../commands/Boolean.yml"
     TSUIC : str = "../commands/Thermostat_User.txt"
     LCFG : str = "../commands/Localization_Configuration_cluster.txt"
     WNCV : str = "../commands/Window_Covering.txt"
@@ -75,7 +75,7 @@ cluster_name = [field.name for field in clusters]
 
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description='cluster name')
-parser.add_argument('-c','--cluster', nargs='+',help='name of the cluster',choices= cluster_name,default= False)
+parser.add_argument('-c', '--cluster', nargs='+', help='name of the cluster', choices=cluster_name, default=False)
 args = parser.parse_args()
 
 # Load configuration from YAML file
@@ -109,7 +109,6 @@ def run_command(commands, testcase):
             print(testcase, i)
             cluster_textfile.write('\n' + i + '\n' + '\n')
         subprocess.run(i, shell=True, text=True, stdout=open(log_file_path, "a+"))
-        # Process the specific log file immediately after running the command
         output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
         process_log_file(log_file_path, output_directory)
     print(f"\n---------------------{testcase} - Executed----------------------")
@@ -119,13 +118,9 @@ def run_command(commands, testcase):
 
 # Function to process log files and save them
 def process_log_file(input_file_path, output_directory):
-    # Ensure the output directory exists
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
-
-    # Construct the output file path using the input file name
     output_file_path = os.path.join(output_directory, os.path.basename(input_file_path))
-
     with open(input_file_path, 'r') as input_file, open(output_file_path, 'w') as output_file:
         for line in input_file:
             line = line.strip()
@@ -139,54 +134,22 @@ def process_log_file(input_file_path, output_directory):
             if match2:
                 output_file.write('\n' 'CHIP:CMD : ' + line + '\n\n')
 
-# Function to read text files
-def read_text_file(file_path):
-    testsite_array = []
-    filterCommand = []
-    with open(file_path, 'r') as f:
-        for line in f:
-            testsite_array.append(line)
-        filter_command = filter_commands(testsite_array)
-        for command in filter_command:
-            for com in command:
-                # Separate testcase name from the array of commands
-                if "#" in com:
-                    testcase = com.split()[1]
-                else:
-                    filterCommand.append(com)
-            run_command(filterCommand, testcase)
-            filterCommand = []
+# Function to read YAML test data
+def read_yaml_data(yaml_file_path):
+    with open(yaml_file_path, 'r') as yaml_file:
+        data = yaml.safe_load(yaml_file)
+    return data
 
-# Function to filter only commands from txt file
-def filter_commands(commands):
-    newcommand = []
-    for command in commands:
-        if "\n" in command:
-            command = command.replace("\n", "")
-        if "$" not in command:
-            newcommand.append(command)
-    size = len(newcommand)
-    # Remove all the "end" in the array
-    idx_list = [idx + 1 for idx, val in
-                enumerate(newcommand) if val.lower() == "end"]
-    res = [newcommand[i: j] for i, j in
-           zip([0] + idx_list, idx_list +
-               ([size] if idx_list[-1] != size else []))]
-    newRes = []
-    for i in res:
-        i.pop()
-        newRes.append(i)
-    return newRes
-
-# Function to process all files
-def process_all_files():
-# iterate through all files
-    for file in os.listdir():
-    # Check whether the file is in text format or not
-        if file.endswith(".txt"):
-            file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)  # Chip tool commands txt directory
-            # call read text file function
-            read_text_file(file_path)
+# Modify the process_all_files function to read YAML data
+def process_all_files(yaml_dir):
+    for file in os.listdir(yaml_dir):
+        if file.endswith(".yaml"):
+            file_path = os.path.join(yaml_dir, file)
+            yaml_data = read_yaml_data(file_path)
+            for item in yaml_data:
+                testcase = item["testcase"]
+                commands = item["commands"]
+                run_command(commands, testcase)
 
 if __name__ == "__main__":
     selected_clusters = args.cluster
@@ -205,21 +168,21 @@ if __name__ == "__main__":
                     selected_clusters.append(clus)
         if not selected_clusters:
             clusters_confirmation = input(f"\nProceed with all the clusters for execution (Y/Yes to proceed): ").strip().lower()
-            print(f"\n****************************************************************")            
+            print(f"\n****************************************************************")
         else:
             clusters_confirmation = input(f"\nProceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): ").strip().lower()
             print(f"\n****************************************************************")
         if clusters_confirmation in ['y', 'yes']:
             if selected_clusters:
                 for cluster_name in selected_clusters:
-                    file = vars(Cluster)[cluster_name]
-                    file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
-                    read_text_file(file_path)
-                    print(f"\nExecution completed... Logs are ready for validation in {output_directory}")                        
+                    yaml_dir = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands")
+                    process_all_files(yaml_dir)
+                    print(f"\nExecution completed... Logs are ready for validation in {output_directory}")
             else:
-                process_all_files()
-                print(f"\nExecution completed... Logs are ready for validation in {output_directory}")                
+                yaml_dir = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands")
+                process_all_files(yaml_dir)
+                print(f"\nExecution completed... Logs are ready for validation in {output_directory}")
         else:
-            print(f"\nExecution Canceled With The User Input: {clusters_confirmation}")        
+            print(f"\nExecution Canceled With The User Input: {clusters_confirmation}")
     else:
         print(f"\nExecution Canceled With User The User Input: {build_confirmation}")
