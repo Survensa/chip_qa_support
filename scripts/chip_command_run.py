@@ -142,14 +142,14 @@ def process_log_file(input_file_path, output_directory):
         for line in input_file:
             line = line.strip()
             match1 = re.search(r'(CHIP:DMG|CHIP:TOO)(.*)', line)
-            match2 = re.search(r'^\./chip-tool', line)
+            match2 = re.search(r'^Command:', line)
             if match1:
                 chip_text = match1.group(1).strip()
                 trailing_text = match1.group(2).strip()
                 output_line = f"{chip_text} {trailing_text}"
                 output_file.write(output_line + '\n')
             if match2:
-                output_file.write('\n' 'CHIP:CMD : ' + line + '\n\n')
+                output_file.write('\n' + line + '\n\n')
 
 if __name__ == "__main__":
     selected_clusters = args.cluster
