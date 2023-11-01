@@ -1,0 +1,36 @@
+- testcase: "[TC-FLW-1.1] Global attributes with server as DUT"
+  commands:
+    - command: "./chip-tool flowmeasurement read cluster-revision 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool flowmeasurement read feature-map 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool flowmeasurement read  attribute-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool flowmeasurement read event-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool flowmeasurement read accepted-command-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool flowmeasurement read generated-command-list 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-FLW-2.1] Attributes with server as DUT"
+  commands:
+    - command: "./chip-tool flowmeasurement read measured-value 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool flowmeasurement read min-measured-value 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool flowmeasurement read max-measured-value 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool flowmeasurement read tolerance 1 1"
+      logs:
+        - " "

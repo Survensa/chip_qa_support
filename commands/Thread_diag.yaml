@@ -1,0 +1,231 @@
+- testcase: "[TC-DGTHREAD-1.1] Global Attributes DUT-Server"
+  commands:
+    - command: "./chip-tool threadnetworkdiagnostics read cluster-revision 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read feature-map 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read attribute-list 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool  threadnetworkdiagnostics read event-list 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read accepted-command-list 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read generated-command-list 54 0"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-DGTHREAD-2.1] Attributes DUT Server"
+  commands:
+    - command: "./chip-tool threadnetworkdiagnostics read channel 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read routing-role 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read network-name 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read pan-id 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read extended-pan-id 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read mesh-local-prefix 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read overrun-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read neighbor-table 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read route-table 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read partition-id 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read weighting 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read data-version 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read stable-data-version 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read leader-router-id 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read detached-role-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read child-role-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read router-role-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read leader-role-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read attach-attempt-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read partition-id-change-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read better-partition-attach-attempt-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read parent-change-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read active-timestamp 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read pending-timestamp 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read delay 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read security-policy 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read channel-page0mask 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read operational-dataset-components 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read active-network-faults-list 54 0"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-DGTHREAD-2.2] Attributes-Tx DUT- Server"
+  commands:
+    - command: "./chip-tool threadnetworkdiagnostics read tx-total-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-unicast-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-broadcast-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-ack-requested-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-acked-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-no-ack-requested-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-data-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-data-poll-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-beacon-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-beacon-request-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-other-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-retry-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-direct-max-retry-expiry-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-indirect-max-retry-expiry-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-err-cca-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-err-abort-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read tx-err-busy-channel-count 54 0"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-DGTHREAD-2.3] Attributes-Rx DUT- Server"
+  commands:
+    - command: "./chip-tool threadnetworkdiagnostics read rx-total-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-unicast-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-broadcast-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-data-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-data-poll-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-beacon-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-beacon-request-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-other-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-address-filtered-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-dest-addr-filtered-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-duplicated-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-err-no-frame-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-err-unknown-neighbor-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-err-invalid-src-addr-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-err-sec-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-err-fcs-count 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read rx-err-other-count 54 0"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-DGTHREAD-2.4] ResetCounts Command DUT- Server"
+  commands:
+    - command: "./chip-tool threadnetworkdiagnostics reset-counts 54 0"
+      logs:
+        - " "
+    - command: "./chip-tool threadnetworkdiagnostics read overrun-count 54 0"
+      logs:
+        - " "

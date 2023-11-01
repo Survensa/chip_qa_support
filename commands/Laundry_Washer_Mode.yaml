@@ -1,0 +1,64 @@
+- testcase: "[TC-LWM-1.1] Global attributes with DUT as Server"
+  commands:
+    - command: "./chip-tool laundrywashermode read cluster-revision 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool laundrywashermode read feature-map  1 1"
+      logs:
+        - " "
+    - command: "./chip-tool laundrywashermode read attribute-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool laundrywashermode read event-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool laundrywashermode read accepted-command-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool laundrywashermode read generated-command-list 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-LWM-1.2] Cluster attributes with DUT as Server"
+  commands:
+    - command: "./chip-tool laundrywashermode read supported-modes 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool laundrywashermode read current-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool laundrywashermode read on-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool laundrywashermode read start-up-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-LWM-3.1] OnMode verification with DUT as Server"
+  commands:
+    - command: "./chip-tool laundrywashermode write on-mode 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool laundrywashermode write on-mode 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool laundrywashermode read current-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool laundrywashermode read supported-modes 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool laundrywashermode change-to-mode 2 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff off 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool laundrywashermode read current-mode 1 1"
+      logs:
+        - " "

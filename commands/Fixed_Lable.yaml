@@ -1,0 +1,33 @@
+- testcase: "[TC-FLABEL-1.1] Global Attributes [DUT-server]"
+  commands:
+    - command: "./chip-tool fixedlabel read cluster-revision 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool fixedlabel read feature-map 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool fixedlabel read attribute-list 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool fixedlabel read event-list 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool fixedlabel read accepted-command-list 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool fixedlabel read generated-command-list 1 0"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-FLABEL-2.1] Fixed Label cluster [DUT-server]"
+  commands:
+    - command: "./chip-tool fixedlabel read label-list 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool fixedlabel write-by-id  0x00 '[\"label\",\"Testlabel\", \"value\",\"testvalue\"]' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool fixedlabel read label-list 1 0"
+      logs:
+        - " "

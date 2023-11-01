@@ -1,0 +1,159 @@
+- testcase: "[TC-ACE-1.1] Privileges"
+  commands:
+    - command: "./chip-tool accesscontrol write acl '[{ \"privilege\": 5, \"authMode\": 2, \"subjects\": [112233], \"targets\": [{ \"cluster\": null, \"endpoint\": 0, \"deviceType\": null }]}]' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool operationalcredentials read nocs 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation write location xx 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool operationalcredentials   update-fabric-label  Testfabric 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation write node-label TestNode  1 0"
+      logs:
+        - " "
+    - command: "./chip-tool generaldiagnostics test-event-trigger 0 0 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation read vendor-id 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool accesscontrol write acl '[{ \"privilege\": 5, \"authMode\": 2, \"subjects\": [112233], \"targets\": [{ \"cluster\": 31, \"endpoint\": 0, \"deviceType\": null }]},{ \"privilege\": 4, \"authMode\": 2, \"subjects\": [112233], \"targets\": [{ \"cluster\": null, \"endpoint\": 0, \"deviceType\": null }]}]' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool operationalcredentials read nocs 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation write location xx 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool operationalcredentials   update-fabric-label  Testfabric 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation write node-label TestNode  1 0"
+      logs:
+        - " "
+    - command: "./chip-tool generaldiagnostics test-event-trigger 0 0 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation read vendor-id 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool accesscontrol write acl '[{ \"privilege\": 5, \"authMode\": 2, \"subjects\": [112233], \"targets\": [{ \"cluster\": 31, \"endpoint\": 0, \"deviceType\": null }]},{ \"privilege\": 3, \"authMode\": 2, \"subjects\": [112233], \"targets\": [{ \"cluster\": null, \"endpoint\": 0, \"deviceType\": null }]}]' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool operationalcredentials read nocs 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation write location xx 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool operationalcredentials   update-fabric-label  Testfabric 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation write node-label TestNode 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool generaldiagnostics test-event-trigger 0 0 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation read vendor-id 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool accesscontrol write acl '[{ \"privilege\": 5, \"authMode\": 2, \"subjects\": [112233], \"targets\": [{ \"cluster\": 31, \"endpoint\": 0, \"deviceType\": null }]},{ \"privilege\": 1, \"authMode\": 2, \"subjects\": [112233], \"targets\": [{ \"cluster\": null, \"endpoint\": 0, \"deviceType\": null }]}]' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool operationalcredentials read nocs 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation write location xx 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool operationalcredentials   update-fabric-label  Testfabric 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation write node-label TestNode 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool generaldiagnostics test-event-trigger 0 0 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation read vendor-id 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool accesscontrol write acl '[{ \"privilege\": 5, \"authMode\": 2, \"subjects\": [112233], \"targets\": [{ \"cluster\": 31, \"endpoint\": 0, \"deviceType\": null }]}]' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool operationalcredentials read nocs 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation write location xx 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool operationalcredentials   update-fabric-label  Testfabric 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation write node-label TestNode 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool generaldiagnostics test-event-trigger 0 0 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  basicinformation  read  vendor-id 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool accesscontrol write acl '[{ \"privilege\": 5, \"authMode\": 2, \"subjects\": [112233], \"targets\": [{ \"cluster\": null, \"endpoint\": 0, \"deviceType\": null }]}]' 1 0"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-ACE-1.6] Group_Auth_mode"
+  commands:
+    - command: "./chip-tool groupkeymanagement key-set-write '{\"groupKeySetID\": 419,\"groupKeySecurityPolicy\": 0, \"epochKey0\":\"d0d1d2d3d4d5d6d7d8d9dadbdcdddedf\", \"epochStartTime0\": 2220000,\"epochKey1\":\"d1d1d2d3d4d5d6d7d8d9dadbdcdddedf\", \"epochStartTime1\": 2220001,\"epochKey2\":\"d2d1d2d3d4d5d6d7d8d9dadbdcdddedf\", \"epochStartTime2\": 2220002 }' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool groupkeymanagement write group-key-map '[{\"groupId\": 259, \"groupKeySetID\": 419, \"fabricIndex\": 1},{\"groupId\": 260, \"groupKeySetID\": 419, \"fabricIndex\": 1},{\"groupId\": 261, \"groupKeySetID\": 419, \"fabricIndex\": 1}]' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool groups add-group 259 'grp1' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool accesscontrol write acl '[{ \"privilege\": 5, \"authMode\": 2, \"subjects\": [112233], \"targets\": [{ \"cluster\": 31, \"endpoint\": 0, \"deviceType\": null }]},{ \"privilege\": 4, \"authMode\": 3, \"subjects\": [259], \"targets\": [{ \"cluster\": 4, \"endpoint\": 0, \"deviceType\": null }]}]' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool groups add-group 260 '' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool groups add-group 260 '' 0xffffffffffff0103 0 --trace_decode 1"
+      logs:
+        - " "
+    - command: "./chip-tool groups add-group 261 '' 0xffffffffffff0104 1 --trace_decode 1"
+      logs:
+        - " "
+    - command: "./chip-tool accesscontrol write acl '[{\"fabricIndex\": 1, \"privilege\": 5, \"authMode\": 2, \"subjects\": [112233], \"targets\": null }]' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool groups view-group 0x0104 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool groups view-group 0x0105 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool groups add-group 261 '' 0xffffffffffff0103 0 --trace_decode 1"
+      logs:
+        - " "
+    - command: "./chip-tool groups view-group 261 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool groups remove-all-groups 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool groupkeymanagement write group-key-map '[ ]' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool groupkeymanagement key-set-remove \"0x01a3\" 1 0"
+      logs:
+        - " "

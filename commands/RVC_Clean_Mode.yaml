@@ -1,0 +1,64 @@
+- testcase: "[TC-RVCCLEANM-1.1] Global attributes with server as DUT"
+  commands:
+    - command: "./chip-tool  rvccleanmode   read cluster-revision 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvccleanmode read feature-map 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvccleanmode read attribute-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvccleanmode read event-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvccleanmode read accepted-command-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvccleanmode read generated-command-list 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-RVCCLEANM-1.2] Cluster attributes with server as DUT"
+  commands:
+    - command: "./chip-tool  rvccleanmode read supported-modes 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvccleanmode read current-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvccleanmode read on-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvccleanmode read start-up-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-RVCCLEANM-3.1] OnMode Verification (DUT as Server)"
+  commands:
+    - command: "./chip-tool  rvccleanmode write on-mode 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvccleanmode read on-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvccleanmode read current-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvccleanmode read supported-modes 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvccleanmode change-to-mode 1 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff off 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvccleanmode read current-mode 1 1"
+      logs:
+        - " "

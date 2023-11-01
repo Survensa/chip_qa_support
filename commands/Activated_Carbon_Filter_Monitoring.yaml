@@ -1,0 +1,42 @@
+- testcase: "[TC-ACFREMON-1.1] Global attributes with DUT as Server"
+  commands:
+    - command: "./chip-tool activatedcarbonfiltermonitoring read cluster-revision 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool activatedcarbonfiltermonitoring read feature-map 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool activatedcarbonfiltermonitoring read attribute-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool activatedcarbonfiltermonitoring read event-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool activatedcarbonfiltermonitoring read accepted-command-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool activatedcarbonfiltermonitoring read generated-command-list 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-ACFREMON-2.1] Attributes with DUT as Server"
+  commands:
+    - command: "./chip-tool activatedcarbonfiltermonitoring read condition 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool activatedcarbonfiltermonitoring read degradation-direction 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool activatedcarbonfiltermonitoring read change-indication 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool activatedcarbonfiltermonitoring read in-place-indicator 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool activatedcarbonfiltermonitoring read last-changed-time 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool activatedcarbonfiltermonitoring read replacement-product-list 1 1"
+      logs:
+        - " "

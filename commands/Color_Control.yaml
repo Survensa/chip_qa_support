@@ -1,0 +1,2193 @@
+- testcase: "[TC-CC-1.1] Global attributes with server as  DUT"
+  commands:
+    - command: "./chip-tool colorcontrol read cluster-revision 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read feature-map 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read attribute-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read event-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read accepted-command-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read generated-command-list 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-2.1] Attributes with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read remaining-time 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read drift-compensation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read compensation-text 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read options 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-direction 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-time 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-start-enhanced-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-stored-enhanced-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-capabilities 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temp-physical-min-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temp-physical-max-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read couple-color-temp-to-level-min-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read start-up-color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read number-of-primaries 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read  primary1x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read  primary1y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary1intensity 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary2x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary2y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary2intensity 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary3x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary3y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary3intensity 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary4x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary4y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary4intensity 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary5x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary5y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary5intensity 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary6x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary6y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read primary6intensity 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read white-point-x   1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read white-point-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-point-rx   1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-point-ry   1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-point-rintensity   1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-point-gx   1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-point-gy   1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-point-gintensity   1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-point-bx   1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-point-by   1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-point-bintensity   1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-3.1] Hue MoveTo functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 60 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 120 0 300 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 60 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 135 1 300 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 60 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 120 2 300 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 120 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 60 3 300 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-3.2] Hue Move functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 200 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-hue 1 5 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-hue 0 5 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 02"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 60 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-hue 3 5 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-hue 0 5 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 02"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-3.3] Hue Step functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 200 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-hue 1 60 200 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 50 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-hue 3 60 200 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-3.4] Hue functionality with client as DUT"
+  commands:
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 1 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1  1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-hue 1 1 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1  1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-hue 1 10 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1  1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol stop-move-step 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1  1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-4.1] Saturation MoveTo functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-saturation 60 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-saturation 120 300 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-4.2] Saturation Move functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-saturation 150 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-saturation 1 5 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-saturation 120 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-saturation 3 5 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-saturation 150 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-saturation 1 5 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-saturation 0 5 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 02"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-4.3] Saturation Step functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-saturation 200 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-saturation 1 40 200 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-saturation 1 20 100 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-saturation 50 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-saturation 3 40 200 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-saturation 3 20 100 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-4.4] MoveToHueAndSaturation functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue-and-saturation 200 50 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue-and-saturation 160 80 200 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-4.5] Saturation functionality with client as DUT"
+  commands:
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-saturation 200 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-saturation 1 10 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-saturation 1 10 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue-and-saturation 100 200 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol stop-move-step 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-5.1] Color MoveTo functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color 32768 19660 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color 13107 13107 200 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read options 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color 32768 19660 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff off 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color 13107 13107 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color 13107 32768 0 1 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color 26214 32768 0 1 1 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol write options 0x01 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read options 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color  32768  19660 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff off 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color 13107 13107  0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color  13107 32768  0 1 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color 26214 32768 0 1 1 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-5.2] Color Move functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color 33000 26000 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-color -100 100 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol stop-move-step 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-5.3] Color Step functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color 33000 20000 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-color -20000 -6000 200 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-5.4] Color functionality with client as DUT"
+  commands:
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color 400 500 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-color 10 20 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-color 100 100 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol stop-move-step 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-x 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-y 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-6.1] Color Temperature MoveTo functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temp-physical-min-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temp-physical-max-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color-temperature 310 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color-temperature 250 300 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-6.2] Color Temperature Move functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temp-physical-min-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temp-physical-max-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color-temperature 32639 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-color-temperature 1 1631 0 65279 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-color-temperature 3 3263 0 65279 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-color-temperature 1 3263 0 65279 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-color-temperature 0 3263 0 65279 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "sleep 02"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-6.3] Color Temperature Step functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temp-physical-min-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temp-physical-max-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color-temperature 32640 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-color-temperature 1 32640 200 0 65279 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-color-temperature 3 65279 200 0 65279 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-6.4] Color Temperature functionality with client as DUT"
+  commands:
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temp-physical-min-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temp-physical-max-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color-temperature 150 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-color-temperature 1 16319 0 65279 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-color-temperature 1 32639 0 0 65279 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol stop-move-step 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-7.1] Enhanced MoveToHue functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 6000 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 12000 0 300 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 6000 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 54000 1 300 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 6000 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 12000 2 300 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 12000 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 6000 3 300 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-7.2] Enhanced MoveHue functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 20000 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-hue 1 500 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-hue 0 5 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 02"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 25000 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-hue 3 500 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-hue 0 5 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 02"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-7.3] Enhanced Step functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 6000 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-step-hue 1 6000 300 0  0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 12000 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-step-hue 3 6000 300 0  0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-7.4] MoveToEnhancedHueAndSaturation functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue-and-saturation 20000 50 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue-and-saturation  16000 80 200 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 05"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-7.5] Enhanced Hue functionality with client as DUT"
+  commands:
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 1000 3 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-hue 0 100 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-step-hue 1 1000 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue-and-saturation 2500 100 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol stop-move-step 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-8.1] StopMoveStep functionality with server as DUT"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-hue 200 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-hue 1 5 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol stop-move-step 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 02"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-saturation 150 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-saturation 1 5 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol stop-move-step 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "sleep 02"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read current-saturation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temp-physical-min-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temp-physical-max-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-to-color-temperature 32639 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-color-temperature 1 1631 0 65279 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol stop-move-step 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "sleep 02"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-temperature-mireds 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 20000 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-hue 1 500 0 0 1 1"
+      logs:
+        - " "
+    - command: "sleep 10"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol stop-move-step 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 02"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-9.1] ColorLoopSet Validation"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 16384 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 1 0 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 2 0 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-direction 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 4 0 0 30 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-time 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 8 0 0 0 160 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-start-enhanced-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 1 1 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-stored-enhanced-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 1 0 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 2 0 1 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-direction 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 1 1 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-stored-enhanced-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 30s"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 30s"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 1 0 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 16384 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 2 0 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-direction 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 1 2 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-stored-enhanced-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 30s"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 30s"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 1 0 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 2 0 1 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-direction 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 1 2 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-stored-enhanced-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 30s"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 30s"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 1 0 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-9.2] ColorLoopSet Validation - change direction without stop"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 16384 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 15 0 0 30 160 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-direction 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-time 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-start-enhanced-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 1 1 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-stored-enhanced-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 30s"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 30s"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 2 0 1 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-direction 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 1 0 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-9.3] ColorLoopSet Validation - change time without stop"
+  commands:
+    - command: "./chip-tool colorcontrol write options 0x00 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 16384 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 15 0 0 30 160 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-direction 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-time 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-start-enhanced-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 1 1 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-stored-enhanced-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 30s"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1  1"
+      logs:
+        - " "
+    - command: "sleep 30s"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 4 0 0 60 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-time 1 1"
+      logs:
+        - " "
+    - command: "sleep 60s"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 60s"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 1 0 0 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-CC-9.4] ColorLoopSet Validation with client as DUT"
+  commands:
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol color-loop-set 15 0 0 30 160 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-active 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-direction 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-time 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read color-loop-start-enhanced-hue 1 1"
+      logs:
+        - " "
+    - command: "sleep 30"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol read enhanced-current-hue 1 1"
+      logs:
+        - " "

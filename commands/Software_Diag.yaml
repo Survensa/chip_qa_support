@@ -1,0 +1,62 @@
+- testcase: "[TC-DGSW-1.1] Global attributes with server as DUT"
+  commands:
+    - command: "./chip-tool softwarediagnostics read cluster-revision 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool softwarediagnostics read feature-map 1  0"
+      logs:
+        - " "
+    - command: "./chip-tool softwarediagnostics read attribute-list 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  softwarediagnostics read event-list 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool softwarediagnostics read accepted-command-list 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool softwarediagnostics read generated-command-list 1 0"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-DGSW-2.1] Attributes with server as DUT (client as TH)"
+  commands:
+    - command: "./chip-tool softwarediagnostics read thread-metrics 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool softwarediagnostics read current-heap-free 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  softwarediagnostics  read current-heap-used 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool softwarediagnostics read current-heap-high-watermark 1 0"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-DGSW-2.3] Command received functionality with server as DUT"
+  commands:
+    - command: "./chip-tool softwarediagnostics reset-watermarks 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool softwarediagnostics read thread-metrics 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  softwarediagnostics  read current-heap-used 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool softwarediagnostics read current-heap-high-watermark 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool  softwarediagnostics  read current-heap-used 1 0"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-DGSW-3.2] Commands Generated [DUT as Client]"
+  commands:
+    - command: "./chip-tool softwarediagnostics reset-watermarks 1 0 --trace_decode 1"
+      logs:
+        - " "
