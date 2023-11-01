@@ -84,72 +84,45 @@ with open(config_path, 'r') as config_file:
     yaml_info = yaml.safe_load(config_file)
     build = yaml_info.get("chip_tool_directory")
 
-# Define regular expressions
-pattern1 = re.compile(r'(CHIP:DMG|CHIP:TOO)(.*)')
-pattern2 = re.compile(r'^\./chip-tool')
+# Your existing folder path, process_log_file, and run_command functions...
 
-# Folder Path
-path = "../commands"
+# Function to process all files
+def process_all_files():
+    for file in os.listdir():
+        if file.endswith(".yaml"):
+            file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
+            with open(file_path, 'r') as yaml_file:
+                yaml_input = yaml.safe_load(yaml_file)
+                run_commands_from_yaml(yaml_input)
 
-# Change the directory
-os.chdir(path)
+# Function to run commands specified in the YAML input
+def run_commands_from_yaml(yaml_input):
+    for testcase_data in yaml_input:
+        testcase_name = testcase_data['testcase']
+        commands = testcase_data.get('commands', [])
+        if not commands:
+            continue
 
-# Function to run chip commands in terminal
-def run_command(commands, testcase):
-    file_path = os.path.join(os.path.expanduser('~'), build)
-    save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "execution_logs")
-    os.chdir(file_path)
-    date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
-    while "" in commands:
-        commands.remove("")
-    for i in commands:
-        log_filename = f"{testcase}-{date}.txt"
-        log_file_path = os.path.join(save_path, log_filename)
+        log_filename = f"{testcase_name.replace(' ', '_')}.txt"
+        log_file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "execution_logs", log_filename)
+
         with open(log_file_path, 'a') as cluster_textfile:
-            print(testcase, i)
-            cluster_textfile.write('\n' + i + '\n' + '\n')
-        subprocess.run(i, shell=True, text=True, stdout=open(log_file_path, "a+"))
+            cluster_textfile.write(f"Test Case: {testcase_name}\n\n")
+
+        for command_data in commands:
+            command = command_data['command']
+            with open(log_file_path, 'a') as cluster_textfile:
+                cluster_textfile.write(f"Command: {command}\n")
+            subprocess.run(command, shell=True, text=True, stdout=open(log_file_path, "a+"))
+
+        # Process the specific log file immediately after running the command
         output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
         process_log_file(log_file_path, output_directory)
-    print(f"\n---------------------{testcase} - Executed----------------------")
-    print(f"\nExecution log saved as {log_filename}")
-    print(f"Validation log processed for {testcase}")
-    print(f"\n****************************************************************")
+        print(f"\n---------------------{testcase_name} - Executed----------------------")
+        print(f"\nExecution log saved as {log_filename}")
+        print(f"\n****************************************************************")
 
-# Function to process log files and save them
-def process_log_file(input_file_path, output_directory):
-    if not os.path.exists(output_directory):
-        os.makedirs(output_directory)
-    output_file_path = os.path.join(output_directory, os.path.basename(input_file_path))
-    with open(input_file_path, 'r') as input_file, open(output_file_path, 'w') as output_file:
-        for line in input_file:
-            line = line.strip()
-            match1 = pattern1.search(line)
-            match2 = pattern2.search(line)
-            if match1:
-                chip_text = match1.group(1).strip()
-                trailing_text = match1.group(2).strip()
-                output_line = f"{chip_text} {trailing_text}"
-                output_file.write(output_line + '\n')
-            if match2:
-                output_file.write('\n' 'CHIP:CMD : ' + line + '\n\n')
-
-# Function to read YAML test data
-def read_yaml_data(yaml_file_path):
-    with open(yaml_file_path, 'r') as yaml_file:
-        data = yaml.safe_load(yaml_file)
-    return data
-
-# Modify the process_all_files function to read YAML data
-def process_all_files(yaml_dir):
-    for file in os.listdir(yaml_dir):
-        if file.endswith(".yaml"):
-            file_path = os.path.join(yaml_dir, file)
-            yaml_data = read_yaml_data(file_path)
-            for item in yaml_data:
-                testcase = item["testcase"]
-                commands = item["commands"]
-                run_command(commands, testcase)
+# In your main block, you can call process_all_files() to process YAML input files.
 
 if __name__ == "__main__":
     selected_clusters = args.cluster
@@ -175,12 +148,12 @@ if __name__ == "__main__":
         if clusters_confirmation in ['y', 'yes']:
             if selected_clusters:
                 for cluster_name in selected_clusters:
-                    yaml_dir = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands")
-                    process_all_files(yaml_dir)
+                    file = vars(Cluster)[cluster_name]
+                    file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
+                    process_all_files()
                     print(f"\nExecution completed... Logs are ready for validation in {output_directory}")
             else:
-                yaml_dir = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands")
-                process_all_files(yaml_dir)
+                process_all_files()
                 print(f"\nExecution completed... Logs are ready for validation in {output_directory}")
         else:
             print(f"\nExecution Canceled With The User Input: {clusters_confirmation}")
