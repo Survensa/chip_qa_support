@@ -125,8 +125,8 @@ def run_command_from_yaml(yaml_file_path):
         # Process the specific log file immediately after running the command
         output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
         process_log_file(log_file_path, output_directory)
-        print(f"\n---------------------{testcase_name} - Executed----------------------")
-        print(f"\nExecution log saved as {log_filename}")
+        print(f"\nExecution Completed : {testcase_name} ")
+        print(f"\nExecution logged as : {log_filename}")
         print(f"\n****************************************************************")
 
 # Function to process log files and save them
