@@ -1,0 +1,39 @@
+- testcase: "[TC-RH-1.1] Global attributes with server as DUT"
+  commands:
+    - command: "./chip-tool relativehumiditymeasurement read cluster-revision 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool relativehumiditymeasurement read feature-map 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool relativehumiditymeasurement read attribute-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool relativehumiditymeasurement read accepted-command-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool relativehumiditymeasurement read generated-command-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool relativehumiditymeasurement read event-list 1 1"
+      logs:
+        - " "
+    - command: ""
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-RH-2.1] Attributes with server as DUT"
+  commands:
+    - command: "./chip-tool relativehumiditymeasurement read measured-value 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool relativehumiditymeasurement read min-measured-value 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool relativehumiditymeasurement read max-measured-value 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool relativehumiditymeasurement read tolerance 1 1"
+      logs:
+        - " "

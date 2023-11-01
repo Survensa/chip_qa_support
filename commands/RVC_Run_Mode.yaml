@@ -1,0 +1,61 @@
+- testcase: "[TC-RVCRUNM-1.1] Global attributes with server as DUT"
+  commands:
+    - command: "./chip-tool  rvcrunmode read cluster-revision 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvcrunmode read feature-map 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvcrunmode read attribute-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvcrunmode read event-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvcrunmode read generated-command-list 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-RVCRUNM-1.2] Cluster attributes with server as DUT"
+  commands:
+    - command: "./chip-tool  rvcrunmode read supported-modes 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvcrunmode read current-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvcrunmode read on-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvcrunmode read start-up-mode 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-RVCRUNM-3.1] OnMode Verification (DUT as Server)"
+  commands:
+    - command: "./chip-tool  rvcrunmode write on-mode 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvcrunmode read on-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvcrunmode read current-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvcrunmode read supported-modes 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvcrunmode  change-to-mode 1 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff off 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool onoff on 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool  rvcrunmode read current-mode 1 1"
+      logs:
+        - " "

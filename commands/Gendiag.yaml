@@ -1,0 +1,17 @@
+- testcase: "[TC-DGGEN-1.1] Global attributes with server as DUT"
+  commands:
+    - command: "./chip-tool generaldiagnostics read  cluster-revision 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool generaldiagnostics read feature-map 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool generaldiagnostics read attribute-list 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool generaldiagnostics read accepted-command-list 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool generaldiagnostics read generated-command-list 1 0"
+      logs:
+        - " "

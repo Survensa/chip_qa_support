@@ -1,0 +1,36 @@
+- testcase: "[TC-TMP-1.1] Global attributes with server as DUT"
+  commands:
+    - command: "./chip-tool temperaturemeasurement read cluster-revision 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool temperaturemeasurement read feature-map 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool temperaturemeasurement read attribute-list 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool temperaturemeasurement read accepted-command-list  1 1"
+      logs:
+        - " "
+    - command: "./chip-tool temperaturemeasurement read generated-command-list    1 1"
+      logs:
+        - " "
+    - command: "./chip-tool temperaturemeasurement read event-list 1 1"
+      logs:
+        - " "
+      logs:
+        - " "
+- testcase: "[TC-TMP-2.1] Attributes with server as DUT"
+  commands:
+    - command: "./chip-tool temperaturemeasurement read min-measured-value 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool temperaturemeasurement read max-measured-value 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool temperaturemeasurement read measured-value 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool temperaturemeasurement read tolerance  1 1"
+      logs:
+        - " "
