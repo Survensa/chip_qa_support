@@ -184,7 +184,7 @@ if __name__ == "__main__":
                             print(f"Exited run_command_from_yaml for {cluster_name}")
                         except Exception as e:
                             print(f"Error executing commands for {cluster_name}: {str(e)}")
-                    print(f"\nExecution completed... Logs are ready for validation in {output_directory}")
+                    print(f"\nExecution completed and Logged in {output_directory}")
             else:
                 print(f"\nNo cluster selected for execution.")
         else:
