@@ -18,6 +18,3 @@
     - command: "./chip-tool operationalstate read generated-command-list 1 1"
       logs:
         - " "
-    - command: "end"
-      logs:
-        - " "
