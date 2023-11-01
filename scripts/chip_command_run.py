@@ -121,9 +121,9 @@ def run_command_from_yaml(yaml_file_path):
         # Process the specific log file immediately after running the command
         output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
         process_log_file(log_file_path, output_directory)
-        print(f"\nEXT:CMP : {testcase_name} ")
-        print(f"\nEXT:LOG : {log_filename}")
-        print(f"\nEXT:COS : ****************************************************************")
+        print(f"EXT:CMP : {testcase_name} ")
+        print(f"EXT:LOG : {log_filename}")
+        print(f"EXT:COS : ****************************************************************")
 
 # Function to process log files and save them
 def process_log_file(input_file_path, output_directory):
@@ -150,7 +150,7 @@ def process_log_file(input_file_path, output_directory):
 if __name__ == "__main__":
     selected_clusters = args.cluster
 
-    build_confirmation = input(f"\nConfirm the Chip-Tool Build Path: {build} (Y/Yes to confirm): ").strip().lower()
+    build_confirmation = input(f"\nEXT:ASK : Confirm the Chip-Tool Build Path: {build} (Y/Yes to confirm): ").strip().lower()
     output_directory = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "validation_logs")
 
     if build_confirmation in ['y', 'yes']:
@@ -174,10 +174,10 @@ if __name__ == "__main__":
                     file = vars(Cluster)[cluster_name]
                     file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
                     if file.endswith('.yaml'):
-                        print(f"ExT:STR : {cluster_name}")
+                        print(f"EXT:STR : {cluster_name} INITIATED")
                         try:
                             run_command_from_yaml(file_path)
-                            print(f"EXT:STP : {cluster_name}")
+                            print(f"EXT:STP : {cluster_name} COMPLETED")
                         except Exception as e:
                             print(f"EXT:ERR : {cluster_name}: {str(e)}")
                     print(f"\nEXT:SUS : Execution completed and Logged in {output_directory}")
