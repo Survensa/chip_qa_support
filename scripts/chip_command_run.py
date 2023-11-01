@@ -36,7 +36,7 @@ class Cluster:
     PRS : str = "../commands/Pressure_measurement.txt"
     I : str = "../commands/Identify.txt"
     DGTHREAD : str = "../commands/Thread_diag.txt"
-    BOOL : str = "../commands/Boolean.yaml"
+    BOOL : str = "Boolean.yaml"
     TSUIC : str = "../commands/Thermostat_User.txt"
     LCFG : str = "../commands/Localization_Configuration_cluster.txt"
     WNCV : str = "../commands/Window_Covering.txt"
