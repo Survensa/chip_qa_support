@@ -5,7 +5,7 @@ import argparse
 import re
 from datetime import datetime
 from dataclasses import fields
-from src.cluster_data import Cluster
+from cluster_data import Cluster
 
 clusters = fields(Cluster)
 cluster_name = [field.name for field in clusters]
