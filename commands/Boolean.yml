@@ -16,6 +16,7 @@
     - command: "./chip-tool booleanstate read generated-command-list 1 1"
       logs:
         - "Log entry 1 for command 5"
+    - command: "sleep 05"    
     - command: "./chip-tool booleanstate read event-list 1 1"
       logs:
         - "Log entry 1 for command 6"
