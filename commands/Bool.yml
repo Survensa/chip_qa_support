@@ -1,0 +1,27 @@
+- testcase: "[TC-BOOL-1.1] Global attributes with server as DUT"
+  commands:
+    - command: "./chip-tool booleanstate read cluster-revision 1 1"
+      logs:
+        - "Log entry 1 for command 1"
+        - "Log entry 2 for command 1"
+    - command: "./chip-tool booleanstate read feature-map 1 1"
+      logs:
+        - "Log entry 1 for command 2"
+    - command: "./chip-tool booleanstate read attribute-list 1 1"
+      logs:
+        - "Log entry 1 for command 3"
+    - command: "./chip-tool booleanstate read accepted-command-list 1 1"
+      logs:
+        - "Log entry 1 for command 4"
+    - command: "./chip-tool booleanstate read generated-command-list 1 1"
+      logs:
+        - "Log entry 1 for command 5"
+    - command: "./chip-tool booleanstate read event-list 1 1"
+      logs:
+        - "Log entry 1 for command 6"
+
+- testcase: "[TC-BOOL-2.1] Attributes with server as DUT"
+  commands:
+    - command: "./chip-tool booleanstate read state-value 1 1"
+      logs:
+        - "Log entry 1 for command 1"
