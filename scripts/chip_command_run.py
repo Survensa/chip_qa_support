@@ -117,6 +117,7 @@ def run_command_from_yaml(yaml_file_path):
 
         for command_data in commands:
             command = command_data['command']
+            print(f"Executing command: {command}")
             with open(log_file_path, 'a') as cluster_textfile:
                 cluster_textfile.write(f"Command: {command}\n")
             subprocess.run(command, shell=True, text=True, stdout=open(log_file_path, "a+"))
