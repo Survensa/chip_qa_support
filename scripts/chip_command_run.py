@@ -83,10 +83,6 @@ with open(config_path, 'r') as config_file:
     yaml_info = yaml.safe_load(config_file)
     build = yaml_info.get("chip_tool_directory")
 
-# Define regular expressions
-pattern1 = re.compile(r'(CHIP:DMG|CHIP:TOO)(.*)')
-pattern2 = re.compile(r'^\./chip-tool')
-
 # Folder Path
 path = "../commands"
 
