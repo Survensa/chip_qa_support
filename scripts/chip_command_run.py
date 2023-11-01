@@ -178,8 +178,10 @@ if __name__ == "__main__":
                     file = vars(Cluster)[cluster_name]
                     file_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "commands", file)
                     if file.endswith('.yaml'):
+                        print(f"Entering run_command_from_yaml for {cluster_name}")
                         try:
                             run_command_from_yaml(file_path)
+                            print(f"Exited run_command_from_yaml for {cluster_name}")
                         except Exception as e:
                             print(f"Error executing commands for {cluster_name}: {str(e)}")
                     print(f"\nExecution completed... Logs are ready for validation in {output_directory}")
