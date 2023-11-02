@@ -9,7 +9,7 @@ import pandas as pd
 import json
 
 today = datetime.date.today().strftime('%Y-%m-%d')
-filename = "test_plan_change.xlsx"
+filename = "Docs/test_plan_change.xlsx"
 
 print("Starting the script...")
 
@@ -26,7 +26,7 @@ sheet_names = workbook.sheetnames
 app_html_path = 'Docs/Test_Plan_HTML/allclusters.html'
 main_html_path = 'Docs/Test_Plan_HTML/index.html'
 
-json_filename = 'TC_Summary_VS.json'
+json_filename = 'src/TC_Summary_VS.json'
 
 current_data = {}
 
