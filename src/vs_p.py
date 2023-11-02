@@ -421,8 +421,8 @@ if __name__ == '__main__':
     header = ["S.no", "Cluster Name", "Test Case Name", "Test Case ID", "Test Plan"]
     all_tc_sheet.append(header)
 
-    extract_test_case_details(h1_tags_app, all_tc_sheet, 0)
-    extract_test_case_details(h1_tags_main, all_tc_sheet, 1)
+    extract_test_case_details(h1_tags_app, workbook, all_tc_sheet, current_data, 0)
+    extract_test_case_details(h1_tags_main, workbook, all_tc_sheet, current_data, 1)
 
     column_widths = {'A': 10, 'B': 20, 'C': 50, 'D': 30, 'E': 30}
     for column, width in column_widths.items():
