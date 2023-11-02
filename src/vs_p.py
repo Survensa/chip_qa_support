@@ -300,7 +300,7 @@ def update_test_plan_changes(changes_dict, sheet, version):
         print(changes)
         for h in range(len(changes)):
             sheet.insert_rows(2)
-        for i in in range(len(changes)):
+        for i in range(len(changes)):
             for j, value in enumerate(changes[i]):
                 sheet.cell(row=i + 2, column=j + 1, value=value)
 
