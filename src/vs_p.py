@@ -150,10 +150,12 @@ def extract_test_case_details(h1_tags, workbook, sheet1, current_data, test_plan
         if cluster_title == "Bulk Data Exchange Protocol Test Plan":
             sheet_name = "BR"
         else:
-            test_case_h4_tag = h1_tag.find_next('h4', {'id': lambda x: x and x.startswith('_tc')})
-            test_case_id = extract_test_case_id(test_case_h4_tag.text)
-            match = re.search(r'-(.*?)-', test_case_id)
-            sheet_name = match.group(1) if match else ""
+            h4_tag = h1_tag.find_next('h4', {'id': lambda x: x and x.startswith('_tc')})
+            if h4_tag:
+                h4 = h4_tag.text
+                sheet_name = tc_id(h4)
+            else:
+                continue
             if sheet_name == "LOWPOWER":
                 sheet_name = "MC"
             else:
