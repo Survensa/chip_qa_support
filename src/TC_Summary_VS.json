@@ -1,5 +1,5 @@
 {
-    "On/Off   ": [
+    "On/Off": [
         {
             "Test Case Name": "4.1.1. [TC-OO-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-OO-1.1",
@@ -828,7 +828,7 @@
             }
         }
     ],
-    "Temperature Measurement   ": [
+    "Temperature Measurement": [
         {
             "Test Case Name": "7.1.1. [TC-TMP-1.1] Global attributes with server as DUT",
             "Test Case ID": "TC-TMP-1.1",
@@ -1025,7 +1025,7 @@
             }
         }
     ],
-    "Relative Humidity Measurement   ": [
+    "Relative Humidity Measurement": [
         {
             "Test Case Name": "10.1.1. [TC-RH-1.1] Global Attributes with Server as DUT",
             "Test Case ID": "TC-RH-1.1",
@@ -1222,7 +1222,7 @@
             }
         }
     ],
-    "Thermostat User Configuration   ": [
+    "Thermostat User Configuration": [
         {
             "Test Case Name": "13.1.1. [TC-TSUIC-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-TSUIC-1.1",
@@ -1519,7 +1519,7 @@
             }
         }
     ],
-    "Pump Configuration and Control   ": [
+    "Pump Configuration and Control": [
         {
             "Test Case Name": "16.1.1. [TC-PCC-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-PCC-1.1",
@@ -2036,7 +2036,7 @@
             }
         }
     ],
-    "Media   ": [
+    "Media": [
         {
             "Test Case Name": "19.1.1. [TC-LOWPOWER-1.1] Global attributes - Low Power Cluster (DUT as Server)",
             "Test Case ID": "TC-LOWPOWER-1.1",
@@ -5561,12 +5561,12 @@
             }
         }
     ],
-    "Level Control   ": [
+    "Level Control": [
         {
-            "Test Case Name": "22.1.1. [TC-LVL-1.1] Global attributes with server as DUT",
+            "Test Case Name": "22.1.1. [TC-LVL-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-LVL-1.1",
             "Test Plan": "App Test Case",
-            "Purpose": "This test case verifies that the DUT can provide the Level Control Cluster Global attributes.",
+            "Purpose": "This test case verifies the global attributes of the cluster server.",
             "PICS": [
                 "LVL.S"
             ],
@@ -5589,19 +5589,22 @@
                     "1",
                     "2",
                     "3",
-                    "4a",
-                    "4b",
-                    "5"
+                    "4",
+                    "5*",
+                    "6",
+                    "7"
                 ],
                 "Ref": [
                     "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "C.7.13.1",
+                    "C.7.13.2",
+                    "C.7.13.3",
+                    "C.7.13.6",
+                    "C.7.13.4",
+                    "C.7.13.5"
                 ],
                 "PICS": [
+                    "",
                     "",
                     "",
                     "",
@@ -5610,25 +5613,27 @@
                     ""
                 ],
                 "Test Step": [
-                    "TH reads theClusterRevision attributefrom the DUT",
-                    "TH reads theFeatureMap attributefrom the DUT",
-                    "TH reads theAttributeList attributefrom the DUT",
-                    "TH reads AcceptedCommandList attribute from DUT",
-                    "TH reads GeneratedCommandList attribute from DUT",
-                    "TH reads theEventList attributefrom the DUT"
+                    "Commission DUT to TH (can be skipped if done in a preceding test).",
+                    "TH reads from the DUT theClusterRevisionattribute.",
+                    "TH reads from the DUT theFeatureMapattribute.",
+                    "TH reads from the DUT theAttributeListattribute.",
+                    "TH reads from the DUT theEventListattribute.",
+                    "TH reads from the DUT theAcceptedCommandListattribute.",
+                    "TH reads from the DUT theGeneratedCommandListattribute."
                 ],
                 "Expected Outcome": [
-                    "Verify that the DUT response indicates that the ClusterRevision attribute has the value 5",
-                    "Verify that the DUT response indicates that the FeatureMap attribute has bit 0 set to 1 if the DUT has a dependency on the On/Off cluster (i.e. LVL.S.F00(OO) is true), bit 1 set if the DUT supports lighting applications (i.e. LVL.S.F01(LT) is true), and bit 2 is set if the DUT supports frequency behavior (i.e. LVL.S.F02(FQ) is true).",
-                    "Verify that the DUT response provides a list of supported attributes.  This list should include the mandatory attributes (values 0, 17, 15) and the following values based on support for optional attributes:If the DUT supports lighting applications (LVL.S.F01(LT) is true): 1, 16384If the DUT supports frequency behavior (LVL.S.F02(FQ) is true): 4, 5, 6MinLevel attribute (LVL.S.A0002(MinLevel) is true): 2MaxLevel attribute (LVL.S.A0003(MaxLevel) is true): 3OnOffTransitionTime attribute (LVL.S.A0010(OnOffTransitionTime) is true): 16OnTransitionTime attribute (LVL.S.A0012(OnTransitionTime) is true): 18OffTransitionTime attribute (LVL.S.A0013(OffTransitionTime) is true): 19DefaultMoveRate attribute (LVL.S.A0014(DefaultMoveRate) is true): 200xfff8, 0xfff9, 0xfffb, 0xfffc and 0xfffd.",
-                    "Verify that the DUT response provides a list of supported commands, which for this cluster should be a list containing the values 0 through 7 and the value 8 if the DUT supports frequency behavior (LVL.S.F02(FQ) is true).",
-                    "list SHALL be empty",
-                    "Verify that the DUT response provides a list of supported events, which for this cluster should be an empty list."
+                    "",
+                    "Verify that the DUT response contains theClusterRevisionattribute and has the value 5.",
+                    "Verify that the DUT response contains theFeatureMapattribute and have the following bit set:- bit 0: SHALL be 1 if and only if LVL.S.F00(OO).- bit 1: SHALL be 1 if and only if LVL.S.F01(LT).- bit 2: SHALL be 1 if and only if LVL.S.F02(FQ).All remaining bits SHALL be 0",
+                    "Verify that the DUT response contains theAttributeListattribute and have the list of supported attributes:The list SHALL include all the mandatory entries:0x0000, 0x0011, 0x000F,0xfff8, 0xfff9, 0xfffb, 0xfffc and 0xfffd.The list MAY include these optional entries:- 0x0002: SHALL be included if and only if LVL.S.A0002(MinLevel).- 0x0003: SHALL be included if and only if LVL.S.A0003(MaxLevel).- 0x0010: SHALL be included if and only if LVL.S.A0010(OnOffTransitionTime).- 0x0012: SHALL be included if and only if LVL.S.A0012(OnTransitionTime).- 0x0013: SHALL be included if and only if LVL.S.A0013(OffTransitionTime).- 0x0014: SHALL be included if and only if LVL.S.A0014(DefaultMoveRate).The list include entries based on feature support:- 0x0001: SHALL be included if and only if LVL.S.F01(LT).- 0x0004: SHALL be included if and only if LVL.S.F02(FQ).- 0x0005: SHALL be included if and only if LVL.S.F02(FQ).- 0x0006: SHALL be included if and only if LVL.S.F02(FQ).- 0x4000: SHALL be included if and only if LVL.S.F01(LT).",
+                    "Verify that the DUT response contains theEventListattribute and have the list of supported events:This cluster has no entries in the standard or scoped range.",
+                    "Verify that the DUT response contains theAcceptedCommandListattribute and have the list of Accepted Command:The list SHALL include all the mandatory entries:0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07.The list include entries based on feature support:- 0x08: SHALL be included if and only if LVL.S.F02(FQ).",
+                    "Verify that the DUT response contains theGeneratedCommandListattribute and have the list of Generated Command:This cluster has no entries in the standard or scoped range."
                 ]
             }
         },
         {
-            "Test Case Name": "22.2.1. [TC-LVL-2.1] Read cluster attributes (DUT as Server)",
+            "Test Case Name": "22.1.2. [TC-LVL-2.1] Read cluster attributes (DUT as Server)",
             "Test Case ID": "TC-LVL-2.1",
             "Test Plan": "App Test Case",
             "Purpose": "This test case verifies that the DUT can respond to Level Control cluster attribute read commands.",
@@ -5753,7 +5758,7 @@
             }
         },
         {
-            "Test Case Name": "22.2.2. [TC-LVL-2.2] Write cluster attributes (DUT as Server)",
+            "Test Case Name": "22.1.3. [TC-LVL-2.2] Write cluster attributes (DUT as Server)",
             "Test Case ID": "TC-LVL-2.2",
             "Test Plan": "App Test Case",
             "Purpose": "This test case verifies that the DUT can respond to Level Control cluster attribute write commands.",
@@ -5878,7 +5883,7 @@
             }
         },
         {
-            "Test Case Name": "22.3.1. [TC-LVL-3.1] MoveToLevel Verification (DUT as Server)",
+            "Test Case Name": "22.1.4. [TC-LVL-3.1] MoveToLevel Verification (DUT as Server)",
             "Test Case ID": "TC-LVL-3.1",
             "Test Plan": "App Test Case",
             "Purpose": "This test case verifies the MoveToLevel and MoveToLevelWithOnOff command functionality",
@@ -6133,7 +6138,7 @@
             }
         },
         {
-            "Test Case Name": "22.4.1. [TC-LVL-4.1] Move Verification (DUT as Server)",
+            "Test Case Name": "22.1.5. [TC-LVL-4.1] Move Verification (DUT as Server)",
             "Test Case ID": "TC-LVL-4.1",
             "Test Plan": "App Test Case",
             "Purpose": "This test case verifies the Move and MoveWithOnOff command functionality",
@@ -6258,7 +6263,7 @@
             }
         },
         {
-            "Test Case Name": "22.5.1. [TC-LVL-5.1] Step Verification (DUT as Server)",
+            "Test Case Name": "22.1.6. [TC-LVL-5.1] Step Verification (DUT as Server)",
             "Test Case ID": "TC-LVL-5.1",
             "Test Plan": "App Test Case",
             "Purpose": "This test case verifies the Step and StepWithOnOff command functionality",
@@ -6373,7 +6378,7 @@
             }
         },
         {
-            "Test Case Name": "22.6.1. [TC-LVL-6.1] Stop Verification (DUT as Server)",
+            "Test Case Name": "22.1.7. [TC-LVL-6.1] Stop Verification (DUT as Server)",
             "Test Case ID": "TC-LVL-6.1",
             "Test Plan": "App Test Case",
             "Purpose": "This test case verifies the Stop and StopWithOnOff command functionality",
@@ -6464,7 +6469,7 @@
             }
         },
         {
-            "Test Case Name": "22.6.2. [TC-LVL-7.1] Verification of MoveToClosestFrequency command (DUT as Server)",
+            "Test Case Name": "22.1.8. [TC-LVL-7.1] Verification of MoveToClosestFrequency command (DUT as Server)",
             "Test Case ID": "TC-LVL-7.1",
             "Test Plan": "App Test Case",
             "Purpose": "This test case verifies the command functionality for MoveToClosestFrequency.",
@@ -6600,7 +6605,7 @@
             }
         }
     ],
-    "Color Control   ": [
+    "Color Control": [
         {
             "Test Case Name": "26.1.1. [TC-CC-1.1] Global attributes with server as DUT",
             "Test Case ID": "TC-CC-1.1",
@@ -10602,7 +10607,7 @@
             }
         }
     ],
-    "Occupancy Sensing   ": [
+    "Occupancy Sensing": [
         {
             "Test Case Name": "29.1.1. [TC-OCC-1.1] Global attributes with server as DUT",
             "Test Case ID": "TC-OCC-1.1",
@@ -10929,7 +10934,7 @@
             }
         }
     ],
-    "Flow Measurement   ": [
+    "Flow Measurement": [
         {
             "Test Case Name": "32.1.1. [TC-FLW-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-FLW-1.1",
@@ -11116,7 +11121,7 @@
             }
         }
     ],
-    "Pressure Measurement   ": [
+    "Pressure Measurement": [
         {
             "Test Case Name": "35.1.1. [TC-PRS-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-PRS-1.1",
@@ -11328,7 +11333,7 @@
             }
         }
     ],
-    "Window Covering   ": [
+    "Window Covering": [
         {
             "Test Case Name": "39.1.1. [TC-WNCV-1.1] Global attributes [DUT as Server]",
             "Test Case ID": "TC-WNCV-1.1",
@@ -13265,7 +13270,7 @@
             }
         }
     ],
-    "Thermostat   ": [
+    "Thermostat": [
         {
             "Test Case Name": "42.1.1. [TC-TSTAT-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-TSTAT-1.1",
@@ -13892,7 +13897,7 @@
             }
         }
     ],
-    "Software Diagnostics   ": [
+    "Software Diagnostics": [
         {
             "Test Case Name": "45.1.1. [TC-DGSW-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-DGSW-1.1",
@@ -14174,7 +14179,7 @@
             }
         }
     ],
-    "Ethernet Network Diagnostics   ": [
+    "Ethernet Network Diagnostics": [
         {
             "Test Case Name": "48.1.1. [TC-DGETH-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-DGETH-1.1",
@@ -14476,7 +14481,7 @@
             }
         }
     ],
-    "Thread Network Diagnostics   ": [
+    "Thread Network Diagnostics": [
         {
             "Test Case Name": "51.1.1. [TC-DGTHREAD-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-DGTHREAD-1.1",
@@ -15166,7 +15171,7 @@
             }
         }
     ],
-    "Wi-Fi Network Diagnostics   ": [
+    "Wi-Fi Network Diagnostics": [
         {
             "Test Case Name": "54.1.1. [TC-DGWIFI-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-DGWIFI-1.1",
@@ -15518,7 +15523,7 @@
             }
         }
     ],
-    "Diagnostics Logs   ": [
+    "Diagnostics Logs": [
         {
             "Test Case Name": "57.1.1. [TC-DLOG-1.1] Global Attributes with DUT as Server - REMOVED",
             "Test Case ID": "TC-DLOG-1.1",
@@ -15795,7 +15800,7 @@
             }
         }
     ],
-    "Identify   ": [
+    "Identify": [
         {
             "Test Case Name": "60.1.1. [TC-I-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-I-1.1",
@@ -16153,7 +16158,7 @@
             }
         }
     ],
-    "Power Source   ": [
+    "Power Source": [
         {
             "Test Case Name": "63.1.1. [TC-PS-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-PS-1.1",
@@ -16640,12 +16645,12 @@
             }
         }
     ],
-    "Power Source Configuration   ": [
+    "Power Source Configuration": [
         {
-            "Test Case Name": "66.1.1. [TC-PSCFG-1.1] Global attributes with server as DUT",
+            "Test Case Name": "66.1.1. [TC-PSCFG-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-PSCFG-1.1",
             "Test Plan": "App Test Case",
-            "Purpose": "This test case verifies the behavior of the global attributes of the cluster client and server.",
+            "Purpose": "This test case verifies the global attributes of the cluster server.",
             "PICS": [
                 "PSCFG.S"
             ],
@@ -16669,18 +16674,18 @@
                     "2",
                     "3",
                     "4",
-                    "5",
+                    "5*",
                     "6",
                     "7"
                 ],
                 "Ref": [
                     "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "C.7.13.1",
+                    "C.7.13.2",
+                    "C.7.13.3",
+                    "C.7.13.6",
+                    "C.7.13.4",
+                    "C.7.13.5"
                 ],
                 "PICS": [
                     "",
@@ -16692,27 +16697,27 @@
                     ""
                 ],
                 "Test Step": [
-                    "Commission DUT to TH",
-                    "TH reads theClusterRevision attributefrom the DUT",
-                    "TH reads theFeatureMap attributefrom the DUT",
-                    "TH reads theAttributeList attributefrom the DUT",
-                    "TH reads theAcceptedCommandList attributefrom the DUT",
-                    "TH reads theGeneratedCommandList attributefrom the DUT",
-                    "TH reads theEventList attributefrom the DUT.Note: EventList is not supported by Matter 1.0."
+                    "Commission DUT to TH (can be skipped if done in a preceding test).",
+                    "TH reads from the DUT theClusterRevisionattribute.",
+                    "TH reads from the DUT theFeatureMapattribute.",
+                    "TH reads from the DUT theAttributeListattribute.",
+                    "TH reads from the DUT theEventListattribute.",
+                    "TH reads from the DUT theAcceptedCommandListattribute.",
+                    "TH reads from the DUT theGeneratedCommandListattribute."
                 ],
                 "Expected Outcome": [
                     "",
-                    "Verify that the DUT response indicates that the ClusterRevision attribute has the value 1",
-                    "Verify that the FeatureMap attribute has the value 0.",
-                    "Verify that the DUT response provides a list of supported attributes.  This list should include the mandatory attribute (value 0)It should also include the global attributes ClusterRevision, FeatureMap, AttributeList, AcceptedCommandList and GeneratedCommandList (value 65533, 65532, 65531, 65529 and 65528)",
-                    "Verify that the DUT response provides a list of supported commands. For this cluster the list is usually empty but it can contain manufacturer specific command IDs.",
-                    "Verify that the DUT response provides a list of supported commands. For this cluster the list is usually empty.",
-                    "Verify that the DUT response provides a list of supported events. For this cluster the list is usually empty but it can contain manufacturer specific event IDs."
+                    "Verify that the DUT response contains theClusterRevisionattribute and has the value 1.",
+                    "Verify that the DUT response contains theFeatureMapattribute and have the following bit set:This cluster has no entries in the standard or scoped range.",
+                    "Verify that the DUT response contains theAttributeListattribute and have the list of supported attributes:The list SHALL include all the mandatory entries:0x0000,\n0xfff8, 0xfff9, 0xfffb, 0xfffc and 0xfffd.",
+                    "Verify that the DUT response contains theEventListattribute and have the list of supported events:This cluster has no entries in the standard or scoped range.",
+                    "Verify that the DUT response contains theAcceptedCommandListattribute and have the list of Accepted Command:The list SHALL include all the mandatory entries:0x00.The list MAY include these optional entries:- 0x01: SHALL be included if and only if {PICS_SC_2ND_COMMAND_NAME}.",
+                    "Verify that the DUT response contains theGeneratedCommandListattribute and have the list of Generated Command:The list SHALL include all the mandatory entries:0x00."
                 ]
             }
         },
         {
-            "Test Case Name": "66.2.1. [TC-PSCFG-2.1] Attributes with server as DUT",
+            "Test Case Name": "66.1.2. [TC-PSCFG-2.1] Attributes with server as DUT",
             "Test Case ID": "TC-PSCFG-2.1",
             "Test Plan": "App Test Case",
             "Purpose": "This test case verifies the behavior of the non-global attributes of the Power Source Configuration cluster server.",
@@ -16757,7 +16762,7 @@
             }
         },
         {
-            "Test Case Name": "66.2.2. [TC-PSCFG-2.2] Primary functionality with server as DUT",
+            "Test Case Name": "66.1.3. [TC-PSCFG-2.2] Primary functionality with server as DUT",
             "Test Case ID": "TC-PSCFG-2.2",
             "Test Plan": "App Test Case",
             "Purpose": "This test case verifies the primary functionality of the Power Source Configuration Cluster server.",
@@ -16812,12 +16817,12 @@
             }
         }
     ],
-    "Boolean State   ": [
+    "Boolean State": [
         {
-            "Test Case Name": "69.1.1. [TC-BOOL-1.1] Global Attributes with Server as DUT",
+            "Test Case Name": "69.1.1. [TC-BOOL-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-BOOL-1.1",
             "Test Plan": "App Test Case",
-            "Purpose": "This test case verifies that the DUT can provide the Level Control Cluster Global attributes.",
+            "Purpose": "This test case verifies the global attributes of the cluster server.",
             "PICS": [
                 "BOOL.S"
             ],
@@ -16841,18 +16846,18 @@
                     "2",
                     "3",
                     "4",
-                    "5",
+                    "5*",
                     "6",
                     "7"
                 ],
                 "Ref": [
                     "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "C.7.13.1",
+                    "C.7.13.2",
+                    "C.7.13.3",
+                    "C.7.13.6",
+                    "C.7.13.4",
+                    "C.7.13.5"
                 ],
                 "PICS": [
                     "",
@@ -16865,26 +16870,26 @@
                 ],
                 "Test Step": [
                     "Commission DUT to TH (can be skipped if done in a preceding test).",
-                    "TH reads theClusterRevision attributefrom the DUT.",
-                    "TH reads theFeatureMap attributefrom the DUT.",
-                    "TH reads theAttributeList attributefrom the DUT.",
-                    "TH reads theAcceptedCommandList attributefrom the DUT.",
-                    "TH reads theGeneratedCommandList attributefrom the DUT.",
-                    "TH reads theEventList attributefrom the DUT.Note: EventList is not supported by Matter 1.0."
+                    "TH reads from the DUT theClusterRevisionattribute.",
+                    "TH reads from the DUT theFeatureMapattribute.",
+                    "TH reads from the DUT theAttributeListattribute.",
+                    "TH reads from the DUT theEventListattribute.",
+                    "TH reads from the DUT theAcceptedCommandListattribute.",
+                    "TH reads from the DUT theGeneratedCommandListattribute."
                 ],
                 "Expected Outcome": [
                     "",
-                    "Verify that the DUT response indicates that theClusterRevision attributehas the value 1.",
-                    "Verify that theFeatureMap attributehas the value 0.",
-                    "Verify that the DUT response provides a list of supported attributes.  This list should include the mandatory attribute (value 0).It should also include the global attributes ClusterRevision, FeatureMap, AttributeList, AcceptedCommandList and GeneratedCommandList (value 65533, 65532, 65531, 65529 and 65528).",
-                    "Verify that the DUT response provides a list of supported commands.For this cluster the list is usually empty but it can contain manufacturer specific command IDs.",
-                    "Verify that the DUT response provides a list of supported commands.For this cluster the list is usually empty.",
-                    "Verify that the DUT response provides a list of supported events.If BOOL.S.E00(StateChange) == false, the list is usually empty.If BOOL.S.E00(StateChange) == true, the list has to contain 0 (StateChange event).Optionally the list can also contain manufacturer specific event IDs."
+                    "Verify that the DUT response contains theClusterRevisionattribute and has the value 1.",
+                    "Verify that the DUT response contains theFeatureMapattribute and have the following bit set:This cluster has no entries in the standard or scoped range.",
+                    "Verify that the DUT response contains theAttributeListattribute and have the list of supported attributes:The list SHALL include all the mandatory entries:0x0000,\n0xfff8, 0xfff9, 0xfffb, 0xfffc and 0xfffd.",
+                    "Verify that the DUT response contains theEventListattribute and have the list of supported events:This cluster has no entries in the standard or scoped range.",
+                    "Verify that the DUT response contains theAcceptedCommandListattribute and have the list of Accepted Command:This cluster has no entries in the standard or scoped range.",
+                    "Verify that the DUT response contains theGeneratedCommandListattribute and have the list of Generated Command:This cluster has no entries in the standard or scoped range."
                 ]
             }
         },
         {
-            "Test Case Name": "69.2.1. [TC-BOOL-2.1] Attributes with Server as DUT",
+            "Test Case Name": "69.1.2. [TC-BOOL-2.1] Attributes with Server as DUT",
             "Test Case ID": "TC-BOOL-2.1",
             "Test Plan": "App Test Case",
             "Purpose": "This test case verifies that the DUT can respond to Boolean State Cluster attribute read commands.",
@@ -16929,7 +16934,7 @@
             }
         },
         {
-            "Test Case Name": "69.2.2. [TC-BOOL-2.2] Primary Functionality with Server as DUT",
+            "Test Case Name": "69.1.3. [TC-BOOL-2.2] Primary Functionality with Server as DUT",
             "Test Case ID": "TC-BOOL-2.2",
             "Test Plan": "App Test Case",
             "Purpose": "This test case verifies the primary functionality of the Boolean State Cluster server.",
@@ -16977,11 +16982,11 @@
                 ],
                 "PICS": [
                     "",
-                    "BOOL.M.ManuallyControlled\n              BOOL.S.A0000(StateValue)",
+                    "BOOL.S.M.ManuallyControlled\n              BOOL.S.A0000(StateValue)",
                     "",
-                    "BOOL.M.ManuallyControlled\n              BOOL.S.A0000(StateValue)",
+                    "BOOL.S.M.ManuallyControlled\n              BOOL.S.A0000(StateValue)",
                     "",
-                    "BOOL.M.ManuallyControlled\n              BOOL.S.E00(StateChange)\n              BOOL.S.A0000(StateValue)",
+                    "BOOL.S.M.ManuallyControlled\n              BOOL.S.E00(StateChange)\n              BOOL.S.A0000(StateValue)",
                     "",
                     "",
                     "",
@@ -17014,7 +17019,7 @@
             }
         }
     ],
-    "Illuminance Measurement   ": [
+    "Illuminance Measurement": [
         {
             "Test Case Name": "72.1.1. [TC-ILL-1.1] Global Attributes with Server as DUT",
             "Test Case ID": "TC-ILL-1.1",
@@ -17216,7 +17221,7 @@
             }
         }
     ],
-    "Switch   ": [
+    "Switch": [
         {
             "Test Case Name": "75.1.1. [TC-SWTCH-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-SWTCH-1.1",
@@ -17794,7 +17799,7 @@
             }
         }
     ],
-    "Actions   ": [
+    "Actions": [
         {
             "Test Case Name": "78.1.1. [TC-ACT-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-ACT-1.1",
@@ -18371,7 +18376,7 @@
             }
         }
     ],
-    "Mode Select   ": [
+    "Mode Select": [
         {
             "Test Case Name": "81.1.1. [TC-MOD-1.1] Global attributes with server as DUT",
             "Test Case ID": "TC-MOD-1.1",
@@ -19031,7 +19036,7 @@
             }
         }
     ],
-    "RVC Run Mode   ": [
+    "RVC Run Mode": [
         {
             "Test Case Name": "87.1.1. [TC-RVCRUNM-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-RVCRUNM-1.1",
@@ -19549,7 +19554,7 @@
             }
         }
     ],
-    "RVC Clean Mode   ": [
+    "RVC Clean Mode": [
         {
             "Test Case Name": "92.1.1. [TC-RVCCLEANM-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-RVCCLEANM-1.1",
@@ -20067,7 +20072,7 @@
             }
         }
     ],
-    "Descriptor  ": [
+    "Descriptor": [
         {
             "Test Case Name": "96.1.1. [TC-DESC-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-DESC-1.1",
@@ -20266,7 +20271,7 @@
             }
         }
     ],
-    "General Diagnostics   ": [
+    "General Diagnostics": [
         {
             "Test Case Name": "100.1.1. [TC-DGGEN-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-DGGEN-1.1",
@@ -20582,9 +20587,58 @@
                     "Verify that DUT responds with CONSTRAINT_ERROR."
                 ]
             }
+        },
+        {
+            "Test Case Name": "100.2.4. [TC-DGGEN-3.1] Matter Specification 1.2 errata [DUT as Server]",
+            "Test Case ID": "TC-DGGEN-3.1",
+            "Test Plan": "App Test Case",
+            "Purpose": "The AverageWearCount attribute of the General Diagnostics cluster was accidentally introduced in the 1.2 SDK, but was not added to the specification. This is therefore considered to be a non-standard attribute in the standard range, but it will NOT be caught by the automated check process because it is present in the tools. This test verifies that this attribute is not present on the DUT.",
+            "PICS": [
+                "DGGEN.S"
+            ],
+            "Pre-condition": {
+                "#": [
+                    "1",
+                    "2"
+                ],
+                "Doc. Ref.": [
+                    "",
+                    ""
+                ],
+                "Condition": [
+                    "Laundry Washer Mode and OnOff clusters are available on the same endpoint",
+                    "TheOnModeattribute is set to a non-NULL value from the mode values indicated by theSupportedModesattribute."
+                ],
+                "Notes": [
+                    "",
+                    ""
+                ]
+            },
+            "Test Procedure": {
+                "#": [
+                    "1",
+                    "2"
+                ],
+                "Ref": [
+                    "",
+                    ""
+                ],
+                "PICS": [
+                    "",
+                    ""
+                ],
+                "Test Step": [
+                    "Commission DUT to TH",
+                    "TH reads the AttributeList global attribute from the DUT"
+                ],
+                "Expected Outcome": [
+                    "",
+                    "Verify that the list does not include attribute ID 0x09"
+                ]
+            }
         }
     ],
-    "General Commissioning   ": [
+    "General Commissioning": [
         {
             "Test Case Name": "104.1.1. [TC-CGEN-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-CGEN-1.1",
@@ -21152,7 +21206,7 @@
             }
         }
     ],
-    "User Label   ": [
+    "User Label": [
         {
             "Test Case Name": "107.1.1. [TC-ULABEL-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-ULABEL-1.1",
@@ -21429,7 +21483,7 @@
             }
         }
     ],
-    "Fixed Label   ": [
+    "Fixed Label": [
         {
             "Test Case Name": "110.1.1. [TC-FLABEL-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-FLABEL-1.1",
@@ -21559,12 +21613,12 @@
             }
         }
     ],
-    "Localization Configuration   ": [
+    "Localization Configuration": [
         {
-            "Test Case Name": "113.1.1. [TC-LCFG-1.1] Global Attributes [DUT-Server]",
+            "Test Case Name": "113.1.1. [TC-LCFG-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-LCFG-1.1",
             "Test Plan": "App Test Case",
-            "Purpose": "To verify the Global Attributes available in Localization Configuration Cluster",
+            "Purpose": "This test case verifies the global attributes of the cluster server.",
             "PICS": [
                 "LCFG.S"
             ],
@@ -21592,18 +21646,18 @@
                     "2",
                     "3",
                     "4",
-                    "5",
+                    "5*",
                     "6",
                     "7"
                 ],
                 "Ref": [
                     "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "C.7.13.1",
+                    "C.7.13.2",
+                    "C.7.13.3",
+                    "C.7.13.6",
+                    "C.7.13.4",
+                    "C.7.13.5"
                 ],
                 "PICS": [
                     "",
@@ -21615,27 +21669,27 @@
                     ""
                 ],
                 "Test Step": [
-                    "Commission TH to DUT",
-                    "TH reads from the DUT the (0xFFFD)ClusterRevision attribute",
-                    "TH reads from the DUT the (0xFFFC)FeatureMap attribute",
-                    "TH reads from the DUT the (0xFFFB)AttributeList attribute",
-                    "TH reads from the DUT the (0xFFFA)EventList attribute",
-                    "TH reads from the DUT the (0xFFF9)AcceptedCommandList attribute",
-                    "TH reads from the DUT the (0xFFF8)GeneratedCommandList attribute"
+                    "Commission DUT to TH (can be skipped if done in a preceding test).",
+                    "TH reads from the DUT theClusterRevisionattribute.",
+                    "TH reads from the DUT theFeatureMapattribute.",
+                    "TH reads from the DUT theAttributeListattribute.",
+                    "TH reads from the DUT theEventListattribute.",
+                    "TH reads from the DUT theAcceptedCommandListattribute.",
+                    "TH reads from the DUT theGeneratedCommandListattribute."
                 ],
                 "Expected Outcome": [
                     "",
-                    "Verify that the DUT response contains a minimal revision of 1.",
-                    "Verify that the DUT response contains the following bitmap32 w/:- all bits should be cleared.",
-                    "Verify that the DUT response contains a list of supported attributes based on its PICS support:-  (0x0000) ActiveLocale (mandatory)-  (0x0001) SupportedLocales (mandatory)- It SHALL include global attributes (0xFFFD)ClusterRevision, (0xFFFC)FeatureMap, (0xFFFB)AttributeList, (0xFFF9)AcceptedCommandList & (0xFFF8)GeneratedCommandList.",
-                    "Verify that the DUT response contains a list of supported events empty for this cluster.",
-                    "Verify that the DUT response contains a list of Accepted commands (C2S) empty for this cluster.",
-                    "Verify that the DUT response contains a list of Generated commands (S2C) empty for this cluster."
+                    "Verify that the DUT response contains theClusterRevisionattribute and has the value 1.",
+                    "Verify that the DUT response contains theFeatureMapattribute and have the following bit set:This cluster has no entries in the standard or scoped range.",
+                    "Verify that the DUT response contains theAttributeListattribute and have the list of supported attributes:The list SHALL include all the mandatory entries:0x0000, 0x0001,\n0xfff8, 0xfff9, 0xfffb, 0xfffc and 0xfffd.",
+                    "Verify that the DUT response contains theEventListattribute and have the list of supported events:This cluster has no entries in the standard or scoped range.",
+                    "Verify that the DUT response contains theAcceptedCommandListattribute and have the list of Accepted Command:This cluster has no entries in the standard or scoped range.",
+                    "Verify that the DUT response contains theGeneratedCommandListattribute and have the list of Generated Command:This cluster has no entries in the standard or scoped range."
                 ]
             }
         },
         {
-            "Test Case Name": "113.2.1. [TC-LCFG-2.1] Localization Configuration Cluster Attributes[DUT-Server]",
+            "Test Case Name": "113.1.2. [TC-LCFG-2.1] Localization Configuration Cluster Attributes[DUT-Server]",
             "Test Case ID": "TC-LCFG-2.1",
             "Test Plan": "App Test Case",
             "Purpose": "This test case verifies the attribute provided by the Localization Configuration Cluster.",
@@ -21680,7 +21734,7 @@
                     ""
                 ],
                 "PICS": [
-                    "LCFG.S.A0001(SupportedLocales)",
+                    "LCFG.S.A0000(SupportedLocales)",
                     "",
                     "",
                     "LCFG.S.A0000(ActiveLocale)",
@@ -21709,7 +21763,7 @@
             }
         }
     ],
-    "Unit Localization   ": [
+    "Unit Localization": [
         {
             "Test Case Name": "116.1.1. [TC-LUNIT-1.2] Global Attributes with DUT as Server",
             "Test Case ID": "TC-LUNIT-1.2",
@@ -21864,7 +21918,7 @@
             }
         }
     ],
-    "Time Format Localization   ": [
+    "Time Format Localization": [
         {
             "Test Case Name": "120.1.1. [TC-LTIME-1.2] Global Attributes with DUT as Server",
             "Test Case ID": "TC-LTIME-1.2",
@@ -22034,7 +22088,7 @@
             }
         }
     ],
-    "Door lock  ": [
+    "Door lock": [
         {
             "Test Case Name": "124.1.1. [TC-DRLK-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-DRLK-1.1",
@@ -24100,7 +24154,7 @@
             }
         }
     ],
-    "Binding   ": [
+    "Binding": [
         {
             "Test Case Name": "127.1.1. [TC-BIND-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-BIND-1.1",
@@ -24498,7 +24552,7 @@
             }
         }
     ],
-    "Groups   ": [
+    "Groups": [
         {
             "Test Case Name": "131.1.1. [TC-G-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-G-1.1",
@@ -25180,7 +25234,7 @@
             }
         }
     ],
-    "Scenes   ": [
+    "Scenes": [
         {
             "Test Case Name": "135.1.1. [TC-S-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-S-1.1",
@@ -26077,7 +26131,7 @@
             }
         }
     ],
-    "Access Control cluster": [
+    "Access Control": [
         {
             "Test Case Name": "138.1.1. [TC-ACL-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-ACL-1.1",
@@ -27246,7 +27300,7 @@
             }
         }
     ],
-    "Bridged Device Basic Information  ": [
+    "Bridged Device Basic Information": [
         {
             "Test Case Name": "142.1.1. [TC-BRBINFO-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-BRBINFO-1.1",
@@ -27739,7 +27793,7 @@
             }
         }
     ],
-    "Time Synchronization   ": [
+    "Time Synchronization": [
         {
             "Test Case Name": "145.1.1. [TC-TIMESYNC-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-TIMESYNC-1.1",
@@ -29432,7 +29486,7 @@
             }
         }
     ],
-    "Carbon Monoxide Concentration Measurement   ": [
+    "Carbon Monoxide Concentration Measurement": [
         {
             "Test Case Name": "148.1.1. [TC-CMOCONC-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-CMOCONC-1.1",
@@ -29602,7 +29656,7 @@
             }
         }
     ],
-    "Carbon Dioxide Concentration Measurement   ": [
+    "Carbon Dioxide Concentration Measurement": [
         {
             "Test Case Name": "151.1.1. [TC-CDOCONC-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-CDOCONC-1.1",
@@ -29772,7 +29826,7 @@
             }
         }
     ],
-    "Nitrogen Dioxide Concentration Measurement   ": [
+    "Nitrogen Dioxide Concentration Measurement": [
         {
             "Test Case Name": "154.1.1. [TC-NDOCONC-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-NDOCONC-1.1",
@@ -29942,7 +29996,7 @@
             }
         }
     ],
-    "Ozone Concentration Measurement   ": [
+    "Ozone Concentration Measurement": [
         {
             "Test Case Name": "157.1.1. [TC-OZCONC-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-OZCONC-1.1",
@@ -30112,7 +30166,7 @@
             }
         }
     ],
-    "PM2.5 Concentration Measurement   ": [
+    "PM2.5 Concentration Measurement": [
         {
             "Test Case Name": "160.1.1. [TC-PMICONC-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-PMICONC-1.1",
@@ -30282,7 +30336,7 @@
             }
         }
     ],
-    "Formaldehyde Concentration Measurement   ": [
+    "Formaldehyde Concentration Measurement": [
         {
             "Test Case Name": "163.1.1. [TC-FLDCONC-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-FLDCONC-1.1",
@@ -30452,7 +30506,7 @@
             }
         }
     ],
-    "PM1 Concentration Measurement   ": [
+    "PM1 Concentration Measurement": [
         {
             "Test Case Name": "166.1.1. [TC-PMHCONC-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-PMHCONC-1.1",
@@ -30622,7 +30676,7 @@
             }
         }
     ],
-    "PM10 Concentration Measurement   ": [
+    "PM10 Concentration Measurement": [
         {
             "Test Case Name": "169.1.1. [TC-PMKCONC-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-PMKCONC-1.1",
@@ -30792,7 +30846,7 @@
             }
         }
     ],
-    "Total Volatile Organic Compounds Concentration Measurement   ": [
+    "Total Volatile Organic Compounds Concentration Measurement": [
         {
             "Test Case Name": "172.1.1. [TC-TVOCCONC-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-TVOCCONC-1.1",
@@ -30962,7 +31016,7 @@
             }
         }
     ],
-    "Radon Concentration Measurement   ": [
+    "Radon Concentration Measurement": [
         {
             "Test Case Name": "175.1.1. [TC-RNCONC-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-RNCONC-1.1",
@@ -31132,7 +31186,7 @@
             }
         }
     ],
-    "Temperature Control   ": [
+    "Temperature Control": [
         {
             "Test Case Name": "178.1.1. [TC-TCTL-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-TCTL-1.1",
@@ -31564,7 +31618,7 @@
             }
         }
     ],
-    "Laundry Washer Mode   ": [
+    "Laundry Washer Mode": [
         {
             "Test Case Name": "183.1.1. [TC-LWM-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-LWM-1.1",
@@ -32082,7 +32136,7 @@
             }
         }
     ],
-    "Washer Controls   ": [
+    "Washer Controls": [
         {
             "Test Case Name": "186.1.1. [TC-WASHERCTRL-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-WASHERCTRL-1.1",
@@ -32301,7 +32355,7 @@
             }
         }
     ],
-    "Fan Control   ": [
+    "Fan Control": [
         {
             "Test Case Name": "189.1.1. [TC-FAN-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-FAN-1.1",
@@ -33235,7 +33289,7 @@
             }
         }
     ],
-    "Dishwasher Mode   ": [
+    "Dishwasher Mode": [
         {
             "Test Case Name": "194.1.1. [TC-DISHM-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-DISHM-1.1",
@@ -33749,7 +33803,7 @@
             }
         }
     ],
-    "Dishwasher Alarm   ": [
+    "Dishwasher Alarm": [
         {
             "Test Case Name": "197.1.1. [TC-DISHALM-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-DISHALM-1.1",
@@ -34397,7 +34451,7 @@
             }
         }
     ],
-    "Operational State   ": [
+    "Operational State": [
         {
             "Test Case Name": "201.1.1. [TC-OPSTATE-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-OPSTATE-1.1",
@@ -34909,7 +34963,7 @@
             }
         }
     ],
-    "Air Quality   ": [
+    "Air Quality": [
         {
             "Test Case Name": "204.1.1. [TC-AIRQUAL-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-AIRQUAL-1.1",
@@ -35034,7 +35088,7 @@
             }
         }
     ],
-    "HEPA Filter Monitoring   ": [
+    "HEPA Filter Monitoring": [
         {
             "Test Case Name": "207.1.1. [TC-HEPAFREMON-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-HEPAFREMON-1.1",
@@ -35184,7 +35238,7 @@
             }
         }
     ],
-    "Activated Carbon Filter Monitoring   ": [
+    "Activated Carbon Filter Monitoring": [
         {
             "Test Case Name": "210.1.1. [TC-ACFREMON-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-ACFREMON-1.1",
@@ -35334,7 +35388,7 @@
             }
         }
     ],
-    "ICD Management   ": [
+    "ICD Management": [
         {
             "Test Case Name": "213.1.1. [TC-ICDM-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-ICDM-1.1",
@@ -35637,7 +35691,7 @@
             }
         }
     ],
-    "Refrigerator and Temperature Controlled Cabinet Mode   ": [
+    "Refrigerator and Temperature Controlled Cabinet Mode": [
         {
             "Test Case Name": "218.1.1. [TC-TCCM-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-TCCM-1.1",
@@ -36151,7 +36205,7 @@
             }
         }
     ],
-    "Refrigerator Alarm   ": [
+    "Refrigerator Alarm": [
         {
             "Test Case Name": "222.1.1. [TC-REFALM-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-REFALM-1.1",
@@ -36473,7 +36527,7 @@
             }
         }
     ],
-    "RVC Operational State   ": [
+    "RVC Operational State": [
         {
             "Test Case Name": "225.1.1. [TC-RVCOPSTATE-1.1] Global attributes [DUT as Server]",
             "Test Case ID": "TC-RVCOPSTATE-1.1",
@@ -37040,7 +37094,7 @@
             }
         }
     ],
-    "Smoke CO Alarm   ": [
+    "Smoke CO Alarm": [
         {
             "Test Case Name": "230.1.1. [TC-SMOKECO-1.1] Global attributes with DUT as Server",
             "Test Case ID": "TC-SMOKECO-1.1",
@@ -38296,7 +38350,7 @@
             }
         }
     ],
-    "Device Discovery  ": [
+    "Device Discovery": [
         {
             "Test Case Name": "8.1.1. [TC-DD-1.1] QR Code Onboarding Payload Verification [DUT - Commissionee]",
             "Test Case ID": "TC-DD-1.1",
@@ -41570,7 +41624,7 @@
             }
         }
     ],
-    "Basic Information  ": [
+    "Basic Information": [
         {
             "Test Case Name": "12.1.1. [TC-BINFO-1.1] Global Attributes with DUT as Server",
             "Test Case ID": "TC-BINFO-1.1",
@@ -42113,7 +42167,7 @@
             }
         }
     ],
-    "Node Operational Credentials  ": [
+    "Node Operational Credentials": [
         {
             "Test Case Name": "15.1.1. [TC-OPCREDS-1.2] Global Attributes with DUT as Server",
             "Test Case ID": "TC-OPCREDS-1.2",
@@ -43392,7 +43446,7 @@
             }
         }
     ],
-    "Network Commissioning  ": [
+    "Network Commissioning": [
         {
             "Test Case Name": "19.1.1. [TC-CNET-1.3] Global Attributes with DUT as Server",
             "Test Case ID": "TC-CNET-1.3",
@@ -44972,7 +45026,7 @@
             }
         }
     ],
-    "Secure Channel  ": [
+    "Secure Channel": [
         {
             "Test Case Name": "22.1.1. [TC-SC-1.1] MRP Max Message Size - REMOVED",
             "Test Case ID": "TC-SC-1.1",
@@ -47400,7 +47454,7 @@
             }
         }
     ],
-    "Device Attestation  ": [
+    "Device Attestation": [
         {
             "Test Case Name": "29.1.1. [TC-DA-1.1] The NOC SHALL be wiped on Factory Reset [DUT - Commissionee]",
             "Test Case ID": "TC-DA-1.1",
@@ -48122,7 +48176,7 @@
             }
         }
     ],
-    "Interaction Data Model  ": [
+    "Interaction Data Model": [
         {
             "Test Case Name": "32.1.1. [TC-IDM-1.1] Invoke Request Action from DUT to TH - [DUT as Client]",
             "Test Case ID": "TC-IDM-1.1",
@@ -50044,7 +50098,7 @@
             }
         }
     ],
-    "Administrator Commissioning   ": [
+    "Administrator Commissioning": [
         {
             "Test Case Name": "36.1.1. [TC-CADMIN-1.1] Administrator Behavior using ECM [DUT - Commissioner]",
             "Test Case ID": "TC-CADMIN-1.1",
@@ -52776,7 +52830,7 @@
             }
         }
     ],
-    "Bridge  ": [
+    "Bridge": [
         {
             "Test Case Name": "39.1.1. [TC-BR-1] Basics of bridging (DUT server)",
             "Test Case ID": "TC-BR-1",
@@ -53236,7 +53290,7 @@
             }
         }
     ],
-    "Bulk Data Exchange Protocol  ": [
+    "Bulk Data Exchange Protocol": [
         {
             "Test Case Name": "42.1.1. [TC-BDX-1.1] Sender Initiated BDX Transfer Session - REMOVED",
             "Test Case ID": "TC-BDX-1.1",
@@ -53651,7 +53705,7 @@
             }
         }
     ],
-    "OTA Software Update  ": [
+    "OTA Software Update": [
         {
             "Test Case Name": "45.1.1. [TC-SU-1.1] Invoke AnnounceOTAProvider from Admin(DUT) to OTA-R",
             "Test Case ID": "TC-SU-1.1",
@@ -54303,7 +54357,7 @@
             }
         }
     ],
-    "Access Control Enforcement  ": [
+    "Access Control Enforcement": [
         {
             "Test Case Name": "49.1.1. [TC-ACE-1.1] Privileges",
             "Test Case ID": "TC-ACE-1.1",
@@ -55384,7 +55438,7 @@
             }
         }
     ],
-    "Minimal Resource Requirements  ": [
+    "Minimal Resource Requirements": [
         {
             "Test Case Name": "51.1.1. [TC-RR-1.1] Minimal Resource Requirements for Matter Node",
             "Test Case ID": "TC-RR-1.1",
@@ -55498,7 +55552,7 @@
             }
         }
     ],
-    "System Model  ": [
+    "System Model": [
         {
             "Test Case Name": "54.1.1. [TC-SM-1.1] Device composition - Root Node [DUT as Server]",
             "Test Case ID": "TC-SM-1.1",
@@ -55599,7 +55653,7 @@
             }
         }
     ],
-    "Device Types  ": [
+    "Device Types": [
         {
             "Test Case Name": "57.1.1. [TC-DT-1.1] Base Device Type [DUT as Server]",
             "Test Case ID": "TC-DT-1.1",
