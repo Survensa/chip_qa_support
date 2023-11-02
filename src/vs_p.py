@@ -23,8 +23,8 @@ except FileNotFoundError:
 
 sheet_names = workbook.sheetnames
 
-app_html_path = '/home/grl/Downloads/allclusters.html'
-main_html_path = '/home/grl/Downloads/index.html'
+app_html_path = 'Docs/Test_Plan_HTML/allclusters.html'
+main_html_path = 'Docs/Test_Plan_HTML/index.html'
 
 json_filename = 'TC_Summary_VS.json'
 
