@@ -246,9 +246,9 @@ def create_dataframe_from_table(html_table):
         row_data = []
         for cell_index, cell in enumerate(cells):
             if cell.has_attr('colspan'):
-                col_spans.append((row_index, cell_index, int(cell['colspan']))
+                col_spans.append((row_index, cell_index, int(cell['colspan'])))
             if cell.has_attr('rowspan'):
-                row_spans.append((row_index, cell_index, int(cell['rowspan']))
+                row_spans.append((row_index, cell_index, int(cell['rowspan'])))
             row_data.append(cell.get_text(strip=True))
         data.append(row_data)
     
