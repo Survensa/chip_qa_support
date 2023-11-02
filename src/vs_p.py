@@ -9,7 +9,7 @@ import pandas as pd
 import json
 
 today = datetime.date.today().strftime('%Y-%m-%d')
-filename = 'Docs/test_plan_change.xlsx'
+filename = f"test_plan_change.xlsx"
 
 try:
     workbook = load_workbook(filename)
@@ -18,10 +18,10 @@ except FileNotFoundError:
 
 sheet_names = workbook.sheetnames
 
-app = 'Docs/Test_Plan_HTML/allclusters.html'
-main = 'Docs/Test_Plan_HTML/index.html'
+app = '/home/grl/Downloads/allclusters.html'
+main = '/home/grl/Downloads/index.html'
 
-json_filename = 'src/TC_Summary_VS.json'
+json_filename = 'TC_Summary.json'
 
 current_data ={}
 
@@ -120,7 +120,12 @@ def tc_details (h1_tags,sheet1,a):
     for i in range(len(h1_tags)):
         
         h1 = h1_tags[i].text
-        cluster_name = h1.replace('Cluster', '').replace('Test', '').replace('Plan', '')
+        cluster_name =  h1.replace(' Cluster Test Plan', '') \
+            .replace(' Cluster TestPlan', '') \
+            .replace(' Cluster', '') \
+            .replace(' cluster', '') \
+            .replace(' Test Plan', '')
+
         if h1 == "MCORE PICS Definition":
             continue
         if h1 == "Bulk Data Exchange Protocol Test Plan":
@@ -144,7 +149,10 @@ def tc_details (h1_tags,sheet1,a):
         
         print (sheet)
         if sheet in sheet_names:
-            new_sheet = []
+            workbook.remove(workbook[sheet])
+            workbook.create_sheet(sheet, sheet_names.index(sheet))
+            new_sheet = workbook[sheet]
+
         else:
             new_sheet = workbook.create_sheet(sheet)
         new_sheet.append([cluster_name])
@@ -206,13 +214,16 @@ def tc_details (h1_tags,sheet1,a):
         
         for j in range(len(result)):
             testcase = tc_id(heads[j])
+            head_text_match = re.search(r'\[(.*?)\]\s*(.*)', heads[j])
+            if head_text_match:
+                    tcname = '[' + head_text_match.group(1) + '] ' + head_text_match.group(2)
+            else:
+                    tcname = ''
 
-            tc_name = heads[j].split("]", 1)[-1].strip()
 
-            
             n = sheet1.max_row
 
-            value = [n , tp , cluster_name , testcase , tc_name , heads[j]]
+            value = [n , cluster_name ,tcname , testcase , tp ]
             sheet1.append(value)
 
 
@@ -308,7 +319,29 @@ def diff(existing_data, current_data):
 
     return (dif)
 
-def chan(dif, sheet, version):
+def tpchan(dif, sheet, version):
+    c = []
+  
+    if dif["chagedtc"]:
+        keys = list(dif["chagedtc"].keys())
+        for k in keys:
+            for change in dif["chagedtc"][k]:
+                c.append([today,version, k,"this Testcase is modified", change])
+
+    print (c)
+
+    if c:
+        print(len(c))
+        for h in range(len(c)):
+            sheet.insert_rows(2)
+        for i in range(len(c)):
+            for j, value in enumerate(c[i]):                                                                                 
+                sheet.cell(row=i + 2, column=j + 1, value=value)
+    
+    return None
+
+
+def tcchan(dif, sheet, version):
     c = []
     if dif["addedcluster"]:
         for i in dif["addedcluster"]:
@@ -316,19 +349,12 @@ def chan(dif, sheet, version):
     if dif["removedcluster"]:
         for i in dif["removedcluster"]:
             c.append([today,version, i,"this cluster is removed"])
-    if dif["chagedtc"]:
-        keys = list(dif["chagedtc"].keys())
-        for k in keys:
-            for change in dif["chagedtc"][k]:
-                c.append([today,version, k,"this Testcase is modified", change])
     if dif["addedtc"]:
         for i in dif["addedtc"]:
             c.append([today,version, i,"new testcase is added to this cluster"])
     if dif["removedtc"]:
         for i in dif["removedtc"]:
             c.append([today,version, i,"Testcase is removed from this cluster"])
-
-    print (c)
 
     if c:
         print(len(c))
@@ -375,13 +401,13 @@ if __name__ == '__main__':
             sheet1 = workbook.active
             sheet1.title = "All_TC_Details"
         
-        head = ["S.no" ,"Test Plan","Cluster Name",	"TC ID","TC Name","TC Full Name"]
+        head = ["S.no" ,"Cluster Name","Test Case Name","Test Case ID"," Test Plan "]
         sheet1.append(head)
         
         tc_details(h1_tags1,sheet1,0)
         tc_details(h1_tags2,sheet1,1)
 
-        column_widths = {'A': 10, 'B': 20, 'C': 20 ,'D':30,'E':40,"F":50}  # Specify the column widths as desired
+        column_widths = {'A': 10, 'B': 20, 'C': 50 ,'D':30,'E':30}  # Specify the column widths as desired
 
         for column, width in column_widths.items():
                 sheet1.column_dimensions[column].width = width
@@ -394,13 +420,23 @@ if __name__ == '__main__':
         if e:
             dif = diff(existing_data, current_data)
             print(dif)
-            if "changes" not in sheet_names:
+            if "Test_plan_Changes" not in sheet_names:
 
-                sheet = workbook.create_sheet("changes",1)
+                sheet = workbook.create_sheet("Test_plan_Changes",2)
                 sheet.append(["Date"," commit","Cluster/Testcase","Changes","Column"])
             else:
-                sheet = workbook["changes"]
+                sheet = workbook["Test_plan_Changes"]
 
-            chan(dif, sheet, version)
+            tpchan(dif, sheet, version)
 
-            workbook.save(filename)    
+            print(dif)
+            if "Test_Summary_Changes" not in sheet_names:
+
+                sheet = workbook.create_sheet("Test_Summary_Changes",1)
+                sheet.append(["Date"," commit","Cluster/Testcase","Changes","Column"])
+            else:
+                sheet = workbook["Test_Summary_Changes"]
+
+            tpchan(dif, sheet, version)
+
+        workbook.save(filename)    
