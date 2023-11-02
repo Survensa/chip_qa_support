@@ -41,7 +41,7 @@ def run_command_from_yaml(yaml_file_path):
         file_path = os.path.join(os.path.expanduser('~'), build)
         save_path = os.path.join(os.path.expanduser('~'), "chip_command_run", "logs", "execution_logs")
         os.chdir(file_path)
-        date = datetime.now().strftime("%m_%Y_%d-%I:%M:%S_%p")
+        date = datetime.now().strftime("%m_%Y_%d_(%I_%M_%S_%p)")
 
         log_filename = f"{testcase_name.replace(' ', '_')}-{date}.txt"
         log_file_path = os.path.join(save_path, log_filename)
