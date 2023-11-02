@@ -290,8 +290,8 @@ def find_differences(existing_data, current_data):
     current_clusters = list(current_data.keys())
 
     # Find added and removed clusters
-    added_clusters = list(set(current_clusters).difference(set(existing_clusters))
-    removed_clusters = list(set(existing_clusters).difference(set(current_clusters))
+    added_clusters = list(set(current_clusters).difference(set(existing_clusters)))
+    removed_clusters = list(set(existing_clusters).difference(set(current_clusters)))
 
     # Compare cluster details and test cases for common clusters
     for cluster in current_clusters:
