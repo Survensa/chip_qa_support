@@ -153,7 +153,7 @@ def extract_test_case_details(h1_tags, workbook, sheet1, current_data, test_plan
             h4_tag = h1_tag.find_next('h4', {'id': lambda x: x and x.startswith('_tc')})
             if h4_tag:
                 h4 = h4_tag.text
-                sheet_name = tc_id(h4)
+                sheet_name = extract_test_case_id(h4)
             else:
                 continue
             if sheet_name == "LOWPOWER":
@@ -161,7 +161,7 @@ def extract_test_case_details(h1_tags, workbook, sheet1, current_data, test_plan
             else:
                 h4_tag = h1_tag.find_next('h5', {'id': lambda x: x and x.startswith('_tc')})
                 h4 = h4_tag.text
-                sheet_name = tc_id(h4)
+                sheet_name = extract_test_case_id(h4)
                 sh = re.search(r'-(.*?)-', test_case_id)
                 sheet_name = sh.group(1)
 
