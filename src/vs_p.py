@@ -344,7 +344,7 @@ if __name__ == '__main__':
         soup2 = BeautifulSoup(f, 'html.parser')
 
     version_tag = soup1.find('div', class_='details')
-    version_text = version_tag.find('span', id="revnumber").text
+    version = version_tag.find('span', id="revnumber").text
     h1_tags1 = soup1.find_all('h1', {'id': True})
     h1_tags2 = soup2.find_all('h1', {'id': True})
 	
