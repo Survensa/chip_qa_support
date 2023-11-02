@@ -12,7 +12,7 @@ import json
 today = datetime.date.today().strftime('%Y-%m-%d')
 
 # Output filename
-output_filename = "test_plan_change.xlsx"
+output_filename = "Docs/test_plan_change.xlsx"
 
 try:
     workbook = load_workbook(output_filename)
@@ -21,10 +21,10 @@ except FileNotFoundError:
 
 sheet_names = workbook.sheetnames
 
-app_html_path = '/home/grl/Downloads/allclusters.html'
-main_html_path = '/home/grl/Downloads/index.html'
+app_html_path = 'Docs/Test_Plan_HTML/allclusters.html'
+main_html_path = 'Docs/Test_Plan_HTML/index.html'
 
-json_filename = 'TC_Summary.json'
+json_filename = 'src/TC_Summary_VS.json'
 
 current_data = {}
 
