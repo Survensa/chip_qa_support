@@ -304,6 +304,13 @@ def update_test_plan_changes(changes_dict, sheet, version):
             for j, value in enumerate(changes[i]):
                 sheet.cell(row=i + 2, column=j + 1, value=value)
 
+    else:
+        sheet.insert_rows(2)
+        value = [today,version,"Nil", f"No changes on {today} ", "Nil"]
+        for i in range(0, 1):
+            for j, value in enumerate(value):                                                                                 
+                sheet.cell(row=i + 2, column=j + 1, value=value)
+
 def update_test_case_changes(changes_dict, sheet, version):
     changes = []
     if changes_dict["added_clusters"]:
@@ -326,6 +333,13 @@ def update_test_case_changes(changes_dict, sheet, version):
             sheet.insert_rows(2)
         for i in range(len(changes)):
             for j, value in enumerate(changes[i]):
+                sheet.cell(row=i + 2, column=j + 1, value=value)
+
+    else:
+        sheet.insert_rows(2)
+        value = [today,version,"Nil", f"No changes on {today} ", "Nil"]
+        for i in range(0, 1):
+            for j, value in enumerate(value):                                                                                 
                 sheet.cell(row=i + 2, column=j + 1, value=value)
 
 if __name__ == '__main__':
