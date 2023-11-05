@@ -6,7 +6,7 @@
     - command: "./chip-tool fancontrol read feature-map 1 1"
       logs:
         - " "
-  - command: "./chip-tool fancontrol read attribute-list 1 1"
+    - command: "./chip-tool fancontrol read attribute-list 1 1"
       logs:
         - " "
     - command: "./chip-tool fancontrol read accepted-command-list 1 1"
