@@ -2,6 +2,8 @@ name: YAML Validation
 
 on:
   push:
+    branches:
+      - main
     paths:
       - 'commands/**'
   workflow_dispatch:  
