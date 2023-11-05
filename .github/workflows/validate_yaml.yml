@@ -17,7 +17,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.10.11
+        python-version: 3.x  # Specify the Python version you need
 
     - name: Install dependencies
       run: |
@@ -26,5 +26,5 @@ jobs:
 
     - name: Validate YAML files
       run: |
-        find commands/ -name "*.yaml" -type f -exec python src/validate_yaml.py {} \;
+        python src/validate_yaml.py commands/ || exit 1
       working-directory: .
