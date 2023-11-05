@@ -3,7 +3,7 @@ name: YAML Validation
 on:
   push:
     paths:
-      - 'Commands/**'
+      - 'commands/**'
   workflow_dispatch:  
 
 jobs:
