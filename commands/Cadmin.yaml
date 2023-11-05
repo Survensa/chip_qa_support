@@ -6,7 +6,7 @@
     - command: "./chip-tool operationalcredentials read fabrics 1 0 --fabric-filtered 0"
       logs:
         - " "
-    - command: "./chip-tool pairing code 2 {code} --commissioner-name beta"
+  - command: "./chip-tool pairing code 2 {code} --commissioner-name beta"
       logs:
         - " "
     - command: "avahi-browse -rt _matter._tcp"
