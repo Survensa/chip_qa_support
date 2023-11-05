@@ -51,7 +51,7 @@
     - command: "./chip-tool accesscontrol read extension 1 0"
       logs:
         - " "
-    - command: "./chip-tool accesscontrol write extension '[{"data":"1718"}]' 1 0"
+    - command: "./chip-tool accesscontrol write extension '[{"\data\":\"1718\"}]' 1 0"
       logs:
         - " "
     - command: "./chip-tool accesscontrol read extension 1 0"
