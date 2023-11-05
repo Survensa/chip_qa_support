@@ -19,7 +19,7 @@
       logs:
         - " "
       logs:
-        - " "
+        - " 
 - testcase: "[TC-DRLK-2.1] Attributes check [DUT - Server]"
   commands:
     - command: "./chip-tool doorlock read lock-state 1 1"
