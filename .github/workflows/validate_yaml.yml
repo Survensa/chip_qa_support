@@ -1,0 +1,30 @@
+name: YAML Validation
+
+on:
+  push:
+    paths:
+      - 'Commands/**'
+  workflow_dispatch:  
+
+jobs:
+  validate_yaml:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.10.11
+
+    - name: Install dependencies
+      run: |
+        pip install pyyaml
+      working-directory: src/
+
+    - name: Validate YAML files
+      run: |
+        find commands/ -name "*.yaml" -type f -exec python src/validate_yaml.py {} \;
+      working-directory: .
