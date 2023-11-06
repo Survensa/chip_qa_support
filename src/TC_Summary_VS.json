@@ -136,6 +136,136 @@
             }
         },
         {
+            "Test Case Name": "4.2.2. [TC-OO-2.2] Primary functionality with server as DUT",
+            "Test Case ID": "TC-OO-2.2",
+            "Test Plan": "App Test Case",
+            "Purpose": "This test case verifies the primary functionality of the on/off cluster server.",
+            "PICS": [
+                "OO.S"
+            ],
+            "Pre-condition": {
+                "#": [
+                    "1"
+                ],
+                "Doc. Ref.": [
+                    ""
+                ],
+                "Condition": [
+                    "DUT is powered on and not in a low power state"
+                ],
+                "Notes": [
+                    ""
+                ]
+            },
+            "Test Procedure": {
+                "#": [
+                    "1",
+                    "2a",
+                    "2b",
+                    "3a",
+                    "3b",
+                    "3c",
+                    "3d",
+                    "4a",
+                    "4b",
+                    "4c",
+                    "4d",
+                    "5a",
+                    "5b",
+                    "5c",
+                    "5d",
+                    "6a",
+                    "6b",
+                    "6c",
+                    "6d"
+                ],
+                "Ref": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                "PICS": [
+                    "",
+                    "OO.S.C00.Rsp(Off)",
+                    "OO.S.A0000(OnOff)",
+                    "OO.S.C01.Rsp(On)",
+                    "OO.S.A0000(OnOff)",
+                    "OO.S.C01.Rsp(On)",
+                    "OO.S.A0000(OnOff)",
+                    "OO.S.C00.Rsp(Off)",
+                    "OO.S.A0000(OnOff)",
+                    "OO.S.C00.Rsp(Off)",
+                    "OO.S.A0000(OnOff)",
+                    "OO.S.C02.Rsp(Toggle)",
+                    "OO.S.A0000(OnOff)",
+                    "OO.S.C02.Rsp(Toggle)",
+                    "OO.S.A0000(OnOff)",
+                    "OO.M.ManuallyControlled",
+                    "OO.M.ManuallyControlled, OO.S.A0000(OnOff)",
+                    "OO.M.ManuallyControlled",
+                    "OO.M.ManuallyControlled, OO.S.A0000(OnOff)"
+                ],
+                "Test Step": [
+                    "Commission DUT to TH",
+                    "TH sendsOff commandto DUT",
+                    "after a few seconds, TH readsOnOff attributefrom DUT",
+                    "TH sendsOn commandto DUT",
+                    "after a few seconds, TH readsOnOff attributefrom DUT",
+                    "TH sendsOn commandto DUT",
+                    "after a few seconds, TH readsOnOff attributefrom DUT",
+                    "TH sendsOff commandto DUT",
+                    "after a few seconds, TH readsOnOff attributefrom DUT",
+                    "TH sendsOff commandto DUT",
+                    "after a few seconds, TH readsOnOff attributefrom DUT",
+                    "TH sendsToggle commandto DUT",
+                    "after a few seconds, TH readsOnOff attributefrom DUT",
+                    "TH sendsToggle commandto DUT",
+                    "after a few seconds, TH readsOnOff attributefrom DUT",
+                    "Operate on device to setOnOff attributemanually to on",
+                    "after a few seconds, TH readsOnOff attributefrom DUT",
+                    "Operate on device to setOnOff attributemanually to off",
+                    "after a few seconds, TH readsOnOff attributefrom DUT"
+                ],
+                "Expected Outcome": [
+                    "",
+                    "Verify DUT responds w/ status SUCCESS(0x00)",
+                    "Value has to be FALSE",
+                    "Verify DUT responds w/ status SUCCESS(0x00)",
+                    "Value has to be TRUE",
+                    "Verify DUT responds w/ status SUCCESS(0x00)",
+                    "Value remains TRUE",
+                    "Verify DUT responds w/ status SUCCESS(0x00)",
+                    "Value has to be FALSE",
+                    "Verify DUT responds w/ status SUCCESS(0x00)",
+                    "Value remains FALSE",
+                    "Verify DUT responds w/ status SUCCESS(0x00)",
+                    "Value has to be TRUE",
+                    "Verify DUT responds w/ status SUCCESS(0x00)",
+                    "Value has to be FALSE",
+                    "",
+                    "Value has to be TRUE",
+                    "",
+                    "Value has to be FALSE"
+                ]
+            }
+        },
+        {
             "Test Case Name": "4.2.3. [TC-OO-2.3] Secondary functionality with server as DUT",
             "Test Case ID": "TC-OO-2.3",
             "Test Plan": "App Test Case",
