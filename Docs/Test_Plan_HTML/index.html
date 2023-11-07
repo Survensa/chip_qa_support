@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 42960ba,</span>
-<span id="revdate">2023-11-02 10:20:59 -0700</span>
+<span id="revnumber">version master af43fcc,</span>
+<span id="revdate">2023-11-07 08:09:29 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -31413,48 +31413,48 @@ fields:</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The dac_origin_vendor_id fild is present and dac_origin_product_id fields is not present.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_dac_origin_vid_present_pid_missing (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAA Test Vector: Use Invalid PAA (Not Registered in the DCL).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid_paa (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example: invalid, PID not present and VID not upper case</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_12 (pid=177)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The authorized_paa_list contains one valid PAA which is authorized to sign the PAI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_authorized_paa_list_count0 (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Invalid certificate signature algorithm ECDSA_WITH_SHA1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_sig_algo_ecdsa_with_sha1 (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The authorized_paa_list contains ten PAAs none of which is a valid PAA authorized to sign the PAI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_authorized_paa_list_count10_invalid (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field is missing.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_missing (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The authorized_paa_list contains three PAAs none of which is a valid PAA authorized to sign the PAI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_authorized_paa_list_count3_invalid (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate validity period starts in the past</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_valid_in_past (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The certificate_id field has wrong length.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cert_id_len_wrong (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field has 100 PID values none of which matches the PID value in DAC.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_count100_mismatch (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The certificate_id field is missing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cert_id_missing (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension CA field is wrong (TRUE for DAC and FALSE for PAI)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_ca_wrong (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The certification_type field is missing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cert_type_missing (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The dac_origin_vendor_id and dac_origin_product_id fields present and the VID value doesn&#8217;t match the VID found in the DAC Subject DN.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_dac_origin_vid_pid_present_vid_mismatch (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The certification_type field is set to invalid value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cert_type_wrong (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mpid: is not exactly 4 uppercase hexadecimal digits</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_08 (pid=177)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Invalid CMS digest algorithm SHA1.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_digest_algo_sha1 (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
@@ -31463,88 +31463,88 @@ fields:</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: PID in Subject field doesn&#8217;t match PID in Issuer field</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_subject_pid_mismatch (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Invalid CMS signature algorithm ECDSA_WITH_SHA1.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_sig_algo_ecdsa_with_sha1 (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Invalid certificate signature algorithm ECDSA_WITH_SHA1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_sig_algo_ecdsa_with_sha1 (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Invalid CMS Signature.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_signature (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field has 10 PID values none of which matches the PID value in DAC.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_count10_mismatch (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Invalid CMS version set to v2.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_v2 (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Invalid certificate public key curve secp256k1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_sig_curve_secp256k1 (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The dac_origin_vendor_id fild is not present and dac_origin_product_id is present.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_dac_origin_vid_missing_pid_present (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Key Usage extension critical field is missing</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_key_usage_critical_missing (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The dac_origin_vendor_id and dac_origin_product_id fields present and the PID value doesn&#8217;t match the PID found in the DAC Subject DN.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_dac_origin_vid_pid_present_pid_mismatch (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate doesn&#8217;t include Subject Key ID (SKID) extension</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_skid_missing (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The dac_origin_vendor_id and dac_origin_product_id fields present and the VID value doesn&#8217;t match the VID found in the DAC Subject DN.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_dac_origin_vid_pid_present_vid_mismatch (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Invalid Signer Info version set to v2.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_signer_info_v2 (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The dac_origin_vendor_id fild is present and dac_origin_product_id fields is not present.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_dac_origin_vid_present_pid_missing (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Key Usage extension digitalSignature field is wrong (not present for DAC and present for PAI, which is OK as optional)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_key_usage_dig_sig_wrong (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The device_type_id field is missing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_device_type_id_missing (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate doesn&#8217;t include Authority Key ID (AKID) extension</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_akid_missing (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Invalid format_version field set to 2.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_format_version_2 (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate doesn&#8217;t include Basic Constraint extension</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_missing (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The format_version field is missing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_format_version_missing (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The security_information field is missing.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_security_info_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Key Usage extension keyCertSign field is wrong (present for DAC and not present for PAI)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_key_usage_key_cert_sign_wrong (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The authorized_paa_list contains one valid PAA which is authorized to sign the PAI.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_authorized_paa_list_count0 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field is empty TLV array.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_count0 (pid=32768)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field has one PID value that doesn&#8217;t match the PID value in DAC.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_count01_mismatch (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field has 100 PID values none of which matches the PID value in DAC.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_count100_mismatch (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field has 10 PID values none of which matches the PID value in DAC.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_count10_mismatch (pid=32768)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The vendor_id field doesn&#8217;t match the VID in DAC.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_vid_mismatch (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field is missing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_missing (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">26</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension PathLen field set to 2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_pathlen2 (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The security_information field is missing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_security_info_missing (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">27</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Key Usage extension cRLSign field is wrong (present for DAC and not present for PAI)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_key_usage_crl_sign_wrong (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The security_level field is missing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_security_level_missing (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
@@ -31553,348 +31553,358 @@ fields:</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">29</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example: invalid VID encoding</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_10 (pid=177)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The subjectKeyIdentifier contains invalid SKID of a certificate unknown by Zigbee Alliance.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_signer_info_skid_invalid (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension critical field is set as 'non-critical'</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_critical_wrong (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Invalid Signer Info version set to v2.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_signer_info_v2 (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">31</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mvid: is not exactly 4 uppercase hexadecimal digits</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_07 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">32</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Key Usage extension critical field is missing</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_key_usage_critical_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">33</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field has one PID value that doesn&#8217;t match the PID value in DAC.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_count01_mismatch (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">34</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension critical field is set as 'non-critical'</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_critical_wrong (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">35</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mvid: is not exactly 4 uppercase hexadecimal digits</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_06 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">36</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension critical field is missing</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_critical_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">37</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Key Usage extension critical field is set as 'non-critical'</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_key_usage_critical_wrong (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">38</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example: invalid PID and VID prefixes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_14 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">39</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Invalid CMS signature algorithm ECDSA_WITH_SHA1.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_sig_algo_ecdsa_with_sha1 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Mix of Fallback and Matter OID encoding for VID and PID: invalid, PID is using Matter OID then VID must also use Matter OID</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_17 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">41</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The authorized_paa_list contains three PAAs none of which is a valid PAA authorized to sign the PAI.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_authorized_paa_list_count3_invalid (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">42</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Key Usage extension keyCertSign field is wrong (present for DAC and not present for PAI)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_key_usage_key_cert_sign_wrong (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">43</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate validity period starts in the future</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_valid_in_future (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">44</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Invalid certificate public key curve secp256k1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_sig_curve_secp256k1 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">45</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mvid: is not exactly 4 uppercase hexadecimal digits</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_07 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">46</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The certificate_id field is missing.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cert_id_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">47</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension PathLen field set to 2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_pathlen2 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">48</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example: invalid PID and VID prefixes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_14 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">49</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Mix of Fallback and Matter OID encoding for VID and PID: wrong, Correct values encoded in the common-name are ignored</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_16 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">50</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Invalid certificate version field set to v2(1)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_cert_version_v2 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">51</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate doesn&#8217;t include Key Usage extension</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_key_usage_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">52</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension PathLen field set to 0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_pathlen0 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">53</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The vendor_id field is missing.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_vid_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">54</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The version_number field is missing.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_version_number_missing (pid=32768)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">55</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate validity period starts in the past</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_valid_in_past (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The vendor_id field doesn&#8217;t match the VID in DAC.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_vid_mismatch (pid=32768)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">56</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mvid: is not exactly 4 uppercase hexadecimal digits</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_06 (pid=177)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">33</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The vendor_id field is missing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_vid_missing (pid=32768)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">57</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The certification_type field is set to invalid value.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cert_type_wrong (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">58</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension critical field is missing</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_critical_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">59</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Mix of Fallback and Matter OID encoding for VID and PID: wrong, Correct values encoded in the common-name are ignored</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_16 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate validity period starts in the future</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_valid_in_future (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">61</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The certificate_id field has wrong length.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cert_id_len_wrong (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">62</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension PathLen field presence is wrong (present for DAC not present for PAI)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_pathlen_presence_wrong (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">63</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example: invalid VID prefix</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_13 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">64</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Invalid CMS version set to v2.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_v2 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">65</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example: invalid VID encoding</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_10 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">66</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The security_level field is missing.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_security_level_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">67</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate doesn&#8217;t include Key Usage extension</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_key_usage_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">68</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension CA field is missing</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_ca_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">69</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Invalid format_version field set to 2.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_format_version_2 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">70</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example: invalid, PID not present and VID not upper case</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_12 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">71</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate doesn&#8217;t include Authority Key ID (AKID) extension</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_akid_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">72</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The certification_type field is missing.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cert_type_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">73</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: VID in Subject field doesn&#8217;t match VID in Issuer field</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_subject_vid_mismatch (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">74</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Key Usage extension critical field is set as 'non-critical'</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_key_usage_critical_wrong (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">75</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mpid: is not exactly 4 uppercase hexadecimal digits</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_09 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">76</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate doesn&#8217;t include Basic Constraint extension</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">77</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The dac_origin_vendor_id fild is not present and dac_origin_product_id is present.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_dac_origin_vid_missing_pid_present (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">78</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The authorized_paa_list contains ten PAAs none of which is a valid PAA authorized to sign the PAI.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_authorized_paa_list_count10_invalid (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">79</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate doesn&#8217;t include Subject Key ID (SKID) extension</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_skid_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">80</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAA Test Vector: Use Invalid PAA (Not Registered in the DCL).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">invalid_paa (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">81</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension PathLen field presence is wrong (present for DAC not present for PAI)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_pathlen_presence_wrong (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">82</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Mix of Fallback and Matter OID encoding for VID and PID: invalid, PID is using Matter OID then VID must also use Matter OID</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_17 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">83</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension CA field is missing</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_ca_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">84</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Key Usage extension cRLSign field is wrong (present for DAC and not present for PAI)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_key_usage_crl_sign_wrong (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">85</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension PathLen field set to 1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_pathlen1 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">86</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example: invalid VID prefix</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_13 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">87</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">34</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Invalid certificate version field set to v2(1)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_cert_version_v2 (pid=32768)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">88</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: VID in Subject field doesn&#8217;t match VID in Issuer field</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_subject_vid_mismatch (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate doesn&#8217;t include Authority Key ID (AKID) extension</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_akid_missing (pid=32768)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The format_version field is missing.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_format_version_missing (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">36</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension CA field is missing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_ca_missing (pid=32768)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">90</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The device_type_id field is missing.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_device_type_id_missing (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">37</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension CA field is wrong (TRUE for DAC and FALSE for PAI)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_ca_wrong (pid=32768)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">38</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension critical field is missing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_critical_missing (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">39</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension critical field is set as 'non-critical'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_critical_wrong (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate doesn&#8217;t include Basic Constraint extension</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_missing (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">41</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension PathLen field set to 0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_pathlen0 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">42</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension PathLen field set to 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_pathlen1 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">43</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension PathLen field set to 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_pathlen2 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">44</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Basic Constraint extension PathLen field presence is wrong (present for DAC not present for PAI)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_basic_pathlen_presence_wrong (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">45</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Key Usage extension critical field is missing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_key_usage_critical_missing (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">46</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Key Usage extension critical field is set as 'non-critical'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_key_usage_critical_wrong (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">47</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Key Usage extension cRLSign field is wrong (present for DAC and not present for PAI)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_key_usage_crl_sign_wrong (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">48</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Key Usage extension digitalSignature field is wrong (not present for DAC and present for PAI, which is OK as optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_key_usage_dig_sig_wrong (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">49</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate Key Usage extension keyCertSign field is wrong (present for DAC and not present for PAI)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_key_usage_key_cert_sign_wrong (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate doesn&#8217;t include Key Usage extension</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_key_usage_missing (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">51</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate doesn&#8217;t include Subject Key ID (SKID) extension</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_skid_missing (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">52</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Invalid certificate signature algorithm ECDSA_WITH_SHA1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_sig_algo_ecdsa_with_sha1 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">53</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Invalid certificate public key curve secp256k1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_sig_curve_secp256k1 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">54</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: PID in Subject field doesn&#8217;t match PID in Issuer field</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_subject_pid_mismatch (pid=32768)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">55</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: VID in Subject field doesn&#8217;t match VID in Issuer field</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_subject_vid_mismatch (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">56</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate validity period starts in the future</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_valid_in_future (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">57</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate validity period starts in the past</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_valid_in_past (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">58</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mvid: is not exactly 4 uppercase hexadecimal digits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_06 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">59</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mvid: is not exactly 4 uppercase hexadecimal digits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_07 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mpid: is not exactly 4 uppercase hexadecimal digits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_08 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">61</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mpid: is not exactly 4 uppercase hexadecimal digits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_09 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">62</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example: invalid VID encoding</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_10 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">63</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example: invalid, PID not present and VID not upper case</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_12 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example: invalid VID prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_13 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">65</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example: invalid PID and VID prefixes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_14 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">66</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Mix of Fallback and Matter OID encoding for VID and PID: wrong, Correct values encoded in the common-name are ignored</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_16 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">67</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Mix of Fallback and Matter OID encoding for VID and PID: invalid, PID is using Matter OID then VID must also use Matter OID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_17 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">68</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Invalid certificate version field set to v2(1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_cert_version_v2 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">69</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate doesn&#8217;t include Authority Key ID (AKID) extension</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_akid_missing (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">70</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension CA field is missing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_ca_missing (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">71</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension CA field is wrong (TRUE for DAC and FALSE for PAI)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_ca_wrong (pid=32768)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">93</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The dac_origin_vendor_id and dac_origin_product_id fields present and the PID value doesn&#8217;t match the PID found in the DAC Subject DN.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_dac_origin_vid_pid_present_pid_mismatch (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">72</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension critical field is missing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_critical_missing (pid=32768)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">94</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Invalid CMS digest algorithm SHA1.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_digest_algo_sha1 (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">73</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension critical field is set as 'non-critical'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_critical_wrong (pid=32768)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">95</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Invalid CMS Signature.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_signature (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">74</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate doesn&#8217;t include Basic Constraint extension</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_missing (pid=32768)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">96</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">75</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension PathLen field set to 1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_pathlen1 (pid=32768)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">76</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension PathLen field set to 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_pathlen2 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">77</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension PathLen field presence is wrong (present for DAC not present for PAI)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_pathlen_presence_wrong (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">78</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Key Usage extension critical field is missing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_key_usage_critical_missing (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">79</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Key Usage extension critical field is set as 'non-critical'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_key_usage_critical_wrong (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Key Usage extension cRLSign field is wrong (present for DAC and not present for PAI)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_key_usage_crl_sign_wrong (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">81</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Key Usage extension keyCertSign field is wrong (present for DAC and not present for PAI)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_key_usage_key_cert_sign_wrong (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">82</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate doesn&#8217;t include Key Usage extension</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_key_usage_missing (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">83</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate doesn&#8217;t include Subject Key ID (SKID) extension</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_skid_missing (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">84</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Invalid certificate signature algorithm ECDSA_WITH_SHA1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_sig_algo_ecdsa_with_sha1 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">85</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Invalid certificate public key curve secp256k1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_sig_curve_secp256k1 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">86</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: PID in Subject field doesn&#8217;t match PID in Issuer field</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_subject_pid_mismatch (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">87</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: VID in Subject field doesn&#8217;t match VID in Issuer field</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_subject_vid_mismatch (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">88</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate validity period starts in the future</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_valid_in_future (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate validity period starts in the past</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_valid_in_past (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mvid: is not exactly 4 uppercase hexadecimal digits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_06 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mvid: is not exactly 4 uppercase hexadecimal digits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_07 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mpid: is not exactly 4 uppercase hexadecimal digits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_08 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">93</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: invalid, since substring following Mpid: is not exactly 4 uppercase hexadecimal digits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_09 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">94</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example: invalid VID encoding</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_10 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">95</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example: invalid, PID not present and VID not upper case</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_12 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">96</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example: invalid VID prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_13 (pid=177)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">97</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The subjectKeyIdentifier contains invalid SKID of a certificate unknown by Zigbee Alliance.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_signer_info_skid_invalid (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example: invalid PID and VID prefixes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_14 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">98</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Mix of Fallback and Matter OID encoding for VID and PID: wrong, Correct values encoded in the common-name are ignored</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_16 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">99</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Mix of Fallback and Matter OID encoding for VID and PID: invalid, PID is using Matter OID then VID must also use Matter OID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_17 (pid=177)</p></td>
 </tr>
 </tbody>
 </table>
@@ -32777,148 +32787,158 @@ corresponding CSRRequest Command</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The dac_origin_vendor_id and dac_origin_product_id fields present and contain the VID and PID values that match the VID and PID found in the DAC Subject DN.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_dac_origin_vid_pid_present_match (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The authorized_paa_list contains ten PAAs one of which is valid PAA authorized to sign the PAI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_authorized_paa_list_count10_valid (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Valid certificate signature algorithm ECDSA_WITH_SHA256</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_sig_algo_ecdsa_with_sha256 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Key Usage extension digitalSignature field is wrong (not present for DAC and present for PAI, which is OK as optional)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_key_usage_dig_sig_wrong (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Valid CMS digest algorithm SHA256.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_digest_algo_sha256 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: valid and recommended since easily human-readable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_02 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Valid certificate public key curve prime256v1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_sig_curve_prime256v1 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: valid, but highly discouraged, since embedding of substrings within other substrings may be confusing to human readers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_05 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Valid certificate signature algorithm ECDSA_WITH_SHA256</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_sig_algo_ecdsa_with_sha256 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: valid, but less readable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_04 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Valid CMS signature algorithm ECDSA_WITH_SHA256.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_sig_algo_ecdsa_with_sha256 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: valid, but less readable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_04 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate includes optional Extended Key Usage extension</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_extended_key_usage_present (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Mix of Fallback and Matter OID encoding for VID and PID: valid, Matter OIDs are used and wrong values in the common-name are ignored</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_15 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field has one PID value which matches the PID value in DAC.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_count01_valid (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Valid format_version field set to 1.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_format_version_1 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Valid CMS eContentType pkcs7-data.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_econtent_type_pkcs7_data (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: valid example showing that order or separators are not considered at all for the overall validity of the embedded fields</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_03 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The authorized_paa_list contains one valid PAA which is authorized to sign the PAI.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_authorized_paa_list_count1_valid (pid=32768)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate includes optional Authority Information Access extension</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_authority_info_access_present (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate includes optional Subject Alternative Name extension</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_subject_alt_name_present (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Valid certificate version field set to v3(2)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_cert_version_v3 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Valid certificate public key curve prime256v1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_sig_curve_prime256v1 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Origin VID/PID different than VID/PID (correct use of origin)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_origin_pid_vid_correct (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">26</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example: valid, but less human-readable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_11 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">27</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The optional authorized_paa_list field is not present.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_authorized_paa_list_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension PathLen field set to 0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_pathlen0 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">29</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate includes optional Extended Key Usage extension</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_extended_key_usage_present (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The authorized_paa_list contains two PAAs one of which is valid PAA authorized to sign the PAI.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_authorized_paa_list_count2_valid (pid=32768)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The optional authorized_paa_list field is not present.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_authorized_paa_list_missing (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Valid CMS digest algorithm SHA256.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_digest_algo_sha256 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Valid CMS eContentType pkcs7-data.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_econtent_type_pkcs7_data (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Valid CMS signature algorithm ECDSA_WITH_SHA256.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_sig_algo_ecdsa_with_sha256 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Valid CMS version set to v3.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_v3 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The dac_origin_vendor_id and dac_origin_product_id fields are not present.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_dac_origin_vid_pid_missing (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The dac_origin_vendor_id and dac_origin_product_id fields present and contain the VID and PID values that match the VID and PID found in the DAC Subject DN.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_dac_origin_vid_pid_present_match (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Valid format_version field set to 1.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_format_version_1 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Origin VID/PID different than VID/PID (correct use of origin)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_origin_pid_vid_correct (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field has one PID value which matches the PID value in DAC.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_count01_valid (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field has 100 PID values one of which matches the PID value in DAC.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_count100_valid (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field has 10 PID values one of which matches the PID value in DAC.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_count10_valid (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The subjectKeyIdentifier contains SKID of a well-known Zigbee Alliance certificate.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_signer_info_skid_valid (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The version_number field matches the VID and PID used in a DeviceSoftwareVersionModel entry in the DCL matching the certification record associated with the product presenting this CD.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_version_number_match (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Valid certificate version field set to v3(2)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_cert_version_v3 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate includes optional Authority Information Access extension</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_authority_info_access_present (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate includes optional Extended Key Usage extension</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_extended_key_usage_present (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate includes optional Subject Alternative Name extension</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_subject_alt_name_present (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Valid certificate signature algorithm ECDSA_WITH_SHA256</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_sig_algo_ecdsa_with_sha256 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Valid certificate public key curve prime256v1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_sig_curve_prime256v1 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: valid and recommended since easily human-readable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_01 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: valid and recommended since easily human-readable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_02 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: valid example showing that order or separators are not considered at all for the overall validity of the embedded fields</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_03 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">27</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: valid, but less readable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_04 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: valid, but highly discouraged, since embedding of substrings within other substrings may be confusing to human readers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_05 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example: valid, but less human-readable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_11 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Mix of Fallback and Matter OID encoding for VID and PID: valid, Matter OIDs are used and wrong values in the common-name are ignored</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_15 (pid=177)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">31</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example: valid, but less human-readable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_11 (pid=177)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Valid certificate version field set to v3(2)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_cert_version_v3 (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">32</p></td>
@@ -32927,78 +32947,68 @@ corresponding CSRRequest Command</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">33</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field has 10 PID values one of which matches the PID value in DAC.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_count10_valid (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Basic Constraint extension PathLen field set to 0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_basic_pathlen0 (pid=32768)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">34</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate includes optional Extended Key Usage extension</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_extended_key_usage_present (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate Key Usage extension digitalSignature field is wrong (not present for DAC and present for PAI, which is OK as optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_key_usage_dig_sig_wrong (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">36</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Certificate includes optional Subject Alternative Name extension</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_ext_subject_alt_name_present (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">37</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Valid certificate signature algorithm ECDSA_WITH_SHA256</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_sig_algo_ecdsa_with_sha256 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">38</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Valid certificate public key curve prime256v1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_sig_curve_prime256v1 (pid=32768)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">39</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: valid and recommended since easily human-readable</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_01 (pid=177)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">35</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Mix of Fallback and Matter OID encoding for VID and PID: valid, Matter OIDs are used and wrong values in the common-name are ignored</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_15 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">36</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The dac_origin_vendor_id and dac_origin_product_id fields are not present.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_dac_origin_vid_pid_missing (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">37</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: valid, but highly discouraged, since embedding of substrings within other substrings may be confusing to human readers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_05 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">38</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Fallback VID and PID encoding example from spec: valid and recommended since easily human-readable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_vidpid_fallback_encoding_01 (pid=177)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">39</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The product_id_array field has 100 PID values one of which matches the PID value in DAC.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_pid_array_count100_valid (pid=32768)</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The authorized_paa_list contains ten PAAs one of which is valid PAA authorized to sign the PAI.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_authorized_paa_list_count10_valid (pid=32768)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: valid and recommended since easily human-readable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_02 (pid=177)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">41</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: Valid CMS version set to v3.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_cms_v3 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">42</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The version_number field matches the VID and PID used in a DeviceSoftwareVersionModel entry in the DCL matching the certification record associated with the product presenting this CD.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_version_number_match (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">43</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CD Test Vector: The subjectKeyIdentifier contains SKID of a well-known Zigbee Alliance certificate.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_cd_signer_info_skid_valid (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">44</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: valid example showing that order or separators are not considered at all for the overall validity of the embedded fields</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_03 (pid=177)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">42</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: valid, but less readable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_04 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">43</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: valid, but highly discouraged, since embedding of substrings within other substrings may be confusing to human readers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_05 (pid=177)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">44</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example: valid, but less human-readable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_11 (pid=177)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">45</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Certificate includes optional Subject Alternative Name extension</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_ext_subject_alt_name_present (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">46</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DAC Test Vector: Valid certificate version field set to v3(2)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_dac_cert_version_v3 (pid=32768)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">47</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Fallback VID and PID encoding example from spec: valid and recommended since easily human-readable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_02 (pid=177)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI Test Vector: Mix of Fallback and Matter OID encoding for VID and PID: valid, Matter OIDs are used and wrong values in the common-name are ignored</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">struct_pai_vidpid_fallback_encoding_15 (pid=177)</p></td>
 </tr>
 </tbody>
 </table>
@@ -54278,8 +54288,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 42960ba<br>
-Last updated 2023-11-02 17:21:15 UTC
+Version master af43fcc<br>
+Last updated 2023-11-07 16:09:48 UTC
 </div>
 </div>
 </body>
