@@ -1,7 +1,6 @@
 import os
 import yaml
 import sys
-import glob
 
 def validate_yaml(file_path, count, total_files, failed_flag):
     try:
@@ -12,18 +11,18 @@ def validate_yaml(file_path, count, total_files, failed_flag):
         print(f"Validation failed for {file_path}: {str(e)} ({count}/{total_files})")
         failed_flag[0] = True
 
-if __name__ == '__main__':
+if __name__ == '__main':
     if len(sys.argv) != 2:
-        print("Usage: python validate_yaml.py <file_path>")
+        print("Usage: python validate_yaml.py <directory_path>")
         sys.exit(1)
 
-    file_path = sys.argv[1]
-    if not os.path.exists(file_path):
-        print(f"Validation failed: File {file_path} not found.")
+    directory_path = sys.argv[1]
+    if not os.path.exists(directory_path):
+        print(f"Validation failed: Directory {directory_path} not found.")
         sys.exit(1)
 
-    # Get the list of YAML files to be processed (both .yaml and .yml)
-    yaml_files = glob.glob(os.path.join(os.path.dirname(file_path), '*.[yY][aA][mM][lL]'))
+    # Get the list of YAML and YML files to be processed
+    yaml_files = [os.path.join(directory_path, f) for f in os.listdir(directory_path) if f.lower().endswith(('.yaml', '.yml'))]
 
     total_files = len(yaml_files)
     failed_flag = [False]
