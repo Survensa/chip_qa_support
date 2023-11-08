@@ -23,7 +23,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     # Get the list of YAML files to be processed (both .yaml and .yml)
-    yaml_files = glob.glob(os.path.join(os.path.dirname(file_path), '*.[yY][aA][mM][lL]')
+    yaml_files = glob.glob(os.path.join(os.path.dirname(file_path), '*.[yY][aA][mM][lL]'))
 
     total_files = len(yaml_files)
     failed_flag = [False]
