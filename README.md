@@ -5,4 +5,5 @@
 <br>[![Pull Test case summary from test plan html](https://github.com/Survensa/chip_command_run/actions/workflows/tcdpy.yml/badge.svg)](https://github.com/Survensa/chip_command_run/actions/workflows/tcdpy.yml)
 <br>[![Delete old workflow runs](https://github.com/Survensa/chip_command_run/actions/workflows/delete_old_workflow_runs.yml/badge.svg)](https://github.com/Survensa/chip_command_run/actions/workflows/delete_old_workflow_runs.yml)
 ## Code Check Status :
-[![YAML Validation](https://github.com/Survensa/chip_command_run/actions/workflows/validate_yaml.yml/badge.svg)](https://github.com/Survensa/chip_command_run/actions/workflows/validate_yaml.yml)
+[![Python Lint and Format](https://github.com/Survensa/chip_command_run/actions/workflows/validate_python.yml/badge.svg)](https://github.com/Survensa/chip_command_run/actions/workflows/validate_python.yml)
+<br>[![YAML Validation](https://github.com/Survensa/chip_command_run/actions/workflows/validate_yaml.yml/badge.svg)](https://github.com/Survensa/chip_command_run/actions/workflows/validate_yaml.yml)
