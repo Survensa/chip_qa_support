@@ -1,31 +1,26 @@
-name: Validate YAML
-
+name: YAML Lint
 on:
   push:
-    branches:
-      - main
     paths:
-      - '**.[yY][aA][mM][lL]'
+      - '**/*.yaml'
+      - '**/*.yml'
   workflow_dispatch:
-
+  
 jobs:
-  validate_yaml:
+  lint:
+    name: Lint YAML files
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
-
-      - name: Install dependencies
+      - name: Install yamllint
         run: |
-          pip install pyyaml
-        working-directory: src/  
+          pip install yamllint
+        shell: bash
 
-      - name: Validate YAML files
+      - name: Lint YAML files
         run: |
-          python src/validate_yaml.py ${{ github.workspace }}
+          yamllint .
+        shell: bash
