@@ -21,6 +21,11 @@ jobs:
         with:
           python-version: 3.x
 
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+        working-directory: src/  
+
       - name: Validate YAML files
         run: |
           python src/validate_yaml.py ${{ github.workspace }}
