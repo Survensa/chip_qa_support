@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - '**.yaml'
+      - '**.[yY][aA][mM][lL]'
   workflow_dispatch:      
       
 jobs:
@@ -28,5 +28,5 @@ jobs:
 
       - name: Validate YAML files
         run: |
-          find . -name '*.yaml' -type f -exec python src/validate_yaml.py {} \;
+          find . -name '*.[yY][aA][mM][lL]' -type f -exec python src/validate_yaml.py {} \;
         working-directory: ${{ github.workspace }}
