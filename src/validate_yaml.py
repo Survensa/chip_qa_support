@@ -17,9 +17,12 @@ if __name__ == '__main__':
         sys.exit(1)
 
     file_path = sys.argv[1]
+    if not os.path.exists(file_path):
+        print(f"Validation failed: File {file_path} not found.")
+        sys.exit(1)
 
     # Get the list of YAML files to be processed
-    yaml_files = [f for f in os.listdir(os.path.dirname(file_path)) if f.endswith(".yaml")]
+    yaml_files = [f for f in os.listdir(os.path.dirname(file_path)) if f.endswith(".yaml") or f.endswith(".yml")]
 
     total_files = len(yaml_files)
     failed_flag = [False]
