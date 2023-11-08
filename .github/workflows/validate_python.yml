@@ -1,0 +1,34 @@
+name: Python Lint and Format
+on:
+  push:
+    paths:
+      - '**/*.py'
+
+jobs:
+  lint-and-format:
+    name: Lint and Format Python code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x  # Choose your desired Python version
+
+      - name: Install dependencies
+        run: |
+          pip install flake8 black
+        shell: bash
+
+      - name: Lint Python code
+        run: |
+          flake8 .
+        shell: bash
+
+      - name: Format Python code
+        run: |
+          black .
+        shell: bash
