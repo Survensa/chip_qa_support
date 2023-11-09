@@ -1,0 +1,31 @@
+name: Validate YAML
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'commands/**'
+  workflow_dispatch:
+
+jobs:
+  validate_yaml:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+        working-directory: src/
+
+      - name: Validate YAML files
+        run: |
+          python src/validate_yaml.py commands/ || exit 1
