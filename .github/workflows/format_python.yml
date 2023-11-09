@@ -31,8 +31,8 @@ jobs:
 
       - name: Commit formatted code
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          git config user.name "Survensa"
+          git config user.email "suraj@graniteriverlabs.in"
           git add .
           git diff-index --quiet HEAD || git commit -m "Auto-format Python code by black"
         shell: bash
