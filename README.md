@@ -8,3 +8,4 @@
 [![Format Python](https://github.com/Survensa/chip_command_run/actions/workflows/format_python.yml/badge.svg)](https://github.com/Survensa/chip_command_run/actions/workflows/format_python.yml)
 <br>[![Python Lint and Format](https://github.com/Survensa/chip_command_run/actions/workflows/validate_python.yml/badge.svg)](https://github.com/Survensa/chip_command_run/actions/workflows/validate_python.yml)
 <br>[![YAML Validation](https://github.com/Survensa/chip_command_run/actions/workflows/validate_yaml.yml/badge.svg)](https://github.com/Survensa/chip_command_run/actions/workflows/validate_yaml.yml)
+<br>[![Validate YAML](https://github.com/Survensa/chip_command_run/actions/workflows/parse_yaml.yml/badge.svg)](https://github.com/Survensa/chip_command_run/actions/workflows/parse_yaml.yml)
