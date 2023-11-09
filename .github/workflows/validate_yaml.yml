@@ -22,5 +22,5 @@ jobs:
 
       - name: Lint YAML files
         run: |
-          yamllint -c .yamllint .
+          yamllint -c .github/workflows/.yamllint .
         shell: bash
