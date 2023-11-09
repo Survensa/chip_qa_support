@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Cluster:
     ACE: str = "Access_Control_Enforcement.yaml"
@@ -61,4 +62,3 @@ class Cluster:
     TVOCCONC: str = "Total_Volatile_Organic_Compounds_Concentration_Measurement.yaml"
     ULABEL: str = "User_Lable.yaml"
     WNCV: str = "Window_Covering.yaml"
-  

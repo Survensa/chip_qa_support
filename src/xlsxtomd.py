@@ -1,5 +1,6 @@
 import openpyxl
 
+
 def xlsx_to_md(input_file, output_file):
     # Load the Excel workbook
     workbook = openpyxl.load_workbook(input_file)
@@ -8,9 +9,12 @@ def xlsx_to_md(input_file, output_file):
     sheet = workbook.active
 
     # Open the output file in write mode
-    with open(output_file, 'w') as md_file:
+    with open(output_file, "w") as md_file:
         # Write the table header
-        headers = ["**" + cell.value + "**" if cell.value is not None else "" for cell in next(sheet.iter_rows())]
+        headers = [
+            "**" + cell.value + "**" if cell.value is not None else ""
+            for cell in next(sheet.iter_rows())
+        ]
         md_file.write("|".join(headers) + "|\n")
         md_file.write("|".join(["---"] * len(headers)) + "|\n")
 
@@ -19,8 +23,11 @@ def xlsx_to_md(input_file, output_file):
             md_row = [str(cell.value) if cell.value is not None else "" for cell in row]
             md_file.write("|".join(md_row) + "|\n")
 
+
 if __name__ == "__main__":
     input_file = "Docs/TC_Summary.xlsx"  # Replace with your input Excel file
-    output_file = "Docs/TC_Summary.md"  # Replace with your desired output Markdown file name
+    output_file = (
+        "Docs/TC_Summary.md"  # Replace with your desired output Markdown file name
+    )
 
     xlsx_to_md(input_file, output_file)
