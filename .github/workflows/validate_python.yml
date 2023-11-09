@@ -1,8 +1,10 @@
 name: Python Lint 
+
 on:
-  push:
-    paths:
-      - '**/*.py'
+  workflow_run:
+    workflows: ["Lint Python"]
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
