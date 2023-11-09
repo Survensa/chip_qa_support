@@ -31,5 +31,5 @@ def check_yaml_files(folder_path):
 
 
 if __name__ == "__main__":
-    folder_to_check = "command"
+    folder_to_check = "commands"
     check_yaml_files(folder_to_check)
