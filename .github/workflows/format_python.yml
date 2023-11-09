@@ -1,0 +1,30 @@
+name: Format Python
+on:
+  workflow_run:
+    workflows: ["Lint Python"]
+    types:
+      - completed
+
+jobs:
+  format:
+    name: Format Python code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x  # Choose your desired Python version
+
+      - name: Install black
+        run: |
+          pip install black
+        shell: bash
+
+      - name: Format Python code
+        run: |
+          black .
+        shell: bash
