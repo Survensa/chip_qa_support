@@ -25,6 +25,6 @@ jobs:
         run: |
           for file in $(find . -name "*.yaml" -or -name "*.yml"); do
             echo "Checking $file..."
-            yamllint --without "document-start" --without "line-length" "$file"
+            yamllint -c $GITHUB_WORKSPACE/.github/workflows/.yamllint "$file"
           done
         shell: bash
