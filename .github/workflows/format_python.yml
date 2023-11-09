@@ -4,6 +4,7 @@ on:
     workflows: ["Lint Python"]
     types:
       - completed
+  workflow_dispatch:
 
 jobs:
   format:
