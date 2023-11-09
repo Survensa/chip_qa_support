@@ -1,4 +1,4 @@
-name: Python Lint and Format
+name: Python Lint 
 on:
   push:
     paths:
@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint-and-format:
-    name: Lint and Format Python code
+  lint:
+    name: Lint Python code
     runs-on: ubuntu-latest
 
     steps:
@@ -19,17 +19,12 @@ jobs:
         with:
           python-version: 3.x  # Choose your desired Python version
 
-      - name: Install dependencies
+      - name: Install flake8
         run: |
-          pip install flake8 black
+          pip install flake8
         shell: bash
 
       - name: Lint Python code
         run: |
           flake8 .
-        shell: bash
-
-      - name: Format Python code
-        run: |
-          black .
         shell: bash
