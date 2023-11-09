@@ -22,5 +22,5 @@ jobs:
 
       - name: Lint YAML files
         run: |
-          yamllint .
+          yamllint -c .yamllint .
         shell: bash
