@@ -1,9 +1,8 @@
 name: Format Python
 on:
-  workflow_run:
-    workflows: ["Lint Python"]
-    types:
-      - completed
+  push:
+    paths:
+      - '**/*.py'
   workflow_dispatch:
 
 jobs:
@@ -28,4 +27,17 @@ jobs:
       - name: Format Python code
         run: |
           black .
+        shell: bash
+
+      - name: Commit formatted code
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Auto-format Python code by black"
+        shell: bash
+
+      - name: Push changes
+        run: |
+          git push
         shell: bash
