@@ -2,7 +2,7 @@ name: Python Lint
 
 on:
   workflow_run:
-    workflows: ["Lint Python"]
+    workflows: ["Format Python"]
     types:
       - completed
   workflow_dispatch:
