@@ -18,12 +18,12 @@ jobs:
 
       - name: Debug
         run: |
-          find . -name "*.yaml" -or -name "*.yml"
+          find $GITHUB_WORKSPACE -name "*.yaml" -or -name "*.yml"
         shell: bash
 
       - name: Check YAML files for issues
         run: |
-          for file in $(find . -name "*.yaml" -or -name "*.yml"); do
+          for file in $(find $GITHUB_WORKSPACE -name "*.yaml" -or -name "*.yml"); do
             echo "Checking $file..."
             yamllint -c $GITHUB_WORKSPACE/.github/workflows/.yamllint "$file"
           done
