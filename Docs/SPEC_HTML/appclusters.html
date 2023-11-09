@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master aa5e85b (local changes),</span>
-<span id="revdate">2023-11-06 11:47:44 -0800</span>
+<span id="revnumber">version master aeeb96c (local changes),</span>
+<span id="revdate">2023-11-09 10:01:37 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -10805,8 +10805,8 @@ This cluster provides the device MAC address which is a required input to the Wa
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0000</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MACAddress</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hwadr</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -10828,6 +10828,9 @@ This cluster provides the device MAC address which is a required input to the Wa
 <h5 id="_macaddress_attribute"><a class="anchor" href="#_macaddress_attribute"></a>1.11.4.1. MACAddress Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the current MAC address of the device. Only 48-bit MAC Addresses SHALL be used for this attribute as required by the Wake on LAN protocol.</p>
+</div>
+<div class="paragraph">
+<p>Format of this attribute SHALL be like a hex-encoded string representing the hex address, like <code>12345678ABCD</code>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -44287,8 +44290,8 @@ or null when the account identified in the request does not match the active acc
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SetupPIN</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">min 11</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
@@ -44300,7 +44303,7 @@ or null when the account identified in the request does not match the active acc
 <p>This field SHALL provide the setup PIN code as a text string at least
 11
 characters in length
-or null to indicate that the accounts do not match.</p>
+or empty string to indicate that the accounts do not match.</p>
 </div>
 </div>
 </div>
@@ -54359,8 +54362,8 @@ See the <a href="#ref_OperationalStateCluster">Operational State Cluster</a> for
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master aa5e85b (local changes)<br>
-Last updated 2023-11-09 00:00:30 UTC
+Version master aeeb96c (local changes)<br>
+Last updated 2023-11-09 18:02:00 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
