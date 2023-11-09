@@ -28,5 +28,5 @@ jobs:
 
       - name: Lint Python code
         run: |
-          flake8 --ignore=E501 .
+          flake8 --ignore=E501,W503 .
         shell: bash
