@@ -1,11 +1,12 @@
 name: YAML Lint
+
 on:
   push:
     paths:
       - '**/*.yaml'
       - '**/*.yml'
   workflow_dispatch:
-  
+
 jobs:
   lint:
     name: Lint YAML files
@@ -15,12 +16,15 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Install yamllint
+      - name: Debug
         run: |
-          pip install yamllint
+          find . -name "*.yaml" -or -name "*.yml"
         shell: bash
 
-      - name: Lint YAML files
+      - name: Check YAML files for issues
         run: |
-          yamllint -c .github/workflows/.yamllint .
+          for file in $(find . -name "*.yaml" -or -name "*.yml"); do
+            echo "Checking $file..."
+            yamllint -c .github/workflows/.yamllint "$file"
+          done
         shell: bash
