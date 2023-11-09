@@ -1,10 +1,8 @@
 from bs4 import BeautifulSoup
 import openpyxl
 from openpyxl import load_workbook
-from openpyxl.styles import Font, Alignment
 import re
 import datetime
-import os
 import pandas as pd
 import json
 
