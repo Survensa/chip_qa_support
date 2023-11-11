@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master cf9bacd (local changes),</span>
-<span id="revdate">2023-11-09 10:49:08 -0800</span>
+<span id="revnumber">version master 49003c1 (local changes),</span>
+<span id="revdate">2023-11-10 14:21:13 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -48097,6 +48097,458 @@ Device MAY support additional codes beyond what is indicated in feature flags.</
 </tbody>
 </table>
 </div>
+<div class="sect5">
+<h6 id="ref_CecKeyCodeEnum"><a class="anchor" href="#ref_CecKeyCodeEnum"></a>1.20.8.5.2. CecKeyCodeEnum Type</h6>
+<div class="paragraph">
+<p>This data type is derived from enum8.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Select</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x01</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Up</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x02</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Down</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x03</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Left</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Right</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x05</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RightUp</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x06</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RightDown</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x07</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LeftUp</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x08</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LeftDown</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x09</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RootMenu</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SetupMenu</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0B</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ContentsMenu</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FavoriteMenu</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0D</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Exit</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MediaTopMenu</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MediaContextSensitiveMenu</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x1D</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NumberEntryMode</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x1E</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Number11</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x1F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Number12</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Number0OrNumber10</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Numbers1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Numbers2</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Numbers3</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Numbers4</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Numbers5</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x26</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Numbers6</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x27</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Numbers7</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x28</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Numbers8</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Numbers9</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x2A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Dot</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x2B</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enter</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x2C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Clear</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x2F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NextFavorite</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ChannelUp</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x31</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ChannelDown</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PreviousChannel</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x33</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SoundSelect</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x34</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>InputSelect</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x35</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DisplayInformation</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x36</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Help</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x37</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PageUp</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x38</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PageDown</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x40</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Power</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x41</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>VolumeUp</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x42</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>VolumeDown</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x43</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mute</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x44</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Play</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x45</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Stop</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x46</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pause</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x47</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Record</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x48</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Rewind</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x49</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FastForward</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x4A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Eject</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x4B</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Forward</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x4C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Backward</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x4D</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>StopRecord</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x4E</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PauseRecord</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x4F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Reserved</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x50</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Angle</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x51</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SubPicture</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x52</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>VideoOnDemand</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x53</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ElectronicProgramGuide</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x54</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TimerProgramming</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x55</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>InitialConfiguration</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x56</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SelectBroadcastType</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x57</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SelectSoundPresentation</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PlayFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x61</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PausePlayFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x62</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RecordFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x63</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PauseRecordFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x64</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>StopFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x65</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MuteFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x66</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RestoreVolumeFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x67</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TuneFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x68</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SelectMediaFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x69</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SelectAvInputFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x6A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SelectAudioInputFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x6B</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PowerToggleFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x6C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PowerOffFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x6D</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PowerOnFunction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x71</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>F1Blue</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x72</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>F2Red</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x73</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>F3Green</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x74</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>F4Yellow</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x75</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>F5</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x76</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Data</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="sect4">
 <h5 id="_commands_23"><a class="anchor" href="#_commands_23"></a>1.20.8.6. Commands</h5>
@@ -48174,7 +48626,7 @@ then the endpoint will consider the last key press to be a release.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>KeyCode</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_CecKeyCodeEnum">CecKeyCodeEnum</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -49914,7 +50366,7 @@ the Video Player device containing the endpoint SHALL launch the Content App whe
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Identifier</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -49987,8 +50439,8 @@ the Video Player device containing the endpoint SHALL launch the Content App whe
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CurrentTarget</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0xFF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 </tr>
@@ -50005,10 +50457,10 @@ The list SHALL not contain any entries with the same Identifier in the TargetInf
 <h6 id="_currenttarget_attribute"><a class="anchor" href="#_currenttarget_attribute"></a>1.20.11.5.2. CurrentTarget Attribute</h6>
 <div class="paragraph">
 <p>This attribute SHALL represent the Identifier for the target which is currently in foreground on the corresponding Endpoint (Video Player or Content App),
-or null to indicate that no target is in the foreground.</p>
+or 0xFF to indicate that no target is in the foreground.</p>
 </div>
 <div class="paragraph">
-<p>When not null, the CurrentTarget SHALL be an Identifier value contained within one of the TargetInfoStruct objects in the TargetList attribute list.</p>
+<p>When not 0xFF, the CurrentTarget SHALL be an Identifier value contained within one of the TargetInfoStruct objects in the TargetList attribute list.</p>
 </div>
 </div>
 </div>
@@ -54362,8 +54814,8 @@ See the <a href="#ref_OperationalStateCluster">Operational State Cluster</a> for
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master cf9bacd (local changes)<br>
-Last updated 2023-11-10 00:00:33 UTC
+Version master 49003c1 (local changes)<br>
+Last updated 2023-11-11 00:00:34 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
