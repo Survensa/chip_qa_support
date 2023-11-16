@@ -21,6 +21,7 @@ class Cluster:
     DGETH: str = "Ethernet_Diag.yaml"
     DGSW: str = "Software_Diag.yaml"
     DISHM: str = "Dishwasher_Mode_Cluster.yaml"
+    DRLK: str = "Door_lock.yaml"
     FLABEL: str = "Fixed_Lable.yaml"
     FLDCONC: str = "Formaldehyde_Concentration_Measurement.yaml"
     FAN: str = "Fan_Control.yaml"
@@ -61,4 +62,5 @@ class Cluster:
     TSTAT: str = "Thermostat.yaml"
     TVOCCONC: str = "Total_Volatile_Organic_Compounds_Concentration_Measurement.yaml"
     ULABEL: str = "User_Lable.yaml"
+    WASHERTCTRL: str = "Washer_Control.yaml"
     WNCV: str = "Window_Covering.yaml"
