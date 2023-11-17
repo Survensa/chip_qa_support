@@ -1,4 +1,4 @@
-- testcase: "[TC-PCC-1.1] Global attributes with server as DUT"
+- testcase: "[TC-LOWPOWER-1.1] Global attributes - Low Power Cluster (DUT as Server)"
   commands:
     - command: "./chip-tool pumpconfigurationandcontrol read cluster-revision 1 1"
       logs:
@@ -17,6 +17,7 @@
         - " "
       logs:
         - " "
+    
 - testcase: "[TC-PCC-2.1] Attributes with server as DUT"
   commands:
     - command: "./chip-tool pumpconfigurationandcontrol read max-pressure 1 1"
