@@ -76,7 +76,7 @@ def run_command_from_yaml(yaml_file_path):
         print(f"EXT:CMP : {testcase_name} ")
         print(f"EXT:LOG : {log_filename}")
         print(
-            f"EXT:COS : ****************************************************************"
+            "EXT:COS : ****************************************************************"
         )
 
 
@@ -131,7 +131,7 @@ if __name__ == "__main__":
         if not selected_clusters:
             clusters_confirmation = (
                 input(
-                    f"\nEXT:ASK : Proceed with all the clusters for execution (Y/Yes to proceed): "
+                    "\nEXT:ASK : Proceed with all the clusters for execution (Y/Yes to proceed): "
                 )
                 .strip()
                 .lower()
@@ -148,7 +148,7 @@ if __name__ == "__main__":
                 .lower()
             )
             print(
-                f"\nEXT:COS : ****************************************************************"
+                "\nEXT:COS : ****************************************************************"
             )
         if clusters_confirmation in ["y", "yes"]:
             if selected_clusters:
@@ -168,7 +168,7 @@ if __name__ == "__main__":
                         f"\nEXT:SUS : Execution completed and Logged in {output_directory}"
                     )
             else:
-                print(f"\nEXT:CNL : No cluster selected for execution.")
+                print("\nEXT:CNL : No cluster selected for execution.")
         else:
             print(
                 f"\nEXT:CNL : Execution Canceled With The User Input: {clusters_confirmation}"
