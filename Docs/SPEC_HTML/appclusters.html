@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 0267d81 (local changes),</span>
-<span id="revdate">2023-11-28 13:46:41 -0500</span>
+<span id="revnumber">version master 5685085 (local changes),</span>
+<span id="revdate">2023-11-28 17:33:54 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -28658,13 +28658,13 @@ range are still satisfactory.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HeatingType</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type of heating used by the HVAC system.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HeatingIsHeatPump</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is the heating type Heat Pump.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HeatingFuel</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type of fuel used by the HVAC system.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HeatingUsesFuel</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the HVAC system use fuel.</p></td>
 </tr>
 </tbody>
 </table>
@@ -28713,9 +28713,9 @@ range are still satisfactory.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_heatingtype_bit"><a class="anchor" href="#_heatingtype_bit"></a>4.3.8.6.3. HeatingType Bit</h6>
+<h6 id="_heatingisheatpump_bit"><a class="anchor" href="#_heatingisheatpump_bit"></a>4.3.8.6.3. HeatingIsHeatPump Bit</h6>
 <div class="paragraph">
-<p>This bit SHALL indicate whether the HVAC system is conventional or uses a heat pump.</p>
+<p>This bit SHALL indicate whether the HVAC system is conventional or a heat pump.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -28729,17 +28729,17 @@ range are still satisfactory.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_heatingfuel_bit"><a class="anchor" href="#_heatingfuel_bit"></a>4.3.8.6.4. HeatingFuel Bit</h6>
+<h6 id="_heatingusesfuel_bit"><a class="anchor" href="#_heatingusesfuel_bit"></a>4.3.8.6.4. HeatingUsesFuel Bit</h6>
 <div class="paragraph">
-<p>This bit SHALL indicate whether the HVAC system is electric or gas.</p>
+<p>This bit SHALL indicate whether the HVAC system uses fuel.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>0 = Electric</p>
+<p>0 = Does not use fuel</p>
 </li>
 <li>
-<p>1 = Gas</p>
+<p>1 = Uses fuel</p>
 </li>
 </ul>
 </div>
@@ -28767,8 +28767,7 @@ range are still satisfactory.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ScheduleActive</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Schedule programming mode. This enables any
-                               programmed weekly schedule configurations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Schedule programming mode. This enables any programmed weekly schedule configurations.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -28883,7 +28882,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_ScheduleDayOfWeekBitmap"><a class="anchor" href="#ref_ScheduleDayOfWeekBitmap"></a>4.3.8.10. DayOfWeek Type</h5>
+<h5 id="ref_ScheduleDayOfWeekBitmap"><a class="anchor" href="#ref_ScheduleDayOfWeekBitmap"></a>4.3.8.10. ScheduleDayOfWeekBitmap Type</h5>
 <div class="paragraph">
 <p>This data type is derived from map8.</p>
 </div>
@@ -28945,7 +28944,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_ScheduleModeBitmap"><a class="anchor" href="#ref_ScheduleModeBitmap"></a>4.3.8.11. ModeForSequence Type</h5>
+<h5 id="ref_ScheduleModeBitmap"><a class="anchor" href="#ref_ScheduleModeBitmap"></a>4.3.8.11. ScheduleModeBitmap Type</h5>
 <div class="paragraph">
 <p>This data type is derived from map8.</p>
 </div>
@@ -28977,7 +28976,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_SetpointRaiseLowerModeBitmap"><a class="anchor" href="#ref_SetpointRaiseLowerModeBitmap"></a>4.3.8.12. SetpointAdjustMode Type</h5>
+<h5 id="ref_SetpointRaiseLowerModeBitmap"><a class="anchor" href="#ref_SetpointRaiseLowerModeBitmap"></a>4.3.8.12. SetpointRaiseLowerModeBitmap Type</h5>
 <div class="paragraph">
 <p>This data type is derived from map8.</p>
 </div>
@@ -29289,7 +29288,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_ControlSequenceOfOperationEnum"><a class="anchor" href="#ref_ControlSequenceOfOperationEnum"></a>4.3.8.19. ThermostatControlSequence Type</h5>
+<h5 id="ref_ControlSequenceOfOperationEnum"><a class="anchor" href="#ref_ControlSequenceOfOperationEnum"></a>4.3.8.19. ControlSequenceOfOperationEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -29412,7 +29411,7 @@ HeatingOnly based on the current capability.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_StartOfWeekEnum"><a class="anchor" href="#ref_StartOfWeekEnum"></a>4.3.8.21. StartOfWeek Type</h5>
+<h5 id="ref_StartOfWeekEnum"><a class="anchor" href="#ref_StartOfWeekEnum"></a>4.3.8.21. StartOfWeekEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -29478,7 +29477,7 @@ HeatingOnly based on the current capability.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_SystemModeEnum"><a class="anchor" href="#ref_SystemModeEnum"></a>4.3.8.22. ThermostatSystemMode Type</h5>
+<h5 id="ref_SystemModeEnum"><a class="anchor" href="#ref_SystemModeEnum"></a>4.3.8.22. SystemModeEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -29555,7 +29554,7 @@ HeatingOnly based on the current capability.</p>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 35. Interpretation of Heat, Cool and Auto <a href="#ref_SystemModeEnum">ThermostatSystemMode</a> Values</caption>
+<caption class="title">Table 35. Interpretation of Heat, Cool and Auto <a href="#ref_SystemModeEnum">SystemModeEnum</a> Values</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -29593,7 +29592,7 @@ HeatingOnly based on the current capability.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_TemperatureSetpointHoldEnum"><a class="anchor" href="#ref_TemperatureSetpointHoldEnum"></a>4.3.8.23. TemperatureSetpointHold Type</h5>
+<h5 id="ref_TemperatureSetpointHoldEnum"><a class="anchor" href="#ref_TemperatureSetpointHoldEnum"></a>4.3.8.23. TemperatureSetpointHoldEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -29629,7 +29628,7 @@ HeatingOnly based on the current capability.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_ThermostatScheduleTransitionStruct"><a class="anchor" href="#ref_ThermostatScheduleTransitionStruct"></a>4.3.8.24. ThermostatScheduleTransition Type</h5>
+<h5 id="ref_WeeklyScheduleTransitionStruct"><a class="anchor" href="#ref_WeeklyScheduleTransitionStruct"></a>4.3.8.24. WeeklyScheduleTransitionStruct Type</h5>
 <div class="paragraph">
 <p>This represents a single transition in a Thermostat schedule</p>
 </div>
@@ -29702,15 +29701,13 @@ be represented by 1410 minutes since midnight.</p>
 <div class="sect5">
 <h6 id="_heatsetpoint_field"><a class="anchor" href="#_heatsetpoint_field"></a>4.3.8.24.2. HeatSetpoint Field</h6>
 <div class="paragraph">
-<p>This field SHALL represent the heat setpoint to be applied at this associated transition
-start time.</p>
+<p>This field SHALL represent the heat setpoint to be applied at this associated transition start time.</p>
 </div>
 </div>
 <div class="sect5">
 <h6 id="_coolsetpoint_field"><a class="anchor" href="#_coolsetpoint_field"></a>4.3.8.24.3. CoolSetpoint Field</h6>
 <div class="paragraph">
-<p>This field SHALL represent the cool setpoint to be applied at this associated transition
-start time.</p>
+<p>This field SHALL represent the cool setpoint to be applied at this associated transition start time.</p>
 </div>
 </div>
 </div>
@@ -29954,7 +29951,7 @@ start time.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x001B</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ControlSequenceOfOperation</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ControlSequenceOfOperationEnum">ThermostatControlSequence</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ControlSequenceOfOperationEnum">ControlSequenceOfOperationEnum</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
@@ -29964,7 +29961,7 @@ start time.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x001C</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SystemMode</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SystemModeEnum">ThermostatSystemMode</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SystemModeEnum">SystemModeEnum</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -29984,7 +29981,7 @@ start time.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x001E</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ThermostatRunningMode</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SystemModeEnum">ThermostatSystemMode</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SystemModeEnum">SystemModeEnum</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
@@ -29994,7 +29991,7 @@ start time.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0020</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>StartOfWeek</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_StartOfWeekEnum">StartOfWeek</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_StartOfWeekEnum">StartOfWeekEnum</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">–</p></td>
@@ -30024,7 +30021,7 @@ start time.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0023</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TemperatureSetpointHold</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_TemperatureSetpointHoldEnum">TemperatureSetpointHold</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_TemperatureSetpointHoldEnum">TemperatureSetpointHoldEnum</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
@@ -30625,7 +30622,7 @@ generated, with the alarm code field set as listed in <a href="#ref_AlarmCodeBit
 <h5 id="_thermostatrunningmode_attribute"><a class="anchor" href="#_thermostatrunningmode_attribute"></a>4.3.9.27. ThermostatRunningMode Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the running mode of the thermostat.
-This attribute uses the <a href="#ref_SystemModeEnum">ThermostatSystemMode</a> but
+This attribute uses the <a href="#ref_SystemModeEnum">SystemModeEnum</a> but
 can only be Off, Cool or Heat. This attribute is intended to provide
 additional information when the thermostat&#8217;s system mode is in auto mode.</p>
 </div>
@@ -31072,7 +31069,7 @@ measured locally or remotely (over the network).</p>
 <p>Upon receipt, the attributes for the indicated setpoint(s) SHALL have the amount specified in the Amount field added to them.
 If the resulting value is outside the limits imposed by <a href="#ref_MinCoolSetpointLimit">MinCoolSetpointLimit</a>,
 <a href="#ref_MaxCoolSetpointLimit">MaxCoolSetpointLimit</a>, <a href="#ref_MinHeatSetpointLimit">MinHeatSetpointLimit</a> and <a href="#ref_MaxHeatSetpointLimit">MaxHeatSetpointLimit</a>,
-the value is clamped to those limits.  This is not considered an error condition.</p>
+the value is clamped to those limits. This is not considered an error condition.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -31099,7 +31096,7 @@ the value is clamped to those limits.  This is not considered an error condition
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mode</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SetpointRaiseLowerModeBitmap">SetpointAdjustMode</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SetpointRaiseLowerModeBitmap">SetpointRaiseLowerModeBitmap</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -31218,7 +31215,7 @@ DayOfWeekforSequence or ModeForSequence, the status of the response SHALL be INV
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DayOfWeekforSequence</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ScheduleDayOfWeekBitmap">DayOfWeek</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ScheduleDayOfWeekBitmap">ScheduleDayOfWeekBitmap</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -31227,7 +31224,7 @@ DayOfWeekforSequence or ModeForSequence, the status of the response SHALL be INV
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ModeForSequence</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ScheduleModeBitmap">ModeForSequence</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ScheduleModeBitmap">ScheduleModeBitmap</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -31236,7 +31233,7 @@ DayOfWeekforSequence or ModeForSequence, the status of the response SHALL be INV
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Transitions</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list[<a href="#ref_ThermostatScheduleTransitionStruct">ThermostatScheduleTransition</a>]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list[<a href="#ref_WeeklyScheduleTransitionStruct">WeeklyScheduleTransitionStruct</a>]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">max 10</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -31360,7 +31357,7 @@ return.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DaysToReturn</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ScheduleDayOfWeekBitmap">DayOfWeek</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ScheduleDayOfWeekBitmap">ScheduleDayOfWeekBitmap</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -31369,7 +31366,7 @@ return.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ModeToReturn</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ScheduleModeBitmap">ModeForSequence</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ScheduleModeBitmap">ScheduleModeBitmap</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -55391,8 +55388,8 @@ See the <a href="#ref_OperationalStateCluster">Operational State Cluster</a> for
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 0267d81 (local changes)<br>
-Last updated 2023-11-29 00:00:52 UTC
+Version master 5685085 (local changes)<br>
+Last updated 2023-11-29 01:34:13 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
