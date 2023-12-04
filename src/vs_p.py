@@ -93,8 +93,15 @@ def extract_testcase_details(h4_tag, test_plan):
     return header_text, data
 
 
-def extract_testcase_details_from_html(html_path, header_tag, second_header_text):
-    with open(html_path) as file:
+def extract_testcase_details_from_html(test_plan_type, header_tag, second_header_text):
+    if test_plan_type == 0:
+		get_test_plan_type = "App Test Case"
+		html_path = app_html_path
+	else:
+		get_test_plan_type = "App Test Case"
+		html_path = main_html_path
+	
+	with open(html_path) as file:
         soup = BeautifulSoup(file, "lxml")
 
     header_tags = soup.find_all("h1", {"id": True})
@@ -510,7 +517,7 @@ def main():
     header = ["S.no", "Cluster Name", "Test Case Name", "Test Case ID", " Test Plan "]
     excel_sheet.append(header)
 
-    cluster_enclosures_app = cluster_enclose(h1_tags_app)
+    cluster_enclosures_app = enclose_clusters(h1_tags_app)
     print(f"Cluster enclosures in app HTML: {cluster_enclosures_app}")
 
     if len(cluster_enclosures_app) == len(h1_tags_app):
@@ -520,7 +527,7 @@ def main():
         ]
         print("Extracting test case details from app HTML...")
         results = Parallel(n_jobs=-1)(
-            delayed(tc_details)(a, b, c) for a, b, c in input_data
+            delayed(extract_testcase_details_from_html)(a, b, c) for a, b, c in input_data
         )
 
         for result in results:
@@ -530,7 +537,9 @@ def main():
     else:
         print("Failed to extract test case details from app HTML")
 
-    cluster_enclosures_main = cluster_enclose(h1_tags_main)
+    cluster_enclosures_main = enclose_clusters(h1_tags_main)
+    print(f"Cluster enclosures in main HTML: {cluster_enclosures_main}")
+
 
     if len(cluster_enclosures_main) == len(h1_tags_main):
         input_data = [
@@ -539,7 +548,7 @@ def main():
         ]
         print("Extracting test case details from main HTML...")
         results = Parallel(n_jobs=-1)(
-            delayed(tc_details)(a, b, c) for a, b, c in input_data
+            delayed(extract_testcase_details_from_html)(a, b, c) for a, b, c in input_data
         )
 
         for result in results:
