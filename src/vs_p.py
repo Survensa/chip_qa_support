@@ -8,7 +8,7 @@ import os
 import pandas as pd
 import json
 
-today = datetime.date.today().strftime('%Y-%m-%d')
+today = datetime.date.today().strftime("%Y-%m-%d")
 filename = f"test_plan_change.xlsx"
 
 try:
@@ -18,136 +18,149 @@ except FileNotFoundError:
 
 sheet_names = workbook.sheetnames
 
-app = '/home/grl/Downloads/allclusters.html'
-main = '/home/grl/Downloads/index.html'
+app = "/home/grl/Downloads/allclusters.html"
+main = "/home/grl/Downloads/index.html"
 
-json_filename = 'TC_Summary.json'
+json_filename = "TC_Summary.json"
 
-current_data ={}
+current_data = {}
 
-def tc_id (head):
-    testcase1 = re.search(r'\[(.*?)\]',head)
+
+def tc_id(head):
+    testcase1 = re.search(r"\[(.*?)\]", head)
     if testcase1:
         matched_str = testcase1.group()  # Extract the matched substring
-        testcase = re.sub(r'\[|\]', '', matched_str)
+        testcase = re.sub(r"\[|\]", "", matched_str)
 
     return testcase
 
+
 def tc(h4_tag, new_sheet, tp):
     d = {}
-    headt= h4_tag.text
+    headt = h4_tag.text
     new_sheet.append([headt])
     d["Test Case Name"] = headt
     d["Test Case ID"] = tc_id(headt)
     d["Test Plan"] = tp
     new_sheet.append([""])
     new_sheet.append(["Purpose"])
-    pur_tag = h4_tag.find_next('h5', {'id': lambda x: x and x.startswith('_purpose')})
-    pur = pur_tag.find_next('p')
-    purt =pur.text
+    pur_tag = h4_tag.find_next("h5", {"id": lambda x: x and x.startswith("_purpose")})
+    pur = pur_tag.find_next("p")
+    purt = pur.text
     new_sheet.append([purt])
     d["Purpose"] = purt
     new_sheet.append([""])
     new_sheet.append(["PICS"])
     d["PICS"] = []
-    pics_tag = h4_tag.find_next('h5', {'id': lambda x: x and x.startswith('_pics')})
-    ul_div = pics_tag.find_next('div', class_='ulist')
+    pics_tag = h4_tag.find_next("h5", {"id": lambda x: x and x.startswith("_pics")})
+    ul_div = pics_tag.find_next("div", class_="ulist")
     if ul_div:
-        p_tag = ul_div.find_all('p')
+        p_tag = ul_div.find_all("p")
     else:
-        pics_tag = pics_tag.find_next('h5', {'id': lambda x: x and x.startswith('_pics')})
-        ul_div = pics_tag.find_next('div', class_='ulist')
-        p_tag = ul_div.find_all('p')
+        pics_tag = pics_tag.find_next(
+            "h5", {"id": lambda x: x and x.startswith("_pics")}
+        )
+        ul_div = pics_tag.find_next("div", class_="ulist")
+        p_tag = ul_div.find_all("p")
     for p in p_tag:
         pt = p.text
         new_sheet.append([pt])
         d["PICS"].append(pt)
     new_sheet.append([""])
     new_sheet.append(["Pre-condition"])
-    pre_tag = h4_tag.find_next('h5', {'id': lambda x: x and x.startswith('_preconditions')})
+    pre_tag = h4_tag.find_next(
+        "h5", {"id": lambda x: x and x.startswith("_preconditions")}
+    )
     if pre_tag:
         d["Pre-condition"] = {}
-        table = pre_tag.find_next('table')
+        table = pre_tag.find_next("table")
         if table:
             data_dict = create_df(table)
         if data_dict:
             d["Pre-condition"] = data_dict
             keys = list(data_dict.keys())
             new_sheet.append(keys)
-                   
+
             for i in range(len(list(data_dict.values())[0])):
-                val =[]
+                val = []
                 for key, value in data_dict.items():
                     if i < len(value):
-                        val.append(value[i]) 
+                        val.append(value[i])
                 new_sheet.append(val)
-            
+
     else:
-            new_sheet.append(["nil"])
-            d["Pre-condition"] = "Nil"
+        new_sheet.append(["nil"])
+        d["Pre-condition"] = "Nil"
     new_sheet.append([""])
     new_sheet.append(["Test Procedure"])
-    h5_tags = h4_tag.find_next('h5', {'id': lambda x: x and x.startswith('_test_procedure')}) 
+    h5_tags = h4_tag.find_next(
+        "h5", {"id": lambda x: x and x.startswith("_test_procedure")}
+    )
     if h5_tags:
         None
     else:
-        h5_tags = h4_tag.find_next('h6', {'id': lambda x: x and x.startswith('_test_procedure')}) 
-    table = h5_tags.find_next('table')
-    data_dict =   create_df(table)
+        h5_tags = h4_tag.find_next(
+            "h6", {"id": lambda x: x and x.startswith("_test_procedure")}
+        )
+    table = h5_tags.find_next("table")
+    data_dict = create_df(table)
     d["Test Procedure"] = data_dict
     keys = list(data_dict.keys())
     new_sheet.append(keys)
     for i in range(len(list(data_dict.values())[0])):
-        val =[]
+        val = []
         for key, value in data_dict.items():
             if i < len(value):
-                val.append(value[i]) 
+                val.append(value[i])
         new_sheet.append(val)
     new_sheet.append([""])
     new_sheet.append([""])
     new_sheet.append([""])
     workbook.save(filename)
 
-    return headt , d
+    return headt, d
 
 
-def tc_details (h1_tags,sheet1,a):
+def tc_details(h1_tags, sheet1, a):
     if a == 0:
         tp = "App Test Case"
     else:
-        tp = "Core Test Case" 
-    
+        tp = "Core Test Case"
+
     for i in range(len(h1_tags)):
-        
         h1 = h1_tags[i].text
-        cluster_name =  h1.replace(' Cluster Test Plan', '') \
-            .replace(' Cluster TestPlan', '') \
-            .replace(' Cluster', '') \
-            .replace(' cluster', '') \
-            .replace(' Test Plan', '')
+        cluster_name = (
+            h1.replace(" Cluster Test Plan", "")
+            .replace(" Cluster TestPlan", "")
+            .replace(" Cluster", "")
+            .replace(" cluster", "")
+            .replace(" Test Plan", "")
+        )
 
         if h1 == "MCORE PICS Definition":
             continue
         if h1 == "Bulk Data Exchange Protocol Test Plan":
             sheet = "BR"
         else:
-            h4t = h1_tags[i].find_next('h4', {'id': lambda x: x and x.startswith('_tc')})
+            h4t = h1_tags[i].find_next(
+                "h4", {"id": lambda x: x and x.startswith("_tc")}
+            )
             h4 = h4t.text
-            
+
             sn = tc_id(h4)
-            sh = re.search(r'-(.*?)-', sn)
+            sh = re.search(r"-(.*?)-", sn)
             sheet = sh.group(1)
             if sheet:
                 if sheet == "LOWPOWER":
                     sheet = "MC"
             else:
-                h4 = h1.find_next('h5', {'id': lambda x: x and x.startswith('_tc')})
+                h4 = h1.find_next("h5", {"id": lambda x: x and x.startswith("_tc")})
                 h4 = h4_tag[i].text
                 sheet = tc_id(h4)
-                sh = re.search(r'-(.*?)-', sn)
+                sh = re.search(r"-(.*?)-", sn)
                 sheet = sh.group(1)
-        
-        print (sheet)
+
+        print(sheet)
         if sheet in sheet_names:
             workbook.remove(workbook[sheet])
             workbook.create_sheet(sheet, sheet_names.index(sheet))
@@ -160,111 +173,121 @@ def tc_details (h1_tags,sheet1,a):
         clus = current_data[cluster_name] = []
 
         first_h1 = h1_tags[i]  # Select the first h1 tag in the pair
-        if i == (len(h1_tags)-1):
+        if i == (len(h1_tags) - 1):
             second_h1 = False
         else:
-            second_h1 = h1_tags[i+1]  # Select the second h1 tag in the pair
-            
+            second_h1 = h1_tags[i + 1]  # Select the second h1 tag in the pair
+
         # Find all h5 tags after the first h1 tag with id starting with the value
-        h5_tags = first_h1.find_all_next('h5', {'id': lambda x: x and x.startswith('_test_procedure')})  
+        h5_tags = first_h1.find_all_next(
+            "h5", {"id": lambda x: x and x.startswith("_test_procedure")}
+        )
 
         result = []
         if second_h1:
             for h5_tag in h5_tags:
-                if h5_tag.find_previous('h1') == first_h1:
-                    if h5_tag.find_next('h1') == second_h1:
+                if h5_tag.find_previous("h1") == first_h1:
+                    if h5_tag.find_next("h1") == second_h1:
                         result.append(h5_tag)
-        
+
         else:
             for h5_tag in h5_tags:
                 result.append(h5_tag)
 
         if result:
-                heads = []
-                for h5_tag in result:
-                    h4_tag = h5_tag.find_previous('h4')
-                    headt, d = tc(h4_tag,new_sheet, tp)
-                    clus.append(d)
-                    heads.append(headt)
+            heads = []
+            for h5_tag in result:
+                h4_tag = h5_tag.find_previous("h4")
+                headt, d = tc(h4_tag, new_sheet, tp)
+                clus.append(d)
+                heads.append(headt)
 
         else:
-                h5_tags = first_h1.find_all_next('h6', {'id': lambda x: x and x.startswith('_test_procedure')})  
+            h5_tags = first_h1.find_all_next(
+                "h6", {"id": lambda x: x and x.startswith("_test_procedure")}
+            )
 
-                for h5_tag in h5_tags:
-                    if h5_tag.find_previous('h1') == first_h1:
-                        if h5_tag.find_next('h1') == second_h1:
-                            result.append(h5_tag)
-                
-                print (result)
-                heads =[]
-                for h5_tag in result:
-                    h4_tag = h5_tag.find_previous('h5')
-                    headt , d = tc(h4_tag,new_sheet, tp)
-                    clus.append(d)
-                    heads.append(headt)
+            for h5_tag in h5_tags:
+                if h5_tag.find_previous("h1") == first_h1:
+                    if h5_tag.find_next("h1") == second_h1:
+                        result.append(h5_tag)
 
-                
-        
-        column_widths = {'A': 10, 'B': 20, 'C': 20 ,'D': 40,'E': 50}  # Specify the column widths as desired
+            print(result)
+            heads = []
+            for h5_tag in result:
+                h4_tag = h5_tag.find_previous("h5")
+                headt, d = tc(h4_tag, new_sheet, tp)
+                clus.append(d)
+                heads.append(headt)
+
+        column_widths = {
+            "A": 10,
+            "B": 20,
+            "C": 20,
+            "D": 40,
+            "E": 50,
+        }  # Specify the column widths as desired
         if isinstance(new_sheet, list):
             print(f"{sheet} is already exsit")
         else:
             for column, width in column_widths.items():
                 new_sheet.column_dimensions[column].width = width
-        
+
         for j in range(len(result)):
             testcase = tc_id(heads[j])
-            head_text_match = re.search(r'\[(.*?)\]\s*(.*)', heads[j])
+            head_text_match = re.search(r"\[(.*?)\]\s*(.*)", heads[j])
             if head_text_match:
-                    tcname = '[' + head_text_match.group(1) + '] ' + head_text_match.group(2)
+                tcname = (
+                    "[" + head_text_match.group(1) + "] " + head_text_match.group(2)
+                )
             else:
-                    tcname = ''
-
+                tcname = ""
 
             n = sheet1.max_row
 
-            value = [n , cluster_name ,tcname , testcase , tp ]
+            value = [n, cluster_name, tcname, testcase, tp]
             sheet1.append(value)
 
 
 def create_df(table):
-    rows = table.find_all('tr')
+    rows = table.find_all("tr")
     data = []
     col_spans = []
     row_spans = []
     # to find the rowspan and colspan
     for i, row in enumerate(rows):
-        cells = row.find_all(['th', 'td'])
+        cells = row.find_all(["th", "td"])
         row_data = []
         for j, cell in enumerate(cells):
-            if cell.has_attr('colspan'):
-                col_spans.append((i, j, int(cell['colspan'])))
-            if cell.has_attr('rowspan'):
-                row_spans.append((i, j, int(cell['rowspan'])))
+            if cell.has_attr("colspan"):
+                col_spans.append((i, j, int(cell["colspan"])))
+            if cell.has_attr("rowspan"):
+                row_spans.append((i, j, int(cell["rowspan"])))
             row_data.append(cell.get_text(strip=True))
         data.append(row_data)
     # Apply colspans to data
     for span in col_spans:
         i, j, span_size = span
         for r in range(1, span_size):
-            data[i].insert(j+1, '')
+            data[i].insert(j + 1, "")
     # Apply rowspans to data
     for span in row_spans:
         i, j, span_size = span
         for r in range(1, span_size):
-            data[i+r].insert(j, '')
+            data[i + r].insert(j, "")
 
     # Convert the data into a pandas dataframe
     df = pd.DataFrame(data[1:], columns=data[0])
 
     # Replace any None values with an empty string
-    df = df.fillna('')
+    df = df.fillna("")
     # convert the dataframe to dict
     data_dict = {}
     # convert the dataframe to dict
-    data_dict = df.to_dict('list')
-    #print(data_dict)
-    return(data_dict)
+    data_dict = df.to_dict("list")
+    # print(data_dict)
+    return data_dict
+
 
 def diff(existing_data, current_data):
     nc = list(current_data.keys())
@@ -273,11 +296,11 @@ def diff(existing_data, current_data):
     ac = list(set(nc).difference(set(oc)))
     rc = list(set(oc).difference(set(nc)))
     ctc = {}
-    ntc =[]
-    rtc =[]
+    ntc = []
+    rtc = []
 
     for cluster in nc:
-        if cluster in ac+rc:
+        if cluster in ac + rc:
             continue
         a = current_data[cluster]
         b = existing_data[cluster]
@@ -289,8 +312,8 @@ def diff(existing_data, current_data):
                 if a[i] == b[i]:
                     print(f"{a[i]['Test Case ID']} has no change ")
                 else:
-                    c =[]
-                    #ctc.append(a[i]['Test Case ID'])
+                    c = []
+                    # ctc.append(a[i]['Test Case ID'])
                     keys = list(a[i].keys())
                     for k in keys:
                         if a[i][k] == b[i][k]:
@@ -299,52 +322,58 @@ def diff(existing_data, current_data):
                             tp = list(a[i][k].keys())
                             print(tp)
 
-                            for t in tp :
+                            for t in tp:
                                 if a[i][k][t] == b[i][k][t]:
                                     print(f"{a[i]['Test Case ID']} {t} has no change ")
                                 else:
-                                        c.append(f"Testprocedure({t})")
+                                    c.append(f"Testprocedure({t})")
                         else:
                             c.append(k)
-                    ctc[a[i]['Test Case ID']]   = c                  
+                    ctc[a[i]["Test Case ID"]] = c
 
-
-        elif len(a) >  len(b):
-            ntc.append(cluster) 
+        elif len(a) > len(b):
+            ntc.append(cluster)
 
         else:
-            rtc.append(cluster) 
+            rtc.append(cluster)
     dif = {}
-    dif = {"addedcluster": ac, "removedcluster": rc, "chagedtc" : ctc, "addedtc" : ntc,"removedtc": rtc}
+    dif = {
+        "addedcluster": ac,
+        "removedcluster": rc,
+        "chagedtc": ctc,
+        "addedtc": ntc,
+        "removedtc": rtc,
+    }
 
-    return (dif)
+    return dif
+
 
 def tpchan(dif, sheet, version):
     c = []
-  
+
     if dif["chagedtc"]:
         keys = list(dif["chagedtc"].keys())
         for k in keys:
             for change in dif["chagedtc"][k]:
-                c.append([today,version, k,"this Testcase is modified", change])
+                c.append([today, version, k, "this Testcase is modified", change])
 
-    print (c)
+    print(c)
 
     if c:
         print(len(c))
         for h in range(len(c)):
             sheet.insert_rows(2)
         for i in range(len(c)):
-            for j, value in enumerate(c[i]):                                                                                 
+            for j, value in enumerate(c[i]):
                 sheet.cell(row=i + 2, column=j + 1, value=value)
 
     else:
         sheet.insert_rows(2)
-        value = [today,version,"Nil", f"No changes on {today} ", "Nil"]
+        value = [today, version, "Nil", f"No changes on {today} ", "Nil"]
         for i in range(0, 1):
-            for j, value in enumerate(value):                                                                                 
+            for j, value in enumerate(value):
                 sheet.cell(row=i + 2, column=j + 1, value=value)
-    
+
     return None
 
 
@@ -355,102 +384,104 @@ def tcchan(dif, sheet, version):
             c.append([today, version, i, "newly added cluster"])
     if dif["removedcluster"]:
         for i in dif["removedcluster"]:
-            c.append([today,version, i,"this cluster is removed"])
+            c.append([today, version, i, "this cluster is removed"])
     if dif["addedtc"]:
         for i in dif["addedtc"]:
-            c.append([today,version, i,"new testcase is added to this cluster"])
+            c.append([today, version, i, "new testcase is added to this cluster"])
     if dif["removedtc"]:
         for i in dif["removedtc"]:
-            c.append([today,version, i,"Testcase is removed from this cluster"])
+            c.append([today, version, i, "Testcase is removed from this cluster"])
 
     if c:
         print(len(c))
         for h in range(len(c)):
             sheet.insert_rows(2)
         for i in range(len(c)):
-            for j, value in enumerate(c[i]):                                                                                 
+            for j, value in enumerate(c[i]):
                 sheet.cell(row=i + 2, column=j + 1, value=value)
 
     else:
         sheet.insert_rows(2)
-        value = [today,version,"Nil", f"No changes on {today} "]
+        value = [today, version, "Nil", f"No changes on {today} "]
         for i in range(0, 1):
-            for j, value in enumerate(value):                                                                                 
+            for j, value in enumerate(value):
                 sheet.cell(row=i + 2, column=j + 1, value=value)
-    
+
     return None
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    try:
+        with open(json_filename, "r") as json_file:
+            existing_data = json.load(json_file)
+            e = True
+    except FileNotFoundError:
+        existing_data = {}
+        e = False
 
-        try:
-            with open(json_filename, 'r') as json_file:
-                existing_data = json.load(json_file)
-                e = True
-        except FileNotFoundError:
-            existing_data = {}
-            e = False
+    with open(app) as f:
+        soup1 = BeautifulSoup(f, "html.parser")
 
-        with open (app) as f:
-            soup1 = BeautifulSoup(f, 'html.parser')
-            
-        with open (main) as f:
-            soup2 = BeautifulSoup(f, 'html.parser')
+    with open(main) as f:
+        soup2 = BeautifulSoup(f, "html.parser")
 
-        versiontag = soup1.find ('div', class_='details')
-        versiont = versiontag.find('span', id = "revnumber")
-        version = versiont.text
+    versiontag = soup1.find("div", class_="details")
+    versiont = versiontag.find("span", id="revnumber")
+    version = versiont.text
 
+    h1_tags1 = soup1.find_all("h1", {"id": True})
+    h1_tags2 = soup2.find_all("h1", {"id": True})
 
-        h1_tags1 = soup1.find_all('h1', {'id': True}) 
-        h1_tags2 = soup2.find_all('h1', {'id': True})
+    print(len(h1_tags1))
+    if "All_TC_Details" in sheet_names:
+        workbook.remove(workbook["All_TC_Details"])
+        workbook.create_sheet("All_TC_Details", 0)
+        sheet1 = workbook["All_TC_Details"]
 
-        print(len(h1_tags1))
-        if "All_TC_Details" in sheet_names:
-            workbook.remove(workbook["All_TC_Details"])
-            workbook.create_sheet("All_TC_Details", 0)
-            sheet1 = workbook["All_TC_Details"]
+    else:
+        sheet1 = workbook.active
+        sheet1.title = "All_TC_Details"
 
+    head = ["S.no", "Cluster Name", "Test Case Name", "Test Case ID", " Test Plan "]
+    sheet1.append(head)
+
+    tc_details(h1_tags1, sheet1, 0)
+    tc_details(h1_tags2, sheet1, 1)
+
+    column_widths = {
+        "A": 10,
+        "B": 20,
+        "C": 50,
+        "D": 30,
+        "E": 30,
+    }  # Specify the column widths as desired
+
+    for column, width in column_widths.items():
+        sheet1.column_dimensions[column].width = width
+
+    workbook.save(filename)
+
+    with open(json_filename, "w") as json_file:
+        json.dump(current_data, json_file, indent=4)
+
+    if e:
+        dif = diff(existing_data, current_data)
+        print(dif)
+        if "Test_plan_Changes" not in sheet_names:
+            sheet = workbook.create_sheet("Test_plan_Changes", 2)
+            sheet.append(["Date", " commit", "Cluster/Testcase", "Changes", "Column"])
         else:
-            sheet1 = workbook.active
-            sheet1.title = "All_TC_Details"
-        
-        head = ["S.no" ,"Cluster Name","Test Case Name","Test Case ID"," Test Plan "]
-        sheet1.append(head)
-        
-        tc_details(h1_tags1,sheet1,0)
-        tc_details(h1_tags2,sheet1,1)
+            sheet = workbook["Test_plan_Changes"]
 
-        column_widths = {'A': 10, 'B': 20, 'C': 50 ,'D':30,'E':30}  # Specify the column widths as desired
+        tpchan(dif, sheet, version)
 
-        for column, width in column_widths.items():
-                sheet1.column_dimensions[column].width = width
+        print(dif)
+        if "Test_Summary_Changes" not in sheet_names:
+            sheet = workbook.create_sheet("Test_Summary_Changes", 1)
+            sheet.append(["Date", " commit", "Cluster/Testcase", "Changes"])
+        else:
+            sheet = workbook["Test_Summary_Changes"]
 
-        workbook.save(filename)
+        tpchan(dif, sheet, version)
 
-        with open(json_filename, 'w') as json_file:
-            json.dump(current_data, json_file, indent=4)
-
-        if e:
-            dif = diff(existing_data, current_data)
-            print(dif)
-            if "Test_plan_Changes" not in sheet_names:
-
-                sheet = workbook.create_sheet("Test_plan_Changes",2)
-                sheet.append(["Date"," commit","Cluster/Testcase","Changes","Column"])
-            else:
-                sheet = workbook["Test_plan_Changes"]
-
-            tpchan(dif, sheet, version)
-
-            print(dif)
-            if "Test_Summary_Changes" not in sheet_names:
-
-                sheet = workbook.create_sheet("Test_Summary_Changes",1)
-                sheet.append(["Date"," commit","Cluster/Testcase","Changes"])
-            else:
-                sheet = workbook["Test_Summary_Changes"]
-
-            tpchan(dif, sheet, version)
-
-        workbook.save(filename)    
+    workbook.save(filename)
