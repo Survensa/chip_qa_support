@@ -95,14 +95,14 @@ def extract_testcase_details(h4_tag, test_plan):
 
 def extract_testcase_details_from_html(test_plan_type, header_tag, second_header_text):
     if test_plan_type == 0:
-		get_test_plan_type = "App Test Case"
-		html_path = app_html_path
-	else:
-		get_test_plan_type = "App Test Case"
-		html_path = main_html_path
+	get_test_plan_type = "App Test Case"
+	html_path = app_html_path
+    else:
+	get_test_plan_type = "App Test Case"
+	html_path = main_html_path
 	
-	with open(html_path) as file:
-        soup = BeautifulSoup(file, "lxml")
+    with open(html_path) as file:
+    soup = BeautifulSoup(file, "lxml")
 
     header_tags = soup.find_all("h1", {"id": True})
     first_header_tag = [tag for tag in header_tags if tag.text == header_tag][0]
