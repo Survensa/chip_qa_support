@@ -410,8 +410,9 @@ def update_test_case_summary(excel_sheet, updated_data):
 		
 def main():
     print("Starting the script...")
+
     updated_data = {}
-	
+
     try:
         with open(json_filename, "r") as json_file:
             existing_data = json.load(json_file)
@@ -433,17 +434,15 @@ def main():
     h1_tags_app = soup_app.find_all("h1", {"id": True})
     h1_tags_main = soup_main.find_all("h1", {"id": True})
 
-    h1_tags_app_text = [tag.text for tag in h1_tags_app]
-    h1_tags_main_text = [tag.text for tag in h1_tags_main]
-
     print(f"Number of clusters in app HTML: {len(h1_tags_app)}")
+
     if "All_TC_Details" in sheet_names:
-		print("Removing existing 'All_TC_Details' sheet and creating a new one...")
+        print("Removing the existing 'All_TC_Details' sheet and creating a new one...")
         workbook.remove(workbook["All_TC_Details"])
         workbook.create_sheet("All_TC_Details", 0)
         excel_sheet = workbook["All_TC_Details"]
     else:
-		print("Using the existing 'All_TC_Details' sheet...")
+        print("Using the existing 'All_TC_Details' sheet...")
         excel_sheet = workbook.active
         excel_sheet.title = "All_TC_Details"
 
@@ -451,12 +450,11 @@ def main():
     excel_sheet.append(header)
 
     cluster_enclosures_app = cluster_enclose(h1_tags_app)
-    print(cluster_enclosures_app)
+    print(f"Cluster enclosures in app HTML: {cluster_enclosures_app}")
 
     if len(cluster_enclosures_app) == len(h1_tags_app):
         input_data = [(h1_tags_app_text[i], 0, cluster_enclosures_app[i]) for i in range(len(cluster_enclosures_app))]
-        print(input_data)
-
+        print("Extracting test case details from app HTML...")
         results = Parallel(n_jobs=-1)(
             delayed(tc_details)(a, b, c) for a, b, c in input_data
         )
@@ -466,13 +464,13 @@ def main():
                 updated_data.update(result)
 
     else:
-        print("fail")
+        print("Failed to extract test case details from app HTML")
 
     cluster_enclosures_main = cluster_enclose(h1_tags_main)
 
     if len(cluster_enclosures_main) == len(h1_tags_main):
         input_data = [(h1_tags_main_text[i], 1, cluster_enclosures_main[i]) for i in range(len(cluster_enclosures_main))]
-
+        print("Extracting test case details from main HTML...")
         results = Parallel(n_jobs=-1)(
             delayed(tc_details)(a, b, c) for a, b, c in input_data
         )
@@ -482,7 +480,7 @@ def main():
                 updated_data.update(result)
 
     else:
-        print("fail")
+        print("Failed to extract test case details from main HTML")
 
     codes = []
     clusters = list(existing_data.keys())
@@ -491,7 +489,7 @@ def main():
         test_case_id = updated_data[test][0]["Test Case ID"]
         sh = re.search(r"-(.*?)-", test_case_id)
         code = sh.group(1)
-        
+
         if code == "LOWPOWER":
             code = "MC"
 
@@ -506,32 +504,32 @@ def main():
             workbook.create_sheet(code)
 
     print("Updating test case summary in Excel...")
-	update_test_case_summary(excel_sheet, updated_data)
+    update_test_case_summary(excel_sheet, updated_data)
 
     if is_existing_data:
-		print("Detecting changes in test cases...")
-        diff_result = diff(existing_data, updated_data)
-		print("\nChanges detected:")
+        print("Detecting changes in test cases...")
+        diff_result = detect_changes(existing_data, updated_data)
+        print("\nChanges detected:")
         print(diff_result)
-        
+
         if "Test_plan_Changes" not in sheet_names:
             changes_sheet = workbook.create_sheet("Test_plan_Changes", 2)
             changes_sheet.append(["Date of Run", " Commit", "Cluster/Testcase", "Changes", "Column"])
         else:
             changes_sheet = workbook["Test_plan_Changes"]
-			
-		print("\nUpdating Test Plan Changes sheet...")
+
+        print("\nUpdating Test Plan Changes sheet...")
         update_changes_in_excel(diff_result, changes_sheet, version)
 
         print("\nChanges detected:")
-		print(diff_result)
+        print(diff_result)
         if "Test_Summary_Changes" not in sheet_names:
             changes_sheet = workbook.create_sheet("Test_Summary_Changes", 1)
             changes_sheet.append(["Date of Run", "Cluster Name", "Test Case Name", "Test Case ID", "Test Plan", "Change Type"])
         else:
             changes_sheet = workbook["Test_Summary_Changes"]
 
-	print("\nUpdating Test Summary Changes sheet...")
+        print("\nUpdating Test Summary Changes sheet...")
         update_test_case_changes(diff_result, changes_sheet, version)
 
     column_widths = {
@@ -548,7 +546,7 @@ def main():
     workbook.save(excel_filename)
 
     print("Saving updated data to JSON file...")
-	with open(json_filename, "w") as json_file:
+    with open(json_filename, "w") as json_file:
         json.dump(updated_data, json_file, indent=4)
 
     workbook.save(excel_filename)
