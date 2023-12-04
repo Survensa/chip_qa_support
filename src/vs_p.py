@@ -1,15 +1,13 @@
 from bs4 import BeautifulSoup
 import openpyxl
 from openpyxl import load_workbook
-from openpyxl.styles import Font, Alignment
 import re
 import datetime
-import os
 import pandas as pd
 import json
 
 today = datetime.date.today().strftime("%Y-%m-%d")
-filename = f"test_plan_change.xlsx"
+filename = "test_plan_change.xlsx"
 
 try:
     workbook = load_workbook(filename)
