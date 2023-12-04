@@ -323,7 +323,7 @@ def enclose_clusters(header_tags):
     return enclosing_headers
 
 def update_test_case_summary(excel_sheet, updated_data):
-	print("Updating test case summary in Excel sheet 'All_TC_Details'...")
+    print("Updating test case summary in Excel sheet 'All_TC_Details'...")
     clusters = list(updated_data.keys())
 
     for cluster in clusters:
@@ -404,9 +404,9 @@ def update_test_case_summary(excel_sheet, updated_data):
             excel_sheet.append(row_values)
             
             print(f"Updated details for test case: {test_case['Test Case ID']} in cluster: {cluster}")
-			workbook.save(excel_filename)
+            workbook.save(excel_filename)
 
-		print("Test case summary updated successfully.")
+    print("Test case summary updated successfully.")
 		
 def main():
 	print("Starting the script...")
