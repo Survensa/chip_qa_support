@@ -25,6 +25,7 @@ main = "/home/grl/Downloads/index (5).html"
 
 json_filename = "TC_Summary.json"
 
+
 def tc_id(head):
     testcase1 = re.search(r"\[(.*?)\]", head)
     if testcase1:
