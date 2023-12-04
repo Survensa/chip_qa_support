@@ -8,7 +8,7 @@ import pandas as pd
 import json
 
 today = datetime.date.today().strftime("%Y-%m-%d")
-filename = f"test_plan_change.xlsx"
+filename = "test_plan_change.xlsx"
 
 
 try:
@@ -24,7 +24,6 @@ main = "/home/grl/Downloads/index (5).html"
 # main = '/home/grl/Downloads/Matter.Core.Test.Plan.V1.2.html'
 
 json_filename = "TC_Summary.json"
-
 
 def tc_id(head):
     testcase1 = re.search(r"\[(.*?)\]", head)
