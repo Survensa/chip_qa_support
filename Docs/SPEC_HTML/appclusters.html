@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 8c6c8c5 (local changes),</span>
-<span id="revdate">2023-12-03 23:06:11 -0800</span>
+<span id="revnumber">version master ab802c1 (local changes),</span>
+<span id="revdate">2023-12-04 09:40:55 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -10011,9 +10011,7 @@ or understood by the client, via the mode&#8217;s tags.</p>
 </div>
 <div class="paragraph">
 <p>A mode tag is either a standard tag within a standard category namespace,
-or a manufacturer specific tag, within the namespace of the vendor ID of the manufacturer.
-If there are no mode tags for the mode or none that are known to the client, the mode is anonymous,
-and the selection by the user can be made solely based on the Label string.</p>
+or a manufacturer specific tag, within the namespace of the vendor ID of the manufacturer.</p>
 </div>
 <div class="paragraph">
 <p>Any derived cluster specification based on this cluster SHALL support the standard mode tag
@@ -10051,7 +10049,7 @@ For example: A LightBlinking cluster ID supports blinking modes for a light (and
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ChangeToModeResponse command: StatusText must be provided for InvalidInMode status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChangeToModeResponse command: StatusText must be provided for InvalidInMode status. Require at least one standard mode tag.</p></td>
 </tr>
 </tbody>
 </table>
@@ -10344,7 +10342,8 @@ tag, as defined in each <a href="#ref_ModeTagStruct">ModeTagStruct</a> list entr
 </div>
 <div class="paragraph">
 <p>A mode option MAY have more than one mode tag.
-A mode option MAY be associated with a mixture of standard and manufacturer specific mode tags.</p>
+A mode option MAY be associated with a mixture of standard and manufacturer specific mode tags.
+A mode option SHALL be associated with at least one standard mode tag.</p>
 </div>
 <div class="paragraph">
 <p>A few examples are provided below.</p>
@@ -56415,8 +56414,8 @@ See the <a href="#ref_OperationalStateCluster">Operational State Cluster</a> for
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 8c6c8c5 (local changes)<br>
-Last updated 2023-12-04 07:06:29 UTC
+Version master ab802c1 (local changes)<br>
+Last updated 2023-12-04 17:41:12 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
