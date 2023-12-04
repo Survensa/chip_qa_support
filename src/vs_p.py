@@ -494,7 +494,7 @@ def main():
 
     h1_tags_app_text = [tag.text for tag in h1_tags_app]
     h1_tags_main_text = [tag.text for tag in h1_tags_main]
-    
+
     print(f"Number of clusters in app HTML: {len(h1_tags_app)}")
 
     if "All_TC_Details" in sheet_names:
