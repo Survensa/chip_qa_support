@@ -409,7 +409,7 @@ def update_test_case_summary(excel_sheet, updated_data):
     print("Test case summary updated successfully.")
 		
 def main():
-	print("Starting the script...")
+    print("Starting the script...")
     updated_data = {}
 	
     try:
@@ -531,7 +531,7 @@ def main():
         else:
             changes_sheet = workbook["Test_Summary_Changes"]
 
-		print("\nUpdating Test Summary Changes sheet...")
+	print("\nUpdating Test Summary Changes sheet...")
         update_test_case_changes(diff_result, changes_sheet, version)
 
     column_widths = {
@@ -552,7 +552,7 @@ def main():
         json.dump(updated_data, json_file, indent=4)
 
     workbook.save(excel_filename)
-	print("\nScript execution completed.")
+    print("\nScript execution completed.")
 
 if __name__ == "__main__":
     main()
