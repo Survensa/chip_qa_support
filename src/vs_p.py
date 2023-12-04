@@ -29,7 +29,7 @@ def extract_testcase_id(header_text):
     return None
 
 def extract_testcase_details(h4_tag, test_plan):
-	print(f"Extracting details for test case: {h4_tag.text}")
+    print(f"Extracting details for test case: {h4_tag.text}")
     data = {}
     header_text = h4_tag.text
 
@@ -44,39 +44,39 @@ def extract_testcase_details(h4_tag, test_plan):
     data["PICS"] = []
     pics_tag = h4_tag.find_next("h5", {"id": lambda x: x and x.startswith("_pics")})
     ul_div = pics_tag.find_next("div", class_="ulist")
-    
+
     if ul_div:
         p_tags = ul_div.find_all("p")
     else:
         pics_tag = pics_tag.find_next("h5", {"id": lambda x: x and x.startswith("_pics")})
         ul_div = pics_tag.find_next("div", class_="ulist")
         p_tags = ul_div.find_all("p")
-    
+
     for p_tag in p_tags:
         data["PICS"].append(p_tag.text)
 
     preconditions_tag = h4_tag.find_next("h5", {"id": lambda x: x and x.startswith("_preconditions")})
-    
+
     if preconditions_tag:
         data["Pre-condition"] = {}
         table = preconditions_tag.find_next("table")
-        
+
         if table:
             data["Pre-condition"] = create_dataframe_from_table(table)
-    
+
     else:
         data["Pre-condition"] = "Nil"
 
     test_procedure_tags = h4_tag.find_next("h5", {"id": lambda x: x and x.startswith("_test_procedure")})
-    
+
     if not test_procedure_tags:
         test_procedure_tags = h4_tag.find_next("h6", {"id": lambda x: x and x.startswith("_test_procedure")})
-    
+
     table = test_procedure_tags.find_next("table")
     data["Test Procedure"] = create_dataframe_from_table(table)
 
     print(f"Test case details extracted for {data['Test Case ID']}")
-	workbook.save(excel_filename)
+    workbook.save(excel_filename)
 
     return header_text, data
 
