@@ -390,9 +390,7 @@ def update_testcase_summary(sheet, updated_data):
 
             row_data = [row_number, cluster, tc_name, tc_id, test_plan]
             sheet.append(row_data)
-			print(
-                f"Updated details for test case: {test_case['Test Case ID']} in cluster: {cluster}"
-            )
+			print(f"Updated details for test case: {test_case['Test Case ID']} in cluster: {cluster}"            )
             workbook.save(excel_filename)
 			print("Test case summary updated successfully.")
 
