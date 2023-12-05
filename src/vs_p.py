@@ -543,11 +543,10 @@ if __name__ == '__main__':
         all_tc_details_sheet.column_dimensions[column].width = width
 
     workbook.save(filename)
-	
-	print("Saving updated data to JSON file...")
+    print("Saving updated data to JSON file...")
+
     with open(json_filename, 'w') as json_file:
         json.dump(updated_test_cases, json_file, indent=4)
 
     workbook.save(filename)
-	print("\nScript execution completed.")
-
+    print("\nScript execution completed.")
