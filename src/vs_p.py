@@ -466,7 +466,7 @@ if __name__ == '__main__':
     else:
         print("Failed to extract test case details from app HTML")
 
-    main_enclosure_tags = cluster_enclose(main_h1_tags
+    main_enclosure_tags = cluster_enclose(main_h1_tags)
 	print(f"Cluster enclosures in app HTML: {main_enclosure_tags}")
 
     if len(main_enclosure_tags) == len(main_h1_tags):
