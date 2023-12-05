@@ -433,7 +433,7 @@ if __name__ == '__main__':
         main_h1_tags_text.append(tag_text)
 
     print(f"Number of clusters in app HTML: {len(app_h1_tags)}")
-	print(f"Number of clusters in app HTML: {len(main_h1_tags)}")
+    print(f"Number of clusters in app HTML: {len(main_h1_tags)}")
 	
     if "All_TC_Details" in sheet_names:
         workbook.remove(workbook["All_TC_Details"])
@@ -457,7 +457,7 @@ if __name__ == '__main__':
             current_enclosure_tag = app_enclosure_tags[i]
             input_data.append((current_h1_tag, is_app_test_case, current_enclosure_tag))
 		
-		print("Extracting test case details from app HTML...")
+	print("Extracting test case details from app HTML...")
         results = Parallel(n_jobs=-1)(delayed(tc_details)(a, b, c) for a, b, c in input_data)
 
         for result in results:
@@ -477,7 +477,7 @@ if __name__ == '__main__':
             current_enclosure_tag = main_enclosure_tags[i]
             input_data.append((current_h1_tag, is_app_test_case, current_enclosure_tag))
 		
-		print("Extracting test case details from main HTML...")
+	print("Extracting test case details from main HTML...")
         results = Parallel(n_jobs=-1)(delayed(tc_details)(a, b, c) for a, b, c in input_data)
 
         for result in results:
@@ -509,9 +509,9 @@ if __name__ == '__main__':
     update_all_test_case_details(all_tc_details_sheet, updated_test_cases)
 
     if is_existing_data_present:
-		print("Detecting changes in test cases...")
+	print("Detecting changes in test cases...")
         differences = identify_changes(existing_test_cases, updated_test_cases)
-		print("\nChanges detected:")
+	print("\nChanges detected:")
         print(differences)
 
         if "Test_plan_Changes" not in sheet_names:
@@ -520,7 +520,7 @@ if __name__ == '__main__':
         else:
             change_log_sheet = workbook["Test_plan_Changes"]
 		
-		print("\nUpdating Test Plan Changes sheet...")
+	print("\nUpdating Test Plan Changes sheet...")
         update_change_log_sheet(differences, change_log_sheet, version_number)
 
         print("\nChanges detected:")
@@ -534,7 +534,7 @@ if __name__ == '__main__':
         else:
             test_summary_changes_sheet = workbook["Test_Summary_Changes"]
 		
-		print("\nUpdating Test Summary Changes sheet...")
+	print("\nUpdating Test Summary Changes sheet...")
         update_test_summary_changes_sheet(differences, test_summary_changes_sheet, version_number)
 
     column_widths = {'A': 10, 'B': 20, 'C': 50, 'D': 30, 'E': 30}  # Specify the column widths as desired
@@ -548,6 +548,6 @@ if __name__ == '__main__':
     with open(json_filename, 'w') as json_file:
         json.dump(updated_test_cases, json_file, indent=4)
 
-    workbook.save(filename
+    workbook.save(filename)
 	print("\nScript execution completed.")
 
