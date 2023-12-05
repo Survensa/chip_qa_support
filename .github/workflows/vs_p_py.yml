@@ -17,7 +17,7 @@ jobs:
           python-version: 3.x
 
       - name: Install dependencies
-        run: pip install beautifulsoup4 openpyxl joblib pandas
+        run: pip install beautifulsoup4 openpyxl joblib pandas lxml
 
       - name: Run Python Script
         run: |
