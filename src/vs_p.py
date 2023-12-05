@@ -453,7 +453,7 @@ if __name__ == '__main__':
             is_app_test_case = 0
             current_enclosure_tag = app_enclosure_tags[i]
             input_data.append((current_h1_tag, is_app_test_case, current_enclosure_tag))
-	print("Extracting test case details from app HTML...")
+
 	results = Parallel(n_jobs=-1)(delayed(tc_details)(a, b, c) for a, b, c in input_data)
 	    
 	for result in results:
@@ -472,7 +472,7 @@ if __name__ == '__main__':
             is_app_test_case = 1
             current_enclosure_tag = main_enclosure_tags[i]
             input_data.append((current_h1_tag, is_app_test_case, current_enclosure_tag))
-	print("Extracting test case details from main HTML...")
+
 	results = Parallel(n_jobs=-1)(delayed(tc_details)(a, b, c) for a, b, c in input_data)
 
         for result in results:
