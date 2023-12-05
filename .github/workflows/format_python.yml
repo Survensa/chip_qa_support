@@ -17,11 +17,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.x  # Choose your desired Python version
+          python-version: ''
 
       - name: Install black
         run: |
-          pip install black
+          pip install --upgrade black
         shell: bash
 
       - name: Format Python code
