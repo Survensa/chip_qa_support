@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master ab802c1 (local changes),</span>
-<span id="revdate">2023-12-04 09:40:55 -0800</span>
+<span id="revnumber">version master 5945473 (local changes),</span>
+<span id="revdate">2023-12-04 11:07:14 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -8226,16 +8226,13 @@ i.e., the attribute listed as 1 is added first:</p>
 <div class="paragraph">
 <p>Attributes in the scene table that are not supported by the device
 (according to the FeatureMap attribute) SHALL be present in the scene table but
-ignored.</p>
-</div>
-<div class="paragraph">
-<p>OnLevel represents a mandatory field that was previously not present
-or optional. Implementers should be aware that older devices may not
-implement it.</p>
+ignored. An extension field set value outside of the accepted values of the
+corresponding MoveTo&lt;Target&gt; command, e.g. a null value for the CurrentLevel
+attribute, corresponding to the MoveToLevel command, SHALL be ignored.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_currentlevel_attribute"><a class="anchor" href="#_currentlevel_attribute"></a>1.6.6.2. CurrentLevel Attribute</h5>
+<h5 id="ref_CurrentLevel"><a class="anchor" href="#ref_CurrentLevel"></a>1.6.6.2. CurrentLevel Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the current level of this device.
 The meaning of 'level' is device dependent.</p>
@@ -8360,6 +8357,11 @@ attribute is set to when the OnOff attribute of an On/Off cluster on
 the same endpoint is set to TRUE, as a result of processing an On/Off
 cluster command. If the OnLevel attribute is not implemented, or is
 set to the null value, it has no effect. For more details see <a href="#ref_OnOffCommandsEffectCurrentLevel">Effect of On/Off Commands on the CurrentLevel Attribute</a>.</p>
+</div>
+<div class="paragraph">
+<p>OnLevel represents a mandatory field that was previously not present
+or optional. Implementers should be aware that older devices may not
+implement it.</p>
 </div>
 </div>
 <div class="sect4">
@@ -56414,8 +56416,8 @@ See the <a href="#ref_OperationalStateCluster">Operational State Cluster</a> for
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master ab802c1 (local changes)<br>
-Last updated 2023-12-04 17:41:12 UTC
+Version master 5945473 (local changes)<br>
+Last updated 2023-12-05 00:00:28 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
