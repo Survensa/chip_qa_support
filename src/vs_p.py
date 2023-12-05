@@ -301,7 +301,7 @@ def update_testcase_change_log(differences, sheet, version):
     if differences["removed_testcases"]:
         for testcase in differences["removed_testcases"]:
             changes.append([today_date, version, testcase, "Testcase Removed"])
-
+		
     if changes:
         print(f"Number of Testcase Change : {len(changes)}\n")
         print(changes)
@@ -387,14 +387,11 @@ def update_testcase_summary(sheet, updated_data):
             tc_id = testcase_data["Test Case ID"]
             test_plan = testcase_data["Test Plan"]
             row_number = sheet.max_row
-
             row_data = [row_number, cluster, tc_name, tc_id, test_plan]
             sheet.append(row_data)
             print(f"Updated details for test case: {test_case['Test Case ID']} in cluster: {cluster}")
     workbook.save(excel_filename)
     print("Test case summary updated successfully!")
-
-			   
 
 if __name__ == '__main__':
     print("Starting the script...")
@@ -458,8 +455,8 @@ if __name__ == '__main__':
             input_data.append((current_h1_tag, is_app_test_case, current_enclosure_tag))
 	print("Extracting test case details from app HTML...")
         results = Parallel(n_jobs=-1)(delayed(tc_details)(a, b, c) for a, b, c in input_data)
-
-        for result in results:
+	    
+	for result in results:
             if result is not None:
                 updated_test_cases.update(result)
     else:
