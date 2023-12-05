@@ -390,9 +390,9 @@ def update_testcase_summary(sheet, updated_data):
 
             row_data = [row_number, cluster, tc_name, tc_id, test_plan]
             sheet.append(row_data)
-			print(f"Updated details for test case: {test_case['Test Case ID']} in cluster: {cluster}")
+	    print(f"Updated details for test case: {test_case['Test Case ID']} in cluster: {cluster}")
             workbook.save(excel_filename)
-			print("Test case summary updated successfully.")
+	    print("Test case summary updated successfully.")
 
     return None
 
@@ -458,7 +458,7 @@ if __name__ == '__main__':
             input_data.append((current_h1_tag, is_app_test_case, current_enclosure_tag))
 		
 	print("Extracting test case details from app HTML...")
-        results = Parallel(n_jobs=-1)(delayed(tc_details)(a, b, c) for a, b, c in input_data)
+        results = Parallel(n_jobs=-1)(delayed(extract_testcase_details_from_html)(a, b, c) for a, b, c in input_data)
 
         for result in results:
             if result is not None:
@@ -478,7 +478,7 @@ if __name__ == '__main__':
             input_data.append((current_h1_tag, is_app_test_case, current_enclosure_tag))
 		
 	print("Extracting test case details from main HTML...")
-        results = Parallel(n_jobs=-1)(delayed(tc_details)(a, b, c) for a, b, c in input_data)
+        results = Parallel(n_jobs=-1)(delayed(extract_testcase_details_from_html)(a, b, c) for a, b, c in input_data)
 
         for result in results:
             if result is not None:
