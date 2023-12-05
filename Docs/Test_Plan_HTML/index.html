@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master af699b9,</span>
-<span id="revdate">2023-12-05 11:06:03 +0530</span>
+<span id="revnumber">version master 1f26a39,</span>
+<span id="revdate">2023-12-05 20:14:18 +0530</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -10001,6 +10001,18 @@ Support for an item is considered as "true" for conditional statements within th
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0015(SpecificationVersion)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the DUT(server) support the SpecificationVersion attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0016(MaxPathsPerInvoke)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the DUT(server) support the MaxPathsPerInvoke attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -10879,6 +10891,61 @@ Support for an item is considered as "true" for conditional statements within th
 <td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0014(ProductAppearance)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads  ProductAppearance from the DUT.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the ProductAppearance remains unchanged</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">62</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0015(SpecificationVersion)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads  SpecificationVersion from the DUT.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>If the SpecificationVersion value is absent or zero this step cannot be verified, move on to the next step.</p>
+</li>
+<li>
+<p>else the value should in the inclusive range of (0 to 4294967295) and the initial 7 bits are set to zero.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">63</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0015(SpecificationVersion)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends Write request message to DUT to change the value of SpecificationVersion to '0x0103AAF1'.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Verify DUT responds with UNSUPPORTED_WRITE.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0015(SpecificationVersion)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads SpecificationVersion attribute from DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that SpecificationVersion remains unchanged.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">65</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0016(MaxPathsPerInvoke)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads MaxPathsPerInvoke from the DUT.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the MaxPathsPerInvoke value is in the inclusive range of 1 to 65535.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">66</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0016(MaxPathsPerInvoke)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends Write request message to DUT to change MaxPathsPerInvoke to a different value.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Verify DUT responds with UNSUPPORTED_WRITE.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">67</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0016(MaxPathsPerInvoke)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads MaxPathsPerInvoke attribute from DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that MaxPathsPerInvoke remains unchanged.</p></td>
 </tr>
 </tbody>
 </table>
@@ -54292,8 +54359,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master af699b9<br>
-Last updated 2023-12-05 05:36:20 UTC
+Version master 1f26a39<br>
+Last updated 2023-12-05 14:44:34 UTC
 </div>
 </div>
 </body>
