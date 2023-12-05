@@ -397,7 +397,7 @@ def update_testcase_summary(sheet, updated_data):
 			   
 
 if __name__ == '__main__':
-	print("Starting the script...")
+    print("Starting the script...")
     updated_test_cases = {}
 
     try:
