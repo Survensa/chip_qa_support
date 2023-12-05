@@ -529,7 +529,7 @@ def main():
         print("Failed to extract test case details from main HTML")
 
     test_case_codes = []
-    existing_clusters = list(existing_test_cases.keys())
+    clusters = list(existing_test_cases.keys())
 
     for test_case_name in updated_test_cases:
         test_case_id = updated_test_cases[test_case_name][0]["Test Case ID"]
