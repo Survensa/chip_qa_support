@@ -7,8 +7,8 @@ import datetime
 import pandas as pd
 import json
 
-today_date = datetime.date.today().strftime("%Y-%m-%d")
-excel_filename = "Docs/Test_plan_changes.xlsx"
+today_date = datetime.date.today().strftime('%Y-%m-%d')
+excel_filename = "Docs/TC_Summary.xlsx"
 
 try:
     workbook = load_workbook(excel_filename)
@@ -19,195 +19,169 @@ sheet_names = workbook.sheetnames
 
 app_html_path = "Docs/Test_Plan_HTML/allclusters.html"
 main_html_path = "Docs/Test_Plan_HTML/index.html"
-
 json_filename = "src/TC_Summary.json"
 
-
-def extract_testcase_id(header_text):
-    match = re.search(r"\[(.*?)\]", header_text)
+def extract_testcase_id(testcase_header):
+    match = re.search(r'\[(.*?)\]', testcase_header)
     if match:
         return match.group(1)
     return None
 
-
 def extract_testcase_details(h4_tag, test_plan):
-    print(f"Extracting details for test case: {h4_tag.text}")
-    data = {}
+    details = {}
     header_text = h4_tag.text
+    details["Test Case Name"] = header_text
+    details["Test Case ID"] = extract_testcase_id(header_text)
+    details["Test Plan"] = test_plan
 
-    data["Test Case Name"] = header_text
-    data["Test Case ID"] = extract_testcase_id(header_text)
-    data["Test Plan"] = test_plan
+    purpose_tag = h4_tag.find_next('h5', {'id': lambda x: x and x.startswith('_purpose')})
+    purpose = purpose_tag.find_next('p').text
+    details["Purpose"] = purpose
 
-    purpose_tag = h4_tag.find_next(
-        "h5", {"id": lambda x: x and x.startswith("_purpose")}
-    )
-    purpose = purpose_tag.find_next("p").text
-    data["Purpose"] = purpose
+    details["PICS"] = []
+    pics_tag = h4_tag.find_next('h5', {'id': lambda x: x and x.startswith('_pics')})
+    ul_div = pics_tag.find_next('div', class_='ulist')
+    p_tags = ul_div.find_all('p') if ul_div else []
+    details["PICS"] = [p.text for p in p_tags]
 
-    data["PICS"] = []
-    pics_tag = h4_tag.find_next("h5", {"id": lambda x: x and x.startswith("_pics")})
-    ul_div = pics_tag.find_next("div", class_="ulist")
-
-    if ul_div:
-        p_tags = ul_div.find_all("p")
-    else:
-        pics_tag = pics_tag.find_next(
-            "h5", {"id": lambda x: x and x.startswith("_pics")}
-        )
-        ul_div = pics_tag.find_next("div", class_="ulist")
-        p_tags = ul_div.find_all("p")
-
-    for p_tag in p_tags:
-        data["PICS"].append(p_tag.text)
-
-    preconditions_tag = h4_tag.find_next(
-        "h5", {"id": lambda x: x and x.startswith("_preconditions")}
-    )
-
+    preconditions_tag = h4_tag.find_next('h5', {'id': lambda x: x and x.startswith('_preconditions')})
     if preconditions_tag:
-        data["Pre-condition"] = {}
-        table = preconditions_tag.find_next("table")
-
+        details["Pre-condition"] = {}
+        table = preconditions_tag.find_next('table')
         if table:
-            data["Pre-condition"] = create_dataframe_from_table(table)
-
+            data_dict = create_dataframe_from_table(table)
+            details["Pre-condition"] = data_dict
     else:
-        data["Pre-condition"] = "Nil"
+        details["Pre-condition"] = "Nil"
 
-    test_procedure_tags = h4_tag.find_next(
-        "h5", {"id": lambda x: x and x.startswith("_test_procedure")}
-    )
+    procedure_tags = h4_tag.find_next('h5', {'id': lambda x: x and x.startswith('_test_procedure')}) 
+    if not procedure_tags:
+        procedure_tags = h4_tag.find_next('h6', {'id': lambda x: x and x.startswith('_test_procedure')}) 
+    table = procedure_tags.find_next('table')
+    data_dict = create_dataframe_from_table(table)
+    details["Test Procedure"] = data_dict
 
-    if not test_procedure_tags:
-        test_procedure_tags = h4_tag.find_next(
-            "h6", {"id": lambda x: x and x.startswith("_test_procedure")}
-        )
-
-    table = test_procedure_tags.find_next("table")
-    data["Test Procedure"] = create_dataframe_from_table(table)
-
-    print(f"Test case details extracted for {data['Test Case ID']}")
     workbook.save(excel_filename)
 
-    return header_text, data
+    return header_text, details
 
-
-def extract_testcase_details_from_html(test_plan_type, header_tag, second_header_text):
-    if test_plan_type == 0:
-	get_test_plan_type = "App Test Case"
-	html_path = app_html_path
+def extract_testcase_details_from_html(header_tag, is_app, second_h1_tag=None):
+    if is_app:
+        html_path = app_html_path
     else:
-	get_test_plan_type = "App Test Case"
-	html_path = main_html_path
-	
-    with open(html_path) as file:
-    	soup = BeautifulSoup(file, "lxml")
+        html_path = main_html_path
 
-    header_tags = soup.find_all("h1", {"id": True})
-    first_header_tag = [tag for tag in header_tags if tag.text == header_tag][0]
+    with open(html_path) as html_file:
+        soup = BeautifulSoup(html_file, 'lxml')
 
-    if second_header_text:
-        second_header_tag = [
-            tag for tag in header_tags if tag.text == second_header_text
-        ][0]
-    else:
-        second_header_tag = False
+    h1_tags = soup.find_all('h1', {'id': True})
+    first_h1_tag = None
 
-    cluster_name = (
-        header_tag.replace(" Cluster Test Plan", "")
-        .replace(" Cluster TestPlan", "")
-        .replace(" Cluster", "")
-        .replace(" cluster", "")
-        .replace(" Test Plan", "")
-    )
+    for tag in h1_tags:
+        tag_text = tag.text
+        if tag_text == header_tag:
+            first_h1_tag = tag
+            break
 
-    if header_tag == "MCORE PICS Definition":
+    if not first_h1_tag:
         return None
 
-    result = []
-
-    if second_header_tag:
-        for h5_tag in first_header_tag.find_all_next(
-            ["h5", "h6"], {"id": lambda x: x and x.startswith("_test_procedure")}
-        ):
-            if (
-                h5_tag.find_previous("h1") == first_header_tag
-                and h5_tag.find_next("h1") == second_header_tag
-            ):
-                result.append(h5_tag)
+    if second_h1_tag:
+        for tag in h1_tags:
+            tag_text = tag.text
+            if tag_text == second_h1_tag:
+                second_h1 = tag
+                break
     else:
-        for h5_tag in first_header_tag.find_all_next(
-            ["h5", "h6"], {"id": lambda x: x and x.startswith("_test_procedure")}
-        ):
-            if h5_tag.find_previous("h1") == first_header_tag:
-                result.append(h5_tag)
+        second_h1 = None
 
-    if not result:
-        h5_tags = first_header_tag.find_all_next(
-            ["h5", "h6"], {"id": lambda x: x and x.startswith("_test_procedure")}
-        )
+    h1 = first_h1_tag.text
+    cluster_name = h1.replace(' Cluster Test Plan', '') \
+        .replace(' Cluster TestPlan', '') \
+        .replace(' Cluster', '') \
+        .replace(' cluster', '') \
+        .replace(' Test Plan', '')
+
+    if h1 == "MCORE PICS Definition":
+        return None
+
+    clus = []
+    first_h1 = first_h1_tag
+
+    h5_tags = first_h1.find_all_next(['h5', 'h6'], {'id': lambda x: x and x.startswith('_test_procedure')})
+
+    result = []
+    if second_h1:
+        for h5_tag in h5_tags:
+            if h5_tag.find_previous('h1') == first_h1:
+                if h5_tag.find_next('h1') == second_h1:
+                    result.append(h5_tag)
+    else:
+        for h5_tag in h5_tags:
+            result.append(h5_tag)
+
+    if result:
+        heads = []
+        for h5_tag in result:
+            h4_tag = h5_tag.find_previous('h4')
+            headt, d = tc(h4_tag, "App Test Case" if is_app else "Core Test Case")
+            clus.append(d)
+            heads.append(headt)
+    else:
+        h5_tags = first_h1.find_all_next(['h5', 'h6'], {'id': lambda x: x and x.startswith('_test_procedure')})
 
         for h5_tag in h5_tags:
-            if (
-                h5_tag.find_previous("h1") == first_header_tag
-                and h5_tag.find_next("h1") == second_header_tag
-            ):
-                result.append(h5_tag)
+            if h5_tag.find_previous('h1') == first_h1:
+                if h5_tag.find_next('h1') == second_h1:
+                    result.append(h5_tag)
 
-    headers = []
-    for h5_tag in result:
-        h4_tag = h5_tag.find_previous("h4")
-        header_text, data = extract_testcase_details(
-            h4_tag, get_test_plan_type(html_path)
-        )
-        headers.append(header_text)
+        heads = []
+        for h5_tag in result:
+            h4_tag = h5_tag.find_previous('h5')
+            headt, d = tc(h4_tag, "App Test Case" if is_app else "Core Test Case")
+            clus.append(d)
+            heads.append(headt)
 
-    return {cluster_name: headers}
+    return {cluster_name: clus}
 
-
-def create_dataframe_from_table(table):
-    rows = table.find_all("tr")
+def create_dataframe_from_table(table_tag):
+    rows = table_tag.find_all('tr')
     data = []
     col_spans = []
     row_spans = []
 
     for i, row in enumerate(rows):
-        cells = row.find_all(["th", "td"])
+        cells = row.find_all(['th', 'td'])
         row_data = []
         for j, cell in enumerate(cells):
-            if cell.has_attr("colspan"):
-                col_spans.append((i, j, int(cell["colspan"])))
-            if cell.has_attr("rowspan"):
-                row_spans.append((i, j, int(cell["rowspan"])))
+            if cell.has_attr('colspan'):
+                col_spans.append((i, j, int(cell['colspan'])))
+            if cell.has_attr('rowspan'):
+                row_spans.append((i, j, int(cell['rowspan'])))
             row_data.append(cell.get_text(strip=True))
         data.append(row_data)
 
     for span in col_spans:
         i, j, span_size = span
         for r in range(1, span_size):
-            data[i].insert(j + 1, "")
+            data[i].insert(j + 1, '')
 
     for span in row_spans:
         i, j, span_size = span
         for r in range(1, span_size):
-            data[i + r].insert(j, "")
+            data[i + r].insert(j, '')
 
     df = pd.DataFrame(data[1:], columns=data[0])
-    df = df.fillna("")
-
-    data_dict = df.to_dict("list")
-
+    df = df.fillna('')
+    data_dict = df.to_dict('list')
     return data_dict
 
-
-def detect_changes(existing_data, updated_data):
+def compare_existing_updated_data(existing_data, updated_data):
     new_clusters = list(updated_data.keys())
     old_clusters = list(existing_data.keys())
 
     added_clusters = list(set(new_clusters).difference(set(old_clusters)))
     removed_clusters = list(set(old_clusters).difference(set(new_clusters)))
-
     changed_testcases = {}
     new_testcases = []
     removed_testcases = []
@@ -215,9 +189,8 @@ def detect_changes(existing_data, updated_data):
     for cluster in new_clusters:
         if cluster in added_clusters + removed_clusters:
             continue
-
         new_testcases_data = updated_data[cluster]
-        old_testcases_data = existing_data[cluster]
+        old_testcases_data = existing_data.get(cluster, [])
 
         if new_testcases_data == old_testcases_data:
             print(f"No changes in {cluster} cluster")
@@ -230,415 +203,352 @@ def detect_changes(existing_data, updated_data):
                 else:
                     changes = []
                     keys = list(new_testcases_data[i].keys())
-
-                    for k in keys:
-                        if new_testcases_data[i][k] == old_testcases_data[i][k]:
-                            print(
-                                f"{new_testcases_data[i]['Test Case ID']} {k} has no change "
-                            )
-                        elif k == "Test Procedure":
-                            test_procedure_keys = list(new_testcases_data[i][k].keys())
-                            print(test_procedure_keys)
-
-                            for tp_key in test_procedure_keys:
-                                if (
-                                    new_testcases_data[i][k][tp_key]
-                                    == old_testcases_data[i][k][tp_key]
-                                ):
-                                    print(
-                                        f"{new_testcases_data[i]['Test Case ID']} {tp_key} has no change "
-                                    )
+                    for key in keys:
+                        if new_testcases_data[i][key] == old_testcases_data[i][key]:
+                            print(f"{new_testcases_data[i]['Test Case ID']} {key} has no change ")
+                        elif key == "Test Procedure":
+                            procedure_keys = list(new_testcases_data[i][key].keys())
+                            print(procedure_keys)
+                            for proc_key in procedure_keys:
+                                if new_testcases_data[i][key][proc_key] == old_testcases_data[i][key][proc_key]:
+                                    print(f"{new_testcases_data[i]['Test Case ID']} {proc_key} has no change ")
                                 else:
-                                    changes.append(f"Testprocedure({tp_key})")
+                                    changes.append(f"Testprocedure({proc_key})")
                         else:
-                            changes.append(k)
-
-                    changed_testcases[new_testcases_data[i]["Test Case ID"]] = changes
+                            changes.append(key)
+                    changed_testcases[new_testcases_data[i]['Test Case ID']] = changes
 
         elif len(new_testcases_data) > len(old_testcases_data):
-            new_testcases.append(cluster)
+            new_clusters.append(cluster)
 
         else:
             removed_testcases.append(cluster)
 
-    changes_data = {
+    differences = {
         "added_clusters": added_clusters,
         "removed_clusters": removed_clusters,
         "changed_testcases": changed_testcases,
         "added_testcases": new_testcases,
-        "removed_testcases": removed_testcases,
+        "removed_testcases": removed_testcases
     }
 
-    return changes_data
+    return differences
 
-
-def update_changes_in_excel(changes_data, excel_sheet, version):
+def update_change_log(differences, sheet, version):
     changes = []
+  
+    if differences["changed_testcases"]:
+        keys = list(differences["changed_testcases"].keys())
+        for key in keys:
+            for change in differences["changed_testcases"][key]:
+                changes.append([today_date, version, key, "Testcase Modified", change])
 
-    if changes_data["changed_testcases"]:
-        keys = list(changes_data["changed_testcases"].keys())
-        for k in keys:
-            for change in changes_data["changed_testcases"][k]:
-                changes.append([today_date, version, k, "Testcase Modified", change])
-
-    if changes_data["added_clusters"]:
-        for cluster in changes_data["added_clusters"]:
+    if differences["added_clusters"]:
+        for cluster in differences["added_clusters"]:
             changes.append([today_date, version, cluster, "Cluster Added"])
 
-    if changes_data["removed_clusters"]:
-        for cluster in changes_data["removed_clusters"]:
+    if differences["removed_clusters"]:
+        for cluster in differences["removed_clusters"]:
             changes.append([today_date, version, cluster, "Cluster Removed"])
 
-    if changes_data["added_testcases"]:
-        for testcase in changes_data["added_testcases"]:
+    if differences["added_testcases"]:
+        for testcase in differences["added_testcases"]:
             changes.append([today_date, version, testcase, "Testcase Added"])
 
-    if changes_data["removed_testcases"]:
-        for testcase in changes_data["removed_testcases"]:
+    if differences["removed_testcases"]:
+        for testcase in differences["removed_testcases"]:
             changes.append([today_date, version, testcase, "Testcase Removed"])
 
-    print(changes)
-
     if changes:
-        print(len(changes))
-        for i in range(len(changes)):
-            excel_sheet.insert_rows(2)
-
-        for i in range(len(changes)):
-            for j, value in enumerate(changes[i]):
-                excel_sheet.cell(row=i + 2, column=j + 1, value=value)
+        print(f"Number of Testcase Change : {len(changes)}\n")
+        print(changes)
+        for _ in range(len(changes)):
+            sheet.insert_rows(2)
+        for i, change_data in enumerate(changes):
+            for j, value in enumerate(change_data):                                                                                 
+                sheet.cell(row=i + 2, column=j + 1, value=value)
     else:
-        excel_sheet.insert_rows(2)
-        values = [today_date, version, "Nil", f"NO CHANGE : {today_date}", "Nil"]
-
-        for i in range(0, 1):
-            for j, value in enumerate(values):
-                excel_sheet.cell(row=i + 2, column=j + 1, value=value)
-
+        sheet.insert_rows(2)
+        default_value = [today_date, version, "Nil", f"NO CHANGE : {today_date}", "Nil"]
+        for _ in range(1):
+            for j, value in enumerate(default_value):                                                                                 
+                sheet.cell(row=_ + 2, column=j + 1, value=value)
+    
     return None
 
-
-def update_test_case_changes(changes_data, excel_sheet, version):
+def update_testcase_change_log(differences, sheet, version):
     changes = []
-
-    if changes_data["changed_testcases"]:
-        keys = list(changes_data["changed_testcases"].keys())
-        for k in keys:
-            for change in changes_data["changed_testcases"][k]:
+  
+    if differences["changed_testcases"]:
+        keys = list(differences["changed_testcases"].keys())
+        for key in keys:
+            for change in differences["changed_testcases"][key]:
                 if change in ["Test Case Name", "Test Case ID"]:
-                    changes.append(
-                        [today_date, version, k, "Testcase Modified", change]
-                    )
+                    changes.append([today_date, version, key, "Testcase Modified", change])
 
-    if changes_data["added_clusters"]:
-        for cluster in changes_data["added_clusters"]:
+    if differences["added_clusters"]:
+        for cluster in differences["added_clusters"]:
             changes.append([today_date, version, cluster, "Cluster Added"])
 
-    if changes_data["removed_clusters"]:
-        for cluster in changes_data["removed_clusters"]:
+    if differences["removed_clusters"]:
+        for cluster in differences["removed_clusters"]:
             changes.append([today_date, version, cluster, "Cluster Removed"])
 
-    if changes_data["added_testcases"]:
-        for testcase in changes_data["added_testcases"]:
+    if differences["added_testcases"]:
+        for testcase in differences["added_testcases"]:
             changes.append([today_date, version, testcase, "Testcase Added"])
 
-    if changes_data["removed_testcases"]:
-        for testcase in changes_data["removed_testcases"]:
+    if differences["removed_testcases"]:
+        for testcase in differences["removed_testcases"]:
             changes.append([today_date, version, testcase, "Testcase Removed"])
 
     if changes:
-        print(len(changes))
-        for i in range(len(changes)):
-            excel_sheet.insert_rows(2)
-
-        for i in range(len(changes)):
-            for j, value in enumerate(changes[i]):
-                excel_sheet.cell(row=i + 2, column=j + 1, value=value)
+		print(f"Number of Testcase Change : {len(changes)}\n")
+        print(changes)
+        for _ in range(len(changes)):
+            sheet.insert_rows(2)
+        for i, change_data in enumerate(changes):
+            for j, value in enumerate(change_data):                                                                                 
+                sheet.cell(row=i + 2, column=j + 1, value=value)
     else:
-        excel_sheet.insert_rows(2)
-        values = [today_date, version, "Nil", f"NO CHANGE : {today_date}", "Nil"]
-
-        for i in range(0, 1):
-            for j, value in enumerate(values):
-                excel_sheet.cell(row=i + 2, column=j + 1, value=value)
+        sheet.insert_rows(2)
+        default_value = [today_date, version, "Nil", f"NO CHANGE : {today_date}", "Nil"]
+        for _ in range(1):
+            for j, value in enumerate(default_value):                                                                                 
+                sheet.cell(row=_ + 2, column=j + 1, value=value)
 
     return None
 
-
-def enclose_clusters(header_tags):
-    enclosing_headers = []
-
-    for i in range(len(header_tags)):
-        if i == (len(header_tags) - 1):
-            second_header = False
+def create_cluster_enclosure_tags(h1_tags):
+    enclosure_tags = []
+    for i in range(len(h1_tags)):
+        if i == (len(h1_tags) - 1):
+            second_h1_tag = False
         else:
-            second_header = header_tags[i + 1].text
-        enclosing_headers.append(second_header)
+            second_h1_tag = h1_tags[i + 1]
+        enclosure_tags.append(second_h1_tag)
+    return enclosure_tags
 
-    return enclosing_headers
-
-
-def update_test_case_summary(excel_sheet, updated_data):
-    print("Updating test case summary in Excel sheet 'All_TC_Details'...")
+def update_testcase_summary(sheet, updated_data):
+	print("Updating test case summary in Excel sheet 'All_TC_Details'...")
     clusters = list(updated_data.keys())
-
     for cluster in clusters:
-        test_case_ids = updated_data[cluster][0]["Test Case ID"]
-        sh = re.search(r"-(.*?)-", test_case_ids)
+        tc_ids = updated_data[cluster][0]["Test Case ID"]
+        sh = re.search(r'-(.*?)-', tc_ids)
         code = sh.group(1)
+        if code == 'LOWPOWER':
+            code = 'MC'
+        sheet_name = workbook[code]
+        sheet_name.append([cluster])
+        sheet_name.append([""])
 
-        if code == "LOWPOWER":
-            code = "MC"
-
-        sheet = workbook[code]
-        sheet.append([cluster])
-        sheet.append([""])
-
-        test_cases = updated_data[cluster]
-
-        for test_case in test_cases:
-            test_case_name = test_case["Test Case Name"]
-            sheet.append([test_case_name])
-            sheet.append([""])
-            sheet.append(["Purpose"])
-            sheet.append([test_case["Purpose"]])
-            sheet.append([""])
-            sheet.append(["PICS"])
-
-            for pics in test_case["PICS"]:
-                sheet.append([pics])
-
-            sheet.append([""])
-            sheet.append(["Pre-condition"])
-
-            if test_case["Pre-condition"] == "Nil":
-                sheet.append(["Nil"])
+        testcases_data = updated_data[cluster]
+        for testcase_data in testcases_data:
+            testcase_name = testcase_data["Test Case Name"]
+            sheet_name.append([testcase_name])
+            sheet_name.append([""])
+            sheet_name.append(["Purpose"])
+            sheet_name.append([testcase_data["Purpose"]])
+            sheet_name.append([""])
+            sheet_name.append(["PICS"])
+            for pics in testcase_data["PICS"]:
+                sheet_name.append([pics])
+            sheet_name.append([""])
+            sheet_name.append(["Pre-condition"])
+            if testcase_data["Pre-condition"] == "Nil":
+                sheet_name.append(["Nil"])
             else:
-                headers = list(test_case["Pre-condition"].keys())
-                sheet.append(headers)
-
-                for i in range(len(list(test_case["Pre-condition"].values())[0])):
+                head = list(testcase_data["Pre-condition"].keys())
+                sheet_name.append(head)
+                for i in range(len(list(testcase_data["Pre-condition"].values())[0])):
                     values = []
-
-                    for key, value in test_case["Pre-condition"].items():
+                    for key, value in testcase_data["Pre-condition"].items():
                         if i < len(value):
-                            values.append(value[i])
-
-                    sheet.append(values)
-
-            sheet.append([""])
-            sheet.append(["Test Procedure"])
-            keys = list(test_case["Test Procedure"].keys())
-            sheet.append(keys)
-
-            for i in range(len(list(test_case["Test Procedure"].values())[0])):
+                            values.append(value[i]) 
+                    sheet_name.append(values)
+            sheet_name.append([""])
+            sheet_name.append(["Test Procedure"])
+            keys = list(testcase_data["Test Procedure"].keys())
+            sheet_name.append(keys)
+            for i in range(len(list(testcase_data["Test Procedure"].values())[0])):
                 values = []
-
-                for key, value in test_case["Test Procedure"].items():
+                for key, value in testcase_data["Test Procedure"].items():
                     if i < len(value):
-                        values.append(value[i])
-
-                sheet.append(values)
-
-            sheet.append([""])
-            sheet.append([""])
-            sheet.append([""])
-            head_text_match = re.search(r"\[(.*?)\]\s*(.*)", test_case_name)
-
+                        values.append(value[i]) 
+                sheet_name.append(values)
+            sheet_name.append([""])
+            sheet_name.append([""])
+            sheet_name.append([""])
+            head_text_match = re.search(r'\[(.*?)\]\s*(.*)', testcase_name)
             if head_text_match:
-                test_case_full_name = (
-                    "[" + head_text_match.group(1) + "] " + head_text_match.group(2)
-                )
+                tc_name = '[' + head_text_match.group(1) + '] ' + head_text_match.group(2)
             else:
-                test_case_full_name = ""
+                tc_name = ''
+            tc_id = testcase_data["Test Case ID"]
+            test_plan = testcase_data["Test Plan"]
+            row_number = sheet.max_row
 
-            test_case_id = test_case["Test Case ID"]
-            test_plan = test_case["Test Plan"]
-            row_number = excel_sheet.max_row
-
-            row_values = [
-                row_number,
-                cluster,
-                test_case_full_name,
-                test_case_id,
-                test_plan,
-            ]
-            excel_sheet.append(row_values)
-
-            print(
+            row_data = [row_number, cluster, tc_name, tc_id, test_plan]
+            sheet.append(row_data)
+			print(
                 f"Updated details for test case: {test_case['Test Case ID']} in cluster: {cluster}"
             )
             workbook.save(excel_filename)
+			print("Test case summary updated successfully.")
 
-    print("Test case summary updated successfully.")
+    return None
 
-
-def main():
-    print("Starting the script...")
-
-    updated_data = {}
+if __name__ == '__main__':
+	print("Starting the script...")
+    updated_test_cases = {}
 
     try:
-        with open(json_filename, "r") as json_file:
-            existing_data = json.load(json_file)
-            is_existing_data = True
+        with open(json_filename, 'r') as json_file:
+            existing_test_cases = json.load(json_file)
+            is_existing_data_present = True
     except FileNotFoundError:
-        existing_data = {}
-        is_existing_data = False
+        existing_test_cases = {}
+        is_existing_data_present = False
 
-    with open(app_html_path) as f:
-        soup_app = BeautifulSoup(f, "lxml")
+    with open(app, 'r') as app_file:
+        app_soup = BeautifulSoup(app_file, 'lxml')
 
-    with open(main_html_path) as f:
-        soup_main = BeautifulSoup(f, "lxml")
+    with open(main, 'r') as main_file:
+        main_soup = BeautifulSoup(main_file, 'lxml')
 
-    version_tag_app = soup_app.find("div", class_="details")
-    version_text = version_tag_app.find("span", id="revnumber")
-    version = version_text.text
+    version_tag = app_soup.find('div', class_='details')
+    version_text = version_tag.find('span', id="revnumber")
+    version_number = version_text.text
 
-    h1_tags_app = soup_app.find_all("h1", {"id": True})
-    h1_tags_main = soup_main.find_all("h1", {"id": True})
+    app_h1_tags = app_soup.find_all('h1', {'id': True})
+    main_h1_tags = main_soup.find_all('h1', {'id': True})
 
-    h1_tags_app_text = [tag.text for tag in h1_tags_app]
-    h1_tags_main_text = [tag.text for tag in h1_tags_main]
+    app_h1_tags_text = []
+    main_h1_tags_text = []
 
-    print(f"Number of clusters in app HTML: {len(h1_tags_app)}")
+    for tag in app_h1_tags:
+        tag_text = tag.text
+        app_h1_tags_text.append(tag_text)
 
+    for tag in main_h1_tags:
+        tag_text = tag.text
+        main_h1_tags_text.append(tag_text)
+
+    print(f"Number of clusters in app HTML: {len(app_h1_tags)}")
+	print(f"Number of clusters in app HTML: {len(main_h1_tags)}")
+	
     if "All_TC_Details" in sheet_names:
-        print("Removing the existing 'All_TC_Details' sheet and creating a new one...")
         workbook.remove(workbook["All_TC_Details"])
         workbook.create_sheet("All_TC_Details", 0)
-        excel_sheet = workbook["All_TC_Details"]
+        all_tc_details_sheet = workbook["All_TC_Details"]
     else:
-        print("Using the existing 'All_TC_Details' sheet...")
-        excel_sheet = workbook.active
-        excel_sheet.title = "All_TC_Details"
+        all_tc_details_sheet = workbook.active
+        all_tc_details_sheet.title = "All_TC_Details"
 
-    header = ["S.no", "Cluster Name", "Test Case Name", "Test Case ID", " Test Plan "]
-    excel_sheet.append(header)
+    header_row = ["S.no", "Cluster Name", "Test Case Name", "Test Case ID", " Test Plan "]
+    all_tc_details_sheet.append(header_row)
 
-    cluster_enclosures_app = enclose_clusters(h1_tags_app)
-    print(f"Cluster enclosures in app HTML: {cluster_enclosures_app}")
+    app_enclosure_tags = cluster_enclose(app_h1_tags)
+    print(f"Cluster enclosures in app HTML: {app_enclosure_tags}")
 
-    if len(cluster_enclosures_app) == len(h1_tags_app):
-        input_data = [
-            (h1_tags_app_text[i], 0, cluster_enclosures_app[i])
-            for i in range(len(cluster_enclosures_app))
-        ]
-        print("Extracting test case details from app HTML...")
-        results = Parallel(n_jobs=-1)(
-            delayed(extract_testcase_details_from_html)(a, b, c) for a, b, c in input_data
-        )
+    if len(app_enclosure_tags) == len(app_h1_tags):
+        input_data = []
+        for i in range(len(app_enclosure_tags)):
+            current_h1_tag = app_h1_tags_text[i]
+            is_app_test_case = 0
+            current_enclosure_tag = app_enclosure_tags[i]
+            input_data.append((current_h1_tag, is_app_test_case, current_enclosure_tag))
+		
+		print("Extracting test case details from app HTML...")
+        results = Parallel(n_jobs=-1)(delayed(tc_details)(a, b, c) for a, b, c in input_data)
 
         for result in results:
             if result is not None:
-                updated_data.update(result)
-
+                updated_test_cases.update(result)
     else:
         print("Failed to extract test case details from app HTML")
 
-    cluster_enclosures_main = enclose_clusters(h1_tags_main)
-    print(f"Cluster enclosures in main HTML: {cluster_enclosures_main}")
+    main_enclosure_tags = cluster_enclose(main_h1_tags
+	print(f"Cluster enclosures in app HTML: {main_enclosure_tags}")
 
-
-    if len(cluster_enclosures_main) == len(h1_tags_main):
-        input_data = [
-            (h1_tags_main_text[i], 1, cluster_enclosures_main[i])
-            for i in range(len(cluster_enclosures_main))
-        ]
-        print("Extracting test case details from main HTML...")
-        results = Parallel(n_jobs=-1)(
-            delayed(extract_testcase_details_from_html)(a, b, c) for a, b, c in input_data
-        )
+    if len(main_enclosure_tags) == len(main_h1_tags):
+        input_data = []
+        for i in range(len(main_enclosure_tags)):
+            current_h1_tag = main_h1_tags_text[i]
+            is_app_test_case = 1
+            current_enclosure_tag = main_enclosure_tags[i]
+            input_data.append((current_h1_tag, is_app_test_case, current_enclosure_tag))
+		
+		print("Extracting test case details from main HTML...")
+        results = Parallel(n_jobs=-1)(delayed(tc_details)(a, b, c) for a, b, c in input_data)
 
         for result in results:
             if result is not None:
-                updated_data.update(result)
-
+                updated_test_cases.update(result)
     else:
         print("Failed to extract test case details from main HTML")
 
-    codes = []
-    clusters = list(existing_data.keys())
+    test_case_codes = []
+    existing_clusters = list(existing_test_cases.keys())
 
-    for test in updated_data:
-        test_case_id = updated_data[test][0]["Test Case ID"]
-        sh = re.search(r"-(.*?)-", test_case_id)
-        code = sh.group(1)
+    for test_case_name in updated_test_cases:
+        test_case_id = updated_test_cases[test_case_name][0]["Test Case ID"]
+        search_result = re.search(r'-(.*?)-', test_case_id)
+        test_case_code = search_result.group(1)
+        if test_case_code == 'LOWPOWER':
+            test_case_code = 'MC'
 
-        if code == "LOWPOWER":
-            code = "MC"
+        test_case_codes.append(test_case_code)
 
-        codes.append(code)
-
-    for code in codes:
+    for code in test_case_codes:
         if code in sheet_names:
             workbook.remove(workbook[code])
             workbook.create_sheet(code, sheet_names.index(code))
-
         else:
             workbook.create_sheet(code)
+			
+	print("Updating test case summary in Excel...")
+    update_all_test_case_details(all_tc_details_sheet, updated_test_cases)
 
-    print("Updating test case summary in Excel...")
-    update_test_case_summary(excel_sheet, updated_data)
-
-    if is_existing_data:
-        print("Detecting changes in test cases...")
-        diff_result = detect_changes(existing_data, updated_data)
-        print("\nChanges detected:")
-        print(diff_result)
+    if is_existing_data_present:
+		print("Detecting changes in test cases...")
+        differences = identify_changes(existing_test_cases, updated_test_cases)
+		print("\nChanges detected:")
+        print(differences)
 
         if "Test_plan_Changes" not in sheet_names:
-            changes_sheet = workbook.create_sheet("Test_plan_Changes", 2)
-            changes_sheet.append(
-                ["Date of Run", " Commit", "Cluster/Testcase", "Changes", "Column"]
-            )
+            change_log_sheet = workbook.create_sheet("Test_plan_Changes", 2)
+            change_log_sheet.append(["Date of Run", " Commit", "Cluster/Testcase", "Changes", "Column"])
         else:
-            changes_sheet = workbook["Test_plan_Changes"]
-
-        print("\nUpdating Test Plan Changes sheet...")
-        update_changes_in_excel(diff_result, changes_sheet, version)
+            change_log_sheet = workbook["Test_plan_Changes"]
+		
+		print("\nUpdating Test Plan Changes sheet...")
+        update_change_log_sheet(differences, change_log_sheet, version_number)
 
         print("\nChanges detected:")
-        print(diff_result)
+        print(differences)
+
         if "Test_Summary_Changes" not in sheet_names:
-            changes_sheet = workbook.create_sheet("Test_Summary_Changes", 1)
-            changes_sheet.append(
-                [
-                    "Date of Run",
-                    "Cluster Name",
-                    "Test Case Name",
-                    "Test Case ID",
-                    "Test Plan",
-                    "Change Type",
-                ]
+            test_summary_changes_sheet = workbook.create_sheet("Test_Summary_Changes", 1)
+            test_summary_changes_sheet.append(
+                ["Date of Run", "Cluster Name", "Test Case Name", "Test Case ID", "Test Plan", "Change Type"]
             )
         else:
-            changes_sheet = workbook["Test_Summary_Changes"]
+            test_summary_changes_sheet = workbook["Test_Summary_Changes"]
+		
+		print("\nUpdating Test Summary Changes sheet...")
+        update_test_summary_changes_sheet(differences, test_summary_changes_sheet, version_number)
 
-        print("\nUpdating Test Summary Changes sheet...")
-        update_test_case_changes(diff_result, changes_sheet, version)
-
-    column_widths = {
-        "A": 10,
-        "B": 20,
-        "C": 50,
-        "D": 30,
-        "E": 30,
-    }
+    column_widths = {'A': 10, 'B': 20, 'C': 50, 'D': 30, 'E': 30}  # Specify the column widths as desired
 
     for column, width in column_widths.items():
-        excel_sheet.column_dimensions[column].width = width
+        all_tc_details_sheet.column_dimensions[column].width = width
 
-    workbook.save(excel_filename)
+    workbook.save(filename)
+	
+	print("Saving updated data to JSON file...")
+    with open(json_filename, 'w') as json_file:
+        json.dump(updated_test_cases, json_file, indent=4)
 
-    print("Saving updated data to JSON file...")
-    with open(json_filename, "w") as json_file:
-        json.dump(updated_data, json_file, indent=4)
-
-    workbook.save(excel_filename)
-    print("\nScript execution completed.")
-
-
-if __name__ == "__main__":
-    main()
+    workbook.save(filename
+	print("\nScript execution completed.")
