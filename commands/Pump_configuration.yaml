@@ -194,4 +194,3 @@
     - command: "./chip-tool pumpconfigurationandcontrol read lifetime-energy-consumed 1 1"
       logs:
         - " "
-        
