@@ -1,37 +1,39 @@
 name: Format YAML
-
 on:
-#  push:
-#    paths:
-#      - '**/*.yaml'
-#      - '**/*.yml'
+  push:
+    paths:
+      - '**/*.yaml'
+      - '**/*.yml'
   workflow_dispatch:
 
 jobs:
-  fix:
-    name: Fix YAML files
+  format-yaml:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out code
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install yamllint and yq
-        run: |
-          sudo apt-get install -y yamllint
-          sudo snap install yq
+      - name: Install Node.js and npm
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
 
-      - name: Fix YAML files
+      - name: Install prettier
+        run: npm install -g prettier
+
+      - name: Auto-format YAML files
         run: |
-          for file in $(find $GITHUB_WORKSPACE -name "*.yaml" -or -name "*.yml"); do
-            echo "Fixing $file..."
-            yq eval-all --inplace "$file"
+          for file in $(find . -type f \( -name '*.yml' -o -name '*.yaml' \) -not -path "./.github/workflows/*"); do
+            prettier --write "$file" || echo "Error formatting $file, continuing..."
           done
 
-      - name: Commit and push changes
+      - name: Create and push changes to a new branch
         run: |
-          git config --global user.email "suraj@graniteriverlabs.in"
-          git config --global user.name "Survensa"
-          git add ./**/*.yaml ./**/*.yml
-          git commit -m "Auto-fix YAML linting issues"
-          git push
+          git config --local user.email "suraj@graniteriverlabs.in"
+          git config --local user.name "Survensa"
+          git checkout -b auto-format-branch
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Auto-format YAML files"
+          git push -u origin auto-format-branch
+          
