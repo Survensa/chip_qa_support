@@ -20,7 +20,7 @@ jobs:
           node-version: 14
 
       - name: Install prettier
-        run: npm install -g prettier @prettier/plugin-yaml
+        run: npm install -g prettier
 
       - name: Auto-format YAML files
         run: prettier --write '**/*.yaml' '**/*.yml'
