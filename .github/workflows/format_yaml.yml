@@ -35,4 +35,4 @@ jobs:
           git checkout -b auto-format-branch
           git add .
           git diff-index --quiet HEAD || git commit -m "Auto-format YAML files"
-          git push -u origin auto-format-branch
+          git push --force origin auto-format-branch
