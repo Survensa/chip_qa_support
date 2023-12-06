@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 5acfd39,</span>
-<span id="revdate">2023-12-06 10:48:37 +0530</span>
+<span id="revnumber">version master 67a59a7,</span>
+<span id="revdate">2023-12-06 09:13:23 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1817,6 +1817,14 @@ Davis, CA 95616, USA</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Smoke and CO Alarm Cluster</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./cluster/smco.adoc">Document #</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean Sensor Configuration Cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./cluster/boolean_sensor_configuration.adoc">Document #</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valve Configuration and Control Cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./cluster/valve_configuration_and_control.adoc">Document #</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Oven Mode Cluster</p></td>
@@ -21900,6 +21908,31 @@ and SHALL NOT be included otherwise.</p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Additionally, these PICS items from the ICDM cluster are used in this test plan - these definitions are copies from the relevant test plan:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Variable</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mandatory/Optional</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Notes/Additional Constraints</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.S.A0002(ActiveModeThreshold)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the ActiveModeThreshold attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.S:M</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -25423,7 +25456,8 @@ MCORE.SC.DN_KEY
 MCORE.SC.RI_KEY
 MCORE.SC.PH_KEY
 MCORE.SC.PI_KEY</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Check DNS-SD subtypes used by DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- If MCORE.ICD and ICDM.S.A0002(ActiveModeThreshold), TH reads from the DUT the <em>ActiveModeThreshold</em> attribute.</p>
+<p class="tableblock">- Check DNS-SD subtypes used by DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Check DUT advertising for:</p>
 <p class="tableblock">- DNS-SD instance name must be 64-bit randomly selected ID expressed as a sixteen-char hex string with capital letters</p>
 <p class="tableblock">- service type must be _matterc._udp</p>
@@ -25440,7 +25474,10 @@ in ASCII text, omitting any leading zeros</p>
 <p class="tableblock">- if (MCORE.SC.VP_KEY) present, VP key must contain at least Vendor ID and if Product ID is present, values must be separated by a + sign.</p>
 <p class="tableblock">- if (MCORE.SC.SII_OP_DISCOVERY_KEY) present, SII key must be an unsigned integer with units of milliseconds and shall be encoded as a variable length decimal number in ASCII, omitting leading zeros. Shall not exceed 3600000.</p>
 <p class="tableblock">- if (MCORE.SC.SAI_OP_DISCOVERY_KEY ) present, SAI key must be an unsigned integer with units of milliseconds and shall be encoded as a variable length decimal number in ASCII, omitting leading zeros. Shall not exceed 3600000.</p>
-<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) present, SAT key must be an unsigned integer with units of milliseconds and shall be encoded as a variable length decimal number in ASCII, omitting leading zeros. Shall not exceed 65535.</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) and !MCORE.ICD, key SAT shall not exceed 65535 (65.535 seconds) and must be encoded as a decimal value omitting any leading zeros. if key is not
+available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value shall be used</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) and MCORE.ICD, key SAT shall not exceed 65535 (65.535 seconds), must be encoded as a decimal value omitting any leading zeros, and equal to ICDM.S.A0002(ActiveModeThreshold)</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) presents, key SAI shall be present.</p>
 <p class="tableblock">- key CM=1 must be present</p>
 <p class="tableblock">- if (MCORE.SC.DT_KEY) present, DT key must contain the device type identifier from Data Model Device Types and must be encoded as a variable length decimal ASCII number without leading zeros</p>
 <p class="tableblock">- if (MCORE.SC.DN_KEY) present, DN key must be a UTF-8 encoded string with a maximum length of 32B</p>
@@ -25475,7 +25512,8 @@ MCORE.SC.DN_KEY
 MCORE.SC.RI_KEY
 MCORE.SC.PH_KEY
 MCORE.SC.PI_KEY</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Check DNS-SD subtypes used by DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- If MCORE.ICD and ICDM.S.A0002(ActiveModeThreshold), TH reads from the DUT the <em>ActiveModeThreshold</em> attribute.</p>
+<p class="tableblock">- Check DNS-SD subtypes used by DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Check DUT advertising for:</p>
 <p class="tableblock">- DNS-SD instance name must be 64-bit randomly selected ID expressed as a sixteen-char hex string with capital letters and must be different from the one at step 2</p>
 <p class="tableblock">- service type must be _matterc._udp</p>
@@ -25492,7 +25530,10 @@ in ASCII text, omitting any leading zeros</p>
 <p class="tableblock">- if (MCORE.SC.VP_KEY) present, VP key must contain at least Vendor ID and if Product ID is present, values must be separated by a + sign.</p>
 <p class="tableblock">- if (MCORE.SC.SII_OP_DISCOVERY_KEY ) present, SII key must be an unsigned integer with units of milliseconds and shall be encoded as a variable length decimal number in ASCII, omitting leading zeros. Shall not exceed 3600000.</p>
 <p class="tableblock">- if (MCORE.SC.SAI_OP_DISCOVERY_KEY) present, SAI key must be an unsigned integer with units of milliseconds and shall be encoded as a variable length decimal number in ASCII, omitting leading zeros. Shall not exceed 3600000.</p>
-<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) present, SAT key must be an unsigned integer with units of milliseconds and shall be encoded as a variable length decimal number in ASCII, omitting leading zeros. Shall not exceed 65535.</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) and !MCORE.ICD, key SAT shall not exceed 65535 (65.535 seconds) and must be encoded as a decimal value omitting any leading zeros. if key is not
+available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value shall be used</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) and MCORE.ICD, key SAT shall not exceed 65535 (65.535 seconds), must be encoded as a decimal value omitting any leading zeros, and equal to ICDM.S.A0002(ActiveModeThreshold)</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) presents, key SAI shall be present.</p>
 <p class="tableblock">- key CM=1 must be present</p>
 <p class="tableblock">- if (MCORE.SC.DT_KEY) present, DT key must contain the device type identifier from Data Model Device Types and must be encoded as a variable length decimal ASCII number without leading zeros</p>
 <p class="tableblock">- if (MCORE.SC.DN_KEY) present, DN key must be a UTF-8 encoded string with a maximum length of 32B</p>
@@ -25550,7 +25591,10 @@ in ASCII text, omitting any leading zeros</p>
 <p class="tableblock">- if (MCORE.SC.VP_KEY ) present, VP key must contain at least Vendor ID and if Product ID is present, values must be separated by a + sign.</p>
 <p class="tableblock">- if (MCORE.SC.SII_OP_DISCOVERY_KEY) present, SII key must be an unsigned integer with units of milliseconds and shall be encoded as a variable length decimal number in ASCII, omitting leading zeros. Shall not exceed 3600000.</p>
 <p class="tableblock">- if (MCORE.SC.SAI_OP_DISCOVERY_KEY) present, SAI key must be an unsigned integer with units of milliseconds and shall be encoded as a variable length decimal number in ASCII, omitting leading zeros. Shall not exceed 3600000.</p>
-<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) present, SAT key must be an unsigned integer with units of milliseconds and shall be encoded as a variable length decimal number in ASCII, omitting leading zeros. Shall not exceed 65535.</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) and !MCORE.ICD, key SAT shall not exceed 65535 (65.535 seconds) and must be encoded as a decimal value omitting any leading zeros. if key is not
+available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value shall be used</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) and MCORE.ICD, key SAT shall not exceed 65535 (65.535 seconds), must be encoded as a decimal value omitting any leading zeros, and equal to ICDM.S.A0002(ActiveModeThreshold)</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) presents, key SAI shall be present.</p>
 <p class="tableblock">- key CM=2 must be present</p>
 <p class="tableblock">- if (MCORE.SC.DT_KEY) present, DT key must contain the device type identifier from Data Model Device Types and must be encoded as a variable length decimal ASCII number without leading zeros</p>
 <p class="tableblock">- if (MCORE.SC.DN_KEY) present, DN key must be a UTF-8 encoded string with a maximum length of 32B</p>
@@ -25592,7 +25636,9 @@ MCORE.SC.DN_KEY
 MCORE.SC.RI_KEY
 MCORE.SC.PH_KEY
 MCORE.SC.PI_KEY</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If (MCORE.SC.EXTENDED_DISCOVERY ) check DNS-SD subtypes used by DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If (MCORE.SC.EXTENDED_DISCOVERY ),</p>
+<p class="tableblock">- If MCORE.ICD and ICDM.S.A0002(ActiveModeThreshold), TH reads from the DUT the <em>ActiveModeThreshold</em> attribute.</p>
+<p class="tableblock">- check DNS-SD subtypes used by DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Check DUT advertising for:</p>
 <p class="tableblock">- DNS-SD instance name must be 64-bit randomly selected ID expressed as a sixteen-char hex string with capital letters</p>
 <p class="tableblock">- service type must be _matterc._udp</p>
@@ -25609,7 +25655,10 @@ in ASCII text, omitting any leading zeros</p>
 <p class="tableblock">- if (MCORE.SC.VP_KEY) present, VP key must contain at least Vendor ID and if Product ID is present, values must be separated by a + sign.</p>
 <p class="tableblock">- if (MCORE.SC.SII_OP_DISCOVERY_KEY) present, SII key must be an unsigned integer with units of milliseconds and shall be encoded as a variable length decimal number in ASCII, omitting leading zeros. Shall not exceed 3600000.</p>
 <p class="tableblock">- if (MCORE.SC.SAI_OP_DISCOVERY_KEY) present, SAI key must be an unsigned integer with units of milliseconds and shall be encoded as a variable length decimal number in ASCII, omitting leading zeros. Shall not exceed 3600000.</p>
-<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) present, SAT key must be an unsigned integer with units of milliseconds and shall be encoded as a variable length decimal number in ASCII, omitting leading zeros. Shall not exceed 65535.</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) and !MCORE.ICD, key SAT shall not exceed 65535 (65.535 seconds) and must be encoded as a decimal value omitting any leading zeros. if key is not
+available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value shall be used</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) and MCORE.ICD, key SAT shall not exceed 65535 (65.535 seconds), must be encoded as a decimal value omitting any leading zeros, and equal to ICDM.S.A0002(ActiveModeThreshold)</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) presents, key SAI shall be present.</p>
 <p class="tableblock">- key CM=0 may be present</p>
 <p class="tableblock">- if (MCORE.SC.DT_KEY) present, DT key must contain the device type identifier from Data Model Device Types and must be encoded as a variable length decimal ASCII number without leading zeros</p>
 <p class="tableblock">- if (MCORE.SC.DN_KEY) present, DN key must be a UTF-8 encoded string with a maximum length of 32B</p>
@@ -25886,7 +25935,8 @@ in ASCII text, omitting any leading zeros</p>
 MCORE.SC.SAI_OP_DISCOVERY_KEY
 MCORE.SC.SAT_OP_DISCOVERY_KEY
 MCORE.SC.T_KEY</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Scan for DNS-SD advertising</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- If MCORE.ICD and ICDM.S.A0002(ActiveModeThreshold), TH reads from the DUT the <em>ActiveModeThreshold</em> attribute.</p>
+<p class="tableblock">- Scan for DNS-SD advertising</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Check DUT advertising for:</p>
 <p class="tableblock">- DNS-SD instance name must be 64-bit compressed FabricID</p>
 <p class="tableblock">- service type must be _matter._tcp</p>
@@ -25898,8 +25948,10 @@ MCORE.SC.T_KEY</p></td>
 available or has an invalid value, the default MRP_RETRY_INTERVAL_IDLE value must be used</p>
 <p class="tableblock">- if (MCORE.SC.SAI_OP_DISCOVERY_KEY), key SAI shall not exceed 3600000 (1h in ms) and must be encoded as a decimal value omitting any leading zeros. if key is not
 available or has an invalid value, the default MRP_RETRY_INTERVAL_ACTIVE value must be used</p>
-<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY), key SAT shall not exceed 65535 (65.535 seconds) and must be encoded as a decimal value omitting any leading zeros. if key is not
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) and !MCORE.ICD, key SAT shall not exceed 65535 (65.535 seconds) and must be encoded as a decimal value omitting any leading zeros. if key is not
 available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value shall be used</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) and MCORE.ICD, key SAT shall not exceed 65535 (65.535 seconds), must be encoded as a decimal value omitting any leading zeros, and equal to ICDM.S.A0002(ActiveModeThreshold)</p>
+<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) presents, key SAI shall be present.</p>
 <p class="tableblock">- if (MCORE.SC.T_KEY), key T it can have only 0 or 1 values and must be encoded as a decimal value omitting any leading zeros. if key is not available or has an invalid value, the default value 0 must be used indicating TCP is not supported.</p>
 <p class="tableblock">DUT must publish AAAA records for each IPv6 address upon which they are willing to accept Matter messages.</p></td>
 </tr>
@@ -37461,7 +37513,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>For every cluster on every endpoint, verify that none of the global attributes contain values with prefixes outside the allowed standard, MEI or Test Vendor prefix range. The disallowed range of values for all global attributes is 0xFFF5_0000 - 0xFFFF_FFFF. The set of global attributes to be checked is as follows:</p>
+<p>For every cluster on every endpoint, verify that none of the global attributes contain values with prefixes outside the allowed standard or test_vendor MEI prefix range. The disallowed range of values for all global attributes is 0xFFF5_0000 - 0xFFFF_FFFF. The set of global attributes to be checked is as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -37484,9 +37536,12 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>For every cluster on every endpoint, verify that none of the global attributes contain MEI values outside of the allowed suffix range. The values to be checked and the allowed range of values is as follows:<br>
-* AttributeList: (0xXXXX_0000 -  0xXXXX_0x4FFF ) and (0xXXXX_F000 - 0xXXXX_FFFE)<br>
+* AttributeList: (0xXXXX_0000 -  0xXXXX_4FFF) and (0xXXXX_F000 - 0xXXXX_FFFE)<br>
 * AcceptedCommandList: 0xXXXX_0000 - 0xXXXX_00FF<br>
 * GeneratedCommandList: 0xXXXX_0000 - 0xXXXX_00FF</p>
+</div>
+<div class="paragraph">
+<p>where XXXX denotes any prefix value. The prefix of each item should be masked before performing suffix range checks.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -37495,7 +37550,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>For every cluster on every endpoint, verify that the cluster ID prefix is in the standard, MEI or test vendor range.</p>
+<p>For every cluster on every endpoint, verify that the cluster ID prefix is in the standard or MEI range.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -54363,8 +54418,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 5acfd39<br>
-Last updated 2023-12-06 05:18:50 UTC
+Version master 67a59a7<br>
+Last updated 2023-12-06 17:13:40 UTC
 </div>
 </div>
 </body>
