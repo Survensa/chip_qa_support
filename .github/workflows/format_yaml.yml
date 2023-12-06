@@ -28,6 +28,10 @@ jobs:
             prettier --write "$file" || echo "Error formatting $file, continuing..."
           done
 
-      - name: Check for changes
+      - name: Commit and push changes
         run: |
-          git diff --quiet || { git config --local user.email "suraj@graniteriverlabs.in" && git config --local user.name "Survensa" && git add . && git commit -m "Auto-format YAML files" && git push; }
+          git config --local user.email "suraj@graniteriverlabs.in"
+          git config --local user.name "Survensa"
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Auto-format YAML files"
+          git push
