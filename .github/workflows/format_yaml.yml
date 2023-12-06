@@ -14,14 +14,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Get latest yq version
+        id: get-yq-version
+        run: |
+          latest_version=$(curl -s https://api.github.com/repos/mikefarah/yq/releases/latest | jq -r .tag_name)
+          echo "::set-output name=version::$latest_version"
+
       - name: Install yq
         run: |
           mkdir -p $HOME/bin
-          wget https://github.com/mikefarah/yq/releases/download/3.4.0/yq_linux_amd64 -O $HOME/bin/yq
+          version=$(echo ${{ steps.get-yq-version.outputs.version }})
+          wget "https://github.com/mikefarah/yq/releases/download/${version}/yq_linux_amd64" -O $HOME/bin/yq
           chmod +x $HOME/bin/yq
 
       - name: Auto-format YAML files
-        run: find . -type f -name '*.yml' -o -name '*.yaml' -exec $HOME/bin/yq eval -i {} \;
+        run: find . -type f -name '*.yml' -o -name '*.yaml' -exec $HOME/bin/yq eval -i '. {}' {} \;
 
       - name: Check for changes
         run: |
