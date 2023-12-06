@@ -28,10 +28,11 @@ jobs:
             prettier --write "$file" || echo "Error formatting $file, continuing..."
           done
 
-      - name: Commit and push changes
+      - name: Create and push changes to a new branch
         run: |
           git config --local user.email "suraj@graniteriverlabs.in"
           git config --local user.name "Survensa"
+          git checkout -b auto-format-branch
           git add .
           git diff-index --quiet HEAD || git commit -m "Auto-format YAML files"
-          git push
+          git push -u origin auto-format-branch
