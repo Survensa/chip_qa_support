@@ -37,8 +37,6 @@
     - command: "./chip-tool  descriptor read server-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-ACL-2.3] Extension attribute"
   commands:
     - command: "./chip-tool operationalcredentials read current-fabric-index 1 0"
