@@ -28,7 +28,10 @@ jobs:
           chmod +x $HOME/bin/yq
 
       - name: Auto-format YAML files
-        run: find . -type f -name '*.yml' -o -name '*.yaml' -exec $HOME/bin/yq eval '. {}' -i {} \;
+        run: |
+          find . -type f \( -name '*.yml' -o -name '*.yaml' \) -print0 | while IFS= read -r -d '' file; do
+            $HOME/bin/yq eval '. {}' -i "$file"
+          done
 
       - name: Check for changes
         run: |
