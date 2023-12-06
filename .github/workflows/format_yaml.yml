@@ -16,13 +16,13 @@ jobs:
 
       - name: Install yq
         run: |
-          wget https://github.com/mikefarah/yq/releases/download/3.4.0/yq_linux_amd64 -O /usr/bin/yq
-          chmod +x /usr/bin/yq
+          mkdir -p $HOME/bin
+          wget https://github.com/mikefarah/yq/releases/download/3.4.0/yq_linux_amd64 -O $HOME/bin/yq
+          chmod +x $HOME/bin/yq
 
       - name: Auto-format YAML files
-        run: find . -type f -name '*.yml' -o -name '*.yaml' -exec yq eval -i {} \;
+        run: find . -type f -name '*.yml' -o -name '*.yaml' -exec $HOME/bin/yq eval -i {} \;
 
       - name: Check for changes
         run: |
           git diff --quiet || { git config --local user.email "suraj@graniteriverlabs.in" && git config --local user.name "Survensa" && git add . && git commit -m "Auto-format YAML files" && git push; }
-          
