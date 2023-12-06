@@ -24,7 +24,7 @@ jobs:
 
       - name: Auto-format YAML files
         run: |
-          for file in $(find . -type f \( -name '*.yml' -o -name '*.yaml' \)); do
+          for file in $(find . -type f \( -name '*.yml' -o -name '*.yaml' \) -not -path "./.github/workflows/*"); do
             prettier --write "$file" || echo "Error formatting $file, continuing..."
           done
 
@@ -35,4 +35,4 @@ jobs:
           git checkout -b auto-format-branch
           git add .
           git diff-index --quiet HEAD || git commit -m "Auto-format YAML files"
-          git push --force origin auto-format-branch
+          git push -u origin auto-format-branch
