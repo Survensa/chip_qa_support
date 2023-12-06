@@ -16,7 +16,7 @@
       logs:
         - " "
 - testcase: "[TC-ICDM-2.1] Attributes with DUT as Server"
-  commands:        
+  commands:
     - command: "./chip-tool icdmanagement read idle-mode-interval 1 0"
       logs:
         - " "

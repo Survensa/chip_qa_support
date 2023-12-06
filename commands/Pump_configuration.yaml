@@ -17,7 +17,6 @@
         - " "
       logs:
         - " "
-    
 - testcase: "[TC-PCC-2.1] Attributes with server as DUT"
   commands:
     - command: "./chip-tool pumpconfigurationandcontrol read max-pressure 1 1"
