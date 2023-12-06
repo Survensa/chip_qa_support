@@ -278,8 +278,6 @@
     - command: "./chip-tool pairing code 1 {code} --commissioner-name gamma"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-CADMIN-1.6] Commissioning window handling timeout and revocation using BCM"
   commands:
     - command: "./chip-tool administratorcommissioning open-basic-commissioning-window 180 1 0 --timedInteractionTimeoutMs 1000"
