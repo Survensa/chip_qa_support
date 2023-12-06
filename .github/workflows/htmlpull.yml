@@ -26,7 +26,7 @@ jobs:
       - name: Fetch and add SPEC HTML
         run: |
           access_token="${{ secrets.SOURCE_PAT }}"
-          
+
           curl -H "Authorization: token $access_token" \
                -o Docs/SPEC_HTML/appclusters.html \
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/connectedhomeip-spec/build-sample/html/appclusters.html"
@@ -38,7 +38,7 @@ jobs:
                -LJO "https://raw.githubusercontent.com/CHIP-Specifications/connectedhomeip-spec/build-sample/html/index.html"
           
           git add Docs/SPEC_HTML/index.html
-
+      
       - name: Commit and Push SPEC Changes
         run: |
           git config user.email "suraj@graniteriverlabs.in"
@@ -94,7 +94,7 @@ jobs:
               owner: github.context.repo.owner,
               repo: github.context.repo.repo,
             });
-
+            
             const workflowName = 'Pull Test case summary from test plan html'; 
             const workflow = workflows.workflows.find(w => w.name === workflowName);
 

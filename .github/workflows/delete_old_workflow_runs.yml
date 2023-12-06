@@ -2,7 +2,7 @@ name: Delete old workflow runs
 on:
   schedule:
     - cron: '0 0 1 * *' # Run monthly, at 00:00 on the 1st day of month.
-  
+
   workflow_dispatch:
     inputs:
       days:
@@ -39,9 +39,9 @@ on:
           - failure
           - skipped
           - success
-      #dry_run:
-      #  description: 'Only log actions, do not perform any delete operations.'
-      #  required: false
+    # dry_run:
+    #  description: 'Only log actions, do not perform any delete operations.'
+    #  required: false
 
 jobs:
   del_runs:
@@ -59,4 +59,4 @@ jobs:
           delete_workflow_pattern: ${{ github.event.inputs.delete_workflow_pattern }}
           delete_workflow_by_state_pattern: ${{ github.event.inputs.delete_workflow_by_state_pattern }}
           delete_run_by_conclusion_pattern: ${{ github.event.inputs.delete_run_by_conclusion_pattern }}
-          #dry_run: ${{ github.event.inputs.dry_run }}
+        # dry_run: ${{ github.event.inputs.dry_run }}
