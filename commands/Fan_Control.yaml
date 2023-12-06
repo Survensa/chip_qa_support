@@ -15,8 +15,6 @@
     - command: "./chip-tool fancontrol read generated-command-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-FAN-2.1] Mandatory Attributes with DUT as Server"
   commands:
     - command: "./chip-tool fancontrol read fan-mode 1 1"
@@ -31,8 +29,6 @@
     - command: "./chip-tool fancontrol read percent-current 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-FAN-2.2] Optional speed attributes with DUT as Server"
   commands:
     - command: "./chip-tool fancontrol read speed-max 1 1"
@@ -44,16 +40,12 @@
     - command: "./chip-tool fancontrol read speed-current 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-FAN-2.3] Optional rock attributes with DUT as Server"
   commands:
     - command: "./chip-tool fancontrol read rock-support 1 1"
       logs:
         - " "
     - command: "./chip-tool fancontrol read rock-setting 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-FAN-2.4] Optional wind attributes with DUT as Server"
@@ -64,13 +56,9 @@
     - command: "./chip-tool fancontrol read wind-setting 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-FAN-2.5] Optional direction attributes with DUT as Server"
   commands:
     - command: "./chip-tool fancontrol read airflow-direction 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-FAN-3.1] Mandatory functionality with DUT as Server"
@@ -105,8 +93,6 @@
     - command: "./chip-tool fancontrol read fan-mode 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-FAN-3.2] Optional speed functionality with DUT as Server"
   commands:
     - command: "./chip-tool fancontrol read speed-max 1 1"
@@ -119,8 +105,6 @@
       logs:
         - " "
     - command: "./chip-tool fancontrol read speed-current 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-FAN-3.3] Optional rock functionality with DUT as Server"
@@ -149,8 +133,6 @@
     - command: "./chip-tool fancontrol write rock-setting 0 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-FAN-3.4] Optional wind functionality with DUT as Server"
   commands:
     - command: "./chip-tool fancontrol read wind-support 1 1"
@@ -169,8 +151,6 @@
       logs:
         - " "
     - command: "./chip-tool fancontrol write wind-setting 0 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-FAN-3.5] Optional step functionality with DUT as Server"
@@ -260,8 +240,6 @@
       logs:
         - " "
     - command: "./chip-tool fancontrol read speed-current 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-FAN-3.6] Optional direction functionality with DUT as Server"

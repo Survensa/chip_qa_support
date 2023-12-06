@@ -15,8 +15,6 @@
     - command: "./chip-tool groups read generated-command-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-G-2.1] Groups Cluster Attributes [DUT-Server]"
   commands:
     - command: "./chip-tool groups read name-support 1 1"
@@ -26,8 +24,6 @@
       logs:
         - " "
     - command: "./chip-tool groups read name-support 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-G-2.2] Groups Cluster Commands [DUT-Server]"
@@ -108,8 +104,6 @@
       logs:
         - " "
     - command: "./chip-tool groupkeymanagement read group-table 1 0"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-G-2.3] Commands - GetGroupMembership, AddGroupIfIdentifying [DUT-Server]"
@@ -202,8 +196,6 @@
       logs:
         - " "
     - command: "./chip-tool groupkeymanagement read group-table 1 0"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-G-3.2] Groups Cluster Commands [DUT-Client]"

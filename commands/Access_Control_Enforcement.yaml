@@ -108,8 +108,6 @@
     - command: "./chip-tool accesscontrol write acl '[{ \"privilege\": 5, \"authMode\": 2, \"subjects\": [112233], \"targets\": [{ \"cluster\": null, \"endpoint\": 0, \"deviceType\": null }]}]' 1 0"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-ACE-1.6] Group_Auth_mode"
   commands:
     - command: "./chip-tool groupkeymanagement key-set-write '{\"groupKeySetID\": 419,\"groupKeySecurityPolicy\": 0, \"epochKey0\":\"d0d1d2d3d4d5d6d7d8d9dadbdcdddedf\", \"epochStartTime0\": 2220000,\"epochKey1\":\"d1d1d2d3d4d5d6d7d8d9dadbdcdddedf\", \"epochStartTime1\": 2220001,\"epochKey2\":\"d2d1d2d3d4d5d6d7d8d9dadbdcdddedf\", \"epochStartTime2\": 2220002 }' 1 0"

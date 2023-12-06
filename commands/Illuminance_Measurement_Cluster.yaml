@@ -15,8 +15,6 @@
     - command: "./chip-tool illuminancemeasurement read generated-command-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-ILL-2.1] Attributes with server as DUT"
   commands:
     - command: "./chip-tool illuminancemeasurement read min-measured-value 1 1"

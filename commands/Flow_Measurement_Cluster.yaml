@@ -18,8 +18,6 @@
     - command: "./chip-tool flowmeasurement read generated-command-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-FLW-2.1] Attributes with server as DUT"
   commands:
     - command: "./chip-tool flowmeasurement read measured-value 1 1"

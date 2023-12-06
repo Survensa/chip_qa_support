@@ -18,8 +18,6 @@
     - command: "./chip-tool descriptor read generated-command-list 1 0"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-DESC-2.1] Descriptor Cluster Attributes with DUT as Server"
   commands:
     - command: "./chip-tool descriptor read  parts-list 1 0"

@@ -15,8 +15,6 @@
     - command: "./chip-tool levelcontrol read generated-command-list  1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-LVL-2.1] Read cluster attributes (DUT as Server)"
   commands:
     - command: "./chip-tool levelcontrol read current-level 1 1"
@@ -59,8 +57,6 @@
       logs:
         - " "
     - command: "./chip-tool levelcontrol read start-up-current-level 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-LVL-2.2] Write cluster attributes (DUT as Server)"
@@ -117,8 +113,6 @@
       logs:
         - " "
     - command: "./chip-tool levelcontrol read start-up-current-level 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-LVL-3.1] MoveToLevel Verification (DUT as Server)"
@@ -252,8 +246,6 @@
     - command: "./chip-tool levelcontrol read current-level 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-LVL-4.1] Move Verification (DUT as Server)"
   commands:
     - command: "./chip-tool levelcontrol write  options 0x00 1 1"
@@ -316,8 +308,6 @@
     - command: "./chip-tool levelcontrol read current-level 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-LVL-5.1] Step Verification (DUT as Server)"
   commands:
     - command: "./chip-tool levelcontrol write  options 0x00 1 1"
@@ -371,8 +361,6 @@
     - command: "./chip-tool levelcontrol read current-level 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-LVL-6.1] Stop Verification (DUT as Server)"
   commands:
     - command: "./chip-tool levelcontrol write  options 0x00 1 1"
@@ -409,8 +397,6 @@
       logs:
         - " "
     - command: "./chip-tool levelcontrol read current-level 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-LVL-7.1] Verification of MoveToClosestFrequency command (DUT as Server)"

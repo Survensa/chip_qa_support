@@ -15,8 +15,6 @@
     - command: "./chip-tool powersource read  generated-command-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-PS-2.1] Attributes with server as DUT"
   commands:
     - command: "./chip-tool powersource read status 1 1"

@@ -15,8 +15,6 @@
     - command: "./chip-tool switch read  generated-command-list   1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-SWTCH-2.1] Attributes with server as DUT"
   commands:
     - command: "./chip-tool switch read number-of-positions 1 1"

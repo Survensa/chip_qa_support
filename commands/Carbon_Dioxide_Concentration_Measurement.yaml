@@ -18,8 +18,6 @@
     - command: "./chip-tool carbondioxideconcentrationmeasurement read generated-command-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-CDOCONC-2.1] Attributes with DUT as Server"
   commands:
     - command: "./chip-tool carbondioxideconcentrationmeasurement read min-measured-value 1 1"

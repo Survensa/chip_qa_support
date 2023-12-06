@@ -15,8 +15,6 @@
     - command: "./chip-tool localizationconfiguration read  generated-command-list 1 0"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-LCFG-2.1] Localization Configuration Cluster Attributes"
   commands:
     - command: "./chip-tool localizationconfiguration read supported-locales 1 0"

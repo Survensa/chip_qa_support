@@ -15,13 +15,9 @@
     - command: "./chip-tool powersourceconfiguration read generated-command-list 1 0"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-PSCFG-2.1] Global attributes with server as DUT"
   commands:
     - command: "./chip-tool powersourceconfiguration read sources 1 0"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-PSCFG-2.2] Primary functionality with server as DUT"

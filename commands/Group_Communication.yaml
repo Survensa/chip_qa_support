@@ -18,8 +18,6 @@
     - command: "./chip-tool groupkeymanagement read generated-command-list 1 0"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-SC-5.1] Adding member to a group - TH as Admin and DUT as Group Member"
   commands:
     - command: "./chip-tool accesscontrol write acl '[{\"fabricIndex\": 1, \"privilege\": 5, \"authMode\": 2, \"subjects\": [112233], \"targets\": null },{\"fabricIndex\": 1, \"privilege\": 4, \"authMode\": 3, \"subjects\": [1], \"targets\": null }]' 1 0"
@@ -56,8 +54,6 @@
       logs:
         - " "
     - command: "./chip-tool groupsettings show-groups"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-SC-5.2] Receiving a group message - TH to DUT"
@@ -102,8 +98,6 @@
       logs:
         - " "
     - command: "./chip-tool identify read identify-time 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-SC-5.3] Sending a group message - DUT to TH"
@@ -151,8 +145,6 @@
       logs:
         - " "
     - command: "./chip-tool identify identify 0x0078 0xffffffffffff0001 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-SC-6.1] Adding member to a group - DUT as Admin and TH as Group Member [DUT-Client]"

@@ -18,8 +18,6 @@
     - command: "./chip-tool thermostat read event-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-TSTAT-2.1] Attributes with server as DUT"
   commands:
     - command: "./chip-tool thermostat read local-temperature 1 1"
@@ -170,8 +168,6 @@
       logs:
         - " "
     - command: "./chip-tool thermostat read accapacityformat  1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-TSTAT-2.2] Setpoint Test Cases with server as DUT"

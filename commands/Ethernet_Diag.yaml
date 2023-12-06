@@ -15,8 +15,6 @@
     - command: "./chip-tool ethernetnetworkdiagnostics read generated-command-list 1 0"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-DGETH-2.1] Attributes with server as DUT"
   commands:
     - command: "./chip-tool ethernetnetworkdiagnostics read phyrate 1 0"
@@ -44,8 +42,6 @@
       logs:
         - " "
     - command: "./chip-tool ethernetnetworkdiagnostics read  time-since-reset 1 0"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-DGETH-2.2] Command received functionality with server as DUT"
@@ -113,8 +109,6 @@
     - command: "./chip-tool ethernetnetworkdiagnostics read overrun-count 1 0"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-DGETH-3.1] Attributes [{DUT_Client}]"
   commands:
     - command: "./chip-tool ethernetnetworkdiagnostics read phyrate 1 0"
@@ -142,8 +136,6 @@
       logs:
         - " "
     - command: "./chip-tool ethernetnetworkdiagnostics read  time-since-reset 1 0"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-DGETH-3.2] Command Generated {DUT_Client}]"

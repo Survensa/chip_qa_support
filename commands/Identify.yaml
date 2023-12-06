@@ -18,16 +18,12 @@
     - command: "./chip-tool identify read event-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-I-2.1] Attributes with server as DUT"
   commands:
     - command: "./chip-tool identify read identify-time 1 1"
       logs:
         - " "
     - command: "./chip-tool identify read identify-type 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-I-2.2] Primary functionality with server as DUT"
@@ -60,8 +56,6 @@
       logs:
         - " "
     - command: "./chip-tool identify read identify-time 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-I-2.3] Secondary functionality with server as DUT"

@@ -18,8 +18,6 @@
     - command: "./chip-tool temperaturemeasurement read event-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-TMP-2.1] Attributes with server as DUT"
   commands:
     - command: "./chip-tool temperaturemeasurement read min-measured-value 1 1"

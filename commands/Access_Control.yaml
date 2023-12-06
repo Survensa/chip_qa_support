@@ -18,8 +18,6 @@
     - command: "./chip-tool accesscontrol read generated-command-list 1 0"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-ACL-2.1] Simple attributes"
   commands:
     - command: "./chip-tool accesscontrol read subjects-per-access-control-entry 1 0"
@@ -29,8 +27,6 @@
       logs:
         - " "
     - command: "./chip-tool accesscontrol read  access-control-entries-per-fabric 1 0"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-ACL-2.2] Cluster endpoint"
@@ -100,8 +96,6 @@
       logs:
         - " "
     - command: "./chip-tool accesscontrol read extension 1 0"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-ACL-2.4] ACL attribute"
@@ -235,8 +229,6 @@
     - command: "./chip-tool accesscontrol write acl '[]' 1 0"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-ACL-2.5] AccessControlExtensionChanged event"
   commands:
     - command: "./chip-tool  operationalcredentials read current-fabric-index 1 0"
@@ -275,8 +267,6 @@
     - command: "./chip-tool   accesscontrol  read-event  access-control-extension-changed 1 0"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-ACL-2.6] AccessControlEntryChanged event"
   commands:
     - command: "./chip-tool operationalcredentials  read  current-fabric-index 1 0"
@@ -295,8 +285,6 @@
       logs:
         - " "
     - command: "./chip-tool accesscontrol read-event access-control-entry-changed 1 0"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-ACL-2.9] Cluster access"

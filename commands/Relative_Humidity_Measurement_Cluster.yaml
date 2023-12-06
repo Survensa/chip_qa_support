@@ -21,8 +21,6 @@
     - command: ""
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-RH-2.1] Attributes with server as DUT"
   commands:
     - command: "./chip-tool relativehumiditymeasurement read measured-value 1 1"

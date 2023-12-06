@@ -15,8 +15,6 @@
     - command: "./chip-tool windowcovering read generated-command-list  1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-WNCV-2.1] Attributes [DUT as Server]"
   commands:
     - command: "./chip-tool windowcovering read type 1 1"
@@ -88,13 +86,9 @@
     - command: "./chip-tool  windowcovering read current-position-tilt-percentage 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-WNCV-2.2] ConfigStatus attribute [DUT as Server]"
   commands:
     - command: "./chip-tool windowcovering read config-status 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-WNCV-2.3] Mode attribute [DUT as Server]"
@@ -150,20 +144,14 @@
     - command: "./chip-tool windowcovering read config-status 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-WNCV-2.4] Type attribute [DUT as Server]"
   commands:
     - command: "./chip-tool windowcovering read type 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-WNCV-2.5] EndProductType attribute [DUT as Server]"
   commands:
     - command: "./chip-tool windowcovering read end-product-type 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-WNCV-3.1] UpOrOpen command & Report Verification [DUT as Server]"
@@ -234,8 +222,6 @@
     - command: "./chip-tool windowcovering read target-position-tilt-percent100ths 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-WNCV-3.2] DownOrClose command & Report Verification [DUT as Server]"
   commands:
     - command: "./chip-tool windowcovering up-or-open 1 1"
@@ -304,8 +290,6 @@
     - command: "./chip-tool windowcovering read target-position-tilt-percent100ths 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-WNCV-3.3] StopMotion command Verification [DUT as Server]"
   commands:
     - command: "./chip-tool windowcovering down-or-close 1 1"
@@ -347,8 +331,6 @@
     - command: "./chip-tool windowcovering read target-position-tilt-percent100ths 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-WNCV-3.4] UpOrOpen command Long-Run Verification [DUT as Server]"
   commands:
     - command: "./chip-tool windowcovering down-or-close 1 1"
@@ -376,8 +358,6 @@
       logs:
         - " "
     - command: "./chip-tool windowcovering read current-position-tilt-percentage 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-WNCV-3.5] DownOrClose command Long-Run Verification [DUT as Server]"
@@ -410,8 +390,6 @@
       logs:
         - " "
     - command: "./chip-tool  windowcovering read current-position-tilt-percentage 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-WNCV-4.1] GoToLiftPercentage command Long-Run Verification [DUT as Server]"
@@ -461,8 +439,6 @@
     - command: "./chip-tool  windowcovering read current-position-lift-percentage 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-WNCV-4.2] GoToTiltPercentage command Long-Run Verification [DUT as Server]"
   commands:
     - command: "./chip-tool windowcovering down-or-close 1 1"
@@ -510,8 +486,6 @@
     - command: "./chip-tool  windowcovering read current-position-tilt-percentage 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-WNCV-4.3] GoToLiftPercentage command Limits Verification [DUT as Server]"
   commands:
     - command: "./chip-tool  windowcovering read current-position-lift-percent100ths 1 1"
@@ -527,8 +501,6 @@
       logs:
         - " "
     - command: "./chip-tool windowcovering go-to-lift-percentage 0xFFFF  1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-WNCV-4.4] GoToTiltPercentage command Limits Verification [DUT as Server]"
@@ -548,8 +520,6 @@
     - command: "./chip-tool windowcovering go-to-tilt-percentage  0xFFFF  1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-WNCV-5.1] Mandatory Attributes Verification [DUT as Client]"
   commands:
     - command: "./chip-tool windowcovering read feature-map 1 1"
@@ -567,8 +537,6 @@
     - command: "./chip-tool windowcovering read config-status 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-WNCV-6.1] Basic Commands Verification [DUT as Client]"
   commands:
     - command: "./chip-tool windowcovering up-or-open 1 1"
@@ -578,8 +546,6 @@
       logs:
         - " "
     - command: "./chip-tool windowcovering stop-motion 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-WNCV-7.1] GoToPercentage Commands Verification [DUT as Client]"

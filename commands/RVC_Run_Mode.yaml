@@ -15,8 +15,6 @@
     - command: "./chip-tool  rvcrunmode read generated-command-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-RVCRUNM-1.2] Cluster attributes with server as DUT"
   commands:
     - command: "./chip-tool  rvcrunmode read supported-modes 1 1"
@@ -29,8 +27,6 @@
       logs:
         - " "
     - command: "./chip-tool  rvcrunmode read start-up-mode 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-RVCRUNM-3.1] OnMode Verification (DUT as Server)"

@@ -15,8 +15,6 @@
     - command: "./chip-tool pumpconfigurationandcontrol read generated-command-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-PCC-2.1] Attributes with server as DUT"
   commands:
     - command: "./chip-tool pumpconfigurationandcontrol read max-pressure 1 1"
@@ -88,8 +86,6 @@
     - command: "./chip-tool pumpconfigurationandcontrol read control-mode 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-PCC-2.2] Primary functionality with server as DUT"
   commands:
     - command: "./chip-tool pumpconfigurationandcontrol write operation-mode 0 1 1"
@@ -114,8 +110,6 @@
       logs:
         - " "
     - command: "./chip-tool pumpconfigurationandcontrol read effective-operation-mode 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-PCC-2.3] Primary functionality with server as DUT"
@@ -162,8 +156,6 @@
     - command: "./chip-tool pumpconfigurationandcontrol read effective-control-mode 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-PCC-2.4] Primary functionality with server as DUT"
   commands:
     - command: "./chip-tool pumpconfigurationandcontrol write lifetime-running-hours 1 1 1"
@@ -202,5 +194,4 @@
     - command: "./chip-tool pumpconfigurationandcontrol read lifetime-energy-consumed 1 1"
       logs:
         - " "
-      logs:
-        - " "
+        

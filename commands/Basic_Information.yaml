@@ -18,8 +18,6 @@
     - command: "./chip-tool basicinformation read generated-command-list 1 0"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-BINFO-2.1] Attributes [DUT-Server]"
   commands:
     - command: "./chip-tool basicinformation read data-model-revision 1 0"

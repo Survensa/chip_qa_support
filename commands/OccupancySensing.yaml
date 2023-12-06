@@ -18,8 +18,6 @@
     - command: "./chip-tool occupancysensing read  generated-command-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-OCC-2.1] Attributes with client as DUT"
   commands:
     - command: "./chip-tool occupancysensing read occupancy 1 1"
@@ -58,16 +56,12 @@
     - command: "./chip-tool occupancysensing read physical-contact-unoccupied-to-occupied-threshold 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-OCC-2.3] OccupancySensorTypeBitmap and OccupancySensorType interdependency with server as DUT"
   commands:
     - command: "./chip-tool occupancysensing read occupancy-sensor-type 1 1"
       logs:
         - " "
     - command: "./chip-tool occupancysensing read occupancy-sensor-type-bitmap 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-OCC-2.4] OccupancySensorTypeBitmap and OccupancySensorType interdependency with client as DUT"

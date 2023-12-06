@@ -18,8 +18,6 @@
     - command: "./chip-tool laundrywashercontrols read generated-command-list 1 1"
       logs:
         - " "
-      logs:
-        - " "
 - testcase: "[TC-WASHERCTRL-2.1] Optional Spin attributes with DUT as Server"
   commands:
     - command: "./chip-tool laundrywashercontrols read spin-speeds 1 1"
@@ -35,8 +33,6 @@
       logs:
         - " "
     - command: "./chip-tool laundrywashercontrols write spin-speed-current 4 1 1"
-      logs:
-        - " "
       logs:
         - " "
 - testcase: "[TC-WASHERCTRL-2.2] Optional rinse attributes with DUT as Server"
