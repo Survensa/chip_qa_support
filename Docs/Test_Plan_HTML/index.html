@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 9a395ec,</span>
-<span id="revdate">2023-12-08 22:06:10 +0530</span>
+<span id="revnumber">version master 84c92db,</span>
+<span id="revdate">2023-12-12 12:23:29 +0100</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -15535,6 +15535,24 @@ conditions:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0008(SupportedWiFiBands)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the DUT(Server) support SupportedWiFiBands attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.F00(WI)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0009(SupportedThreadFeatures)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the DUT(Server) support SupportedThreadFeatures attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.F01(TH)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A000A(ThreadVersion)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the DUT(Server) support ThreadVersion attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.F01(TH)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -15980,7 +15998,7 @@ conditions:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.7.13.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ClusterRevision</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the <em>ClusterRevision</em> attribute and has the value 1.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the <em>ClusterRevision</em> attribute and has the value 2.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
@@ -16006,7 +16024,10 @@ conditions:</p>
 - 0x0002: SHALL be included if CNET.S.F00(WI) or CNET.S.F01(TH)
 and SHALL NOT be included otherwise.</p>
 <p class="tableblock">- 0x0003: SHALL be included if CNET.S.F00(WI) or CNET.S.F01(TH)
-and SHALL NOT be included otherwise.</p></td>
+and SHALL NOT be included otherwise.</p>
+<p class="tableblock">- 0x0008 SHALL be included if and only if CNET.S.F00(WI).</p>
+<p class="tableblock">- 0x0009 SHALL be included if and only if CNET.S.F01(TH).</p>
+<p class="tableblock">- 0x000A SHALL be included if and only if CNET.S.F01(TH).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5<sup>*</sup></p></td>
@@ -16106,6 +16127,9 @@ and SHALL NOT be included otherwise.</p></td>
 </li>
 <li>
 <p>DUT&#8217;s LastConnectErrorValue attribute value must be null</p>
+</li>
+<li>
+<p>DUT&#8217;s SupportedWiFiBands attribute value has one or more entries.</p>
 </li>
 </ol>
 </div>
@@ -16366,6 +16390,13 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads the LastConnectErrorValue attribute from the DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that LastConnectErrorValue attribute value is null</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0009(SupportedWiFiBands)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads the SupportedWiFiBands attribute from the DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that SupportedWiFiBands attribute value has 1 or more entries, all of which are in the range of WiFiBandEnum.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -16413,6 +16444,9 @@ and SHALL NOT be included otherwise.</p></td>
 </li>
 <li>
 <p>DUT&#8217;s LastConnectErrorValue attribute value must be null</p>
+</li>
+<li>
+<p>DUT&#8217;s SupportedThreadFeatures attribute value must not be an empty bitmap.</p>
 </li>
 </ol>
 </div>
@@ -16673,6 +16707,24 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads the LastConnectErrorValue attribute from the DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that LastConnectErrorValue attribute value is null</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0009(SupportedThreadFeatures)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads the SupportedThreadFeatures attribute from the DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that SupportedThreadFeatures attribute value is an empty bitmap (value 0).<br>
+Verify that Bit 4 (IsSynchronizedSleepyEndDeviceCapable) is only set if bit 2 (IsSleepyEndDeviceCapable) is also set.<br>
+Verify that Bit 0 (IsBorderRouterCapable) is only set if bit 3 (IsFullThreadDevice) is also set<br>
+Verify that Bit 1 (IsRouterCapable) is only set if bit 3 (IsFullThreadDevice) is also set.<br>
+Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSleepyEndDeviceCapable), Bit 2 (IsSleepyEndDeviceCapable), Bit 3 (IsFullThreadDevice).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A000A(ThreadVersion)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads the ThreadVersion attribute from the DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that ThreadVersion attribute value is greater than or equal to 4.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -16931,7 +16983,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>Verify that LastNetworkingStatus attribute value is null</p>
+<p>Verify that LastNetworkingStatus attribute value is Success</p>
 </li>
 </ul>
 </div></div></td>
@@ -17202,7 +17254,7 @@ and SHALL NOT be included otherwise.</p></td>
 <p>Channel</p>
 </li>
 <li>
-<p>WiFiBand</p>
+<p>WiFiBand, with a value present in the SupportedWiFiBands attribute.</p>
 </li>
 <li>
 <p>RSSI, if present, is of type int8 with a range of -120 to 0</p>
@@ -17391,7 +17443,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>CNET.S.C04.Rsp(RemoveNetwork)</p>
+<p>CNET.S.C02.Rsp(AddOrUpdateWiFiNetwork) &amp; CNET.S.C04.Rsp(RemoveNetwork)</p>
 </li>
 </ul>
 </div></div></td>
@@ -17856,7 +17908,7 @@ and SHALL NOT be included otherwise.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.8.8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork) &amp; CNET.S.C06.Rsp(ConnectNetwork)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends ConnectNetwork command to the DUT with NetworkID field set to PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID and Breadcrumb field set to 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends a ConnectNetworkResponse to the command with the NetworkingStatus field set to NetworkIdNotFound</p></td>
 </tr>
@@ -17884,7 +17936,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0001(Networks)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads Networks attribute from the DUT</p></td>
@@ -17907,7 +17959,7 @@ and SHALL NOT be included otherwise.</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -17923,7 +17975,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -17964,14 +18016,14 @@ and SHALL NOT be included otherwise.</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.9.7.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends the CommissioningComplete command to the DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends CommissioningCompleteResponse with the ErrorCode field set to OK (0)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -17987,7 +18039,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0001(Networks)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads Networks attribute from the DUT</p></td>
@@ -18248,7 +18300,7 @@ and SHALL NOT be included otherwise.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.8.8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork) &amp; CNET.S.C06.Rsp(ConnectNetwork)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends ConnectNetwork command to the DUT with NetworkID field set to the extended PAN ID of PIXIT.CNET.THREAD_1ST_OPERATIONALDATASET and Breadcrumb field set to 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends a ConnectNetworkResponse to the command with the NetworkingStatus field set to NetworkIdNotFound</p></td>
 </tr>
@@ -18299,7 +18351,7 @@ and SHALL NOT be included otherwise.</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -18315,7 +18367,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -18356,14 +18408,14 @@ and SHALL NOT be included otherwise.</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.9.7.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends the CommissioningComplete command to the DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends CommissioningCompleteResponse with the ErrorCode field set to OK (0)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -18379,7 +18431,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0001(Networks)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads Networks attribute from the DUT</p></td>
@@ -18682,7 +18734,7 @@ and SHALL NOT be included otherwise.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH changes its Wi-Fi connection to PIXIT.CNET.WIFI_2ND_ACCESSPOINT_SSID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH changes its WiFi connection to PIXIT.CNET.WIFI_2ND_ACCESSPOINT_SSID</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -54426,8 +54478,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 9a395ec<br>
-Last updated 2023-12-08 16:36:23 UTC
+Version master 84c92db<br>
+Last updated 2023-12-12 11:23:44 UTC
 </div>
 </div>
 </body>
