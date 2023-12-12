@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 828ab96 (local changes),</span>
-<span id="revdate">2023-12-11 22:00:27 -0800</span>
+<span id="revnumber">version master 093cb75 (local changes),</span>
+<span id="revdate">2023-12-12 09:16:54 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1136,7 +1136,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_attributes_49">8.10.4. Attributes</a></li>
 </ul>
 </li>
-<li><a href="#ref_OvenModeCluster">8.11. Oven Mode</a>
+<li><a href="#ref_OvenModeCluster">8.11. Oven Mode Cluster</a>
 <ul class="sectlevel3">
 <li><a href="#_revision_history_58">8.11.1. Revision History</a></li>
 <li><a href="#_classification_57">8.11.2. Classification</a></li>
@@ -1161,8 +1161,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_revision_history_60">8.13.1. Revision History</a></li>
 <li><a href="#_classification_59">8.13.2. Classification</a></li>
 <li><a href="#_cluster_id_54">8.13.3. Cluster ID</a></li>
-<li><a href="#_attributes_51">8.13.4. Attributes</a></li>
-<li><a href="#_commands_29">8.13.5. Commands</a></li>
+<li><a href="#_features_33">8.13.4. Features</a></li>
+<li><a href="#_attributes_51">8.13.5. Attributes</a></li>
+<li><a href="#_commands_29">8.13.6. Commands</a></li>
 </ul>
 </li>
 </ul>
@@ -55102,7 +55103,7 @@ A value of null SHALL indicate that there will be no dryness level setting for t
 </div>
 </div>
 <div class="sect2">
-<h3 id="ref_OvenModeCluster"><a class="anchor" href="#ref_OvenModeCluster"></a>8.11. Oven Mode</h3>
+<h3 id="ref_OvenModeCluster"><a class="anchor" href="#ref_OvenModeCluster"></a>8.11. Oven Mode Cluster</h3>
 <div class="paragraph">
 <p>This cluster is derived from the Mode Base cluster,
 defining additional mode tags and namespaced enumerated values
@@ -55592,8 +55593,9 @@ namespaced enumerated values for Microwave Oven devices.</p>
 <p>This cluster defines the requirements for the Microwave Oven Control cluster.</p>
 </div>
 <div class="paragraph">
-<p>This cluster has dependencies with the Operational State and Microwave Oven Mode clusters
-and it SHALL appear on the same endpoint as these clusters or their derivatives.</p>
+<p>This cluster has dependencies with the Operational State and Microwave Oven Mode clusters.
+The Operational State cluster and the Microwave Oven Mode clusters, or derivatives of those clusters
+SHALL appear on the same endpoint as this cluster.</p>
 </div>
 <div class="sect3">
 <h4 id="_revision_history_60"><a class="anchor" href="#_revision_history_60"></a>8.13.1. Revision History</h4>
@@ -55668,7 +55670,47 @@ and it SHALL appear on the same endpoint as these clusters or their derivatives.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_attributes_51"><a class="anchor" href="#_attributes_51"></a>8.13.4. Attributes</h4>
+<h4 id="_features_33"><a class="anchor" href="#_features_33"></a>8.13.4. Features</h4>
+<div class="paragraph">
+<p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Bit</th>
+<th class="tableblock halign-left valign-top">Code</th>
+<th class="tableblock halign-left valign-top">Feature</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
+<th class="tableblock halign-left valign-top">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PWRNUM</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Power as a number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Power is specified as a unitless number or a percentage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>WATTS</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Power in Watts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Power is specified in Watts</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_attributes_51"><a class="anchor" href="#_attributes_51"></a>8.13.5. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -55694,12 +55736,22 @@ and it SHALL appear on the same endpoint as these clusters or their derivatives.
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0001</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0000</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CookTime</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">elapsed-s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 to 65535</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 to MaxCookTime</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0001</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MaxCookTime</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">elapsed-s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 to 86400</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
@@ -55709,29 +55761,29 @@ and it SHALL appear on the same endpoint as these clusters or their derivatives.
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PWRNUM</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0003</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MinPower</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 to MaxPower</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">min 1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[PWRNUM].a3</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0004</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MaxPower</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MinPower to 100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 100</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MinPower</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[PWRNUM].a3</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0005</p></td>
@@ -55741,43 +55793,98 @@ and it SHALL appear on the same endpoint as these clusters or their derivatives.
 <td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MinPower</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[PWRNUM].a3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0006</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SupportedWatts</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list[uint16]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 to 10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WATTS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0007</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SelectedWattIndex</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WATTS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0008</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>WattRating</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="_cooktime_attribute"><a class="anchor" href="#_cooktime_attribute"></a>8.13.4.1. CookTime Attribute</h5>
+<h5 id="_cooktime_attribute"><a class="anchor" href="#_cooktime_attribute"></a>8.13.5.1. CookTime Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the total cook time associated with the operation of the device.</p>
 </div>
+<div class="paragraph">
+<p>This attribute SHALL remain unchanged during the operation of the oven
+unless the value is changed via a command or out-of-band action.</p>
+</div>
 </div>
 <div class="sect4">
-<h5 id="_powersetting_attribute"><a class="anchor" href="#_powersetting_attribute"></a>8.13.4.2. PowerSetting Attribute</h5>
+<h5 id="_maxcooktime_attribute"><a class="anchor" href="#_maxcooktime_attribute"></a>8.13.5.2. MaxCookTime Attribute</h5>
+<div class="paragraph">
+<p>This attribute SHALL indicate the maximum value to which the CookTime attribute can be set.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_powersetting_attribute"><a class="anchor" href="#_powersetting_attribute"></a>8.13.5.3. PowerSetting Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the power level associated with the operation of the device.</p>
 </div>
 <div class="paragraph">
-<p>If MinPower, MaxPower, and PowerStep are not supported,
+<p>If the MinPower, MaxPower, and PowerStep attributes are not supported,
 the minimum value of this attribute SHALL be 10,
 the maximum value of this attribute SHALL be 100,
 the value SHALL be in even multiples of 10,
 and the default value SHALL be 100.</p>
 </div>
-</div>
-<div class="sect4">
-<h5 id="_minpower_attribute"><a class="anchor" href="#_minpower_attribute"></a>8.13.4.3. MinPower Attribute</h5>
 <div class="paragraph">
-<p>This attribute SHALL indicate the minimum power level that can be set on the server.</p>
+<p>If the MinPower, MaxPower, and PowerStep attributes are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The value of this attribute SHALL be between MinPower and MaxPower inclusive.</p>
+</li>
+<li>
+<p>The value of this attribute SHALL be an integer multiple of PowerStep.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_maxpower_attribute"><a class="anchor" href="#_maxpower_attribute"></a>8.13.4.4. MaxPower attribute</h5>
+<h5 id="_minpower_attribute"><a class="anchor" href="#_minpower_attribute"></a>8.13.5.4. MinPower Attribute</h5>
 <div class="paragraph">
-<p>This attribute SHALL indicate the maximum power level that can be set on the server.</p>
+<p>This attribute SHALL indicate the minimum power level that can be set on the server.
+The value of this attribute SHALL be less than or equal to the value of MaxPower.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_powerstep_attribute"><a class="anchor" href="#_powerstep_attribute"></a>8.13.4.5. PowerStep attribute</h5>
+<h5 id="_maxpower_attribute"><a class="anchor" href="#_maxpower_attribute"></a>8.13.5.5. MaxPower Attribute</h5>
+<div class="paragraph">
+<p>This attribute SHALL indicate the maximum power level that can be set on the server.
+The value of this attribute SHALL be greater than or equal to the value of MinPower.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_powerstep_attribute"><a class="anchor" href="#_powerstep_attribute"></a>8.13.5.6. PowerStep Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the increment of power that can be set on the server.</p>
 </div>
@@ -55786,9 +55893,33 @@ and the default value SHALL be 100.</p>
 MinPower and MaxPower, PowerStep would be set to 1.</p>
 </div>
 </div>
+<div class="sect4">
+<h5 id="_supportedwatts_attribute"><a class="anchor" href="#_supportedwatts_attribute"></a>8.13.5.7. SupportedWatts Attribute</h5>
+<div class="paragraph">
+<p>This attribute SHALL indicate the list of power levels (in W) supported by the server.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_selectedwattindex_attribute"><a class="anchor" href="#_selectedwattindex_attribute"></a>8.13.5.8. SelectedWattIndex Attribute</h5>
+<div class="paragraph">
+<p>This attribute SHALL indicate the index into the list of SupportedWatts of the currently selected power setting.</p>
+</div>
+<div class="paragraph">
+<p>The index SHALL be a valid index into the SupportedWatts list.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_wattrating_attribute"><a class="anchor" href="#_wattrating_attribute"></a>8.13.5.9. WattRating Attribute</h5>
+<div class="paragraph">
+<p>This attribute SHALL indicate the rating, in Watts, of the microwave power of the oven.</p>
+</div>
+<div class="paragraph">
+<p>Supporting this attribute can assist clients in suggesting cooking settings for various foods and beverages.</p>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_commands_29"><a class="anchor" href="#_commands_29"></a>8.13.5. Commands</h4>
+<h4 id="_commands_29"><a class="anchor" href="#_commands_29"></a>8.13.6. Commands</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -55828,89 +55959,17 @@ MinPower and MaxPower, PowerStep would be set to 1.</p>
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="_command_responses_impacted_by_the_operational_state_cluster"><a class="anchor" href="#_command_responses_impacted_by_the_operational_state_cluster"></a>8.13.5.1. Command Responses Impacted By the Operational State Cluster</h5>
+<h5 id="_command_responses_impacted_by_the_operational_state_cluster"><a class="anchor" href="#_command_responses_impacted_by_the_operational_state_cluster"></a>8.13.6.1. Command Responses Impacted By the Operational State Cluster</h5>
 <div class="paragraph">
-<p>When the <a href="#ref_OperationalStateCluster">Operational State</a> cluster or a cluster derived from it is included on the same endpoint as this cluster,
-the server SHALL provide the responses as indicated in the table below.</p>
+<p>When the <a href="#ref_OperationalStateCluster">Operational State</a> cluster
+or a cluster derived from it is included on the same endpoint as this cluster,
+the server MAY respond to commands defined in this cluster with an INVALID_IN_STATE response
+if the server is unable to accept those command due to restrictions imposed by the current operational state
+of the device or other factors.</p>
 </div>
-<div class="paragraph">
-<p>The table shows the relation between commands and states when a command is received by the server.</p>
-</div>
-<div class="paragraph">
-<p>If an explicit server response is not indicated in the table, see the associated command for appropriate responses.</p>
-</div>
-<div class="paragraph">
-<p>This table can be used by clients to know which commands can be sent during which states.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Command</th>
-<th class="tableblock halign-left valign-top">Operational State</th>
-<th class="tableblock halign-left valign-top">Server Response</th>
-<th class="tableblock halign-left valign-top">Note</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SetCookingParameters">SetCookingParameters</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stopped</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See Command</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SetCookingParameters">SetCookingParameters</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Running</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">INVALID_IN_STATE</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SetCookingParameters">SetCookingParameters</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Paused</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">INVALID_IN_STATE</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SetCookingParameters">SetCookingParameters</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Error</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">INVALID_IN_STATE</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_AddMoreTime">AddMoreTime</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Stopped</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See Command</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_AddMoreTime">AddMoreTime</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Running</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See Command</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_AddMoreTime">AddMoreTime</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Paused</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See Command</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_AddMoreTime">AddMoreTime</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Error</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">INVALID_IN_STATE</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect4">
-<h5 id="ref_SetCookingParameters"><a class="anchor" href="#ref_SetCookingParameters"></a>8.13.5.2. SetCookingParameters Command</h5>
+<h5 id="ref_SetCookingParameters"><a class="anchor" href="#ref_SetCookingParameters"></a>8.13.6.2. SetCookingParameters Command</h5>
 <div class="paragraph">
 <p>This command is used to set the cooking parameters associated with the operation of the device.
 This command supports the following fields:</p>
@@ -55950,9 +56009,9 @@ This command supports the following fields:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CookTime</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">elapsed-s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 to 65535</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 to MaxCookTime</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O.a+</p></td>
 </tr>
 <tr>
@@ -55962,12 +56021,30 @@ This command supports the following fields:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MinPower to MaxPower</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MaxPower</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[PWRNUM].a+</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>WattSettingIndex</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 to len(SupportedWatts)-1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[WATTS].a+</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>StartAfterSetting</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_cookmode_field"><a class="anchor" href="#_cookmode_field"></a>8.13.5.2.1. CookMode Field</h6>
+<h6 id="_cookmode_field"><a class="anchor" href="#_cookmode_field"></a>8.13.6.2.1. CookMode Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the value to which the CurrentMode attribute of the Microwave Mode cluster should be set.
 The value of this field SHALL be one from the list of SupportedModes from the Microwave Mode cluster.</p>
@@ -55977,45 +56054,91 @@ The value of this field SHALL be one from the list of SupportedModes from the Mi
 </div>
 </div>
 <div class="sect5">
-<h6 id="_cooktime_field"><a class="anchor" href="#_cooktime_field"></a>8.13.5.2.2. CookTime Field</h6>
+<h6 id="_cooktime_field"><a class="anchor" href="#_cooktime_field"></a>8.13.6.2.2. CookTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the CookTime associated with the operation of the device.
 The value of this field SHALL be subject to the constraints of the CookTime attribute of this cluster.</p>
 </div>
 <div class="paragraph">
-<p>If this field is missing, the CookTime attribute  SHALL be set to 30 seconds by the server.</p>
+<p>If this field is missing, the CookTime attribute SHALL be set to 30 seconds by the server.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_powersetting_field"><a class="anchor" href="#_powersetting_field"></a>8.13.5.2.3. PowerSetting Field</h6>
+<h6 id="_powersetting_field"><a class="anchor" href="#_powersetting_field"></a>8.13.6.2.3. PowerSetting Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the PowerSetting associated with the operation of the device.
 The value of this field SHALL be subject to the constraints of the PowerSetting attribute of this cluster.</p>
 </div>
 <div class="paragraph">
-<p>If this field is missing, the PowerSetting attribute SHALL be set to MaxPower by the server.</p>
+<p>If this field is missing, the PowerSetting attribute SHALL be set to 100 if MaxPower is not supported by the server,
+otherwise it SHALL be set to MaxPower if the MaxPower attribute is supported by the server.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_52"><a class="anchor" href="#_effect_on_receipt_52"></a>8.13.5.2.4. Effect on Receipt</h6>
+<h6 id="_wattsettingindex_field"><a class="anchor" href="#_wattsettingindex_field"></a>8.13.6.2.4. WattSettingIndex Field</h6>
 <div class="paragraph">
-<p>If this command is received while the operational state of the server is not Stopped
-the server SHALL respond with an INVALID_IN_STATE response.
+<p>This field SHALL indicate the value to which the SelectedWattIndex should be set.
+The value of this field SHALL be subject to the constraints of the SelectedWattIndex attribute of this cluster.</p>
+</div>
+<div class="paragraph">
+<p>If this field is missing, the SelectedWattIndex attribute SHALL be set by the server
+to the index associated with the highest  Watt setting for the selected CookMode.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_startaftersetting_field"><a class="anchor" href="#_startaftersetting_field"></a>8.13.6.2.5. StartAfterSetting Field</h6>
+<div class="paragraph">
+<p>This field SHALL indicate whether or not oven operation SHALL be started when the command is received.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_effect_on_receipt_52"><a class="anchor" href="#_effect_on_receipt_52"></a>8.13.6.2.6. Effect on Receipt</h6>
+<div class="paragraph">
+<p>If this command is received while the operational state of the server cannot support the command in that state,
+the server SHALL respond with an INVALID_IN_STATE response and the attributes and state SHALL remain unchanged.
 See <a href="#ref_OperationalStateCluster">Operational State Cluster</a> for details on the operational states.</p>
 </div>
 <div class="paragraph">
-<p>If the values of the fields sent with the command do not meet the constraints
-of any of the associated attributes (i.e. bearing the same name as the field or as described in the field description),
-the server SHALL respond with a response of INVALID_COMMAND
-and the values of the attributes SHALL remain unchanged.</p>
+<p>If this command is received and any fields sent with the command do not meet the constraints of any of the associated attributes
+(i.e. bearing the same name as the field or as described in the field description),
+the server SHALL respond with a response of CONSTRAINT_ERROR and the attributes and state SHALL remain unchanged.</p>
 </div>
 <div class="paragraph">
-<p>Otherwise, the attributes SHALL be set to the values in the associated fields.</p>
+<p>If the StartAfterSetting field is present in the command
+but the Start command of the Operational State cluster or one of its derivatives
+on the same endpoint as this cluster is not supported,
+the server SHALL respond with a response of INVALID_COMMAND and the attributes and state SHALL remain unchanged.</p>
+</div>
+<div class="paragraph">
+<p>Otherwise:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The attributes associated with any included fields SHALL be set to the values of those fields.</p>
+</li>
+<li>
+<p>the attributes associated with any missing fields SHALL remain unchanged.</p>
+</li>
+<li>
+<p>If the StartAfterSetting field is included:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the value of StartAfterSetting is TRUE, oven operation SHALL start.</p>
+</li>
+<li>
+<p>If the value of StartAfterSetting is FALSE, oven operation SHALL NOT start.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_AddMoreTime"><a class="anchor" href="#ref_AddMoreTime"></a>8.13.5.3. AddMoreTime Command</h5>
+<h5 id="ref_AddMoreTime"><a class="anchor" href="#ref_AddMoreTime"></a>8.13.6.3. AddMoreTime Command</h5>
 <div class="paragraph">
 <p>This command is used to add more time to the CookTime attribute of the server.</p>
 </div>
@@ -56048,7 +56171,7 @@ and the values of the attributes SHALL remain unchanged.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TimeToAdd</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">elapsed-s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 to 65535</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 to MaxCookTime</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -56056,25 +56179,27 @@ and the values of the attributes SHALL remain unchanged.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_timetoadd_field"><a class="anchor" href="#_timetoadd_field"></a>8.13.5.3.1. TimeToAdd Field</h6>
+<h6 id="_timetoadd_field"><a class="anchor" href="#_timetoadd_field"></a>8.13.6.3.1. TimeToAdd Field</h6>
 <div class="paragraph">
-<p>This field SHALL indicate the number of seconds to add to the CookTime attribute.</p>
+<p>This field SHALL indicate the number of seconds to be added to the CookTime attribute.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_53"><a class="anchor" href="#_effect_on_receipt_53"></a>8.13.5.3.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_53"><a class="anchor" href="#_effect_on_receipt_53"></a>8.13.6.3.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>Upon receipt of this command, if the sum of the value of the TimeToAdd field
-and the current value of the CookTime attribute is greater than the maximum value allowed by the server for the CookTime attribute,
+and the current value of the CookTime attribute is greater than the MaxCookTime attribute,
 the server SHALL respond with a response of CONSTRAINT_ERROR and the command SHALL be ignored.</p>
 </div>
 <div class="paragraph">
-<p>If this command is received while the operational state of the server is Error,
+<p>If this command is received while the operational state of the server cannot support the command in that state,
 the server SHALL respond with an INVALID_IN_STATE response.
-See the <a href="#ref_OperationalStateCluster">Operational State Cluster</a> for details on the operational states.</p>
+See <a href="#ref_OperationalStateCluster">Operational State Cluster</a> for details on the operational states.</p>
 </div>
 <div class="paragraph">
-<p>Otherwise, the server SHALL add the value of the TimeToAdd field to the value of the CookTime attribute.</p>
+<p>Otherwise, the server SHALL add the value of the TimeToAdd field to the value of the CookTime attribute of this cluster
+and the server SHALL add the value of the TimeToAdd field to the value of the CountdownTime attribute of the Operational State cluster
+if that cluster or a derivative is on the same endpoint as this cluster.</p>
 </div>
 </div>
 </div>
@@ -56085,8 +56210,8 @@ See the <a href="#ref_OperationalStateCluster">Operational State Cluster</a> for
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 828ab96 (local changes)<br>
-Last updated 2023-12-12 06:00:44 UTC
+Version master 093cb75 (local changes)<br>
+Last updated 2023-12-12 17:17:10 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
