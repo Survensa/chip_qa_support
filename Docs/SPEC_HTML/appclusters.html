@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 3736782 (local changes),</span>
-<span id="revdate">2023-12-14 16:53:13 -0500</span>
+<span id="revnumber">version master 2d2cd6b (local changes),</span>
+<span id="revdate">2023-12-15 13:12:34 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -3302,7 +3302,7 @@ Support for Scenes cluster is provisional.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Explicit, TableSize and FabricScenes features; support multi-fabric environment; adding attributes SceneTableSize and RemainingCapacity; add fabric-scoped scene information list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Added Explicit, TableSize and FabricScenes features; support multi-fabric environment; added attributes SceneTableSize and RemainingCapacity; added fabric-scoped scene information list</p></td>
 </tr>
 </tbody>
 </table>
@@ -9906,7 +9906,8 @@ For example: A LightBlinking cluster ID supports blinking modes for a light (and
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ChangeToModeResponse command: StatusText must be provided for InvalidInMode status. Require at least one standard mode tag.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChangeToModeResponse command: StatusText must be provided for InvalidInMode status.
+Require at least one standard mode tag. Define reserved ranges for base/derived clusters</p></td>
 </tr>
 </tbody>
 </table>
@@ -10480,16 +10481,16 @@ This range of attribute IDs SHALL NOT be used by this cluster.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x00 s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ChangeToMode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ChangeToMode</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ChangeToModeResponse</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x01 s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ChangeToModeResponse</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x01</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ChangeToModeResponse</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8656; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
@@ -13850,11 +13851,6 @@ wide range of application domains.</p>
                                                                                            and reporting occupancy status</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x005C</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SmokeCoAlarmCluster">Smoke and CO Alarm</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An interface to smoke and CO alarms</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">various</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ResourceMonitoring">Resource Monitoring</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Attributes and commands for reporting conditions of
@@ -13869,6 +13865,11 @@ wide range of application domains.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">various</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ConcentrationMeasurement">Concentration Measurement</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Attributes and aliases for concentration measurements.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x005C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SmokeCoAlarmCluster">Smoke and CO Alarm</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An interface to smoke and CO alarms</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0091</p></td>
@@ -18577,7 +18578,7 @@ since it last booted. This feature SHALL be used by servers without the ability 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x000C</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>EphemeralEnergyImported</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>EphemeralEnergyExported</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint64</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
@@ -21266,7 +21267,7 @@ specification.</p>
 <p>Additionally, color MAY optionally be controlled in terms of color
 temperature, or as hue and saturation values based on optionally
 variable RGB and W color points. It is recommended that the hue and
-saturation are interpreted according to the HSV (aka HSB) color model.</p>
+saturation are interpreted according to the HSV (a.k.a. HSB) color model.</p>
 </div>
 <div class="paragraph">
 <p>Control over luminance is not included, as this is provided by means of
@@ -21952,7 +21953,7 @@ over time.</p>
 <div class="paragraph">
 <p>The ColorTemperatureMireds attribute contains <strong>a scaled
 inverse</strong> of the current value of the color temperature. The unit of
-ColorTemperatureMireds is the mired (micro reciprocal degree), AKA
+ColorTemperatureMireds is the mired (micro reciprocal degree), a.k.a.
 mirek (micro reciprocal kelvin). It is updated as fast as practical
 during commands that change the color.</p>
 </div>
@@ -27690,7 +27691,7 @@ the scheme below:</p>
 </div>
 <div id="ref_PumpOperationAndControlFigure" class="paragraph">
 <div class="title">Priority Scheme of Pump Operation and Control</div>
-<p><span class="image"><img src="app_clusters/images/hvac/media/image4.jpeg" alt="C:\work\ZigBee Alliance (2013)\(2013_Z02_004) ZigBee Cluster Library Specification Reformatting\work products\diagrams&lt;&lt;ref_PumpOperationAndControlFigure&gt;&gt; Priority Scheme of Pump Operation and Control.jpg" width="576" height="524"></span></p>
+<p><span class="image"><img src="app_clusters/images/hvac/media/image4.jpeg" alt="Priority Scheme of Pump Operation and Control.jpg" width="576" height="524"></span></p>
 </div>
 <div class="paragraph">
 <p>If this attribute is Maximum, Minimum or Local, the
@@ -56050,8 +56051,8 @@ This command supports the following fields:</p>
 <div class="sect5">
 <h6 id="_cookmode_field"><a class="anchor" href="#_cookmode_field"></a>8.13.6.2.1. CookMode Field</h6>
 <div class="paragraph">
-<p>This field SHALL indicate the value to which the CurrentMode attribute of the Microwave Mode cluster should be set.
-The value of this field SHALL be one from the list of SupportedModes from the Microwave Mode cluster.</p>
+<p>This field SHALL indicate the value to which the CurrentMode attribute of the Microwave Oven Mode cluster should be set.
+The value of this field SHALL be one from the list of SupportedModes from the Microwave Oven Mode cluster.</p>
 </div>
 <div class="paragraph">
 <p>If this field is missing, the CurrentMode attribute SHALL be set to Normal by the server.</p>
@@ -56214,8 +56215,8 @@ if that cluster or a derivative is on the same endpoint as this cluster.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 3736782 (local changes)<br>
-Last updated 2023-12-15 00:00:34 UTC
+Version master 2d2cd6b (local changes)<br>
+Last updated 2023-12-16 00:00:40 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
