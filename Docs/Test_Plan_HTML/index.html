@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master ec9a916,</span>
-<span id="revdate">2023-12-15 14:30:41 -0800</span>
+<span id="revnumber">version master e6f6a54,</span>
+<span id="revdate">2023-12-19 10:39:31 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -53924,7 +53924,7 @@ using only ACLs with group auth mode.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.5.1.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -53939,19 +53939,56 @@ using only ACLs with group auth mode.</p>
 <p>GroupKeySecurityPolicy: TrustFirst (0)</p>
 </li>
 <li>
-<p>EpochKey0: 0xd0d1d2d3d4d5d6d7d8d9dadbdcdddedf</p>
+<p>EpochKey0: d0d1d2d3d4d5d6d7d8d9dadbdcdddedf</p>
 </li>
 <li>
 <p>EpochStartTime0: 2220000</p>
 </li>
 <li>
-<p>EpochKey1: 0xd1d1d2d3d4d5d6d7d8d9dadbdcdddedf</p>
+<p>EpochKey1: d1d1d2d3d4d5d6d7d8d9dadbdcdddedf</p>
 </li>
 <li>
 <p>EpochStartTime1: 2220001</p>
 </li>
 <li>
-<p>EpochKey2: 0xd2d1d2d3d4d5d6d7d8d9dadbdcdddedf</p>
+<p>EpochKey2: d2d1d2d3d4d5d6d7d8d9dadbdcdddedf</p>
+</li>
+<li>
+<p>EpochStartTime2: 2220002</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends SUCCESS response</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.5.1.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>TH sends KeySetWrite command in the GroupKeyManagement cluster to DUT using a key that is pre-installed on the TH. GroupKeySet fields are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>GroupKeySetID: 0x01a1</p>
+</li>
+<li>
+<p>GroupKeySecurityPolicy: TrustFirst (0)</p>
+</li>
+<li>
+<p>EpochKey0: a0d1d2d3d4d5d6d7d8d9dadbdcdddedf</p>
+</li>
+<li>
+<p>EpochStartTime0: 2220000</p>
+</li>
+<li>
+<p>EpochKey1: b1d1d2d3d4d5d6d7d8d9dadbdcdddedf</p>
+</li>
+<li>
+<p>EpochStartTime1: 2220001</p>
+</li>
+<li>
+<p>EpochKey2: c2d1d2d3d4d5d6d7d8d9dadbdcdddedf</p>
 </li>
 <li>
 <p>EpochStartTime2: 2220002</p>
@@ -53965,7 +54002,7 @@ using only ACLs with group auth mode.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.7.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>TH binds GroupIds 0x0103, 0x0104, 0x0105 with GroupKeySetID 0x01a3 in the GroupKeyMap attribute list on GroupKeyManagement cluster by writing the GroupKeyMap attribute with three entries as follows:</p>
+<p>TH binds GroupIds 0x0101 and 0x0102 with GroupKeySetID 0x01a1 and GroupId 0x0103 with GroupKeySetID 0x01a3 in the GroupKeyMap attribute list on GroupKeyManagement cluster by writing the GroupKeyMap attribute with three entries as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -53974,10 +54011,10 @@ using only ACLs with group auth mode.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>GroupId: 0x0103</p>
+<p>GroupId: 0x0101</p>
 </li>
 <li>
-<p>GroupKeySetId: 0x01a3</p>
+<p>GroupKeySetId: 0x01a1</p>
 </li>
 </ul>
 </div>
@@ -53987,10 +54024,10 @@ using only ACLs with group auth mode.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>GroupId: 0x0104</p>
+<p>GroupId: 0x0102</p>
 </li>
 <li>
-<p>GroupKeySetId: 0x01a3</p>
+<p>GroupKeySetId: 0x01a1</p>
 </li>
 </ul>
 </div>
@@ -54000,7 +54037,7 @@ using only ACLs with group auth mode.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>GroupId: 0x0105</p>
+<p>GroupId: 0x0103</p>
 </li>
 <li>
 <p>GroupKeySetId: 0x01a3</p>
@@ -54081,14 +54118,14 @@ using only ACLs with group auth mode.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="add_group_over_groups"></a>6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AppSpec-1.3.7.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends a AddGroup Command to the Groups cluster with the GroupID field set to 0x0104 and the GroupName set to an empty string. The command is sent as a group command using GroupID 0x0103</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends a AddGroup Command to the Groups cluster with the GroupID field set to 0x0101 and the GroupName set to an empty string. The command is sent as a group command using GroupID 0x0103</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="add_group_over_groups2"></a>7</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AppSpec-1.3.7.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends a AddGroup Command to the Groups cluster with the GroupID field set to 0x0105 and the GroupName set to an empty string. The command is sent as a group command using GroupID 0x0104</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends a AddGroup Command to the Groups cluster with the GroupID field set to 0x0102 and the GroupName set to an empty string. The command is sent as a group command using GroupID 0x0101</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -54127,14 +54164,14 @@ using only ACLs with group auth mode.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AppSpec-1.3.7.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends a ViewGroup Command to the Groups cluster on Endpoint PIXIT.G.ENDPOINT over CASE with the GroupID set to 0x0104 to confirm that the AddGroup command from step <a href="#add_group_over_groups">6</a> was successful</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends a ViewGroup Command to the Groups cluster on Endpoint PIXIT.G.ENDPOINT over CASE with the GroupID set to 0x0101 to confirm that the AddGroup command from step <a href="#add_group_over_groups">6</a> was successful</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT responds with SUCCESS</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AppSpec-1.3.7.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends a ViewGroup Command to the Groups cluster on Endpoint PIXIT.G.ENDPOINT over CASE with the GroupID set to 0x0105 to confirm that the AddGroup command from step <a href="#add_group_over_groups2">7</a> was not successful</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends a ViewGroup Command to the Groups cluster on Endpoint PIXIT.G.ENDPOINT over CASE with the GroupID set to 0x0102 to confirm that the AddGroup command from step <a href="#add_group_over_groups2">7</a> was not successful</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT responds with NOT_FOUND</p></td>
 </tr>
 <tr>
@@ -54176,6 +54213,22 @@ using only ACLs with group auth mode.</p>
 <ul>
 <li>
 <p>GroupKeySetID: 0x01a3</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends SUCCESS response.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.8.4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>TH resets the key set by sending the KeySetRemove command to the GroupKeyManagement cluster over CASE with the following fields:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>GroupKeySetID: 0x01a1</p>
 </li>
 </ul>
 </div></div></td>
@@ -55116,8 +55169,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master ec9a916<br>
-Last updated 2023-12-15 22:30:58 UTC
+Version master e6f6a54<br>
+Last updated 2023-12-19 18:39:47 UTC
 </div>
 </div>
 </body>
