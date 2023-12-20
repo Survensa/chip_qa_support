@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 6ca3fcc (local changes),</span>
-<span id="revdate">2023-12-18 21:33:08 -0800</span>
+<span id="revnumber">version master b8e7a4d (local changes),</span>
+<span id="revdate">2023-12-19 11:24:28 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -54246,8 +54246,7 @@ It SHALL be re-set to 1 if the alarm is re-enabled at the device itself.</p>
 </div>
 <div class="sect3">
 <h4 id="_attributes_47"><a class="anchor" href="#_attributes_47"></a>8.9.5. Attributes</h4>
-<table id="ref_LaundryDryerControlsAttributes" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 40. Laundry Dryer Controls Attributes</caption>
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 12.5%;">
@@ -54296,16 +54295,17 @@ It SHALL be re-set to 1 if the alarm is re-enabled at the device itself.</p>
 <div class="sect4">
 <h5 id="_supporteddrynesslevels_attribute"><a class="anchor" href="#_supporteddrynesslevels_attribute"></a>8.9.5.1. SupportedDrynessLevels Attribute</h5>
 <div class="paragraph">
-<p>This attribute indicates the list of supported dryness levels available to the appliance in the currently selected mode.
-Which dryness level values are present in the list is determined by the manufacturer.
+<p>This attribute SHALL indicate the list of supported dryness levels available to the appliance in the currently selected mode.
+The dryness level values are determined by the manufacturer.
+At least one dryness level value SHALL be provided in the SupportedDrynessLevels list.
 The list of dryness levels MAY change depending on the currently-selected Laundry Dryer mode.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_selecteddrynesslevel_attribute"><a class="anchor" href="#_selecteddrynesslevel_attribute"></a>8.9.5.2. SelectedDrynessLevel Attribute</h5>
 <div class="paragraph">
-<p>This attribute SHALL indicate the currently-selected dryness level.
-This attribute SHALL be a value of 0 to the number of values within the SupportedDrynessLevels attribute.</p>
+<p>This attribute SHALL indicate the currently-selected dryness level
+and it SHALL be the index into the SupportedDrynessLevels list of the selected dryness level.</p>
 </div>
 <div class="paragraph">
 <p>If an attempt is made to write this attribute with a value other than null or a value contained in SupportedDrynessLevels,
@@ -55534,8 +55534,8 @@ if that cluster or a derivative is on the same endpoint as this cluster.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 6ca3fcc (local changes)<br>
-Last updated 2023-12-19 05:33:27 UTC
+Version master b8e7a4d (local changes)<br>
+Last updated 2023-12-20 00:00:30 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
