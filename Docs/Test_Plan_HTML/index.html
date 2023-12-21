@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master e6f6a54,</span>
-<span id="revdate">2023-12-19 10:39:31 -0800</span>
+<span id="revnumber">version master 7f674c3,</span>
+<span id="revdate">2023-12-21 09:15:43 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -35823,16 +35823,16 @@ CR2 is setup such that it has limited access to the DUT based on the test step.<
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.11.2.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">!ICDM.S</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SUBSCRIPTION_MAX_INTERVAL_PUBLISHER_LIMIT = 60 mins</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CR1 reads the Descriptor cluster ServerList attribute from EP0. Save as ep0_servers.</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.11.2.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.S</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR1 reads from the DUT the <em>IdleModeInterval</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SUBSCRIPTION_MAX_INTERVAL_PUBLISHER_LIMIT = <em>IdleModeInterval</em></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If ep0_servers contains the ICD Management cluster ID (0x0046), CR1 reads from the DUT the <em>IdleModeDuration</em> attribute and sets SUBSCRIPTION_MAX_INTERVAL_PUBLISHER_LIMIT = <em>IdleModeDuration</em>. Otherwise, set SUBSCRIPTION_MAX_INTERVAL_PUBLISHER_LIMIT = 60 mins</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -55169,8 +55169,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master e6f6a54<br>
-Last updated 2023-12-19 18:39:47 UTC
+Version master 7f674c3<br>
+Last updated 2023-12-21 17:15:59 UTC
 </div>
 </div>
 </body>
