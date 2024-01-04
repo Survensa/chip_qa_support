@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 4d9af0a,</span>
-<span id="revdate">2024-01-03 07:22:57 -0800</span>
+<span id="revnumber">version master 1070e52,</span>
+<span id="revdate">2024-01-03 21:43:43 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -17011,7 +17011,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>Verify that LastNetworkingStatus attribute value is Success</p>
+<p>Verify that LastNetworkingStatus attribute value is null</p>
 </li>
 </ul>
 </div></div></td>
@@ -17936,7 +17936,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.8.8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork) &amp; CNET.S.C06.Rsp(ConnectNetwork)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends ConnectNetwork command to the DUT with NetworkID field set to PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID and Breadcrumb field set to 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends a ConnectNetworkResponse to the command with the NetworkingStatus field set to NetworkIdNotFound</p></td>
 </tr>
@@ -17964,7 +17964,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0001(Networks)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads Networks attribute from the DUT</p></td>
@@ -17987,7 +17987,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -18003,7 +18003,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -18044,14 +18044,14 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.9.7.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends the CommissioningComplete command to the DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends CommissioningCompleteResponse with the ErrorCode field set to OK (0)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -18067,7 +18067,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0001(Networks)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads Networks attribute from the DUT</p></td>
@@ -18328,7 +18328,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.8.8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork) &amp; CNET.S.C06.Rsp(ConnectNetwork)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends ConnectNetwork command to the DUT with NetworkID field set to the extended PAN ID of PIXIT.CNET.THREAD_1ST_OPERATIONALDATASET and Breadcrumb field set to 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends a ConnectNetworkResponse to the command with the NetworkingStatus field set to NetworkIdNotFound</p></td>
 </tr>
@@ -18379,7 +18379,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -18395,7 +18395,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -18436,14 +18436,14 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.9.7.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.C04.Rsp(RemoveNetwork)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends the CommissioningComplete command to the DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends CommissioningCompleteResponse with the ErrorCode field set to OK (0)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -18459,7 +18459,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0001(Networks)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads Networks attribute from the DUT</p></td>
@@ -55173,8 +55173,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 4d9af0a<br>
-Last updated 2024-01-03 15:23:16 UTC
+Version master 1070e52<br>
+Last updated 2024-01-04 05:43:57 UTC
 </div>
 </div>
 </body>
