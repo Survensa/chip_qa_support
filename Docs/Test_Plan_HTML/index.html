@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 230705c,</span>
-<span id="revdate">2024-01-09 08:40:33 -0800</span>
+<span id="revnumber">version master 25faae5,</span>
+<span id="revdate">2024-01-09 13:28:28 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1044,7 +1044,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_requestor_cluster_attributes">45.10. Requestor Cluster Attributes</a>
 <ul class="sectlevel3">
 <li><a href="#_tc_su_4_1_verifying_cluster_attributes_on_ota_rdut">45.10.1. [TC-SU-4.1] Verifying Cluster Attributes on OTA-R(DUT)</a></li>
-<li><a href="#_tc_su_4_2_verifying_cluster_attributes_from_admindut">45.10.2. [TC-SU-4.2] Verifying Cluster Attributes from Admin(DUT)</a></li>
 </ul>
 </li>
 </ul>
@@ -34286,9 +34285,9 @@ Test Step 5 requires Product Maker to provide instructions for how to trigger si
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8.8.2.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends the Invoke Request Message to the DUT with <code>MaxPathsPerInvoke +1</code> invalid but unique CommandPath in CommandDataIBs.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">On the TH verify the received response message has<br>
-single INVALID_ACTION Status Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends the Invoke Request Message to the DUT with <code>MaxPathsPerInvoke +1</code> invalid but unique CommandPath in CommandDataIBs. This test step will only be executed if we are able<br>
+to fit <code>MaxPathsPerInvoke +1</code> command required for test into single MTU.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">On the TH verify the received response message has single INVALID_ACTION Status Code</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
@@ -34356,8 +34355,7 @@ TH verify that we received two Invoke Response Messages.</p></td>
 <h5 id="_notestesting_considerations_79"><a class="anchor" href="#_notestesting_considerations_79"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test does not try sending as many batched commands in a single invoke message indicated by <code>MaxPathsPerInvoke</code>. This is because the value provided might be higher than number of commands we can<br>
-fit into single InvokeRequest base on packet MTU size.<br>
-Test Step 2 will only be executed if we are able to fit <code>MaxPathsPerInvoke +1</code> command required for test into single MTU.</p>
+fit into single InvokeRequest base on packet MTU size.</p>
 </div>
 <hr>
 <hr>
@@ -35956,7 +35954,8 @@ Modify the attribute which has been subscribed to on the DUT.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10.6.5/8.5.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CR1 sends a subscription request to subscribe to a global attribute on an endpoint on all clusters.  AttributePath = [[Attribute = Global Attribute, Endpoint = EndpointID ]]. +</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the Subscription succeeds and the DUT sends back the attribute values for the global attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the Subscription succeeds and the DUT sends back the attribute values for the global attribute.<br>
+ Verify no data from other endpoints is sent back.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
@@ -47416,11 +47415,6 @@ This test cannot be executed with V1.0 SDK.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TC-SU-4.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verifying cluster attributes on OTA-R(DUT)</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TC-SU-4.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verifying cluster attributes from Admin(DUT)</p></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -49348,130 +49342,6 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 <div class="sect4">
 <h5 id="_notestesting_considerations_151"><a class="anchor" href="#_notestesting_considerations_151"></a>Notes/Testing Considerations</h5>
-<hr>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_tc_su_4_2_verifying_cluster_attributes_from_admindut"><a class="anchor" href="#_tc_su_4_2_verifying_cluster_attributes_from_admindut"></a>45.10.2. [TC-SU-4.2] Verifying Cluster Attributes from Admin(DUT)</h4>
-<div class="sect4">
-<h5 id="_category_189"><a class="anchor" href="#_category_189"></a>Category</h5>
-<div class="paragraph">
-<p>Functional</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_purpose_190"><a class="anchor" href="#_purpose_190"></a>Purpose</h5>
-<div class="paragraph">
-<p>This test case verifies that the DUT behaves according to the spec with the Cluster attributes.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_pics_189"><a class="anchor" href="#_pics_189"></a>PICS</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>MCORE.ACL.Administrator</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_required_devices_189"><a class="anchor" href="#_required_devices_189"></a>Required Devices</h5>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Name</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Description</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as Administrator.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as OTA-R device type.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_device_topology_142"><a class="anchor" href="#_device_topology_142"></a>Device Topology</h5>
-<div class="paragraph">
-<p>TH and DUT are on the same fabric.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_test_setup_82"><a class="anchor" href="#_test_setup_82"></a>Test Setup</h5>
-<div class="paragraph">
-<p>Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_test_procedure_189"><a class="anchor" href="#_test_procedure_189"></a>Test Procedure</h5>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 30%;">
-<col style="width: 30%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ref</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PICS</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Test Step</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.19.7.5</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends a write request for the <em>DefaultOTAProviders</em> Attribute to the TH.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH receives the write command and does not reject the value as invalid.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.19.7.5</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends a read request to read the <em>DefaultOTAProviders</em> Attribute to the TH.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH receives the read command and knows this attribute for the OTA Software Update Requestor cluster.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.19.7.5</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends a read request to read the <em>UpdatePossible</em> attribute from the TH.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH receives the read command and knows this attribute for the OTA Software Update Requestor cluster.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.19.7.5</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends a read request to read the <em>UpdateState</em> Attribute from the TH.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH receives the read command and knows this attribute for the OTA Software Update Requestor cluster.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.19.7.5</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH should start initiating the Software update process. While the TH is downloading the image, DUT sends a read request to read the <em>UpdateStateProgress</em> attribute from the TH.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH receives the read command and knows this attribute for the OTA Software Update Requestor cluster.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_notestesting_considerations_152"><a class="anchor" href="#_notestesting_considerations_152"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
@@ -49659,13 +49529,13 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <div class="sect3">
 <h4 id="_tc_ace_1_1_privileges"><a class="anchor" href="#_tc_ace_1_1_privileges"></a>49.1.1. [TC-ACE-1.1] Privileges</h4>
 <div class="sect4">
-<h5 id="_category_190"><a class="anchor" href="#_category_190"></a>Category</h5>
+<h5 id="_category_189"><a class="anchor" href="#_category_189"></a>Category</h5>
 <div class="paragraph">
 <p>Functional conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_191"><a class="anchor" href="#_purpose_191"></a>Purpose</h5>
+<h5 id="_purpose_190"><a class="anchor" href="#_purpose_190"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -49687,7 +49557,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_190"><a class="anchor" href="#_pics_190"></a>PICS</h5>
+<h5 id="_pics_189"><a class="anchor" href="#_pics_189"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -49724,7 +49594,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_190"><a class="anchor" href="#_required_devices_190"></a>Required Devices</h5>
+<h5 id="_required_devices_189"><a class="anchor" href="#_required_devices_189"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -49753,11 +49623,11 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_83"><a class="anchor" href="#_test_setup_83"></a>Test Setup</h5>
+<h5 id="_test_setup_82"><a class="anchor" href="#_test_setup_82"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_190"><a class="anchor" href="#_test_procedure_190"></a>Test Procedure</h5>
+<h5 id="_test_procedure_189"><a class="anchor" href="#_test_procedure_189"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -50188,13 +50058,13 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <div class="sect3">
 <h4 id="_tc_ace_1_2_subscriptions"><a class="anchor" href="#_tc_ace_1_2_subscriptions"></a>49.1.2. [TC-ACE-1.2] Subscriptions</h4>
 <div class="sect4">
-<h5 id="_category_191"><a class="anchor" href="#_category_191"></a>Category</h5>
+<h5 id="_category_190"><a class="anchor" href="#_category_190"></a>Category</h5>
 <div class="paragraph">
 <p>Functional conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_192"><a class="anchor" href="#_purpose_192"></a>Purpose</h5>
+<h5 id="_purpose_191"><a class="anchor" href="#_purpose_191"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -50207,7 +50077,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_191"><a class="anchor" href="#_pics_191"></a>PICS</h5>
+<h5 id="_pics_190"><a class="anchor" href="#_pics_190"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -50244,7 +50114,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_191"><a class="anchor" href="#_required_devices_191"></a>Required Devices</h5>
+<h5 id="_required_devices_190"><a class="anchor" href="#_required_devices_190"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -50278,11 +50148,11 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_84"><a class="anchor" href="#_test_setup_84"></a>Test Setup</h5>
+<h5 id="_test_setup_83"><a class="anchor" href="#_test_setup_83"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_191"><a class="anchor" href="#_test_procedure_191"></a>Test Procedure</h5>
+<h5 id="_test_procedure_190"><a class="anchor" href="#_test_procedure_190"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -50734,13 +50604,13 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <div class="sect3">
 <h4 id="_tc_ace_1_3_subjects"><a class="anchor" href="#_tc_ace_1_3_subjects"></a>49.1.3. [TC-ACE-1.3] Subjects</h4>
 <div class="sect4">
-<h5 id="_category_192"><a class="anchor" href="#_category_192"></a>Category</h5>
+<h5 id="_category_191"><a class="anchor" href="#_category_191"></a>Category</h5>
 <div class="paragraph">
 <p>Functional conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_193"><a class="anchor" href="#_purpose_193"></a>Purpose</h5>
+<h5 id="_purpose_192"><a class="anchor" href="#_purpose_192"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -50759,7 +50629,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_192"><a class="anchor" href="#_pics_192"></a>PICS</h5>
+<h5 id="_pics_191"><a class="anchor" href="#_pics_191"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -50916,7 +50786,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_192"><a class="anchor" href="#_required_devices_192"></a>Required Devices</h5>
+<h5 id="_required_devices_191"><a class="anchor" href="#_required_devices_191"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -50955,11 +50825,11 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_85"><a class="anchor" href="#_test_setup_85"></a>Test Setup</h5>
+<h5 id="_test_setup_84"><a class="anchor" href="#_test_setup_84"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_192"><a class="anchor" href="#_test_procedure_192"></a>Test Procedure</h5>
+<h5 id="_test_procedure_191"><a class="anchor" href="#_test_procedure_191"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -52250,13 +52120,13 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <div class="sect3">
 <h4 id="_tc_ace_1_4_targets"><a class="anchor" href="#_tc_ace_1_4_targets"></a>49.1.4. [TC-ACE-1.4] Targets</h4>
 <div class="sect4">
-<h5 id="_category_193"><a class="anchor" href="#_category_193"></a>Category</h5>
+<h5 id="_category_192"><a class="anchor" href="#_category_192"></a>Category</h5>
 <div class="paragraph">
 <p>Functional conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_194"><a class="anchor" href="#_purpose_194"></a>Purpose</h5>
+<h5 id="_purpose_193"><a class="anchor" href="#_purpose_193"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -52287,7 +52157,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_193"><a class="anchor" href="#_pics_193"></a>PICS</h5>
+<h5 id="_pics_192"><a class="anchor" href="#_pics_192"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -52336,7 +52206,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_193"><a class="anchor" href="#_required_devices_193"></a>Required Devices</h5>
+<h5 id="_required_devices_192"><a class="anchor" href="#_required_devices_192"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -52365,11 +52235,11 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_86"><a class="anchor" href="#_test_setup_86"></a>Test Setup</h5>
+<h5 id="_test_setup_85"><a class="anchor" href="#_test_setup_85"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_193"><a class="anchor" href="#_test_procedure_193"></a>Test Procedure</h5>
+<h5 id="_test_procedure_192"><a class="anchor" href="#_test_procedure_192"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -53442,13 +53312,13 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <div class="sect3">
 <h4 id="_tc_ace_1_5_multi_fabric"><a class="anchor" href="#_tc_ace_1_5_multi_fabric"></a>49.1.5. [TC-ACE-1.5] Multi-fabric</h4>
 <div class="sect4">
-<h5 id="_category_194"><a class="anchor" href="#_category_194"></a>Category</h5>
+<h5 id="_category_193"><a class="anchor" href="#_category_193"></a>Category</h5>
 <div class="paragraph">
 <p>Functional conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_195"><a class="anchor" href="#_purpose_195"></a>Purpose</h5>
+<h5 id="_purpose_194"><a class="anchor" href="#_purpose_194"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -53458,7 +53328,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_194"><a class="anchor" href="#_pics_194"></a>PICS</h5>
+<h5 id="_pics_193"><a class="anchor" href="#_pics_193"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -53504,7 +53374,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_194"><a class="anchor" href="#_required_devices_194"></a>Required Devices</h5>
+<h5 id="_required_devices_193"><a class="anchor" href="#_required_devices_193"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -53538,11 +53408,11 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_87"><a class="anchor" href="#_test_setup_87"></a>Test Setup</h5>
+<h5 id="_test_setup_86"><a class="anchor" href="#_test_setup_86"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_194"><a class="anchor" href="#_test_procedure_194"></a>Test Procedure</h5>
+<h5 id="_test_procedure_193"><a class="anchor" href="#_test_procedure_193"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -53824,13 +53694,13 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <div class="sect3">
 <h4 id="_tc_ace_1_6_group_auth_mode"><a class="anchor" href="#_tc_ace_1_6_group_auth_mode"></a>49.1.6. [TC-ACE-1.6] Group auth mode</h4>
 <div class="sect4">
-<h5 id="_category_195"><a class="anchor" href="#_category_195"></a>Category</h5>
+<h5 id="_category_194"><a class="anchor" href="#_category_194"></a>Category</h5>
 <div class="paragraph">
 <p>Functional conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_196"><a class="anchor" href="#_purpose_196"></a>Purpose</h5>
+<h5 id="_purpose_195"><a class="anchor" href="#_purpose_195"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -53841,7 +53711,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_195"><a class="anchor" href="#_pics_195"></a>PICS</h5>
+<h5 id="_pics_194"><a class="anchor" href="#_pics_194"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -53887,7 +53757,7 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_195"><a class="anchor" href="#_required_devices_195"></a>Required Devices</h5>
+<h5 id="_required_devices_194"><a class="anchor" href="#_required_devices_194"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -53916,11 +53786,11 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_88"><a class="anchor" href="#_test_setup_88"></a>Test Setup</h5>
+<h5 id="_test_setup_87"><a class="anchor" href="#_test_setup_87"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_195"><a class="anchor" href="#_test_procedure_195"></a>Test Procedure</h5>
+<h5 id="_test_procedure_194"><a class="anchor" href="#_test_procedure_194"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -54292,13 +54162,13 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_rr_1_1_minimal_resource_requirements_for_matter_node"><a class="anchor" href="#_tc_rr_1_1_minimal_resource_requirements_for_matter_node"></a>51.1.1. [TC-RR-1.1] Minimal Resource Requirements for Matter Node</h4>
 <div class="sect4">
-<h5 id="_category_196"><a class="anchor" href="#_category_196"></a>Category</h5>
+<h5 id="_category_195"><a class="anchor" href="#_category_195"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_197"><a class="anchor" href="#_purpose_197"></a>Purpose</h5>
+<h5 id="_purpose_196"><a class="anchor" href="#_purpose_196"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the device meets the minimal requirements for each resource type from the list of various resources required by a Matter Node implementation.</p>
 </div>
@@ -54314,7 +54184,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_196"><a class="anchor" href="#_required_devices_196"></a>Required Devices</h5>
+<h5 id="_required_devices_195"><a class="anchor" href="#_required_devices_195"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54341,13 +54211,13 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_143"><a class="anchor" href="#_device_topology_143"></a>Device Topology</h5>
+<h5 id="_device_topology_142"><a class="anchor" href="#_device_topology_142"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_196"><a class="anchor" href="#_test_procedure_196"></a>Test Procedure</h5>
+<h5 id="_test_procedure_195"><a class="anchor" href="#_test_procedure_195"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4%;">
@@ -54705,7 +54575,7 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_153"><a class="anchor" href="#_notestesting_considerations_153"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_152"><a class="anchor" href="#_notestesting_considerations_152"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -54778,17 +54648,17 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_sm_1_1_device_composition_root_node_dut_as_server"><a class="anchor" href="#_tc_sm_1_1_device_composition_root_node_dut_as_server"></a>54.1.1. [TC-SM-1.1] Device composition - Root Node [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_category_197"><a class="anchor" href="#_category_197"></a>Category</h5>
+<h5 id="_category_196"><a class="anchor" href="#_category_196"></a>Category</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_purpose_198"><a class="anchor" href="#_purpose_198"></a>Purpose</h5>
+<h5 id="_purpose_197"><a class="anchor" href="#_purpose_197"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests root node requirements</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_196"><a class="anchor" href="#_pics_196"></a>PICS</h5>
+<h5 id="_pics_195"><a class="anchor" href="#_pics_195"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54798,7 +54668,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_197"><a class="anchor" href="#_required_devices_197"></a>Required Devices</h5>
+<h5 id="_required_devices_196"><a class="anchor" href="#_required_devices_196"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54825,13 +54695,13 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_144"><a class="anchor" href="#_device_topology_144"></a>Device Topology</h5>
+<h5 id="_device_topology_143"><a class="anchor" href="#_device_topology_143"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_197"><a class="anchor" href="#_test_procedure_197"></a>Test Procedure</h5>
+<h5 id="_test_procedure_196"><a class="anchor" href="#_test_procedure_196"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -54890,17 +54760,17 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_sm_1_2_device_composition_topology_dut_as_server"><a class="anchor" href="#_tc_sm_1_2_device_composition_topology_dut_as_server"></a>54.1.2. [TC-SM-1.2] Device composition - Topology [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_category_198"><a class="anchor" href="#_category_198"></a>Category</h5>
+<h5 id="_category_197"><a class="anchor" href="#_category_197"></a>Category</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_purpose_199"><a class="anchor" href="#_purpose_199"></a>Purpose</h5>
+<h5 id="_purpose_198"><a class="anchor" href="#_purpose_198"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that the topology indicated by the descriptor cluster PartsList matches the requirements in {REF_SM_ENDPOINT}.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_197"><a class="anchor" href="#_pics_197"></a>PICS</h5>
+<h5 id="_pics_196"><a class="anchor" href="#_pics_196"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54910,7 +54780,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_198"><a class="anchor" href="#_required_devices_198"></a>Required Devices</h5>
+<h5 id="_required_devices_197"><a class="anchor" href="#_required_devices_197"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54937,13 +54807,13 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_145"><a class="anchor" href="#_device_topology_145"></a>Device Topology</h5>
+<h5 id="_device_topology_144"><a class="anchor" href="#_device_topology_144"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_198"><a class="anchor" href="#_test_procedure_198"></a>Test Procedure</h5>
+<h5 id="_test_procedure_197"><a class="anchor" href="#_test_procedure_197"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -55091,17 +54961,17 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_dt_1_1_base_device_type_dut_as_server"><a class="anchor" href="#_tc_dt_1_1_base_device_type_dut_as_server"></a>57.1.1. [TC-DT-1.1] Base Device Type [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_category_199"><a class="anchor" href="#_category_199"></a>Category</h5>
+<h5 id="_category_198"><a class="anchor" href="#_category_198"></a>Category</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_purpose_200"><a class="anchor" href="#_purpose_200"></a>Purpose</h5>
+<h5 id="_purpose_199"><a class="anchor" href="#_purpose_199"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that every device type conforms to the requirements of the base device type</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_198"><a class="anchor" href="#_pics_198"></a>PICS</h5>
+<h5 id="_pics_197"><a class="anchor" href="#_pics_197"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55111,7 +54981,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_199"><a class="anchor" href="#_required_devices_199"></a>Required Devices</h5>
+<h5 id="_required_devices_198"><a class="anchor" href="#_required_devices_198"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -55138,13 +55008,13 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_146"><a class="anchor" href="#_device_topology_146"></a>Device Topology</h5>
+<h5 id="_device_topology_145"><a class="anchor" href="#_device_topology_145"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_199"><a class="anchor" href="#_test_procedure_199"></a>Test Procedure</h5>
+<h5 id="_test_procedure_198"><a class="anchor" href="#_test_procedure_198"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -55185,8 +55055,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 230705c<br>
-Last updated 2024-01-09 16:40:51 UTC
+Version master 25faae5<br>
+Last updated 2024-01-09 21:28:45 UTC
 </div>
 </div>
 </body>
