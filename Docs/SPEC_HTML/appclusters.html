@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 2603c3d (local changes),</span>
-<span id="revdate">2024-01-12 09:04:48 -0800</span>
+<span id="revnumber">version master f0e8df0 (local changes),</span>
+<span id="revdate">2024-01-15 21:26:55 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -494,7 +494,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_commands_2">1.3.7. Commands</a></li>
 </ul>
 </li>
-<li><a href="#ref_ScenesCluster">1.4. Scenes Cluster</a>
+<li><a href="#ref_ScenesCluster">1.4. Scenes Management Cluster</a>
 <ul class="sectlevel3">
 <li><a href="#_revision_history_4">1.4.1. Revision History</a></li>
 <li><a href="#_classification_3">1.4.2. Classification</a></li>
@@ -1000,12 +1000,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_revision_history_45">7.2.1. Revision History</a></li>
 <li><a href="#_classification_44">7.2.2. Classification</a></li>
 <li><a href="#_cluster_id_41">7.2.3. Cluster ID</a></li>
-<li><a href="#_attributes_40">7.2.4. Attributes</a></li>
-<li><a href="#_data_types_33">7.2.5. Data Types</a></li>
-<li><a href="#_attributes_41">7.2.6. Attributes</a></li>
-<li><a href="#_derived_cluster_namespace">7.2.7. Derived Cluster Namespace</a></li>
-<li><a href="#_mode_use">7.2.8. Mode Use</a></li>
-<li><a href="#_mode_change_restrictions">7.2.9. Mode Change Restrictions</a></li>
+<li><a href="#_feature_map">7.2.4. Feature Map</a></li>
+<li><a href="#_attributes_40">7.2.5. Attributes</a></li>
+<li><a href="#_data_types_33">7.2.6. Data Types</a></li>
+<li><a href="#_attributes_41">7.2.7. Attributes</a></li>
+<li><a href="#_derived_cluster_namespace">7.2.8. Derived Cluster Namespace</a></li>
+<li><a href="#_mode_use">7.2.9. Mode Use</a></li>
+<li><a href="#_mode_change_restrictions">7.2.10. Mode Change Restrictions</a></li>
 </ul>
 </li>
 <li><a href="#ref_RvcCleanModeCluster">7.3. RVC Clean Mode Cluster</a>
@@ -1013,19 +1014,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_revision_history_46">7.3.1. Revision History</a></li>
 <li><a href="#_classification_45">7.3.2. Classification</a></li>
 <li><a href="#_cluster_id_42">7.3.3. Cluster ID</a></li>
-<li><a href="#_attributes_42">7.3.4. Attributes</a></li>
-<li><a href="#_data_types_34">7.3.5. Data Types</a></li>
-<li><a href="#_derived_cluster_namespace_2">7.3.6. Derived Cluster Namespace</a></li>
-<li><a href="#_mode_change_restrictions_2">7.3.7. Mode Change Restrictions</a></li>
-<li><a href="#_mode_examples">7.3.8. Mode Examples</a></li>
+<li><a href="#_feature_map_2">7.3.4. Feature Map</a></li>
+<li><a href="#_attributes_42">7.3.5. Attributes</a></li>
+<li><a href="#_data_types_34">7.3.6. Data Types</a></li>
+<li><a href="#_derived_cluster_namespace_2">7.3.7. Derived Cluster Namespace</a></li>
+<li><a href="#_mode_change_restrictions_2">7.3.8. Mode Change Restrictions</a></li>
+<li><a href="#_mode_examples">7.3.9. Mode Examples</a></li>
 </ul>
 </li>
 <li><a href="#ref_RvcOperationalStateCluster">7.4. RVC Operational State Cluster</a>
 <ul class="sectlevel3">
 <li><a href="#_revision_history_47">7.4.1. Revision History</a></li>
 <li><a href="#_classification_46">7.4.2. Classification</a></li>
-<li><a href="#_cluster_id_43">7.4.3. Cluster ID</a></li>
-<li><a href="#_data_types_35">7.4.4. Data Types</a></li>
+<li><a href="#_commands_25">7.4.3. Commands</a></li>
+<li><a href="#_cluster_id_43">7.4.4. Cluster ID</a></li>
+<li><a href="#_data_types_35">7.4.5. Data Types</a></li>
 </ul>
 </li>
 </ul>
@@ -1045,7 +1048,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_cluster_id_44">8.2.3. Cluster ID</a></li>
 <li><a href="#_features_29">8.2.4. Features</a></li>
 <li><a href="#_attributes_43">8.2.5. Attributes</a></li>
-<li><a href="#_commands_25">8.2.6. Commands</a></li>
+<li><a href="#_commands_26">8.2.6. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_DishwasherModeCluster">8.3. Dishwasher Mode Cluster</a>
@@ -1106,7 +1109,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_features_31">8.8.4. Features</a></li>
 <li><a href="#_data_types_41">8.8.5. Data Types</a></li>
 <li><a href="#_attributes_48">8.8.6. Attributes</a></li>
-<li><a href="#_commands_26">8.8.7. Commands</a></li>
+<li><a href="#_commands_27">8.8.7. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_LaundryDryerControlsCluster">8.9. Laundry Dryer Controls Cluster</a>
@@ -1142,7 +1145,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_classification_57">8.12.2. Classification</a></li>
 <li><a href="#_cluster_id_52">8.12.3. Cluster ID</a></li>
 <li><a href="#_attributes_51">8.12.4. Attributes</a></li>
-<li><a href="#_commands_27">8.12.5. Commands</a></li>
+<li><a href="#_commands_28">8.12.5. Commands</a></li>
 <li><a href="#_derived_cluster_namespace_7">8.12.6. Derived Cluster Namespace</a></li>
 </ul>
 </li>
@@ -1153,7 +1156,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_cluster_id_53">8.13.3. Cluster ID</a></li>
 <li><a href="#_features_32">8.13.4. Features</a></li>
 <li><a href="#_attributes_52">8.13.5. Attributes</a></li>
-<li><a href="#_commands_28">8.13.6. Commands</a></li>
+<li><a href="#_commands_29">8.13.6. Commands</a></li>
 </ul>
 </li>
 </ul>
@@ -1438,10 +1441,10 @@ or notes a section of text with the term "provisional".</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Support for <a href="#ref_ScenesCluster">Scenes cluster</a> is provisional.</p>
+<p>Support for <a href="#ref_ScenesCluster">Scenes Management cluster</a> is provisional.</p>
 </li>
 <li>
-<p>Support for Pulse Width Modulation cluster and for the Frequency feature of the <a href="#ref_LevelControlCluster">Level control cluster</a> is provisional</p>
+<p>Support for Pulse Width Modulation cluster and for the Frequency feature of the <a href="#ref_LevelControlCluster">Level control cluster</a> is provisional.</p>
 </li>
 <li>
 <p>Support for <a href="#ref_BallastConfigurationCluster">Ballast Configuration Cluster</a> is provisional.</p>
@@ -1509,8 +1512,8 @@ domains.</p>
                                                                one or more groups to support groupcast interactions.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0005</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ScenesCluster">Scenes</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0062</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ScenesCluster">Scenes Management</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Attributes and commands for setting up and recalling a
                                                                number of scenes for a device. Each scene corresponds to
                                                                a set of stored values of specified device attributes.</p></td>
@@ -2771,7 +2774,7 @@ the server SHALL NOT generate a RemoveGroupResponse command.</p>
 <p>See <a href="#ref_RemoveGroupResponseCommand">RemoveGroupResponse Command</a> for a description of the response command.</p>
 </div>
 <div class="paragraph">
-<p>Additionally, if the Scenes cluster is supported on the same endpoint,
+<p>Additionally, if the Scenes Management cluster is supported on the same endpoint,
 scenes associated with the indicated group SHALL be removed on that endpoint.</p>
 </div>
 </div>
@@ -2792,7 +2795,7 @@ SHALL generate a response with the Status field set to
 SUCCESS.</p>
 </div>
 <div class="paragraph">
-<p>Additionally, if the Scenes cluster is supported on the same endpoint,
+<p>Additionally, if the Scenes Management cluster is supported on the same endpoint,
 all scenes, except for scenes associated with group ID 0, SHALL be removed on that endpoint.</p>
 </div>
 </div>
@@ -3231,9 +3234,9 @@ in response to the receipt of a RemoveGroup command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="ref_ScenesCluster"><a class="anchor" href="#ref_ScenesCluster"></a>1.4. Scenes Cluster</h3>
+<h3 id="ref_ScenesCluster"><a class="anchor" href="#ref_ScenesCluster"></a>1.4. Scenes Management Cluster</h3>
 <div class="paragraph">
-<p>The Scenes cluster provides attributes and commands for setting up and
+<p>The Scenes Management cluster provides attributes and commands for setting up and
 recalling scenes. Each scene corresponds to a set of stored values of
 specified attributes for one or more clusters on the same end point as
 the Scenes cluster.</p>
@@ -3252,7 +3255,7 @@ MAY only be unicast, i.e., they MAY not be multicast or broadcast.</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-Support for Scenes cluster is provisional.
+Support for Scenes Management cluster is provisional.
 </td>
 </tr>
 </table>
@@ -3328,22 +3331,19 @@ Support for Scenes cluster is provisional.
 <h4 id="_cluster_id_3"><a class="anchor" href="#_cluster_id_3"></a>1.4.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0005</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Scenes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0062</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scenes Management</p></td>
 </tr>
 </tbody>
 </table>
@@ -3433,7 +3433,7 @@ the <a href="#ref_RemoveAllGroups">RemoveAllGroups command</a> of the
 <div class="sect3">
 <h4 id="ref_ScenesFabricScoping"><a class="anchor" href="#ref_ScenesFabricScoping"></a>1.4.6. Handling of fabric-scoping</h4>
 <div class="paragraph">
-<p>To retain semantic equivalence to earlier versions of the Scenes cluster which were designed prior
+<p>To retain semantic equivalence to earlier versions of the Scenes Management cluster which were designed prior
 to the introduction of multiple fabrics, the behavior of fabric-scoping in this cluster replaces
 use of explicit fabric-scoped access quality with an implicit method.</p>
 </div>
@@ -4303,7 +4303,7 @@ A scene is the aggregate of all such fields across all clusters on the endpoint.
 <h5 id="_scenecount_attribute"><a class="anchor" href="#_scenecount_attribute"></a>1.4.8.1. SceneCount Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the number of scenes currently used in
-the server&#8217;s Scene Table on the endpoint where the Scenes cluster appears.</p>
+the server&#8217;s Scene Table on the endpoint where the Scenes Management cluster appears.</p>
 </div>
 <div class="paragraph">
 <p>For nodes supporting fabrics, this only includes the count for the accessing fabric.</p>
@@ -4352,7 +4352,7 @@ All other bits SHALL be 0.</p>
 </div>
 <div class="paragraph">
 <p>The null value indicates that the server has not been configured, or that
-the identifier of the node that last configured the Scenes cluster is not
+the identifier of the node that last configured the Scenes Management cluster is not
 known.</p>
 </div>
 <div class="paragraph">
@@ -6898,7 +6898,7 @@ but cannot be turned on via commands received by an instance of this cluster due
 <div class="sect4">
 <h5 id="_scene_table_extensions"><a class="anchor" href="#_scene_table_extensions"></a>1.5.6.1. Scene Table Extensions</h5>
 <div class="paragraph">
-<p>If the Scenes server cluster is implemented on the same endpoint, the following
+<p>If the Scenes Management server cluster is implemented on the same endpoint, the following
 attribute SHALL be part of the ExtensionFieldSetStruct of the Scene Table.</p>
 </div>
 <div class="ulist">
@@ -8052,7 +8052,7 @@ The Frequency feature is provisional.
 <div class="sect4">
 <h5 id="_scene_table_extensions_2"><a class="anchor" href="#_scene_table_extensions_2"></a>1.6.6.1. Scene Table Extensions</h5>
 <div class="paragraph">
-<p>If the Scenes server cluster is implemented on the same endpoint, the following
+<p>If the Scenes Management server cluster is implemented on the same endpoint, the following
 attributes SHALL be part of the ExtensionFieldSetStruct of the Scene Table.
 If the implicit form of the ExtensionFieldSetStruct is used, the order of
 the attributes in the AttributeValueList is in the given order,
@@ -9648,7 +9648,7 @@ has the same meaning in a cluster whose purpose is to choose the amount of sugar
 <div class="sect4">
 <h5 id="_scene_table_extensions_3"><a class="anchor" href="#_scene_table_extensions_3"></a>1.8.6.1. Scene Table Extensions</h5>
 <div class="paragraph">
-<p>If the Scenes server cluster is implemented on the same endpoint, the following
+<p>If the Scenes Management server cluster is implemented on the same endpoint, the following
 attribute SHALL be part of the ExtensionFieldSetStruct of the Scene Table.</p>
 </div>
 <div class="ulist">
@@ -10318,7 +10318,7 @@ that is a derivation of this cluster).</p>
 <div class="sect4">
 <h5 id="_scene_table_extensions_4"><a class="anchor" href="#_scene_table_extensions_4"></a>1.9.6.1. Scene Table Extensions</h5>
 <div class="paragraph">
-<p>If the Scenes server cluster is implemented on the same endpoint, the following
+<p>If the Scenes Management server cluster is implemented on the same endpoint, the following
 attribute SHALL be part of the ExtensionFieldSetStruct of the Scene Table.</p>
 </div>
 <div class="ulist">
@@ -20981,7 +20981,7 @@ device) need to be stored.</p>
 <div class="sect4">
 <h5 id="_scene_table_extensions_5"><a class="anchor" href="#_scene_table_extensions_5"></a>3.2.7.1. Scene Table Extensions</h5>
 <div class="paragraph">
-<p>If the Scenes server cluster is implemented on the same endpoint, the following
+<p>If the Scenes Management server cluster is implemented on the same endpoint, the following
 attributes SHALL be part of the ExtensionFieldSetStruct of the Scene Table.
 If an attribute is not implemented, the value that will be used for it in the AttributeValuePairStruct is given in parentheses.
 If the implicit form of the ExtensionFieldSetStruct is used, the order of
@@ -21030,7 +21030,7 @@ table.</p>
 ignored.</p>
 </div>
 <div class="paragraph">
-<p>If the Scenes cluster server is implemented on the same endpoint, and the
+<p>If the Scenes Management cluster server is implemented on the same endpoint, and the
 cluster revision is 6 or above, then all extension fields in the list above, including up
 to EnhancedColorMode (item 9), SHALL be present in the extension fields set for a
 Scene to be considered valid. This disambiguates the color mode used within the
@@ -29239,7 +29239,7 @@ be represented by 1410 minutes since midnight.</p>
 <div class="sect4">
 <h5 id="_scene_table_extensions_6"><a class="anchor" href="#_scene_table_extensions_6"></a>4.3.9.1. Scene Table Extensions</h5>
 <div class="paragraph">
-<p>If the Scenes server cluster is implemented on the same endpoint, the following
+<p>If the Scenes Management server cluster is implemented on the same endpoint, the following
 attributes SHALL be part of the ExtensionFieldSetStruct of the Scene Table.
 If the implicit form of the ExtensionFieldSetStruct is used, the order of
 the attributes in the AttributeValueList is in the given order,
@@ -43310,7 +43310,7 @@ Global operational state SHALL always reflect the overall motion of the device.<
 <div class="sect4">
 <h5 id="_scene_table_extensions_8"><a class="anchor" href="#_scene_table_extensions_8"></a>5.3.6.1. Scene Table Extensions</h5>
 <div class="paragraph">
-<p>If the Scenes server cluster is implemented on the same endpoint, the following
+<p>If the Scenes Management server cluster is implemented on the same endpoint, the following
 attributes SHALL be part of the ExtensionFieldSetStruct of the Scene Table.
 If the implicit form of the ExtensionFieldSetStruct is used, the order of
 the attributes in the AttributeValueList is in the given order,
@@ -51092,7 +51092,7 @@ It also defines a namespace for the running modes of these devices.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add constraint about switching from non-Idle to non-Idle modes. ChangeToModeResponse command: StatusText must be provided for InvalidInMode status. Disable the StartUpMode attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add constraint about switching from non-Idle to non-Idle modes. ChangeToModeResponse command: StatusText must be provided for InvalidInMode status. Deprecate the OnMode attribute and the related feature map bit. Add the Mapping mode tag.</p></td>
 </tr>
 </tbody>
 </table>
@@ -51146,7 +51146,38 @@ It also defines a namespace for the running modes of these devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_attributes_40"><a class="anchor" href="#_attributes_40"></a>7.2.4. Attributes</h4>
+<h4 id="_feature_map"><a class="anchor" href="#_feature_map"></a>7.2.4. Feature Map</h4>
+<div class="paragraph">
+<p>The table below lists the changes relative to the Mode Base cluster for the feature map bits.
+A blank field indicates no change.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Bit</th>
+<th class="tableblock halign-left valign-top">Code</th>
+<th class="tableblock halign-left valign-top">Feature</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DEPONOFF</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OnOff</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">D</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_attributes_40"><a class="anchor" href="#_attributes_40"></a>7.2.5. Attributes</h4>
 <div class="paragraph">
 <p>The table below lists the changes relative to the Mode Base cluster for the attributes.
 A blank field indicates no change.</p>
@@ -51213,15 +51244,15 @@ A blank field indicates no change.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">D</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_data_types_33"><a class="anchor" href="#_data_types_33"></a>7.2.5. Data Types</h4>
+<h4 id="_data_types_33"><a class="anchor" href="#_data_types_33"></a>7.2.6. Data Types</h4>
 <div class="sect4">
-<h5 id="_modeoptionstruct_type"><a class="anchor" href="#_modeoptionstruct_type"></a>7.2.5.1. ModeOptionStruct Type</h5>
+<h5 id="_modeoptionstruct_type"><a class="anchor" href="#_modeoptionstruct_type"></a>7.2.6.1. ModeOptionStruct Type</h5>
 <div class="paragraph">
 <p>The table below lists the changes relative to the Mode Base cluster for the fields of the ModeOptionStruct type.
 A blank field indicates no change.</p>
@@ -51290,14 +51321,14 @@ A blank field indicates no change.</p>
 include the Cleaning mode tag in the ModeTags field.</p>
 </div>
 <div class="paragraph">
-<p>The Cleaning and Idle mode tags are mutually exclusive and SHALL NOT both be used together in a mode&#8217;s ModeTags.</p>
+<p>The Mapping, Cleaning, and Idle mode tags are mutually exclusive and SHALL NOT be used together in a mode&#8217;s ModeTags.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_41"><a class="anchor" href="#_attributes_41"></a>7.2.6. Attributes</h4>
+<h4 id="_attributes_41"><a class="anchor" href="#_attributes_41"></a>7.2.7. Attributes</h4>
 <div class="sect4">
-<h5 id="_startupmode_attribute_3"><a class="anchor" href="#_startupmode_attribute_3"></a>7.2.6.1. StartUpMode Attribute</h5>
+<h5 id="_startupmode_attribute_3"><a class="anchor" href="#_startupmode_attribute_3"></a>7.2.7.1. StartUpMode Attribute</h5>
 <div class="paragraph">
 <p>If this attribute is supported, the device SHOULD initially set this to one of the supported modes
 that has the Idle tag associated with it. See the Mode Base cluster
@@ -51306,12 +51337,12 @@ specification for full details about this StartUpMode attribute.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_derived_cluster_namespace"><a class="anchor" href="#_derived_cluster_namespace"></a>7.2.7. Derived Cluster Namespace</h4>
+<h4 id="_derived_cluster_namespace"><a class="anchor" href="#_derived_cluster_namespace"></a>7.2.8. Derived Cluster Namespace</h4>
 <div class="paragraph">
 <p>This namespace includes definitions for data associated exclusively with the derived cluster.</p>
 </div>
 <div class="sect4">
-<h5 id="_changetomoderesponse_command_namespace_definitions"><a class="anchor" href="#_changetomoderesponse_command_namespace_definitions"></a>7.2.7.1. ChangeToModeResponse Command Namespace Definitions</h5>
+<h5 id="_changetomoderesponse_command_namespace_definitions"><a class="anchor" href="#_changetomoderesponse_command_namespace_definitions"></a>7.2.8.1. ChangeToModeResponse Command Namespace Definitions</h5>
 <div class="paragraph">
 <p>The following table defines the derived cluster specific StatusCode values.</p>
 </div>
@@ -51363,7 +51394,7 @@ specification for full details about this StartUpMode attribute.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_mode_tags"><a class="anchor" href="#_mode_tags"></a>7.2.7.2. Mode Tags</h5>
+<h5 id="_mode_tags"><a class="anchor" href="#_mode_tags"></a>7.2.8.2. Mode Tags</h5>
 <div class="paragraph">
 <p>The following table defines the derived cluster specific ModeTag values.</p>
 </div>
@@ -51387,10 +51418,14 @@ specification for full details about this StartUpMode attribute.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x4001</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cleaning</strong></p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x4002</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mapping</strong></p></td>
+</tr>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_idle_tag"><a class="anchor" href="#_idle_tag"></a>7.2.7.2.1. Idle Tag</h6>
+<h6 id="_idle_tag"><a class="anchor" href="#_idle_tag"></a>7.2.8.2.1. Idle Tag</h6>
 <div class="paragraph">
 <p>The device is not performing any of the main operations of the other modes.
 However, auxiliary actions, such as seeking the charger or charging, may occur.</p>
@@ -51402,17 +51437,31 @@ a restart.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_cleaning_tag"><a class="anchor" href="#_cleaning_tag"></a>7.2.7.2.2. Cleaning Tag</h6>
+<h6 id="_cleaning_tag"><a class="anchor" href="#_cleaning_tag"></a>7.2.8.2.2. Cleaning Tag</h6>
 <div class="paragraph">
 <p>The device was asked to clean so it may be actively running,
 or paused due to an error, due to a pause command, or for recharging etc.
 If currently paused and the device can resume it will continue to clean.</p>
 </div>
 </div>
+<div class="sect5">
+<h6 id="_mapping_tag"><a class="anchor" href="#_mapping_tag"></a>7.2.8.2.3. Mapping Tag</h6>
+<div class="paragraph">
+<p>The device was asked to create a map of the space it is located in,
+so it may be actively running,
+or paused due to an error, due to a pause command, or for recharging etc.
+If currently paused and the device can resume, it will continue to map.</p>
+</div>
+<div class="paragraph">
+<p>Note: this mode is intended to be used so the current space can be mapped by the device if the robot has not previously done that,
+or if the layout has substantially changed,
+for an optimal subsequent cleaning experience.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_mode_use"><a class="anchor" href="#_mode_use"></a>7.2.8. Mode Use</h4>
+<h4 id="_mode_use"><a class="anchor" href="#_mode_use"></a>7.2.9. Mode Use</h4>
 <div class="paragraph">
 <p>Starting a cleaning cycle SHALL be done by switching from a mode with the Idle mode tag
 to a mode with the Cleaning mode tag.</p>
@@ -51422,12 +51471,20 @@ to a mode with the Cleaning mode tag.</p>
 to a mode with the Idle mode tag.</p>
 </div>
 <div class="paragraph">
-<p>The RVC Run Mode cluster&#8217;s SupportedModes attribute MAY include multiple modes with the Cleaning mode tag
-and/or modes with neither the Cleaning nor the Idle mode tags.</p>
+<p>Starting a mapping cycle SHALL be done by switching from a mode with the Idle mode tag
+to a mode with the Mapping mode tag.</p>
+</div>
+<div class="paragraph">
+<p>Stopping a mapping cycle SHALL be done by switching from a mode with the Mapping mode tag
+to a mode with the Idle mode tag.</p>
+</div>
+<div class="paragraph">
+<p>The RVC Run Mode cluster&#8217;s SupportedModes attribute MAY include multiple modes with the Cleaning mode tag,
+and/or modes with the Mapping mode tag.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_mode_change_restrictions"><a class="anchor" href="#_mode_change_restrictions"></a>7.2.9. Mode Change Restrictions</h4>
+<h4 id="_mode_change_restrictions"><a class="anchor" href="#_mode_change_restrictions"></a>7.2.10. Mode Change Restrictions</h4>
 <div class="paragraph">
 <p>Attempting to switch the RVC Run Mode from a mode without the Idle mode tag to another non-Idle mode SHALL NOT be allowed and the ChangeToModeResponse command SHALL have the StatusCode field set to the InvalidInMode value in that case.</p>
 </div>
@@ -51462,7 +51519,7 @@ It also defines a namespace for the cleaning type for these devices.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add constraint about changing cleaning modes while the RVC Run Mode cluster is in a non-Idle mode. ChangeToModeResponse command: StatusText must be provided for InvalidInMode status. Disable the StartUpMode attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add constraint about changing cleaning modes while the RVC Run Mode cluster is in a non-Idle mode. ChangeToModeResponse command: StatusText must be provided for InvalidInMode status. Deprecate the OnMode attribute and the related feature map bit.</p></td>
 </tr>
 </tbody>
 </table>
@@ -51516,7 +51573,38 @@ It also defines a namespace for the cleaning type for these devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_attributes_42"><a class="anchor" href="#_attributes_42"></a>7.3.4. Attributes</h4>
+<h4 id="_feature_map_2"><a class="anchor" href="#_feature_map_2"></a>7.3.4. Feature Map</h4>
+<div class="paragraph">
+<p>The table below lists the changes relative to the Mode Base cluster for the feature map bits.
+A blank field indicates no change.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Bit</th>
+<th class="tableblock halign-left valign-top">Code</th>
+<th class="tableblock halign-left valign-top">Feature</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DEPONOFF</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OnOff</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">D</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_attributes_42"><a class="anchor" href="#_attributes_42"></a>7.3.5. Attributes</h4>
 <div class="paragraph">
 <p>The table below lists the changes relative to the Mode Base cluster for the attributes.
 A blank field indicates no change.</p>
@@ -51583,15 +51671,15 @@ A blank field indicates no change.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">D</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_data_types_34"><a class="anchor" href="#_data_types_34"></a>7.3.5. Data Types</h4>
+<h4 id="_data_types_34"><a class="anchor" href="#_data_types_34"></a>7.3.6. Data Types</h4>
 <div class="sect4">
-<h5 id="_modeoptionstruct_type_2"><a class="anchor" href="#_modeoptionstruct_type_2"></a>7.3.5.1. ModeOptionStruct Type</h5>
+<h5 id="_modeoptionstruct_type_2"><a class="anchor" href="#_modeoptionstruct_type_2"></a>7.3.6.1. ModeOptionStruct Type</h5>
 <div class="paragraph">
 <p>The table below lists the changes relative to the Mode Base cluster for the fields of the ModeOptionStruct type.
 A blank field indicates no change.</p>
@@ -51659,12 +51747,12 @@ the Mop mode tag in the ModeTags field list.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_derived_cluster_namespace_2"><a class="anchor" href="#_derived_cluster_namespace_2"></a>7.3.6. Derived Cluster Namespace</h4>
+<h4 id="_derived_cluster_namespace_2"><a class="anchor" href="#_derived_cluster_namespace_2"></a>7.3.7. Derived Cluster Namespace</h4>
 <div class="paragraph">
 <p>This namespace includes definitions for data associated exclusively with the derived cluster.</p>
 </div>
 <div class="sect4">
-<h5 id="_changetomoderesponse_command_namespace_definitions_2"><a class="anchor" href="#_changetomoderesponse_command_namespace_definitions_2"></a>7.3.6.1. ChangeToModeResponse Command Namespace Definitions</h5>
+<h5 id="_changetomoderesponse_command_namespace_definitions_2"><a class="anchor" href="#_changetomoderesponse_command_namespace_definitions_2"></a>7.3.7.1. ChangeToModeResponse Command Namespace Definitions</h5>
 <div class="paragraph">
 <p>The following table defines the derived cluster specific StatusCode values.</p>
 </div>
@@ -51688,7 +51776,7 @@ the Mop mode tag in the ModeTags field list.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_mode_tags_2"><a class="anchor" href="#_mode_tags_2"></a>7.3.6.2. Mode Tags</h5>
+<h5 id="_mode_tags_2"><a class="anchor" href="#_mode_tags_2"></a>7.3.7.2. Mode Tags</h5>
 <div class="paragraph">
 <p>The following table defines the derived cluster specific ModeTag values.</p>
 </div>
@@ -51719,19 +51807,19 @@ the Mop mode tag in the ModeTags field list.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_deep_clean_tag"><a class="anchor" href="#_deep_clean_tag"></a>7.3.6.2.1. Deep Clean Tag</h6>
+<h6 id="_deep_clean_tag"><a class="anchor" href="#_deep_clean_tag"></a>7.3.7.2.1. Deep Clean Tag</h6>
 <div class="paragraph">
 <p>While in this mode, the device is optimizing for improved cleaning.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_vacuum_tag"><a class="anchor" href="#_vacuum_tag"></a>7.3.6.2.2. Vacuum Tag</h6>
+<h6 id="_vacuum_tag"><a class="anchor" href="#_vacuum_tag"></a>7.3.7.2.2. Vacuum Tag</h6>
 <div class="paragraph">
 <p>The device&#8217;s vacuuming feature is enabled in this mode.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_mop_tag"><a class="anchor" href="#_mop_tag"></a>7.3.6.2.3. Mop Tag</h6>
+<h6 id="_mop_tag"><a class="anchor" href="#_mop_tag"></a>7.3.7.2.3. Mop Tag</h6>
 <div class="paragraph">
 <p>The device&#8217;s mopping feature is enabled in this mode.</p>
 </div>
@@ -51739,7 +51827,7 @@ the Mop mode tag in the ModeTags field list.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_mode_change_restrictions_2"><a class="anchor" href="#_mode_change_restrictions_2"></a>7.3.7. Mode Change Restrictions</h4>
+<h4 id="_mode_change_restrictions_2"><a class="anchor" href="#_mode_change_restrictions_2"></a>7.3.8. Mode Change Restrictions</h4>
 <div class="paragraph">
 <p>This cluster SHALL NOT permit changing its mode while the RVC Run Mode cluster&#8217;s CurrentMode attribute is set
 to a mode without the Idle mode tag. The ChangeToModeResponse command SHALL have the StatusCode field set
@@ -51747,7 +51835,7 @@ to the InvalidInMode value if this restriction prevents a mode change.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_mode_examples"><a class="anchor" href="#_mode_examples"></a>7.3.8. Mode Examples</h4>
+<h4 id="_mode_examples"><a class="anchor" href="#_mode_examples"></a>7.3.9. Mode Examples</h4>
 <div class="paragraph">
 <p>A few examples of modes and their mode tags are provided below.</p>
 </div>
@@ -51793,7 +51881,7 @@ to the InvalidInMode value if this restriction prevents a mode change.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The Pause and Resume commands are usable in all compatible states</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Pause and Resume commands are usable in all compatible states. Deprecate the Start and Stop commands.</p></td>
 </tr>
 </tbody>
 </table>
@@ -51826,7 +51914,76 @@ to the InvalidInMode value if this restriction prevents a mode change.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_43"><a class="anchor" href="#_cluster_id_43"></a>7.4.3. Cluster ID</h4>
+<h4 id="_commands_25"><a class="anchor" href="#_commands_25"></a>7.4.3. Commands</h4>
+<div class="paragraph">
+<p>The table below lists the changes relative to the Operational State cluster for the commands.
+A blank field indicates no change.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">ID</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Direction</th>
+<th class="tableblock halign-left valign-top">Response</th>
+<th class="tableblock halign-left valign-top">Access</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pause</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x01</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Stop</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">D</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x02</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Start</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">D</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x03</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Resume</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OperationalCommandResponse</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_cluster_id_43"><a class="anchor" href="#_cluster_id_43"></a>7.4.4. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -51847,9 +52004,9 @@ to the InvalidInMode value if this restriction prevents a mode change.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_data_types_35"><a class="anchor" href="#_data_types_35"></a>7.4.4. Data Types</h4>
+<h4 id="_data_types_35"><a class="anchor" href="#_data_types_35"></a>7.4.5. Data Types</h4>
 <div class="sect4">
-<h5 id="_operationalstateenum_type"><a class="anchor" href="#_operationalstateenum_type"></a>7.4.4.1. OperationalStateEnum Type</h5>
+<h5 id="_operationalstateenum_type"><a class="anchor" href="#_operationalstateenum_type"></a>7.4.5.1. OperationalStateEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -51978,7 +52135,7 @@ Else, if the operational state is Charging or Docked but there&#8217;s no operat
 </div>
 </div>
 <div class="sect4">
-<h5 id="_errorstateenum_type"><a class="anchor" href="#_errorstateenum_type"></a>7.4.4.2. ErrorStateEnum Type</h5>
+<h5 id="_errorstateenum_type"><a class="anchor" href="#_errorstateenum_type"></a>7.4.5.2. ErrorStateEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -52504,7 +52661,7 @@ list item 0 being the setting with the lowest temperature level.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_commands_25"><a class="anchor" href="#_commands_25"></a>8.2.6. Commands</h4>
+<h4 id="_commands_26"><a class="anchor" href="#_commands_26"></a>8.2.6. Commands</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -54141,7 +54298,7 @@ It SHALL be re-set to 1 if the alarm is re-enabled at the device itself.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_commands_26"><a class="anchor" href="#_commands_26"></a>8.8.7. Commands</h4>
+<h4 id="_commands_27"><a class="anchor" href="#_commands_27"></a>8.8.7. Commands</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -54896,7 +55053,7 @@ namespaced enumerated values for Microwave Oven devices.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_commands_27"><a class="anchor" href="#_commands_27"></a>8.12.5. Commands</h4>
+<h4 id="_commands_28"><a class="anchor" href="#_commands_28"></a>8.12.5. Commands</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -55316,7 +55473,7 @@ MinPower and MaxPower, PowerStep would be set to 1.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_commands_28"><a class="anchor" href="#_commands_28"></a>8.13.6. Commands</h4>
+<h4 id="_commands_29"><a class="anchor" href="#_commands_29"></a>8.13.6. Commands</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -55609,8 +55766,8 @@ if that cluster or a derivative is on the same endpoint as this cluster.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 2603c3d (local changes)<br>
-Last updated 2024-01-16 00:00:40 UTC
+Version master f0e8df0 (local changes)<br>
+Last updated 2024-01-16 05:27:09 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
