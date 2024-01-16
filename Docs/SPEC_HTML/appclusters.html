@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master f0e8df0 (local changes),</span>
-<span id="revdate">2024-01-15 21:26:55 -0800</span>
+<span id="revnumber">version master 8409455 (local changes),</span>
+<span id="revdate">2024-01-16 10:11:11 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1029,6 +1029,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_commands_25">7.4.3. Commands</a></li>
 <li><a href="#_cluster_id_43">7.4.4. Cluster ID</a></li>
 <li><a href="#_data_types_35">7.4.5. Data Types</a></li>
+<li><a href="#_commands_26">7.4.6. Commands</a></li>
 </ul>
 </li>
 </ul>
@@ -1048,7 +1049,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_cluster_id_44">8.2.3. Cluster ID</a></li>
 <li><a href="#_features_29">8.2.4. Features</a></li>
 <li><a href="#_attributes_43">8.2.5. Attributes</a></li>
-<li><a href="#_commands_26">8.2.6. Commands</a></li>
+<li><a href="#_commands_27">8.2.6. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_DishwasherModeCluster">8.3. Dishwasher Mode Cluster</a>
@@ -1109,7 +1110,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_features_31">8.8.4. Features</a></li>
 <li><a href="#_data_types_41">8.8.5. Data Types</a></li>
 <li><a href="#_attributes_48">8.8.6. Attributes</a></li>
-<li><a href="#_commands_27">8.8.7. Commands</a></li>
+<li><a href="#_commands_28">8.8.7. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_LaundryDryerControlsCluster">8.9. Laundry Dryer Controls Cluster</a>
@@ -1145,7 +1146,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_classification_57">8.12.2. Classification</a></li>
 <li><a href="#_cluster_id_52">8.12.3. Cluster ID</a></li>
 <li><a href="#_attributes_51">8.12.4. Attributes</a></li>
-<li><a href="#_commands_28">8.12.5. Commands</a></li>
+<li><a href="#_commands_29">8.12.5. Commands</a></li>
 <li><a href="#_derived_cluster_namespace_7">8.12.6. Derived Cluster Namespace</a></li>
 </ul>
 </li>
@@ -1156,7 +1157,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_cluster_id_53">8.13.3. Cluster ID</a></li>
 <li><a href="#_features_32">8.13.4. Features</a></li>
 <li><a href="#_attributes_52">8.13.5. Attributes</a></li>
-<li><a href="#_commands_29">8.13.6. Commands</a></li>
+<li><a href="#_commands_30">8.13.6. Commands</a></li>
 </ul>
 </li>
 </ul>
@@ -3378,27 +3379,6 @@ Support for Scenes Management cluster is provisional.
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ability to store a name for a scene.</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>EX</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Explicit</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use explicit attribute IDs, not implicit based on order</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TS</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TableSize</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Table size and remaining capacity supported</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FS</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FabricScenes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Supports current scene, count, group etc, as fabric-scoped.</p></td>
-</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -3409,12 +3389,6 @@ details are found within the specification.</p>
 <h5 id="_scenenames_feature"><a class="anchor" href="#_scenenames_feature"></a>1.4.4.1. SceneNames Feature</h5>
 <div class="paragraph">
 <p>This feature indicates the ability to store a name for a scene when a scene is added.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_fabricscenes_feature"><a class="anchor" href="#_fabricscenes_feature"></a>1.4.4.2. FabricScenes Feature</h5>
-<div class="paragraph">
-<p>This feature indicates support for a list of fabric-scoped structs that have current scene information.</p>
 </div>
 </div>
 </div>
@@ -3433,16 +3407,12 @@ the <a href="#ref_RemoveAllGroups">RemoveAllGroups command</a> of the
 <div class="sect3">
 <h4 id="ref_ScenesFabricScoping"><a class="anchor" href="#ref_ScenesFabricScoping"></a>1.4.6. Handling of fabric-scoping</h4>
 <div class="paragraph">
-<p>To retain semantic equivalence to earlier versions of the Scenes Management cluster which were designed prior
-to the introduction of multiple fabrics, the behavior of fabric-scoping in this cluster replaces
-use of explicit fabric-scoped access quality with an implicit method.</p>
+<p>Attributes and commands for this cluster are scoped to the accessing fabric
+and SHALL only affect or reflect data related to the accessing fabric, with the exception
+of the <a href="#ref_SceneValidField">SceneValid Field</a> of the FabricSceneInfo attribute.</p>
 </div>
 <div class="paragraph">
-<p>In nodes supporting fabrics, attributes and commands for this cluster are scoped to the accessing fabric
-and SHALL only affect or reflect data related to the accessing fabric.</p>
-</div>
-<div class="paragraph">
-<p>In nodes supporting fabrics, the following constraints apply in addition to any other stated requirements
+<p>The following constraints apply in addition to any other stated requirements
 in individual data model elements:</p>
 </div>
 <div class="ulist">
@@ -3501,41 +3471,7 @@ then the resource exhaustion behavior of the associated command SHALL apply.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_ScenesNameSupportBitmap"><a class="anchor" href="#ref_ScenesNameSupportBitmap"></a>1.4.7.2. NameSupportBitmap Type</h5>
-<div class="paragraph">
-<p>This data type is derived from map8.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Bit</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Summary</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SceneNames</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ability to store a name for a scene.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="ref_SceneInfoStruct"><a class="anchor" href="#ref_SceneInfoStruct"></a>1.4.7.3. SceneInfoStruct Type</h5>
-<div class="paragraph">
-<p>Except for RemainingCapacity, the fields in this struct are used in place of the attributes
-of the same name to indicate the current state on the scene on the server,
-when the FabricScenes feature is supported.
-A reference to one of the attributes with the same name in behavior text,
-is synonymous with a reference to the field with the same name.</p>
-</div>
+<h5 id="ref_SceneInfoStruct"><a class="anchor" href="#ref_SceneInfoStruct"></a>1.4.7.2. SceneInfoStruct Type</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -3611,36 +3547,50 @@ is synonymous with a reference to the field with the same name.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_scenecount_field"><a class="anchor" href="#_scenecount_field"></a>1.4.7.3.1. SceneCount Field</h6>
+<h6 id="_scenecount_field"><a class="anchor" href="#_scenecount_field"></a>1.4.7.2.1. SceneCount Field</h6>
 <div class="paragraph">
-<p>See the SceneCount attribute.</p>
+<p>This field SHALL indicate the number of scenes currently used in
+the server&#8217;s Scene Table on the endpoint where the Matter Scenes cluster appears.</p>
+</div>
+<div class="paragraph">
+<p>This only includes the count for the associated fabric.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_currentscene_field"><a class="anchor" href="#_currentscene_field"></a>1.4.7.3.2. CurrentScene Field</h6>
+<h6 id="_currentscene_field"><a class="anchor" href="#_currentscene_field"></a>1.4.7.2.2. CurrentScene Field</h6>
 <div class="paragraph">
-<p>See the CurrentScene attribute.</p>
+<p>This field SHALL indicate the scene identifier of the scene last invoked on the associated fabric.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_the_currentgroup_field"><a class="anchor" href="#_the_currentgroup_field"></a>1.4.7.3.3. the CurrentGroup Field</h6>
+<h6 id="_currentgroup_field"><a class="anchor" href="#_currentgroup_field"></a>1.4.7.2.3. CurrentGroup Field</h6>
 <div class="paragraph">
-<p>See CurrentGroup attribute.</p>
+<p>This field SHALL indicate the group identifier of the scene last
+invoked on the associated fabric, or 0 if the scene last invoked is not associated with a group.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_scenevalid_field"><a class="anchor" href="#_scenevalid_field"></a>1.4.7.3.4. SceneValid Field</h6>
+<h6 id="ref_SceneValidField"><a class="anchor" href="#ref_SceneValidField"></a>1.4.7.2.4. SceneValid Field</h6>
 <div class="paragraph">
-<p>See the SceneValid attribute.</p>
+<p>This field SHALL indicate whether the state of the server
+corresponds to that associated with the CurrentScene and
+CurrentGroup attributes. TRUE indicates that these attributes are
+valid, FALSE indicates that they are not valid.</p>
+</div>
+<div class="paragraph">
+<p>This field SHALL be set to False for all other fabrics when an attribute with the Scenes ("S") designation in
+the Quality column of another cluster present on the same endpoint is modified or when the current scene
+is modified by a fabric through the <a href="#ref_RecallScene">RecallScene</a> or <a href="#ref_StoreScene">StoreScene</a>
+commands, regardless of the fabric-scoped access quality of the command.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_remainingcapacity_field"><a class="anchor" href="#_remainingcapacity_field"></a>1.4.7.3.5. RemainingCapacity Field</h6>
+<h6 id="_remainingcapacity_field"><a class="anchor" href="#_remainingcapacity_field"></a>1.4.7.2.5. RemainingCapacity Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the remaining capacity of the <a href="#ref_SceneTable">Scene Table</a> on this endpoint for
 the accessing fabric.
@@ -3652,7 +3602,7 @@ that impact the resource usage on the device.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_AttributeValuePairStruct"><a class="anchor" href="#ref_AttributeValuePairStruct"></a>1.4.7.4. AttributeValuePairStruct Type</h5>
+<h5 id="ref_AttributeValuePairStruct"><a class="anchor" href="#ref_AttributeValuePairStruct"></a>1.4.7.3. AttributeValuePairStruct Type</h5>
 <div class="paragraph">
 <p>This data type indicates a combination of an identifier and the value of an attribute.</p>
 </div>
@@ -3688,7 +3638,7 @@ that impact the resource usage on the device.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RW</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EX, O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -3773,15 +3723,12 @@ that impact the resource usage on the device.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_attributeid_field"><a class="anchor" href="#_attributeid_field"></a>1.4.7.4.1. AttributeID Field</h6>
+<h6 id="_attributeid_field"><a class="anchor" href="#_attributeid_field"></a>1.4.7.3.1. AttributeID Field</h6>
 <div class="paragraph">
-<p>This field SHALL be present for all instances in a given <a href="#ref_ExtensionFieldSetStruct">ExtensionFieldSetStruct</a> (explicit list)
-or SHALL be absent for all instances in a given <a href="#ref_ExtensionFieldSetStruct">ExtensionFieldSetStruct</a> (implicit list).</p>
+<p>This field SHALL be present for all instances in a given <a href="#ref_ExtensionFieldSetStruct">ExtensionFieldSetStruct</a>.</p>
 </div>
 <div class="paragraph">
-<p>If this field is not present, then the data type of AttributeValue SHALL be determined by the
-order and data type defined in the cluster specification for the ClusterID present in an <a href="#ref_ExtensionFieldSetStruct">ExtensionFieldSetStruct</a>.
-Otherwise the data type of AttributeValue SHALL be the data type of the attribute indicated by AttributeID.</p>
+<p>The data type of AttributeValue SHALL be the data type of the attribute indicated by AttributeID.</p>
 </div>
 <div class="paragraph">
 <p>The AttributeID field SHALL NOT refer to an attribute without the Scenes ("S") designation in
@@ -3789,11 +3736,11 @@ the Quality column of the cluster specification.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_valueunsigned8_valuesigned8_valueunsigned16_valuesigned16_valueunsigned32_valuesigned32_valueunsigned64_valuesigned64_fields"><a class="anchor" href="#_valueunsigned8_valuesigned8_valueunsigned16_valuesigned16_valueunsigned32_valuesigned32_valueunsigned64_valuesigned64_fields"></a>1.4.7.4.2. ValueUnsigned8, ValueSigned8, ValueUnsigned16, ValueSigned16, ValueUnsigned32, ValueSigned32, ValueUnsigned64, ValueSigned64 Fields</h6>
+<h6 id="_valueunsigned8_valuesigned8_valueunsigned16_valuesigned16_valueunsigned32_valuesigned32_valueunsigned64_valuesigned64_fields"><a class="anchor" href="#_valueunsigned8_valuesigned8_valueunsigned16_valuesigned16_valueunsigned32_valuesigned32_valueunsigned64_valuesigned64_fields"></a>1.4.7.3.2. ValueUnsigned8, ValueSigned8, ValueUnsigned16, ValueSigned16, ValueUnsigned32, ValueSigned32, ValueUnsigned64, ValueSigned64 Fields</h6>
 <div class="paragraph">
 <p>These fields SHALL indicate the attribute value as part of an extension field set,
 associated with a given AttributeID under an ExtensionFieldSetStruct&#8217;s ClusterID.
-The proper field SHALL be present that maps to the data type of the attribute indicated (implicit or explicit).</p>
+The proper field SHALL be present that maps to the data type of the attribute indicated.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3866,7 +3813,7 @@ and would be saturated to the maximum of the attribute&#8217;s constraint range:
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ExtensionFieldSetStruct"><a class="anchor" href="#ref_ExtensionFieldSetStruct"></a>1.4.7.5. ExtensionFieldSetStruct Type</h5>
+<h5 id="ref_ExtensionFieldSetStruct"><a class="anchor" href="#ref_ExtensionFieldSetStruct"></a>1.4.7.4. ExtensionFieldSetStruct Type</h5>
 <div class="paragraph">
 <p>This data type indicates for a given cluster a set of attributes and their values.</p>
 </div>
@@ -3917,13 +3864,13 @@ and would be saturated to the maximum of the attribute&#8217;s constraint range:
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_clusterid_field"><a class="anchor" href="#_clusterid_field"></a>1.4.7.5.1. ClusterID Field</h6>
+<h6 id="_clusterid_field"><a class="anchor" href="#_clusterid_field"></a>1.4.7.4.1. ClusterID Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the cluster-id of the cluster whose attributes are in the AttributeValueList field.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_attributevaluelist_field"><a class="anchor" href="#_attributevaluelist_field"></a>1.4.7.5.2. AttributeValueList Field</h6>
+<h6 id="_attributevaluelist_field"><a class="anchor" href="#_attributevaluelist_field"></a>1.4.7.4.2. AttributeValueList Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate a set of attributes and their values which are stored as part of a scene.</p>
 </div>
@@ -3931,68 +3878,11 @@ and would be saturated to the maximum of the attribute&#8217;s constraint range:
 <p>Attributes which do not have the Scenes ("S") designation in the Quality column of
 their cluster specification SHALL NOT be used in the AttributeValueList field.</p>
 </div>
-<div class="paragraph">
-<p>The ExtensionFieldSetStruct can appear in an implicit form and an explicit form.</p>
-</div>
 </div>
 <div class="sect5">
-<h6 id="_implicit_form_of_extensionfieldsetstruct"><a class="anchor" href="#_implicit_form_of_extensionfieldsetstruct"></a>1.4.7.5.3. Implicit Form of ExtensionFieldSetStruct</h6>
+<h6 id="_form_of_extensionfieldsetstruct"><a class="anchor" href="#_form_of_extensionfieldsetstruct"></a>1.4.7.4.3. Form of ExtensionFieldSetStruct</h6>
 <div class="paragraph">
-<p>In the implicit form, the AttributeValuePairStructs in AttributeValueList SHALL NOT have an AttributeID
-and the order of items in the AttributeValueList SHALL match the Scene Table order defined
-in the specification of the cluster identified by ClusterID.
-Note that the specified order of attributes in an AttributeValueList may not be the same as the order of attribute IDs.</p>
-</div>
-<div class="paragraph">
-<p>The AttributeValueList SHOULD contain all the attributes with the Scenes ("S") quality as the specification of
-the cluster identified by ClusterID describes,
-but trailing AttributeValuePairStruct MAY be omitted.
-However, this restricts which AttributeValuePairStruct can be left out,
-imposing a problem for clusters that have attributes that have the Scenes ("S") quality but are not implemented,
-or for attributes which are a 'don&#8217;t care' in the given AttributeValueList.
-For these situations, the specification of the cluster identified by ClusterID also defines
-default values for these attributes.</p>
-</div>
-<div class="paragraph">
-<p>An example using the Color Control cluster using positional indices:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Index 0: maps to Attribute 0x0003, CurrentX</p>
-</li>
-<li>
-<p>Index 1: maps to Attribute 0x0004, CurrentY</p>
-</li>
-<li>
-<p>Index 2: maps to Attribute 0x4000, EnhancedCurrentHue</p>
-</li>
-<li>
-<p>Index 3: maps to Attribute 0x0001, CurrentSaturation</p>
-</li>
-<li>
-<p>Index 4: maps to Attribute 0x4002, ColorLoopActive</p>
-</li>
-<li>
-<p>Index 5: maps to Attribute 0x4003, ColorLoopDirection</p>
-</li>
-<li>
-<p>Index 6: maps to Attribute 0x4004, ColorLoopTime</p>
-</li>
-<li>
-<p>Index 7: maps to Attribute 0x0007, ColorTemperatureMireds</p>
-</li>
-<li>
-<p>Index 8: maps to Attribute 0x4001, EnhancedColorMode</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_explicit_form_of_extensionfieldsetstruct"><a class="anchor" href="#_explicit_form_of_extensionfieldsetstruct"></a>1.4.7.5.4. Explicit Form of ExtensionFieldSetStruct</h6>
-<div class="paragraph">
-<p>In the explicit form, the AttributeValuePairStructs in AttributeValueList SHALL have an AttributeID
-and the items in the AttributeValueList MAY be in any order.</p>
+<p>The AttributeValuePairStructs in the AttributeValueList MAY be in any order.</p>
 </div>
 <div class="paragraph">
 <p>The AttributeValueList SHOULD contain all the attributes with the Scenes ("S") quality as
@@ -4036,7 +3926,7 @@ but AttributeValuePairStruct MAY be omitted.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_SceneTable"><a class="anchor" href="#ref_SceneTable"></a>1.4.7.6. Logical Scene Table</h5>
+<h5 id="ref_SceneTable"><a class="anchor" href="#ref_SceneTable"></a>1.4.7.5. Logical Scene Table</h5>
 <div class="paragraph">
 <p>The Scene Table is used to store information for each scene capable of
 being invoked on the server. Each scene is defined for a particular group.
@@ -4110,8 +4000,8 @@ An ExtensionFieldSetStruct MAY be present for each Scenes-supporting cluster imp
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneTransitionTime</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uint32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 6000000</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -4127,32 +4017,22 @@ An ExtensionFieldSetStruct MAY be present for each Scenes-supporting cluster imp
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TransitionTime100ms</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 9</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-</tr>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_scenegroupid_field"><a class="anchor" href="#_scenegroupid_field"></a>1.4.7.6.1. SceneGroupID Field</h6>
+<h6 id="_scenegroupid_field"><a class="anchor" href="#_scenegroupid_field"></a>1.4.7.5.1. SceneGroupID Field</h6>
 <div class="paragraph">
 <p>This field is the group identifier for which this scene applies, or 0 if the scene is not associated with a group.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_sceneid_field"><a class="anchor" href="#_sceneid_field"></a>1.4.7.6.2. SceneID Field</h6>
+<h6 id="_sceneid_field"><a class="anchor" href="#_sceneid_field"></a>1.4.7.5.2. SceneID Field</h6>
 <div class="paragraph">
 <p>This field is unique within this group, which is used to identify this scene.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_scenename_field"><a class="anchor" href="#_scenename_field"></a>1.4.7.6.3. SceneName Field</h6>
+<h6 id="_scenename_field"><a class="anchor" href="#_scenename_field"></a>1.4.7.5.3. SceneName Field</h6>
 <div class="paragraph">
 <p>The field is the name of the scene.</p>
 </div>
@@ -4167,26 +4047,20 @@ SHALL return an empty string.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_scenetransitiontime_field"><a class="anchor" href="#_scenetransitiontime_field"></a>1.4.7.6.4. SceneTransitionTime Field</h6>
+<h6 id="_scenetransitiontime_field"><a class="anchor" href="#_scenetransitiontime_field"></a>1.4.7.5.4. SceneTransitionTime Field</h6>
 <div class="paragraph">
-<p>This field is the amount of time, in seconds, it will take for a cluster
+<p>This field is the amount of time, in milliseconds, it will take for a cluster
 to change from its current state to the requested state.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_extensionfields_field"><a class="anchor" href="#_extensionfields_field"></a>1.4.7.6.5. ExtensionFields Field</h6>
+<h6 id="_extensionfields_field"><a class="anchor" href="#_extensionfields_field"></a>1.4.7.5.5. ExtensionFields Field</h6>
 <div class="paragraph">
 <p>See the Scene Table Extensions subsections of individual clusters.
 A Scene Table Extension SHALL only use attributes with the Scene quality.
 Each ExtensionFieldSetStruct holds a set of values of these attributes for a cluster implemented on the
 same endpoint where the Scene ("S") designation appears in the quality column.
 A scene is the aggregate of all such fields across all clusters on the endpoint.</p>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_transitiontime100ms_field"><a class="anchor" href="#_transitiontime100ms_field"></a>1.4.7.6.6. TransitionTime100ms Field</h6>
-<div class="paragraph">
-<p>Together with the SceneTransitionTime, this field allows the transition time to be specified in tenths of a second.</p>
 </div>
 </div>
 </div>
@@ -4219,56 +4093,6 @@ A scene is the aggregate of all such fields across all clusters on the endpoint.
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneCount</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">!FS</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0001</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CurrentScene</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">!FS</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0002</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CurrentGroup</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">group-id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">!FS</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0003</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneValid</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">False</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">!FS</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0004</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NameSupport</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ScenesNameSupportBitmap">NameSupportBitmap</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0005</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LastConfiguredBy</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">node-id</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
@@ -4278,75 +4102,29 @@ A scene is the aggregate of all such fields across all clusters on the endpoint.
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0006</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0001</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneTableSize</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0007</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0002</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FabricSceneInfo</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">list[<a href="#ref_SceneInfoStruct">SceneInfoStruct</a>]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V F</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="_scenecount_attribute"><a class="anchor" href="#_scenecount_attribute"></a>1.4.8.1. SceneCount Attribute</h5>
-<div class="paragraph">
-<p>This attribute SHALL indicate the number of scenes currently used in
-the server&#8217;s Scene Table on the endpoint where the Scenes Management cluster appears.</p>
-</div>
-<div class="paragraph">
-<p>For nodes supporting fabrics, this only includes the count for the accessing fabric.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_currentscene_attribute"><a class="anchor" href="#_currentscene_attribute"></a>1.4.8.2. CurrentScene Attribute</h5>
-<div class="paragraph">
-<p>This attribute SHALL indicate the scene identifier of the scene last invoked.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_currentgroup_attribute"><a class="anchor" href="#_currentgroup_attribute"></a>1.4.8.3. CurrentGroup Attribute</h5>
-<div class="paragraph">
-<p>This attribute SHALL indicate the group identifier of the scene last
-invoked, or 0 if the scene last invoked is not associated with a group.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_scenevalid_attribute"><a class="anchor" href="#_scenevalid_attribute"></a>1.4.8.4. SceneValid Attribute</h5>
-<div class="paragraph">
-<p>This attribute SHALL indicate whether the state of the server
-corresponds to that associated with the CurrentScene and
-CurrentGroup attributes. TRUE indicates that these attributes are
-valid, FALSE indicates that they are not valid.</p>
-</div>
-<div class="paragraph">
-<p>Before a scene has been stored or recalled, this attribute is set to
-FALSE. After a successful StoreScene or RecallScene command it is set
-to TRUE. If, after a scene is stored or recalled, the state of the
-server is modified, this attribute is set to FALSE.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_namesupport_attribute_2"><a class="anchor" href="#_namesupport_attribute_2"></a>1.4.8.5. NameSupport Attribute</h5>
-<div class="paragraph">
-<p>This attribute SHALL indicate legacy, read-only access to whether the Scene Names feature is supported.
-The most significant bit, bit 7, SHALL be equal to bit 0 (SceneNames) of the FeatureMap attribute.
-All other bits SHALL be 0.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_lastconfiguredby_attribute"><a class="anchor" href="#_lastconfiguredby_attribute"></a>1.4.8.6. LastConfiguredBy Attribute</h5>
+<h5 id="_lastconfiguredby_attribute"><a class="anchor" href="#_lastconfiguredby_attribute"></a>1.4.8.1. LastConfiguredBy Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the Node ID of the node that last configured the Scene Table.</p>
 </div>
@@ -4356,21 +4134,21 @@ the identifier of the node that last configured the Scenes Management cluster is
 known.</p>
 </div>
 <div class="paragraph">
-<p>For nodes supporting fabrics, the Node ID is scoped to the accessing fabric.</p>
+<p>The Node ID is scoped to the accessing fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_scenetablesize_attribute"><a class="anchor" href="#_scenetablesize_attribute"></a>1.4.8.7. SceneTableSize Attribute</h5>
+<h5 id="_scenetablesize_attribute"><a class="anchor" href="#_scenetablesize_attribute"></a>1.4.8.2. SceneTableSize Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the number of entries in the <a href="#ref_SceneTable">Scene Table</a> on this endpoint.
-For nodes supporting fabrics, this is the total across all fabrics;
+This is the total across all fabrics;
 note that a single fabric cannot use all those entries (see <a href="#ref_ScenesFabricScoping">Handling of fabric-scoping</a>).
 The minimum size of this table, (i.e., the minimum number of scenes to support across all fabrics per endpoint)
 SHALL be 16, unless a device type in which this cluster is used, defines a larger value in the device type definition.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_fabricsceneinfo_attribute"><a class="anchor" href="#_fabricsceneinfo_attribute"></a>1.4.8.8. FabricSceneInfo Attribute</h5>
+<h5 id="_fabricsceneinfo_attribute"><a class="anchor" href="#_fabricsceneinfo_attribute"></a>1.4.8.3. FabricSceneInfo Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate a list of fabric scoped information about scenes on this endpoint.</p>
 </div>
@@ -4406,7 +4184,7 @@ SHALL be 16, unless a device type in which this cluster is used, defines a large
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AddScene</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AddSceneResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F M</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -4422,7 +4200,7 @@ SHALL be 16, unless a device type in which this cluster is used, defines a large
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ViewScene</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ViewSceneResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -4438,7 +4216,7 @@ SHALL be 16, unless a device type in which this cluster is used, defines a large
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RemoveScene</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RemoveSceneResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F M</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -4454,7 +4232,7 @@ SHALL be 16, unless a device type in which this cluster is used, defines a large
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RemoveAllScenes</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RemoveAllScenesResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F M</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -4470,7 +4248,7 @@ SHALL be 16, unless a device type in which this cluster is used, defines a large
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>StoreScene</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">StoreSceneResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F M</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -4486,7 +4264,7 @@ SHALL be 16, unless a device type in which this cluster is used, defines a large
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RecallScene</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -4494,7 +4272,7 @@ SHALL be 16, unless a device type in which this cluster is used, defines a large
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>GetSceneMembership</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GetSceneMembershipResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -4507,46 +4285,14 @@ SHALL be 16, unless a device type in which this cluster is used, defines a large
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x40</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>EnhancedAddScene</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CopyScene</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EnhancedAddSceneResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CopySceneResponse</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F M</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x40</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>EnhancedAddSceneResponse</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">client &#8656; server</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EnhancedAddScene</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x41</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>EnhancedViewScene</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EnhancedViewSceneResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x41</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>EnhancedViewSceneResponse</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">client &#8656; server</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EnhancedViewScene</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x42</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CopyScene</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CopySceneResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x42</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CopySceneResponse</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8656; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
@@ -4607,8 +4353,8 @@ for the global scene used by the On/Off cluster.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TransitionTime</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 6000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uint32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 6000000</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -4653,7 +4399,7 @@ field sets MAY be omitted, including the case of no extension field sets at all.
 <div class="sect5">
 <h6 id="_transitiontime_field"><a class="anchor" href="#_transitiontime_field"></a>1.4.9.2.3. TransitionTime Field</h6>
 <div class="paragraph">
-<p>This field SHALL indicate the transition time of the scene, measured in seconds.</p>
+<p>This field SHALL indicate the transition time of the scene, measured in milliseconds.</p>
 </div>
 </div>
 <div class="sect5">
@@ -4713,8 +4459,8 @@ the last one within the list SHALL be the one recorded.</p>
 </li>
 <li>
 <p>Within a single entry of the ExtensionFieldSetStructs list,
-if the explicit form contains the same AttributeID more than once,
-the last one within the list SHALL be the one recorded.</p>
+if an ExtensionFieldSet contains the same AttributeID more than once,
+the last one within the ExtensionFieldSet SHALL be the one recorded.</p>
 </li>
 </ol>
 </div>
@@ -4730,7 +4476,7 @@ the server SHALL NOT generate an AddSceneResponse command.</p>
 </div>
 <div class="paragraph">
 <p>The SceneTransitionTime field of the Scene Table SHALL be updated with the value of the
-TransitionTime field and the TransitionTime100ms field SHALL be set to zero.</p>
+TransitionTime.</p>
 </div>
 </div>
 </div>
@@ -4901,8 +4647,8 @@ the server SHALL NOT generate a ViewSceneResponse command.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Note: For the explicit form of ExtensionFieldSetStructs, the order of attributes within the ExtensionFieldSetStruct
-MAY differ in implementation-defined ways from any potential order given in a prior AddScene or EnhancedAddScene.</p>
+<p>Note: The order of attributes within the ExtensionFieldSetStruct
+MAY differ in implementation-defined ways from any potential order given in a prior AddScene.</p>
 </div>
 </div>
 </div>
@@ -4960,8 +4706,8 @@ MAY differ in implementation-defined ways from any potential order given in a pr
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TransitionTime</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 6000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uint32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 6000000</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
@@ -5414,7 +5160,7 @@ corresponding to the current state of other clusters on the same endpoint
 and the other fields of the scene table entry SHALL remain unchanged.<br>
 Otherwise, a new entry SHALL be added to the scene table,
 using the provided GroupID and SceneID,
-with SceneTransitionTime and TransitionTime100ms set to 0,
+with SceneTransitionTime set to 0,
 with SceneName set to the empty string,
 and with ExtensionFieldSets corresponding to the current state of other clusters on the same endpoint.<br>
 The status SHALL be SUCCESS.</p>
@@ -5514,7 +5260,7 @@ command, e.g., with no scene extension field sets.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_recallscene_command"><a class="anchor" href="#_recallscene_command"></a>1.4.9.12. RecallScene Command</h5>
+<h5 id="ref_RecallScene"><a class="anchor" href="#ref_RecallScene"></a>1.4.9.12. RecallScene Command</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 14.2857%;">
@@ -5558,8 +5304,8 @@ command, e.g., with no scene extension field sets.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TransitionTime</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 60000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uint32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 60000000</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
@@ -5581,7 +5327,7 @@ command, e.g., with no scene extension field sets.</p>
 <div class="sect5">
 <h6 id="_transitiontime_field_3"><a class="anchor" href="#_transitiontime_field_3"></a>1.4.9.12.3. TransitionTime Field</h6>
 <div class="paragraph">
-<p>This field SHALL indicate the transition time of the scene, measured in tenths of a second.</p>
+<p>This field SHALL indicate the transition time of the scene, measured in milliseconds.</p>
 </div>
 </div>
 <div class="sect5">
@@ -5624,7 +5370,7 @@ to the evaluated status.</p>
 <div class="paragraph">
 <p>If the TransitionTime data field is present in the command and its
 value is not equal to null, this field SHALL indicate the transition
-time in 1/10ths of a second. In all other cases (command data field
+time in milliseconds. In all other cases (command data field
 not present or value equal to null), the SceneTransitionTime field
 of the Scene Table entry SHALL indicate the transition time. The
 transition time determines how long the transition takes from the old
@@ -5824,354 +5570,7 @@ the Scene Table with the corresponding Group ID.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_EnhancedAddScene"><a class="anchor" href="#ref_EnhancedAddScene"></a>1.4.9.15. EnhancedAddScene Command</h5>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2858%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">ID</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Constraint</th>
-<th class="tableblock halign-left valign-top">Quality</th>
-<th class="tableblock halign-left valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Conformance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>GroupID</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">group-id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneID</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TransitionTime</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 60000</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneName</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 16</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ExtensionFieldSetStructs</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list[<a href="#ref_ExtensionFieldSetStruct">ExtensionFieldSetStruct</a>]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>This command allows a scene to be added using a
-finer scene transition time than the <a href="#ref_AddScene">AddScene</a> command.</p>
-</div>
-<div class="paragraph">
-<p>The meaning of the data fields for this command SHALL be the same as for the
-<a href="#ref_AddScene">AddScene</a> command, with the following difference:</p>
-</div>
-<div class="sect5">
-<h6 id="_transitiontime_field_4"><a class="anchor" href="#_transitiontime_field_4"></a>1.4.9.15.1. TransitionTime Field</h6>
-<div class="paragraph">
-<p>This field SHALL indicate the transition time of the scene, measured in tenths of a second rather than in seconds.</p>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_effect_on_receipt_16"><a class="anchor" href="#_effect_on_receipt_16"></a>1.4.9.15.2. Effect on Receipt</h6>
-<div class="paragraph">
-<p>On receipt of this command, the server SHALL perform the following procedure:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>If the value of the GroupID field is non-zero, the server verifies
-that the endpoint has an entry for that GroupID in the Group Table. If there is no such
-entry in the Group Table, the status SHALL be INVALID_COMMAND and the
-server continues from step 5.</p>
-</li>
-<li>
-<p>If the ExtensionFieldSetStructs list is formatted in a way deemed invalid according to
-the ExtensionFieldSetStruct structure definition (see <a href="#ref_ExtensionFieldSetStruct">ExtensionFieldSetStruct</a>),
-then the status SHALL be INVALID_COMMAND in the AddSceneResponse, and the server continues from step 5.</p>
-</li>
-<li>
-<p>If a scene already exists under the same group/scene identifier pair,
-in step 4 the already existing scene entry SHALL be replaced with the new scene being added.
-Otherwise, if a scene cannot be created due to the lack of Scene Table capacity for the given fabric,
-the status SHALL be RESOURCE_EXHAUSTED and
-the server continues from step 5.</p>
-</li>
-<li>
-<p>The server adds the scene entry into its Scene Table with fields
-copied from the AddScene command data fields and the status SHALL be
-SUCCESS.
-The TransitionTime field (measured in tenths of a second) SHALL be separated
-into whole seconds for the SceneTransitionTime field and tenths
-of a second for the TransitionTime100ms field of the Scene
-Table entry, as specified.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Any ExtensionFieldSetStruct referencing a ClusterID that is not implemented on
-the endpoint MAY be omitted during processing.</p>
-</li>
-<li>
-<p>Any AttributeValuePairStruct referencing an AttributeID from the referenced cluster
-that is not implemented on the endpoint MAY be omitted during processing.</p>
-</li>
-<li>
-<p>If the ExtensionFieldSetStructs list has multiple entries listing the same ClusterID,
-the last one within the list SHALL be the one recorded.</p>
-</li>
-<li>
-<p>Within a single entry of the ExtensionFieldSetStructs list, if the explicit form contains
-the same AttributeID more than once, the last one within the list SHALL be the one recorded.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>If the EnhancedAddScene command was received as a unicast, the
-server SHALL then generate an EnhancedAddSceneResponse command with
-the Status field set to the evaluated status.
-If the EnhancedAddScene command was received as a groupcast,
-the server SHALL NOT generate an EnhancedAddSceneResponse command.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ref_EnhancedAddSceneResponse"><a class="anchor" href="#ref_EnhancedAddSceneResponse"></a>1.4.9.16. EnhancedAddSceneResponse Command</h5>
-<div class="paragraph">
-<p>This command SHALL have the same data fields as the <a href="#ref_AddSceneResponse">AddSceneResponse</a> command.</p>
-</div>
-<div class="sect5">
-<h6 id="_when_generated_7"><a class="anchor" href="#_when_generated_7"></a>1.4.9.16.1. When Generated</h6>
-<div class="paragraph">
-<p>This command is generated in response to a received <a href="#ref_EnhancedAddScene">EnhancedAddScene</a> command.</p>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ref_EnhancedViewScene"><a class="anchor" href="#ref_EnhancedViewScene"></a>1.4.9.17. EnhancedViewScene Command</h5>
-<div class="paragraph">
-<p>This command allows a scene to be retrieved using a
-finer scene transition time than the <a href="#ref_ViewScene">ViewScene</a> command.</p>
-</div>
-<div class="paragraph">
-<p>This command SHALL have the same data fields as the
-<a href="#ref_ViewScene">ViewScene</a> command.</p>
-</div>
-<div class="sect5">
-<h6 id="_effect_on_receipt_17"><a class="anchor" href="#_effect_on_receipt_17"></a>1.4.9.17.1. Effect on Receipt</h6>
-<div class="paragraph">
-<p>On receipt of this command, the server SHALL perform the following procedure:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>If the value of the GroupID field is non-zero, the server verifies
-that the endpoint has an entry for that GroupID in the Group Table. If there is no such
-entry in the Group Table, the status SHALL be INVALID_COMMAND and the
-server continues from step 4.</p>
-</li>
-<li>
-<p>The server verifies that the scene entry corresponding to the GroupID
-and SceneID fields exists in its Scene Table. If there is no such entry
-in its Scene Table, the status SHALL be NOT_FOUND and the server
-continues from step 4.</p>
-</li>
-<li>
-<p>The server retrieves the requested scene entry from its Scene Table
-and the status SHALL be SUCCESS.</p>
-</li>
-<li>
-<p>If the EnhancedViewScene command was received as a unicast, the
-server SHALL then generate an EnhancedViewSceneResponse command with
-the Status field set to the evaluated status.
-If the EnhancedViewScene command was received as a groupcast,
-the server SHALL NOT generate an EnhancedViewSceneResponse command.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Note: For the explicit form of ExtensionFieldSetStructs,
-the order of attributes within the ExtensionFieldSetStruct MAY differ in implementation-defined
-ways from any potential order given in a prior AddScene or EnhancedAddScene.</p>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ref_EnhancedViewSceneResponse"><a class="anchor" href="#ref_EnhancedViewSceneResponse"></a>1.4.9.18. EnhancedViewSceneResponse Command</h5>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2858%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">ID</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Constraint</th>
-<th class="tableblock halign-left valign-top">Quality</th>
-<th class="tableblock halign-left valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Conformance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>GroupID</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">group-id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneID</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TransitionTime</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 60000</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneName</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 16</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ExtensionFieldSetStructs</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list[<a href="#ref_ExtensionFieldSetStruct">ExtensionFieldSetStruct</a>]</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>The meaning of the data fields for this command SHALL be the same as for the
-<a href="#ref_ViewSceneResponse">ViewSceneResponse</a> command, except that the resolution of TransitionTime is 1/10ths of a second.</p>
-</div>
-<div class="sect5">
-<h6 id="_status_field_10"><a class="anchor" href="#_status_field_10"></a>1.4.9.18.1. Status Field</h6>
-<div class="paragraph">
-<p>This field SHALL be set according to the Effect on Receipt section for <a href="#ref_EnhancedViewScene">EnhancedViewScene</a> command.</p>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_groupid_field_19"><a class="anchor" href="#_groupid_field_19"></a>1.4.9.18.2. GroupID Field</h6>
-<div class="paragraph">
-<p>The GroupID field SHALL be set to the corresponding
-fields in the received <a href="#ref_EnhancedViewScene">EnhancedViewScene</a> command.</p>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_sceneid_field_11"><a class="anchor" href="#_sceneid_field_11"></a>1.4.9.18.3. SceneID Field</h6>
-<div class="paragraph">
-<p>The SceneID field SHALL be set to the corresponding
-fields in the received <a href="#ref_EnhancedViewScene">EnhancedViewScene</a> command.</p>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_transitiontime_field_5"><a class="anchor" href="#_transitiontime_field_5"></a>1.4.9.18.4. TransitionTime Field</h6>
-<div class="paragraph">
-<p>If the status is SUCCESS, this field SHALL be present, otherwise it SHALL be omitted.</p>
-</div>
-<div class="paragraph">
-<p>If present, this field (measured in tenths of a second) SHALL be
-calculated from the SceneTransitionTime field (measured in seconds)
-and the TransitionTime100ms field of the Scene Table entry</p>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_scenename_field_4"><a class="anchor" href="#_scenename_field_4"></a>1.4.9.18.5. SceneName Field</h6>
-<div class="paragraph">
-<p>If the status is SUCCESS, this field SHALL be copied from the corresponding fields of the Scene Table entry,
-otherwise it SHALL be omitted.</p>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_extensionfieldsetstructs_field_3"><a class="anchor" href="#_extensionfieldsetstructs_field_3"></a>1.4.9.18.6. ExtensionFieldSetStructs Field</h6>
-<div class="paragraph">
-<p>If the status is SUCCESS, this field SHALL be copied from the corresponding fields of the Scene Table entry,
-otherwise it SHALL be omitted.</p>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_when_generated_8"><a class="anchor" href="#_when_generated_8"></a>1.4.9.18.7. When Generated</h6>
-<div class="paragraph">
-<p>This command is generated in response to a received <a href="#ref_EnhancedViewScene">EnhancedViewScene</a> command.</p>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ref_CopyScene"><a class="anchor" href="#ref_CopyScene"></a>1.4.9.19. CopyScene Command</h5>
+<h5 id="ref_CopyScene"><a class="anchor" href="#ref_CopyScene"></a>1.4.9.15. CopyScene Command</h5>
 <div class="paragraph">
 <p>This command allows a client to efficiently copy scenes from
 one group/scene identifier pair to another group/scene identifier pair.</p>
@@ -6246,7 +5645,7 @@ one group/scene identifier pair to another group/scene identifier pair.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_mode_field"><a class="anchor" href="#_mode_field"></a>1.4.9.19.1. Mode Field</h6>
+<h6 id="_mode_field"><a class="anchor" href="#_mode_field"></a>1.4.9.15.1. Mode Field</h6>
 <div class="paragraph">
 <p>This field SHALL contain the information of how the
 scene copy is to proceed.</p>
@@ -6259,7 +5658,7 @@ fields SHALL be ignored. Otherwise this bit is set to 0.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_groupidentifierfrom_field"><a class="anchor" href="#_groupidentifierfrom_field"></a>1.4.9.19.2. GroupIdentifierFrom Field</h6>
+<h6 id="_groupidentifierfrom_field"><a class="anchor" href="#_groupidentifierfrom_field"></a>1.4.9.15.2. GroupIdentifierFrom Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the
 identifier of the group from which the scene is to be copied. Together
@@ -6268,7 +5667,7 @@ the scene to copy from the Scene Table.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_sceneidentifierfrom_field"><a class="anchor" href="#_sceneidentifierfrom_field"></a>1.4.9.19.3. SceneIdentifierFrom Field</h6>
+<h6 id="_sceneidentifierfrom_field"><a class="anchor" href="#_sceneidentifierfrom_field"></a>1.4.9.15.3. SceneIdentifierFrom Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the
 identifier of the scene from which the scene is to be copied. Together
@@ -6277,7 +5676,7 @@ the scene to copy from the Scene Table.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_groupidentifierto_field"><a class="anchor" href="#_groupidentifierto_field"></a>1.4.9.19.4. GroupIdentifierTo Field</h6>
+<h6 id="_groupidentifierto_field"><a class="anchor" href="#_groupidentifierto_field"></a>1.4.9.15.4. GroupIdentifierTo Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the
 identifier of the group to which the scene is to be copied. Together
@@ -6286,7 +5685,7 @@ scene to copy to the Scene Table.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_sceneidentifierto_field"><a class="anchor" href="#_sceneidentifierto_field"></a>1.4.9.19.5. SceneIdentifierTo Field</h6>
+<h6 id="_sceneidentifierto_field"><a class="anchor" href="#_sceneidentifierto_field"></a>1.4.9.15.5. SceneIdentifierTo Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the
 identifier of the scene to which the scene is to be copied. Together
@@ -6295,7 +5694,7 @@ scene to copy to the Scene Table.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_18"><a class="anchor" href="#_effect_on_receipt_18"></a>1.4.9.19.6. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_16"><a class="anchor" href="#_effect_on_receipt_16"></a>1.4.9.15.6. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, the server SHALL perform the following procedure:</p>
 </div>
@@ -6350,7 +5749,7 @@ the server SHALL NOT generate a CopySceneResponse command.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_CopySceneResponse"><a class="anchor" href="#ref_CopySceneResponse"></a>1.4.9.20. CopySceneResponse Command</h5>
+<h5 id="ref_CopySceneResponse"><a class="anchor" href="#ref_CopySceneResponse"></a>1.4.9.16. CopySceneResponse Command</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 14.2857%;">
@@ -6403,25 +5802,25 @@ the server SHALL NOT generate a CopySceneResponse command.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_status_field_11"><a class="anchor" href="#_status_field_11"></a>1.4.9.20.1. Status Field</h6>
+<h6 id="_status_field_10"><a class="anchor" href="#_status_field_10"></a>1.4.9.16.1. Status Field</h6>
 <div class="paragraph">
 <p>This field SHALL be set according to the Effect on Receipt section for the <a href="#ref_CopyScene">CopyScene</a> command.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_groupidentifierfrom_field_2"><a class="anchor" href="#_groupidentifierfrom_field_2"></a>1.4.9.20.2. GroupIdentifierFrom Field</h6>
+<h6 id="_groupidentifierfrom_field_2"><a class="anchor" href="#_groupidentifierfrom_field_2"></a>1.4.9.16.2. GroupIdentifierFrom Field</h6>
 <div class="paragraph">
 <p>This field SHALL be set to the same values as in the corresponding fields of the received <a href="#ref_CopyScene">CopyScene</a> command.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_sceneidentifierfrom_field_2"><a class="anchor" href="#_sceneidentifierfrom_field_2"></a>1.4.9.20.3. SceneIdentifierFrom Field</h6>
+<h6 id="_sceneidentifierfrom_field_2"><a class="anchor" href="#_sceneidentifierfrom_field_2"></a>1.4.9.16.3. SceneIdentifierFrom Field</h6>
 <div class="paragraph">
 <p>This field SHALL be set to the same values as in the corresponding fields of the received <a href="#ref_CopyScene">CopyScene</a> command.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_when_generated_9"><a class="anchor" href="#_when_generated_9"></a>1.4.9.20.4. When Generated</h6>
+<h6 id="_when_generated_7"><a class="anchor" href="#_when_generated_7"></a>1.4.9.16.4. When Generated</h6>
 <div class="paragraph">
 <p>The CopySceneResponse command is generated in response to a received <a href="#ref_CopyScene">CopyScene</a> command.</p>
 </div>
@@ -7069,7 +6468,7 @@ the restart.</p>
 <div class="sect4">
 <h5 id="ref_Off"><a class="anchor" href="#ref_Off"></a>1.5.7.1. Off Command</h5>
 <div class="sect5">
-<h6 id="_effect_on_receipt_19"><a class="anchor" href="#_effect_on_receipt_19"></a>1.5.7.1.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_17"><a class="anchor" href="#_effect_on_receipt_17"></a>1.5.7.1.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of the Off command, a server SHALL set the OnOff attribute to FALSE.</p>
 </div>
@@ -7082,7 +6481,7 @@ attribute to 0.</p>
 <div class="sect4">
 <h5 id="ref_On"><a class="anchor" href="#ref_On"></a>1.5.7.2. On Command</h5>
 <div class="sect5">
-<h6 id="_effect_on_receipt_20"><a class="anchor" href="#_effect_on_receipt_20"></a>1.5.7.2.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_18"><a class="anchor" href="#_effect_on_receipt_18"></a>1.5.7.2.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of the On command, a server SHALL set the OnOff attribute to TRUE.</p>
 </div>
@@ -7096,7 +6495,7 @@ the OffWaitTime attribute to 0.</p>
 <div class="sect4">
 <h5 id="ref_Toggle"><a class="anchor" href="#ref_Toggle"></a>1.5.7.3. Toggle Command</h5>
 <div class="sect5">
-<h6 id="_effect_on_receipt_21"><a class="anchor" href="#_effect_on_receipt_21"></a>1.5.7.3.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_19"><a class="anchor" href="#_effect_on_receipt_19"></a>1.5.7.3.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of the Toggle command, if the value of the OnOff attribute is equal to
 FALSE, the server SHALL set the OnOff attribute to TRUE, otherwise,
@@ -7184,7 +6583,7 @@ or <a href="#ref_DyingLightEffectVariantEnum">DyingLightEffectVariantEnum</a>.</
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_22"><a class="anchor" href="#_effect_on_receipt_22"></a>1.5.7.4.3. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_20"><a class="anchor" href="#_effect_on_receipt_20"></a>1.5.7.4.3. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of the OffWithEffect command the server SHALL check
 the value of the GlobalSceneControl attribute.</p>
@@ -7209,7 +6608,7 @@ SHALL only set the OnOff attribute to FALSE.</p>
 settings when the device was turned off.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_23"><a class="anchor" href="#_effect_on_receipt_23"></a>1.5.7.5.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_21"><a class="anchor" href="#_effect_on_receipt_21"></a>1.5.7.5.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of the OnWithRecallGlobalScene command, if the
 GlobalSceneControl attribute is equal to TRUE, the server
@@ -7322,7 +6721,7 @@ unconditionally.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_24"><a class="anchor" href="#_effect_on_receipt_24"></a>1.5.7.6.4. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_22"><a class="anchor" href="#_effect_on_receipt_22"></a>1.5.7.6.4. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, if the AcceptOnlyWhenOn sub-field of
 the OnOffControl field is set to 1, and the value of the OnOff
@@ -8435,7 +7834,7 @@ prior to the restart.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_effect_on_receipt_25"><a class="anchor" href="#_effect_on_receipt_25"></a>1.6.7.1.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_23"><a class="anchor" href="#_effect_on_receipt_23"></a>1.6.7.1.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>The OptionsMask and OptionsOverride fields SHALL both be present. Default
 values are provided to interpret missing fields from legacy devices. A
@@ -8560,7 +7959,7 @@ variable rate, this field MAY be disregarded.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_26"><a class="anchor" href="#_effect_on_receipt_26"></a>1.6.7.2.3. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_24"><a class="anchor" href="#_effect_on_receipt_24"></a>1.6.7.2.3. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL first create and process a
 temporary Options bitmap as described in the <a href="#ref_MoveToLevel">MoveToLevel</a> command.</p>
@@ -8679,7 +8078,7 @@ in an up or down direction in a continuous fashion, as detailed below.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_transitiontime_field_6"><a class="anchor" href="#_transitiontime_field_6"></a>1.6.7.3.3. TransitionTime Field</h6>
+<h6 id="_transitiontime_field_4"><a class="anchor" href="#_transitiontime_field_4"></a>1.6.7.3.3. TransitionTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the time that SHALL be taken to
 perform the step, in tenths of a second.
@@ -8694,7 +8093,7 @@ field MAY be disregarded.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_27"><a class="anchor" href="#_effect_on_receipt_27"></a>1.6.7.3.4. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_25"><a class="anchor" href="#_effect_on_receipt_25"></a>1.6.7.3.4. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL first create and process a
 temporary Options bitmap as described in the <a href="#ref_MoveToLevel">MoveToLevel</a> command.</p>
@@ -12227,7 +11626,7 @@ the "window blinds control" variation which will always have such an intermediat
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The Pause and Resume commands are usable in all compatible states</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Pause and Resume commands are usable in all compatible states. Define reserved ranges for base/derived clusters.</p></td>
 </tr>
 </tbody>
 </table>
@@ -12689,6 +12088,26 @@ the ErrorStateDetails contains "left wheel blocked".</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0006-0x007F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base reserved</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0080-0x00FF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>derived reserved</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
 </tbody>
 </table>
 <div class="sect4">
@@ -12743,6 +12162,20 @@ the ErrorStateDetails contains "left wheel blocked".</p>
 </div>
 <div class="paragraph">
 <p>When there is no error detected, this SHALL have an ErrorStateID of NoError.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_basereserved_3"><a class="anchor" href="#_basereserved_3"></a>1.13.5.7. BaseReserved</h5>
+<div class="paragraph">
+<p>This range of attribute IDs SHALL be reserved for use by this cluster.
+This range of attribute IDs SHALL NOT be used by clusters derived from this base cluster.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_derivedreserved_3"><a class="anchor" href="#_derivedreserved_3"></a>1.13.5.8. DerivedReserved</h5>
+<div class="paragraph">
+<p>This range of attribute IDs SHALL be reserved for use by clusters derived from this cluster.
+This range of attribute IDs SHALL NOT be used by this cluster.</p>
 </div>
 </div>
 </div>
@@ -12808,6 +12241,22 @@ the ErrorStateDetails contains "left wheel blocked".</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pause | Stop | Start | Resume</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x05-0x7F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base reserved</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x80-0xFF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>derived reserved</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -12834,7 +12283,7 @@ The commands that are supported SHALL be exposed by the device in the AcceptedCo
 <div class="ulist">
 <ul>
 <li>
-<p>For states defined in this cluster specification, in <a href="#ref_PauseCompatibilityTable">[ref_PauseCompatibilityTable]</a>.</p>
+<p>For states defined in this cluster specification, in <a href="#ref_PauseCompatibilityTable">Table 3, &#8220;Pause Compatibility&#8221;</a>.</p>
 </li>
 <li>
 <p>For states defined by derived cluster specifications, in the corresponding specifications.</p>
@@ -12864,6 +12313,7 @@ The commands that are supported SHALL be exposed by the device in the AcceptedCo
 <p>The following table defines the compatibility of this cluster&#8217;s states with the Pause command.</p>
 </div>
 <table id="ref_PauseCompatibilityTable" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Pause Compatibility</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12976,7 +12426,7 @@ The commands that are supported SHALL be exposed by the device in the AcceptedCo
 <div class="ulist">
 <ul>
 <li>
-<p>For states defined in this cluster specification, in <a href="#ref_ResumeCompatibilityTable">[ref_ResumeCompatibilityTable]</a>.</p>
+<p>For states defined in this cluster specification, in <a href="#ref_ResumeCompatibilityTable">Table 4, &#8220;Resume Compatibility&#8221;</a>.</p>
 </li>
 <li>
 <p>For states defined by derived cluster specifications, in the corresponding specifications.</p>
@@ -12990,6 +12440,7 @@ The commands that are supported SHALL be exposed by the device in the AcceptedCo
 <p>The following table defines the compatibility of this cluster&#8217;s states with the Resume command.</p>
 </div>
 <table id="ref_ResumeCompatibilityTable" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Resume Compatibility</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13089,6 +12540,20 @@ The commands that are supported SHALL be exposed by the device in the AcceptedCo
 <p>This SHALL indicate the success or otherwise of the attempted command invocation. On a successful invocation of the attempted command, the ErrorStateID SHALL be populated with NoError.
 Please see the individual command sections for additional specific requirements on population.</p>
 </div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_basereserved_4"><a class="anchor" href="#_basereserved_4"></a>1.13.6.6. BaseReserved</h5>
+<div class="paragraph">
+<p>This range of command IDs SHALL be reserved for use by this cluster.
+This range of command IDs SHALL NOT be used by clusters derived from this base cluster.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_derivedreserved_4"><a class="anchor" href="#_derivedreserved_4"></a>1.13.6.7. DerivedReserved</h5>
+<div class="paragraph">
+<p>This range of command IDs SHALL be reserved for use by clusters derived from this cluster.
+This range of command IDs SHALL NOT be used by this cluster.</p>
 </div>
 </div>
 </div>
@@ -13788,7 +13253,7 @@ wide range of application domains.</p>
 <p>This section lists the measurement and sensing clusters as specified in this chapter.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Overview of the Measurement and Sensing Clusters</caption>
+<caption class="title">Table 5. Overview of the Measurement and Sensing Clusters</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -18436,7 +17901,7 @@ since it last booted. This feature SHALL be used by servers without the ability 
 <div class="sect3">
 <h4 id="_attributes_23"><a class="anchor" href="#_attributes_23"></a>2.12.5. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Electrical Energy Measurement Cluster Attributes</caption>
+<caption class="title">Table 6. Electrical Energy Measurement Cluster Attributes</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 14.2857%;">
@@ -19862,7 +19327,7 @@ lagging.</p>
 <div class="sect3">
 <h4 id="_attributes_24"><a class="anchor" href="#_attributes_24"></a>2.13.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Electrical Measurement Cluster Attributes</caption>
+<caption class="title">Table 7. Electrical Measurement Cluster Attributes</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 12.5%;">
@@ -20434,7 +19899,7 @@ in lux (lx).</p>
 <p>This section lists the lighting specific clusters as specified in this chapter.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Overview of the Lighting Clusters</caption>
+<caption class="title">Table 8. Overview of the Lighting Clusters</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -20725,7 +20190,7 @@ into four sets of related attributes.</p>
 below.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Attributes of the Color Information Attribute Set</caption>
+<caption class="title">Table 9. Attributes of the Color Information Attribute Set</caption>
 <colgroup>
 <col style="width: 8.3333%;">
 <col style="width: 25%;">
@@ -21117,7 +20582,7 @@ in use for compensation for color/intensity drift over time. It SHALL be
 one of the non-reserved values in <a href="#ref_Table_5_4">Values of the DriftCompensation Attribute</a>.</p>
 </div>
 <table id="ref_Table_5_4" class="tableblock frame-all grid-all" style="width: 60%;">
-<caption class="title">Table 8. Values of the DriftCompensation Attribute</caption>
+<caption class="title">Table 10. Values of the DriftCompensation Attribute</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 83.3334%;">
@@ -21196,7 +20661,7 @@ is set upon reception of any command in section <a href="#ref_sec_5_2_2_3">Comma
 appropriate mode for that command.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 50%;">
-<caption class="title">Table 9. Values of the ColorMode Attribute</caption>
+<caption class="title">Table 11. Values of the ColorMode Attribute</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -21240,7 +20705,7 @@ command fields.</p>
 temporary Options bitmap and the effect on dependent commands.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Options Attribute</caption>
+<caption class="title">Table 12. Options Attribute</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -21309,7 +20774,7 @@ EnhancedCurrentHue attribute.</p>
 determining the color of the device, as detailed in <a href="#ref_Table_5_7">Values of the EnhancedColorMode Attribute</a>.</p>
 </div>
 <table id="ref_Table_5_7" class="tableblock frame-all grid-all" style="width: 50%;">
-<caption class="title">Table 11. Values of the EnhancedColorMode Attribute</caption>
+<caption class="title">Table 13. Values of the EnhancedColorMode Attribute</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -21452,7 +20917,7 @@ temperature). The values of the StartUpColorTemperatureMireds
 attribute are listed in the table below,</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. Values of the StartUpColorTemperatureMireds attribute</caption>
+<caption class="title">Table 14. Values of the StartUpColorTemperatureMireds attribute</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -21483,7 +20948,7 @@ attribute are listed in the table below,</p>
 summarized in <a href="#ref_Table_5_10">Defined Primaries Information Attribute Set</a>.</p>
 </div>
 <table id="ref_Table_5_10" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 13. Defined Primaries Information Attribute Set</caption>
+<caption class="title">Table 15. Defined Primaries Information Attribute Set</caption>
 <colgroup>
 <col style="width: 8.3333%;">
 <col style="width: 25%;">
@@ -21685,7 +21150,7 @@ Primary1X, Primary1Y and Primary1Intensity attributes.</p>
 attributes summarized in <a href="#ref_Table_5_11">Additional Defined Primaries Information Attribute Set</a>.</p>
 </div>
 <table id="ref_Table_5_11" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 14. Additional Defined Primaries Information Attribute Set</caption>
+<caption class="title">Table 16. Additional Defined Primaries Information Attribute Set</caption>
 <colgroup>
 <col style="width: 8.3333%;">
 <col style="width: 25%;">
@@ -21823,7 +21288,7 @@ and Primary1Intensity attributes.</p>
 summarized in <a href="#ref_Table_5_12">Defined Color Points Settings Attribute Set</a>.</p>
 </div>
 <table id="ref_Table_5_12" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 15. Defined Color Points Settings Attribute Set</caption>
+<caption class="title">Table 17. Defined Color Points Settings Attribute Set</caption>
 <colgroup>
 <col style="width: 8.3333%;">
 <col style="width: 25%;">
@@ -22057,7 +21522,7 @@ implemented then they SHALL all be implemented.</p>
 <p>The command IDs for the Color Control cluster are listed in <a href="#ref_Table_5_13">Command IDs for the Color Control Cluster</a>.</p>
 </div>
 <table id="ref_Table_5_13" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 16. Command IDs for the Color Control Cluster</caption>
+<caption class="title">Table 18. Command IDs for the Color Control Cluster</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -22389,7 +21854,7 @@ defined in section <a href="#ref_sec_5_2_2_2_1_10">Options Attribute</a>.</p>
 <p>The Direction field SHALL be one of the non-reserved values in <a href="#ref_Table_5_14">Values of the Direction Field</a>.</p>
 </div>
 <table id="ref_Table_5_14" class="tableblock frame-all grid-all" style="width: 50%;">
-<caption class="title">Table 17. Values of the Direction Field</caption>
+<caption class="title">Table 19. Values of the Direction Field</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 75%;">
@@ -22421,7 +21886,7 @@ defined in section <a href="#ref_sec_5_2_2_2_1_10">Options Attribute</a>.</p>
 </table>
 </div>
 <div class="sect5">
-<h6 id="_transitiontime_field_7"><a class="anchor" href="#_transitiontime_field_7"></a>3.2.11.4.3. TransitionTime Field</h6>
+<h6 id="_transitiontime_field_5"><a class="anchor" href="#_transitiontime_field_5"></a>3.2.11.4.3. TransitionTime Field</h6>
 <div class="paragraph">
 <p>The TransitionTime field specifies, in 1/10ths of a second, the time
 that SHALL be taken to move to the new hue.</p>
@@ -22435,7 +21900,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_28"><a class="anchor" href="#_effect_on_receipt_28"></a>3.2.11.4.5. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_26"><a class="anchor" href="#_effect_on_receipt_26"></a>3.2.11.4.5. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL also set the ColorMode
 attribute to the value 0 and then SHALL move from its current hue to the
@@ -22530,7 +21995,7 @@ if both distances are the same, the Up direction SHALL be taken.</p>
 If the MoveMode field is equal to 0 (Stop), the Rate field SHALL be ignored.</p>
 </div>
 <table id="ref_Table_5_15" class="tableblock frame-all grid-all" style="width: 50%;">
-<caption class="title">Table 18. Values of the MoveMode Field</caption>
+<caption class="title">Table 20. Values of the MoveMode Field</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 75%;">
@@ -22581,14 +22046,14 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_29"><a class="anchor" href="#_effect_on_receipt_29"></a>3.2.11.5.4. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_27"><a class="anchor" href="#_effect_on_receipt_27"></a>3.2.11.5.4. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute
 to the value 0 and SHALL then move from its current hue in an up or down
 direction in a continuous fashion, as detailed in <a href="#ref_Table_5_16">Actions on Receipt for MoveHue Command</a>.</p>
 </div>
 <table id="ref_Table_5_16" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 19. Actions on Receipt for MoveHue Command</caption>
+<caption class="title">Table 21. Actions on Receipt for MoveHue Command</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 85.7143%;">
@@ -22701,7 +22166,7 @@ direction in a continuous fashion, as detailed in <a href="#ref_Table_5_16">Acti
 <p>The StepMode field SHALL be one of the non-reserved values in <a href="#ref_Table_5_17">Values of the StepMode Field</a>.</p>
 </div>
 <table id="ref_Table_5_17" class="tableblock frame-all grid-all" style="width: 50%;">
-<caption class="title">Table 20. Values of the StepMode Field</caption>
+<caption class="title">Table 22. Values of the StepMode Field</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 75%;">
@@ -22740,7 +22205,7 @@ device’s hue.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_transitiontime_field_8"><a class="anchor" href="#_transitiontime_field_8"></a>3.2.11.6.3. TransitionTime Field</h6>
+<h6 id="_transitiontime_field_6"><a class="anchor" href="#_transitiontime_field_6"></a>3.2.11.6.3. TransitionTime Field</h6>
 <div class="paragraph">
 <p>The TransitionTime field specifies, in 1/10ths of a second, the time
 that SHALL be taken to perform the step. A step is a change in the
@@ -22759,14 +22224,14 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_30"><a class="anchor" href="#_effect_on_receipt_30"></a>3.2.11.6.5. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_28"><a class="anchor" href="#_effect_on_receipt_28"></a>3.2.11.6.5. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute
 to the value 0 and SHALL then move from its current hue in an up or down
 direction by one step, as detailed in <a href="#ref_Table_5_18">Actions on Receipt for StepHue Command</a>.</p>
 </div>
 <table id="ref_Table_5_18" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 21. Actions on Receipt for StepHue Command</caption>
+<caption class="title">Table 23. Actions on Receipt for StepHue Command</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 85.7143%;">
@@ -22867,7 +22332,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_31"><a class="anchor" href="#_effect_on_receipt_31"></a>3.2.11.7.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_29"><a class="anchor" href="#_effect_on_receipt_29"></a>3.2.11.7.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute to
 the value 0 and SHALL then move from its current saturation to the value
@@ -22952,7 +22417,7 @@ TransitionTime field, in 1/10ths of a second.</p>
 If the MoveMode field is equal to 0 (Stop), the Rate field SHALL be ignored.</p>
 </div>
 <table id="ref_Table_5_19" class="tableblock frame-all grid-all" style="width: 50%;">
-<caption class="title">Table 22. Values of the MoveMode Field</caption>
+<caption class="title">Table 24. Values of the MoveMode Field</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 75%;">
@@ -23003,14 +22468,14 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_32"><a class="anchor" href="#_effect_on_receipt_32"></a>3.2.11.8.4. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_30"><a class="anchor" href="#_effect_on_receipt_30"></a>3.2.11.8.4. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute
 to the value 0 and SHALL then move from its current saturation in an up
 or down direction in a continuous fashion, as detailed in <a href="#ref_Table_5_20">Actions on Receipt for MoveSaturation Command</a>.</p>
 </div>
 <table id="ref_Table_5_20" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 23. Actions on Receipt for MoveSaturation Command</caption>
+<caption class="title">Table 25. Actions on Receipt for MoveSaturation Command</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 85.7143%;">
@@ -23123,7 +22588,7 @@ or down direction in a continuous fashion, as detailed in <a href="#ref_Table_5_
 <p>The StepMode field SHALL be one of the non-reserved values in <a href="#ref_Table_5_21">Values of the StepMode Field</a>.</p>
 </div>
 <table id="ref_Table_5_21" class="tableblock frame-all grid-all" style="width: 50%;">
-<caption class="title">Table 24. Values of the StepMode Field</caption>
+<caption class="title">Table 26. Values of the StepMode Field</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 75%;">
@@ -23162,7 +22627,7 @@ device’s saturation.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_transitiontime_field_9"><a class="anchor" href="#_transitiontime_field_9"></a>3.2.11.9.3. TransitionTime Field</h6>
+<h6 id="_transitiontime_field_7"><a class="anchor" href="#_transitiontime_field_7"></a>3.2.11.9.3. TransitionTime Field</h6>
 <div class="paragraph">
 <p>The TransitionTime field specifies, in 1/10ths of a second, the time
 that SHALL be taken to perform the step. A step is a change in the
@@ -23181,14 +22646,14 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_33"><a class="anchor" href="#_effect_on_receipt_33"></a>3.2.11.9.5. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_31"><a class="anchor" href="#_effect_on_receipt_31"></a>3.2.11.9.5. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute
 to the value 0 and SHALL then move from its current saturation in an up
 or down direction by one step, as detailed in <a href="#ref_Table_5_22">Actions on Receipt for StepSaturation Command</a>.</p>
 </div>
 <table id="ref_Table_5_22" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 25. Actions on Receipt for StepSaturation Command</caption>
+<caption class="title">Table 27. Actions on Receipt for StepSaturation Command</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 85.7143%;">
@@ -23298,7 +22763,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_34"><a class="anchor" href="#_effect_on_receipt_34"></a>3.2.11.10.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_32"><a class="anchor" href="#_effect_on_receipt_32"></a>3.2.11.10.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute
 to the value 0 and SHALL then move from its current hue and saturation
@@ -23399,7 +22864,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_35"><a class="anchor" href="#_effect_on_receipt_35"></a>3.2.11.11.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_33"><a class="anchor" href="#_effect_on_receipt_33"></a>3.2.11.11.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the value of the
 ColorMode attribute, where implemented, to 1, and SHALL then move
@@ -23506,7 +22971,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_36"><a class="anchor" href="#_effect_on_receipt_36"></a>3.2.11.12.4. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_34"><a class="anchor" href="#_effect_on_receipt_34"></a>3.2.11.12.4. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the value of the
 ColorMode attribute, where implemented, to 1, and SHALL then move
@@ -23605,7 +23070,7 @@ device&#8217;s CurrentX attribute and CurrentY attribute respectively.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_transitiontime_field_10"><a class="anchor" href="#_transitiontime_field_10"></a>3.2.11.13.2. TransitionTime Field</h6>
+<h6 id="_transitiontime_field_8"><a class="anchor" href="#_transitiontime_field_8"></a>3.2.11.13.2. TransitionTime Field</h6>
 <div class="paragraph">
 <p>The TransitionTime field specifies, in 1/10ths of a second, the time
 that SHALL be taken to perform the color change.</p>
@@ -23619,7 +23084,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_37"><a class="anchor" href="#_effect_on_receipt_37"></a>3.2.11.13.4. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_35"><a class="anchor" href="#_effect_on_receipt_35"></a>3.2.11.13.4. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the value of the
 ColorMode attribute, where implemented, to 1, and SHALL then move
@@ -23715,7 +23180,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_38"><a class="anchor" href="#_effect_on_receipt_38"></a>3.2.11.14.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_36"><a class="anchor" href="#_effect_on_receipt_36"></a>3.2.11.14.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the value of the
 ColorMode attribute, where implemented, to 2, and SHALL then move
@@ -23825,7 +23290,7 @@ command of the Color Control cluster (see sub-clause <a href="#ref_sec_5_2_2_3_3
 </div>
 </div>
 <div class="sect5">
-<h6 id="_transitiontime_field_11"><a class="anchor" href="#_transitiontime_field_11"></a>3.2.11.15.3. TransitionTime Field</h6>
+<h6 id="_transitiontime_field_9"><a class="anchor" href="#_transitiontime_field_9"></a>3.2.11.15.3. TransitionTime Field</h6>
 <div class="paragraph">
 <p>This field is identical to the TransitionTime field of the MoveToHue
 command of the Color Control cluster (see sub-clause <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverride fields</a>).</p>
@@ -23839,7 +23304,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_39"><a class="anchor" href="#_effect_on_receipt_39"></a>3.2.11.15.5. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_37"><a class="anchor" href="#_effect_on_receipt_37"></a>3.2.11.15.5. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute
 to 0 and set the EnhancedColorMode attribute to the value 3. The device
@@ -23950,7 +23415,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_40"><a class="anchor" href="#_effect_on_receipt_40"></a>3.2.11.16.4. Effect on receipt</h6>
+<h6 id="_effect_on_receipt_38"><a class="anchor" href="#_effect_on_receipt_38"></a>3.2.11.16.4. Effect on receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute
 to 0 and set the EnhancedColorMode attribute to the value 3. The device
@@ -23958,7 +23423,7 @@ SHALL then move from its current enhanced hue in an up or down direction
 in a continuous fashion, as detailed in <a href="#ref_Table_5_23">Actions on Receipt of the EnhancedMoveHueCommand</a>.</p>
 </div>
 <table id="ref_Table_5_23" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 26. Actions on Receipt of the EnhancedMoveHueCommand</caption>
+<caption class="title">Table 28. Actions on Receipt of the EnhancedMoveHueCommand</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 85.7143%;">
@@ -24086,7 +23551,7 @@ hue.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_transitiontime_field_12"><a class="anchor" href="#_transitiontime_field_12"></a>3.2.11.17.3. TransitionTime Field</h6>
+<h6 id="_transitiontime_field_10"><a class="anchor" href="#_transitiontime_field_10"></a>3.2.11.17.3. TransitionTime Field</h6>
 <div class="paragraph">
 <p>The TransitionTime field specifies, in units
 of 1/10ths of a second, the time that SHALL be taken to perform the
@@ -24106,7 +23571,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_41"><a class="anchor" href="#_effect_on_receipt_41"></a>3.2.11.17.5. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_39"><a class="anchor" href="#_effect_on_receipt_39"></a>3.2.11.17.5. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute
 to 0 and the EnhancedColorMode attribute to the value 3. The device
@@ -24114,7 +23579,7 @@ SHALL then move from its current enhanced hue in an up or down direction
 by one step, as detailed in <a href="#ref_Table_5_24">Actions on Receipt for the EnhancedStepHue Command</a>.</p>
 </div>
 <table id="ref_Table_5_24" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 27. Actions on Receipt for the EnhancedStepHue Command</caption>
+<caption class="title">Table 29. Actions on Receipt for the EnhancedStepHue Command</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 85.7143%;">
@@ -24236,7 +23701,7 @@ command of the Color Control cluster (see sub-clause <a href="#ref_sec_5_2_2_3_1
 </div>
 </div>
 <div class="sect5">
-<h6 id="_transitiontime_field_13"><a class="anchor" href="#_transitiontime_field_13"></a>3.2.11.18.3. TransitionTime Field</h6>
+<h6 id="_transitiontime_field_11"><a class="anchor" href="#_transitiontime_field_11"></a>3.2.11.18.3. TransitionTime Field</h6>
 <div class="paragraph">
 <p>This field is identical to the TransitionTime field of the MoveToHue
 command of the Color Control cluster (see sub-clause <a href="#ref_sec_5_2_2_3_10">MoveToHueAndSaturation Command</a>).</p>
@@ -24250,7 +23715,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_42"><a class="anchor" href="#_effect_on_receipt_42"></a>3.2.11.18.5. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_40"><a class="anchor" href="#_effect_on_receipt_40"></a>3.2.11.18.5. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute
 to the value 0 and set the EnhancedColorMode attribute to the value
@@ -24375,7 +23840,7 @@ loop attributes to update before the color loop is started. This field
 SHALL be formatted as illustrated in <a href="#ref_Figure_5_18">Format of the UpdateFlags Field of the ColorLoopSet Command</a>.</p>
 </div>
 <table id="ref_Figure_5_18" class="tableblock frame-all grid-all" style="width: 50%;">
-<caption class="title">Table 28. Format of the UpdateFlags Field of the ColorLoopSet Command</caption>
+<caption class="title">Table 30. Format of the UpdateFlags Field of the ColorLoopSet Command</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 75%;">
@@ -24449,7 +23914,7 @@ field is set to 1. This field SHALL be set to one of the non-reserved
 values listed in <a href="#ref_Table_5_25">Values of the Action Field of the ColorLoopSet Command</a>.</p>
 </div>
 <table id="ref_Table_5_25" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 29. Values of the Action Field of the ColorLoopSet Command</caption>
+<caption class="title">Table 31. Values of the Action Field of the ColorLoopSet Command</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 85.7143%;">
@@ -24485,7 +23950,7 @@ is set to 1. This field SHALL be set to one of the non-reserved values
 listed in <a href="#ref_Table_5_26">Values of the Direction Field of the ColorLoopSet Command</a>.</p>
 </div>
 <table id="ref_Table_5_26" class="tableblock frame-all grid-all" style="width: 50%;">
-<caption class="title">Table 30. Values of the Direction Field of the ColorLoopSet Command</caption>
+<caption class="title">Table 32. Values of the Direction Field of the ColorLoopSet Command</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -24532,7 +23997,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_43"><a class="anchor" href="#_effect_on_receipt_43"></a>3.2.11.19.7. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_41"><a class="anchor" href="#_effect_on_receipt_41"></a>3.2.11.19.7. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, the device SHALL first update its color loop
 attributes according to the value of the UpdateFlags field, as follows.
@@ -24638,7 +24103,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_44"><a class="anchor" href="#_effect_on_receipt_44"></a>3.2.11.20.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_42"><a class="anchor" href="#_effect_on_receipt_42"></a>3.2.11.20.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>Upon receipt of this command, any MoveTo, Move or Step command
 currently in process SHALL be terminated. The values of the CurrentHue,
@@ -24803,7 +24268,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_45"><a class="anchor" href="#_effect_on_receipt_45"></a>3.2.11.21.6. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_43"><a class="anchor" href="#_effect_on_receipt_43"></a>3.2.11.21.6. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set both the ColorMode and
 EnhancedColorMode attributes to 2. The device SHALL then move from
@@ -24811,7 +24276,7 @@ its current color temperature in an up or down direction in a continuous
 fashion, as detailed in <a href="#ref_Table_5_27">Actions on Receipt of the MoveColorTemperature Command</a>.</p>
 </div>
 <table id="ref_Table_5_27" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 31. Actions on Receipt of the MoveColorTemperature Command</caption>
+<caption class="title">Table 33. Actions on Receipt of the MoveColorTemperature Command</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 85.7143%;">
@@ -24962,7 +24427,7 @@ temperature.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_transitiontime_field_14"><a class="anchor" href="#_transitiontime_field_14"></a>3.2.11.22.3. TransitionTime Field</h6>
+<h6 id="_transitiontime_field_12"><a class="anchor" href="#_transitiontime_field_12"></a>3.2.11.22.3. TransitionTime Field</h6>
 <div class="paragraph">
 <p>The TransitionTime field specifies, in units
 of 1/10ths of a second, the time that SHALL be taken to perform the
@@ -25018,7 +24483,7 @@ to section <a href="#ref_sec_5_2_2_3_3">Use of the OptionsMask and OptionsOverri
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_46"><a class="anchor" href="#_effect_on_receipt_46"></a>3.2.11.22.7. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_44"><a class="anchor" href="#_effect_on_receipt_44"></a>3.2.11.22.7. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set both the ColorMode and
 EnhancedColorMode attributes to 2. The device SHALL then move from
@@ -25026,7 +24491,7 @@ its current color temperature in an up or down direction by one step, as
 detailed in <a href="#ref_Table_5_28">Actions on Receipt of the StepColorTemperature Command</a>.</p>
 </div>
 <table id="ref_Table_5_28" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 32. Actions on Receipt of the StepColorTemperature Command</caption>
+<caption class="title">Table 34. Actions on Receipt of the StepColorTemperature Command</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 85.7143%;">
@@ -25639,7 +25104,7 @@ BallastFactorAdjustment attributes.</p>
 MaxLevel and CurrentLevel.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 33. Examples of The Dimming Light Curve</caption>
+<caption class="title">Table 35. Examples of The Dimming Light Curve</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -25778,7 +25243,7 @@ later (hotter) part of the day.</p>
 <p>This section lists the HVAC specific clusters as specified in this chapter.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 34. Overview of the HVAC Clusters</caption>
+<caption class="title">Table 36. Overview of the HVAC Clusters</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -28550,7 +28015,7 @@ HeatingOnly based on the current capability.</p>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 35. Interpretation of Heat, Cool and Auto <a href="#ref_SystemModeEnum">SystemModeEnum</a> Values</caption>
+<caption class="title">Table 37. Interpretation of Heat, Cool and Auto <a href="#ref_SystemModeEnum">SystemModeEnum</a> Values</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -28685,7 +28150,7 @@ HeatingOnly based on the current capability.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_transitiontime_field_15"><a class="anchor" href="#_transitiontime_field_15"></a>4.3.8.25.1. TransitionTime Field</h6>
+<h6 id="_transitiontime_field_13"><a class="anchor" href="#_transitiontime_field_13"></a>4.3.8.25.1. TransitionTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL represent the start time of the schedule transition during
 the associated day. The time will be represented by a 16 bits unsigned
@@ -30765,7 +30230,7 @@ revision number in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SPD</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MultiSpeed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1-100 speeds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0-SpeedMax Fan Speeds</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -30808,8 +30273,11 @@ Therefore, it is assumed that legacy client implementations are capable of deter
 the number of speeds supported between 1, 2, or 3, and whether automatic speed control is supported.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="#ref_MultiSpeed">MultiSpeed</a> feature includes new attributes that support a running fan speed value from 1 to a maximum of 100.
-See <a href="#ref_SpeedRules">Speed Rules</a> for more details.</p>
+<p>The <a href="#ref_MultiSpeed">MultiSpeed</a> feature includes new attributes that support a running fan speed value from 0
+to SpeedMax, which has a maximum of 100.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="#ref_SpeedRules">Speed Rules</a> for more details.</p>
 </div>
 </div>
 </div>
@@ -31268,11 +30736,19 @@ For this setting, the sequence, speeds and duration are MS.</p>
 <h5 id="_fanmode_attribute"><a class="anchor" href="#_fanmode_attribute"></a>4.4.6.1. FanMode Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the current speed mode of the fan.
-This attribute MAY be written by the client to indicate a new speed mode of the fan.
-This attribute SHALL be set to one of the values in <a href="#ref_FanModeEnum">FanModeEnum</a>.</p>
+This attribute MAY be written by the client to request a different fan mode.
+A server SHALL return INVALID_IN_STATE to indicate that the fan is not in a state
+where the FanMode can be changed to the requested value.
+A server MAY have FanMode values that it can never be set to.
+For example, where this cluster appears on the same or another endpoint as other clusters with
+a system dependency, for example the Thermostat cluster, attempting to set the FanMode attribute
+of this cluster to Off may not be allowed by the system.</p>
 </div>
 <div class="paragraph">
-<p>When the FanMode attribute is written to, the <a href="#ref_PercentSetting">PercentSetting</a> and
+<p>This attribute SHALL be set to one of the values in <a href="#ref_FanModeEnum">FanModeEnum</a>.</p>
+</div>
+<div class="paragraph">
+<p>When the FanMode attribute is successfully written to, the <a href="#ref_PercentSetting">PercentSetting</a> and
 <a href="#ref_SpeedSetting">SpeedSetting</a> (if present) attributes SHALL be set to appropriate
 values, as defined by the <a href="#ref_PercentRules">Percent Rules</a> and <a href="#ref_SpeedRules">Speed Rules</a> respectively, unless otherwise specified below.</p>
 </div>
@@ -31359,7 +30835,11 @@ otherwise the attribute SHALL be set to High.</p>
 This attribute MAY be written by the client to indicate a new fan speed.
 If the client writes null to this attribute,
 the attribute value SHALL NOT change.
-If this is set to 0, the server SHALL set the FanMode attribute value to Off.</p>
+A server SHALL return INVALID_IN_STATE to indicate that the fan is not in a
+state where the <a href="#ref_PercentSetting">PercentSetting</a> can be changed to the requested value.</p>
+</div>
+<div class="paragraph">
+<p>If this is successfully written to 0, the server SHALL set the FanMode attribute value to Off.</p>
 </div>
 <div class="sect5">
 <h6 id="ref_PercentRules"><a class="anchor" href="#ref_PercentRules"></a>4.4.6.3.1. Percent Rules</h6>
@@ -31399,6 +30879,7 @@ the calculation of <a href="#ref_SpeedSetting">SpeedSetting</a> or <a href="#ref
 <h5 id="ref_PercentCurrent"><a class="anchor" href="#ref_PercentCurrent"></a>4.4.6.4. PercentCurrent Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the actual currently operating fan speed, or zero to indicate that the fan is off.
+There MAY be a temporary mismatch between the value of this attribute and the value of the <a href="#ref_PercentSetting">PercentSetting</a> attribute due to other system requirements that would not allow the fan to operate at the requested setting.
 See <a href="#ref_PercentRules">Percent Rules</a> for more details.</p>
 </div>
 </div>
@@ -31415,7 +30896,11 @@ See <a href="#ref_PercentRules">Percent Rules</a> for more details.</p>
 This attribute MAY be written by the client to indicate a new fan speed.
 If the client writes null to this attribute,
 the attribute value SHALL NOT change.
-If this is set to 0, the server SHALL set the FanMode attribute value to Off.
+A server SHALL return INVALID_IN_STATE to indicate that the fan is not in a
+state where the SpeedSetting can be changed to the requested value.</p>
+</div>
+<div class="paragraph">
+<p>If this is successfully written to 0, the server SHALL set the FanMode attribute value to Off.
 Please see the <a href="#ref_SpeedRules">Speed Rules</a> for details on other values.</p>
 </div>
 <div class="sect5">
@@ -31453,7 +30938,8 @@ based on the speed value being in the corresponding range.</p>
 <div class="sect4">
 <h5 id="ref_SpeedCurrent"><a class="anchor" href="#ref_SpeedCurrent"></a>4.4.6.7. SpeedCurrent Attribute</h5>
 <div class="paragraph">
-<p>This attribute SHALL indicate the actual currently operating fan speed, or zero to indicate that the fan is off.</p>
+<p>This attribute SHALL indicate the actual currently operating fan speed, or zero to indicate that the fan is off.
+There MAY be a temporary mismatch between the value of this attribute and the value of the <a href="#ref_SpeedSetting">SpeedSetting</a> attribute due to other system requirements that would not allow the fan to operate at the requested setting.</p>
 </div>
 </div>
 <div class="sect4">
@@ -31639,7 +31125,7 @@ How many step speeds are implemented is implementation specific.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_when_generated_10"><a class="anchor" href="#_when_generated_10"></a>4.4.7.1.4. When Generated</h6>
+<h6 id="_when_generated_8"><a class="anchor" href="#_when_generated_8"></a>4.4.7.1.4. When Generated</h6>
 <div class="paragraph">
 <p>The client sends this command to speed the fan up or down in a step by step fashion.</p>
 </div>
@@ -32042,7 +31528,7 @@ be used in any application domain.</p>
 <p>This section lists the closures specific clusters as specified in this chapter.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 36. Overview of the Closures Clusters</caption>
+<caption class="title">Table 38. Overview of the Closures Clusters</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -37945,7 +37431,7 @@ grant access to the user up until 23:59:59.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_status_field_12"><a class="anchor" href="#_status_field_12"></a>5.2.10.16.3. Status Field</h6>
+<h6 id="_status_field_11"><a class="anchor" href="#_status_field_11"></a>5.2.10.16.3. Status Field</h6>
 <div class="paragraph">
 <p>Status SHALL be one of the following values:</p>
 </div>
@@ -38372,7 +37858,7 @@ represented by the value. LocalEndTime SHALL be greater than LocalStartTime.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_status_field_13"><a class="anchor" href="#_status_field_13"></a>5.2.10.20.3. Status Field</h6>
+<h6 id="_status_field_12"><a class="anchor" href="#_status_field_12"></a>5.2.10.20.3. Status Field</h6>
 <div class="paragraph">
 <p>Status SHALL be one of the following values:</p>
 </div>
@@ -38771,7 +38257,7 @@ represented by the value. LocalEndTime SHALL be greater than LocalStartTime.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_status_field_14"><a class="anchor" href="#_status_field_14"></a>5.2.10.24.2. Status Field</h6>
+<h6 id="_status_field_13"><a class="anchor" href="#_status_field_13"></a>5.2.10.24.2. Status Field</h6>
 <div class="paragraph">
 <p>Status SHALL be one of the following values:</p>
 </div>
@@ -40992,7 +40478,7 @@ new credential and user.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_status_field_15"><a class="anchor" href="#_status_field_15"></a>5.2.10.41.1. Status Field</h6>
+<h6 id="_status_field_14"><a class="anchor" href="#_status_field_14"></a>5.2.10.41.1. Status Field</h6>
 <div class="paragraph">
 <p>Status comes from the <a href="#ref_DoorLockStatusCodes">Status Codes</a> table and SHALL be one of the
 following values:</p>
@@ -44049,7 +43535,7 @@ The server attributes supported SHALL be updated as follows:</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_47"><a class="anchor" href="#_effect_on_receipt_47"></a>5.3.7.4.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_45"><a class="anchor" href="#_effect_on_receipt_45"></a>5.3.7.4.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>Upon receipt of this command, the window covering will adjust the lift position to
 the value specified in the LiftValue field, as long as that value is not larger
@@ -44171,7 +43657,7 @@ If the device is only a tilt control device, then the command SHOULD be ignored 
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_48"><a class="anchor" href="#_effect_on_receipt_48"></a>5.3.7.6.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_46"><a class="anchor" href="#_effect_on_receipt_46"></a>5.3.7.6.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>Upon receipt of this command, the window covering will adjust the tilt position
 to the value specified in the TiltValue field, as long as that value is not larger
@@ -44279,7 +43765,7 @@ be used in any application domain.</p>
 <p>This section lists the media specific clusters as specified in this chapter.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 37. Overview of the Media Clusters</caption>
+<caption class="title">Table 39. Overview of the Media Clusters</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -45824,7 +45310,7 @@ The Status attribute SHALL be updated on any other application whose Status MAY 
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_status_field_16"><a class="anchor" href="#_status_field_16"></a>6.4.7.4.1. Status Field</h6>
+<h6 id="_status_field_15"><a class="anchor" href="#_status_field_15"></a>6.4.7.4.1. Status Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the status of the command which resulted in this response.</p>
 </div>
@@ -46954,7 +46440,7 @@ In the match string, the Channel number should be presented in the "Major.Minor"
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_status_field_17"><a class="anchor" href="#_status_field_17"></a>6.6.7.2.1. Status Field</h6>
+<h6 id="_status_field_16"><a class="anchor" href="#_status_field_16"></a>6.6.7.2.1. Status Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the status of the command which resulted in this response.</p>
 </div>
@@ -48264,7 +47750,7 @@ If this property is not populated, the Video Player SHALL default to logo or the
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_status_field_18"><a class="anchor" href="#_status_field_18"></a>6.7.7.3.1. Status Field</h6>
+<h6 id="_status_field_17"><a class="anchor" href="#_status_field_17"></a>6.7.7.3.1. Status Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the status of the command which resulted in this response.</p>
 </div>
@@ -49041,7 +48527,7 @@ The data for this command SHALL be as follows:</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_status_field_19"><a class="anchor" href="#_status_field_19"></a>6.8.6.2.1. Status Field</h6>
+<h6 id="_status_field_18"><a class="anchor" href="#_status_field_18"></a>6.8.6.2.1. Status Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the status of the request.</p>
 </div>
@@ -50560,7 +50046,7 @@ The data for this command SHALL be as follows:</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_status_field_20"><a class="anchor" href="#_status_field_20"></a>6.10.7.12.1. Status Field</h6>
+<h6 id="_status_field_19"><a class="anchor" href="#_status_field_19"></a>6.10.7.12.1. Status Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the status of the command which resulted in this response.</p>
 </div>
@@ -50987,7 +50473,7 @@ The Target SHALL be an Identifier value contained within one of the TargetInfoSt
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_status_field_21"><a class="anchor" href="#_status_field_21"></a>6.11.6.2.1. Status Field</h6>
+<h6 id="_status_field_20"><a class="anchor" href="#_status_field_20"></a>6.11.6.2.1. Status Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the of the command.</p>
 </div>
@@ -51027,7 +50513,7 @@ such as Robotic Vacuum Cleaners (RVCs).</p>
 <p>This section lists the RVC specific clusters as specified in this chapter.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 38. Overview of the RVC Clusters</caption>
+<caption class="title">Table 40. Overview of the RVC Clusters</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -51881,7 +51367,7 @@ to the InvalidInMode value if this restriction prevents a mode change.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The Pause and Resume commands are usable in all compatible states. Deprecate the Start and Stop commands.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Pause and Resume commands are usable in all compatible states. Deprecate the Start and Stop commands. Add the GoHome command.</p></td>
 </tr>
 </tbody>
 </table>
@@ -52051,9 +51537,10 @@ set of values defined in Operational State itself.</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p><a href="#ref_RVCPauseCompatibilityTable">[ref_RVCPauseCompatibilityTable]</a> defines the compatibility of the states this cluster defines with the Pause command.</p>
+<p><a href="#ref_RVCPauseCompatibilityTable">RVC Pause Compatibility</a> defines the compatibility of the states this cluster defines with the Pause command.</p>
 </div>
 <table id="ref_RVCPauseCompatibilityTable" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 41. RVC Pause Compatibility</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -52090,9 +51577,10 @@ set of values defined in Operational State itself.</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p><a href="#ref_RVCResumeCompatibilityTable">[ref_RVCResumeCompatibilityTable]</a> defines the compatibility of the states this cluster defines with the Resume command.</p>
+<p><a href="#ref_RVCResumeCompatibilityTable">RVC Resume Compatibility</a> defines the compatibility of the states this cluster defines with the Resume command.</p>
 </div>
 <table id="ref_RVCResumeCompatibilityTable" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 42. RVC Resume Compatibility</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -52211,6 +51699,67 @@ set of values defined in Operational State itself.</p>
 </table>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_commands_26"><a class="anchor" href="#_commands_26"></a>7.4.6. Commands</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">ID</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Direction</th>
+<th class="tableblock halign-left valign-top">Response</th>
+<th class="tableblock halign-left valign-top">Access</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>GoHome</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OperationalCommandResponse</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="_gohome_command"><a class="anchor" href="#_gohome_command"></a>7.4.6.1. GoHome Command</h5>
+<div class="paragraph">
+<p>On receipt of this command, the device SHALL start seeking the charging dock,
+if possible in the current state of the device.</p>
+</div>
+<div class="paragraph">
+<p>If this command is received when already in the SeekingCharger state the device SHALL respond with an <a href="#ref_OperationalCommandResponse">OperationalCommandResponse</a> command with an ErrorStateID of NoError
+but the command SHALL have no other effect.</p>
+</div>
+<div class="paragraph">
+<p>A device that receives this command in any state which does not allow seeking the charger, such as Charging or Docked,
+SHALL respond with an <a href="#ref_OperationalCommandResponse">OperationalCommandResponse</a> command with an ErrorStateID of CommandInvalidInState and SHALL have no other effect.</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, on success:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The OperationalState attribute SHALL be set to SeekingCharger.</p>
+</li>
+<li>
+<p>The device SHALL respond with an <a href="#ref_OperationalCommandResponse">OperationalCommandResponse</a> command with an ErrorStateID of NoError.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -52238,7 +51787,7 @@ such as laundry washers, refrigerators etc.</p>
 <p>This section lists the home appliance specific clusters as specified in this chapter.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 39. Overview of the Home Appliance Clusters</caption>
+<caption class="title">Table 43. Overview of the Home Appliance Clusters</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -52661,7 +52210,7 @@ list item 0 being the setting with the lowest temperature level.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_commands_26"><a class="anchor" href="#_commands_26"></a>8.2.6. Commands</h4>
+<h4 id="_commands_27"><a class="anchor" href="#_commands_27"></a>8.2.6. Commands</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -52759,7 +52308,7 @@ The value of this field SHALL be between 0 and the length of the SupportedTemper
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_49"><a class="anchor" href="#_effect_on_receipt_49"></a>8.2.6.1.3. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_47"><a class="anchor" href="#_effect_on_receipt_47"></a>8.2.6.1.3. Effect on Receipt</h6>
 <div class="paragraph">
 <p>If the TargetTemperature or TargetTemperatureLevel fields of the command meet all constraints
 but the server is unable to execute the command at the time the command is received by the server
@@ -54298,7 +53847,7 @@ It SHALL be re-set to 1 if the alarm is re-enabled at the device itself.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_commands_27"><a class="anchor" href="#_commands_27"></a>8.8.7. Commands</h4>
+<h4 id="_commands_28"><a class="anchor" href="#_commands_28"></a>8.8.7. Commands</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -55053,7 +54602,7 @@ namespaced enumerated values for Microwave Oven devices.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_commands_28"><a class="anchor" href="#_commands_28"></a>8.12.5. Commands</h4>
+<h4 id="_commands_29"><a class="anchor" href="#_commands_29"></a>8.12.5. Commands</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -55473,7 +55022,7 @@ MinPower and MaxPower, PowerStep would be set to 1.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_commands_29"><a class="anchor" href="#_commands_29"></a>8.13.6. Commands</h4>
+<h4 id="_commands_30"><a class="anchor" href="#_commands_30"></a>8.13.6. Commands</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -55648,7 +55197,7 @@ to the index associated with the highest Watt setting for the selected CookMode.
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_50"><a class="anchor" href="#_effect_on_receipt_50"></a>8.13.6.2.6. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_48"><a class="anchor" href="#_effect_on_receipt_48"></a>8.13.6.2.6. Effect on Receipt</h6>
 <div class="paragraph">
 <p>If this command is received while the operational state of the server cannot support the command in that state,
 the server SHALL respond with an INVALID_IN_STATE response and the attributes and state SHALL remain unchanged.
@@ -55741,7 +55290,7 @@ the server SHALL respond with a response of INVALID_COMMAND and the attributes a
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_51"><a class="anchor" href="#_effect_on_receipt_51"></a>8.13.6.3.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_49"><a class="anchor" href="#_effect_on_receipt_49"></a>8.13.6.3.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>Upon receipt of this command, if the sum of the value of the TimeToAdd field
 and the current value of the CookTime attribute is greater than the MaxCookTime attribute,
@@ -55766,8 +55315,8 @@ if that cluster or a derivative is on the same endpoint as this cluster.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master f0e8df0 (local changes)<br>
-Last updated 2024-01-16 05:27:09 UTC
+Version master 8409455 (local changes)<br>
+Last updated 2024-01-16 18:11:27 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
