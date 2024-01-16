@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 7148574,</span>
-<span id="revdate">2024-01-11 15:02:42 -0800</span>
+<span id="revnumber">version master 7aad9e5,</span>
+<span id="revdate">2024-01-16 11:42:03 -0500</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1074,6 +1074,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_tc_ace_1_4_targets">49.1.4. [TC-ACE-1.4] Targets</a></li>
 <li><a href="#_tc_ace_1_5_multi_fabric">49.1.5. [TC-ACE-1.5] Multi-fabric</a></li>
 <li><a href="#_tc_ace_1_6_group_auth_mode">49.1.6. [TC-ACE-1.6] Group auth mode</a></li>
+<li><a href="#_tc_ace_2_1_attribute_read_privilege_enforcement_dut_as_server">49.1.7. [TC-ACE-2.1] Attribute read privilege enforcement - [DUT as Server]</a></li>
 </ul>
 </li>
 </ul>
@@ -49517,6 +49518,11 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <td class="tableblock halign-left valign-top"><p class="tableblock">TC-ACE-1.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Group auth mode [DUT-Commissionee]</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC-ACE-2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attribute read privilege enforcement - [DUT as Server]</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -54124,6 +54130,144 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_tc_ace_2_1_attribute_read_privilege_enforcement_dut_as_server"><a class="anchor" href="#_tc_ace_2_1_attribute_read_privilege_enforcement_dut_as_server"></a>49.1.7. [TC-ACE-2.1] Attribute read privilege enforcement - [DUT as Server]</h4>
+<div class="sect4">
+<h5 id="_category_195"><a class="anchor" href="#_category_195"></a>Category</h5>
+<div class="paragraph">
+<p>Functional conformance</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_196"><a class="anchor" href="#_purpose_196"></a>Purpose</h5>
+<div class="paragraph">
+<p>Tests that all attributes on the DUT require the appropriate access control privilege for reading.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_195"><a class="anchor" href="#_pics_195"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>MCORE.ROLE.COMMISSIONEE</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_195"><a class="anchor" href="#_required_devices_195"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_commissioner</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">client - original commissioner, has full admin access</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_second_controller</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">client - same fabric as TH_commissioner, no ACL access at the start of the test. Node id is <code>second_controller_nodeid</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">server</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_195"><a class="anchor" href="#_test_procedure_195"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 45%;">
+<col style="width: 40%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ref</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PICS</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Test Step</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_commissioner performs a wildcard read of the DUT to establish the set of endpoints, cluster, and attributes to test</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_commissioner reads the ACL attribute from the Access Control Cluster and saves it as <code>default_acl</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Repeat steps 3a and 3b for each privilege level in the set of supported privilege levels (view, operate, manage, administer) using <code>acl_privilege</code> to denote the current privilege level under test:</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3a</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>TH_commissioner appends an entry to <code>default_acl</code> to give limited permissions to TH_second_controller and writes the new list to the ACL attribute. The new entry is as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>struct</p>
+<div class="ulist">
+<ul>
+<li>
+<p>privilege: <code>acl_privilege</code></p>
+</li>
+<li>
+<p>authmode: CASE</p>
+</li>
+<li>
+<p>subjects: [<code>second_controller_nodeid</code>]</p>
+</li>
+<li>
+<p>targets: []</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3b</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For each endpoint on the DUT, for each standard cluster on the endpoint, and for each standard and global attribute on the cluster, TH_second_controller reads the attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>acl_privilege</code> is greater than or equal to the minimum required privilege for read as defined in the spec, verify that an attribute value is returned. Otherwise, verify that UNSUPPORTED_ACCESS is returned.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -54162,13 +54306,13 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_rr_1_1_minimal_resource_requirements_for_matter_node"><a class="anchor" href="#_tc_rr_1_1_minimal_resource_requirements_for_matter_node"></a>51.1.1. [TC-RR-1.1] Minimal Resource Requirements for Matter Node</h4>
 <div class="sect4">
-<h5 id="_category_195"><a class="anchor" href="#_category_195"></a>Category</h5>
+<h5 id="_category_196"><a class="anchor" href="#_category_196"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_196"><a class="anchor" href="#_purpose_196"></a>Purpose</h5>
+<h5 id="_purpose_197"><a class="anchor" href="#_purpose_197"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the device meets the minimal requirements for each resource type from the list of various resources required by a Matter Node implementation.</p>
 </div>
@@ -54184,7 +54328,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_195"><a class="anchor" href="#_required_devices_195"></a>Required Devices</h5>
+<h5 id="_required_devices_196"><a class="anchor" href="#_required_devices_196"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54217,7 +54361,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_195"><a class="anchor" href="#_test_procedure_195"></a>Test Procedure</h5>
+<h5 id="_test_procedure_196"><a class="anchor" href="#_test_procedure_196"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4%;">
@@ -54648,17 +54792,17 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_sm_1_1_device_composition_root_node_dut_as_server"><a class="anchor" href="#_tc_sm_1_1_device_composition_root_node_dut_as_server"></a>54.1.1. [TC-SM-1.1] Device composition - Root Node [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_category_196"><a class="anchor" href="#_category_196"></a>Category</h5>
+<h5 id="_category_197"><a class="anchor" href="#_category_197"></a>Category</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_purpose_197"><a class="anchor" href="#_purpose_197"></a>Purpose</h5>
+<h5 id="_purpose_198"><a class="anchor" href="#_purpose_198"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests root node requirements</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_195"><a class="anchor" href="#_pics_195"></a>PICS</h5>
+<h5 id="_pics_196"><a class="anchor" href="#_pics_196"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54668,7 +54812,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_196"><a class="anchor" href="#_required_devices_196"></a>Required Devices</h5>
+<h5 id="_required_devices_197"><a class="anchor" href="#_required_devices_197"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54701,7 +54845,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_196"><a class="anchor" href="#_test_procedure_196"></a>Test Procedure</h5>
+<h5 id="_test_procedure_197"><a class="anchor" href="#_test_procedure_197"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -54760,17 +54904,17 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_sm_1_2_device_composition_topology_dut_as_server"><a class="anchor" href="#_tc_sm_1_2_device_composition_topology_dut_as_server"></a>54.1.2. [TC-SM-1.2] Device composition - Topology [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_category_197"><a class="anchor" href="#_category_197"></a>Category</h5>
+<h5 id="_category_198"><a class="anchor" href="#_category_198"></a>Category</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_purpose_198"><a class="anchor" href="#_purpose_198"></a>Purpose</h5>
+<h5 id="_purpose_199"><a class="anchor" href="#_purpose_199"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that the topology indicated by the descriptor cluster PartsList matches the requirements in {REF_SM_ENDPOINT}.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_196"><a class="anchor" href="#_pics_196"></a>PICS</h5>
+<h5 id="_pics_197"><a class="anchor" href="#_pics_197"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54780,7 +54924,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_197"><a class="anchor" href="#_required_devices_197"></a>Required Devices</h5>
+<h5 id="_required_devices_198"><a class="anchor" href="#_required_devices_198"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54813,7 +54957,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_197"><a class="anchor" href="#_test_procedure_197"></a>Test Procedure</h5>
+<h5 id="_test_procedure_198"><a class="anchor" href="#_test_procedure_198"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -54961,17 +55105,17 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_dt_1_1_base_device_type_dut_as_server"><a class="anchor" href="#_tc_dt_1_1_base_device_type_dut_as_server"></a>57.1.1. [TC-DT-1.1] Base Device Type [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_category_198"><a class="anchor" href="#_category_198"></a>Category</h5>
+<h5 id="_category_199"><a class="anchor" href="#_category_199"></a>Category</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_purpose_199"><a class="anchor" href="#_purpose_199"></a>Purpose</h5>
+<h5 id="_purpose_200"><a class="anchor" href="#_purpose_200"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that every device type conforms to the requirements of the base device type</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_197"><a class="anchor" href="#_pics_197"></a>PICS</h5>
+<h5 id="_pics_198"><a class="anchor" href="#_pics_198"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54981,7 +55125,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_198"><a class="anchor" href="#_required_devices_198"></a>Required Devices</h5>
+<h5 id="_required_devices_199"><a class="anchor" href="#_required_devices_199"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -55014,7 +55158,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_198"><a class="anchor" href="#_test_procedure_198"></a>Test Procedure</h5>
+<h5 id="_test_procedure_199"><a class="anchor" href="#_test_procedure_199"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -55055,8 +55199,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 7148574<br>
-Last updated 2024-01-11 23:02:55 UTC
+Version master 7aad9e5<br>
+Last updated 2024-01-16 16:42:19 UTC
 </div>
 </div>
 </body>
