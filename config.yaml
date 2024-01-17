@@ -1,20 +1,20 @@
 # ********************************************************************************
-# Application Build Section :
+# Application Build Section:
 
-# Provide the folder name to build the connectedhopeip
-# NOTE : Make a directory named apps inside this folder
+# Provide the folder name to build the connectedhomeip
+# NOTE: Make a directory named apps inside this folder
 folder: v1.1
 
 # Want to build connectedhomeip...?
 Connectedhomeip: 'Y'
 
-# Provide the branch name :
+# Provide the branch name:
 branch: master
 
-# Need to switch commit provide the commit, if not N :
+# Need to switch commit, provide the commit, if not N:
 commit: 'N'
 
-# Choose the sample apps to be build with Y, if not N :
+# Choose the sample apps to be built with Y, if not N:
 all_clusters_app: 'Y'
 all_clusters_minimal_app: 'Y'
 bridge_app: 'N'
@@ -28,11 +28,11 @@ ota_requestor_app: 'N'
 chip_tool: 'Y'
 
 # ********************************************************************************
-# Execution Section :
-# Path where chip-tool is located for execution 
+# Execution Section:
+# Path where chip-tool is located for execution
 chip_tool_directory: v1.1/apps
 
-#Choose a cluster to execute with Y, If not N:
+# Choose a cluster to execute with Y, If not N:
 TVOCCONC: 'N'
 NDOCONC: 'N'
 CC: 'N'
@@ -95,14 +95,13 @@ ACE: 'N'
 WASHERTCTRL: 'N'
 
 # ********************************************************************************
-# Cadmin Section :
+# Cadmin Section:
 
-Dut_data: {
-  host: "192.168.8.101",
-  username: "ubuntu",
-  password: "raspberrypi",
-  command: "./chip-all-clusters-app",
+Dut_data:
+  host: "192.168.8.101"
+  username: "ubuntu"
+  password: "raspberrypi"
+  command: "./chip-all-clusters-app"
   path: "/home/ubuntu/oct16/connectedhomeip/examples/all-clusters-app/linux/out/all-clusters-app"
-  }
-  
+
 # ********************************************************************************
