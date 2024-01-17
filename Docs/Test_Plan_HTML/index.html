@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 392fcf1,</span>
-<span id="revdate">2024-01-16 16:22:55 -0800</span>
+<span id="revnumber">version master c92232e,</span>
+<span id="revdate">2024-01-17 08:01:55 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -868,7 +868,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_tc_idm_10_1_cluster_requirements_cluster_id_and_global_attribute_conformance_checks_dut_as_server">32.6.8. [TC-IDM-10.1] Cluster requirements - Cluster ID and Global attribute conformance checks [DUT as Server]</a></li>
 <li><a href="#_tc_idm_10_2_cluster_requirements_conformance_dut_as_server">32.6.9. [TC-IDM-10.2] Cluster requirements - Conformance [DUT as Server]</a></li>
 <li><a href="#_tc_idm_10_3_cluster_requirements_revision_dut_as_server">32.6.10. [TC-IDM-10.3] Cluster requirements - Revision [DUT as Server]</a></li>
-<li><a href="#_tc_idm_11_1_data_types_attribute_strings_dut_as_server_data_model">32.6.11. [TC-IDM-11.1] Data types - attribute strings [DUT as Server] - data model</a></li>
+<li><a href="#_tc_idm_10_4_cluster_requirements_pics_dut_as_server">32.6.11. [TC-IDM-10.4] Cluster requirements - PICS [DUT as Server]</a></li>
+<li><a href="#_tc_idm_11_1_data_types_attribute_strings_dut_as_server_data_model">32.6.12. [TC-IDM-11.1] Data types - attribute strings [DUT as Server] - data model</a></li>
 </ul>
 </li>
 </ul>
@@ -1075,6 +1076,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_tc_ace_1_5_multi_fabric">49.1.5. [TC-ACE-1.5] Multi-fabric</a></li>
 <li><a href="#_tc_ace_1_6_group_auth_mode">49.1.6. [TC-ACE-1.6] Group auth mode</a></li>
 <li><a href="#_tc_ace_2_1_attribute_read_privilege_enforcement_dut_as_server">49.1.7. [TC-ACE-2.1] Attribute read privilege enforcement - [DUT as Server]</a></li>
+<li><a href="#_tc_ace_2_2_attribute_write_privilege_enforcement_dut_as_server">49.1.8. [TC-ACE-2.2] Attribute write privilege enforcement - [DUT as Server]</a></li>
 </ul>
 </li>
 </ul>
@@ -34028,7 +34030,7 @@ Verify that the DUT does not send any response back to the TH.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8.8.2.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends a Invoke Request Message to the DUT with the TimedRequest set as TRUE.(There should be no previous Timed Invoke action.)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">On the TH verify DUT sends back a Status Response with the UNSUPPORTED_ACCESS status code.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">On the TH verify DUT sends back a Status Response with the TIMED_REQUEST_MISMATCH status code.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
@@ -34334,7 +34336,7 @@ message has two Status Codes SUCCESS and UNSUPPORTED_ENDPOINT. Verify Status Cod
 <td class="tableblock halign-left valign-top"><p class="tableblock">If <code>MaxPathsPerInvoke</code> &gt; 1, TH sends the Invoke Request Message to the DUT with two CommandDataIBs. One of the two CommandDataIBs SHALL be a command that requires timed invoke.<br>
 The TimedRequest of the Invoke Request Message SHALL be set as TRUE.(There SHALL be no previous Timed Invoke action.)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">On the TH verify DUT sends back a Status Response with the<br>
-UNSUPPORTED_ACCESS status code.</p></td>
+TIMED_REQUEST_MISMATCH status code.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
@@ -34342,7 +34344,8 @@ UNSUPPORTED_ACCESS status code.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If <code>MaxPathsPerInvoke</code> &gt; 1, TH sends the Invoke Request Message to the DUT with two CommandDataIBs. One of the two CommandDataIBs SHALL be a command that requires timed invoke.<br>
 The TimedRequest of the Invoke Request Message SHALL be set as TRUE.(There SHALL be a previous Timed Invoke action.)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">On the TH verify the received response message has two SUCCESS Status Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">On the TH verify the received response message has two path-specific responses.<br>
+The response to the command that required a timed invoke MAY be a cluster specific error.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
@@ -38303,15 +38306,17 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tc_idm_11_1_data_types_attribute_strings_dut_as_server_data_model"><a class="anchor" href="#_tc_idm_11_1_data_types_attribute_strings_dut_as_server_data_model"></a>32.6.11. [TC-IDM-11.1] Data types - attribute strings [DUT as Server] - data model</h4>
+<h4 id="_tc_idm_10_4_cluster_requirements_pics_dut_as_server"><a class="anchor" href="#_tc_idm_10_4_cluster_requirements_pics_dut_as_server"></a>32.6.11. [TC-IDM-10.4] Cluster requirements - PICS [DUT as Server]</h4>
 <div class="sect4">
 <h5 id="_category_133"><a class="anchor" href="#_category_133"></a>Category</h5>
-
+<div class="paragraph">
+<p>Conformance</p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="_purpose_134"><a class="anchor" href="#_purpose_134"></a>Purpose</h5>
 <div class="paragraph">
-<p>Tests that no string attributes on the node contain invalid characters.</p>
+<p>Tests the PICS for clusters, features, attributes, and commands on the DUT match exactly the PICS.</p>
 </div>
 </div>
 <div class="sect4">
@@ -38356,9 +38361,150 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This test should be run for each endpoint on the device, using the appropriate PICS file.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect4">
 <h5 id="_test_procedure_133"><a class="anchor" href="#_test_procedure_133"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 8.3333%;">
+<col style="width: 8.3333%;">
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3335%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ref</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PICS</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Test Step</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH performs a wildcard read of all attributes on the endpoint under test</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For every standard cluster:<br>
+                If the cluster is present on the endpoint, ensure the server-side PICS code for the cluster is present in the PICS file (e.g. <code>OO.S</code> for On/Off cluster).<br>
+                If the cluster is not present on the endpoint, ensure the cluster server PICS code is not present in the PICS file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PICS exactly match for server clusters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For every standard cluster, for every attribute in the cluster:<br>
+                If the cluster is present on the endpoint and the attribute ID is present in the <code>AttributeList</code> global attribute within the cluster, ensure the server-side PICS code for the attribute is present in the PICS file (e.g. OO.S.A000 for On/Off cluster&#8217;s <code>OnOff</code> attribute).<br>
+                Otherwise, ensure the attribute PICS code is NOT present in the PICS file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PICS exactly match for all attributes in all clusters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For every cluster present in the spec, for every client &#8594; server command in the cluster:<br>
+                If the cluster is present on the endpoint and the command id is present in the accepted commands list, ensure the PICS code for the accepted command is present in the PICS file.<br>
+                Otherwise, ensure the accepted command PICS code is not present in the PICS file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PICS exactly match for all accepted commands in all clusters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For every cluster present in the spec, for every server &#8594; client command in the cluster:<br>
+                If the cluster is present on the endpoint and the command id is present in the generated commands list, ensure the PICS code for the generated command is present in the PICS file.<br>
+                Otherwise, ensure the generated command PICS code is not present in the PICS file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PICS exactly match for all generated commands in all clusters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For every cluster present in the spec, for every feature in the cluster:<br>
+                If the cluster is present on the endpoint and the feature is marked in the feature map, ensure the PICS code for the feature is present in the PICS file.<br>
+                Otherwise, ensure the feature PICS code is not present in the PICS file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PICS exactly match for all features in all clusters.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tc_idm_11_1_data_types_attribute_strings_dut_as_server_data_model"><a class="anchor" href="#_tc_idm_11_1_data_types_attribute_strings_dut_as_server_data_model"></a>32.6.12. [TC-IDM-11.1] Data types - attribute strings [DUT as Server] - data model</h4>
+<div class="sect4">
+<h5 id="_category_134"><a class="anchor" href="#_category_134"></a>Category</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_purpose_135"><a class="anchor" href="#_purpose_135"></a>Purpose</h5>
+<div class="paragraph">
+<p>Tests that no string attributes on the node contain invalid characters.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_134"><a class="anchor" href="#_pics_134"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>MCORE.IDM.S</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_134"><a class="anchor" href="#_required_devices_134"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH as Client.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as Server.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_87"><a class="anchor" href="#_device_topology_87"></a>Device Topology</h5>
+<div class="paragraph">
+<p>TH can connect to DUT over PASE or CASE.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_134"><a class="anchor" href="#_test_procedure_134"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -38843,13 +38989,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_1_administrator_behavior_using_ecm_dut_commissioner"><a class="anchor" href="#_tc_cadmin_1_1_administrator_behavior_using_ecm_dut_commissioner"></a>36.1.1. [TC-CADMIN-1.1] Administrator Behavior using ECM [DUT - Commissioner]</h4>
 <div class="sect4">
-<h5 id="_category_134"><a class="anchor" href="#_category_134"></a>Category</h5>
+<h5 id="_category_135"><a class="anchor" href="#_category_135"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_135"><a class="anchor" href="#_purpose_135"></a>Purpose</h5>
+<h5 id="_purpose_136"><a class="anchor" href="#_purpose_136"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies Administrators involved in a Multiple Fabrics scenario are behaving properly by fulfilling:</p>
 </div>
@@ -38874,7 +39020,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_134"><a class="anchor" href="#_pics_134"></a>PICS</h5>
+<h5 id="_pics_135"><a class="anchor" href="#_pics_135"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -38887,7 +39033,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_134"><a class="anchor" href="#_required_devices_134"></a>Required Devices</h5>
+<h5 id="_required_devices_135"><a class="anchor" href="#_required_devices_135"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -38949,13 +39095,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_87"><a class="anchor" href="#_device_topology_87"></a>Device Topology</h5>
+<h5 id="_device_topology_88"><a class="anchor" href="#_device_topology_88"></a>Device Topology</h5>
 <div class="paragraph">
 <p>An existing Fabric should exist, with a Commissioner (TH_CR2) that will create a new, non-conflicting fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_134"><a class="anchor" href="#_test_procedure_134"></a>Test Procedure</h5>
+<h5 id="_test_procedure_135"><a class="anchor" href="#_test_procedure_135"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -39116,13 +39262,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_2_administrator_behavior_using_bcm_dut_commissioner"><a class="anchor" href="#_tc_cadmin_1_2_administrator_behavior_using_bcm_dut_commissioner"></a>36.1.2. [TC-CADMIN-1.2] Administrator Behavior using BCM [DUT - Commissioner]</h4>
 <div class="sect4">
-<h5 id="_category_135"><a class="anchor" href="#_category_135"></a>Category</h5>
+<h5 id="_category_136"><a class="anchor" href="#_category_136"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_136"><a class="anchor" href="#_purpose_136"></a>Purpose</h5>
+<h5 id="_purpose_137"><a class="anchor" href="#_purpose_137"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies Administrators involved in a Multiple Fabrics scenario are behaving properly by fulfilling:</p>
 </div>
@@ -39147,7 +39293,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_135"><a class="anchor" href="#_pics_135"></a>PICS</h5>
+<h5 id="_pics_136"><a class="anchor" href="#_pics_136"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -39160,7 +39306,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_135"><a class="anchor" href="#_required_devices_135"></a>Required Devices</h5>
+<h5 id="_required_devices_136"><a class="anchor" href="#_required_devices_136"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -39222,13 +39368,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_88"><a class="anchor" href="#_device_topology_88"></a>Device Topology</h5>
+<h5 id="_device_topology_89"><a class="anchor" href="#_device_topology_89"></a>Device Topology</h5>
 <div class="paragraph">
 <p>An existing Fabric should exist, with a Commissioner (TH_CR2) that will create a new, non-conflicting fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_135"><a class="anchor" href="#_test_procedure_135"></a>Test Procedure</h5>
+<h5 id="_test_procedure_136"><a class="anchor" href="#_test_procedure_136"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -39382,13 +39528,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_3_node_behavior_using_ecm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_3_node_behavior_using_ecm_dut_commissionee"></a>36.1.3. [TC-CADMIN-1.3] Node Behavior using ECM [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_136"><a class="anchor" href="#_category_136"></a>Category</h5>
+<h5 id="_category_137"><a class="anchor" href="#_category_137"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_137"><a class="anchor" href="#_purpose_137"></a>Purpose</h5>
+<h5 id="_purpose_138"><a class="anchor" href="#_purpose_138"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies Node behavior in a Multiple Fabrics scenario:</p>
 </div>
@@ -39410,7 +39556,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_136"><a class="anchor" href="#_pics_136"></a>PICS</h5>
+<h5 id="_pics_137"><a class="anchor" href="#_pics_137"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -39420,7 +39566,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_136"><a class="anchor" href="#_required_devices_136"></a>Required Devices</h5>
+<h5 id="_required_devices_137"><a class="anchor" href="#_required_devices_137"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -39477,13 +39623,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_89"><a class="anchor" href="#_device_topology_89"></a>Device Topology</h5>
+<h5 id="_device_topology_90"><a class="anchor" href="#_device_topology_90"></a>Device Topology</h5>
 <div class="paragraph">
 <p>An existing Fabric should exist, with a Commissioner (TH_CR1) that will create a new, non-conflicting fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_136"><a class="anchor" href="#_test_procedure_136"></a>Test Procedure</h5>
+<h5 id="_test_procedure_137"><a class="anchor" href="#_test_procedure_137"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -39616,13 +39762,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_4_node_behavior_using_bcm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_4_node_behavior_using_bcm_dut_commissionee"></a>36.1.4. [TC-CADMIN-1.4] Node Behavior using BCM [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_137"><a class="anchor" href="#_category_137"></a>Category</h5>
+<h5 id="_category_138"><a class="anchor" href="#_category_138"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_138"><a class="anchor" href="#_purpose_138"></a>Purpose</h5>
+<h5 id="_purpose_139"><a class="anchor" href="#_purpose_139"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies Node behavior in a Multiple Fabrics scenario:</p>
 </div>
@@ -39644,7 +39790,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_137"><a class="anchor" href="#_pics_137"></a>PICS</h5>
+<h5 id="_pics_138"><a class="anchor" href="#_pics_138"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -39657,7 +39803,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_137"><a class="anchor" href="#_required_devices_137"></a>Required Devices</h5>
+<h5 id="_required_devices_138"><a class="anchor" href="#_required_devices_138"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -39714,13 +39860,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_90"><a class="anchor" href="#_device_topology_90"></a>Device Topology</h5>
+<h5 id="_device_topology_91"><a class="anchor" href="#_device_topology_91"></a>Device Topology</h5>
 <div class="paragraph">
 <p>An existing Fabric should exist, with a Commissioner (TH_CR1) that will create a new, non-conflicting fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_137"><a class="anchor" href="#_test_procedure_137"></a>Test Procedure</h5>
+<h5 id="_test_procedure_138"><a class="anchor" href="#_test_procedure_138"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -39853,19 +39999,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_5_commissioning_window_handling_timeout_and_revocation_using_ecm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_5_commissioning_window_handling_timeout_and_revocation_using_ecm_dut_commissionee"></a>36.1.5. [TC-CADMIN-1.5] Commissioning window handling timeout and revocation using ECM [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_138"><a class="anchor" href="#_category_138"></a>Category</h5>
+<h5 id="_category_139"><a class="anchor" href="#_category_139"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_139"><a class="anchor" href="#_purpose_139"></a>Purpose</h5>
+<h5 id="_purpose_140"><a class="anchor" href="#_purpose_140"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the commissioning windows is open only during the expected time and can be revoked at any time.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_138"><a class="anchor" href="#_pics_138"></a>PICS</h5>
+<h5 id="_pics_139"><a class="anchor" href="#_pics_139"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -39875,7 +40021,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_138"><a class="anchor" href="#_required_devices_138"></a>Required Devices</h5>
+<h5 id="_required_devices_139"><a class="anchor" href="#_required_devices_139"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -39937,13 +40083,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_91"><a class="anchor" href="#_device_topology_91"></a>Device Topology</h5>
+<h5 id="_device_topology_92"><a class="anchor" href="#_device_topology_92"></a>Device Topology</h5>
 <div class="paragraph">
 <p>An existing Fabric should exist, with a Commissioner (TH_CR1) that will create a new, non-conflicting fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_138"><a class="anchor" href="#_test_procedure_138"></a>Test Procedure</h5>
+<h5 id="_test_procedure_139"><a class="anchor" href="#_test_procedure_139"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -40076,19 +40222,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_6_commissioning_window_handling_timeout_and_revocation_using_bcm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_6_commissioning_window_handling_timeout_and_revocation_using_bcm_dut_commissionee"></a>36.1.6. [TC-CADMIN-1.6] Commissioning window handling timeout and revocation using BCM [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_139"><a class="anchor" href="#_category_139"></a>Category</h5>
+<h5 id="_category_140"><a class="anchor" href="#_category_140"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_140"><a class="anchor" href="#_purpose_140"></a>Purpose</h5>
+<h5 id="_purpose_141"><a class="anchor" href="#_purpose_141"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the commissioning windows is open only during the expected time and can be revoked at any time.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_139"><a class="anchor" href="#_pics_139"></a>PICS</h5>
+<h5 id="_pics_140"><a class="anchor" href="#_pics_140"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -40101,7 +40247,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_139"><a class="anchor" href="#_required_devices_139"></a>Required Devices</h5>
+<h5 id="_required_devices_140"><a class="anchor" href="#_required_devices_140"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -40163,13 +40309,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_92"><a class="anchor" href="#_device_topology_92"></a>Device Topology</h5>
+<h5 id="_device_topology_93"><a class="anchor" href="#_device_topology_93"></a>Device Topology</h5>
 <div class="paragraph">
 <p>An existing Fabric should exist, with a Commissioner (TH_CR1) that will create a new, non-conflicting fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_139"><a class="anchor" href="#_test_procedure_139"></a>Test Procedure</h5>
+<h5 id="_test_procedure_140"><a class="anchor" href="#_test_procedure_140"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -40295,19 +40441,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_7_commissioning_window_handling_timeout_and_revocation_using_ecm_dut_commissioner"><a class="anchor" href="#_tc_cadmin_1_7_commissioning_window_handling_timeout_and_revocation_using_ecm_dut_commissioner"></a>36.1.7. [TC-CADMIN-1.7] Commissioning window handling timeout and revocation using ECM [DUT - Commissioner]</h4>
 <div class="sect4">
-<h5 id="_category_140"><a class="anchor" href="#_category_140"></a>Category</h5>
+<h5 id="_category_141"><a class="anchor" href="#_category_141"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_141"><a class="anchor" href="#_purpose_141"></a>Purpose</h5>
+<h5 id="_purpose_142"><a class="anchor" href="#_purpose_142"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the commissioning windows is open only during the expected time and can be revoked at any time.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_140"><a class="anchor" href="#_pics_140"></a>PICS</h5>
+<h5 id="_pics_141"><a class="anchor" href="#_pics_141"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -40320,7 +40466,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_140"><a class="anchor" href="#_required_devices_140"></a>Required Devices</h5>
+<h5 id="_required_devices_141"><a class="anchor" href="#_required_devices_141"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -40382,13 +40528,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_93"><a class="anchor" href="#_device_topology_93"></a>Device Topology</h5>
+<h5 id="_device_topology_94"><a class="anchor" href="#_device_topology_94"></a>Device Topology</h5>
 <div class="paragraph">
 <p>An existing Fabric should exist, with a Commissioner (TH_CR2) that will create a new, non-conflicting fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_140"><a class="anchor" href="#_test_procedure_140"></a>Test Procedure</h5>
+<h5 id="_test_procedure_141"><a class="anchor" href="#_test_procedure_141"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -40514,19 +40660,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_8_commissioning_window_handling_timeout_and_revocation_using_bcm_dut_commissioner"><a class="anchor" href="#_tc_cadmin_1_8_commissioning_window_handling_timeout_and_revocation_using_bcm_dut_commissioner"></a>36.1.8. [TC-CADMIN-1.8] Commissioning window handling timeout and revocation using BCM [DUT - Commissioner]</h4>
 <div class="sect4">
-<h5 id="_category_141"><a class="anchor" href="#_category_141"></a>Category</h5>
+<h5 id="_category_142"><a class="anchor" href="#_category_142"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_142"><a class="anchor" href="#_purpose_142"></a>Purpose</h5>
+<h5 id="_purpose_143"><a class="anchor" href="#_purpose_143"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the commissioning windows is open only during the expected time and can be revoked at any time.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_141"><a class="anchor" href="#_pics_141"></a>PICS</h5>
+<h5 id="_pics_142"><a class="anchor" href="#_pics_142"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -40539,7 +40685,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_141"><a class="anchor" href="#_required_devices_141"></a>Required Devices</h5>
+<h5 id="_required_devices_142"><a class="anchor" href="#_required_devices_142"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -40601,13 +40747,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_94"><a class="anchor" href="#_device_topology_94"></a>Device Topology</h5>
+<h5 id="_device_topology_95"><a class="anchor" href="#_device_topology_95"></a>Device Topology</h5>
 <div class="paragraph">
 <p>An existing Fabric should exist, with a Commissioner (TH_CR2) that will create a new, non-conflicting fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_141"><a class="anchor" href="#_test_procedure_141"></a>Test Procedure</h5>
+<h5 id="_test_procedure_142"><a class="anchor" href="#_test_procedure_142"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -40733,19 +40879,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_9_device_exit_commissioning_mode_after_20_failed_commission_attempts_ecm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_9_device_exit_commissioning_mode_after_20_failed_commission_attempts_ecm_dut_commissionee"></a>36.1.9. [TC-CADMIN-1.9] Device exit commissioning mode after 20 failed commission attempts [ECM] [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_142"><a class="anchor" href="#_category_142"></a>Category</h5>
+<h5 id="_category_143"><a class="anchor" href="#_category_143"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_143"><a class="anchor" href="#_purpose_143"></a>Purpose</h5>
+<h5 id="_purpose_144"><a class="anchor" href="#_purpose_144"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the DUT exits its commissioning window after the 20 failed commissioning attempts.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_142"><a class="anchor" href="#_pics_142"></a>PICS</h5>
+<h5 id="_pics_143"><a class="anchor" href="#_pics_143"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -40755,7 +40901,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_142"><a class="anchor" href="#_required_devices_142"></a>Required Devices</h5>
+<h5 id="_required_devices_143"><a class="anchor" href="#_required_devices_143"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -40817,13 +40963,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_95"><a class="anchor" href="#_device_topology_95"></a>Device Topology</h5>
+<h5 id="_device_topology_96"><a class="anchor" href="#_device_topology_96"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_142"><a class="anchor" href="#_test_procedure_142"></a>Test Procedure</h5>
+<h5 id="_test_procedure_143"><a class="anchor" href="#_test_procedure_143"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -40893,19 +41039,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_10_device_exit_commissioning_mode_after_20_failed_commission_attempts_bcm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_10_device_exit_commissioning_mode_after_20_failed_commission_attempts_bcm_dut_commissionee"></a>36.1.10. [TC-CADMIN-1.10] Device exit commissioning mode after 20 failed commission attempts [BCM] [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_143"><a class="anchor" href="#_category_143"></a>Category</h5>
+<h5 id="_category_144"><a class="anchor" href="#_category_144"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_144"><a class="anchor" href="#_purpose_144"></a>Purpose</h5>
+<h5 id="_purpose_145"><a class="anchor" href="#_purpose_145"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the DUT exits its commissioning window after the 20 failed commissioning attempts.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_143"><a class="anchor" href="#_pics_143"></a>PICS</h5>
+<h5 id="_pics_144"><a class="anchor" href="#_pics_144"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -40918,7 +41064,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_143"><a class="anchor" href="#_required_devices_143"></a>Required Devices</h5>
+<h5 id="_required_devices_144"><a class="anchor" href="#_required_devices_144"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -40980,13 +41126,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_96"><a class="anchor" href="#_device_topology_96"></a>Device Topology</h5>
+<h5 id="_device_topology_97"><a class="anchor" href="#_device_topology_97"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_143"><a class="anchor" href="#_test_procedure_143"></a>Test Procedure</h5>
+<h5 id="_test_procedure_144"><a class="anchor" href="#_test_procedure_144"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -41049,19 +41195,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_11_open_commissioning_window_on_dut_twice_using_ecm_then_bcm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_11_open_commissioning_window_on_dut_twice_using_ecm_then_bcm_dut_commissionee"></a>36.1.11. [TC-CADMIN-1.11] Open commissioning window on DUT twice using ECM then BCM [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_144"><a class="anchor" href="#_category_144"></a>Category</h5>
+<h5 id="_category_145"><a class="anchor" href="#_category_145"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_145"><a class="anchor" href="#_purpose_145"></a>Purpose</h5>
+<h5 id="_purpose_146"><a class="anchor" href="#_purpose_146"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies DUT successfully rejects the OCW when it is already available for commissioning during PIXIT.CADMIN.CwDuration.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_144"><a class="anchor" href="#_pics_144"></a>PICS</h5>
+<h5 id="_pics_145"><a class="anchor" href="#_pics_145"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -41074,7 +41220,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_144"><a class="anchor" href="#_required_devices_144"></a>Required Devices</h5>
+<h5 id="_required_devices_145"><a class="anchor" href="#_required_devices_145"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -41136,13 +41282,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_97"><a class="anchor" href="#_device_topology_97"></a>Device Topology</h5>
+<h5 id="_device_topology_98"><a class="anchor" href="#_device_topology_98"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_144"><a class="anchor" href="#_test_procedure_144"></a>Test Procedure</h5>
+<h5 id="_test_procedure_145"><a class="anchor" href="#_test_procedure_145"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -41282,19 +41428,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_12_open_commissioning_window_on_dut_twice_using_ecm_then_bcm_dut_commissioner"><a class="anchor" href="#_tc_cadmin_1_12_open_commissioning_window_on_dut_twice_using_ecm_then_bcm_dut_commissioner"></a>36.1.12. [TC-CADMIN-1.12] Open commissioning window on DUT twice using ECM then BCM [DUT - Commissioner]</h4>
 <div class="sect4">
-<h5 id="_category_145"><a class="anchor" href="#_category_145"></a>Category</h5>
+<h5 id="_category_146"><a class="anchor" href="#_category_146"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_146"><a class="anchor" href="#_purpose_146"></a>Purpose</h5>
+<h5 id="_purpose_147"><a class="anchor" href="#_purpose_147"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies DUT successfully handle rejections on the OCW and reading attributes windowstatus, adminfabricindex, adminvendorid</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_145"><a class="anchor" href="#_pics_145"></a>PICS</h5>
+<h5 id="_pics_146"><a class="anchor" href="#_pics_146"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -41310,7 +41456,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_145"><a class="anchor" href="#_required_devices_145"></a>Required Devices</h5>
+<h5 id="_required_devices_146"><a class="anchor" href="#_required_devices_146"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -41372,13 +41518,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_98"><a class="anchor" href="#_device_topology_98"></a>Device Topology</h5>
+<h5 id="_device_topology_99"><a class="anchor" href="#_device_topology_99"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CE and DUT_CR1 on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_145"><a class="anchor" href="#_test_procedure_145"></a>Test Procedure</h5>
+<h5 id="_test_procedure_146"><a class="anchor" href="#_test_procedure_146"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -41518,19 +41664,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_13_open_commissioning_window_twice_on_dut_using_bcm_then_ecm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_13_open_commissioning_window_twice_on_dut_using_bcm_then_ecm_dut_commissionee"></a>36.1.13. [TC-CADMIN-1.13] Open commissioning window twice on DUT using BCM then ECM [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_146"><a class="anchor" href="#_category_146"></a>Category</h5>
+<h5 id="_category_147"><a class="anchor" href="#_category_147"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_147"><a class="anchor" href="#_purpose_147"></a>Purpose</h5>
+<h5 id="_purpose_148"><a class="anchor" href="#_purpose_148"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies DUT successfully rejects the OCW when it is already available for commissioning during PIXIT.CADMIN.CwDuration.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_146"><a class="anchor" href="#_pics_146"></a>PICS</h5>
+<h5 id="_pics_147"><a class="anchor" href="#_pics_147"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -41543,7 +41689,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_146"><a class="anchor" href="#_required_devices_146"></a>Required Devices</h5>
+<h5 id="_required_devices_147"><a class="anchor" href="#_required_devices_147"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -41605,13 +41751,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_99"><a class="anchor" href="#_device_topology_99"></a>Device Topology</h5>
+<h5 id="_device_topology_100"><a class="anchor" href="#_device_topology_100"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_146"><a class="anchor" href="#_test_procedure_146"></a>Test Procedure</h5>
+<h5 id="_test_procedure_147"><a class="anchor" href="#_test_procedure_147"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -41807,19 +41953,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_14_open_commissioning_window_twice_on_dut_using_bcm_then_ecm_dut_commissioner"><a class="anchor" href="#_tc_cadmin_1_14_open_commissioning_window_twice_on_dut_using_bcm_then_ecm_dut_commissioner"></a>36.1.14. [TC-CADMIN-1.14] Open commissioning window twice on DUT using BCM then ECM [DUT - Commissioner]</h4>
 <div class="sect4">
-<h5 id="_category_147"><a class="anchor" href="#_category_147"></a>Category</h5>
+<h5 id="_category_148"><a class="anchor" href="#_category_148"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_148"><a class="anchor" href="#_purpose_148"></a>Purpose</h5>
+<h5 id="_purpose_149"><a class="anchor" href="#_purpose_149"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies DUT as commissioner successfully handles OCW operation and reading attributes windowstatus, adminfabricindex, adminvendorid</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_147"><a class="anchor" href="#_pics_147"></a>PICS</h5>
+<h5 id="_pics_148"><a class="anchor" href="#_pics_148"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -41835,7 +41981,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_147"><a class="anchor" href="#_required_devices_147"></a>Required Devices</h5>
+<h5 id="_required_devices_148"><a class="anchor" href="#_required_devices_148"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -41897,13 +42043,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_100"><a class="anchor" href="#_device_topology_100"></a>Device Topology</h5>
+<h5 id="_device_topology_101"><a class="anchor" href="#_device_topology_101"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CE and DUT_CR1 on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_147"><a class="anchor" href="#_test_procedure_147"></a>Test Procedure</h5>
+<h5 id="_test_procedure_148"><a class="anchor" href="#_test_procedure_148"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -42050,19 +42196,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_15_removing_fabrics_from_dut_and_fabric_index_enumeration_using_ecm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_15_removing_fabrics_from_dut_and_fabric_index_enumeration_using_ecm_dut_commissionee"></a>36.1.15. [TC-CADMIN-1.15] Removing Fabrics from DUT and Fabric index enumeration using ECM [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_148"><a class="anchor" href="#_category_148"></a>Category</h5>
+<h5 id="_category_149"><a class="anchor" href="#_category_149"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_149"><a class="anchor" href="#_purpose_149"></a>Purpose</h5>
+<h5 id="_purpose_150"><a class="anchor" href="#_purpose_150"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the removal of Fabrics.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_148"><a class="anchor" href="#_pics_148"></a>PICS</h5>
+<h5 id="_pics_149"><a class="anchor" href="#_pics_149"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -42072,7 +42218,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_148"><a class="anchor" href="#_required_devices_148"></a>Required Devices</h5>
+<h5 id="_required_devices_149"><a class="anchor" href="#_required_devices_149"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -42134,13 +42280,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_101"><a class="anchor" href="#_device_topology_101"></a>Device Topology</h5>
+<h5 id="_device_topology_102"><a class="anchor" href="#_device_topology_102"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_148"><a class="anchor" href="#_test_procedure_148"></a>Test Procedure</h5>
+<h5 id="_test_procedure_149"><a class="anchor" href="#_test_procedure_149"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -42259,19 +42405,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_16_removing_fabrics_from_dut_and_fabric_index_enumeration_using_bcm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_16_removing_fabrics_from_dut_and_fabric_index_enumeration_using_bcm_dut_commissionee"></a>36.1.16. [TC-CADMIN-1.16] Removing Fabrics from DUT and Fabric index enumeration using BCM [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_149"><a class="anchor" href="#_category_149"></a>Category</h5>
+<h5 id="_category_150"><a class="anchor" href="#_category_150"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_150"><a class="anchor" href="#_purpose_150"></a>Purpose</h5>
+<h5 id="_purpose_151"><a class="anchor" href="#_purpose_151"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the removal of Fabrics.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_149"><a class="anchor" href="#_pics_149"></a>PICS</h5>
+<h5 id="_pics_150"><a class="anchor" href="#_pics_150"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -42284,7 +42430,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_149"><a class="anchor" href="#_required_devices_149"></a>Required Devices</h5>
+<h5 id="_required_devices_150"><a class="anchor" href="#_required_devices_150"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -42346,13 +42492,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_102"><a class="anchor" href="#_device_topology_102"></a>Device Topology</h5>
+<h5 id="_device_topology_103"><a class="anchor" href="#_device_topology_103"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_149"><a class="anchor" href="#_test_procedure_149"></a>Test Procedure</h5>
+<h5 id="_test_procedure_150"><a class="anchor" href="#_test_procedure_150"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -42471,19 +42617,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_17_removing_fabrics_from_dut_and_fabric_index_enumeration_using_ecm_dut_commissioner"><a class="anchor" href="#_tc_cadmin_1_17_removing_fabrics_from_dut_and_fabric_index_enumeration_using_ecm_dut_commissioner"></a>36.1.17. [TC-CADMIN-1.17] Removing Fabrics from DUT and Fabric index enumeration using ECM [DUT - Commissioner]</h4>
 <div class="sect4">
-<h5 id="_category_150"><a class="anchor" href="#_category_150"></a>Category</h5>
+<h5 id="_category_151"><a class="anchor" href="#_category_151"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_151"><a class="anchor" href="#_purpose_151"></a>Purpose</h5>
+<h5 id="_purpose_152"><a class="anchor" href="#_purpose_152"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the removal of Fabrics.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_150"><a class="anchor" href="#_pics_150"></a>PICS</h5>
+<h5 id="_pics_151"><a class="anchor" href="#_pics_151"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -42496,7 +42642,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_150"><a class="anchor" href="#_required_devices_150"></a>Required Devices</h5>
+<h5 id="_required_devices_151"><a class="anchor" href="#_required_devices_151"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -42558,13 +42704,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_103"><a class="anchor" href="#_device_topology_103"></a>Device Topology</h5>
+<h5 id="_device_topology_104"><a class="anchor" href="#_device_topology_104"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CE and DUT_CR1 on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_150"><a class="anchor" href="#_test_procedure_150"></a>Test Procedure</h5>
+<h5 id="_test_procedure_151"><a class="anchor" href="#_test_procedure_151"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -42683,19 +42829,19 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_18_removing_fabrics_from_dut_and_fabric_index_enumeration_using_bcm_dut_commissioner"><a class="anchor" href="#_tc_cadmin_1_18_removing_fabrics_from_dut_and_fabric_index_enumeration_using_bcm_dut_commissioner"></a>36.1.18. [TC-CADMIN-1.18] Removing Fabrics from DUT and Fabric index enumeration using BCM [DUT - Commissioner]</h4>
 <div class="sect4">
-<h5 id="_category_151"><a class="anchor" href="#_category_151"></a>Category</h5>
+<h5 id="_category_152"><a class="anchor" href="#_category_152"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_152"><a class="anchor" href="#_purpose_152"></a>Purpose</h5>
+<h5 id="_purpose_153"><a class="anchor" href="#_purpose_153"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the removal of Fabrics.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_151"><a class="anchor" href="#_pics_151"></a>PICS</h5>
+<h5 id="_pics_152"><a class="anchor" href="#_pics_152"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -42708,7 +42854,7 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_151"><a class="anchor" href="#_required_devices_151"></a>Required Devices</h5>
+<h5 id="_required_devices_152"><a class="anchor" href="#_required_devices_152"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -42770,13 +42916,13 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_104"><a class="anchor" href="#_device_topology_104"></a>Device Topology</h5>
+<h5 id="_device_topology_105"><a class="anchor" href="#_device_topology_105"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CE and DUT_CR1 on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_151"><a class="anchor" href="#_test_procedure_151"></a>Test Procedure</h5>
+<h5 id="_test_procedure_152"><a class="anchor" href="#_test_procedure_152"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -42895,20 +43041,20 @@ Cluster: Basic Information, Attribute name - NodeLabel, type - String, Constrain
 <div class="sect3">
 <h4 id="_tc_cadmin_1_19_max_number_of_commissioned_fabrics_and_supportedfabrics_rollover_using_ecm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_19_max_number_of_commissioned_fabrics_and_supportedfabrics_rollover_using_ecm_dut_commissionee"></a>36.1.19. [TC-CADMIN-1.19] max number of Commissioned Fabrics and SupportedFabrics rollover using ECM [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_152"><a class="anchor" href="#_category_152"></a>Category</h5>
+<h5 id="_category_153"><a class="anchor" href="#_category_153"></a>Category</h5>
 <div class="paragraph">
 <p>Functional, Automation Required</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_153"><a class="anchor" href="#_purpose_153"></a>Purpose</h5>
+<h5 id="_purpose_154"><a class="anchor" href="#_purpose_154"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the max number of CommissionedFabrics based on SupportedFabrics.<br>
 If the device already has the CommissionedFabrics attribute equal to the SupportedFabrics attribute, then the device’s operational credentials table is considered full and the device SHALL process the error by responding with a StatusCode of TableFull as described in Section 11.17.7.7.2, “Handling Errors”.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_152"><a class="anchor" href="#_pics_152"></a>PICS</h5>
+<h5 id="_pics_153"><a class="anchor" href="#_pics_153"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -42918,7 +43064,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_152"><a class="anchor" href="#_required_devices_152"></a>Required Devices</h5>
+<h5 id="_required_devices_153"><a class="anchor" href="#_required_devices_153"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -42980,13 +43126,13 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_105"><a class="anchor" href="#_device_topology_105"></a>Device Topology</h5>
+<h5 id="_device_topology_106"><a class="anchor" href="#_device_topology_106"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_152"><a class="anchor" href="#_test_procedure_152"></a>Test Procedure</h5>
+<h5 id="_test_procedure_153"><a class="anchor" href="#_test_procedure_153"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -43056,20 +43202,20 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 <div class="sect3">
 <h4 id="_tc_cadmin_1_20_max_number_of_commissioned_fabrics_and_supportedfabrics_rollover_using_bcm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_20_max_number_of_commissioned_fabrics_and_supportedfabrics_rollover_using_bcm_dut_commissionee"></a>36.1.20. [TC-CADMIN-1.20] max number of Commissioned Fabrics and SupportedFabrics rollover using BCM [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_153"><a class="anchor" href="#_category_153"></a>Category</h5>
+<h5 id="_category_154"><a class="anchor" href="#_category_154"></a>Category</h5>
 <div class="paragraph">
 <p>Functional, Automation Required</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_154"><a class="anchor" href="#_purpose_154"></a>Purpose</h5>
+<h5 id="_purpose_155"><a class="anchor" href="#_purpose_155"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the max number of CommissionedFabrics based on SupportedFabrics.<br>
 If the device already has the CommissionedFabrics attribute equal to the SupportedFabrics attribute, then the device’s operational credentials table is considered full and the device SHALL process the error by responding with a StatusCode of TableFull as described in Section 11.17.7.7.2, “Handling Errors”.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_153"><a class="anchor" href="#_pics_153"></a>PICS</h5>
+<h5 id="_pics_154"><a class="anchor" href="#_pics_154"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -43082,7 +43228,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_153"><a class="anchor" href="#_required_devices_153"></a>Required Devices</h5>
+<h5 id="_required_devices_154"><a class="anchor" href="#_required_devices_154"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -43144,13 +43290,13 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_106"><a class="anchor" href="#_device_topology_106"></a>Device Topology</h5>
+<h5 id="_device_topology_107"><a class="anchor" href="#_device_topology_107"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_153"><a class="anchor" href="#_test_procedure_153"></a>Test Procedure</h5>
+<h5 id="_test_procedure_154"><a class="anchor" href="#_test_procedure_154"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -43220,19 +43366,19 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 <div class="sect3">
 <h4 id="_tc_cadmin_1_21_open_commissioning_window_durations_max_and_max1_bcm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_21_open_commissioning_window_durations_max_and_max1_bcm_dut_commissionee"></a>36.1.21. [TC-CADMIN-1.21] Open commissioning window - durations max and max+1 [BCM] [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_154"><a class="anchor" href="#_category_154"></a>Category</h5>
+<h5 id="_category_155"><a class="anchor" href="#_category_155"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_155"><a class="anchor" href="#_purpose_155"></a>Purpose</h5>
+<h5 id="_purpose_156"><a class="anchor" href="#_purpose_156"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies when the Commissioning Timeout parameter of the OCW command is NOT set to less than the allowed maximum (15 minutes) therefore supporting 15 minutes.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_154"><a class="anchor" href="#_pics_154"></a>PICS</h5>
+<h5 id="_pics_155"><a class="anchor" href="#_pics_155"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -43245,7 +43391,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_154"><a class="anchor" href="#_required_devices_154"></a>Required Devices</h5>
+<h5 id="_required_devices_155"><a class="anchor" href="#_required_devices_155"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -43297,13 +43443,13 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_107"><a class="anchor" href="#_device_topology_107"></a>Device Topology</h5>
+<h5 id="_device_topology_108"><a class="anchor" href="#_device_topology_108"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_154"><a class="anchor" href="#_test_procedure_154"></a>Test Procedure</h5>
+<h5 id="_test_procedure_155"><a class="anchor" href="#_test_procedure_155"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -43373,19 +43519,19 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 <div class="sect3">
 <h4 id="_tc_cadmin_1_22_open_commissioning_window_durations_max_and_max1_ecm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_22_open_commissioning_window_durations_max_and_max1_ecm_dut_commissionee"></a>36.1.22. [TC-CADMIN-1.22] Open commissioning window - durations max and max+1 [ECM] [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_155"><a class="anchor" href="#_category_155"></a>Category</h5>
+<h5 id="_category_156"><a class="anchor" href="#_category_156"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_156"><a class="anchor" href="#_purpose_156"></a>Purpose</h5>
+<h5 id="_purpose_157"><a class="anchor" href="#_purpose_157"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies when the Commissioning Timeout parameter of the OCW command is NOT set to less than the allowed maximum (15 minutes) therefore supporting 15 minutes.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_155"><a class="anchor" href="#_pics_155"></a>PICS</h5>
+<h5 id="_pics_156"><a class="anchor" href="#_pics_156"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -43395,7 +43541,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_155"><a class="anchor" href="#_required_devices_155"></a>Required Devices</h5>
+<h5 id="_required_devices_156"><a class="anchor" href="#_required_devices_156"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -43447,13 +43593,13 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_108"><a class="anchor" href="#_device_topology_108"></a>Device Topology</h5>
+<h5 id="_device_topology_109"><a class="anchor" href="#_device_topology_109"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_155"><a class="anchor" href="#_test_procedure_155"></a>Test Procedure</h5>
+<h5 id="_test_procedure_156"><a class="anchor" href="#_test_procedure_156"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -43523,19 +43669,19 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 <div class="sect3">
 <h4 id="_tc_cadmin_1_23_open_commissioning_window_durations_min_and_min_1_bcm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_23_open_commissioning_window_durations_min_and_min_1_bcm_dut_commissionee"></a>36.1.23. [TC-CADMIN-1.23] Open commissioning window - durations min and min-1 [BCM] [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_156"><a class="anchor" href="#_category_156"></a>Category</h5>
+<h5 id="_category_157"><a class="anchor" href="#_category_157"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_157"><a class="anchor" href="#_purpose_157"></a>Purpose</h5>
+<h5 id="_purpose_158"><a class="anchor" href="#_purpose_158"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies when the Commissioning Timeout parameter of the OCW command is shorter to the minimum value (3m or 180s).</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_156"><a class="anchor" href="#_pics_156"></a>PICS</h5>
+<h5 id="_pics_157"><a class="anchor" href="#_pics_157"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -43548,7 +43694,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_156"><a class="anchor" href="#_required_devices_156"></a>Required Devices</h5>
+<h5 id="_required_devices_157"><a class="anchor" href="#_required_devices_157"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -43600,13 +43746,13 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_109"><a class="anchor" href="#_device_topology_109"></a>Device Topology</h5>
+<h5 id="_device_topology_110"><a class="anchor" href="#_device_topology_110"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_156"><a class="anchor" href="#_test_procedure_156"></a>Test Procedure</h5>
+<h5 id="_test_procedure_157"><a class="anchor" href="#_test_procedure_157"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -43676,19 +43822,19 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 <div class="sect3">
 <h4 id="_tc_cadmin_1_24_open_commissioning_window_durations_min_and_min_1_ecm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_24_open_commissioning_window_durations_min_and_min_1_ecm_dut_commissionee"></a>36.1.24. [TC-CADMIN-1.24] Open commissioning window - durations min and min-1 [ECM] [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_157"><a class="anchor" href="#_category_157"></a>Category</h5>
+<h5 id="_category_158"><a class="anchor" href="#_category_158"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_158"><a class="anchor" href="#_purpose_158"></a>Purpose</h5>
+<h5 id="_purpose_159"><a class="anchor" href="#_purpose_159"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies when the Commissioning Timeout parameter of the OCW command is shorter to the minimum value (3m or 180s).</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_157"><a class="anchor" href="#_pics_157"></a>PICS</h5>
+<h5 id="_pics_158"><a class="anchor" href="#_pics_158"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -43698,7 +43844,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_157"><a class="anchor" href="#_required_devices_157"></a>Required Devices</h5>
+<h5 id="_required_devices_158"><a class="anchor" href="#_required_devices_158"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -43750,13 +43896,13 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_110"><a class="anchor" href="#_device_topology_110"></a>Device Topology</h5>
+<h5 id="_device_topology_111"><a class="anchor" href="#_device_topology_111"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_157"><a class="anchor" href="#_test_procedure_157"></a>Test Procedure</h5>
+<h5 id="_test_procedure_158"><a class="anchor" href="#_test_procedure_158"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -43826,19 +43972,19 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 <div class="sect3">
 <h4 id="_tc_cadmin_1_25_subscription_to_the_attributes_verify_subscription_response_ecm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_25_subscription_to_the_attributes_verify_subscription_response_ecm_dut_commissionee"></a>36.1.25. [TC-CADMIN-1.25] Subscription to the attributes - verify subscription response [ECM] [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_158"><a class="anchor" href="#_category_158"></a>Category</h5>
+<h5 id="_category_159"><a class="anchor" href="#_category_159"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_159"><a class="anchor" href="#_purpose_159"></a>Purpose</h5>
+<h5 id="_purpose_160"><a class="anchor" href="#_purpose_160"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies response to the Subscription to attributes when commissioning window is opened or closed</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_158"><a class="anchor" href="#_pics_158"></a>PICS</h5>
+<h5 id="_pics_159"><a class="anchor" href="#_pics_159"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -43848,7 +43994,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_158"><a class="anchor" href="#_required_devices_158"></a>Required Devices</h5>
+<h5 id="_required_devices_159"><a class="anchor" href="#_required_devices_159"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -43905,13 +44051,13 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_111"><a class="anchor" href="#_device_topology_111"></a>Device Topology</h5>
+<h5 id="_device_topology_112"><a class="anchor" href="#_device_topology_112"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1, TH_CR2 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_158"><a class="anchor" href="#_test_procedure_158"></a>Test Procedure</h5>
+<h5 id="_test_procedure_159"><a class="anchor" href="#_test_procedure_159"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -44163,19 +44309,19 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 <div class="sect3">
 <h4 id="_tc_cadmin_1_26_subscription_to_the_attributes_verify_subscription_response_bcm_dut_commissionee"><a class="anchor" href="#_tc_cadmin_1_26_subscription_to_the_attributes_verify_subscription_response_bcm_dut_commissionee"></a>36.1.26. [TC-CADMIN-1.26] Subscription to the attributes - verify subscription response [BCM] [DUT - Commissionee]</h4>
 <div class="sect4">
-<h5 id="_category_159"><a class="anchor" href="#_category_159"></a>Category</h5>
+<h5 id="_category_160"><a class="anchor" href="#_category_160"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_160"><a class="anchor" href="#_purpose_160"></a>Purpose</h5>
+<h5 id="_purpose_161"><a class="anchor" href="#_purpose_161"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies response to the Subscription to attributes when commissioning window is opened or closed</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_159"><a class="anchor" href="#_pics_159"></a>PICS</h5>
+<h5 id="_pics_160"><a class="anchor" href="#_pics_160"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -44188,7 +44334,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_159"><a class="anchor" href="#_required_devices_159"></a>Required Devices</h5>
+<h5 id="_required_devices_160"><a class="anchor" href="#_required_devices_160"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -44245,13 +44391,13 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_112"><a class="anchor" href="#_device_topology_112"></a>Device Topology</h5>
+<h5 id="_device_topology_113"><a class="anchor" href="#_device_topology_113"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH_CR1, TH_CR2 and DUT_CE on the same Fabric</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_159"><a class="anchor" href="#_test_procedure_159"></a>Test Procedure</h5>
+<h5 id="_test_procedure_160"><a class="anchor" href="#_test_procedure_160"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -44647,19 +44793,19 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 <div class="sect3">
 <h4 id="ref_TC-BR-1"><a class="anchor" href="#ref_TC-BR-1"></a>39.1.1. [TC-BR-1] Basics of bridging (DUT server)</h4>
 <div class="sect4">
-<h5 id="_category_160"><a class="anchor" href="#_category_160"></a>Category</h5>
+<h5 id="_category_161"><a class="anchor" href="#_category_161"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance, Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_161"><a class="anchor" href="#_purpose_161"></a>Purpose</h5>
+<h5 id="_purpose_162"><a class="anchor" href="#_purpose_162"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the basic principles of bridging.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_160"><a class="anchor" href="#_pics_160"></a>PICS</h5>
+<h5 id="_pics_161"><a class="anchor" href="#_pics_161"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -44701,7 +44847,7 @@ If the bridge supports both actuator and sensor/switch devices, use at least one
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_160"><a class="anchor" href="#_required_devices_160"></a>Required Devices</h5>
+<h5 id="_required_devices_161"><a class="anchor" href="#_required_devices_161"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -44728,7 +44874,7 @@ If the bridge supports both actuator and sensor/switch devices, use at least one
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_113"><a class="anchor" href="#_device_topology_113"></a>Device Topology</h5>
+<h5 id="_device_topology_114"><a class="anchor" href="#_device_topology_114"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -44741,7 +44887,7 @@ with means to setup the bridge (e.g. add/remove/rename/group bridged devices).</
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_160"><a class="anchor" href="#_test_procedure_160"></a>Test Procedure</h5>
+<h5 id="_test_procedure_161"><a class="anchor" href="#_test_procedure_161"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4.7619%;">
@@ -44905,20 +45051,20 @@ cluster, derive the (application) device type(s) of the bridged device</p></td>
 <div class="sect3">
 <h4 id="ref_TC-BR-2"><a class="anchor" href="#ref_TC-BR-2"></a>39.1.2. [TC-BR-2] Changing the set of bridged devices (DUT server)</h4>
 <div class="sect4">
-<h5 id="_category_161"><a class="anchor" href="#_category_161"></a>Category</h5>
+<h5 id="_category_162"><a class="anchor" href="#_category_162"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance, Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_162"><a class="anchor" href="#_purpose_162"></a>Purpose</h5>
+<h5 id="_purpose_163"><a class="anchor" href="#_purpose_163"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the functionality of the bridge when bridged devices<br>
 are being added or deleted.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_161"><a class="anchor" href="#_pics_161"></a>PICS</h5>
+<h5 id="_pics_162"><a class="anchor" href="#_pics_162"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -44959,7 +45105,7 @@ are being added or deleted.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_161"><a class="anchor" href="#_required_devices_161"></a>Required Devices</h5>
+<h5 id="_required_devices_162"><a class="anchor" href="#_required_devices_162"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -44986,7 +45132,7 @@ are being added or deleted.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_114"><a class="anchor" href="#_device_topology_114"></a>Device Topology</h5>
+<h5 id="_device_topology_115"><a class="anchor" href="#_device_topology_115"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -44999,7 +45145,7 @@ with means to setup the bridge (e.g. add/remove/rename/group bridged devices).</
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_161"><a class="anchor" href="#_test_procedure_161"></a>Test Procedure</h5>
+<h5 id="_test_procedure_162"><a class="anchor" href="#_test_procedure_162"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4.7619%;">
@@ -45207,20 +45353,20 @@ changed</p>
 <div class="sect3">
 <h4 id="ref_TC-BR-3"><a class="anchor" href="#ref_TC-BR-3"></a>39.1.3. [TC-BR-3] Changing name and state of a bridged device (DUT server)</h4>
 <div class="sect4">
-<h5 id="_category_162"><a class="anchor" href="#_category_162"></a>Category</h5>
+<h5 id="_category_163"><a class="anchor" href="#_category_163"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance, Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_163"><a class="anchor" href="#_purpose_163"></a>Purpose</h5>
+<h5 id="_purpose_164"><a class="anchor" href="#_purpose_164"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the functionality of the bridge when bridged devices<br>
 are renamed or operated using non-Matter means.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_162"><a class="anchor" href="#_pics_162"></a>PICS</h5>
+<h5 id="_pics_163"><a class="anchor" href="#_pics_163"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -45261,7 +45407,7 @@ are renamed or operated using non-Matter means.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_162"><a class="anchor" href="#_required_devices_162"></a>Required Devices</h5>
+<h5 id="_required_devices_163"><a class="anchor" href="#_required_devices_163"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -45288,7 +45434,7 @@ are renamed or operated using non-Matter means.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_115"><a class="anchor" href="#_device_topology_115"></a>Device Topology</h5>
+<h5 id="_device_topology_116"><a class="anchor" href="#_device_topology_116"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -45301,7 +45447,7 @@ with means to setup to bridge (e.g. add/remove/rename/group bridged devices).</p
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_162"><a class="anchor" href="#_test_procedure_162"></a>Test Procedure</h5>
+<h5 id="_test_procedure_163"><a class="anchor" href="#_test_procedure_163"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4.7619%;">
@@ -45377,19 +45523,19 @@ cluster on the same endpoint as in 1a</p></td>
 <div class="sect3">
 <h4 id="ref_TC-BR-4"><a class="anchor" href="#ref_TC-BR-4"></a>39.1.4. [TC-BR-4] DUT client handling of bridges (DUT client)</h4>
 <div class="sect4">
-<h5 id="_category_163"><a class="anchor" href="#_category_163"></a>Category</h5>
+<h5 id="_category_164"><a class="anchor" href="#_category_164"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance, Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_164"><a class="anchor" href="#_purpose_164"></a>Purpose</h5>
+<h5 id="_purpose_165"><a class="anchor" href="#_purpose_165"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the basic principles of bridging - including the handling of DUT of composed devices, and changes in endpoints being exposed.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_163"><a class="anchor" href="#_pics_163"></a>PICS</h5>
+<h5 id="_pics_164"><a class="anchor" href="#_pics_164"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -45424,7 +45570,7 @@ cluster on the same endpoint as in 1a</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_163"><a class="anchor" href="#_required_devices_163"></a>Required Devices</h5>
+<h5 id="_required_devices_164"><a class="anchor" href="#_required_devices_164"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -45451,7 +45597,7 @@ cluster on the same endpoint as in 1a</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_116"><a class="anchor" href="#_device_topology_116"></a>Device Topology</h5>
+<h5 id="_device_topology_117"><a class="anchor" href="#_device_topology_117"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -45464,7 +45610,7 @@ cluster on the same endpoint as in 1a</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_163"><a class="anchor" href="#_test_procedure_163"></a>Test Procedure</h5>
+<h5 id="_test_procedure_164"><a class="anchor" href="#_test_procedure_164"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4.7619%;">
@@ -45939,19 +46085,19 @@ cluster on the same endpoint as in 1a</p></td>
 <div class="sect3">
 <h4 id="_tc_bdx_1_1_sender_initiated_bdx_transfer_session_removed"><a class="anchor" href="#_tc_bdx_1_1_sender_initiated_bdx_transfer_session_removed"></a>42.1.1. [TC-BDX-1.1] Sender Initiated BDX Transfer Session - REMOVED</h4>
 <div class="sect4">
-<h5 id="_category_164"><a class="anchor" href="#_category_164"></a>Category</h5>
+<h5 id="_category_165"><a class="anchor" href="#_category_165"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_165"><a class="anchor" href="#_purpose_165"></a>Purpose</h5>
+<h5 id="_purpose_166"><a class="anchor" href="#_purpose_166"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the SendInit message contains the necessary information to initiate the BDX transfer session.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_164"><a class="anchor" href="#_pics_164"></a>PICS</h5>
+<h5 id="_pics_165"><a class="anchor" href="#_pics_165"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -45964,7 +46110,7 @@ cluster on the same endpoint as in 1a</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_164"><a class="anchor" href="#_required_devices_164"></a>Required Devices</h5>
+<h5 id="_required_devices_165"><a class="anchor" href="#_required_devices_165"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -45991,13 +46137,13 @@ cluster on the same endpoint as in 1a</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_117"><a class="anchor" href="#_device_topology_117"></a>Device Topology</h5>
+<h5 id="_device_topology_118"><a class="anchor" href="#_device_topology_118"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_164"><a class="anchor" href="#_test_procedure_164"></a>Test Procedure</h5>
+<h5 id="_test_procedure_165"><a class="anchor" href="#_test_procedure_165"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46046,19 +46192,19 @@ This test cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_bdx_1_2_receiver_initiated_bdx_transfer_session"><a class="anchor" href="#_tc_bdx_1_2_receiver_initiated_bdx_transfer_session"></a>42.1.2. [TC-BDX-1.2] Receiver Initiated BDX Transfer Session</h4>
 <div class="sect4">
-<h5 id="_category_165"><a class="anchor" href="#_category_165"></a>Category</h5>
+<h5 id="_category_166"><a class="anchor" href="#_category_166"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_166"><a class="anchor" href="#_purpose_166"></a>Purpose</h5>
+<h5 id="_purpose_167"><a class="anchor" href="#_purpose_167"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the ReceiveInit message contains the necessary information to initiate the BDX transfer session.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_165"><a class="anchor" href="#_pics_165"></a>PICS</h5>
+<h5 id="_pics_166"><a class="anchor" href="#_pics_166"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46071,7 +46217,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_165"><a class="anchor" href="#_required_devices_165"></a>Required Devices</h5>
+<h5 id="_required_devices_166"><a class="anchor" href="#_required_devices_166"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46098,13 +46244,13 @@ This test cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_118"><a class="anchor" href="#_device_topology_118"></a>Device Topology</h5>
+<h5 id="_device_topology_119"><a class="anchor" href="#_device_topology_119"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_165"><a class="anchor" href="#_test_procedure_165"></a>Test Procedure</h5>
+<h5 id="_test_procedure_166"><a class="anchor" href="#_test_procedure_166"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46152,19 +46298,19 @@ Metadata - Optional.</p></td>
 <div class="sect3">
 <h4 id="_tc_bdx_1_3_response_to_sender_initiated_bdx_transfer_session_removed"><a class="anchor" href="#_tc_bdx_1_3_response_to_sender_initiated_bdx_transfer_session_removed"></a>42.1.3. [TC-BDX-1.3] Response to Sender Initiated BDX Transfer Session - REMOVED</h4>
 <div class="sect4">
-<h5 id="_category_166"><a class="anchor" href="#_category_166"></a>Category</h5>
+<h5 id="_category_167"><a class="anchor" href="#_category_167"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_167"><a class="anchor" href="#_purpose_167"></a>Purpose</h5>
+<h5 id="_purpose_168"><a class="anchor" href="#_purpose_168"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the SendAccept message contains the necessary information to initiate the BDX transfer session.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_166"><a class="anchor" href="#_pics_166"></a>PICS</h5>
+<h5 id="_pics_167"><a class="anchor" href="#_pics_167"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46177,7 +46323,7 @@ Metadata - Optional.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_166"><a class="anchor" href="#_required_devices_166"></a>Required Devices</h5>
+<h5 id="_required_devices_167"><a class="anchor" href="#_required_devices_167"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46204,13 +46350,13 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_119"><a class="anchor" href="#_device_topology_119"></a>Device Topology</h5>
+<h5 id="_device_topology_120"><a class="anchor" href="#_device_topology_120"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_166"><a class="anchor" href="#_test_procedure_166"></a>Test Procedure</h5>
+<h5 id="_test_procedure_167"><a class="anchor" href="#_test_procedure_167"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46254,19 +46400,19 @@ This test cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_bdx_1_4_response_to_receiver_initiated_bdx_transfer_session"><a class="anchor" href="#_tc_bdx_1_4_response_to_receiver_initiated_bdx_transfer_session"></a>42.1.4. [TC-BDX-1.4] Response to Receiver Initiated BDX Transfer Session</h4>
 <div class="sect4">
-<h5 id="_category_167"><a class="anchor" href="#_category_167"></a>Category</h5>
+<h5 id="_category_168"><a class="anchor" href="#_category_168"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_168"><a class="anchor" href="#_purpose_168"></a>Purpose</h5>
+<h5 id="_purpose_169"><a class="anchor" href="#_purpose_169"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the ReceiveAccept message contains the necessary information to initiate the BDX transfer session.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_167"><a class="anchor" href="#_pics_167"></a>PICS</h5>
+<h5 id="_pics_168"><a class="anchor" href="#_pics_168"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46279,7 +46425,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_167"><a class="anchor" href="#_required_devices_167"></a>Required Devices</h5>
+<h5 id="_required_devices_168"><a class="anchor" href="#_required_devices_168"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46306,13 +46452,13 @@ This test cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_120"><a class="anchor" href="#_device_topology_120"></a>Device Topology</h5>
+<h5 id="_device_topology_121"><a class="anchor" href="#_device_topology_121"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_167"><a class="anchor" href="#_test_procedure_167"></a>Test Procedure</h5>
+<h5 id="_test_procedure_168"><a class="anchor" href="#_test_procedure_168"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46357,19 +46503,19 @@ Metadata - Optional.</p></td>
 <div class="sect3">
 <h4 id="_tc_bdx_1_5_response_to_sender_initiated_bdx_transfer_session_negative_scenario_removed"><a class="anchor" href="#_tc_bdx_1_5_response_to_sender_initiated_bdx_transfer_session_negative_scenario_removed"></a>42.1.5. [TC-BDX-1.5] Response to Sender Initiated BDX Transfer Session - Negative Scenario - REMOVED</h4>
 <div class="sect4">
-<h5 id="_category_168"><a class="anchor" href="#_category_168"></a>Category</h5>
+<h5 id="_category_169"><a class="anchor" href="#_category_169"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_169"><a class="anchor" href="#_purpose_169"></a>Purpose</h5>
+<h5 id="_purpose_170"><a class="anchor" href="#_purpose_170"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT aborts the BDX transfer session with an appropriate error.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_168"><a class="anchor" href="#_pics_168"></a>PICS</h5>
+<h5 id="_pics_169"><a class="anchor" href="#_pics_169"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46382,7 +46528,7 @@ Metadata - Optional.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_168"><a class="anchor" href="#_required_devices_168"></a>Required Devices</h5>
+<h5 id="_required_devices_169"><a class="anchor" href="#_required_devices_169"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46409,13 +46555,13 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_121"><a class="anchor" href="#_device_topology_121"></a>Device Topology</h5>
+<h5 id="_device_topology_122"><a class="anchor" href="#_device_topology_122"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_168"><a class="anchor" href="#_test_procedure_168"></a>Test Procedure</h5>
+<h5 id="_test_procedure_169"><a class="anchor" href="#_test_procedure_169"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46497,19 +46643,19 @@ Metadata - Optional.</p></td>
 <div class="sect3">
 <h4 id="_tc_bdx_1_6_response_to_receiver_initiated_bdx_transfer_session_negative_scenario_removed"><a class="anchor" href="#_tc_bdx_1_6_response_to_receiver_initiated_bdx_transfer_session_negative_scenario_removed"></a>42.1.6. [TC-BDX-1.6] Response to Receiver Initiated BDX Transfer Session - Negative Scenario - REMOVED</h4>
 <div class="sect4">
-<h5 id="_category_169"><a class="anchor" href="#_category_169"></a>Category</h5>
+<h5 id="_category_170"><a class="anchor" href="#_category_170"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_170"><a class="anchor" href="#_purpose_170"></a>Purpose</h5>
+<h5 id="_purpose_171"><a class="anchor" href="#_purpose_171"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT aborts the BDX transfer session with an appropriate error.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_169"><a class="anchor" href="#_pics_169"></a>PICS</h5>
+<h5 id="_pics_170"><a class="anchor" href="#_pics_170"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46522,7 +46668,7 @@ Metadata - Optional.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_169"><a class="anchor" href="#_required_devices_169"></a>Required Devices</h5>
+<h5 id="_required_devices_170"><a class="anchor" href="#_required_devices_170"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46549,13 +46695,13 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_122"><a class="anchor" href="#_device_topology_122"></a>Device Topology</h5>
+<h5 id="_device_topology_123"><a class="anchor" href="#_device_topology_123"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_169"><a class="anchor" href="#_test_procedure_169"></a>Test Procedure</h5>
+<h5 id="_test_procedure_170"><a class="anchor" href="#_test_procedure_170"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46634,7 +46780,7 @@ Metadata - Optional.</p></td>
 <div class="sect3">
 <h4 id="_tc_bdx_2_1_synchronous_file_sending"><a class="anchor" href="#_tc_bdx_2_1_synchronous_file_sending"></a>42.2.1. [TC-BDX-2.1] Synchronous File Sending</h4>
 <div class="sect4">
-<h5 id="_category_170"><a class="anchor" href="#_category_170"></a>Category</h5>
+<h5 id="_category_171"><a class="anchor" href="#_category_171"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
@@ -46643,13 +46789,13 @@ Metadata - Optional.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_171"><a class="anchor" href="#_purpose_171"></a>Purpose</h5>
+<h5 id="_purpose_172"><a class="anchor" href="#_purpose_172"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT can successfully send files in Synchronous mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_170"><a class="anchor" href="#_pics_170"></a>PICS</h5>
+<h5 id="_pics_171"><a class="anchor" href="#_pics_171"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46659,7 +46805,7 @@ Metadata - Optional.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_170"><a class="anchor" href="#_required_devices_170"></a>Required Devices</h5>
+<h5 id="_required_devices_171"><a class="anchor" href="#_required_devices_171"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46686,7 +46832,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_123"><a class="anchor" href="#_device_topology_123"></a>Device Topology</h5>
+<h5 id="_device_topology_124"><a class="anchor" href="#_device_topology_124"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -46698,7 +46844,7 @@ Metadata - Optional.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_170"><a class="anchor" href="#_test_procedure_170"></a>Test Procedure</h5>
+<h5 id="_test_procedure_171"><a class="anchor" href="#_test_procedure_171"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46757,19 +46903,19 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 <div class="sect3">
 <h4 id="_tc_bdx_2_2_synchronous_file_receiving"><a class="anchor" href="#_tc_bdx_2_2_synchronous_file_receiving"></a>42.2.2. [TC-BDX-2.2] Synchronous File Receiving</h4>
 <div class="sect4">
-<h5 id="_category_171"><a class="anchor" href="#_category_171"></a>Category</h5>
+<h5 id="_category_172"><a class="anchor" href="#_category_172"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_172"><a class="anchor" href="#_purpose_172"></a>Purpose</h5>
+<h5 id="_purpose_173"><a class="anchor" href="#_purpose_173"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT can successfully receive files in Synchronous mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_171"><a class="anchor" href="#_pics_171"></a>PICS</h5>
+<h5 id="_pics_172"><a class="anchor" href="#_pics_172"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46779,7 +46925,7 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_171"><a class="anchor" href="#_required_devices_171"></a>Required Devices</h5>
+<h5 id="_required_devices_172"><a class="anchor" href="#_required_devices_172"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46806,7 +46952,7 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_124"><a class="anchor" href="#_device_topology_124"></a>Device Topology</h5>
+<h5 id="_device_topology_125"><a class="anchor" href="#_device_topology_125"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -46818,7 +46964,7 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_171"><a class="anchor" href="#_test_procedure_171"></a>Test Procedure</h5>
+<h5 id="_test_procedure_172"><a class="anchor" href="#_test_procedure_172"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46892,19 +47038,19 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_bdx_2_3_restart_synchronous_file_receiving_removed"><a class="anchor" href="#_tc_bdx_2_3_restart_synchronous_file_receiving_removed"></a>42.2.3. [TC-BDX-2.3] Restart Synchronous File Receiving - REMOVED</h4>
 <div class="sect4">
-<h5 id="_category_172"><a class="anchor" href="#_category_172"></a>Category</h5>
+<h5 id="_category_173"><a class="anchor" href="#_category_173"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_173"><a class="anchor" href="#_purpose_173"></a>Purpose</h5>
+<h5 id="_purpose_174"><a class="anchor" href="#_purpose_174"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT can successfully restart receiving files in Synchronous mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_172"><a class="anchor" href="#_pics_172"></a>PICS</h5>
+<h5 id="_pics_173"><a class="anchor" href="#_pics_173"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46914,7 +47060,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_172"><a class="anchor" href="#_required_devices_172"></a>Required Devices</h5>
+<h5 id="_required_devices_173"><a class="anchor" href="#_required_devices_173"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46941,7 +47087,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_125"><a class="anchor" href="#_device_topology_125"></a>Device Topology</h5>
+<h5 id="_device_topology_126"><a class="anchor" href="#_device_topology_126"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -46953,7 +47099,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_172"><a class="anchor" href="#_test_procedure_172"></a>Test Procedure</h5>
+<h5 id="_test_procedure_173"><a class="anchor" href="#_test_procedure_173"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -47018,19 +47164,19 @@ This test cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_bdx_2_4_asynchronous_file_sending_removed"><a class="anchor" href="#_tc_bdx_2_4_asynchronous_file_sending_removed"></a>42.2.4. [TC-BDX-2.4] Asynchronous File Sending - REMOVED</h4>
 <div class="sect4">
-<h5 id="_category_173"><a class="anchor" href="#_category_173"></a>Category</h5>
+<h5 id="_category_174"><a class="anchor" href="#_category_174"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_174"><a class="anchor" href="#_purpose_174"></a>Purpose</h5>
+<h5 id="_purpose_175"><a class="anchor" href="#_purpose_175"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT can successfully send files in Asynchronous mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_173"><a class="anchor" href="#_pics_173"></a>PICS</h5>
+<h5 id="_pics_174"><a class="anchor" href="#_pics_174"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -47040,7 +47186,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_173"><a class="anchor" href="#_required_devices_173"></a>Required Devices</h5>
+<h5 id="_required_devices_174"><a class="anchor" href="#_required_devices_174"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -47067,13 +47213,13 @@ This test cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_126"><a class="anchor" href="#_device_topology_126"></a>Device Topology</h5>
+<h5 id="_device_topology_127"><a class="anchor" href="#_device_topology_127"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_173"><a class="anchor" href="#_test_procedure_173"></a>Test Procedure</h5>
+<h5 id="_test_procedure_174"><a class="anchor" href="#_test_procedure_174"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -47133,19 +47279,19 @@ This test cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_bdx_2_5_asynchronous_file_receiving_removed"><a class="anchor" href="#_tc_bdx_2_5_asynchronous_file_receiving_removed"></a>42.2.5. [TC-BDX-2.5] Asynchronous File Receiving - REMOVED</h4>
 <div class="sect4">
-<h5 id="_category_174"><a class="anchor" href="#_category_174"></a>Category</h5>
+<h5 id="_category_175"><a class="anchor" href="#_category_175"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_175"><a class="anchor" href="#_purpose_175"></a>Purpose</h5>
+<h5 id="_purpose_176"><a class="anchor" href="#_purpose_176"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT can successfully receive files in Asynchronous mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_174"><a class="anchor" href="#_pics_174"></a>PICS</h5>
+<h5 id="_pics_175"><a class="anchor" href="#_pics_175"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -47155,7 +47301,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_174"><a class="anchor" href="#_required_devices_174"></a>Required Devices</h5>
+<h5 id="_required_devices_175"><a class="anchor" href="#_required_devices_175"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -47182,13 +47328,13 @@ This test cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_127"><a class="anchor" href="#_device_topology_127"></a>Device Topology</h5>
+<h5 id="_device_topology_128"><a class="anchor" href="#_device_topology_128"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_174"><a class="anchor" href="#_test_procedure_174"></a>Test Procedure</h5>
+<h5 id="_test_procedure_175"><a class="anchor" href="#_test_procedure_175"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -47434,19 +47580,19 @@ This test cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_su_1_1_invoke_announceotaprovider_from_admindut_to_ota_r"><a class="anchor" href="#_tc_su_1_1_invoke_announceotaprovider_from_admindut_to_ota_r"></a>45.1.1. [TC-SU-1.1] Invoke AnnounceOTAProvider from Admin(DUT) to OTA-R</h4>
 <div class="sect4">
-<h5 id="_category_175"><a class="anchor" href="#_category_175"></a>Category</h5>
+<h5 id="_category_176"><a class="anchor" href="#_category_176"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_176"><a class="anchor" href="#_purpose_176"></a>Purpose</h5>
+<h5 id="_purpose_177"><a class="anchor" href="#_purpose_177"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT is able to invoke the <em>AnnounceOTAProvider</em> command on the OTA-R.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_175"><a class="anchor" href="#_pics_175"></a>PICS</h5>
+<h5 id="_pics_176"><a class="anchor" href="#_pics_176"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -47456,7 +47602,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_175"><a class="anchor" href="#_required_devices_175"></a>Required Devices</h5>
+<h5 id="_required_devices_176"><a class="anchor" href="#_required_devices_176"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -47488,7 +47634,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_128"><a class="anchor" href="#_device_topology_128"></a>Device Topology</h5>
+<h5 id="_device_topology_129"><a class="anchor" href="#_device_topology_129"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH, TH2 and DUT are on the same fabric.</p>
 </div>
@@ -47500,7 +47646,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_175"><a class="anchor" href="#_test_procedure_175"></a>Test Procedure</h5>
+<h5 id="_test_procedure_176"><a class="anchor" href="#_test_procedure_176"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -47550,19 +47696,19 @@ Endpoint number of the OTA-P/TH2 on the ProviderNodeID.</p></td>
 <div class="sect3">
 <h4 id="_tc_su_2_1_queryimage_command_from_dut_to_ota_p"><a class="anchor" href="#_tc_su_2_1_queryimage_command_from_dut_to_ota_p"></a>45.2.1. [TC-SU-2.1] QueryImage Command from DUT to OTA-P</h4>
 <div class="sect4">
-<h5 id="_category_176"><a class="anchor" href="#_category_176"></a>Category</h5>
+<h5 id="_category_177"><a class="anchor" href="#_category_177"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_177"><a class="anchor" href="#_purpose_177"></a>Purpose</h5>
+<h5 id="_purpose_178"><a class="anchor" href="#_purpose_178"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT is able to successfully send a <em>QueryImage</em> command to the OTA-P</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_176"><a class="anchor" href="#_pics_176"></a>PICS</h5>
+<h5 id="_pics_177"><a class="anchor" href="#_pics_177"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -47572,7 +47718,7 @@ Endpoint number of the OTA-P/TH2 on the ProviderNodeID.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_176"><a class="anchor" href="#_required_devices_176"></a>Required Devices</h5>
+<h5 id="_required_devices_177"><a class="anchor" href="#_required_devices_177"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -47604,7 +47750,7 @@ Endpoint number of the OTA-P/TH2 on the ProviderNodeID.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_129"><a class="anchor" href="#_device_topology_129"></a>Device Topology</h5>
+<h5 id="_device_topology_130"><a class="anchor" href="#_device_topology_130"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH, TH2 and DUT are on the same fabric.</p>
 </div>
@@ -47618,7 +47764,7 @@ There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_176"><a class="anchor" href="#_test_procedure_176"></a>Test Procedure</h5>
+<h5 id="_test_procedure_177"><a class="anchor" href="#_test_procedure_177"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -47682,19 +47828,19 @@ Wait for 2 minutes.</p></td>
 <div class="sect3">
 <h4 id="_tc_su_2_2_handling_different_queryimageresponse_scenarios_on_requestor"><a class="anchor" href="#_tc_su_2_2_handling_different_queryimageresponse_scenarios_on_requestor"></a>45.2.2. [TC-SU-2.2] Handling Different QueryImageResponse Scenarios on Requestor</h4>
 <div class="sect4">
-<h5 id="_category_177"><a class="anchor" href="#_category_177"></a>Category</h5>
+<h5 id="_category_178"><a class="anchor" href="#_category_178"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_178"><a class="anchor" href="#_purpose_178"></a>Purpose</h5>
+<h5 id="_purpose_179"><a class="anchor" href="#_purpose_179"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec on different scenarios of the <em>QueryImageResponse</em> Command from the OTA-P.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_177"><a class="anchor" href="#_pics_177"></a>PICS</h5>
+<h5 id="_pics_178"><a class="anchor" href="#_pics_178"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -47704,7 +47850,7 @@ Wait for 2 minutes.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_177"><a class="anchor" href="#_required_devices_177"></a>Required Devices</h5>
+<h5 id="_required_devices_178"><a class="anchor" href="#_required_devices_178"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -47731,7 +47877,7 @@ Wait for 2 minutes.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_130"><a class="anchor" href="#_device_topology_130"></a>Device Topology</h5>
+<h5 id="_device_topology_131"><a class="anchor" href="#_device_topology_131"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -47745,7 +47891,7 @@ There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_177"><a class="anchor" href="#_test_procedure_177"></a>Test Procedure</h5>
+<h5 id="_test_procedure_178"><a class="anchor" href="#_test_procedure_178"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -47832,19 +47978,19 @@ Verify that there is a transfer of the software image after the second <em>Query
 <div class="sect3">
 <h4 id="_tc_su_2_3_transfer_of_software_update_images_between_dut_and_thota_p"><a class="anchor" href="#_tc_su_2_3_transfer_of_software_update_images_between_dut_and_thota_p"></a>45.3.1. [TC-SU-2.3] Transfer of Software Update Images between DUT and TH/OTA-P</h4>
 <div class="sect4">
-<h5 id="_category_178"><a class="anchor" href="#_category_178"></a>Category</h5>
+<h5 id="_category_179"><a class="anchor" href="#_category_179"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_179"><a class="anchor" href="#_purpose_179"></a>Purpose</h5>
+<h5 id="_purpose_180"><a class="anchor" href="#_purpose_180"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec when it is transferring images from the TH/OTA-P.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_178"><a class="anchor" href="#_pics_178"></a>PICS</h5>
+<h5 id="_pics_179"><a class="anchor" href="#_pics_179"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -47854,7 +48000,7 @@ Verify that there is a transfer of the software image after the second <em>Query
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_178"><a class="anchor" href="#_required_devices_178"></a>Required Devices</h5>
+<h5 id="_required_devices_179"><a class="anchor" href="#_required_devices_179"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -47881,7 +48027,7 @@ Verify that there is a transfer of the software image after the second <em>Query
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_131"><a class="anchor" href="#_device_topology_131"></a>Device Topology</h5>
+<h5 id="_device_topology_132"><a class="anchor" href="#_device_topology_132"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -47895,7 +48041,7 @@ There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_178"><a class="anchor" href="#_test_procedure_178"></a>Test Procedure</h5>
+<h5 id="_test_procedure_179"><a class="anchor" href="#_test_procedure_179"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -47979,109 +48125,6 @@ Test Step #5 cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_su_2_4_applyupdaterequest_command_from_dut_to_ota_p"><a class="anchor" href="#_tc_su_2_4_applyupdaterequest_command_from_dut_to_ota_p"></a>45.4.1. [TC-SU-2.4] ApplyUpdateRequest Command from DUT to OTA-P</h4>
 <div class="sect4">
-<h5 id="_category_179"><a class="anchor" href="#_category_179"></a>Category</h5>
-<div class="paragraph">
-<p>Functional</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_purpose_180"><a class="anchor" href="#_purpose_180"></a>Purpose</h5>
-<div class="paragraph">
-<p>This test case verifies that the DUT behaves according to the spec when it is applying the software update.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_pics_179"><a class="anchor" href="#_pics_179"></a>PICS</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>MCORE.OTA.Requestor</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_required_devices_179"><a class="anchor" href="#_required_devices_179"></a>Required Devices</h5>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Name</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Description</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as OTA-R device type.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as OTA-P device type.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_device_topology_132"><a class="anchor" href="#_device_topology_132"></a>Device Topology</h5>
-<div class="paragraph">
-<p>TH and DUT are on the same fabric.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_test_setup_72"><a class="anchor" href="#_test_setup_72"></a>Test Setup</h5>
-<div class="paragraph">
-<p>TH and DUT are on the same fabric.<br>
-Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
-There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute of the OTA Requestor should return the value as Idle.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_test_procedure_179"><a class="anchor" href="#_test_procedure_179"></a>Test Procedure</h5>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 30%;">
-<col style="width: 30%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ref</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PICS</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Test Step</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.19.6.10</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends a <em>QueryImage</em> command to the TH/OTA-P. TH/OTA-P sends a <em>QueryImageResponse</em> back to DUT. QueryStatus is set to "UpdateAvailable". Set ImageURI to the location where the image is located. After the DUT transfers the image, the DUT should send <em>ApplyUpdateRequest</em> to the OTA-P.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the request received on the OTA-P has the following mandatory fields.<br>
-UpdateToken - verify that it is same as the one sent in the <em>QueryImageResponse</em>.<br>
-NewVersion - verify that this is the same as the software version that was downloaded.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_notestesting_considerations_142"><a class="anchor" href="#_notestesting_considerations_142"></a>Notes/Testing Considerations</h5>
-<div class="paragraph">
-<p>Vendor needs to provide instructions on how to trigger the DUT/OTA-R to send the <em>ApplyUpdateRequest</em>.</p>
-</div>
-<hr>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_tc_su_2_5_handling_different_applyupdateresponse_scenarios_on_requestor"><a class="anchor" href="#_tc_su_2_5_handling_different_applyupdateresponse_scenarios_on_requestor"></a>45.4.2. [TC-SU-2.5] Handling Different ApplyUpdateResponse Scenarios on Requestor</h4>
-<div class="sect4">
 <h5 id="_category_180"><a class="anchor" href="#_category_180"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
@@ -48137,6 +48180,109 @@ NewVersion - verify that this is the same as the software version that was downl
 </div>
 </div>
 <div class="sect4">
+<h5 id="_test_setup_72"><a class="anchor" href="#_test_setup_72"></a>Test Setup</h5>
+<div class="paragraph">
+<p>TH and DUT are on the same fabric.<br>
+Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
+There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute of the OTA Requestor should return the value as Idle.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_180"><a class="anchor" href="#_test_procedure_180"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 20%;">
+<col style="width: 30%;">
+<col style="width: 30%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ref</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PICS</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Test Step</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.19.6.10</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends a <em>QueryImage</em> command to the TH/OTA-P. TH/OTA-P sends a <em>QueryImageResponse</em> back to DUT. QueryStatus is set to "UpdateAvailable". Set ImageURI to the location where the image is located. After the DUT transfers the image, the DUT should send <em>ApplyUpdateRequest</em> to the OTA-P.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the request received on the OTA-P has the following mandatory fields.<br>
+UpdateToken - verify that it is same as the one sent in the <em>QueryImageResponse</em>.<br>
+NewVersion - verify that this is the same as the software version that was downloaded.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_142"><a class="anchor" href="#_notestesting_considerations_142"></a>Notes/Testing Considerations</h5>
+<div class="paragraph">
+<p>Vendor needs to provide instructions on how to trigger the DUT/OTA-R to send the <em>ApplyUpdateRequest</em>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tc_su_2_5_handling_different_applyupdateresponse_scenarios_on_requestor"><a class="anchor" href="#_tc_su_2_5_handling_different_applyupdateresponse_scenarios_on_requestor"></a>45.4.2. [TC-SU-2.5] Handling Different ApplyUpdateResponse Scenarios on Requestor</h4>
+<div class="sect4">
+<h5 id="_category_181"><a class="anchor" href="#_category_181"></a>Category</h5>
+<div class="paragraph">
+<p>Functional</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_182"><a class="anchor" href="#_purpose_182"></a>Purpose</h5>
+<div class="paragraph">
+<p>This test case verifies that the DUT behaves according to the spec when it is applying the software update.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_181"><a class="anchor" href="#_pics_181"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>MCORE.OTA.Requestor</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_181"><a class="anchor" href="#_required_devices_181"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as OTA-R device type.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as OTA-P device type.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_134"><a class="anchor" href="#_device_topology_134"></a>Device Topology</h5>
+<div class="paragraph">
+<p>TH and DUT are on the same fabric.</p>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_test_setup_73"><a class="anchor" href="#_test_setup_73"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
@@ -48148,7 +48294,7 @@ There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_180"><a class="anchor" href="#_test_procedure_180"></a>Test Procedure</h5>
+<h5 id="_test_procedure_181"><a class="anchor" href="#_test_procedure_181"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -48229,19 +48375,19 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <div class="sect3">
 <h4 id="_tc_su_2_6_notifyupdateapplied_command_from_dut_to_ota_p"><a class="anchor" href="#_tc_su_2_6_notifyupdateapplied_command_from_dut_to_ota_p"></a>45.4.3. [TC-SU-2.6] NotifyUpdateApplied Command from DUT to OTA-P</h4>
 <div class="sect4">
-<h5 id="_category_181"><a class="anchor" href="#_category_181"></a>Category</h5>
+<h5 id="_category_182"><a class="anchor" href="#_category_182"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_182"><a class="anchor" href="#_purpose_182"></a>Purpose</h5>
+<h5 id="_purpose_183"><a class="anchor" href="#_purpose_183"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec when it is applying the software update.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_181"><a class="anchor" href="#_pics_181"></a>PICS</h5>
+<h5 id="_pics_182"><a class="anchor" href="#_pics_182"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -48251,7 +48397,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_181"><a class="anchor" href="#_required_devices_181"></a>Required Devices</h5>
+<h5 id="_required_devices_182"><a class="anchor" href="#_required_devices_182"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -48278,7 +48424,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_134"><a class="anchor" href="#_device_topology_134"></a>Device Topology</h5>
+<h5 id="_device_topology_135"><a class="anchor" href="#_device_topology_135"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -48297,7 +48443,7 @@ Action field is set to "Proceed"</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_181"><a class="anchor" href="#_test_procedure_181"></a>Test Procedure</h5>
+<h5 id="_test_procedure_182"><a class="anchor" href="#_test_procedure_182"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -48338,19 +48484,19 @@ SoftwareVersion - verify the software version on the DUT to match the version do
 <div class="sect3">
 <h4 id="_tc_su_2_7_verifying_events_on_ota_rdut"><a class="anchor" href="#_tc_su_2_7_verifying_events_on_ota_rdut"></a>45.5.1. [TC-SU-2.7] Verifying Events on OTA-R(DUT)</h4>
 <div class="sect4">
-<h5 id="_category_182"><a class="anchor" href="#_category_182"></a>Category</h5>
+<h5 id="_category_183"><a class="anchor" href="#_category_183"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_183"><a class="anchor" href="#_purpose_183"></a>Purpose</h5>
+<h5 id="_purpose_184"><a class="anchor" href="#_purpose_184"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec when events are generated.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_182"><a class="anchor" href="#_pics_182"></a>PICS</h5>
+<h5 id="_pics_183"><a class="anchor" href="#_pics_183"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -48360,7 +48506,7 @@ SoftwareVersion - verify the software version on the DUT to match the version do
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_182"><a class="anchor" href="#_required_devices_182"></a>Required Devices</h5>
+<h5 id="_required_devices_183"><a class="anchor" href="#_required_devices_183"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -48392,7 +48538,7 @@ SoftwareVersion - verify the software version on the DUT to match the version do
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_135"><a class="anchor" href="#_device_topology_135"></a>Device Topology</h5>
+<h5 id="_device_topology_136"><a class="anchor" href="#_device_topology_136"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -48407,7 +48553,7 @@ OTA-SUB should be setup such that it is subscribing to the OTA events from the D
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_182"><a class="anchor" href="#_test_procedure_182"></a>Test Procedure</h5>
+<h5 id="_test_procedure_183"><a class="anchor" href="#_test_procedure_183"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -48499,19 +48645,19 @@ ProductID - Same as what is available in the <em>ProductID</em> attribute of the
 <div class="sect3">
 <h4 id="_tc_su_2_8_ota_functionality_in_multi_fabric_scenario"><a class="anchor" href="#_tc_su_2_8_ota_functionality_in_multi_fabric_scenario"></a>45.6.1. [TC-SU-2.8] OTA Functionality in Multi Fabric Scenario</h4>
 <div class="sect4">
-<h5 id="_category_183"><a class="anchor" href="#_category_183"></a>Category</h5>
+<h5 id="_category_184"><a class="anchor" href="#_category_184"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_184"><a class="anchor" href="#_purpose_184"></a>Purpose</h5>
+<h5 id="_purpose_185"><a class="anchor" href="#_purpose_185"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT is able to successfully send a <em>QueryImage</em> command to the OTA-P in multi fabric scenario.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_183"><a class="anchor" href="#_pics_183"></a>PICS</h5>
+<h5 id="_pics_184"><a class="anchor" href="#_pics_184"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -48521,7 +48667,7 @@ ProductID - Same as what is available in the <em>ProductID</em> attribute of the
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_183"><a class="anchor" href="#_required_devices_183"></a>Required Devices</h5>
+<h5 id="_required_devices_184"><a class="anchor" href="#_required_devices_184"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -48553,7 +48699,7 @@ ProductID - Same as what is available in the <em>ProductID</em> attribute of the
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_136"><a class="anchor" href="#_device_topology_136"></a>Device Topology</h5>
+<h5 id="_device_topology_137"><a class="anchor" href="#_device_topology_137"></a>Device Topology</h5>
 <div class="paragraph">
 <p>Commission TH1 and TH2 on different fabrics and DUT to both these fabrics.</p>
 </div>
@@ -48566,7 +48712,7 @@ ProductID - Same as what is available in the <em>ProductID</em> attribute of the
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_183"><a class="anchor" href="#_test_procedure_183"></a>Test Procedure</h5>
+<h5 id="_test_procedure_184"><a class="anchor" href="#_test_procedure_184"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -48632,108 +48778,6 @@ If the Location field is present, verify that the value is same as Basic Informa
 <div class="sect3">
 <h4 id="_tc_su_3_1_queryimageresponse_from_dut_to_ota_r"><a class="anchor" href="#_tc_su_3_1_queryimageresponse_from_dut_to_ota_r"></a>45.7.1. [TC-SU-3.1] QueryImageResponse from DUT to OTA-R</h4>
 <div class="sect4">
-<h5 id="_category_184"><a class="anchor" href="#_category_184"></a>Category</h5>
-<div class="paragraph">
-<p>Functional</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_purpose_185"><a class="anchor" href="#_purpose_185"></a>Purpose</h5>
-<div class="paragraph">
-<p>This test case verifies that the DUT behaves according to the spec when it receives a QueryImageRequest from the OTA-R.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_pics_184"><a class="anchor" href="#_pics_184"></a>PICS</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>MCORE.OTA.Provider</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_required_devices_184"><a class="anchor" href="#_required_devices_184"></a>Required Devices</h5>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Name</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Description</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as OTA-P device type.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as OTA-R device type.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_device_topology_137"><a class="anchor" href="#_device_topology_137"></a>Device Topology</h5>
-<div class="paragraph">
-<p>TH and DUT are on the same fabric.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_test_setup_77"><a class="anchor" href="#_test_setup_77"></a>Test Setup</h5>
-<div class="paragraph">
-<p>TH and DUT are on the same fabric.<br>
-Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
-There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute of the OTA Requestor should return the value as Idle.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_test_procedure_184"><a class="anchor" href="#_test_procedure_184"></a>Test Procedure</h5>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 30%;">
-<col style="width: 30%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ref</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PICS</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Test Step</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.19.6.7</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OTA-R/TH sends a <em>QueryImage</em> Command to the DUT.<br>
-UserConsentNeeded field is set to False.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT is able to query the server where the software update image is located. DUT should obtain the User Consent from the user. DUT should respond with the <em>QueryImageResponse</em> to the OTA-R/TH.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_notestesting_considerations_147"><a class="anchor" href="#_notestesting_considerations_147"></a>Notes/Testing Considerations</h5>
-<div class="paragraph">
-<p>Test Step #1 - User Consent is obtained from the user and is specific to vendor implementation.</p>
-</div>
-<hr>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_tc_su_3_2_handling_different_queryimageresponse_scenarios_on_provider"><a class="anchor" href="#_tc_su_3_2_handling_different_queryimageresponse_scenarios_on_provider"></a>45.7.2. [TC-SU-3.2] Handling Different QueryImageResponse Scenarios on Provider</h4>
-<div class="sect4">
 <h5 id="_category_185"><a class="anchor" href="#_category_185"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
@@ -48742,7 +48786,7 @@ UserConsentNeeded field is set to False.</p></td>
 <div class="sect4">
 <h5 id="_purpose_186"><a class="anchor" href="#_purpose_186"></a>Purpose</h5>
 <div class="paragraph">
-<p>This test case verifies that the DUT behaves according to the spec in sending the correct <em>QueryImageResponse</em> to the OTA-R.</p>
+<p>This test case verifies that the DUT behaves according to the spec when it receives a QueryImageRequest from the OTA-R.</p>
 </div>
 </div>
 <div class="sect4">
@@ -48789,6 +48833,108 @@ UserConsentNeeded field is set to False.</p></td>
 </div>
 </div>
 <div class="sect4">
+<h5 id="_test_setup_77"><a class="anchor" href="#_test_setup_77"></a>Test Setup</h5>
+<div class="paragraph">
+<p>TH and DUT are on the same fabric.<br>
+Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
+There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute of the OTA Requestor should return the value as Idle.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_185"><a class="anchor" href="#_test_procedure_185"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 20%;">
+<col style="width: 30%;">
+<col style="width: 30%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ref</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PICS</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Test Step</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.19.6.7</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OTA-R/TH sends a <em>QueryImage</em> Command to the DUT.<br>
+UserConsentNeeded field is set to False.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT is able to query the server where the software update image is located. DUT should obtain the User Consent from the user. DUT should respond with the <em>QueryImageResponse</em> to the OTA-R/TH.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_147"><a class="anchor" href="#_notestesting_considerations_147"></a>Notes/Testing Considerations</h5>
+<div class="paragraph">
+<p>Test Step #1 - User Consent is obtained from the user and is specific to vendor implementation.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tc_su_3_2_handling_different_queryimageresponse_scenarios_on_provider"><a class="anchor" href="#_tc_su_3_2_handling_different_queryimageresponse_scenarios_on_provider"></a>45.7.2. [TC-SU-3.2] Handling Different QueryImageResponse Scenarios on Provider</h4>
+<div class="sect4">
+<h5 id="_category_186"><a class="anchor" href="#_category_186"></a>Category</h5>
+<div class="paragraph">
+<p>Functional</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_187"><a class="anchor" href="#_purpose_187"></a>Purpose</h5>
+<div class="paragraph">
+<p>This test case verifies that the DUT behaves according to the spec in sending the correct <em>QueryImageResponse</em> to the OTA-R.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_186"><a class="anchor" href="#_pics_186"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>MCORE.OTA.Provider</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_186"><a class="anchor" href="#_required_devices_186"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as OTA-P device type.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as OTA-R device type.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_139"><a class="anchor" href="#_device_topology_139"></a>Device Topology</h5>
+<div class="paragraph">
+<p>TH and DUT are on the same fabric.</p>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_test_setup_78"><a class="anchor" href="#_test_setup_78"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
@@ -48797,7 +48943,7 @@ DUT should be able to get user consent prior to <em>QueryImageResponse</em> when
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_185"><a class="anchor" href="#_test_procedure_185"></a>Test Procedure</h5>
+<h5 id="_test_procedure_186"><a class="anchor" href="#_test_procedure_186"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -48904,19 +49050,19 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_su_3_3_transfer_of_software_update_images_between_dut_and_ota_r"><a class="anchor" href="#_tc_su_3_3_transfer_of_software_update_images_between_dut_and_ota_r"></a>45.8.1. [TC-SU-3.3] Transfer of Software Update Images between DUT and OTA-R</h4>
 <div class="sect4">
-<h5 id="_category_186"><a class="anchor" href="#_category_186"></a>Category</h5>
+<h5 id="_category_187"><a class="anchor" href="#_category_187"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_187"><a class="anchor" href="#_purpose_187"></a>Purpose</h5>
+<h5 id="_purpose_188"><a class="anchor" href="#_purpose_188"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec when it is transferring images to the TH/OTA-R.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_186"><a class="anchor" href="#_pics_186"></a>PICS</h5>
+<h5 id="_pics_187"><a class="anchor" href="#_pics_187"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -48926,7 +49072,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_186"><a class="anchor" href="#_required_devices_186"></a>Required Devices</h5>
+<h5 id="_required_devices_187"><a class="anchor" href="#_required_devices_187"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -48953,7 +49099,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_139"><a class="anchor" href="#_device_topology_139"></a>Device Topology</h5>
+<h5 id="_device_topology_140"><a class="anchor" href="#_device_topology_140"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -48967,7 +49113,7 @@ DUT should be able to get user consent prior to <em>QueryImageResponse</em> when
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_186"><a class="anchor" href="#_test_procedure_186"></a>Test Procedure</h5>
+<h5 id="_test_procedure_187"><a class="anchor" href="#_test_procedure_187"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -49055,19 +49201,19 @@ Verify that the DUT finishes sending the image to the TH.</p></td>
 <div class="sect3">
 <h4 id="_tc_su_3_4_handling_different_applyupdateresponse_scenarios_on_provider"><a class="anchor" href="#_tc_su_3_4_handling_different_applyupdateresponse_scenarios_on_provider"></a>45.9.1. [TC-SU-3.4] Handling Different ApplyUpdateResponse Scenarios on Provider</h4>
 <div class="sect4">
-<h5 id="_category_187"><a class="anchor" href="#_category_187"></a>Category</h5>
+<h5 id="_category_188"><a class="anchor" href="#_category_188"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_188"><a class="anchor" href="#_purpose_188"></a>Purpose</h5>
+<h5 id="_purpose_189"><a class="anchor" href="#_purpose_189"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec on when a software update should be applied by the OTA-R.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_187"><a class="anchor" href="#_pics_187"></a>PICS</h5>
+<h5 id="_pics_188"><a class="anchor" href="#_pics_188"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -49077,7 +49223,7 @@ Verify that the DUT finishes sending the image to the TH.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_187"><a class="anchor" href="#_required_devices_187"></a>Required Devices</h5>
+<h5 id="_required_devices_188"><a class="anchor" href="#_required_devices_188"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -49104,7 +49250,7 @@ Verify that the DUT finishes sending the image to the TH.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_140"><a class="anchor" href="#_device_topology_140"></a>Device Topology</h5>
+<h5 id="_device_topology_141"><a class="anchor" href="#_device_topology_141"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -49118,7 +49264,7 @@ DUT should be able to get user consent prior to <em>QueryImageResponse</em> when
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_187"><a class="anchor" href="#_test_procedure_187"></a>Test Procedure</h5>
+<h5 id="_test_procedure_188"><a class="anchor" href="#_test_procedure_188"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -49181,19 +49327,19 @@ Verify that the entire OTA process is restarted on DUT when OTA-R/TH sends anoth
 <div class="sect3">
 <h4 id="_tc_su_4_1_verifying_cluster_attributes_on_ota_rdut"><a class="anchor" href="#_tc_su_4_1_verifying_cluster_attributes_on_ota_rdut"></a>45.10.1. [TC-SU-4.1] Verifying Cluster Attributes on OTA-R(DUT)</h4>
 <div class="sect4">
-<h5 id="_category_188"><a class="anchor" href="#_category_188"></a>Category</h5>
+<h5 id="_category_189"><a class="anchor" href="#_category_189"></a>Category</h5>
 <div class="paragraph">
 <p>Functional</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_189"><a class="anchor" href="#_purpose_189"></a>Purpose</h5>
+<h5 id="_purpose_190"><a class="anchor" href="#_purpose_190"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec with the Cluster attributes.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_188"><a class="anchor" href="#_pics_188"></a>PICS</h5>
+<h5 id="_pics_189"><a class="anchor" href="#_pics_189"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -49203,7 +49349,7 @@ Verify that the entire OTA process is restarted on DUT when OTA-R/TH sends anoth
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_188"><a class="anchor" href="#_required_devices_188"></a>Required Devices</h5>
+<h5 id="_required_devices_189"><a class="anchor" href="#_required_devices_189"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -49245,7 +49391,7 @@ Verify that the entire OTA process is restarted on DUT when OTA-R/TH sends anoth
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_141"><a class="anchor" href="#_device_topology_141"></a>Device Topology</h5>
+<h5 id="_device_topology_142"><a class="anchor" href="#_device_topology_142"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH2 and TH4 are on the same fabric and TH3 is on a different fabric.<br>
 DUT is commissioned to both these fabrics.<br>
@@ -49259,7 +49405,7 @@ TH can be on either fabric depending on the test.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_188"><a class="anchor" href="#_test_procedure_188"></a>Test Procedure</h5>
+<h5 id="_test_procedure_189"><a class="anchor" href="#_test_procedure_189"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -49539,13 +49685,13 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <div class="sect3">
 <h4 id="_tc_ace_1_1_privileges"><a class="anchor" href="#_tc_ace_1_1_privileges"></a>49.1.1. [TC-ACE-1.1] Privileges</h4>
 <div class="sect4">
-<h5 id="_category_189"><a class="anchor" href="#_category_189"></a>Category</h5>
+<h5 id="_category_190"><a class="anchor" href="#_category_190"></a>Category</h5>
 <div class="paragraph">
 <p>Functional conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_190"><a class="anchor" href="#_purpose_190"></a>Purpose</h5>
+<h5 id="_purpose_191"><a class="anchor" href="#_purpose_191"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -49567,7 +49713,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_189"><a class="anchor" href="#_pics_189"></a>PICS</h5>
+<h5 id="_pics_190"><a class="anchor" href="#_pics_190"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -49604,7 +49750,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_189"><a class="anchor" href="#_required_devices_189"></a>Required Devices</h5>
+<h5 id="_required_devices_190"><a class="anchor" href="#_required_devices_190"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -49637,7 +49783,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_189"><a class="anchor" href="#_test_procedure_189"></a>Test Procedure</h5>
+<h5 id="_test_procedure_190"><a class="anchor" href="#_test_procedure_190"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -50068,13 +50214,13 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <div class="sect3">
 <h4 id="_tc_ace_1_2_subscriptions"><a class="anchor" href="#_tc_ace_1_2_subscriptions"></a>49.1.2. [TC-ACE-1.2] Subscriptions</h4>
 <div class="sect4">
-<h5 id="_category_190"><a class="anchor" href="#_category_190"></a>Category</h5>
+<h5 id="_category_191"><a class="anchor" href="#_category_191"></a>Category</h5>
 <div class="paragraph">
 <p>Functional conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_191"><a class="anchor" href="#_purpose_191"></a>Purpose</h5>
+<h5 id="_purpose_192"><a class="anchor" href="#_purpose_192"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -50087,7 +50233,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_190"><a class="anchor" href="#_pics_190"></a>PICS</h5>
+<h5 id="_pics_191"><a class="anchor" href="#_pics_191"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -50124,7 +50270,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_190"><a class="anchor" href="#_required_devices_190"></a>Required Devices</h5>
+<h5 id="_required_devices_191"><a class="anchor" href="#_required_devices_191"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -50162,7 +50308,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_190"><a class="anchor" href="#_test_procedure_190"></a>Test Procedure</h5>
+<h5 id="_test_procedure_191"><a class="anchor" href="#_test_procedure_191"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -50614,13 +50760,13 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <div class="sect3">
 <h4 id="_tc_ace_1_3_subjects"><a class="anchor" href="#_tc_ace_1_3_subjects"></a>49.1.3. [TC-ACE-1.3] Subjects</h4>
 <div class="sect4">
-<h5 id="_category_191"><a class="anchor" href="#_category_191"></a>Category</h5>
+<h5 id="_category_192"><a class="anchor" href="#_category_192"></a>Category</h5>
 <div class="paragraph">
 <p>Functional conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_192"><a class="anchor" href="#_purpose_192"></a>Purpose</h5>
+<h5 id="_purpose_193"><a class="anchor" href="#_purpose_193"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -50639,7 +50785,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_191"><a class="anchor" href="#_pics_191"></a>PICS</h5>
+<h5 id="_pics_192"><a class="anchor" href="#_pics_192"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -50796,7 +50942,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_191"><a class="anchor" href="#_required_devices_191"></a>Required Devices</h5>
+<h5 id="_required_devices_192"><a class="anchor" href="#_required_devices_192"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -50839,7 +50985,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_191"><a class="anchor" href="#_test_procedure_191"></a>Test Procedure</h5>
+<h5 id="_test_procedure_192"><a class="anchor" href="#_test_procedure_192"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -52130,13 +52276,13 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <div class="sect3">
 <h4 id="_tc_ace_1_4_targets"><a class="anchor" href="#_tc_ace_1_4_targets"></a>49.1.4. [TC-ACE-1.4] Targets</h4>
 <div class="sect4">
-<h5 id="_category_192"><a class="anchor" href="#_category_192"></a>Category</h5>
+<h5 id="_category_193"><a class="anchor" href="#_category_193"></a>Category</h5>
 <div class="paragraph">
 <p>Functional conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_193"><a class="anchor" href="#_purpose_193"></a>Purpose</h5>
+<h5 id="_purpose_194"><a class="anchor" href="#_purpose_194"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -52167,7 +52313,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_192"><a class="anchor" href="#_pics_192"></a>PICS</h5>
+<h5 id="_pics_193"><a class="anchor" href="#_pics_193"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -52216,7 +52362,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_192"><a class="anchor" href="#_required_devices_192"></a>Required Devices</h5>
+<h5 id="_required_devices_193"><a class="anchor" href="#_required_devices_193"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -52249,7 +52395,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_192"><a class="anchor" href="#_test_procedure_192"></a>Test Procedure</h5>
+<h5 id="_test_procedure_193"><a class="anchor" href="#_test_procedure_193"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -53322,13 +53468,13 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <div class="sect3">
 <h4 id="_tc_ace_1_5_multi_fabric"><a class="anchor" href="#_tc_ace_1_5_multi_fabric"></a>49.1.5. [TC-ACE-1.5] Multi-fabric</h4>
 <div class="sect4">
-<h5 id="_category_193"><a class="anchor" href="#_category_193"></a>Category</h5>
+<h5 id="_category_194"><a class="anchor" href="#_category_194"></a>Category</h5>
 <div class="paragraph">
 <p>Functional conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_194"><a class="anchor" href="#_purpose_194"></a>Purpose</h5>
+<h5 id="_purpose_195"><a class="anchor" href="#_purpose_195"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -53338,7 +53484,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_193"><a class="anchor" href="#_pics_193"></a>PICS</h5>
+<h5 id="_pics_194"><a class="anchor" href="#_pics_194"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -53384,7 +53530,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_193"><a class="anchor" href="#_required_devices_193"></a>Required Devices</h5>
+<h5 id="_required_devices_194"><a class="anchor" href="#_required_devices_194"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -53422,7 +53568,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_193"><a class="anchor" href="#_test_procedure_193"></a>Test Procedure</h5>
+<h5 id="_test_procedure_194"><a class="anchor" href="#_test_procedure_194"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -53704,13 +53850,13 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <div class="sect3">
 <h4 id="_tc_ace_1_6_group_auth_mode"><a class="anchor" href="#_tc_ace_1_6_group_auth_mode"></a>49.1.6. [TC-ACE-1.6] Group auth mode</h4>
 <div class="sect4">
-<h5 id="_category_194"><a class="anchor" href="#_category_194"></a>Category</h5>
+<h5 id="_category_195"><a class="anchor" href="#_category_195"></a>Category</h5>
 <div class="paragraph">
 <p>Functional conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_195"><a class="anchor" href="#_purpose_195"></a>Purpose</h5>
+<h5 id="_purpose_196"><a class="anchor" href="#_purpose_196"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -53721,7 +53867,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_194"><a class="anchor" href="#_pics_194"></a>PICS</h5>
+<h5 id="_pics_195"><a class="anchor" href="#_pics_195"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -53767,7 +53913,7 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_194"><a class="anchor" href="#_required_devices_194"></a>Required Devices</h5>
+<h5 id="_required_devices_195"><a class="anchor" href="#_required_devices_195"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -53800,7 +53946,7 @@ using only ACLs with group auth mode.</p>
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_194"><a class="anchor" href="#_test_procedure_194"></a>Test Procedure</h5>
+<h5 id="_test_procedure_195"><a class="anchor" href="#_test_procedure_195"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -54137,19 +54283,19 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_ace_2_1_attribute_read_privilege_enforcement_dut_as_server"><a class="anchor" href="#_tc_ace_2_1_attribute_read_privilege_enforcement_dut_as_server"></a>49.1.7. [TC-ACE-2.1] Attribute read privilege enforcement - [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_category_195"><a class="anchor" href="#_category_195"></a>Category</h5>
+<h5 id="_category_196"><a class="anchor" href="#_category_196"></a>Category</h5>
 <div class="paragraph">
 <p>Functional conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_196"><a class="anchor" href="#_purpose_196"></a>Purpose</h5>
+<h5 id="_purpose_197"><a class="anchor" href="#_purpose_197"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that all attributes on the DUT require the appropriate access control privilege for reading.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_195"><a class="anchor" href="#_pics_195"></a>PICS</h5>
+<h5 id="_pics_196"><a class="anchor" href="#_pics_196"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54159,7 +54305,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_195"><a class="anchor" href="#_required_devices_195"></a>Required Devices</h5>
+<h5 id="_required_devices_196"><a class="anchor" href="#_required_devices_196"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54191,7 +54337,7 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_195"><a class="anchor" href="#_test_procedure_195"></a>Test Procedure</h5>
+<h5 id="_test_procedure_196"><a class="anchor" href="#_test_procedure_196"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -54272,6 +54418,213 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_tc_ace_2_2_attribute_write_privilege_enforcement_dut_as_server"><a class="anchor" href="#_tc_ace_2_2_attribute_write_privilege_enforcement_dut_as_server"></a>49.1.8. [TC-ACE-2.2] Attribute write privilege enforcement - [DUT as Server]</h4>
+<div class="sect4">
+<h5 id="_category_197"><a class="anchor" href="#_category_197"></a>Category</h5>
+<div class="paragraph">
+<p>Functional conformance</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_198"><a class="anchor" href="#_purpose_198"></a>Purpose</h5>
+<div class="paragraph">
+<p>Tests that all attributes on the DUT require the appropriate access control privilege for writing and that non-writeable attributes cannot be written.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_197"><a class="anchor" href="#_pics_197"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>MCORE.ROLE.COMMISSIONEE</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_197"><a class="anchor" href="#_required_devices_197"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_commissioner</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">client - original commissioner, has full admin access</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_second_controller</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">client - same fabric as TH_commissioner, no ACL access at the start of the test. Node id is <code>second_controller_nodeid</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">server</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_197"><a class="anchor" href="#_test_procedure_197"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 45%;">
+<col style="width: 40%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ref</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PICS</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Test Step</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_commissioner performs a wildcard read of the DUT to establish the set of endpoints, cluster, and attributes to test</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_commissioner reads the ACL attribute from the Access Control Cluster and saves it as <code>default_acl</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>TH_commissioner appends an entry to <code>default_acl</code> to give admin permissions to TH_second_controller and writes the new list to the ACL attribute. The new entry is as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>struct</p>
+<div class="ulist">
+<ul>
+<li>
+<p>privilege: administer</p>
+</li>
+<li>
+<p>authmode: CASE</p>
+</li>
+<li>
+<p>subjects: [<code>second_controller_nodeid</code>]</p>
+</li>
+<li>
+<p>targets: []</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="ref_tc_ace_2_2_wildcard"></a>3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_second_controller performs a wildcard read of the DUT to establish a viable set of attribute values for writing</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Repeat steps 4a and 4b for each privilege level in the set of supported privilege levels (view, operate, manage, administer) using <code>acl_privilege</code> to denote the current privilege level under test:</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4a</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>TH_commissioner appends an entry to <code>default_acl</code> to give limited permissions to TH_second_controller and writes the new list to the ACL attribute. The new entry is as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>struct</p>
+<div class="ulist">
+<ul>
+<li>
+<p>privilege: <code>acl_privilege</code></p>
+</li>
+<li>
+<p>authmode: CASE</p>
+</li>
+<li>
+<p>subjects: [<code>second_controller_nodeid</code>]</p>
+</li>
+<li>
+<p>targets: []</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4b</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>For each endpoint on the DUT, for each standard cluster on the endpoint, and for each standard and global attribute on the cluster, TH_second_controller writes the attribute as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the attribute is the ACL and <code>acl_privilege</code> is administer, skip this step</p>
+</li>
+<li>
+<p>If the attribute is a list, write an empty list</p>
+</li>
+<li>
+<p>If the attribute is not a list, write back the value read during step <a href="#ref_tc_ace_2_2_wildcard">3</a>.</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>If the attribute is NOT writeable per the spec, verify the DUT returns UNSUPPORTED_WRITE</p>
+</li>
+<li>
+<p>If the attribute is OPTIONALLY writeable per the spec, the DUT MAY return UNSUPPORTED_WRITE. Otherwise, treat as a writeable attribute.</p>
+</li>
+<li>
+<p>If the attribute is writable per the spec and <code>acl_privilege</code> is greater than or equal to the minimum required privilege for write, verify the DUT does NOT return UNSUPPORTED_ACCESS. Other error codes are acceptable.</p>
+</li>
+<li>
+<p>If the attribute is writeable per the spec and <code>acl_privilege</code> is less than the minimum required privilege for write, verify the DUT returns UNSUPPORTED_ACCESS.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -54310,13 +54663,13 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_rr_1_1_minimal_resource_requirements_for_matter_node"><a class="anchor" href="#_tc_rr_1_1_minimal_resource_requirements_for_matter_node"></a>51.1.1. [TC-RR-1.1] Minimal Resource Requirements for Matter Node</h4>
 <div class="sect4">
-<h5 id="_category_196"><a class="anchor" href="#_category_196"></a>Category</h5>
+<h5 id="_category_198"><a class="anchor" href="#_category_198"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_197"><a class="anchor" href="#_purpose_197"></a>Purpose</h5>
+<h5 id="_purpose_199"><a class="anchor" href="#_purpose_199"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the device meets the minimal requirements for each resource type from the list of various resources required by a Matter Node implementation.</p>
 </div>
@@ -54332,7 +54685,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_196"><a class="anchor" href="#_required_devices_196"></a>Required Devices</h5>
+<h5 id="_required_devices_198"><a class="anchor" href="#_required_devices_198"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54359,13 +54712,13 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_142"><a class="anchor" href="#_device_topology_142"></a>Device Topology</h5>
+<h5 id="_device_topology_143"><a class="anchor" href="#_device_topology_143"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_196"><a class="anchor" href="#_test_procedure_196"></a>Test Procedure</h5>
+<h5 id="_test_procedure_198"><a class="anchor" href="#_test_procedure_198"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4%;">
@@ -54796,17 +55149,17 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_sm_1_1_device_composition_root_node_dut_as_server"><a class="anchor" href="#_tc_sm_1_1_device_composition_root_node_dut_as_server"></a>54.1.1. [TC-SM-1.1] Device composition - Root Node [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_category_197"><a class="anchor" href="#_category_197"></a>Category</h5>
+<h5 id="_category_199"><a class="anchor" href="#_category_199"></a>Category</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_purpose_198"><a class="anchor" href="#_purpose_198"></a>Purpose</h5>
+<h5 id="_purpose_200"><a class="anchor" href="#_purpose_200"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests root node requirements</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_196"><a class="anchor" href="#_pics_196"></a>PICS</h5>
+<h5 id="_pics_198"><a class="anchor" href="#_pics_198"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54816,7 +55169,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_197"><a class="anchor" href="#_required_devices_197"></a>Required Devices</h5>
+<h5 id="_required_devices_199"><a class="anchor" href="#_required_devices_199"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54843,13 +55196,13 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_143"><a class="anchor" href="#_device_topology_143"></a>Device Topology</h5>
+<h5 id="_device_topology_144"><a class="anchor" href="#_device_topology_144"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_197"><a class="anchor" href="#_test_procedure_197"></a>Test Procedure</h5>
+<h5 id="_test_procedure_199"><a class="anchor" href="#_test_procedure_199"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -54908,17 +55261,17 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_sm_1_2_device_composition_topology_dut_as_server"><a class="anchor" href="#_tc_sm_1_2_device_composition_topology_dut_as_server"></a>54.1.2. [TC-SM-1.2] Device composition - Topology [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_category_198"><a class="anchor" href="#_category_198"></a>Category</h5>
+<h5 id="_category_200"><a class="anchor" href="#_category_200"></a>Category</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_purpose_199"><a class="anchor" href="#_purpose_199"></a>Purpose</h5>
+<h5 id="_purpose_201"><a class="anchor" href="#_purpose_201"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that the topology indicated by the descriptor cluster PartsList matches the requirements in {REF_SM_ENDPOINT}.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_197"><a class="anchor" href="#_pics_197"></a>PICS</h5>
+<h5 id="_pics_199"><a class="anchor" href="#_pics_199"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54928,7 +55281,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_198"><a class="anchor" href="#_required_devices_198"></a>Required Devices</h5>
+<h5 id="_required_devices_200"><a class="anchor" href="#_required_devices_200"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54955,13 +55308,13 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_144"><a class="anchor" href="#_device_topology_144"></a>Device Topology</h5>
+<h5 id="_device_topology_145"><a class="anchor" href="#_device_topology_145"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_198"><a class="anchor" href="#_test_procedure_198"></a>Test Procedure</h5>
+<h5 id="_test_procedure_200"><a class="anchor" href="#_test_procedure_200"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -55109,17 +55462,17 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_dt_1_1_base_device_type_dut_as_server"><a class="anchor" href="#_tc_dt_1_1_base_device_type_dut_as_server"></a>57.1.1. [TC-DT-1.1] Base Device Type [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_category_199"><a class="anchor" href="#_category_199"></a>Category</h5>
+<h5 id="_category_201"><a class="anchor" href="#_category_201"></a>Category</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_purpose_200"><a class="anchor" href="#_purpose_200"></a>Purpose</h5>
+<h5 id="_purpose_202"><a class="anchor" href="#_purpose_202"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that every device type conforms to the requirements of the base device type</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_198"><a class="anchor" href="#_pics_198"></a>PICS</h5>
+<h5 id="_pics_200"><a class="anchor" href="#_pics_200"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55129,7 +55482,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_199"><a class="anchor" href="#_required_devices_199"></a>Required Devices</h5>
+<h5 id="_required_devices_201"><a class="anchor" href="#_required_devices_201"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -55156,13 +55509,13 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_145"><a class="anchor" href="#_device_topology_145"></a>Device Topology</h5>
+<h5 id="_device_topology_146"><a class="anchor" href="#_device_topology_146"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_199"><a class="anchor" href="#_test_procedure_199"></a>Test Procedure</h5>
+<h5 id="_test_procedure_201"><a class="anchor" href="#_test_procedure_201"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -55203,8 +55556,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 392fcf1<br>
-Last updated 2024-01-17 00:23:09 UTC
+Version master c92232e<br>
+Last updated 2024-01-17 16:02:13 UTC
 </div>
 </div>
 </body>
