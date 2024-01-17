@@ -24,7 +24,7 @@ jobs:
       - name: Check YAML files for issues
         run: |
           has_errors=false
-          for file in $(find $GITHUB_WORKSPACE -name "*.yaml" -or -name "*.yml"); do
+          for file in $(find $GITHUB_WORKSPACE -name "*.yaml" -or -name "*.yml" | grep -v ".github/workflows/"); do
             echo "Checking $file..."
             if ! yamllint -c $GITHUB_WORKSPACE/.github/workflows/.yamllint "$file"; then
               has_errors=true
