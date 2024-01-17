@@ -2,7 +2,8 @@
 # Application Build Section :
 
 # Provide the folder name to build the connectedhopeip
-folder: v1.1 # NOTE : Make a directory named apps inside this folder
+# NOTE : Make a directory named apps inside this folder
+folder: v1.1
 
 # Want to build connectedhomeip...?
 Connectedhomeip: 'Y'
@@ -28,7 +29,6 @@ chip_tool: 'Y'
 
 # ********************************************************************************
 # Execution Section :
-
 # Path where chip-tool is located for execution 
 chip_tool_directory: v1.1/apps
 
@@ -104,5 +104,5 @@ Dut_data: {
   command: "./chip-all-clusters-app",
   path: "/home/ubuntu/oct16/connectedhomeip/examples/all-clusters-app/linux/out/all-clusters-app"
   }
-
+  
 # ********************************************************************************
