@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 7aad9e5,</span>
-<span id="revdate">2024-01-16 11:42:03 -0500</span>
+<span id="revnumber">version master 392fcf1,</span>
+<span id="revdate">2024-01-16 16:22:55 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -19534,12 +19534,6 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><p class="tableblock">The FeatureMap attribute value is 1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MaxNetworks attribute value is at least 2 which is saved as 'MaxNetworksValue' for future use</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -19589,17 +19583,25 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads MaxNetworks attribute from DUT and is saved as 'MaxNetworksValue' for future use</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>11.9.7.1</p>
+<p>If MaxNetworksValue is &lt; 2, skip the remaining steps.</p>
 </li>
 <li>
-<p>11.9.7.2</p>
+<p>Note: This test case is applicable for MaxNetworksValue &gt;= 2</p>
 </li>
 </ul>
 </div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">* 11.9.7.1
+* 11.9.7.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to 900</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
@@ -20185,12 +20187,6 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><p class="tableblock">The FeatureMap attribute value is 2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MaxNetworks attribute value is at least 2 which is saved as 'MaxNetworksValue' for future use</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -20240,17 +20236,25 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads MaxNetworks attribute from DUT and is saved as 'MaxNetworksValue' for future use</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>11.9.7.1</p>
+<p>If MaxNetworksValue is &lt; 2, skip the remaining steps.</p>
 </li>
 <li>
-<p>11.9.7.2</p>
+<p>Note: This test case is applicable for MaxNetworksValue &gt;= 2</p>
 </li>
 </ul>
 </div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">* 11.9.7.1
+* 11.9.7.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to 900</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends ArmFailSafeResponse command to the TH</p></td>
@@ -55199,8 +55203,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 7aad9e5<br>
-Last updated 2024-01-16 16:42:19 UTC
+Version master 392fcf1<br>
+Last updated 2024-01-17 00:23:09 UTC
 </div>
 </div>
 </body>
