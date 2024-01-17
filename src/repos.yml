@@ -5,6 +5,10 @@ repos:
     name: connectedhomeip
   - owner: CHIP-Specifications
     name: chip-test-plans
+  - owner: project-chip
+    name: certification-tool
+  - owner: project-chip
+    name: matter-test-scripts         
   - owner: CHIP-Specifications
     name: chip-test-scripts
   - owner: CHIP-Specifications
