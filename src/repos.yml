@@ -15,6 +15,6 @@ repos:
     name: chip-certification-tool
 
 # Add more repositories if needed
-#- owner: username
-#  repo: reponame
+# - owner: username
+#   repo: reponame
 # ...
