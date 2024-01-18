@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master c92232e,</span>
-<span id="revdate">2024-01-17 08:01:55 -0800</span>
+<span id="revnumber">version master 0a90dc2,</span>
+<span id="revdate">2024-01-17 15:39:34 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -6638,89 +6638,97 @@ in the Matter network.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner reads commissioning information, including SupportsConcurrentConnection attribute from General Commissioning cluster</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify SupportsConcurrentConnection is false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 4</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner SHALL re-arm Fail-safe timer on Commissionee within 60s (the autonomously Fail-safe timer length set by Commissionee)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH arm the Fail-safe timer with success</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIRELESS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner SHALL configure regulatory information in the Commissionee.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH set the values configured by the Commissioner</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 8</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner requests operational CSR from Commissionee with OperationalCSRRequest command</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH generate a new operational key pair</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 9</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures operational credentials on DUT if not previously installed</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH is able to install Trusted Root Certificate if needed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 10</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures itself as administrator in ACL on TH if needed</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH configure the ACL with success</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 11</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures operational network on TH if TH both supports and requires</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH configure the correct operational network credentials</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 12, 11.8.7.9</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner instructs Commissionee to connect to operational network</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT does not wait for ConnectNetworkResponse on commissioning channel and moves onto next step</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioning channel between the Commissioner and Commissionee is terminated.</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 13</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner starts discovery of TH using Operational Discovery</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 14</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner opens a CASE session with TH over operational network</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH is able to open the CASE session with DUT</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 15</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner sends CommissioningComplete command</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH respond with success at CommissioningComplete command sent by DUT</p></td>
 </tr>
 </tbody>
 </table>
@@ -7150,169 +7158,177 @@ in the Matter network.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner reads commissioning information, including SupportsConcurrentConnection attribute from General Commissioning cluster</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify SupportsConcurrentConnection is false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 4</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner SHALL re-arm Fail-safe timer on Commissionee within 60s (the autonomously Fail-safe timer length set by Commissionee)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH arm the Fail-safe timer with success</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIRELESS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner SHALL configure regulatory information in the Commissionee.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH set the values configured by the Commissioner</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 8</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner requests operational CSR from Commissionee with OperationalCSRRequest command</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH generate a new operational key pair</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 9</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures operational credentials on DUT if not previously installed</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH is able to install Trusted Root Certificate if needed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 10</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures itself as administrator in ACL on TH if needed</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH configure the ACL with success</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 11</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures operational network on TH if TH both supports and requires</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH configure the correct operational network credentials</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 12, 11.8.7.9</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner instructs Commissionee to connect to operational network</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT does not wait for ConnectNetworkResponse on commissioning channel and moves onto next step</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioning channel between the Commissioner and Commissionee is terminated.</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Reboot TH and prepare for commissioning</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner should go to step 2. Commissioner and Commissionee should discover and connect to each other.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Establish encryption keys with Password Authenticated Session Establishment on the commissioning channel</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT is able to establish encryption keys using PASE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner re-arms Fail-safe timer on Commissionee within 60s (the autonomously Fail-safe timer length set by Commissionee)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH arm the Fail-safe timer with success</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIRELESS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner SHALL configure regulatory information in the Commissionee.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH set the values configured by the Commissioner</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 8</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner requests operational CSR from Commissionee with OperationalCSRRequest command</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH generate a new operational key pair</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 9</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures operational credentials on DUT if not previously installed</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH is able to install Trusted Root Certificate if needed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 10</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures itself as administrator in ACL on TH if needed</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH configure the ACL with success</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 11</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures operational network on TH if TH both supports and requires</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH configure the correct operational network credentials</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 12</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner instructs Commissionee to connect to operational network if not already connected</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH successfully connect to operational network</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioning channel between the Commissioner and Commissionee is terminated.</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 13</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner starts discovery of TH using Operational Discovery</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 14</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner opens a CASE session with TH over operational network</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH is able to open the CASE session with DUT</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 15</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner sends CommissioningComplete command</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH respond with success at CommissioningComplete command sent by DUT</p></td>
 </tr>
 </tbody>
 </table>
@@ -55556,8 +55572,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master c92232e<br>
-Last updated 2024-01-17 16:02:13 UTC
+Version master 0a90dc2<br>
+Last updated 2024-01-17 23:39:50 UTC
 </div>
 </div>
 </body>
