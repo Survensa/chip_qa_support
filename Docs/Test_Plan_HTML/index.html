@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master e3af028,</span>
-<span id="revdate">2024-01-18 10:07:56 -0800</span>
+<span id="revnumber">version master b02cf1c,</span>
+<span id="revdate">2024-01-18 15:29:19 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -11922,25 +11922,25 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <div class="ulist">
 <ul>
 <li>
-<p>(<a href="#noc-re-add">24</a>) Prior AddNOC command successfully executed in fail-safe timer period &#8594; CONSTRAINT_ERROR</p>
+<p>(<a href="#noc-re-add">25</a>) Prior AddNOC command successfully executed in fail-safe timer period &#8594; CONSTRAINT_ERROR</p>
 </li>
 <li>
-<p>(<a href="#add-noc-for-update-csr">65</a>) Prior CSRRequest has IsForUpdateNOC set to true &#8594; CONSTRAINT_ERROR</p>
+<p>(<a href="#add-noc-for-update-csr">70</a>) Prior CSRRequest has IsForUpdateNOC set to true &#8594; CONSTRAINT_ERROR</p>
 </li>
 <li>
-<p>(<a href="#fabric-conflict">58</a>) Adding NOC for &lt;Root Public Key, FabricID&gt; already on device &#8594; FabricConflict</p>
+<p>(<a href="#fabric-conflict">63</a>) Adding NOC for &lt;Root Public Key, FabricID&gt; already on device &#8594; FabricConflict</p>
 </li>
 <li>
-<p>(<a href="#invalid-public-key">56</a>) Public Key in NOC does not match Public Key in NOCSR &#8594; InvalidPublicKey</p>
+<p>(<a href="#invalid-public-key">[invalid-public-key]</a>) Public Key in NOC does not match Public Key in NOCSR &#8594; InvalidPublicKey</p>
 </li>
 <li>
-<p>(<a href="#noc-invalid">20</a>) Validation error (signed by TrustedRoot not in table) &#8594; InvalidNOC</p>
+<p>(<a href="#noc-invalid">22</a>) Validation error (signed by TrustedRoot not in table) &#8594; InvalidNOC</p>
 </li>
 <li>
-<p>(<a href="#missing-csr">54</a>) No prior CSR matching NOC &#8594; MissingCsr</p>
+<p>(<a href="#missing-csr">51</a>) No prior CSR matching NOC &#8594; MissingCsr</p>
 </li>
 <li>
-<p>(<a href="#cat-invalid">21</a>) CaseAdminSubject field is not a valid ACL subject &#8594; InvalidAdminSubject</p>
+<p>(<a href="#cat-invalid">23</a>) CaseAdminSubject field is not a valid ACL subject &#8594; InvalidAdminSubject</p>
 </li>
 </ul>
 </div>
@@ -11950,28 +11950,28 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <div class="ulist">
 <ul>
 <li>
-<p>(<a href="#noc-ok">22</a>) Valid AddNOC with CaseAdminSubject is NodeID</p>
+<p>(<a href="#noc-ok">24</a>) Valid AddNOC with CaseAdminSubject is NodeID</p>
 </li>
 <li>
-<p>(<a href="#add-noc-cat">46</a>) Valid AddNOC with CaseAdminSubject is CAT</p>
+<p>(<a href="#add-noc-cat">[add-noc-cat]</a>) Valid AddNOC with CaseAdminSubject is CAT</p>
 </li>
 <li>
-<p>(<a href="#fabrics-table-ok">40</a>) AddNOC results in generation of new fabric and is reflected in fabrics table</p>
+<p>(<a href="#fabrics-table-ok">[fabrics-table-ok]</a>) AddNOC results in generation of new fabric and is reflected in fabrics table</p>
 </li>
 <li>
-<p>(<a href="#noc-table-ok">38</a>) AddNOC results in entry in NOC table</p>
+<p>(<a href="#noc-table-ok">39</a>) AddNOC results in entry in NOC table</p>
 </li>
 <li>
-<p>(<a href="#ipk-ok">43</a>) AddNOC results in IPK added to Groups Management cluster</p>
+<p>(<a href="#ipk-ok">42</a>) AddNOC results in IPK added to Groups Management cluster</p>
 </li>
 <li>
-<p>(<a href="#acl-ok">42</a>) AddNOC results in ACL added to ACL cluster</p>
+<p>(<a href="#acl-ok">41</a>) AddNOC results in ACL added to ACL cluster</p>
 </li>
 <li>
-<p>(<a href="#multiple-nocs">48</a>, <a href="#multiple-fabric-table">51</a>) Multiple NOCs can be added and are reflected in the NOC and fabric tables</p>
+<p>(<a href="#multiple-nocs">[multiple-nocs]</a>, <a href="#multiple-fabric-table">48</a>) Multiple NOCs can be added and are reflected in the NOC and fabric tables</p>
 </li>
 <li>
-<p>(<a href="#fill-fabric-table">75</a>) Able to add <code>NumSupportedFabrics</code> fabrics will full-size certificates</p>
+<p>(<a href="#fill-fabric-table">[fill-fabric-table]</a>) Able to add <code>NumSupportedFabrics</code> fabrics will full-size certificates</p>
 </li>
 </ul>
 </div>
@@ -11981,10 +11981,10 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <div class="ulist">
 <ul>
 <li>
-<p>(<a href="#root-cert-re-add">16</a>) Adding a second trusted root certificate in the same fail-safe period &#8594; CONSTRAINT_ERROR</p>
+<p>(<a href="#root-cert-re-add">18</a>) Adding a second trusted root certificate in the same fail-safe period &#8594; CONSTRAINT_ERROR</p>
 </li>
 <li>
-<p>(<a href="#root-cert-validity-check">13</a>) Validity check fails &#8594; INVALID_COMMAND</p>
+<p>(<a href="#root-cert-validity-check">12</a>) Validity check fails &#8594; INVALID_COMMAND</p>
 </li>
 </ul>
 </div>
@@ -11994,13 +11994,13 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <div class="ulist">
 <ul>
 <li>
-<p>(<a href="#root-cert-cmd-ok">[root-cert-cmd-ok]</a>, <a href="#root-cert-attribute-ok">19</a>) Valid AddTrustedRootCertificate is reflected in TrustedRootCertificates attribute</p>
+<p>(<a href="#root-cert-cmd-ok">[root-cert-cmd-ok]</a>, <a href="#root-cert-attribute-ok">21</a>) Valid AddTrustedRootCertificate is reflected in TrustedRootCertificates attribute</p>
 </li>
 <li>
-<p>(<a href="#root-cert-duplicate">15</a>) Adding an exact duplicate succeeds with no change to list</p>
+<p>(<a href="#root-cert-duplicate">16</a>) Adding an exact duplicate succeeds with no change to list</p>
 </li>
 <li>
-<p>(<a href="#multiple-trusted-root-certs">47</a>) Multiple Trusted Root Certificates can be added and are reflected in the Trusted Root Certificate attribute</p>
+<p>(<a href="#multiple-trusted-root-certs">[multiple-trusted-root-certs]</a>) Multiple Trusted Root Certificates can be added and are reflected in the Trusted Root Certificate attribute</p>
 </li>
 </ul>
 </div>
@@ -12010,10 +12010,10 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <div class="ulist">
 <ul>
 <li>
-<p>(<a href="#noc-attribute">25</a>) NOC attribute contains successfully added NOCs</p>
+<p>(<a href="#noc-attribute">26</a>) NOC attribute contains successfully added NOCs</p>
 </li>
 <li>
-<p>(<a href="#noc-attribute-not-writeable">26</a>) NOC attribute is not writeable</p>
+<p>(<a href="#noc-attribute-not-writeable">27</a>) NOC attribute is not writeable</p>
 </li>
 </ul>
 </div>
@@ -12023,10 +12023,10 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <div class="ulist">
 <ul>
 <li>
-<p>(<a href="#root-cert-attribute-ok">19</a>) TrustedRootCertificates attribute contains successfully added Trusted root certificates</p>
+<p>(<a href="#root-cert-attribute-ok">21</a>) TrustedRootCertificates attribute contains successfully added Trusted root certificates</p>
 </li>
 <li>
-<p>(<a href="#trusted-root-attr-not-writeable">18</a>) TrustedRootCertificates attribute is not writeable</p>
+<p>(<a href="#trusted-root-attr-not-writeable">20</a>) TrustedRootCertificates attribute is not writeable</p>
 </li>
 </ul>
 </div>
@@ -12036,7 +12036,7 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <div class="ulist">
 <ul>
 <li>
-<p>(<a href="#failsafe-expiry-root-certs">33</a>, <a href="#failsafe-expiry-nocs">34</a>, <a href="#failsafe-expiry-fabrics">35</a>) failsafe results in no changes to fabric table, noc table, trusted root table</p>
+<p>(<a href="#failsafe-expiry-root-certs">34</a>, <a href="#failsafe-expiry-nocs">35</a>, <a href="#failsafe-expiry-fabrics">36</a>) failsafe results in no changes to fabric table, noc table, trusted root table</p>
 </li>
 </ul>
 </div>
@@ -12046,7 +12046,7 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <div class="ulist">
 <ul>
 <li>
-<p>(<a href="#label-conflict">50</a>) duplicate label cannot be added &#8594; CONSTRAINT_ERROR</p>
+<p>(<a href="#label-conflict">47</a>) duplicate label cannot be added &#8594; CONSTRAINT_ERROR</p>
 </li>
 </ul>
 </div>
@@ -12056,10 +12056,10 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <div class="ulist">
 <ul>
 <li>
-<p>(<a href="#fabric-label-command">28</a>, <a href="#fabric-table">30</a>) UpdateFabricLabel successfully adds label to fabric</p>
+<p>(<a href="#fabric-label-command">29</a>, <a href="#fabric-table">31</a>) UpdateFabricLabel successfully adds label to fabric</p>
 </li>
 <li>
-<p>(<a href="#multiple-fabric-table">51</a>) Multiple fabrics can each have a different label</p>
+<p>(<a href="#multiple-fabric-table">48</a>) Multiple fabrics can each have a different label</p>
 </li>
 </ul>
 </div>
@@ -12069,17 +12069,7 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <div class="ulist">
 <ul>
 <li>
-<p>(<a href="#remove-invalid-fabric">68</a>) Invalid fabric index &#8594; InvalidFabricIndex</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>RemoveFabric positive cases</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>(<a href="#remove-fabric-ok">71</a>) RemoveFabric successfully removes fabric from fabric table</p>
+<p>(<a href="#remove-invalid-fabric">73</a>) Invalid fabric index &#8594; InvalidFabricIndex</p>
 </li>
 </ul>
 </div>
@@ -12115,25 +12105,7 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6.1.3.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PAI, DAC certificates are obtained and validated against externally obtained PAA certificate</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This test case assumes that during Commissioning AddNOC will be sent with ICACValue</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH2 is set up with at least one valid CASE Authenticated Tag specified in its NOC, saved as <code>CAT_TH2</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Read SupportedFabrics attributes from the DUT and saves as <code>NumSupportedFabrics</code> . Ensure there are <code>NumSupportedFabrics</code> test harness instances that can each commission the DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAI, DAC certificates are obtained and validated against externally obtained PAA certificate during TH0 commissioning</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
@@ -12162,18 +12134,18 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">client - already commissioned DUT</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">client - DUT not previously commissioned by this client, separate fabric</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH3 to TH <code>NumSupportedFabrics</code> + 1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clients</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">client - DUT not previously commissioned by this client, separate fabric</p></td>
 </tr>
 </tbody>
 </table>
@@ -12184,16 +12156,7 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </div>
 <div class="sect4">
 <h5 id="_test_setup_7"><a class="anchor" href="#_test_setup_7"></a>Test Setup</h5>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>A new fabric (ID 1) is created by TH1 to which the DUT will be commissioned</p>
-</li>
-<li>
-<p>A new fabric (ID 2) is created by TH2 to which the DUT will be commissioned</p>
-</li>
-</ol>
-</div>
+
 </div>
 <div class="sect4">
 <h5 id="_test_procedure_44"><a class="anchor" href="#_test_procedure_44"></a>Test Procedure</h5>
@@ -12215,197 +12178,53 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0000(NOC list)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Factory Reset DUT (to ensure NOC list is empty at the beginning of the following steps)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.8.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH0 opens a commissioning window on the DUT</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.5.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Start the commissioning process of DUT by TH1 on a first Fabric</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH0 reads the BasicCommissioningInfo field from the General commissioning cluster saves MaxCumulativeFailsafeSeconds as <code>failsafe_max</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.9.7.2</p>
-</li>
-<li>
-<p>11.9.7.3</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>CGEN.S.C00.Rsp(ArmFailSafe)</p>
-</li>
-<li>
-<p>CGEN.S.C01.Tx(ArmFailSafeResponse)</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with the ExpiryLengthSeconds field set to 900</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends ArmFailSafeResponse Command to TH1 with field ErrorCode as 'OK'(0)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.4.14.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 opens a PASE connection to the DUT</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.9.7.4</p>
-</li>
-<li>
-<p>11.9.7.5</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>CGEN.S.C02.Rsp(SetRegulatoryConfig)</p>
-</li>
-<li>
-<p>CGEN.S.C03.Tx(SetRegulatoryConfigResponse)</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends SetRegulatoryConfig command to the DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT sends SetRegulatoryConfigResponse with ErrorCode as SUCCESS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with the ExpiryLengthSeconds field set to <code>failsafe_max</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends ArmFailSafeResponse Command to TH1 with field ErrorCode as 'OK'(0)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.17.7.1</p>
-</li>
-<li>
-<p>11.17.7.2</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>OPCREDS.S.C00.Rsp(AttestationRequest)</p>
-</li>
-<li>
-<p>OPCREDS.S.C01.Tx(AttestationResponse)</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AttestationRequest command to DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends AttestationResponse to TH1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.17.7.3</p>
-</li>
-<li>
-<p>11.17.7.4</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>OPCREDS.S.C02.Rsp(CertificateChainRequest)</p>
-</li>
-<li>
-<p>OPCREDS.S.C03.Tx(CertificateChainResponse)</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends CertificateChainRequest Command to DUT for the PAI and saves the certificate as 'PAICert'</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Verify DUT sends CertificateChainResponse command with the Certificate Information to TH1</p>
-</li>
-<li>
-<p>Verify that the size of certificate is less than or equal to 600 bytes and of type octstr.</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.17.7.3</p>
-</li>
-<li>
-<p>11.17.7.4</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>OPCREDS.S.C02.Rsp(CertificateChainRequest)</p>
-</li>
-<li>
-<p>OPCREDS.S.C03.Tx(CertificateChainResponse)</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends CertificateChainRequest Command to DUT for the DAC and saves the certificate as 'DACCert'</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Verify DUT sends CertificateChainResponse command with the Certificate Information to TH1</p>
-</li>
-<li>
-<p>Verify that the size of certificate is less than or equal to 600 bytes and of type octstr.</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="csr-elements"></a>8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C04.Rsp(CSRRequest)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="csr-elements"></a>5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 Sends CSRRequest command with a random 32-byte nonce</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
 <p>Verify that the DUT responds with the CSRResponse Command</p>
 </li>
-<li>
-<p>Verify that the NOCSRElements field is present and of type octstr</p>
-</li>
-<li>
-<p>Verify that the AttestationSignature field is present, is an octstr type and has a maximum length of 64</p>
-</li>
 </ul>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.2.3.1</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>TH1 validates the attestation response</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the attestation response validates correctly</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="TH1-gen-real-creds"></a> 10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="TH1-gen-real-creds"></a> 6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.6.4</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>TH1 obtains or generates the NOC, the Root CA Certificate and ICAC using the CSR elements from step <a href="#csr-elements">8</a> and selects an IPK. The certificates shall have their subjects padded with additional data such that they are each the maximum certificate size of 400 bytes when encoded in the MatterCertificateEncoding.</p>
+<p>TH1 obtains or generates the NOC, the Root CA Certificate and ICAC using the CSR elements from step <a href="#csr-elements">5</a> and selects an IPK. The certificates shall have their subjects padded with additional data such that they are each the maximum certificate size of 400 bytes when encoded in the MatterCertificateEncoding.</p>
 </li>
 <li>
 <p>Save RCAC as <code>Root_CA_Certificate_TH1</code></p>
@@ -12427,13 +12246,13 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.6.4</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>TH1 obtains or generates Root Certificate with a different Root CA ID and the corresponding ICAC, NOC and IPK using the CSR elements from step <a href="#csr-elements">8</a></p>
+<p>TH1 obtains or generates Root Certificate with a different Root CA ID and the corresponding ICAC, NOC and IPK using the CSR elements from step <a href="#csr-elements">5</a></p>
 </li>
 <li>
 <p>Save RCAC as <code>Root_CA_Certificate_TH1_2</code></p>
@@ -12452,71 +12271,107 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.6.4</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>TH1 generates an INVALID Root Certificate where the signature does not match the public key and saves it as <code>Root_CA_Malformed</code></p>
-</li>
-</ul>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 generates an INVALID Root Certificate where the signature does not match the public key and saves it as <code>Root_CA_Malformed</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-validity-check"></a>13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C0b.Rsp(AddTrustedRootCertificate)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the trusted root cert list from the DUT. Save the list size as <code>trusted_root_original_size</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the fabrics attribute from the DUT. Save the list size as <code>fabrics_original_size</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the NOCs attribute from the DUT using a non-fabric-filtered read. Save the list size as <code>nocs_original_size</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-validity-check"></a>12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AddTrustedRootCertificate command to DUT to install <code>Root_CA_Malformed</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that AddTrustedRootCertificate Command fails by sending the status code as INVALID_COMMAND</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificate attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify it contains only <code>trusted_root_original_size</code> entries</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-ok"></a>14</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C0b.Rsp(AddTrustedRootCertificate)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AddTrustedRootCertificate command to DUT with RootCACertificate set to <code>Root_CA_Certificate_TH1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that AddTrustedRootCertificate Command succeeds by sending the status code as SUCCESS</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-duplicate"></a>15</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C0b.Rsp(AddTrustedRootCertificate)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificate attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify it contains <code>trusted_root_original_size</code> + 1 entries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-duplicate"></a>16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AddTrustedRootCertificate command to DUT again with the RootCACertificate field set to <code>Root_CA_Certificate_TH1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the returned Status Code is SUCCESS</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-re-add"></a>16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C0b.Rsp(AddTrustedRootCertificate)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificate attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify it contains <code>trusted_root_original_size</code> + 1 entries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-re-add"></a>18</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AddTrustedRootCertificate command to DUT again with the RootCACertificate field set to <code>Root_CA_Certificate_TH1_2</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the returned Status Code is CONSTRAINT_ERROR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0004(TrustedRootCertificates)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificates list from DUT and saves as <code>TrustedRootsList</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there is only one instance of Root CA Certificate in the list and that its content matches <code>Root_CA_Certificate_TH1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there are <code>trusted_root_original_size</code> + 1 entries</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="trusted-root-attr-not-writeable"></a>18</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0004(TrustedRootCertificates)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="trusted-root-attr-not-writeable"></a>20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 appends <code>Root_CA_Certificate_TH1_2</code> to <code>TrustedRootsList</code> and writes the TrustedRootCertificates attribute with that value</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the returned status code is UNSUPPORTED_WRITE</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-attribute-ok"></a>19</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0004(TrustedRootCertificates)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-attribute-ok"></a>21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificates list from DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there is only one instance of Root CA Certificate in the list and that its content matches <code>Root_CA_Certificate_TH1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there are <code>trusted_root_original_size</code> + 1 entries</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-invalid"></a>20</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C06.Rsp(AddNOC)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-invalid"></a>22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -12548,9 +12403,9 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="cat-invalid"></a>21</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C06.Rsp(AddNOC)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="cat-invalid"></a>23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -12582,9 +12437,9 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-ok"></a>22</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C06.Rsp(AddNOC)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-ok"></a>24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -12607,38 +12462,16 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </li>
 </ul>
 </div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT responds with NOCResponse command with status code OK</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-re-add"></a>25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>Verify that DUT responds with NOCResponse command with status code OK</p>
-</li>
-<li>
-<p>Verify that FabricIndex has a size of 1 byte</p>
-</li>
-<li>
-<p>Verify that FabricIndex = 1</p>
-</li>
-<li>
-<p>If NOCResponse command has DebugText verify that its size is within 128 characters</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 saves the FabricIndex as <code>FabricIndex_TH1</code> for future use</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-re-add"></a>24</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5,11.17.7.10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C06.Rsp(AddNOC)</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>TH1 sends the AddNOC Command to DUT with the following fields:</p>
+<p>TH1 re-sends the AddNOC Command to DUT with the following fields:</p>
 </li>
 <li>
 <p>NOCValue as <code>Node_Operational_Certificate_TH1_1</code></p>
@@ -12660,30 +12493,30 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT responds with status code CONSTRAINT_ERROR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-attribute"></a>25</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0000(NOCs)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the NOCs attribute from DUT using a non-fabric-filtered read and saves the list as <code>NOCList</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-attribute"></a>26</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the NOCs attribute from DUT using a fabric-filtered read and saves the list as <code>NOCList</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list contains one entry with NOC field <code>Node_Operational_Certificate_TH1</code> and ICAC field <code>Intermediate_Certificate_TH1</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-attribute-not-writeable"></a>26</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0000(NOCs)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 appends a second list item to 'NOCList' and writes that value to the NOCs attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-attribute-not-writeable"></a>27</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 modifies the NOC list to use <code>Node_Operational_Certificate_TH1_2</code> and <code>Intermediate_Certificate_TH1_2</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the returned status code is UNSUPPORTED_WRITE</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">27</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0000(NOCs)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the NOCs attribute from DUT using a non-fabric-filtered read</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the NOCs attribute from DUT using a fabric-filtered read</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list contains one entry with NOC field <code>Node_Operational_Certificate_TH1</code> and ICAC field <code>Intermediate_Certificate_TH1</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fabric-label-command"></a>28</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C09.Rsp(UpdateFabricLabel)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fabric-label-command"></a>29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.11</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends UpdateFabricLabel command with 'Label 1' as Label field to DUT</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -12694,15 +12527,15 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">29</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the Fabrics Attribute from DUT using a non-fabric-filtered read and gets the FabricDescriptorStruct for which the FabricIndex field equals <code>FabricIndex_TH1</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the Fabrics Attribute from DUT using a fabric-filtered read</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there is only 1 entry</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fabric-table"></a>30</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fabric-table"></a>31</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
@@ -12751,162 +12584,72 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">31</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.9.7.2</p>
-</li>
-<li>
-<p>11.9.7.3</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>CGEN.S.C00.Rsp(ArmFailSafe)</p>
-</li>
-<li>
-<p>CGEN.S.C01.Tx(ArmFailSafeResponse)</p>
-</li>
-</ul>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds field set to 0</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">32</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">33</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.4.14.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reconnects to the DUT over PASE</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="failsafe-expiry-root-certs"></a>33</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0004(TrustedRootCertificates)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="failsafe-expiry-root-certs"></a>34</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificates list from DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that list is empty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that list contains <code>trusted_root_original_size</code> entries</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="failsafe-expiry-nocs"></a>34</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0000(NOCs)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="failsafe-expiry-nocs"></a>35</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the NOCs attribute from DUT using a non-fabric-filtered read</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list is empty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list contains <code>nocs_original_size</code> entries</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="failsafe-expiry-fabrics"></a>35</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.A.A0001(Fabrics)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="failsafe-expiry-fabrics"></a>36</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the Fabrics attribute from the DUT using a non-fabric-filtered read</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list is empty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list contains <code>fabrics_original_size</code> entries</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">36</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">37</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{REF_CODE}.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 fully commissions DUT onto the fabric, using 'Root_CA_Certificate_TH1' and the AddNOC parameters specified in step <a id="noc-ok"></a>. This will update the value of <code>FabricIndex_TH1</code> so that it references the fabric the DUT was just commissioned onto</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that TH1 successfully completes commissioning, including establishing a CASE session on the operational network and issuing a CommissioningComplete command.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 fully commissions DUT onto the fabric, using a valid set of certificates</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that TH1 successfully completes commissioning</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="trusted-root-cert-table-ok"></a>37</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0004(TrustedRootCertificates)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="trusted-root-cert-table-ok"></a>38</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificates list from DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there is only one instance of Root CA Certificate in the list and that its content matches <code>Root_CA_Certificate_TH1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there are <code>trusted_root_original_size</code> + 1 entries</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-table-ok"></a>38</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0000(NOCs)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-table-ok"></a>39</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the NOCs attribute from DUT using a non-fabric-filtered read</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list contains one entry with NOC field <code>Node_Operational_Certificate_TH1</code> and ICAC field <code>Intermediate_Certificate_TH1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list contains <code>nocs_original_size</code> + 1 entries</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">39</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C09.Rsp(UpdateFabricLabel)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends UpdateFabricLabel command with 'Label 1' as Label field to DUT</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Verify that the DUT responds with the NOCResponse Command with status OK</p>
-</li>
-</ul>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the Fabrics attribute from DUT using a non-fabric-filtered</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list contains <code>fabrics_original_size</code> + 1 entries</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fabrics-table-ok"></a>40</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0001(Fabrics)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the Fabrics Attribute from DUT using a non-fabric-filtered read and gets the FabricDescriptorStruct for which the FabricIndex field equals <code>FabricIndex_TH1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="acl-ok"></a>41</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.10.5.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">41</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Read the other fields from FabricDescriptorStruct</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>RootPublicKey</p>
-</li>
-<li>
-<p>VendorID</p>
-</li>
-<li>
-<p>FabricID</p>
-</li>
-<li>
-<p>NodeID</p>
-</li>
-<li>
-<p>Label</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Verify that the size of RootPublicKey is exactly 65 bytes</p>
-</li>
-<li>
-<p>Verify that the RootPublicKey matches <code>Root_Public_Key_TH1</code></p>
-</li>
-<li>
-<p>Verify that the NodeID is the same as the matter-node-id field in the NOC sent with AddNOC Command</p>
-</li>
-<li>
-<p>Verify that the VendorID is the same as the AdminVendorID sent with AddNOC Command</p>
-</li>
-<li>
-<p>Verify that the FabricID is the same as the matter-fabric-id field in the NOC sent with AddNOC Command</p>
-</li>
-<li>
-<p>Verify that the Label field has value "Label 1"</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="acl-ok"></a>42</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.17.7.8</p>
-</li>
-<li>
-<p>9.10.5</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C06.Rsp(AddNOC)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the ACL attribute from the Access Control cluster</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -12929,111 +12672,37 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="ipk-ok"></a>43</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.17.7.8</p>
-</li>
-<li>
-<p>11.2.9.2</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C06.Rsp(AddNOC)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="ipk-ok"></a>42</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.2.7.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 issues a KeySetRead command to the DUT for GroupKeySetID 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that an entry is read-back successfully.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">43</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.11</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends UpdateFabricLabel command with 'Label 1' as Label field to DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify status OK</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">44</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.18.8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.8.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends an OpenCommissioningWindow command to the Administrator Commissioning cluster</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">45</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{REF_CODE}.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>TH2 begins the process of commissioning the DUT. After receiving the CSRResponse TH2 obtains or generates a NOC, the Root CA Certificate, ICAC and IPK.  The certificates shall have their subjects padded with additional data such that they are each the maximum certificate size of 400 bytes when encoded in the MatterCertificateEncoding.</p>
-</li>
-<li>
-<p>Save RCAC as <code>Root_CA_Certificate_TH2</code></p>
-</li>
-<li>
-<p>Save ICAC as <code>Intermediate_Certificate_TH2</code></p>
-</li>
-<li>
-<p>Save NOC as <code>Node_Operational_Certificate_TH2</code></p>
-</li>
-<li>
-<p>Save IPK as <code>IPK_TH2</code></p>
-</li>
-<li>
-<p>Extract the RCAC public key and save as <code>Root_Public_Key_TH2</code></p>
-</li>
-</ul>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH2 fully commissions the DUT</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="add-noc-cat"></a>46</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">46</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.11</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>TH2 completes the commissioning process using <code>Root_CA_Certificate_TH2</code> when performing the AddTrustedRootCertificate command and sending AddNOC with the following parameters:</p>
-</li>
-<li>
-<p>NOCValue as <code>Node_Operational_Certificate_TH2</code></p>
-</li>
-<li>
-<p>ICACValue as <code>Intermediate_Certificate_TH2</code></p>
-</li>
-<li>
-<p>IpkValue as <code>IPK_TH2</code></p>
-</li>
-<li>
-<p>CaseAdminSubject as <code>CAT_TH2</code></p>
-</li>
-<li>
-<p>AdminVendorId as the Vendor ID of TH2</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that TH2 successfully completes commissioning, including establishing a CASE session on the operational network and issuing a CommissioningComplete command</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="multiple-trusted-root-certs"></a>47</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0004(TrustedRootCertificates)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH2 reads the TrustedRootCertificates list from DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list length is two and it contains <code>Root_CA_Certificate_TH1</code> and <code>Root_CA_Certificate_TH2</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="multiple-nocs"></a>48</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0000(NOCs)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH2 reads the NOCs attribute from DUT using a non-fabric-filtered read</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Verify that the list contains two entries</p>
-</li>
-<li>
-<p>Verify that one entry has NOC field <code>Node_Operational_Certificate_TH2</code> and ICAC field <code>Intermediate_Certificate_TH2</code></p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">49</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C09.Rsp(UpdateFabricLabel)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH2 sends UpdateFabricLabel command with 'Label 2' as Label field to DUT</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -13044,9 +12713,9 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="label-conflict"></a>50</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.11</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C09.Rsp(UpdateFabricLabel)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="label-conflict"></a>47</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.11</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH2 sends UpdateFabricLabel command with 'Label 1' as Label field to DUT</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -13057,14 +12726,14 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="multiple-fabric-table"></a>51</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0001(Fabrics)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="multiple-fabric-table"></a>48</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Read the Fabrics List from DUT using a non-fabric-filtered read</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>Verify that there are two entries</p>
+<p>Verify that there are 'fabrics_original_size` + 2 entries</p>
 </li>
 <li>
 <p>Verify that one entry has Label field 'Label 1'</p>
@@ -13073,63 +12742,45 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <p>Verify that the other entry has label field 'Label 2'</p>
 </li>
 <li>
-<p>Verify that the list item with Label 'Label 1' has RootPublicKey field <code>Root_Public_Key_TH1</code>, NodeId field matches matter-node-id in <code>Node_Operational_Certificate_TH1</code>, FabricID field matches matter-fabric-id field in <code>Node_Operational_Certificate_TH1</code> and VendorID is the vendor ID of TH1</p>
+<p>Verify that the list item with Label 'Label 1' has VendorID equal to the vendor ID of TH1</p>
 </li>
 <li>
-<p>Verify that the list item with Label 'Label 2' has RootPublicKey field <code>Root_Public_Key_TH2</code>, NodeId field matches matter-node-id in <code>Node_Operational_Certificate_TH2</code>, FabricID field matches matter-fabric-id field in <code>Node_Operational_Certificate_TH2</code> and VendorID is the vendor ID of TH2</p>
+<p>Verify that the list item with Label 'Label 2' has VendorID equal to the vendor ID of TH2</p>
 </li>
 </ul>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">52</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.9.7.2</p>
-</li>
-<li>
-<p>11.9.7.3</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>CGEN.S.C00.Rsp(ArmFailSafe)</p>
-</li>
-<li>
-<p>CGEN.S.C01.Tx(ArmFailSafeResponse)</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT  with the ExpiryLengthSeconds field set to 900</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">49</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT  with the ExpiryLengthSeconds field set to <code>failsafe_max</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends ArmFailSafeResponse Command to TH1 with field ErrorCode as 'OK'(0)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">53</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C0b.Rsp(AddTrustedRootCertificate)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AddTrustedRootCertificate command to DUT with RootCACertificate set to <code>Root_CA_Certificate_TH1_2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AddTrustedRootCertificate command to DUT with RootCACertificate set to <code>Root_CA_Certificate_TH1_1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that AddTrustedRootCertificate Command succeeds by sending the status code as SUCCESS</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="missing-csr"></a>54</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5,11.17.7.10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C06.Rsp(AddNOC)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="missing-csr"></a>51</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
 <p>TH1 sends the AddNOC Command to DUT with the following fields:</p>
 </li>
 <li>
-<p>NOCValue as <code>Node_Operational_Certificate_TH1_2</code></p>
+<p>NOCValue as <code>Node_Operational_Certificate_TH1_1</code></p>
 </li>
 <li>
-<p>ICACValue as <code>Intermediate_Certificate_TH1_2</code></p>
+<p>ICACValue as <code>Intermediate_Certificate_TH1_1</code></p>
 </li>
 <li>
-<p>IpkValue as <code>IPK_TH1_2</code></p>
+<p>IpkValue as <code>IPK_TH1_1</code></p>
 </li>
 <li>
 <p>CaseAdminSubject as the NodeID of TH1</p>
@@ -13142,63 +12793,86 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT responds with status code MissingCsr</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="csr-step"></a>55</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C04.Rsp(CSRRequest)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 Sends CSRRequest command with a random 32-byte nonce</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Verify that the DUT responds with the CSRResponse Command</p>
-</li>
-<li>
-<p>Verify that the NOCSRElements field is present and of type octstr</p>
-</li>
-<li>
-<p>Verify that the AttestationSignature field is present, is an octstr type and has a maximum length of 64</p>
-</li>
-</ul>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">52</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to 0</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="invalid-public-key"></a>56</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5,11.17.7.10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C06.Rsp(AddNOC)</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>TH1 sends the AddNOC Command to DUT with the following fields:</p>
-</li>
-<li>
-<p>NOCValue as <code>Node_Operational_Certificate_TH1_2</code></p>
-</li>
-<li>
-<p>ICACValue as <code>Intermediate_Certificate_TH1_2</code></p>
-</li>
-<li>
-<p>IpkValue as <code>IPK_TH1_2</code></p>
-</li>
-<li>
-<p>CaseAdminSubject as the NodeID of TH1</p>
-</li>
-<li>
-<p>AdminVendorId as the Vendor ID of TH1</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT responds with status code InvalidPublicKey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">53</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to <code>failsafe_max</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">54</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 Sends CSRRequest command with a random 32-byte nonce</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="bad-csr-certs"></a>55</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.6.4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 generates a new RCAC, ICAC, NOC and IPK using the csr returned in step <a href="#csr-elements">5</a> (ie, NOT the most recent CSR) and saves them as <code>TH1_RCAC_bad_csr</code>, <code>TH1_ICAC_bad_csr</code>, <code>TH1_NOC_bad_csr</code> and <code>TH1_IPK_bad_csr</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">56</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends the AddTrustedRootCert command using <code>TH1_RCAC_bad_csr</code>.</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">57</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 obtains or generates a NOC and ICAC using the CSR elements from step <a href="#csr-step">55</a> with a different NodeID, but the same Root CA Certificate and fabric ID as step <a href="#TH1-gen-real-creds">10</a>. Save as <code>Node_Operational_Certificates_TH1_fabric_conflict</code> and <code>Intermediate_Certificate_TH1_fabric_conflict</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends the AddNOC Command to DUT using <code>TH1_ICAC_bad_csr</code>, <code>TH1_NOC_bad_csr</code> and <code>TH1_IPK_bad_csr</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT responds with status code InvalidPublicKey</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">58</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to 0</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fabric-conflict"></a>58</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C06.Rsp(AddNOC)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">59</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to <code>failsafe_max</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="csr-step"></a>60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 Sends CSRRequest command with a random 32-byte nonce</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fabric-conflict-certs"></a>61</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.6.4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 obtains or generates a NOC and ICAC using the CSR elements from step <a href="#csr-step">60</a> with a different NodeID, but the same Root CA Certificate and fabric ID as step <a href="#TH1-gen-real-creds">6</a>. Save as <code>Node_Operational_Certificates_TH1_fabric_conflict</code> and <code>Intermediate_Certificate_TH1_fabric_conflict</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">62</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends the AddTrustedRootCert command using the certs generated in step <a href="#fabric-conflict-certs">61</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fabric-conflict"></a>63</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -13221,84 +12895,36 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT responds with status code FabricConflict</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">59</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.9.7.2</p>
-</li>
-<li>
-<p>11.9.7.3</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>CGEN.S.C00.Rsp(ArmFailSafe)</p>
-</li>
-<li>
-<p>CGEN.S.C01.Tx(ArmFailSafeResponse)</p>
-</li>
-</ul>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends ArmFailSafeResponse Command to TH1 with field ErrorCode as 'OK'(0)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0004(TrustedRootCertificates)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">65</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificates list from DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that list contains a single entry matching <code>Root_CA_Certificate_TH1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that list contains <code>trusted_root_original_size</code> + 2 entries</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">61</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.9.7.2</p>
-</li>
-<li>
-<p>11.9.7.3</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>CGEN.S.C00.Rsp(ArmFailSafe)</p>
-</li>
-<li>
-<p>CGEN.S.C01.Tx(ArmFailSafeResponse)</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with the ExpiryLengthSeconds field set to 900</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">66</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with the ExpiryLengthSeconds field set to <code>failsafe_max</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends ArmFailSafeResponse Command to TH1 with field ErrorCode as 'OK'(0)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="csr-step-update"></a>62</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C04.Rsp(CSRRequest)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="csr-step-update"></a>67</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 Sends CSRRequest command with a random 32-byte nonce and the IsForUpdateNOC field set to true</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Verify that the DUT responds with the CSRResponse Command</p>
-</li>
-<li>
-<p>Verify that the NOCSRElements field is present and of type octstr</p>
-</li>
-<li>
-<p>Verify that the AttestationSignature field is present, is an octstr type and has a maximum length of 64</p>
-</li>
-</ul>
-</div></div></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">63</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">68</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.6.4</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -13319,16 +12945,16 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">64</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C0b.Rsp(AddTrustedRootCertificate)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">69</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AddTrustedRootCertificate command to DUT with RootCACertificate set to <code>Root_CA_Certificate_TH1_3</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that AddTrustedRootCertificate Command succeeds by sending the status code as SUCCESS</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="add-noc-for-update-csr"></a>65</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C06.Rsp(AddNOC)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="add-noc-for-update-csr"></a>70</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -13351,188 +12977,65 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT responds with status code CONSTRAINT_ERROR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">66</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.9.7.2</p>
-</li>
-<li>
-<p>11.9.7.3</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>CGEN.S.C00.Rsp(ArmFailSafe)</p>
-</li>
-<li>
-<p>CGEN.S.C01.Tx(ArmFailSafeResponse)</p>
-</li>
-</ul>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">71</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends ArmFailSafeResponse Command to TH1 with field ErrorCode as 'OK'(0)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">67</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.9.7.2</p>
-</li>
-<li>
-<p>11.9.7.3</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>CGEN.S.C00.Rsp(ArmFailSafe)</p>
-</li>
-<li>
-<p>CGEN.S.C01.Tx(ArmFailSafeResponse)</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with the ExpiryLengthSeconds field set to 900</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends ArmFailSafeResponse Command to TH1 with field ErrorCode as 'OK'(0)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">72</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.6</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH2 reads its fabric index from the CurrentFabricIndex attribute and saves as <code>FabricIndexTH2</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="remove-invalid-fabric"></a>68</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C0a.Rsp(RemoveFabric)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="remove-invalid-fabric"></a>73</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.12</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH2 sends RemoveFabric command with Fabric Index as FabricIndexTH2 + 5 (Invalid Fabric Index) to DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends NOCResponse Command with StatusCode of InvalidFabricIndex</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">69</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0001(Fabrics)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">74</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH2 reads the Fabrics List from DUT using a non-fabric-filtered read</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Verify that there are two entries</p>
+<p>Verify that there are <code>fabrics_original_size</code> + 2 entries</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">70</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.C0a.Rsp(RemoveFabric)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH2 sends RemoveFabric command with Fabric Index as FabricIndex_TH1  (Valid Fabric Index) to DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends NOCResponse Command with StatusCode of OK</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="remove-fabric-ok"></a>71</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0001(Fabrics)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH2 reads the Fabrics List from DUT using a non-fabric-filtered read</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Verify that there is a single entry with the following fields:</p>
-</li>
-<li>
-<p>Label is "Label 2"</p>
-</li>
-<li>
-<p>RootPublicKey field <code>Root_Public_Key_TH2</code></p>
-</li>
-<li>
-<p>NodeId field matches matter-node-id in <code>Node_Operational_Certificate_TH2</code></p>
-</li>
-<li>
-<p>FabricID field matches matter-fabric-id field in <code>Node_Operational_Certificate_TH2</code></p>
-</li>
-<li>
-<p>VendorID is the vendor ID of TH2</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">72</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.9.7.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">75</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.6</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH2 sends a CommissioningComplete command to the DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT responds with a CommissioningCompleteResponse with the ErrorCode as 'OK'(0)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="open-commissioning-window"></a>73</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.18.8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads its fabric index from the CurrentFabricIndex attribute and saves as <code>FabricIndex_TH1</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH2 sends an OpenCommissioningWindow command to the Administrator Commissioning cluster</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="commission-with-big-certs"></a>74</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 fully commissions the DUT using subject-padded, 400 byte certificates</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the commissioning completes successfully</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fill-fabric-table"></a>75</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Repeat steps <a href="#open-commissioning-window">73</a> and <a href="#commission-with-big-certs">74</a> to fill the fabric table using the remaining test harnesses (TH3 through TH <code>NumSupportedFabrics</code>). Each test harness should commission the DUT using subject-padded, 400-byte certificates</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that each commissioning completes successfully</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">76</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.6.4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OPCREDS.S.A0003(CommissionedFabrics)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads CommissionedFabrics attribute</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that attribute value matches <code>NumSupportedFabrics</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.12</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH0 sends RemoveFabric command with Fabric Index as FabricIndex_TH1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends NOCResponse Command with StatusCode of OK</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">77</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.12</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Repeat steps <a href="#open-commissioning-window">73</a> and <a href="#commission-with-big-certs">74</a> with TH <code>NumSupportedFabrics</code> + 1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that commissioning fails</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">78</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.5</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the SubjectsPerAccessControlEntry attribute from the Access Control Cluster and saves the value as <code>maxSubjects</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">79</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.6</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TargetsPerAccessControlEntry attribute from the Access Control Cluster and saves the value as <code>maxTargets</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">80</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.7</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the AccessControlEntriesPerFabric attribute from the Access Control Cluster and saves the value as <code>maxEntries</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="add-acls"></a>81</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 creates a valid list of AccessControlEntryStructs with <code>maxEntries</code> entries. Each AccessControlEntryStruct specifies <code>maxSubjects</code> subjects and <code>maxTargets</code> targets. TH1 writes this list to the AccessControl cluster ACL attribute</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT returns SUCCESS</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">82</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Repeat step <a href="#add-acls">81</a> for TH2 through TH <code>NumSupportedFabrics</code> to fill the ACL table</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH0 sends RemoveFabric command with Fabric Index as FabricIndex_TH1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends NOCResponse Command with StatusCode of OK</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
 <h5 id="_notestesting_considerations_41"><a class="anchor" href="#_notestesting_considerations_41"></a>Notes/Testing considerations</h5>
+<div class="paragraph">
+<p>Step 15 currently fails in the SDK and is therefore off in the test. Please see (#30798)
+Step 68 Currently fails in the SDK and is therefore off in the test. Please see (#3126). This also affects step 69, which is also off in the automation.</p>
+</div>
 <hr>
 </div>
 </div>
@@ -55572,8 +55075,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master e3af028<br>
-Last updated 2024-01-18 18:08:12 UTC
+Version master b02cf1c<br>
+Last updated 2024-01-18 23:29:33 UTC
 </div>
 </div>
 </body>
