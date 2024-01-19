@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master b02cf1c,</span>
-<span id="revdate">2024-01-18 15:29:19 -0800</span>
+<span id="revnumber">version master 8fdfe9f,</span>
+<span id="revdate">2024-01-18 16:55:36 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -54122,20 +54122,26 @@ using only ACLs with group auth mode.</p>
 <p>If the attribute is not a list, write back the value read during step <a href="#ref_tc_ace_2_2_wildcard">3</a>.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Save the returned value as <code>write_response</code>.</p>
+</div>
+<div class="paragraph">
+<p>If <code>write_response</code> is SUCCESS and the attribute is a list, write the attribute with the value read during step <a href="#ref_tc_ace_2_2_wildcard">3</a>.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>If the attribute is NOT writeable per the spec, verify the DUT returns UNSUPPORTED_WRITE</p>
+<p>If the attribute is NOT writeable per the spec, verify <code>write_response</code> is UNSUPPORTED_WRITE</p>
 </li>
 <li>
-<p>If the attribute is OPTIONALLY writeable per the spec, the DUT MAY return UNSUPPORTED_WRITE. Otherwise, treat as a writeable attribute.</p>
+<p>If the attribute is OPTIONALLY writeable per the spec, <code>write_response</code> MAY be UNSUPPORTED_WRITE. Otherwise, treat as a writeable attribute.</p>
 </li>
 <li>
-<p>If the attribute is writable per the spec and <code>acl_privilege</code> is greater than or equal to the minimum required privilege for write, verify the DUT does NOT return UNSUPPORTED_ACCESS. Other error codes are acceptable.</p>
+<p>If the attribute is writable per the spec and <code>acl_privilege</code> is greater than or equal to the minimum required privilege for write, verify <code>write_response</code> is NOT UNSUPPORTED_ACCESS. Other error codes are acceptable.</p>
 </li>
 <li>
-<p>If the attribute is writeable per the spec and <code>acl_privilege</code> is less than the minimum required privilege for write, verify the DUT returns UNSUPPORTED_ACCESS.</p>
+<p>If the attribute is writeable per the spec and <code>acl_privilege</code> is less than the minimum required privilege for write, verify <code>write_response</code> is UNSUPPORTED_ACCESS.</p>
 </li>
 </ul>
 </div></div></td>
@@ -55075,8 +55081,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master b02cf1c<br>
-Last updated 2024-01-18 23:29:33 UTC
+Version master 8fdfe9f<br>
+Last updated 2024-01-19 00:55:53 UTC
 </div>
 </div>
 </body>
