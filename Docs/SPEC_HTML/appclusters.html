@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master a0686ed (local changes),</span>
-<span id="revdate">2024-01-17 15:50:29 -0800</span>
+<span id="revnumber">version master 6cb817c (local changes),</span>
+<span id="revdate">2024-01-18 13:05:55 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1441,9 +1441,6 @@ or notes a section of text with the term "provisional".</p>
 </div>
 <div class="ulist">
 <ul>
-<li>
-<p>Support for <a href="#ref_ScenesCluster">Scenes Management cluster</a> is provisional.</p>
-</li>
 <li>
 <p>Support for Pulse Width Modulation cluster and for the Frequency feature of the <a href="#ref_LevelControlCluster">Level control cluster</a> is provisional.</p>
 </li>
@@ -3249,18 +3246,6 @@ the group identifier. Note that extra care is required in these cases to avoid a
 scene identifier collision, and that commands related to scenes without a group
 MAY only be unicast, i.e., they MAY not be multicast or broadcast.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Support for Scenes Management cluster is provisional.
-</td>
-</tr>
-</table>
-</div>
 <div class="sect3">
 <h4 id="_revision_history_4"><a class="anchor" href="#_revision_history_4"></a>1.4.1. Revision History</h4>
 <div class="paragraph">
@@ -3297,6 +3282,10 @@ Support for Scenes Management cluster is provisional.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Added Explicit, TableSize and FabricScenes features; support multi-fabric environment; added attributes SceneTableSize and RemainingCapacity; added fabric-scoped scene information list</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Updated the Cluster ID to 0x0062, the name to Scenes Management, removed the provisional status; Removed attributes SceneCount, CurrentScene, CurrentGroup, SceneValid, and NameSupport; Removed Explicit, TableSize and FabricScenes features; Removed EnhancedAddScene, EnhancedAddSceneResponse, EnhancedViewScene, EnhancedViewSceneResponse; TransitionTime field changed milliseconds in AddScene, ViewSceneResponse and RecallScene</p></td>
 </tr>
 </tbody>
 </table>
@@ -3513,9 +3502,9 @@ then the resource exhaustion behavior of the associated command SHALL apply.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CurrentScene</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0xFF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V S</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
@@ -3564,7 +3553,8 @@ the server&#8217;s Scene Table on the endpoint where the Matter Scenes cluster a
 <div class="sect5">
 <h6 id="_currentscene_field"><a class="anchor" href="#_currentscene_field"></a>1.4.7.2.2. CurrentScene Field</h6>
 <div class="paragraph">
-<p>This field SHALL indicate the scene identifier of the scene last invoked on the associated fabric.</p>
+<p>This field SHALL indicate the scene identifier of the scene last invoked on the associated fabric. If no scene has
+been invoked, the value of this field SHALL be 0xFF, the undefined scene identifier.</p>
 </div>
 </div>
 <div class="sect5">
@@ -3577,16 +3567,20 @@ invoked on the associated fabric, or 0 if the scene last invoked is not associat
 <div class="sect5">
 <h6 id="ref_SceneValidField"><a class="anchor" href="#ref_SceneValidField"></a>1.4.7.2.4. SceneValid Field</h6>
 <div class="paragraph">
-<p>This field SHALL indicate whether the state of the server
-corresponds to that associated with the CurrentScene and
-CurrentGroup attributes. TRUE indicates that these attributes are
-valid, FALSE indicates that they are not valid.</p>
+<p>This field SHALL indicate whether the state of the server corresponds to that associated with the CurrentScene and
+CurrentGroup fields of the SceneInfoStruct they belong to. TRUE indicates that these fields are valid, FALSE indicates
+that they are not valid.</p>
 </div>
 <div class="paragraph">
 <p>This field SHALL be set to False for all other fabrics when an attribute with the Scenes ("S") designation in
 the Quality column of another cluster present on the same endpoint is modified or when the current scene
 is modified by a fabric through the <a href="#ref_RecallScene">RecallScene</a> or <a href="#ref_StoreScene">StoreScene</a>
 commands, regardless of the fabric-scoped access quality of the command.</p>
+</div>
+<div class="paragraph">
+<p>In the event where the SceneValid field is set to False for a fabric, the CurrentScene and CurrentGroup
+fields SHALL be the last invoked scene and group for that fabric. In the event where no scene was previously
+invoked for that fabric, the CurrentScene and CurrentGroup fields SHALL be their default values.</p>
 </div>
 </div>
 <div class="sect5">
@@ -3981,7 +3975,7 @@ An ExtensionFieldSetStruct MAY be present for each Scenes-supporting cluster imp
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -4345,7 +4339,7 @@ for the global scene used by the On/Off cluster.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -4526,7 +4520,7 @@ TransitionTime.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -4595,7 +4589,7 @@ TransitionTime.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -4698,7 +4692,7 @@ MAY differ in implementation-defined ways from any potential order given in a pr
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -4815,7 +4809,7 @@ entry, otherwise it SHALL be omitted.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -4914,7 +4908,7 @@ the server SHALL NOT generate a RemoveSceneResponse command.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -5115,7 +5109,7 @@ the server SHALL NOT generate a RemoveAllScenesResponse command.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -5227,7 +5221,7 @@ command, e.g., with no scene extension field sets.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -5296,7 +5290,7 @@ command, e.g., with no scene extension field sets.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -5362,8 +5356,9 @@ attribute to be set for any reason, that attribute SHALL be skipped.
 The status SHALL be SUCCESS.</p>
 </li>
 <li>
-<p>The server SHALL then generate a response with the Status field set
-to the evaluated status.</p>
+<p>If the RecallScene command was received as a unicast, the server SHALL then generate a response with the Status field set
+to the evaluated status.
+If the RecallScene command was received as a groupcast, the server SHALL NOT generate a response.</p>
 </li>
 </ol>
 </div>
@@ -5618,7 +5613,7 @@ one group/scene identifier pair to another group/scene identifier pair.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneIdentifierFrom</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -5636,7 +5631,7 @@ one group/scene identifier pair to another group/scene identifier pair.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneIdentifierTo</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -5794,7 +5789,7 @@ the server SHALL NOT generate a CopySceneResponse command.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneIdentifierFrom</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -55315,8 +55310,8 @@ if that cluster or a derivative is on the same endpoint as this cluster.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master a0686ed (local changes)<br>
-Last updated 2024-01-18 00:00:31 UTC
+Version master 6cb817c (local changes)<br>
+Last updated 2024-01-19 00:00:38 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
