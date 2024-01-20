@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 6cb817c (local changes),</span>
-<span id="revdate">2024-01-18 13:05:55 -0800</span>
+<span id="revnumber">version master 7e16e82 (local changes),</span>
+<span id="revdate">2024-01-19 12:51:59 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -9371,18 +9371,6 @@ Require at least one standard mode tag. Define reserved ranges for base/derived 
 <td class="tableblock halign-left valign-top"><p class="tableblock">OnOff</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Dependency with the OnOff cluster</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1-15</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">base reserved</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This range of bits is reserved for this base cluster</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">16-31</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">derived reserved</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This range of bits is reserved for derived clusters</p></td>
-</tr>
 </tbody>
 </table>
 <div class="sect4">
@@ -9687,26 +9675,6 @@ that is a derivation of this cluster).</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RW VO</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DEPONOFF</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0004-0x007F</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base reserved</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0080-0x00FF</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>derived reserved</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
 </tbody>
 </table>
 <div class="sect4">
@@ -9879,22 +9847,6 @@ This range of attribute IDs SHALL NOT be used by this cluster.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x02-0x7F</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base reserved</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x80-0xFF</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>derived reserved</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -12083,26 +12035,6 @@ the ErrorStateDetails contains "left wheel blocked".</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0006-0x007F</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base reserved</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0080-0x00FF</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>derived reserved</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
 </tbody>
 </table>
 <div class="sect4">
@@ -12235,22 +12167,6 @@ This range of attribute IDs SHALL NOT be used by this cluster.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pause | Stop | Start | Resume</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x05-0x7F</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base reserved</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x80-0xFF</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>derived reserved</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -55310,8 +55226,8 @@ if that cluster or a derivative is on the same endpoint as this cluster.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 6cb817c (local changes)<br>
-Last updated 2024-01-19 00:00:38 UTC
+Version master 7e16e82 (local changes)<br>
+Last updated 2024-01-20 00:00:33 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
