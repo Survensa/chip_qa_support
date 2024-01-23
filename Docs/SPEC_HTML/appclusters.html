@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master c41070a (local changes),</span>
-<span id="revdate">2024-01-22 14:56:59 -0800</span>
+<span id="revnumber">version master 8069e41 (local changes),</span>
+<span id="revdate">2024-01-22 21:18:14 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -8602,7 +8602,7 @@ For example, in a Contact Sensor device type, FALSE=open or no contact, TRUE=clo
 <div class="sect4">
 <h5 id="_statechange_event"><a class="anchor" href="#_statechange_event"></a>1.7.5.1. StateChange Event</h5>
 <div class="paragraph">
-<p>This event SHALL be generated when the StateValue attribute changes.</p>
+<p>If this event is supported, it SHALL be generated when the StateValue attribute changes.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -14565,6 +14565,10 @@ revision number in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">New data model format and notation</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remove nullable from PhysicalContact delay attributes and ability to not report transitions</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -14867,7 +14871,7 @@ else if the bit if not set, it SHALL indicate the unoccupied state.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PhysicalContactOccupiedToUnoccupiedDelay</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RW VM</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
@@ -14877,7 +14881,7 @@ else if the bit if not set, it SHALL indicate the unoccupied state.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PhysicalContactUnoccupiedToOccupiedDelay</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RW VM</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
@@ -14914,7 +14918,8 @@ sensor.</p>
 Each bit position, if set, indicates the corresponding sensing capability is implemented.</p>
 </div>
 <div class="paragraph">
-<p>The value of the OccupancySensorType SHALL be aligned to the value of the OccupancySensorTypeBitmap attribute as defined below.</p>
+<p>The value of the OccupancySensorType SHALL be aligned to the value of
+the OccupancySensorTypeBitmap attribute as defined below.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -14971,9 +14976,7 @@ area.</p>
 <h5 id="_pirunoccupiedtooccupieddelay_attribute"><a class="anchor" href="#_pirunoccupiedtooccupieddelay_attribute"></a>2.7.5.5. PIRUnoccupiedToOccupiedDelay Attribute</h5>
 <div class="paragraph">
 <p>This attribute specifies the time delay, in seconds, before the PIR sensor changes to
-its occupied state after the detection of movement in the sensed area.
-This attribute is mandatory if the PIRUnoccupiedToOccupiedThreshold
-attribute is implemented.</p>
+its occupied state after the detection of movement in the sensed area.</p>
 </div>
 </div>
 <div class="sect4">
@@ -14981,8 +14984,7 @@ attribute is implemented.</p>
 <div class="paragraph">
 <p>This attribute specifies the number of movement detection events that must occur in the
 period PIRUnoccupiedToOccupiedDelay, before the PIR sensor changes to
-its occupied state. This attribute is mandatory if the
-PIRUnoccupiedToOccupiedDelay attribute is implemented.</p>
+its occupied state.</p>
 </div>
 </div>
 <div class="sect4">
@@ -14998,8 +15000,7 @@ the sensed area.</p>
 <div class="paragraph">
 <p>This attribute specifies the time delay, in seconds, before the Ultrasonic sensor
 changes to its occupied state after the detection of movement in the
-sensed area. This attribute is mandatory if the
-UltrasonicUnoccupiedToOccupiedThreshold attribute is implemented.</p>
+sensed area.</p>
 </div>
 </div>
 <div class="sect4">
@@ -15007,9 +15008,7 @@ UltrasonicUnoccupiedToOccupiedThreshold attribute is implemented.</p>
 <div class="paragraph">
 <p>This attribute specifies the number of movement detection events that must
 occur in the period UltrasonicUnoccupiedToOccupiedDelay, before the
-Ultrasonic sensor changes to its occupied state. This attribute is
-mandatory if the UltrasonicUnoccupiedToOccupiedDelay attribute is
-implemented.</p>
+Ultrasonic sensor changes to its occupied state.</p>
 </div>
 </div>
 <div class="sect4">
@@ -15017,8 +15016,7 @@ implemented.</p>
 <div class="paragraph">
 <p>This attribute specifies the time delay, in seconds, before the physical
 contact occupancy sensor changes to its unoccupied state after detecting
-the unoccupied event. The null value indicates that the sensor does not
-report occupied to unoccupied transition.</p>
+the unoccupied event.</p>
 </div>
 </div>
 <div class="sect4">
@@ -15028,19 +15026,13 @@ report occupied to unoccupied transition.</p>
 contact sensor changes to its occupied state after the detection of the
 occupied event.</p>
 </div>
-<div class="paragraph">
-<p>The null value indicates that the sensor does not report unoccupied to
-occupied transition.</p>
-</div>
 </div>
 <div class="sect4">
 <h5 id="_physicalcontactunoccupiedtooccupiedthreshold_attribute"><a class="anchor" href="#_physicalcontactunoccupiedtooccupiedthreshold_attribute"></a>2.7.5.12. PhysicalContactUnoccupiedToOccupiedThreshold Attribute</h5>
 <div class="paragraph">
 <p>This attribute specifies the number of movement detection events that
 must occur in the period PhysicalContactUnoccupiedToOccupiedDelay,
-before the PIR sensor changes to its occupied state. This attribute is
-mandatory if the PhysicalContactUnoccupiedToOccupiedDelay attribute is
-implemented.</p>
+before the PhysicalContact sensor changes to its occupied state.</p>
 </div>
 </div>
 </div>
@@ -18725,12 +18717,12 @@ of a reporting period for exported energy.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DIRC.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[DIRC].a+</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ALTC.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[ALTC].a+</p></td>
 </tr>
 </tbody>
 </table>
@@ -55226,8 +55218,8 @@ if that cluster or a derivative is on the same endpoint as this cluster.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master c41070a (local changes)<br>
-Last updated 2024-01-23 00:00:38 UTC
+Version master 8069e41 (local changes)<br>
+Last updated 2024-01-23 05:18:31 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
