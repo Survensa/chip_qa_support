@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master cf73af9 (local changes),</span>
-<span id="revdate">2024-01-29 12:44:10 -0800</span>
+<span id="revnumber">version master 7ea9172 (local changes),</span>
+<span id="revdate">2024-01-29 21:16:26 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -7590,7 +7590,7 @@ implement it.</p>
 current level from the minimum level to the maximum level when an On
 command is received by an On/Off cluster on the same endpoint.
 It is specified in 1/10ths of a second. If this attribute is not implemented,
-or contains a null value, the OnOffTransitionTime will be used instead.</p>
+or contains a null value, the OnOffTransitionTime SHALL be used instead.</p>
 </div>
 </div>
 <div class="sect4">
@@ -7600,7 +7600,7 @@ or contains a null value, the OnOffTransitionTime will be used instead.</p>
 current level from the maximum level to the minimum level when an Off
 command is received by an On/Off cluster on the same endpoint.
 It is specified in 1/10ths of a second. If this attribute is not implemented,
-or contains a null value, the OnOffTransitionTime will be used instead.</p>
+or contains a null value, the OnOffTransitionTime SHALL be used instead.</p>
 </div>
 </div>
 <div class="sect4">
@@ -26645,10 +26645,10 @@ but allows setpoints to be provided.</p>
 <p><a href="#ref_TempDiff">TemperatureDifference</a></p>
 </li>
 <li>
-<p><a href="#ref_TempS8">SignedTemperature</a></p>
+<p><a href="#ref_SignedTemperatureType">SignedTemperature Type</a></p>
 </li>
 <li>
-<p><a href="#ref_TempU8">UnsignedTemperature</a></p>
+<p><a href="#ref_UnsignedTemperatureType">UnsignedTemperature Type</a></p>
 </li>
 </ul>
 </div>
@@ -26784,7 +26784,7 @@ endpoint.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_TempS8"><a class="anchor" href="#ref_TempS8"></a>4.3.8.2. SignedTemperature Type</h5>
+<h5 id="ref_SignedTemperatureType"><a class="anchor" href="#ref_SignedTemperatureType"></a>4.3.8.2. SignedTemperature Type</h5>
 <div class="paragraph">
 <p>This data type is derived from int8 and represents a temperature from -12.7°C to 12.7°C with a resolution of 0.1°C.</p>
 </div>
@@ -26815,7 +26815,7 @@ range are still satisfactory.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_TempU8"><a class="anchor" href="#ref_TempU8"></a>4.3.8.3. UnsignedTemperature Type</h5>
+<h5 id="ref_UnsignedTemperatureType"><a class="anchor" href="#ref_UnsignedTemperatureType"></a>4.3.8.3. UnsignedTemperature Type</h5>
 <div class="paragraph">
 <p>This data type is derived from uint8 and represents a temperature from 0°C to 25.5°C with a resolution of 0.1°C.</p>
 </div>
@@ -26852,15 +26852,17 @@ range are still satisfactory.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Summary</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
@@ -26868,26 +26870,31 @@ range are still satisfactory.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CompressorFail</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Compressor Failure or Refrigerant Leakage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RoomSensorFail</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Room Temperature Sensor Failure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OutdoorSensorFail</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outdoor Temperature Sensor Failure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CoilSensorFail</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Indoor Coil Temperature Sensor Failure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FanFail</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan Failure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
@@ -26899,15 +26906,17 @@ range are still satisfactory.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Summary</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
@@ -26915,16 +26924,19 @@ range are still satisfactory.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Initialization</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Initialization failure. The device failed to complete initialization at power-up.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Hardware</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hardware failure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SelfCalibration</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Self-calibration failure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
@@ -26936,15 +26948,17 @@ range are still satisfactory.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Summary</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
@@ -26952,21 +26966,25 @@ range are still satisfactory.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CoolingStage</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Stage of cooling the HVAC system is using.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2..3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HeatingStage</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Stage of heating the HVAC system is using.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HeatingIsHeatPump</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is the heating type Heat Pump.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HeatingUsesFuel</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Does the HVAC system use fuel.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
@@ -27054,15 +27072,17 @@ range are still satisfactory.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Summary</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
@@ -27070,16 +27090,19 @@ range are still satisfactory.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ScheduleActive</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Schedule programming mode. This enables any programmed weekly schedule configurations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AutoRecovery</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Auto/recovery mode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Economy</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Economy/EnergyStar mode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
@@ -27091,15 +27114,17 @@ range are still satisfactory.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Summary</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
@@ -27107,36 +27132,43 @@ range are still satisfactory.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Heat</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Heat State On</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cool</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cool State On</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Fan</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan State On</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HeatStage2</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Heat 2<sup>nd</sup> State On</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CoolStage2</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cool 2<sup>nd</sup> State On</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FanStage2</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan 2<sup>nd</sup> State On</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FanStage3</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan 3<sup>rd</sup> Stage On</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
@@ -27190,15 +27222,17 @@ range are still satisfactory.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Summary</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
@@ -27206,79 +27240,55 @@ range are still satisfactory.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Sunday</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sunday</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Monday</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Monday</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tuesday</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tuesday</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Wednesday</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Wednesday</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Thursday</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Thursday</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Friday</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Friday</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Saturday</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Saturday</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Away</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Away or Vacation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
 <h5 id="ref_ScheduleModeBitmap"><a class="anchor" href="#ref_ScheduleModeBitmap"></a>4.3.8.11. ScheduleModeBitmap Type</h5>
-<div class="paragraph">
-<p>This data type is derived from map8.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Bit</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Summary</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HeatSetpointPresent</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Adjust Heat Setpoint</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CoolSetpointPresent</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Adjust Cool Setpoint</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="ref_TemperatureSetpointHoldPolicyBitmap"><a class="anchor" href="#ref_TemperatureSetpointHoldPolicyBitmap"></a>4.3.8.12. TemperatureSetpointHoldPolicy Type</h5>
 <div class="paragraph">
 <p>This data type is derived from map8.</p>
 </div>
@@ -27300,21 +27310,21 @@ range are still satisfactory.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HoldDurationElapsed</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Hold will be cleared when the hold duration has elapsed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HeatSetpointPresent</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adjust Heat Setpoint</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HoldDurationElapsedOrPresetChanged</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Hold will be cleared when either the hold duration has elapsed or the preset changes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CoolSetpointPresent</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adjust Cool Setpoint</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_AcCapacityFormatEnum"><a class="anchor" href="#ref_AcCapacityFormatEnum"></a>4.3.8.13. ACCapacityFormatEnum Type</h5>
+<h5 id="ref_AcCapacityFormatEnum"><a class="anchor" href="#ref_AcCapacityFormatEnum"></a>4.3.8.12. ACCapacityFormatEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -27344,7 +27354,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_AcCompressorTypeEnum"><a class="anchor" href="#ref_AcCompressorTypeEnum"></a>4.3.8.14. ACCompressorTypeEnum Type</h5>
+<h5 id="ref_AcCompressorTypeEnum"><a class="anchor" href="#ref_AcCompressorTypeEnum"></a>4.3.8.13. ACCompressorTypeEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -27392,7 +27402,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_AcLouverPositionEnum"><a class="anchor" href="#ref_AcLouverPositionEnum"></a>4.3.8.15. ACLouverPositionEnum Type</h5>
+<h5 id="ref_AcLouverPositionEnum"><a class="anchor" href="#ref_AcLouverPositionEnum"></a>4.3.8.14. ACLouverPositionEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -27446,7 +27456,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_AcRefrigerantTypeEnum"><a class="anchor" href="#ref_AcRefrigerantTypeEnum"></a>4.3.8.16. ACRefrigerantTypeEnum Type</h5>
+<h5 id="ref_AcRefrigerantTypeEnum"><a class="anchor" href="#ref_AcRefrigerantTypeEnum"></a>4.3.8.15. ACRefrigerantTypeEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -27494,7 +27504,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_AcTypeEnum"><a class="anchor" href="#ref_AcTypeEnum"></a>4.3.8.17. ACTypeEnum Type</h5>
+<h5 id="ref_AcTypeEnum"><a class="anchor" href="#ref_AcTypeEnum"></a>4.3.8.16. ACTypeEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -27548,7 +27558,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_SetpointRaiseLowerModeEnum"><a class="anchor" href="#ref_SetpointRaiseLowerModeEnum"></a>4.3.8.18. SetpointRaiseLowerModeEnum Type</h5>
+<h5 id="ref_SetpointRaiseLowerModeEnum"><a class="anchor" href="#ref_SetpointRaiseLowerModeEnum"></a>4.3.8.17. SetpointRaiseLowerModeEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -27590,7 +27600,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_ControlSequenceOfOperationEnum"><a class="anchor" href="#ref_ControlSequenceOfOperationEnum"></a>4.3.8.19. ControlSequenceOfOperationEnum Type</h5>
+<h5 id="ref_ControlSequenceOfOperationEnum"><a class="anchor" href="#ref_ControlSequenceOfOperationEnum"></a>4.3.8.18. ControlSequenceOfOperationEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -27671,7 +27681,7 @@ HeatingOnly based on the current capability.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_SetpointChangeSourceEnum"><a class="anchor" href="#ref_SetpointChangeSourceEnum"></a>4.3.8.20. SetpointChangeSourceEnum Type</h5>
+<h5 id="ref_SetpointChangeSourceEnum"><a class="anchor" href="#ref_SetpointChangeSourceEnum"></a>4.3.8.19. SetpointChangeSourceEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -27713,7 +27723,7 @@ HeatingOnly based on the current capability.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_StartOfWeekEnum"><a class="anchor" href="#ref_StartOfWeekEnum"></a>4.3.8.21. StartOfWeekEnum Type</h5>
+<h5 id="ref_StartOfWeekEnum"><a class="anchor" href="#ref_StartOfWeekEnum"></a>4.3.8.20. StartOfWeekEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -27779,7 +27789,7 @@ HeatingOnly based on the current capability.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_SystemModeEnum"><a class="anchor" href="#ref_SystemModeEnum"></a>4.3.8.22. SystemModeEnum Type</h5>
+<h5 id="ref_SystemModeEnum"><a class="anchor" href="#ref_SystemModeEnum"></a>4.3.8.21. SystemModeEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -27855,48 +27865,6 @@ HeatingOnly based on the current capability.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="sect4">
-<h5 id="ref_ThermostatRunningModeEnum"><a class="anchor" href="#ref_ThermostatRunningModeEnum"></a>4.3.8.23. ThermostatRunningModeEnum Type</h5>
-<div class="paragraph">
-<p>This data type is derived from enum8.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Summary</th>
-<th class="tableblock halign-left valign-top">Conformance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The Thermostat does not generate demand for Cooling or Heating</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cool</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Demand is only generated for Cooling</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[COOL]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Heat</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Demand is only generated for Heating</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[HEAT]</p></td>
-</tr>
-</tbody>
-</table>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 37. Interpretation of Heat, Cool and Auto <a href="#ref_SystemModeEnum">SystemModeEnum</a> Values</caption>
 <colgroup>
@@ -27936,7 +27904,49 @@ HeatingOnly based on the current capability.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_TemperatureSetpointHoldEnum"><a class="anchor" href="#ref_TemperatureSetpointHoldEnum"></a>4.3.8.24. TemperatureSetpointHoldEnum Type</h5>
+<h5 id="ref_ThermostatRunningModeEnum"><a class="anchor" href="#ref_ThermostatRunningModeEnum"></a>4.3.8.22. ThermostatRunningModeEnum Type</h5>
+<div class="paragraph">
+<p>This data type is derived from enum8.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Summary</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Thermostat does not generate demand for Cooling or Heating</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cool</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Demand is only generated for Cooling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[COOL]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Heat</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Demand is only generated for Heating</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[HEAT]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="ref_TemperatureSetpointHoldEnum"><a class="anchor" href="#ref_TemperatureSetpointHoldEnum"></a>4.3.8.23. TemperatureSetpointHoldEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -27972,7 +27982,7 @@ HeatingOnly based on the current capability.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_WeeklyScheduleTransitionStruct"><a class="anchor" href="#ref_WeeklyScheduleTransitionStruct"></a>4.3.8.25. WeeklyScheduleTransitionStruct Type</h5>
+<h5 id="ref_WeeklyScheduleTransitionStruct"><a class="anchor" href="#ref_WeeklyScheduleTransitionStruct"></a>4.3.8.24. WeeklyScheduleTransitionStruct Type</h5>
 <div class="paragraph">
 <p>This represents a single transition in a Thermostat schedule</p>
 </div>
@@ -27994,8 +28004,8 @@ HeatingOnly based on the current capability.</p>
 <th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Constraint</th>
 <th class="tableblock halign-left valign-top">Quality</th>
-<th class="tableblock halign-left valign-top">Access</th>
 <th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Access</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
@@ -28004,10 +28014,10 @@ HeatingOnly based on the current capability.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TransitionTime</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 to 1439</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 1439</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RW</p></td>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -28016,8 +28026,8 @@ HeatingOnly based on the current capability.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">temperature</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RW</p></td>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RW</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -28026,14 +28036,14 @@ HeatingOnly based on the current capability.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">temperature</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RW</p></td>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RW</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_transitiontime_field_13"><a class="anchor" href="#_transitiontime_field_13"></a>4.3.8.25.1. TransitionTime Field</h6>
+<h6 id="_transitiontime_field_13"><a class="anchor" href="#_transitiontime_field_13"></a>4.3.8.24.1. TransitionTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL represent the start time of the schedule transition during
 the associated day. The time will be represented by a 16 bits unsigned
@@ -28043,13 +28053,13 @@ be represented by 1410 minutes since midnight.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_heatsetpoint_field"><a class="anchor" href="#_heatsetpoint_field"></a>4.3.8.25.2. HeatSetpoint Field</h6>
+<h6 id="_heatsetpoint_field"><a class="anchor" href="#_heatsetpoint_field"></a>4.3.8.24.2. HeatSetpoint Field</h6>
 <div class="paragraph">
 <p>This field SHALL represent the heat setpoint to be applied at this associated transition start time.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_coolsetpoint_field"><a class="anchor" href="#_coolsetpoint_field"></a>4.3.8.25.3. CoolSetpoint Field</h6>
+<h6 id="_coolsetpoint_field"><a class="anchor" href="#_coolsetpoint_field"></a>4.3.8.24.3. CoolSetpoint Field</h6>
 <div class="paragraph">
 <p>This field SHALL represent the cool setpoint to be applied at this associated transition start time.</p>
 </div>
@@ -28185,7 +28195,7 @@ be represented by 1410 minutes since midnight.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0010</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LocalTemperatureCalibration</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_TempS8">SignedTemperature</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SignedTemperatureType">SignedTemperature Type</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-2.5°C to 2.5°C</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0°C</p></td>
@@ -28275,7 +28285,7 @@ be represented by 1410 minutes since midnight.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0019</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MinSetpointDeadBand</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_TempS8">SignedTemperature</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SignedTemperatureType">SignedTemperature Type</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0°C to 2.5°C</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.5°C</p></td>
@@ -28376,7 +28386,7 @@ be represented by 1410 minutes since midnight.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0024</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TemperatureSetpointHoldDuration</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 to 1440</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 1440</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NX</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RW VM</p></td>
@@ -28435,7 +28445,7 @@ be represented by 1410 minutes since midnight.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0034</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OccupiedSetback</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_TempU8">UnsignedTemperature</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_UnsignedTemperatureType">UnsignedTemperature Type</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OccupiedSetbackMin to OccupiedSetbackMax</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">XN</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
@@ -28445,8 +28455,8 @@ be represented by 1410 minutes since midnight.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0035</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OccupiedSetbackMin</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_TempU8">UnsignedTemperature</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 to OccupiedSetbackMax</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_UnsignedTemperatureType">UnsignedTemperature Type</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max OccupiedSetbackMax</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">XF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -28455,7 +28465,7 @@ be represented by 1410 minutes since midnight.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0036</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OccupiedSetbackMax</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_TempU8">UnsignedTemperature</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_UnsignedTemperatureType">UnsignedTemperature Type</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OccupiedSetbackMin to 25.4°C</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">XF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
@@ -28465,7 +28475,7 @@ be represented by 1410 minutes since midnight.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0037</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>UnoccupiedSetback</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_TempU8">UnsignedTemperature</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_UnsignedTemperatureType">UnsignedTemperature Type</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">UnoccupiedSetbackMin to UnoccupiedSetbackMax</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">XN</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
@@ -28475,8 +28485,8 @@ be represented by 1410 minutes since midnight.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0038</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>UnoccupiedSetbackMin</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_TempU8">UnsignedTemperature</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 to UnoccupiedSetbackMax</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_UnsignedTemperatureType">UnsignedTemperature Type</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max UnoccupiedSetbackMax</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">XF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -28485,7 +28495,7 @@ be represented by 1410 minutes since midnight.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0039</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>UnoccupiedSetbackMax</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_TempU8">UnsignedTemperature</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_UnsignedTemperatureType">UnsignedTemperature Type</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">UnoccupiedSetbackMin to 25.4°C</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">XF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
@@ -28495,7 +28505,7 @@ be represented by 1410 minutes since midnight.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x003A</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>EmergencyHeatDelta</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_TempU8">UnsignedTemperature</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_UnsignedTemperatureType">UnsignedTemperature Type</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">25.5°C</p></td>
@@ -28672,7 +28682,7 @@ as measured locally or remotely (over the network).</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_occupancy_attribute_2"><a class="anchor" href="#_occupancy_attribute_2"></a>4.3.9.5. Occupancy Attribute</h5>
+<h5 id="ref_Occupancy"><a class="anchor" href="#ref_Occupancy"></a>4.3.9.5. Occupancy Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate whether the heated/cooled space is occupied or
 not, as measured locally or remotely (over the network).</p>
@@ -28820,7 +28830,7 @@ set this attribute such that these constraints are violated, a response with the
 status code CONSTRAINT_ERROR SHALL be returned.</p>
 </div>
 <div class="paragraph">
-<p>If the occupancy status of the room is unknown, this attribute SHALL not
+<p>If the occupancy status of the room is unknown, this attribute SHALL NOT
 be used.</p>
 </div>
 </div>
@@ -28835,7 +28845,7 @@ set this attribute such that these constraints are violated, a response with the
 status code CONSTRAINT_ERROR SHALL be returned.</p>
 </div>
 <div class="paragraph">
-<p>If the occupancy status of the room is unknown, this attribute SHALL not
+<p>If the occupancy status of the room is unknown, this attribute SHALL NOT
 be used.</p>
 </div>
 </div>
@@ -28975,7 +28985,7 @@ additional information when the thermostat&#8217;s system mode is in auto mode.<
 <h5 id="_startofweek_attribute"><a class="anchor" href="#_startofweek_attribute"></a>4.3.9.28. StartOfWeek Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the day of the week that this thermostat
-considers to be the start of week for weekly set point scheduling.</p>
+considers to be the start of week for weekly setpoint scheduling.</p>
 </div>
 <div class="paragraph">
 <p>This attribute MAY be able to be used as the base to determine if the
@@ -29002,7 +29012,7 @@ transitions the thermostat is capable of handling.</p>
 <div class="paragraph">
 <p>This attribute SHALL indicate the temperature hold status on the
 thermostat. If hold status is on, the thermostat
-SHOULD maintain the temperature set point for the current mode until a
+SHOULD maintain the temperature setpoint for the current mode until a
 system mode change. If hold status is off, the thermostat SHOULD follow
 the setpoint transitions specified by its internal scheduling program.
 If the thermostat supports setpoint hold for a specific duration, it
@@ -29374,6 +29384,14 @@ measured locally or remotely (over the network).</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SCH</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>GetWeeklyScheduleResponse</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">client &#8656; server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SCH</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x03</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ClearWeeklySchedule</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
@@ -29388,14 +29406,6 @@ measured locally or remotely (over the network).</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GetRelayStatusLogResponse</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[Zigbee]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x00</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>GetWeeklyScheduleResponse</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">client &#8656; server</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SCH</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x01</p></td>
@@ -29497,7 +29507,7 @@ should be added to the setpoint(s), in steps of 0.1°C.</p>
 <div class="sect4">
 <h5 id="ref_SetWeeklySchedule"><a class="anchor" href="#ref_SetWeeklySchedule"></a>4.3.10.4. SetWeeklySchedule Command</h5>
 <div class="paragraph">
-<p>Upon receipt, the weekly schedule for updating set points SHALL be stored in the
+<p>Upon receipt, the weekly schedule for updating setpoints SHALL be stored in the
 thermostat and SHOULD begin at the time of receipt. A status code
 SHALL be sent in response.</p>
 </div>
@@ -29506,9 +29516,9 @@ SHALL be sent in response.</p>
 the status of the response SHALL be INSUFFICIENT_SPACE.</p>
 </div>
 <div class="paragraph">
-<p>When any of the set points sent in the sequence is out of range (AbsMin/MaxSetPointLimit), or
+<p>When any of the setpoints sent in the sequence is out of range (AbsMin/MaxSetPointLimit), or
 when the Mode for Sequence field includes a mode not supported by the device,
-the status of the response SHALL be CONSTRAINT_ERROR and no set points from the entire
+the status of the response SHALL be CONSTRAINT_ERROR and no setpoints from the entire
 sequence SHOULD be used.</p>
 </div>
 <div class="paragraph">
@@ -29587,13 +29597,13 @@ DayOfWeekForSequence or ModeForSequence, the status of the response SHALL be INV
 </table>
 <div class="paragraph">
 <p>The set weekly schedule command is used to update the thermostat weekly
-set point schedule from a management system. If the thermostat already
-has a weekly set point schedule programmed, then it SHOULD replace each
-daily set point set as it receives the updates from the management
-system. For example, if the thermostat has 4 set points for every day of
-the week and is sent a Set Weekly Schedule command with one set point
-for Saturday then the thermostat SHOULD remove all 4 set points for
-Saturday and replace those with the updated set point but leave all
+setpoint schedule from a management system. If the thermostat already
+has a weekly setpoint schedule programmed, then it SHOULD replace each
+daily setpoint set as it receives the updates from the management
+system. For example, if the thermostat has 4 setpoints for every day of
+the week and is sent a Set Weekly Schedule command with one setpoint
+for Saturday then the thermostat SHOULD remove all 4 setpoints for
+Saturday and replace those with the updated setpoint but leave all
 other days unchanged. If the schedule is larger than what fits in one
 frame or contains more than 10 transitions, the schedule SHALL then be
 sent using multiple Set Weekly Schedule Commands.</p>
@@ -29604,9 +29614,8 @@ Transitions for Sequence, Day of Week for Sequence, and Mode for
 Sequence. The application SHALL decode the payload according to what has
 specified in the 3 header bytes.</p>
 </div>
-</div>
-<div class="sect4">
-<h5 id="_numberoftransitionsforsequence_field"><a class="anchor" href="#_numberoftransitionsforsequence_field"></a>4.3.10.5. NumberOfTransitionsForSequence Field</h5>
+<div class="sect5">
+<h6 id="_numberoftransitionsforsequence_field"><a class="anchor" href="#_numberoftransitionsforsequence_field"></a>4.3.10.4.1. NumberOfTransitionsForSequence Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate how many
 individual transitions to expect for this sequence of commands. If a
@@ -29615,22 +29624,22 @@ this by sending more than 1 “Set Weekly Schedule” command, each
 containing the separate information that the device needs to set.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_dayofweekforsequence_field"><a class="anchor" href="#_dayofweekforsequence_field"></a>4.3.10.6. DayOfWeekForSequence Field</h5>
+<div class="sect5">
+<h6 id="_dayofweekforsequence_field"><a class="anchor" href="#_dayofweekforsequence_field"></a>4.3.10.4.2. DayOfWeekForSequence Field</h6>
 <div class="paragraph">
 <p>This field SHALL represent the day of the week at which all the transitions
 within the payload of the command SHOULD be associated to. This field is
-a bitmap and therefore the associated set point could overlap onto
+a bitmap and therefore the associated setpoint could overlap onto
 multiple days (you could set one transition time for all “week days” or
 whatever combination of days the implementation requests).</p>
 </div>
 <div class="paragraph">
-<p>Each set point transition will begin with the day of week for this
+<p>Each setpoint transition will begin with the day of week for this
 transition. There can be up to 10 transitions for each command.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_modeforsequence_field"><a class="anchor" href="#_modeforsequence_field"></a>4.3.10.7. ModeForSequence Field</h5>
+<div class="sect5">
+<h6 id="_modeforsequence_field"><a class="anchor" href="#_modeforsequence_field"></a>4.3.10.4.3. ModeForSequence Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate how the application decodes the setpoint
 fields of each transition in the Transitions list.</p>
@@ -29659,14 +29668,15 @@ the CoolSetpoint field SHALL NOT be included in <strong>any</strong> entry of th
 to ensure the command is decoded and handled correctly.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_transitions_field"><a class="anchor" href="#_transitions_field"></a>4.3.10.8. Transitions Field</h5>
+<div class="sect5">
+<h6 id="_transitions_field"><a class="anchor" href="#_transitions_field"></a>4.3.10.4.4. Transitions Field</h6>
 <div class="paragraph">
 <p>This field SHALL contain the list of setpoint transitions used to update the specified daily schedules</p>
 </div>
 </div>
+</div>
 <div class="sect4">
-<h5 id="_getweeklyschedule_command"><a class="anchor" href="#_getweeklyschedule_command"></a>4.3.10.9. GetWeeklySchedule Command</h5>
+<h5 id="_getweeklyschedule_command"><a class="anchor" href="#_getweeklyschedule_command"></a>4.3.10.5. GetWeeklySchedule Command</h5>
 <div class="paragraph">
 <p>Upon receipt, the unit SHOULD send in return the Get
 Weekly Schedule Response command. The Days to Return and Mode to Return
@@ -29719,15 +29729,15 @@ return.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_daystoreturn_field"><a class="anchor" href="#_daystoreturn_field"></a>4.3.10.9.1. DaysToReturn Field</h6>
+<h6 id="_daystoreturn_field"><a class="anchor" href="#_daystoreturn_field"></a>4.3.10.5.1. DaysToReturn Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the number of days the client would like to return
-the set point values for and could be any combination of single days or
+the setpoint values for and could be any combination of single days or
 the entire week.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_modetoreturn_field"><a class="anchor" href="#_modetoreturn_field"></a>4.3.10.9.2. ModeToReturn Field</h6>
+<h6 id="_modetoreturn_field"><a class="anchor" href="#_modetoreturn_field"></a>4.3.10.5.2. ModeToReturn Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the mode the client would like to return the set
 point values for and could be any combination of heat only, cool only or
@@ -29736,70 +29746,7 @@ heat &amp; cool.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_clearweeklyschedule_command"><a class="anchor" href="#_clearweeklyschedule_command"></a>4.3.10.10. ClearWeeklySchedule Command</h5>
-<div class="paragraph">
-<p>This command is used to clear the weekly schedule.
-The Clear weekly schedule has no payload.</p>
-</div>
-<div class="paragraph">
-<p>Upon receipt, all transitions currently stored SHALL be
-cleared and a default response of SUCCESS SHALL be sent in
-response. There are no error responses to this command.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_getrelaystatuslog_command"><a class="anchor" href="#_getrelaystatuslog_command"></a>4.3.10.11. GetRelayStatusLog Command</h5>
-<div class="paragraph">
-<p>This command is used to query the thermostat
-internal relay status log. This command has no payload.</p>
-</div>
-<div class="paragraph">
-<p>Upon receipt, the unit SHALL respond with Relay Status
-Log command if the relay status log feature is supported on the unit.</p>
-</div>
-<div class="paragraph">
-<p>The log storing order is First in First Out (FIFO) when the log is
-generated and stored into the Queue.</p>
-</div>
-<div class="paragraph">
-<p>The first record in the log (i.e., the oldest) one, is the first to be
-replaced when there is a new record and there is no more space in the
-log. Thus, the newest record will overwrite the oldest one if there is
-no space left.</p>
-</div>
-<div class="paragraph">
-<p>The log storing order is Last In First Out (LIFO) when the log is being
-retrieved from the Queue by a client device.</p>
-</div>
-<div class="paragraph">
-<p>Once the "Get Relay Status Log Response" frame is sent by the Server,
-the "Unread Entries" attribute SHOULD be decremented to indicate the
-number of unread records that remain in the queue.</p>
-</div>
-<div class="paragraph">
-<p>If the "Unread Entries" attribute reaches zero and the Client sends a
-new "Get Relay Status Log Request", the Server MAY send one of the
-following items as a response:</p>
-</div>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Resend the last Get Relay Status Log Response</p>
-<div class="paragraph">
-<p>or</p>
-</div>
-</li>
-<li>
-<p>Generate new log record at the time of request and send Get Relay Status Log Response with the new data</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>For both cases, the "Unread Entries" attribute will remain zero.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_getweeklyscheduleresponse_command"><a class="anchor" href="#_getweeklyscheduleresponse_command"></a>4.3.10.12. GetWeeklyScheduleResponse Command</h5>
+<h5 id="_getweeklyscheduleresponse_command"><a class="anchor" href="#_getweeklyscheduleresponse_command"></a>4.3.10.6. GetWeeklyScheduleResponse Command</h5>
 <div class="paragraph">
 <p>This command has the same payload format as the Set Weekly Schedule.</p>
 </div>
@@ -29865,7 +29812,70 @@ following items as a response:</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_getrelaystatuslogresponse_command"><a class="anchor" href="#_getrelaystatuslogresponse_command"></a>4.3.10.13. GetRelayStatusLogResponse Command</h5>
+<h5 id="_clearweeklyschedule_command"><a class="anchor" href="#_clearweeklyschedule_command"></a>4.3.10.7. ClearWeeklySchedule Command</h5>
+<div class="paragraph">
+<p>This command is used to clear the weekly schedule.
+The Clear weekly schedule has no payload.</p>
+</div>
+<div class="paragraph">
+<p>Upon receipt, all transitions currently stored SHALL be
+cleared and a default response of SUCCESS SHALL be sent in
+response. There are no error responses to this command.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_getrelaystatuslog_command"><a class="anchor" href="#_getrelaystatuslog_command"></a>4.3.10.8. GetRelayStatusLog Command</h5>
+<div class="paragraph">
+<p>This command is used to query the thermostat
+internal relay status log. This command has no payload.</p>
+</div>
+<div class="paragraph">
+<p>Upon receipt, the unit SHALL respond with Relay Status
+Log command if the relay status log feature is supported on the unit.</p>
+</div>
+<div class="paragraph">
+<p>The log storing order is First in First Out (FIFO) when the log is
+generated and stored into the Queue.</p>
+</div>
+<div class="paragraph">
+<p>The first record in the log (i.e., the oldest) one, is the first to be
+replaced when there is a new record and there is no more space in the
+log. Thus, the newest record will overwrite the oldest one if there is
+no space left.</p>
+</div>
+<div class="paragraph">
+<p>The log storing order is Last In First Out (LIFO) when the log is being
+retrieved from the Queue by a client device.</p>
+</div>
+<div class="paragraph">
+<p>Once the "Get Relay Status Log Response" frame is sent by the Server,
+the "Unread Entries" attribute SHOULD be decremented to indicate the
+number of unread records that remain in the queue.</p>
+</div>
+<div class="paragraph">
+<p>If the "Unread Entries" attribute reaches zero and the Client sends a
+new "Get Relay Status Log Request", the Server MAY send one of the
+following items as a response:</p>
+</div>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Resend the last Get Relay Status Log Response</p>
+<div class="paragraph">
+<p>or</p>
+</div>
+</li>
+<li>
+<p>Generate new log record at the time of request and send Get Relay Status Log Response with the new data</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For both cases, the "Unread Entries" attribute will remain zero.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_getrelaystatuslogresponse_command"><a class="anchor" href="#_getrelaystatuslogresponse_command"></a>4.3.10.9. GetRelayStatusLogResponse Command</h5>
 <div class="paragraph">
 <p>This command is sent from the thermostat cluster server in response to
 the Get Relay Status Log. After the Relay Status Entry is sent over the
@@ -29898,7 +29908,7 @@ the thermostat internal log.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TimeOfDay</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 to 1439</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 1439</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -29951,7 +29961,7 @@ the thermostat internal log.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_timeofday_field"><a class="anchor" href="#_timeofday_field"></a>4.3.10.13.1. TimeOfDay Field</h6>
+<h6 id="_timeofday_field"><a class="anchor" href="#_timeofday_field"></a>4.3.10.9.1. TimeOfDay Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the sample time of the day, in minutes since midnight, when
 the relay status was captured for this associated log entry. For
@@ -29960,7 +29970,7 @@ and 11:30pm will be represented by 1410 minutes since midnight.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_relaystatus_field"><a class="anchor" href="#_relaystatus_field"></a>4.3.10.13.2. RelayStatus Field</h6>
+<h6 id="_relaystatus_field"><a class="anchor" href="#_relaystatus_field"></a>4.3.10.9.2. RelayStatus Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the relay status for thermostat when the log is captured. Each
 bit represents one relay used by the thermostat. If the bit is on, the
@@ -29969,27 +29979,27 @@ create its own mapping between the bitmap and the associated relay.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_localtemperature_field"><a class="anchor" href="#_localtemperature_field"></a>4.3.10.13.3. LocalTemperature Field</h6>
+<h6 id="_localtemperature_field"><a class="anchor" href="#_localtemperature_field"></a>4.3.10.9.3. LocalTemperature Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the <a href="#ref_LocalTemperature">LocalTemperature</a> when the log is captured.
 The null value indicates that LocalTemperature was invalid or unavailable.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_humidity_field"><a class="anchor" href="#_humidity_field"></a>4.3.10.13.4. Humidity Field</h6>
+<h6 id="_humidity_field"><a class="anchor" href="#_humidity_field"></a>4.3.10.9.4. Humidity Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the humidity as a percentage when the log was
 captured. The null value indicates that the humidity value was invalid or unknown.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_setpoint_field"><a class="anchor" href="#_setpoint_field"></a>4.3.10.13.5. Setpoint Field</h6>
+<h6 id="_setpoint_field"><a class="anchor" href="#_setpoint_field"></a>4.3.10.9.5. Setpoint Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the target setpoint temperature when the log is captured.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_unreadentries_field"><a class="anchor" href="#_unreadentries_field"></a>4.3.10.13.6. UnreadEntries Field</h6>
+<h6 id="_unreadentries_field"><a class="anchor" href="#_unreadentries_field"></a>4.3.10.9.6. UnreadEntries Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the number of unread entries within the thermostat
 internal log system.</p>
@@ -47513,6 +47523,14 @@ If this property is not populated, the Video Player SHALL default to logo or the
 <p>A check SHALL be made to ensure the URL is secure (uses HTTPS).</p>
 </div>
 <div class="paragraph">
+<p>When playing a video stream in response to this command,
+an indication (ex. visual) of the identity of the origin node of the video stream SHALL be provided.
+This could be in the form of a friendly name label which uniquely identifies the node to the user.
+This friendly name label is typically assigned by the Matter Admin (ex. TV) at the time of commissioning and,
+when it’s a device, is often editable by the user.
+It might be a combination of a company name and friendly name, for example, ”Acme” or “Acme Streaming Service on Alice’s Phone”.</p>
+</div>
+<div class="paragraph">
 <p>This command returns a Launch Response.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -48322,7 +48340,14 @@ Device MAY support additional codes beyond what is indicated in feature flags.</
 <div class="sect4">
 <h5 id="_sendkey_command"><a class="anchor" href="#_sendkey_command"></a>6.8.6.1. SendKey Command</h5>
 <div class="paragraph">
-<p>Upon receipt, this SHALL process a keycode as input to the media device.</p>
+<p>Upon receipt, this SHALL process a keycode as input to the media endpoint.</p>
+</div>
+<div class="paragraph">
+<p>If a device has multiple media endpoints implementing this cluster,
+such as a casting video player endpoint with one or more content app endpoints,
+then only the endpoint receiving the command SHALL process the keycode as input.
+In other words, a specific content app endpoint SHALL NOT process a keycode
+received by a different content app endpoint.</p>
 </div>
 <div class="paragraph">
 <p>If a second SendKey request with the same KeyCode value is received within 200ms,
@@ -55198,8 +55223,8 @@ if that cluster or a derivative is on the same endpoint as this cluster.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master cf73af9 (local changes)<br>
-Last updated 2024-01-30 00:00:28 UTC
+Version master 7ea9172 (local changes)<br>
+Last updated 2024-01-30 05:16:39 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
