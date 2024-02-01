@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 1f4b57e,</span>
-<span id="revdate">2024-01-31 07:15:57 -0800</span>
+<span id="revnumber">version master 8583a7d,</span>
+<span id="revdate">2024-02-01 08:50:48 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -5049,13 +5049,31 @@ Verify The QR code must be of sufficient size and contrast respective to surface
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.BLE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT begins sending ADVs. TH does not respond to these DUT ADVs so that the DUT can keep sending ADVs</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The following Advertising PDU payload fields shall comply with section 5.4.2.5.6. "Advertising Data".
-DUT contains in the ADV:</p>
-<p class="tableblock">12-bit "Discriminator" field (Byte 8-9, Bits[11:0])</p>
-<p class="tableblock">DUT may contain in the ADV:</p>
-<p class="tableblock">16-bit "Vendor ID" field (Byte 10-11, Set to 0, if elided)</p>
-<p class="tableblock">16-bit "Product ID" field (Byte 12-13, Set to 0, if elided)</p>
-<p class="tableblock">Variable length "Extended Data" field (Byte 14, Bit[0], Set to 0, if elided)</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The following Advertising PDU payload fields shall comply with section 5.4.2.5.6. "Advertising Data".</p>
+</div>
+<div class="paragraph">
+<p>Verify that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>12-bit "Discriminator" field in Matter service data is populated</p>
+</li>
+<li>
+<p>16-bit "Vendor ID" field in Matter service data is set to Vendor ID or 0 if elided</p>
+</li>
+<li>
+<p>16-bit "Product ID" field in Matter service data is set to Product ID or 0 elided</p>
+</li>
+<li>
+<p>"Extended Data" bit is set to 1 if Extended Data exists otherwise set to 0 (Bit[0] of last byte)</p>
+</li>
+<li>
+<p>"Extended Announcement" bit is set to 0 in Matter service data (Bit[1] of last byte)</p>
+</li>
+</ul>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
@@ -5080,11 +5098,43 @@ DUT contains in the ADV:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT restarts the ADV sending process upon reboot and uses a new address (the previous address must be stored by TH in the previous step).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.BLE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH does not respond to DUT and DUT keeps sending ADVs. TH waits at least 15 minutes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If DUT does not support Extended Announcement: TH does not respond to DUT and DUT keeps sending ADVs. TH waits at least 15 minutes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT stops sending ADV no later than 15 minutes and no sooner than 3 minutes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.BLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If DUT does support Extended Announcement: TH does not respond to DUT and DUT keeps sending ADVs. TH waits at least 15 minutes</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>DUT must send ADVs at a rate equal to 1200ms.</p>
+</div>
+<div class="paragraph">
+<p>The following Advertising PDU payload fields shall comply with section 5.4.2.5.6. "Advertising Data".
+Verify that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>12-bit "Discriminator" field in Matter service data is populated</p>
+</li>
+<li>
+<p>16-bit "Vendor ID" field in Matter service data is set to 0</p>
+</li>
+<li>
+<p>16-bit "Product ID" field in Matter service data is set to 0</p>
+</li>
+<li>
+<p>"Extended Data" bit is set to 1 if Extended Data exists otherwise set to 0 (Bit[0] of last byte)</p>
+</li>
+<li>
+<p>"Extended Announcement" bit is set to 1 in Matter service data (Bit[1] of last byte)</p>
+</li>
+</ul>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
@@ -15330,7 +15380,7 @@ conditions:</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Access point SSID to use for tests</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Access point SSID(dual band 2.4GHz and 5GHz) to use for tests</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.F00(WI)</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -16682,6 +16732,12 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </table>
 </div>
 <div class="sect4">
+<h5 id="_test_setup_14"><a class="anchor" href="#_test_setup_14"></a>Test Setup</h5>
+<div class="paragraph">
+<p>PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID should be setup.</p>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_test_procedure_55"><a class="anchor" href="#_test_procedure_55"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -16741,16 +16797,16 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <p>Security is of type map8 with a length range 0 to 254</p>
 </li>
 <li>
-<p>SSID is of type octstr with a length range 0 to 32</p>
+<p>SSID is of type octstr with a length range 0 to 32. It should only show the SSIDs on bands supported by the DUT. If the DUT supports 2.4GHz or 5GHz, PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID should be listed.</p>
 </li>
 <li>
-<p>BSSID is of type octstr with a length of 6</p>
+<p>BSSID is of type octstr with a length of 6. It should only show the BSSIDs on bands supported by the DUT. (Example - If the device supports 5GHz, it must show all the BSSID&#8217;s for 5GHz).</p>
 </li>
 <li>
 <p>Channel is of type uint16 with a range 0 to 65,535</p>
 </li>
 <li>
-<p>Wi-Fi Band, if present, is of type enum8 with a range of -128 to 127</p>
+<p>Wi-Fi Band, if present, with a value present in the SupportedWiFiBands attribute, and in the range of values in the WiFiBandEnum.</p>
 </li>
 <li>
 <p>RSSI, if present, is of type int8 with a range of -120 to 0</p>
@@ -16803,7 +16859,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <p>DebugText is of type string with max length 512 or absent</p>
 </li>
 <li>
-<p>WiFiScanResults list contains only one entry with the following fields and values:</p>
+<p>WiFiScanResults list contains at least one entry with the following fields and values:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -16813,7 +16869,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <p>SSID is PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID</p>
 </li>
 <li>
-<p>BSSID is of type octstr with a length of 6</p>
+<p>BSSID is of type octstr with a length of 6. It should only show the BSSIDs on bands supported by the DUT.(Example - If the device supports 5GHz, it must show all the BSSID&#8217;s for 5GHz)</p>
 </li>
 <li>
 <p>Channel</p>
@@ -16836,6 +16892,13 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads Breadcrumb attribute from the General Commissioning Cluster</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the Breadcrumb attribute is set to 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.8.8.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Turn off the Wi-Fi Accesspoints, wait 3 seconds. Sending ScanNetworks Command to the DUT with SSID field set to PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID and Breadcrumb field set to 2 from the TH.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends the ScanNetworkResponse command with the NetworkingStatus field set to NetworkNotFound.</p></td>
 </tr>
 </tbody>
 </table>
@@ -21780,7 +21843,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_14"><a class="anchor" href="#_test_setup_14"></a>Test Setup</h5>
+<h5 id="_test_setup_15"><a class="anchor" href="#_test_setup_15"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commission DUT to TH, if not done so already.</p>
 </div>
@@ -21920,7 +21983,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_15"><a class="anchor" href="#_test_setup_15"></a>Test Setup</h5>
+<h5 id="_test_setup_16"><a class="anchor" href="#_test_setup_16"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commission DUT to TH, if not done so already.</p>
 </div>
@@ -22088,7 +22151,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_16"><a class="anchor" href="#_test_setup_16"></a>Test Setup</h5>
+<h5 id="_test_setup_17"><a class="anchor" href="#_test_setup_17"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commission DUT to TH, if not done so already.</p>
 </div>
@@ -22255,7 +22318,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_17"><a class="anchor" href="#_test_setup_17"></a>Test Setup</h5>
+<h5 id="_test_setup_18"><a class="anchor" href="#_test_setup_18"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commission DUT to TH, if not done so already.</p>
 </div>
@@ -22737,7 +22800,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_18"><a class="anchor" href="#_test_setup_18"></a>Test Setup</h5>
+<h5 id="_test_setup_19"><a class="anchor" href="#_test_setup_19"></a>Test Setup</h5>
 <div class="paragraph">
 <p>The device set up as Commissioner is the Initiator and the device serving as Commissionee is the Responder</p>
 </div>
@@ -22895,7 +22958,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_19"><a class="anchor" href="#_test_setup_19"></a>Test Setup</h5>
+<h5 id="_test_setup_20"><a class="anchor" href="#_test_setup_20"></a>Test Setup</h5>
 <div class="paragraph">
 <p>The TH is set up as a Commissioner/Initiator and the DUT as a Commissionee/Responder</p>
 </div>
@@ -23071,7 +23134,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_20"><a class="anchor" href="#_test_setup_20"></a>Test Setup</h5>
+<h5 id="_test_setup_21"><a class="anchor" href="#_test_setup_21"></a>Test Setup</h5>
 <div class="paragraph">
 <p>The DUT  set up as a Commissioner/Initiator and the TH as a Commissionee/Responder</p>
 </div>
@@ -23455,7 +23518,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_21"><a class="anchor" href="#_test_setup_21"></a>Test Setup</h5>
+<h5 id="_test_setup_22"><a class="anchor" href="#_test_setup_22"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH is the Initiator and the DUT is the Responder. TH and the DUT are commissioned.</p>
 </div>
@@ -23725,7 +23788,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_22"><a class="anchor" href="#_test_setup_22"></a>Test Setup</h5>
+<h5 id="_test_setup_23"><a class="anchor" href="#_test_setup_23"></a>Test Setup</h5>
 <div class="paragraph">
 <p>DUT is the Initiator and the TH is the Responder.TH and the DUT are commissioned.</p>
 </div>
@@ -24069,7 +24132,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_23"><a class="anchor" href="#_test_setup_23"></a>Test Setup</h5>
+<h5 id="_test_setup_24"><a class="anchor" href="#_test_setup_24"></a>Test Setup</h5>
 <div class="paragraph">
 <p>The TH is the Initiator and the DUT is the Responder</p>
 </div>
@@ -24525,7 +24588,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_24"><a class="anchor" href="#_test_setup_24"></a>Test Setup</h5>
+<h5 id="_test_setup_25"><a class="anchor" href="#_test_setup_25"></a>Test Setup</h5>
 <div class="paragraph">
 <p>The DUT is the Initiator and the TH is the Responder</p>
 </div>
@@ -24879,7 +24942,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_25"><a class="anchor" href="#_test_setup_25"></a>Test Setup</h5>
+<h5 id="_test_setup_26"><a class="anchor" href="#_test_setup_26"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -25035,7 +25098,7 @@ Verify on each of these Reference Devices that the appropriate attribute value h
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_26"><a class="anchor" href="#_test_setup_26"></a>Test Setup</h5>
+<h5 id="_test_setup_27"><a class="anchor" href="#_test_setup_27"></a>Test Setup</h5>
 <div class="paragraph">
 <p>N/A</p>
 </div>
@@ -25388,7 +25451,7 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_27"><a class="anchor" href="#_test_setup_27"></a>Test Setup</h5>
+<h5 id="_test_setup_28"><a class="anchor" href="#_test_setup_28"></a>Test Setup</h5>
 <div class="paragraph">
 <p>N/A</p>
 </div>
@@ -25523,7 +25586,7 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_28"><a class="anchor" href="#_test_setup_28"></a>Test Setup</h5>
+<h5 id="_test_setup_29"><a class="anchor" href="#_test_setup_29"></a>Test Setup</h5>
 <div class="paragraph">
 <p>N/A</p>
 </div>
@@ -25677,7 +25740,7 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_29"><a class="anchor" href="#_test_setup_29"></a>Test Setup</h5>
+<h5 id="_test_setup_30"><a class="anchor" href="#_test_setup_30"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -25833,7 +25896,7 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_30"><a class="anchor" href="#_test_setup_30"></a>Test Setup</h5>
+<h5 id="_test_setup_31"><a class="anchor" href="#_test_setup_31"></a>Test Setup</h5>
 <div class="paragraph">
 <p>N/A</p>
 </div>
@@ -26012,7 +26075,7 @@ available or has an invalid value, the default MRP_RETRY_INTERVAL_ACTIVE value m
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_31"><a class="anchor" href="#_test_setup_31"></a>Test Setup</h5>
+<h5 id="_test_setup_32"><a class="anchor" href="#_test_setup_32"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -26160,7 +26223,7 @@ MCORE.SC.DN_KEY</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_32"><a class="anchor" href="#_test_setup_32"></a>Test Setup</h5>
+<h5 id="_test_setup_33"><a class="anchor" href="#_test_setup_33"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -26321,7 +26384,7 @@ MCORE.SC.DN_KEY</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_33"><a class="anchor" href="#_test_setup_33"></a>Test Setup</h5>
+<h5 id="_test_setup_34"><a class="anchor" href="#_test_setup_34"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -26528,7 +26591,7 @@ Fabric ID assigned from DUT to TH2 and save the value for future use</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_34"><a class="anchor" href="#_test_setup_34"></a>Test Setup</h5>
+<h5 id="_test_setup_35"><a class="anchor" href="#_test_setup_35"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -26672,7 +26735,7 @@ Fabric ID assigned from DUT to TH2 and save the value for future use</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_35"><a class="anchor" href="#_test_setup_35"></a>Test Setup</h5>
+<h5 id="_test_setup_36"><a class="anchor" href="#_test_setup_36"></a>Test Setup</h5>
 <div class="paragraph">
 <p>N/A</p>
 </div>
@@ -27329,7 +27392,7 @@ Fabric ID assigned from DUT to TH2 and save the value for future use</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_36"><a class="anchor" href="#_test_setup_36"></a>Test Setup</h5>
+<h5 id="_test_setup_37"><a class="anchor" href="#_test_setup_37"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commission DUT to TH (can be skipped if done in a preceding test).</p>
 </div>
@@ -27535,7 +27598,7 @@ KeySetReadAllIndices</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_37"><a class="anchor" href="#_test_setup_37"></a>Test Setup</h5>
+<h5 id="_test_setup_38"><a class="anchor" href="#_test_setup_38"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commission DUT to TH (can be skipped if done in a preceding test).</p>
 </div>
@@ -28476,7 +28539,7 @@ KeySetReadAllIndices</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_38"><a class="anchor" href="#_test_setup_38"></a>Test Setup</h5>
+<h5 id="_test_setup_39"><a class="anchor" href="#_test_setup_39"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -28971,7 +29034,7 @@ KeySetReadAllIndices</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_39"><a class="anchor" href="#_test_setup_39"></a>Test Setup</h5>
+<h5 id="_test_setup_40"><a class="anchor" href="#_test_setup_40"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -29326,7 +29389,7 @@ KeySetReadAllIndices</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_40"><a class="anchor" href="#_test_setup_40"></a>Test Setup</h5>
+<h5 id="_test_setup_41"><a class="anchor" href="#_test_setup_41"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -29553,7 +29616,7 @@ KeySetReadAllIndices</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_41"><a class="anchor" href="#_test_setup_41"></a>Test Setup</h5>
+<h5 id="_test_setup_42"><a class="anchor" href="#_test_setup_42"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -29761,7 +29824,7 @@ KeySetReadAllIndices</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_42"><a class="anchor" href="#_test_setup_42"></a>Test Setup</h5>
+<h5 id="_test_setup_43"><a class="anchor" href="#_test_setup_43"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -30096,7 +30159,7 @@ are separate fabrics.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_43"><a class="anchor" href="#_test_setup_43"></a>Test Setup</h5>
+<h5 id="_test_setup_44"><a class="anchor" href="#_test_setup_44"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -30299,7 +30362,7 @@ through AttestationResponse Command to TH1</p>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_44"><a class="anchor" href="#_test_setup_44"></a>Test Setup</h5>
+<h5 id="_test_setup_45"><a class="anchor" href="#_test_setup_45"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -30807,7 +30870,7 @@ fields:</p>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_45"><a class="anchor" href="#_test_setup_45"></a>Test Setup</h5>
+<h5 id="_test_setup_46"><a class="anchor" href="#_test_setup_46"></a>Test Setup</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -31033,7 +31096,7 @@ fields:</p>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_46"><a class="anchor" href="#_test_setup_46"></a>Test Setup</h5>
+<h5 id="_test_setup_47"><a class="anchor" href="#_test_setup_47"></a>Test Setup</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -31788,7 +31851,7 @@ Attestation Private Key</p>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_47"><a class="anchor" href="#_test_setup_47"></a>Test Setup</h5>
+<h5 id="_test_setup_48"><a class="anchor" href="#_test_setup_48"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -32129,7 +32192,7 @@ reports failure</p>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_48"><a class="anchor" href="#_test_setup_48"></a>Test Setup</h5>
+<h5 id="_test_setup_49"><a class="anchor" href="#_test_setup_49"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -32326,7 +32389,7 @@ corresponding CSRRequest Command</p></td>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_49"><a class="anchor" href="#_test_setup_49"></a>Test Setup</h5>
+<h5 id="_test_setup_50"><a class="anchor" href="#_test_setup_50"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -32472,7 +32535,7 @@ corresponding CSRRequest Command</p></td>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_50"><a class="anchor" href="#_test_setup_50"></a>Test Setup</h5>
+<h5 id="_test_setup_51"><a class="anchor" href="#_test_setup_51"></a>Test Setup</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -33347,7 +33410,7 @@ corresponding CSRRequest Command</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_51"><a class="anchor" href="#_test_setup_51"></a>Test Setup</h5>
+<h5 id="_test_setup_52"><a class="anchor" href="#_test_setup_52"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Test will need a reference implementation of the cluster of which the DUT is the client.</p>
 </div>
@@ -33470,7 +33533,7 @@ Test Step 3 can be tested by using the command scan networks.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_52"><a class="anchor" href="#_test_setup_52"></a>Test Setup</h5>
+<h5 id="_test_setup_53"><a class="anchor" href="#_test_setup_53"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Test will need a reference implementation of the cluster of which the DUT is the server</p>
 </div>
@@ -33633,7 +33696,7 @@ Verify that the DUT does not send any response back to the TH.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_53"><a class="anchor" href="#_test_setup_53"></a>Test Setup</h5>
+<h5 id="_test_setup_54"><a class="anchor" href="#_test_setup_54"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Test will need a reference implementation of the cluster of which the DUT is the client.</p>
 </div>
@@ -33956,7 +34019,7 @@ fit into single InvokeRequest base on packet MTU size.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_54"><a class="anchor" href="#_test_setup_54"></a>Test Setup</h5>
+<h5 id="_test_setup_55"><a class="anchor" href="#_test_setup_55"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Test will need a reference implementation of the cluster of which the DUT is the client. TH with Manufacturer specific clusters and attributes to be used for Test #21.</p>
 </div>
@@ -34220,7 +34283,7 @@ On receipt of this message, TH should send a report data action with the attribu
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_55"><a class="anchor" href="#_test_setup_55"></a>Test Setup</h5>
+<h5 id="_test_setup_56"><a class="anchor" href="#_test_setup_56"></a>Test Setup</h5>
 <div class="paragraph">
 <p>N/A</p>
 </div>
@@ -34621,7 +34684,7 @@ Test Steps #19 cannot be executed with V1.0 SDK</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_56"><a class="anchor" href="#_test_setup_56"></a>Test Setup</h5>
+<h5 id="_test_setup_57"><a class="anchor" href="#_test_setup_57"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Test will need a reference implementation of the cluster of which the DUT is the client.</p>
 </div>
@@ -34828,7 +34891,7 @@ Test Steps #2 and #15 cannot be executed with V1.0 SDK</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_57"><a class="anchor" href="#_test_setup_57"></a>Test Setup</h5>
+<h5 id="_test_setup_58"><a class="anchor" href="#_test_setup_58"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -35971,7 +36034,7 @@ Test Steps 17 19, 20 and 21 cannot be executed with V1.0 SDK</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_58"><a class="anchor" href="#_test_setup_58"></a>Test Setup</h5>
+<h5 id="_test_setup_59"><a class="anchor" href="#_test_setup_59"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Test will need a reference implementation of the cluster of which the DUT is the client.</p>
 </div>
@@ -36099,7 +36162,7 @@ Test Step #3 might not be testable.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_59"><a class="anchor" href="#_test_setup_59"></a>Test Setup</h5>
+<h5 id="_test_setup_60"><a class="anchor" href="#_test_setup_60"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH will act as the client.</p>
 </div>
@@ -36230,7 +36293,7 @@ Wait for 5 seconds(Timer has expired) and then send the Write Request Message to
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_60"><a class="anchor" href="#_test_setup_60"></a>Test Setup</h5>
+<h5 id="_test_setup_61"><a class="anchor" href="#_test_setup_61"></a>Test Setup</h5>
 <div class="paragraph">
 <p>DUT should be setup to generate events which the TH can read.</p>
 </div>
@@ -44403,7 +44466,7 @@ If the bridge supports both actuator and sensor/switch devices, use at least one
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_61"><a class="anchor" href="#_test_setup_61"></a>Test Setup</h5>
+<h5 id="_test_setup_62"><a class="anchor" href="#_test_setup_62"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Manufacturer has provided bridge as DUT with some devices it can bridge, along<br>
 with means to setup the bridge (e.g. add/remove/rename/group bridged devices).</p>
@@ -44661,7 +44724,7 @@ are being added or deleted.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_62"><a class="anchor" href="#_test_setup_62"></a>Test Setup</h5>
+<h5 id="_test_setup_63"><a class="anchor" href="#_test_setup_63"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Manufacturer has provided bridge as DUT with some devices it can bridge, along<br>
 with means to setup the bridge (e.g. add/remove/rename/group bridged devices).</p>
@@ -44963,7 +45026,7 @@ are renamed or operated using non-Matter means.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_63"><a class="anchor" href="#_test_setup_63"></a>Test Setup</h5>
+<h5 id="_test_setup_64"><a class="anchor" href="#_test_setup_64"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Manufacturer has provided bridge as DUT with some devices it can bridge, along<br>
 with means to setup to bridge (e.g. add/remove/rename/group bridged devices).</p>
@@ -45126,7 +45189,7 @@ cluster on the same endpoint as in 1a</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_64"><a class="anchor" href="#_test_setup_64"></a>Test Setup</h5>
+<h5 id="_test_setup_65"><a class="anchor" href="#_test_setup_65"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH simulates a bridge with some bridged devices; can use the <code>bridge-app</code> for this purpose.<br>
 <code>bridge-app</code> is provided with in the <code>examples</code> folder of the repo <a href="https://github.com/project-chip/connectedhomeip" class="bare">https://github.com/project-chip/connectedhomeip</a>.</p>
@@ -46361,7 +46424,7 @@ Metadata - Optional.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_65"><a class="anchor" href="#_test_setup_65"></a>Test Setup</h5>
+<h5 id="_test_setup_66"><a class="anchor" href="#_test_setup_66"></a>Test Setup</h5>
 <div class="paragraph">
 <p>DUT can initiate a BDX transfer with a SendInit message to TH or TH can initiate a BDX transfer with a ReceiveInit message to DUT.</p>
 </div>
@@ -46481,7 +46544,7 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_66"><a class="anchor" href="#_test_setup_66"></a>Test Setup</h5>
+<h5 id="_test_setup_67"><a class="anchor" href="#_test_setup_67"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH can initiate a BDX transfer with a SendInit message to TH or DUT can initiate a BDX transfer with a ReceiveInit message to DUT.</p>
 </div>
@@ -46616,7 +46679,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_67"><a class="anchor" href="#_test_setup_67"></a>Test Setup</h5>
+<h5 id="_test_setup_68"><a class="anchor" href="#_test_setup_68"></a>Test Setup</h5>
 <div class="paragraph">
 <p>DUT sends a ReceiveInit message to TH + TH sends a ReceiveAccept message back to DUT + TH sends a Block message to DUT + DUT sends a BlockAck message back to TH. After a while, TH stops sending Blocks which leads to idle timeout and abort transfer session.</p>
 </div>
@@ -47163,7 +47226,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_68"><a class="anchor" href="#_test_setup_68"></a>Test Setup</h5>
+<h5 id="_test_setup_69"><a class="anchor" href="#_test_setup_69"></a>Test Setup</h5>
 <div class="paragraph">
 <p>OTA-R/TH and DUT are on the same fabric. OTA-P/TH2 is commissioned later as part of the test step.</p>
 </div>
@@ -47279,7 +47342,7 @@ Endpoint number of the OTA-P/TH2 on the ProviderNodeID.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_69"><a class="anchor" href="#_test_setup_69"></a>Test Setup</h5>
+<h5 id="_test_setup_70"><a class="anchor" href="#_test_setup_70"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH, TH2 and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -47406,7 +47469,7 @@ Wait for 2 minutes.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_70"><a class="anchor" href="#_test_setup_70"></a>Test Setup</h5>
+<h5 id="_test_setup_71"><a class="anchor" href="#_test_setup_71"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -47556,7 +47619,7 @@ Verify that there is a transfer of the software image after the second <em>Query
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_71"><a class="anchor" href="#_test_setup_71"></a>Test Setup</h5>
+<h5 id="_test_setup_72"><a class="anchor" href="#_test_setup_72"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -47703,7 +47766,7 @@ Test Step #5 cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_72"><a class="anchor" href="#_test_setup_72"></a>Test Setup</h5>
+<h5 id="_test_setup_73"><a class="anchor" href="#_test_setup_73"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -47806,7 +47869,7 @@ NewVersion - verify that this is the same as the software version that was downl
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_73"><a class="anchor" href="#_test_setup_73"></a>Test Setup</h5>
+<h5 id="_test_setup_74"><a class="anchor" href="#_test_setup_74"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -47953,7 +48016,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_74"><a class="anchor" href="#_test_setup_74"></a>Test Setup</h5>
+<h5 id="_test_setup_75"><a class="anchor" href="#_test_setup_75"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -48067,7 +48130,7 @@ SoftwareVersion - verify the software version on the DUT to match the version do
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_75"><a class="anchor" href="#_test_setup_75"></a>Test Setup</h5>
+<h5 id="_test_setup_76"><a class="anchor" href="#_test_setup_76"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -48228,7 +48291,7 @@ ProductID - Same as what is available in the <em>ProductID</em> attribute of the
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_76"><a class="anchor" href="#_test_setup_76"></a>Test Setup</h5>
+<h5 id="_test_setup_77"><a class="anchor" href="#_test_setup_77"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
 <em>DefaultOTAProviders</em> Attribute is set by Administrators, either during Commissioning or at a later time, to set the Provider Location for the default OTA Provider Node to use for software updates on a given Fabric. There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute of the OTA Requestor should return the value as Idle.</p>
@@ -48356,7 +48419,7 @@ If the Location field is present, verify that the value is same as Basic Informa
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_77"><a class="anchor" href="#_test_setup_77"></a>Test Setup</h5>
+<h5 id="_test_setup_78"><a class="anchor" href="#_test_setup_78"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -48458,7 +48521,7 @@ UserConsentNeeded field is set to False.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_78"><a class="anchor" href="#_test_setup_78"></a>Test Setup</h5>
+<h5 id="_test_setup_79"><a class="anchor" href="#_test_setup_79"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -48628,7 +48691,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_79"><a class="anchor" href="#_test_setup_79"></a>Test Setup</h5>
+<h5 id="_test_setup_80"><a class="anchor" href="#_test_setup_80"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -48779,7 +48842,7 @@ Verify that the DUT finishes sending the image to the TH.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_80"><a class="anchor" href="#_test_setup_80"></a>Test Setup</h5>
+<h5 id="_test_setup_81"><a class="anchor" href="#_test_setup_81"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -48922,7 +48985,7 @@ TH can be on either fabric depending on the test.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_81"><a class="anchor" href="#_test_setup_81"></a>Test Setup</h5>
+<h5 id="_test_setup_82"><a class="anchor" href="#_test_setup_82"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.</p>
 </div>
@@ -49302,7 +49365,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_82"><a class="anchor" href="#_test_setup_82"></a>Test Setup</h5>
+<h5 id="_test_setup_83"><a class="anchor" href="#_test_setup_83"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -49827,7 +49890,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_83"><a class="anchor" href="#_test_setup_83"></a>Test Setup</h5>
+<h5 id="_test_setup_84"><a class="anchor" href="#_test_setup_84"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -50504,7 +50567,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_84"><a class="anchor" href="#_test_setup_84"></a>Test Setup</h5>
+<h5 id="_test_setup_85"><a class="anchor" href="#_test_setup_85"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -51914,7 +51977,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_85"><a class="anchor" href="#_test_setup_85"></a>Test Setup</h5>
+<h5 id="_test_setup_86"><a class="anchor" href="#_test_setup_86"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -53087,7 +53150,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_86"><a class="anchor" href="#_test_setup_86"></a>Test Setup</h5>
+<h5 id="_test_setup_87"><a class="anchor" href="#_test_setup_87"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -53465,7 +53528,7 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_87"><a class="anchor" href="#_test_setup_87"></a>Test Setup</h5>
+<h5 id="_test_setup_88"><a class="anchor" href="#_test_setup_88"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -55085,8 +55148,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 1f4b57e<br>
-Last updated 2024-01-31 15:16:14 UTC
+Version master 8583a7d<br>
+Last updated 2024-02-01 16:51:02 UTC
 </div>
 </div>
 </body>
