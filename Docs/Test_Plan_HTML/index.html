@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 8583a7d,</span>
-<span id="revdate">2024-02-01 08:50:48 -0800</span>
+<span id="revnumber">version master b8f2bac,</span>
+<span id="revdate">2024-02-01 12:26:29 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -16800,7 +16800,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <p>SSID is of type octstr with a length range 0 to 32. It should only show the SSIDs on bands supported by the DUT. If the DUT supports 2.4GHz or 5GHz, PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID should be listed.</p>
 </li>
 <li>
-<p>BSSID is of type octstr with a length of 6. It should only show the BSSIDs on bands supported by the DUT. (Example - If the device supports 5GHz, it must show all the BSSID&#8217;s for 5GHz).</p>
+<p>BSSID is of type octstr with a length of 6. It should only show the BSSIDs on bands supported by the DUT. (Example - If the device supports 5GHz, it must show all the BSSIDs for 5GHz).</p>
 </li>
 <li>
 <p>Channel is of type uint16 with a range 0 to 65,535</p>
@@ -16869,7 +16869,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <p>SSID is PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID</p>
 </li>
 <li>
-<p>BSSID is of type octstr with a length of 6. It should only show the BSSIDs on bands supported by the DUT.(Example - If the device supports 5GHz, it must show all the BSSID&#8217;s for 5GHz)</p>
+<p>BSSID is of type octstr with a length of 6. It should only show the BSSIDs on bands supported by the DUT.(Example - If the device supports 5GHz, it must show all the BSSIDs for 5GHz)</p>
 </li>
 <li>
 <p>Channel</p>
@@ -16897,7 +16897,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><p class="tableblock">2c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.8.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Turn off the Wi-Fi Accesspoints, wait 3 seconds. Sending ScanNetworks Command to the DUT with SSID field set to PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID and Breadcrumb field set to 2 from the TH.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Turn off the Wi-Fi access points, wait 3 seconds. Sending ScanNetworks Command to the DUT with SSID field set to PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID and Breadcrumb field set to 2 from the TH.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends the ScanNetworkResponse command with the NetworkingStatus field set to NetworkNotFound.</p></td>
 </tr>
 </tbody>
@@ -55148,8 +55148,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 8583a7d<br>
-Last updated 2024-02-01 16:51:02 UTC
+Version master b8f2bac<br>
+Last updated 2024-02-01 20:26:46 UTC
 </div>
 </div>
 </body>
