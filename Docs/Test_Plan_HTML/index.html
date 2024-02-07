@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master b9151e9,</span>
-<span id="revdate">2024-02-06 12:53:59 -0800</span>
+<span id="revnumber">version master c4e29a0,</span>
+<span id="revdate">2024-02-07 09:12:46 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -30569,7 +30569,7 @@ through AttestationResponse Command to TH1</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3d</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6.2.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends <code>CertificateChainRequest</code> Command with <code>CertificateType</code> field set to <code>PAICertificate</code> (2) to DUT to obtain DAC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends <code>CertificateChainRequest</code> Command with <code>CertificateType</code> field set to <code>PAICertificate</code> (2) to DUT to obtain PAI</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT responds with <code>CertificateChainResponse</code> the PAI certificate in X.509v3 format with size &#8656; 600 bytes</p></td>
 </tr>
 <tr>
@@ -32565,14 +32565,14 @@ corresponding CSRRequest Command</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends CertificateChainRequest Command to DUT1 with the CertificateType set to PAICertificate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT returns a CertificateChainResponse. Save the returned Certificate as 'pai_1'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT returns a CertificateChainResponse. Save the returned Certificate as <code>pai_cert</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.17.7.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends CertificateChainRequest Command to DUT1 with the CertificateType set to DACCertificate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT returns a CertificateChainResponse. Save the returned Certificate as 'dac_1'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT returns a CertificateChainResponse. Save the returned Certificate as <code>dac_cert</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
@@ -32582,7 +32582,7 @@ corresponding CSRRequest Command</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p>Verify that the Authority Key Identifier is signed by a PAA in the DCL.(Ensure that it is not SDK&#8217;s test PAA&#8217;s)</p>
+<p>Verify that the Authority Key Identifier is signed by a PAA in the DCL. (Ensure that it is not SDK&#8217;s test PAAs)</p>
 </li>
 <li>
 <p>Verify that PAI authority key ID must not be one of:</p>
@@ -32597,6 +32597,9 @@ corresponding CSRRequest Command</p></td>
 </ul>
 </div>
 </li>
+<li>
+<p>Save the selected PAA certificate as <code>paa_cert</code>.</p>
+</li>
 </ul>
 </div></div></td>
 </tr>
@@ -32604,14 +32607,32 @@ corresponding CSRRequest Command</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6.2.2.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH extracts the public key from the DAC and saves as 'pk_1'</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH extracts ASN.1 DER bytes for the entire <code>issuer</code> field of <code>dac_cert</code> and <code>subject</code> field of <code>pai_cert.</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Verify that the <code>dac_cert&#8217;s `issuer</code> field is byte-for-byte equivalent to the <code>pai_cert&#8217;s `subject</code> field.</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.2.2.4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH extracts ASN.1 DER bytes for the entire <code>issuer</code> field of <code>pai_cert</code> and <code>subject</code> field of <code>paa_cert.</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Verify that the <code>pai_cert&#8217;s `issuer</code> field is byte-for-byte equivalent to the <code>paa_cert&#8217;s `subject</code> field.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.2.2.3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH extracts the public key from the DAC and saves as 'pk_1' for first DAC.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6.2.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Repeat Step 1 to 4 with DUT2, saving the PAI, DAC and public key as <code>pk_2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Repeat Step 1 to 7 with DUT2, saving the PAI, DAC and public key as <code>pk_2</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that <code>pk_1</code> does not match <code>pk_2</code></p></td>
 </tr>
 </tbody>
@@ -55289,8 +55310,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master b9151e9<br>
-Last updated 2024-02-06 20:54:14 UTC
+Version master c4e29a0<br>
+Last updated 2024-02-07 17:13:01 UTC
 </div>
 </div>
 </body>
