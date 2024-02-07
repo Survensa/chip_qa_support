@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 42c4a3f,</span>
-<span id="revdate">2024-02-02 14:23:24 -0800</span>
+<span id="revnumber">version master b9151e9,</span>
+<span id="revdate">2024-02-06 12:53:59 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -25590,7 +25590,7 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Matter Controller that is advertising a service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Matter Controller</p></td>
 </tr>
 </tbody>
 </table>
@@ -25627,41 +25627,166 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4.3.2.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT is commissioned to TH and DUT is instructed to advertise its operational service (<code>_matter._tcp</code>).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT should start to advertise service via DNS-SD</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT is commissioned on the same fabric as TH</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4.3.2.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIFI</p>
-<p class="tableblock">MCORE.COM.ETH</p>
-<p class="tableblock">MCORE.COM.THR</p>
-<p class="tableblock">MCORE.ICD</p>
-<p class="tableblock">MCORE.SC.SII_OP_DISCOVERY_KEY
-MCORE.SC.SAI_OP_DISCOVERY_KEY
-MCORE.SC.SAT_OP_DISCOVERY_KEY
-MCORE.SC.T_KEY</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">- If MCORE.ICD and ICDM.S.A0002(ActiveModeThreshold), TH reads from the DUT the <em>ActiveModeThreshold</em> attribute.</p>
-<p class="tableblock">- Scan for DNS-SD advertising</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Check DUT advertising for:</p>
-<p class="tableblock">- DNS-SD instance name must be 64-bit compressed FabricID</p>
-<p class="tableblock">- service type must be _matter._tcp</p>
-<p class="tableblock">- subtype _I&lt;hhhh&gt; represents compressed FabricID encoded as 16 hex UPPERcase chars.</p>
-<p class="tableblock">- service domain is .local. For Unicast DNS such as used on Thread the service domain SHALL be as configured automatically by the Thread Border Router</p>
-<p class="tableblock">- IF (MCORE.COM.WIFI OR MCORE.COM.ETH) target hostname is derived from the 48bit MAC address expressed as a twelve capital letter hex string. If the MAC is randomized for privacy, the randomized version must be used each time.</p>
-<p class="tableblock">- IF (MCORE.COM.THR) target hostname is derived from the 64bit MAC extended address expressed as a sixteen capital letter hex string. If the MAC is randomized for privacy, the randomized version must be used each time.</p>
-<p class="tableblock">- if (MCORE.SC.SII_OP_DISCOVERY_KEY), key SII shall not exceed 3600000 (1h in ms) and must be encoded as a decimal value omitting any leading zeros. if key is not
-available or has an invalid value, the default MRP_RETRY_INTERVAL_IDLE value must be used</p>
-<p class="tableblock">- if (MCORE.SC.SAI_OP_DISCOVERY_KEY), key SAI shall not exceed 3600000 (1h in ms) and must be encoded as a decimal value omitting any leading zeros. if key is not
-available or has an invalid value, the default MRP_RETRY_INTERVAL_ACTIVE value must be used</p>
-<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) and !MCORE.ICD, key SAT shall not exceed 65535 (65.535 seconds) and must be encoded as a decimal value omitting any leading zeros. if key is not
-available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value shall be used</p>
-<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) and MCORE.ICD, key SAT shall not exceed 65535 (65.535 seconds), must be encoded as a decimal value omitting any leading zeros, and equal to ICDM.S.A0002(ActiveModeThreshold)</p>
-<p class="tableblock">- if (MCORE.SC.SAT_OP_DISCOVERY_KEY) presents, key SAI shall be present.</p>
-<p class="tableblock">- if (MCORE.SC.T_KEY), key T it can have only 0 or 1 values and must be encoded as a decimal value omitting any leading zeros. if key is not available or has an invalid value, the default value 0 must be used indicating TCP is not supported.</p>
-<p class="tableblock">DUT must publish AAAA records for each IPv6 address upon which they are willing to accept Matter messages.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ServerList</em> attribute from the Descriptor cluster on EP0. If the ICD Management cluster ID (70,0x46) is present in the list, set <code>supports_icd</code> to true, otherwise set <code>supports_icd</code> to false.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>supports_icd</code> is true, TH reads from the DUT the <em>ActiveModeThreshold</em> from the ICD Management cluster on EP0 and saves as <code>active_mode_threshold</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>supports_icd</code> is true, TH reads from the DUT the <em>FeatureMap</em> from the ICD Management cluster on EP0. If the LITS feature is set, set <code>supports_lit</code> to true. Otherwise set <code>supports_lit</code> to false.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.4.3.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH constructs the instance name for the DUT as the 64-bit compressed Fabric identifier, and the assigned 64-bit Node identifier, each expressed as a fixed-length sixteen-character hexadecimal string, encoded as ASCII (UTF-8) text using capital letters, separated by a hyphen. For example, a Matter Node with Matter compressed fabric identifier 2906-C908-D115-D362 and Matter Node identifier 8FC7-7724-01CD-0696 has Matter operational discovery DNS‑SD instance name 2906C908D115D362-8FC7772401CD0696. Save the operational instance name as 'instance_name'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.4.3.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH performs a query for the SRV record against the instance name <code>instance_name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify SRV record is returned</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.4.3.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH performs a query for the TXT record against the hostname found in the SRV record</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify TXT record is returned</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.4.3.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH performs a query for the AAAA record against the hostname found in the SRV record</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify AAAA record is returned</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.4.3.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH verifies the following from the returned records:</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Hostname:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If (MCORE.COM.WIFI OR MCORE.COM.ETH) target, the hostname must be a 12-character uppercase hexadecimal string.</p>
+</li>
+<li>
+<p>If (MCORE.COM.THR) target, the hostname must be a 16-character hex string using capital letters.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>ICD TXT key:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If <code>supports_lit</code> is false, verify that the <code>ICD</code> key is NOT present in the TXT record</p>
+</li>
+<li>
+<p>If <code>supports_lit</code> is true, verify the <code>ICD</code> key IS present in the TXT record, and it has the value of <code>0</code> or <code>1</code> (ASCII)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>SII TXT key:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If <code>supports_icd</code> is true and <code>supports_lit</code> is false, set <code>sit_mode</code> to true</p>
+</li>
+<li>
+<p>If <code>supports_icd</code> is true and <code>supports_lit</code> is true, set <code>sit_mode</code> to true if ICD=0 otherwise set <code>sit_mode</code> to false</p>
+</li>
+<li>
+<p>If <code>supports_icd</code> is false, set <code>sit_mode</code> to false</p>
+</li>
+<li>
+<p>If <code>sit_mode</code> is true, verify that the SII key IS present in the TXT record</p>
+</li>
+<li>
+<p>if the SII key is present, verify it is a decimal value with no leading zeros and is less than or equal to 3600000 (1h in ms)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>SAI TXT key:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>if <code>supports_icd</code> is true, verify that the SAI key is present in the TXT record</p>
+</li>
+<li>
+<p>If the SAI key is present,  verify it is a decimal value with no leading zeros and is less than or equal to 3600000 (1h in ms)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>SAT TXT key:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the SAT key is present, verify that it is a decimal value with no leading zeros and is less than or equal to 65535</p>
+</li>
+<li>
+<p>If the SAT key is present and <code>supports_icd</code> is true, verify that the value is equal to <code>active_mode_threshold</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>T TXT key:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the T key is present, verify if that it is a decimal value with no leading zeros and is less than or equal to 6. Convert the value to a bitmap and verify bit 0 is clear.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>AAAA:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Verify the AAAA record contains at least one IPv6 address</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.4.3.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH performs a DNS-SD browse for _I&lt;hhhh&gt;._sub._matter._tcp.local, where &lt;hhhh&gt; is the 64-bit compressed Fabric identifier, expressed as a fixed-length, sixteen-character hexadecimal string, encoded as ASCII (UTF-8) text using capital letters.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT returns a PTR record with DNS-SD instance name set <code>instance_name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 </tr>
 </tbody>
 </table>
@@ -54141,21 +54266,21 @@ using only ACLs with group auth mode.</p>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="ref_tc_ace_2_2_wildcard"></a>3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="ref_tc_ace_2_2_wildcard"></a>4</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH_second_controller performs a wildcard read of the DUT to establish a viable set of attribute values for writing</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Repeat steps 4a and 4b for each privilege level in the set of supported privilege levels (view, operate, manage, administer) using <code>acl_privilege</code> to denote the current privilege level under test:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Repeat steps 5a and 5b for each privilege level in the set of supported privilege levels (view, operate, manage, administer) using <code>acl_privilege</code> to denote the current privilege level under test:</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5a</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -54187,7 +54312,7 @@ using only ACLs with group auth mode.</p>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5b</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -54202,7 +54327,7 @@ using only ACLs with group auth mode.</p>
 <p>If the attribute is a list, write an empty list</p>
 </li>
 <li>
-<p>If the attribute is not a list, write back the value read during step <a href="#ref_tc_ace_2_2_wildcard">3</a>.</p>
+<p>If the attribute is not a list, write back the value read during step <a href="#ref_tc_ace_2_2_wildcard">4</a>.</p>
 </li>
 </ul>
 </div>
@@ -54210,7 +54335,7 @@ using only ACLs with group auth mode.</p>
 <p>Save the returned value as <code>write_response</code>.</p>
 </div>
 <div class="paragraph">
-<p>If <code>write_response</code> is SUCCESS and the attribute is a list, write the attribute with the value read during step <a href="#ref_tc_ace_2_2_wildcard">3</a>.</p>
+<p>If <code>write_response</code> is SUCCESS and the attribute is a list, write the attribute with the value read during step <a href="#ref_tc_ace_2_2_wildcard">4</a>.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -55164,8 +55289,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 42c4a3f<br>
-Last updated 2024-02-02 22:23:35 UTC
+Version master b9151e9<br>
+Last updated 2024-02-06 20:54:14 UTC
 </div>
 </div>
 </body>
