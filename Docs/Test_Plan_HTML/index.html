@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master cc3747b,</span>
-<span id="revdate">2024-02-12 09:27:41 -0800</span>
+<span id="revnumber">version master 1f77539,</span>
+<span id="revdate">2024-02-12 14:46:00 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -482,6 +482,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_communicationtransport">5.1. Communication/Transport</a></li>
 <li><a href="#_role">5.2. Role</a></li>
 <li><a href="#_user_interface">5.3. User Interface</a></li>
+<li><a href="#_device_management">5.4. Device Management</a></li>
 </ul>
 </li>
 </ul>
@@ -2358,6 +2359,37 @@ Support for an item is considered as "true" for conditional statements within th
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.UI.FACTORYRESET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Does the device support the Factory Reset Method?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_device_management"><a class="anchor" href="#_device_management"></a>5.4. Device Management</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Variable</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mandatory/Optional</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Notes/Additional Constraints</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{PICS_MCORE_DLOG_S_UTCTIMESTAMP }</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device support UTCTimeStamp field in the RetrieveLogsResponse Command of the Diagnostic Logs Cluster?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DLOG.S.TIMESINCEBOOT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device support TimeSinceBoot field in the RetrieveLogsResponse Command of the Diagnostic Logs Cluster?</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -55473,8 +55505,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master cc3747b<br>
-Last updated 2024-02-12 17:27:58 UTC
+Version master 1f77539<br>
+Last updated 2024-02-12 22:46:16 UTC
 </div>
 </div>
 </body>
