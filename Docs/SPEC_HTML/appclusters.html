@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 97da037 (local changes),</span>
-<span id="revdate">2024-02-07 12:29:34 -0800</span>
+<span id="revnumber">version master b0310ba (local changes),</span>
+<span id="revdate">2024-02-13 07:41:40 +0000</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -721,35 +721,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_events_5">2.11.8. Events</a></li>
 </ul>
 </li>
-<li><a href="#ref_PowerTopologyCluster">2.12. Power Topology Cluster</a>
+<li><a href="#ref_ElectricalEnergyMeasurementCluster">2.12. Electrical Energy Measurement Cluster</a>
 <ul class="sectlevel3">
 <li><a href="#_revision_history_25">2.12.1. Revision History</a></li>
 <li><a href="#_classification_24">2.12.2. Classification</a></li>
 <li><a href="#_cluster_id_22">2.12.3. Cluster ID</a></li>
 <li><a href="#_features_14">2.12.4. Features</a></li>
-<li><a href="#_attributes_23">2.12.5. Attributes</a></li>
+<li><a href="#_data_types_16">2.12.5. Data Types</a></li>
+<li><a href="#_attributes_23">2.12.6. Attributes</a></li>
+<li><a href="#_events_6">2.12.7. Events</a></li>
 </ul>
 </li>
-<li><a href="#ref_ElectricalEnergyMeasurementCluster">2.13. Electrical Energy Measurement Cluster</a>
+<li><a href="#ref_ElectricalPowerMeasurementCluster">2.13. Electrical Power Measurement Cluster</a>
 <ul class="sectlevel3">
 <li><a href="#_revision_history_26">2.13.1. Revision History</a></li>
 <li><a href="#_classification_25">2.13.2. Classification</a></li>
 <li><a href="#_cluster_id_23">2.13.3. Cluster ID</a></li>
 <li><a href="#_features_15">2.13.4. Features</a></li>
-<li><a href="#_data_types_16">2.13.5. Data Types</a></li>
+<li><a href="#_data_types_17">2.13.5. Data Types</a></li>
 <li><a href="#_attributes_24">2.13.6. Attributes</a></li>
-<li><a href="#_events_6">2.13.7. Events</a></li>
-</ul>
-</li>
-<li><a href="#ref_ElectricalPowerMeasurementCluster">2.14. Electrical Power Measurement Cluster</a>
-<ul class="sectlevel3">
-<li><a href="#_revision_history_27">2.14.1. Revision History</a></li>
-<li><a href="#_classification_26">2.14.2. Classification</a></li>
-<li><a href="#_cluster_id_24">2.14.3. Cluster ID</a></li>
-<li><a href="#_features_16">2.14.4. Features</a></li>
-<li><a href="#_data_types_17">2.14.5. Data Types</a></li>
-<li><a href="#_attributes_25">2.14.6. Attributes</a></li>
-<li><a href="#_events_7">2.14.7. Events</a></li>
+<li><a href="#_events_7">2.13.7. Events</a></li>
 </ul>
 </li>
 </ul>
@@ -766,10 +757,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#ref_ColorControlCluster">3.2. Color Control Cluster</a>
 <ul class="sectlevel3">
 <li><a href="#_introduction_5">3.2.1. Introduction</a></li>
-<li><a href="#_revision_history_28">3.2.2. Revision History</a></li>
-<li><a href="#_classification_27">3.2.3. Classification</a></li>
+<li><a href="#_revision_history_27">3.2.2. Revision History</a></li>
+<li><a href="#_classification_26">3.2.3. Classification</a></li>
 <li><a href="#_cluster_identifiers">3.2.4. Cluster Identifiers</a></li>
-<li><a href="#_features_17">3.2.5. Features</a></li>
+<li><a href="#_features_16">3.2.5. Features</a></li>
 <li><a href="#_dependencies_2">3.2.6. Dependencies</a></li>
 <li><a href="#_color_information_attribute_set">3.2.7. Color Information Attribute Set</a></li>
 <li><a href="#_defined_primaries_information_attribute_set">3.2.8. Defined Primaries Information Attribute Set</a></li>
@@ -780,12 +771,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_BallastConfigurationCluster">3.3. Ballast Configuration Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_29">3.3.1. Revision History</a></li>
-<li><a href="#_classification_28">3.3.2. Classification</a></li>
-<li><a href="#_cluster_id_25">3.3.3. Cluster ID</a></li>
+<li><a href="#_revision_history_28">3.3.1. Revision History</a></li>
+<li><a href="#_classification_27">3.3.2. Classification</a></li>
+<li><a href="#_cluster_id_24">3.3.3. Cluster ID</a></li>
 <li><a href="#ref_BallastConfigurationDependencies">3.3.4. Dependencies</a></li>
 <li><a href="#_data_types_18">3.3.5. Data Types</a></li>
-<li><a href="#_attributes_26">3.3.6. Attributes</a></li>
+<li><a href="#_attributes_25">3.3.6. Attributes</a></li>
 <li><a href="#ref_BallastConfigurationDimmingCurve">3.3.7. The Dimming Light Curve</a></li>
 </ul>
 </li>
@@ -802,49 +793,49 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_PumpConfigurationAndControlCluster">4.2. Pump Configuration and Control Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_30">4.2.1. Revision History</a></li>
-<li><a href="#_classification_29">4.2.2. Classification</a></li>
-<li><a href="#_cluster_id_26">4.2.3. Cluster ID</a></li>
-<li><a href="#_features_18">4.2.4. Features</a></li>
+<li><a href="#_revision_history_29">4.2.1. Revision History</a></li>
+<li><a href="#_classification_28">4.2.2. Classification</a></li>
+<li><a href="#_cluster_id_25">4.2.3. Cluster ID</a></li>
+<li><a href="#_features_17">4.2.4. Features</a></li>
 <li><a href="#_dependencies_3">4.2.5. Dependencies</a></li>
 <li><a href="#_data_types_19">4.2.6. Data Types</a></li>
-<li><a href="#_attributes_27">4.2.7. Attributes</a></li>
+<li><a href="#_attributes_26">4.2.7. Attributes</a></li>
 <li><a href="#ref_PccEvents">4.2.8. Events</a></li>
 </ul>
 </li>
 <li><a href="#ref_ThermostatCluster">4.3. Thermostat Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_31">4.3.1. Revision History</a></li>
-<li><a href="#_classification_30">4.3.2. Classification</a></li>
-<li><a href="#_cluster_id_27">4.3.3. Cluster ID</a></li>
-<li><a href="#_features_19">4.3.4. Features</a></li>
+<li><a href="#_revision_history_30">4.3.1. Revision History</a></li>
+<li><a href="#_classification_29">4.3.2. Classification</a></li>
+<li><a href="#_cluster_id_26">4.3.3. Cluster ID</a></li>
+<li><a href="#_features_18">4.3.4. Features</a></li>
 <li><a href="#_units_of_temperature">4.3.5. Units of Temperature</a></li>
 <li><a href="#ref_SetpointLimits">4.3.6. Setpoint Limits</a></li>
 <li><a href="#_dependencies_4">4.3.7. Dependencies</a></li>
 <li><a href="#_data_types_20">4.3.8. Data Types</a></li>
-<li><a href="#_attributes_28">4.3.9. Attributes</a></li>
+<li><a href="#_attributes_27">4.3.9. Attributes</a></li>
 <li><a href="#_commands_12">4.3.10. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_FanControlCluster">4.4. Fan Control Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_32">4.4.1. Revision History</a></li>
-<li><a href="#_classification_31">4.4.2. Classification</a></li>
-<li><a href="#_cluster_id_28">4.4.3. Cluster ID</a></li>
-<li><a href="#_features_20">4.4.4. Features</a></li>
+<li><a href="#_revision_history_31">4.4.1. Revision History</a></li>
+<li><a href="#_classification_30">4.4.2. Classification</a></li>
+<li><a href="#_cluster_id_27">4.4.3. Cluster ID</a></li>
+<li><a href="#_features_19">4.4.4. Features</a></li>
 <li><a href="#_data_types_21">4.4.5. Data Types</a></li>
-<li><a href="#_attributes_29">4.4.6. Attributes</a></li>
+<li><a href="#_attributes_28">4.4.6. Attributes</a></li>
 <li><a href="#_commands_13">4.4.7. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_ThermostatUserInterfaceConfigurationCluster">4.5. Thermostat User Interface Configuration Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_33">4.5.1. Revision History</a></li>
-<li><a href="#_classification_32">4.5.2. Classification</a></li>
-<li><a href="#_cluster_id_29">4.5.3. Cluster ID</a></li>
+<li><a href="#_revision_history_32">4.5.1. Revision History</a></li>
+<li><a href="#_classification_31">4.5.2. Classification</a></li>
+<li><a href="#_cluster_id_28">4.5.3. Cluster ID</a></li>
 <li><a href="#_conversion_of_temperature_values_for_display">4.5.4. Conversion of Temperature Values for Display</a></li>
 <li><a href="#_data_types_22">4.5.5. Data Types</a></li>
-<li><a href="#_attributes_30">4.5.6. Attributes</a></li>
+<li><a href="#_attributes_29">4.5.6. Attributes</a></li>
 </ul>
 </li>
 </ul>
@@ -859,27 +850,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_DoorLockCluster">5.2. Door Lock Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_34">5.2.1. Revision History</a></li>
-<li><a href="#_classification_33">5.2.2. Classification</a></li>
-<li><a href="#_cluster_id_30">5.2.3. Cluster ID</a></li>
-<li><a href="#_features_21">5.2.4. Features</a></li>
+<li><a href="#_revision_history_33">5.2.1. Revision History</a></li>
+<li><a href="#_classification_32">5.2.2. Classification</a></li>
+<li><a href="#_cluster_id_29">5.2.3. Cluster ID</a></li>
+<li><a href="#_features_20">5.2.4. Features</a></li>
 <li><a href="#_recommended_steps_for_creating_a_new_user">5.2.5. Recommended steps for creating a new User</a></li>
 <li><a href="#_data_types_23">5.2.6. Data Types</a></li>
 <li><a href="#ref_DoorLockStatusCodes">5.2.7. Status Codes</a></li>
 <li><a href="#_pinrfid_code_format">5.2.8. PIN/RFID Code Format</a></li>
-<li><a href="#_attributes_31">5.2.9. Attributes</a></li>
+<li><a href="#_attributes_30">5.2.9. Attributes</a></li>
 <li><a href="#_commands_14">5.2.10. Commands</a></li>
 <li><a href="#_events_8">5.2.11. Events</a></li>
 </ul>
 </li>
 <li><a href="#ref_WindowCoveringCluster">5.3. Window Covering Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_35">5.3.1. Revision History</a></li>
-<li><a href="#_classification_34">5.3.2. Classification</a></li>
-<li><a href="#_cluster_id_31">5.3.3. Cluster ID</a></li>
-<li><a href="#_features_22">5.3.4. Features</a></li>
+<li><a href="#_revision_history_34">5.3.1. Revision History</a></li>
+<li><a href="#_classification_33">5.3.2. Classification</a></li>
+<li><a href="#_cluster_id_30">5.3.3. Cluster ID</a></li>
+<li><a href="#_features_21">5.3.4. Features</a></li>
 <li><a href="#_data_types_24">5.3.5. Data Types</a></li>
-<li><a href="#_attributes_32">5.3.6. Attributes</a></li>
+<li><a href="#_attributes_31">5.3.6. Attributes</a></li>
 <li><a href="#_commands_15">5.3.7. Commands</a></li>
 </ul>
 </li>
@@ -895,104 +886,104 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_AccountLoginCluster">6.2. Account Login Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_36">6.2.1. Revision History</a></li>
-<li><a href="#_classification_35">6.2.2. Classification</a></li>
-<li><a href="#_cluster_id_32">6.2.3. Cluster ID</a></li>
+<li><a href="#_revision_history_35">6.2.1. Revision History</a></li>
+<li><a href="#_classification_34">6.2.2. Classification</a></li>
+<li><a href="#_cluster_id_31">6.2.3. Cluster ID</a></li>
 <li><a href="#_commands_16">6.2.4. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_ApplicationBasicCluster">6.3. Application Basic Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_37">6.3.1. Revision History</a></li>
-<li><a href="#_classification_36">6.3.2. Classification</a></li>
-<li><a href="#_cluster_id_33">6.3.3. Cluster ID</a></li>
+<li><a href="#_revision_history_36">6.3.1. Revision History</a></li>
+<li><a href="#_classification_35">6.3.2. Classification</a></li>
+<li><a href="#_cluster_id_32">6.3.3. Cluster ID</a></li>
 <li><a href="#_data_types_25">6.3.4. Data Types</a></li>
-<li><a href="#_attributes_33">6.3.5. Attributes</a></li>
+<li><a href="#_attributes_32">6.3.5. Attributes</a></li>
 </ul>
 </li>
 <li><a href="#ref_ApplicationLauncherCluster">6.4. Application Launcher Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_38">6.4.1. Revision History</a></li>
-<li><a href="#_classification_37">6.4.2. Classification</a></li>
-<li><a href="#_cluster_id_34">6.4.3. Cluster ID</a></li>
-<li><a href="#_features_23">6.4.4. Features</a></li>
+<li><a href="#_revision_history_37">6.4.1. Revision History</a></li>
+<li><a href="#_classification_36">6.4.2. Classification</a></li>
+<li><a href="#_cluster_id_33">6.4.3. Cluster ID</a></li>
+<li><a href="#_features_22">6.4.4. Features</a></li>
 <li><a href="#_data_types_26">6.4.5. Data Types</a></li>
-<li><a href="#_attributes_34">6.4.6. Attributes</a></li>
+<li><a href="#_attributes_33">6.4.6. Attributes</a></li>
 <li><a href="#_commands_17">6.4.7. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_AudioOutputCluster">6.5. Audio Output Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_39">6.5.1. Revision History</a></li>
-<li><a href="#_classification_38">6.5.2. Classification</a></li>
-<li><a href="#_cluster_id_35">6.5.3. Cluster ID</a></li>
-<li><a href="#_features_24">6.5.4. Features</a></li>
+<li><a href="#_revision_history_38">6.5.1. Revision History</a></li>
+<li><a href="#_classification_37">6.5.2. Classification</a></li>
+<li><a href="#_cluster_id_34">6.5.3. Cluster ID</a></li>
+<li><a href="#_features_23">6.5.4. Features</a></li>
 <li><a href="#_data_types_27">6.5.5. Data Types</a></li>
-<li><a href="#_attributes_35">6.5.6. Attributes</a></li>
+<li><a href="#_attributes_34">6.5.6. Attributes</a></li>
 <li><a href="#_commands_18">6.5.7. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_ChannelCluster">6.6. Channel Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_40">6.6.1. Revision History</a></li>
-<li><a href="#_classification_39">6.6.2. Classification</a></li>
-<li><a href="#_cluster_id_36">6.6.3. Cluster ID</a></li>
-<li><a href="#_features_25">6.6.4. Features</a></li>
+<li><a href="#_revision_history_39">6.6.1. Revision History</a></li>
+<li><a href="#_classification_38">6.6.2. Classification</a></li>
+<li><a href="#_cluster_id_35">6.6.3. Cluster ID</a></li>
+<li><a href="#_features_24">6.6.4. Features</a></li>
 <li><a href="#_data_types_28">6.6.5. Data Types</a></li>
-<li><a href="#_attributes_36">6.6.6. Attributes</a></li>
+<li><a href="#_attributes_35">6.6.6. Attributes</a></li>
 <li><a href="#_commands_19">6.6.7. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_ContentLauncherCluster">6.7. Content Launcher Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_41">6.7.1. Revision History</a></li>
-<li><a href="#_classification_40">6.7.2. Classification</a></li>
-<li><a href="#_cluster_id_37">6.7.3. Cluster ID</a></li>
-<li><a href="#_features_26">6.7.4. Features</a></li>
+<li><a href="#_revision_history_40">6.7.1. Revision History</a></li>
+<li><a href="#_classification_39">6.7.2. Classification</a></li>
+<li><a href="#_cluster_id_36">6.7.3. Cluster ID</a></li>
+<li><a href="#_features_25">6.7.4. Features</a></li>
 <li><a href="#_data_types_29">6.7.5. Data Types</a></li>
-<li><a href="#_attributes_37">6.7.6. Attributes</a></li>
+<li><a href="#_attributes_36">6.7.6. Attributes</a></li>
 <li><a href="#_commands_20">6.7.7. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_KeypadInputCluster">6.8. Keypad Input Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_42">6.8.1. Revision History</a></li>
-<li><a href="#_classification_41">6.8.2. Classification</a></li>
-<li><a href="#_cluster_id_38">6.8.3. Cluster ID</a></li>
-<li><a href="#_features_27">6.8.4. Features</a></li>
+<li><a href="#_revision_history_41">6.8.1. Revision History</a></li>
+<li><a href="#_classification_40">6.8.2. Classification</a></li>
+<li><a href="#_cluster_id_37">6.8.3. Cluster ID</a></li>
+<li><a href="#_features_26">6.8.4. Features</a></li>
 <li><a href="#_data_types_30">6.8.5. Data Types</a></li>
 <li><a href="#_commands_21">6.8.6. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_MediaInputCluster">6.9. Media Input Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_43">6.9.1. Revision History</a></li>
-<li><a href="#_classification_42">6.9.2. Classification</a></li>
-<li><a href="#_cluster_id_39">6.9.3. Cluster ID</a></li>
-<li><a href="#_features_28">6.9.4. Features</a></li>
+<li><a href="#_revision_history_42">6.9.1. Revision History</a></li>
+<li><a href="#_classification_41">6.9.2. Classification</a></li>
+<li><a href="#_cluster_id_38">6.9.3. Cluster ID</a></li>
+<li><a href="#_features_27">6.9.4. Features</a></li>
 <li><a href="#_data_types_31">6.9.5. Data Types</a></li>
-<li><a href="#_attributes_38">6.9.6. Attributes</a></li>
+<li><a href="#_attributes_37">6.9.6. Attributes</a></li>
 <li><a href="#_commands_22">6.9.7. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_MediaPlaybackCluster">6.10. Media Playback Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_44">6.10.1. Revision History</a></li>
-<li><a href="#_classification_43">6.10.2. Classification</a></li>
-<li><a href="#_cluster_id_40">6.10.3. Cluster ID</a></li>
-<li><a href="#_features_29">6.10.4. Features</a></li>
+<li><a href="#_revision_history_43">6.10.1. Revision History</a></li>
+<li><a href="#_classification_42">6.10.2. Classification</a></li>
+<li><a href="#_cluster_id_39">6.10.3. Cluster ID</a></li>
+<li><a href="#_features_28">6.10.4. Features</a></li>
 <li><a href="#_data_types_32">6.10.5. Data Types</a></li>
-<li><a href="#_attributes_39">6.10.6. Attributes</a></li>
+<li><a href="#_attributes_38">6.10.6. Attributes</a></li>
 <li><a href="#_commands_23">6.10.7. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_TargetNavigatorCluster">6.11. Target Navigator Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_45">6.11.1. Revision History</a></li>
-<li><a href="#_classification_44">6.11.2. Classification</a></li>
-<li><a href="#_cluster_id_41">6.11.3. Cluster ID</a></li>
+<li><a href="#_revision_history_44">6.11.1. Revision History</a></li>
+<li><a href="#_classification_43">6.11.2. Classification</a></li>
+<li><a href="#_cluster_id_40">6.11.3. Cluster ID</a></li>
 <li><a href="#_data_types_33">6.11.4. Data Types</a></li>
-<li><a href="#_attributes_40">6.11.5. Attributes</a></li>
+<li><a href="#_attributes_39">6.11.5. Attributes</a></li>
 <li><a href="#_commands_24">6.11.6. Commands</a></li>
 </ul>
 </li>
@@ -1008,13 +999,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_RvcRunModeCluster">7.2. RVC Run Mode Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_46">7.2.1. Revision History</a></li>
-<li><a href="#_classification_45">7.2.2. Classification</a></li>
-<li><a href="#_cluster_id_42">7.2.3. Cluster ID</a></li>
+<li><a href="#_revision_history_45">7.2.1. Revision History</a></li>
+<li><a href="#_classification_44">7.2.2. Classification</a></li>
+<li><a href="#_cluster_id_41">7.2.3. Cluster ID</a></li>
 <li><a href="#_feature_map">7.2.4. Feature Map</a></li>
-<li><a href="#_attributes_41">7.2.5. Attributes</a></li>
+<li><a href="#_attributes_40">7.2.5. Attributes</a></li>
 <li><a href="#_data_types_34">7.2.6. Data Types</a></li>
-<li><a href="#_attributes_42">7.2.7. Attributes</a></li>
+<li><a href="#_attributes_41">7.2.7. Attributes</a></li>
 <li><a href="#_derived_cluster_namespace">7.2.8. Derived Cluster Namespace</a></li>
 <li><a href="#_mode_use">7.2.9. Mode Use</a></li>
 <li><a href="#_mode_change_restrictions">7.2.10. Mode Change Restrictions</a></li>
@@ -1022,11 +1013,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_RvcCleanModeCluster">7.3. RVC Clean Mode Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_47">7.3.1. Revision History</a></li>
-<li><a href="#_classification_46">7.3.2. Classification</a></li>
-<li><a href="#_cluster_id_43">7.3.3. Cluster ID</a></li>
+<li><a href="#_revision_history_46">7.3.1. Revision History</a></li>
+<li><a href="#_classification_45">7.3.2. Classification</a></li>
+<li><a href="#_cluster_id_42">7.3.3. Cluster ID</a></li>
 <li><a href="#_feature_map_2">7.3.4. Feature Map</a></li>
-<li><a href="#_attributes_43">7.3.5. Attributes</a></li>
+<li><a href="#_attributes_42">7.3.5. Attributes</a></li>
 <li><a href="#_data_types_35">7.3.6. Data Types</a></li>
 <li><a href="#_derived_cluster_namespace_2">7.3.7. Derived Cluster Namespace</a></li>
 <li><a href="#_mode_change_restrictions_2">7.3.8. Mode Change Restrictions</a></li>
@@ -1035,10 +1026,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_RvcOperationalStateCluster">7.4. RVC Operational State Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_48">7.4.1. Revision History</a></li>
-<li><a href="#_classification_47">7.4.2. Classification</a></li>
+<li><a href="#_revision_history_47">7.4.1. Revision History</a></li>
+<li><a href="#_classification_46">7.4.2. Classification</a></li>
 <li><a href="#_commands_25">7.4.3. Commands</a></li>
-<li><a href="#_cluster_id_44">7.4.4. Cluster ID</a></li>
+<li><a href="#_cluster_id_43">7.4.4. Cluster ID</a></li>
 <li><a href="#_data_types_36">7.4.5. Data Types</a></li>
 <li><a href="#_commands_26">7.4.6. Commands</a></li>
 </ul>
@@ -1055,96 +1046,96 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_TemperatureControlCluster">8.2. Temperature Control Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_49">8.2.1. Revision History</a></li>
-<li><a href="#_classification_48">8.2.2. Classification</a></li>
-<li><a href="#_cluster_id_45">8.2.3. Cluster ID</a></li>
-<li><a href="#_features_30">8.2.4. Features</a></li>
-<li><a href="#_attributes_44">8.2.5. Attributes</a></li>
+<li><a href="#_revision_history_48">8.2.1. Revision History</a></li>
+<li><a href="#_classification_47">8.2.2. Classification</a></li>
+<li><a href="#_cluster_id_44">8.2.3. Cluster ID</a></li>
+<li><a href="#_features_29">8.2.4. Features</a></li>
+<li><a href="#_attributes_43">8.2.5. Attributes</a></li>
 <li><a href="#_commands_27">8.2.6. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_DishwasherModeCluster">8.3. Dishwasher Mode Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_50">8.3.1. Revision History</a></li>
-<li><a href="#_classification_49">8.3.2. Classification</a></li>
-<li><a href="#_cluster_id_46">8.3.3. Cluster ID</a></li>
+<li><a href="#_revision_history_49">8.3.1. Revision History</a></li>
+<li><a href="#_classification_48">8.3.2. Classification</a></li>
+<li><a href="#_cluster_id_45">8.3.3. Cluster ID</a></li>
 <li><a href="#_data_types_37">8.3.4. Data Types</a></li>
-<li><a href="#_attributes_45">8.3.5. Attributes</a></li>
+<li><a href="#_attributes_44">8.3.5. Attributes</a></li>
 <li><a href="#_derived_cluster_namespace_3">8.3.6. Derived Cluster Namespace</a></li>
 </ul>
 </li>
 <li><a href="#ref_DishwasherAlarmCluster">8.4. Dishwasher Alarm Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_51">8.4.1. Revision History</a></li>
-<li><a href="#_classification_50">8.4.2. Classification</a></li>
-<li><a href="#_cluster_id_47">8.4.3. Cluster ID</a></li>
+<li><a href="#_revision_history_50">8.4.1. Revision History</a></li>
+<li><a href="#_classification_49">8.4.2. Classification</a></li>
+<li><a href="#_cluster_id_46">8.4.3. Cluster ID</a></li>
 <li><a href="#_data_types_38">8.4.4. Data Types</a></li>
 </ul>
 </li>
 <li><a href="#ref_LaundryWasherModeCluster">8.5. Laundry Washer Mode Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_52">8.5.1. Revision History</a></li>
-<li><a href="#_classification_51">8.5.2. Classification</a></li>
-<li><a href="#_cluster_id_48">8.5.3. Cluster ID</a></li>
+<li><a href="#_revision_history_51">8.5.1. Revision History</a></li>
+<li><a href="#_classification_50">8.5.2. Classification</a></li>
+<li><a href="#_cluster_id_47">8.5.3. Cluster ID</a></li>
 <li><a href="#_data_types_39">8.5.4. Data Types</a></li>
-<li><a href="#_attributes_46">8.5.5. Attributes</a></li>
+<li><a href="#_attributes_45">8.5.5. Attributes</a></li>
 <li><a href="#_derived_cluster_namespace_4">8.5.6. Derived Cluster Namespace</a></li>
 <li><a href="#_mode_examples_2">8.5.7. Mode Examples</a></li>
 </ul>
 </li>
 <li><a href="#ref_LaundryWasherControlsCluster">8.6. Laundry Washer Controls</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_53">8.6.1. Revision History</a></li>
-<li><a href="#_classification_52">8.6.2. Classification</a></li>
-<li><a href="#_cluster_id_49">8.6.3. Cluster ID</a></li>
-<li><a href="#_features_31">8.6.4. Features</a></li>
+<li><a href="#_revision_history_52">8.6.1. Revision History</a></li>
+<li><a href="#_classification_51">8.6.2. Classification</a></li>
+<li><a href="#_cluster_id_48">8.6.3. Cluster ID</a></li>
+<li><a href="#_features_30">8.6.4. Features</a></li>
 <li><a href="#_data_types_40">8.6.5. Data Types</a></li>
-<li><a href="#_attributes_47">8.6.6. Attributes</a></li>
+<li><a href="#_attributes_46">8.6.6. Attributes</a></li>
 </ul>
 </li>
 <li><a href="#ref_RefrigeratorAndTempCtrldCabinetModeCluster">8.7. Refrigerator And Temperature Controlled Cabinet Mode Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_54">8.7.1. Revision History</a></li>
-<li><a href="#_classification_53">8.7.2. Classification</a></li>
-<li><a href="#_cluster_id_50">8.7.3. Cluster ID</a></li>
+<li><a href="#_revision_history_53">8.7.1. Revision History</a></li>
+<li><a href="#_classification_52">8.7.2. Classification</a></li>
+<li><a href="#_cluster_id_49">8.7.3. Cluster ID</a></li>
 <li><a href="#_data_types_41">8.7.4. Data Types</a></li>
-<li><a href="#_attributes_48">8.7.5. Attributes</a></li>
+<li><a href="#_attributes_47">8.7.5. Attributes</a></li>
 <li><a href="#_derived_cluster_namespace_5">8.7.6. Derived Cluster Namespace</a></li>
 <li><a href="#_mode_examples_3">8.7.7. Mode Examples</a></li>
 </ul>
 </li>
 <li><a href="#ref_RefrigeratorAlarmCluster">8.8. Refrigerator Alarm Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_55">8.8.1. Revision History</a></li>
-<li><a href="#_classification_54">8.8.2. Classification</a></li>
-<li><a href="#_cluster_id_51">8.8.3. Cluster ID</a></li>
-<li><a href="#_features_32">8.8.4. Features</a></li>
+<li><a href="#_revision_history_54">8.8.1. Revision History</a></li>
+<li><a href="#_classification_53">8.8.2. Classification</a></li>
+<li><a href="#_cluster_id_50">8.8.3. Cluster ID</a></li>
+<li><a href="#_features_31">8.8.4. Features</a></li>
 <li><a href="#_data_types_42">8.8.5. Data Types</a></li>
-<li><a href="#_attributes_49">8.8.6. Attributes</a></li>
+<li><a href="#_attributes_48">8.8.6. Attributes</a></li>
 <li><a href="#_commands_28">8.8.7. Commands</a></li>
 </ul>
 </li>
 <li><a href="#ref_LaundryDryerControlsCluster">8.9. Laundry Dryer Controls Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_56">8.9.1. Revision History</a></li>
-<li><a href="#_classification_55">8.9.2. Classification</a></li>
+<li><a href="#_revision_history_55">8.9.1. Revision History</a></li>
+<li><a href="#_classification_54">8.9.2. Classification</a></li>
 <li><a href="#_cluster_identifiers_2">8.9.3. Cluster Identifiers</a></li>
 <li><a href="#_data_types_43">8.9.4. Data Types</a></li>
-<li><a href="#_attributes_50">8.9.5. Attributes</a></li>
+<li><a href="#_attributes_49">8.9.5. Attributes</a></li>
 </ul>
 </li>
 <li><a href="#ref_OvenOperationalStateCluster">8.10. Oven Cavity Operational State Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_57">8.10.1. Revision History</a></li>
-<li><a href="#_classification_56">8.10.2. Classification</a></li>
-<li><a href="#_cluster_id_52">8.10.3. Cluster ID</a></li>
-<li><a href="#_attributes_51">8.10.4. Attributes</a></li>
+<li><a href="#_revision_history_56">8.10.1. Revision History</a></li>
+<li><a href="#_classification_55">8.10.2. Classification</a></li>
+<li><a href="#_cluster_id_51">8.10.3. Cluster ID</a></li>
+<li><a href="#_attributes_50">8.10.4. Attributes</a></li>
 </ul>
 </li>
 <li><a href="#ref_OvenModeCluster">8.11. Oven Mode Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_58">8.11.1. Revision History</a></li>
-<li><a href="#_classification_57">8.11.2. Classification</a></li>
+<li><a href="#_revision_history_57">8.11.1. Revision History</a></li>
+<li><a href="#_classification_56">8.11.2. Classification</a></li>
 <li><a href="#_cluster_identifiers_3">8.11.3. Cluster Identifiers</a></li>
 <li><a href="#_derived_cluster_namespace_6">8.11.4. Derived Cluster Namespace</a></li>
 <li><a href="#_mode_constraints">8.11.5. Mode Constraints</a></li>
@@ -1153,21 +1144,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#ref_MicrowaveOvenModeCluster">8.12. Microwave Oven Mode Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_59">8.12.1. Revision History</a></li>
-<li><a href="#_classification_58">8.12.2. Classification</a></li>
-<li><a href="#_cluster_id_53">8.12.3. Cluster ID</a></li>
-<li><a href="#_attributes_52">8.12.4. Attributes</a></li>
+<li><a href="#_revision_history_58">8.12.1. Revision History</a></li>
+<li><a href="#_classification_57">8.12.2. Classification</a></li>
+<li><a href="#_cluster_id_52">8.12.3. Cluster ID</a></li>
+<li><a href="#_attributes_51">8.12.4. Attributes</a></li>
 <li><a href="#_commands_29">8.12.5. Commands</a></li>
 <li><a href="#_derived_cluster_namespace_7">8.12.6. Derived Cluster Namespace</a></li>
 </ul>
 </li>
 <li><a href="#ref_MicrowaveOvenControlCluster">8.13. Microwave Oven Control Cluster</a>
 <ul class="sectlevel3">
-<li><a href="#_revision_history_60">8.13.1. Revision History</a></li>
-<li><a href="#_classification_59">8.13.2. Classification</a></li>
-<li><a href="#_cluster_id_54">8.13.3. Cluster ID</a></li>
-<li><a href="#_features_33">8.13.4. Features</a></li>
-<li><a href="#_attributes_53">8.13.5. Attributes</a></li>
+<li><a href="#_revision_history_59">8.13.1. Revision History</a></li>
+<li><a href="#_classification_58">8.13.2. Classification</a></li>
+<li><a href="#_cluster_id_53">8.13.3. Cluster ID</a></li>
+<li><a href="#_features_32">8.13.4. Features</a></li>
+<li><a href="#_attributes_52">8.13.5. Attributes</a></li>
 <li><a href="#_commands_30">8.13.6. Commands</a></li>
 </ul>
 </li>
@@ -3946,8 +3937,8 @@ An ExtensionFieldSetStruct MAY be present for each Scenes-supporting cluster imp
 <th class="tableblock halign-left valign-top"><p class="tableblock">ID</p></th>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Name</p></th>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Type</p></th>
-<th class="tableblock halign-left valign-top"><p class="tableblock">Constraint</p></th>
-<th class="tableblock halign-left valign-top"><p class="tableblock">Quality</p></th>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Constraint h</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quality</p></td>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Default</p></th>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Access</p></th>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Conformance</p></th>
@@ -3986,7 +3977,7 @@ An ExtensionFieldSetStruct MAY be present for each Scenes-supporting cluster imp
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SceneTransitionTime</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint32</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 6000000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 60000000</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -4339,7 +4330,7 @@ for the global scene used by the On/Off cluster.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TransitionTime</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint32</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 6000000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 60000000</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -4692,7 +4683,7 @@ MAY differ in implementation-defined ways from any potential order given in a pr
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TransitionTime</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint32</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 6000000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 60000000</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
@@ -18040,10 +18031,10 @@ to Muted.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="ref_PowerTopologyCluster"><a class="anchor" href="#ref_PowerTopologyCluster"></a>2.12. Power Topology Cluster</h3>
+<h3 id="ref_ElectricalEnergyMeasurementCluster"><a class="anchor" href="#ref_ElectricalEnergyMeasurementCluster"></a>2.12. Electrical Energy Measurement Cluster</h3>
 <div class="paragraph">
-<p>The Power Topology Cluster provides a mechanism for expressing how power is flowing
-between endpoints.</p>
+<p>This cluster provides a mechanism for querying data about the electrical
+energy imported or provided by the server.</p>
 </div>
 <div class="sect3">
 <h4 id="_revision_history_25"><a class="anchor" href="#_revision_history_25"></a>2.12.1. Revision History</h4>
@@ -18091,210 +18082,13 @@ between endpoints.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Base</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Endpoint</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PWRTL</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_cluster_id_22"><a class="anchor" href="#_cluster_id_22"></a>2.12.3. Cluster ID</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">ID</th>
-<th class="tableblock halign-left valign-top">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x009C</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Power Topology</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_features_14"><a class="anchor" href="#_features_14"></a>2.12.4. Features</h4>
-<div class="paragraph">
-<p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Bit</th>
-<th class="tableblock halign-left valign-top">Code</th>
-<th class="tableblock halign-left valign-top">Feature</th>
-<th class="tableblock halign-left valign-top">Summary</th>
-<th class="tableblock halign-left valign-top">Conformance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NODE</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">NodeTopology</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint provides or consumes power to/from the entire node</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TREE</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TreeTopology</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint provides or consumes power to/from itself and its child endpoints</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SET</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SetTopology</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint provides or consumes power to/from a specified set of endpoints</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DYPF</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DynamicPowerFlow</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The specified set of endpoints may change</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[SET]</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_attributes_23"><a class="anchor" href="#_attributes_23"></a>2.12.5. Attributes</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">ID</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Constraint</th>
-<th class="tableblock halign-left valign-top">Quality</th>
-<th class="tableblock halign-left valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Access</th>
-<th class="tableblock halign-left valign-top">Conformance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AvailableEndpoints</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list[endpoint-no]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 20</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SET</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x0001</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ActiveEndpoints</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list[endpoint-no]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 20</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DYPF</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="ref_AvailableEndpoints"><a class="anchor" href="#ref_AvailableEndpoints"></a>2.12.5.1. AvailableEndpoints Attribute</h5>
-<div class="paragraph">
-<p>This attribute SHALL indicate the list of endpoints capable of providing power to and/or consuming power from
-the endpoint hosting this server.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ref_ActiveEndpoints"><a class="anchor" href="#ref_ActiveEndpoints"></a>2.12.5.2. ActiveEndpoints Attribute</h5>
-<div class="paragraph">
-<p>This attribute SHALL indicate the current list of endpoints currently providing or consuming power to or from
-the endpoint hosting this server. This list SHALL be a subset of the value of the
-<a href="#ref_AvailableEndpoints">AvailableEndpoints</a> attribute.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="ref_ElectricalEnergyMeasurementCluster"><a class="anchor" href="#ref_ElectricalEnergyMeasurementCluster"></a>2.13. Electrical Energy Measurement Cluster</h3>
-<div class="paragraph">
-<p>This cluster provides a mechanism for querying data about the electrical
-energy imported or provided by the server.</p>
-</div>
-<div class="sect3">
-<h4 id="_revision_history_26"><a class="anchor" href="#_revision_history_26"></a>2.13.1. Revision History</h4>
-<div class="paragraph">
-<p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Revision</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Release</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_classification_25"><a class="anchor" href="#_classification_25"></a>2.13.2. Classification</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Hierarchy</th>
-<th class="tableblock halign-left valign-top">Role</th>
-<th class="tableblock halign-left valign-top">Scope</th>
-<th class="tableblock halign-left valign-top">PICS Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Base</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Endpoint</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">EEM</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_23"><a class="anchor" href="#_cluster_id_23"></a>2.13.3. Cluster ID</h4>
+<h4 id="_cluster_id_22"><a class="anchor" href="#_cluster_id_22"></a>2.12.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -18315,7 +18109,7 @@ energy imported or provided by the server.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_15"><a class="anchor" href="#_features_15"></a>2.13.4. Features</h4>
+<h4 id="_features_14"><a class="anchor" href="#_features_14"></a>2.12.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -18368,19 +18162,19 @@ energy imported or provided by the server.</p>
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="_importedenergy_feature"><a class="anchor" href="#_importedenergy_feature"></a>2.13.4.1. ImportedEnergy Feature</h5>
+<h5 id="_importedenergy_feature"><a class="anchor" href="#_importedenergy_feature"></a>2.12.4.1. ImportedEnergy Feature</h5>
 <div class="paragraph">
 <p>The feature indicates the server is capable of measuring how much energy is imported by the server.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_exportedenergy_feature"><a class="anchor" href="#_exportedenergy_feature"></a>2.13.4.2. ExportedEnergy Feature</h5>
+<h5 id="_exportedenergy_feature"><a class="anchor" href="#_exportedenergy_feature"></a>2.12.4.2. ExportedEnergy Feature</h5>
 <div class="paragraph">
 <p>The feature indicates the server is capable of measuring how much energy is exported by the server.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_cumulativeenergy_feature"><a class="anchor" href="#_cumulativeenergy_feature"></a>2.13.4.3. CumulativeEnergy Feature</h5>
+<h5 id="_cumulativeenergy_feature"><a class="anchor" href="#_cumulativeenergy_feature"></a>2.12.4.3. CumulativeEnergy Feature</h5>
 <div class="paragraph">
 <p>The feature indicates the server is capable of measuring how much energy has been imported or exported
 by the server over the device&#8217;s lifetime. This measurement MAY start from when a device&#8217;s firmware is
@@ -18389,7 +18183,7 @@ when a device is factory reset.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_periodicenergy_feature"><a class="anchor" href="#_periodicenergy_feature"></a>2.13.4.4. PeriodicEnergy Feature</h5>
+<h5 id="_periodicenergy_feature"><a class="anchor" href="#_periodicenergy_feature"></a>2.12.4.4. PeriodicEnergy Feature</h5>
 <div class="paragraph">
 <p>The feature indicates the server is capable of measuring how much energy has been imported or exported
 by the server during a certain period of time. The start and end times for measurement periods
@@ -18398,9 +18192,9 @@ SHALL be determined by the server, and MAY represent overlapping periods.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_data_types_16"><a class="anchor" href="#_data_types_16"></a>2.13.5. Data Types</h4>
+<h4 id="_data_types_16"><a class="anchor" href="#_data_types_16"></a>2.12.5. Data Types</h4>
 <div class="sect4">
-<h5 id="ref_EnergyMeasurementStruct"><a class="anchor" href="#ref_EnergyMeasurementStruct"></a>2.13.5.1. EnergyMeasurementStruct Type</h5>
+<h5 id="ref_EnergyMeasurementStruct"><a class="anchor" href="#ref_EnergyMeasurementStruct"></a>2.12.5.1. EnergyMeasurementStruct Type</h5>
 <div class="paragraph">
 <p>This struct SHALL indicate the amount of energy measured during a given measurement period.</p>
 </div>
@@ -18491,7 +18285,7 @@ reports that only included systime.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="ref_EnergyMeasurementStructEnergy"><a class="anchor" href="#ref_EnergyMeasurementStructEnergy"></a>2.13.5.1.1. Energy Field</h6>
+<h6 id="ref_EnergyMeasurementStructEnergy"><a class="anchor" href="#ref_EnergyMeasurementStructEnergy"></a>2.12.5.1.1. Energy Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the reported energy.</p>
 </div>
@@ -18510,7 +18304,7 @@ the period specified by the <a href="#ref_EnergyMeasurementStartSystime">StartSy
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_EnergyMeasurementStartTimestamp"><a class="anchor" href="#ref_EnergyMeasurementStartTimestamp"></a>2.13.5.1.2. StartTimestamp Field</h6>
+<h6 id="ref_EnergyMeasurementStartTimestamp"><a class="anchor" href="#ref_EnergyMeasurementStartTimestamp"></a>2.12.5.1.2. StartTimestamp Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the timestamp in UTC of the beginning of the period during
 which the value of the <a href="#ref_EnergyMeasurementStructEnergy">Energy</a> field was measured.</p>
@@ -18528,7 +18322,7 @@ or does not have the capability of determining the time in UTC, this field SHALL
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_EnergyMeasurementEndTimestamp"><a class="anchor" href="#ref_EnergyMeasurementEndTimestamp"></a>2.13.5.1.3. EndTimestamp Field</h6>
+<h6 id="ref_EnergyMeasurementEndTimestamp"><a class="anchor" href="#ref_EnergyMeasurementEndTimestamp"></a>2.12.5.1.3. EndTimestamp Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the timestamp in UTC of the end of the period during
 which the value of the <a href="#ref_EnergyMeasurementStructEnergy">Energy</a> field was measured.</p>
@@ -18543,7 +18337,7 @@ or does not have the capability of determining the time in UTC, this field SHALL
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_EnergyMeasurementStartSystime"><a class="anchor" href="#ref_EnergyMeasurementStartSystime"></a>2.13.5.1.4. StartSystime Field</h6>
+<h6 id="ref_EnergyMeasurementStartSystime"><a class="anchor" href="#ref_EnergyMeasurementStartSystime"></a>2.12.5.1.4. StartSystime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the seconds since boot at the beginning of the period during
 which the value of the <a href="#ref_EnergyMeasurementStructEnergy">Energy</a> field was measured.</p>
@@ -18562,7 +18356,7 @@ at the UTC time indicated in <a href="#ref_EnergyMeasurementStartTimestamp">Star
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_EnergyMeasurementEndSystime"><a class="anchor" href="#ref_EnergyMeasurementEndSystime"></a>2.13.5.1.5. EndSystime Field</h6>
+<h6 id="ref_EnergyMeasurementEndSystime"><a class="anchor" href="#ref_EnergyMeasurementEndSystime"></a>2.12.5.1.5. EndSystime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the seconds since boot at the end of the period during
 which the value of the <a href="#ref_EnergyMeasurementStructEnergy">Energy</a> field was measured.</p>
@@ -18579,7 +18373,7 @@ at the UTC time indicated in <a href="#ref_EnergyMeasurementEndTimestamp">EndTim
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_CumulativeEnergyResetStruct"><a class="anchor" href="#ref_CumulativeEnergyResetStruct"></a>2.13.5.2. CumulativeEnergyResetStruct Type</h5>
+<h5 id="ref_CumulativeEnergyResetStruct"><a class="anchor" href="#ref_CumulativeEnergyResetStruct"></a>2.12.5.2. CumulativeEnergyResetStruct Type</h5>
 <div class="paragraph">
 <p>This struct SHALL represent the times at which cumulative measurements were last zero, either
 due to initialization of the device, or an internal reset of the cumulative value.</p>
@@ -18651,7 +18445,7 @@ due to initialization of the device, or an internal reset of the cumulative valu
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="ref_ImportedResetTimestamp"><a class="anchor" href="#ref_ImportedResetTimestamp"></a>2.13.5.2.1. ImportedResetTimestamp Field</h6>
+<h6 id="ref_ImportedResetTimestamp"><a class="anchor" href="#ref_ImportedResetTimestamp"></a>2.12.5.2.1. ImportedResetTimestamp Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the timestamp in UTC when the value of the
 <a href="#ref_EnergyMeasurementStructEnergy">Energy</a> field on the <a href="#ref_CumulativeEnergyImported">CumulativeEnergyImported</a> attribute
@@ -18675,7 +18469,7 @@ be determined, a value of null SHALL be returned.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ExportedResetTimestamp"><a class="anchor" href="#ref_ExportedResetTimestamp"></a>2.13.5.2.2. ExportedResetTimestamp Field</h6>
+<h6 id="ref_ExportedResetTimestamp"><a class="anchor" href="#ref_ExportedResetTimestamp"></a>2.12.5.2.2. ExportedResetTimestamp Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the timestamp in UTC when the value of the
 <a href="#ref_EnergyMeasurementStructEnergy">Energy</a> field on the <a href="#ref_CumulativeEnergyExported">CumulativeEnergyExported</a> attribute
@@ -18699,7 +18493,7 @@ be determined, a value of null SHALL be returned.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_importedresetsystime_field"><a class="anchor" href="#_importedresetsystime_field"></a>2.13.5.2.3. ImportedResetSystime Field</h6>
+<h6 id="_importedresetsystime_field"><a class="anchor" href="#_importedresetsystime_field"></a>2.12.5.2.3. ImportedResetSystime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the seconds since boot when the value of the
 <a href="#ref_EnergyMeasurementStructEnergy">Energy</a> field on the <a href="#ref_CumulativeEnergyImported">CumulativeEnergyImported</a> attribute
@@ -18719,7 +18513,7 @@ at the UTC time indicated in <a href="#ref_ImportedResetTimestamp">ImportedReset
 </div>
 </div>
 <div class="sect5">
-<h6 id="_exportedresetsystime_field"><a class="anchor" href="#_exportedresetsystime_field"></a>2.13.5.2.4. ExportedResetSystime Field</h6>
+<h6 id="_exportedresetsystime_field"><a class="anchor" href="#_exportedresetsystime_field"></a>2.12.5.2.4. ExportedResetSystime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the seconds since boot when the value of the
 <a href="#ref_EnergyMeasurementStructEnergy">Energy</a> field on the <a href="#ref_CumulativeEnergyExported">CumulativeEnergyExported</a> attribute
@@ -18741,7 +18535,7 @@ at the UTC time indicated in <a href="#ref_ImportedResetTimestamp">ImportedReset
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_24"><a class="anchor" href="#_attributes_24"></a>2.13.6. Attributes</h4>
+<h4 id="_attributes_23"><a class="anchor" href="#_attributes_23"></a>2.12.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -18829,7 +18623,7 @@ at the UTC time indicated in <a href="#ref_ImportedResetTimestamp">ImportedReset
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="ref_EnergyAccuracy"><a class="anchor" href="#ref_EnergyAccuracy"></a>2.13.6.1. Accuracy Attribute</h5>
+<h5 id="ref_EnergyAccuracy"><a class="anchor" href="#ref_EnergyAccuracy"></a>2.12.6.1. Accuracy Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the accuracy of energy measurement by this server. The value of the
 <a href="#ref_MeasurementAccuracyStructMeasurementType">MeasurementType</a> field on this <a href="#ref_MeasurementAccuracyStruct">MeasurementAccuracyStruct</a>
@@ -18837,7 +18631,7 @@ SHALL be ElectricalEnergy.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_CumulativeEnergyImported"><a class="anchor" href="#ref_CumulativeEnergyImported"></a>2.13.6.2. CumulativeEnergyImported Attribute</h5>
+<h5 id="ref_CumulativeEnergyImported"><a class="anchor" href="#ref_CumulativeEnergyImported"></a>2.12.6.2. CumulativeEnergyImported Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the most recent measurement of
 cumulative energy imported by the server over the lifetime of the device,
@@ -18861,7 +18655,7 @@ a value of null SHALL be returned.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_CumulativeEnergyExported"><a class="anchor" href="#ref_CumulativeEnergyExported"></a>2.13.6.3. CumulativeEnergyExported Attribute</h5>
+<h5 id="ref_CumulativeEnergyExported"><a class="anchor" href="#ref_CumulativeEnergyExported"></a>2.12.6.3. CumulativeEnergyExported Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the most recent measurement of
 cumulative energy exported by the server over the lifetime of the device,
@@ -18885,7 +18679,7 @@ a value of null SHALL be returned.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_PeriodicEnergyImported"><a class="anchor" href="#ref_PeriodicEnergyImported"></a>2.13.6.4. PeriodicEnergyImported Attribute</h5>
+<h5 id="ref_PeriodicEnergyImported"><a class="anchor" href="#ref_PeriodicEnergyImported"></a>2.12.6.4. PeriodicEnergyImported Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the most recent measurement of energy
 imported by the server and the period during which it was measured.</p>
@@ -18908,7 +18702,7 @@ a value of null SHALL be returned.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_PeriodicEnergyExported"><a class="anchor" href="#ref_PeriodicEnergyExported"></a>2.13.6.5. PeriodicEnergyExported Attribute</h5>
+<h5 id="ref_PeriodicEnergyExported"><a class="anchor" href="#ref_PeriodicEnergyExported"></a>2.12.6.5. PeriodicEnergyExported Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the most recent measurement of energy
 exported by the server and the period during which it was measured.</p>
@@ -18931,7 +18725,7 @@ a value of null SHALL be returned.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_CumulativeEnergyReset"><a class="anchor" href="#ref_CumulativeEnergyReset"></a>2.13.6.6. CumulativeEnergyReset Attribute</h5>
+<h5 id="ref_CumulativeEnergyReset"><a class="anchor" href="#ref_CumulativeEnergyReset"></a>2.12.6.6. CumulativeEnergyReset Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate when cumulative measurements were
 most recently zero.</p>
@@ -18939,7 +18733,7 @@ most recently zero.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_events_6"><a class="anchor" href="#_events_6"></a>2.13.7. Events</h4>
+<h4 id="_events_6"><a class="anchor" href="#_events_6"></a>2.12.7. Events</h4>
 <div class="paragraph">
 <p>This cluster SHALL support these events:</p>
 </div>
@@ -18982,7 +18776,7 @@ most recently zero.</p>
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="_cumulativeenergymeasured_event"><a class="anchor" href="#_cumulativeenergymeasured_event"></a>2.13.7.1. CumulativeEnergyMeasured Event</h5>
+<h5 id="_cumulativeenergymeasured_event"><a class="anchor" href="#_cumulativeenergymeasured_event"></a>2.12.7.1. CumulativeEnergyMeasured Event</h5>
 <div class="paragraph">
 <p>This event SHALL be generated when the server takes a snapshot
 of the cumulative energy imported by the server, exported from the
@@ -19034,7 +18828,7 @@ server, or both.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="ref_CumulativeEnergyMeasuredEventEnergyImported"><a class="anchor" href="#ref_CumulativeEnergyMeasuredEventEnergyImported"></a>2.13.7.1.1. EnergyImported Field</h6>
+<h6 id="ref_CumulativeEnergyMeasuredEventEnergyImported"><a class="anchor" href="#ref_CumulativeEnergyMeasuredEventEnergyImported"></a>2.12.7.1.1. EnergyImported Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the value of <a href="#ref_CumulativeEnergyImported">CumulativeEnergyImported</a> attribute at the
 timestamp indicated in its <a href="#ref_EnergyMeasurementEndTimestamp">EndTimestamp</a> field,
@@ -19042,7 +18836,7 @@ timestamp indicated in its <a href="#ref_EnergyMeasurementEndTimestamp">EndTimes
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_CumulativeEnergyMeasuredEventEnergyExported"><a class="anchor" href="#ref_CumulativeEnergyMeasuredEventEnergyExported"></a>2.13.7.1.2. EnergyExported Field</h6>
+<h6 id="ref_CumulativeEnergyMeasuredEventEnergyExported"><a class="anchor" href="#ref_CumulativeEnergyMeasuredEventEnergyExported"></a>2.12.7.1.2. EnergyExported Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the value of <a href="#ref_CumulativeEnergyExported">CumulativeEnergyExported</a> attribute at the
 timestamp indicated in its <a href="#ref_EnergyMeasurementEndTimestamp">EndTimestamp</a> field,
@@ -19051,7 +18845,7 @@ timestamp indicated in its <a href="#ref_EnergyMeasurementEndTimestamp">EndTimes
 </div>
 </div>
 <div class="sect4">
-<h5 id="_periodicenergymeasured_event"><a class="anchor" href="#_periodicenergymeasured_event"></a>2.13.7.2. PeriodicEnergyMeasured Event</h5>
+<h5 id="_periodicenergymeasured_event"><a class="anchor" href="#_periodicenergymeasured_event"></a>2.12.7.2. PeriodicEnergyMeasured Event</h5>
 <div class="paragraph">
 <p>This event SHALL be generated when the server reaches the end
 of a reporting period for imported energy, exported energy, or both.</p>
@@ -19102,7 +18896,7 @@ of a reporting period for imported energy, exported energy, or both.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="ref_PeriodicEnergyMeasuredEventEnergyImported"><a class="anchor" href="#ref_PeriodicEnergyMeasuredEventEnergyImported"></a>2.13.7.2.1. EnergyImported Field</h6>
+<h6 id="ref_PeriodicEnergyMeasuredEventEnergyImported"><a class="anchor" href="#ref_PeriodicEnergyMeasuredEventEnergyImported"></a>2.12.7.2.1. EnergyImported Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the value of <a href="#ref_PeriodicEnergyImported">PeriodicEnergyImported</a> attribute at the
 timestamp indicated in its <a href="#ref_EnergyMeasurementEndTimestamp">EndTimestamp</a> field,
@@ -19110,7 +18904,7 @@ timestamp indicated in its <a href="#ref_EnergyMeasurementEndTimestamp">EndTimes
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_PeriodicEnergyMeasuredEventEnergyExported"><a class="anchor" href="#ref_PeriodicEnergyMeasuredEventEnergyExported"></a>2.13.7.2.2. EnergyExported Field</h6>
+<h6 id="ref_PeriodicEnergyMeasuredEventEnergyExported"><a class="anchor" href="#ref_PeriodicEnergyMeasuredEventEnergyExported"></a>2.12.7.2.2. EnergyExported Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the value of <a href="#ref_PeriodicEnergyExported">PeriodicEnergyExported</a> attribute at the
 timestamp indicated in its <a href="#ref_EnergyMeasurementEndTimestamp">EndTimestamp</a> field,
@@ -19121,12 +18915,12 @@ timestamp indicated in its <a href="#ref_EnergyMeasurementEndTimestamp">EndTimes
 </div>
 </div>
 <div class="sect2">
-<h3 id="ref_ElectricalPowerMeasurementCluster"><a class="anchor" href="#ref_ElectricalPowerMeasurementCluster"></a>2.14. Electrical Power Measurement Cluster</h3>
+<h3 id="ref_ElectricalPowerMeasurementCluster"><a class="anchor" href="#ref_ElectricalPowerMeasurementCluster"></a>2.13. Electrical Power Measurement Cluster</h3>
 <div class="paragraph">
 <p>This cluster provides a mechanism for querying data about electrical power as measured by the server.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_27"><a class="anchor" href="#_revision_history_27"></a>2.14.1. Revision History</h4>
+<h4 id="_revision_history_26"><a class="anchor" href="#_revision_history_26"></a>2.13.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -19150,7 +18944,7 @@ timestamp indicated in its <a href="#ref_EnergyMeasurementEndTimestamp">EndTimes
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_26"><a class="anchor" href="#_classification_26"></a>2.14.2. Classification</h4>
+<h4 id="_classification_25"><a class="anchor" href="#_classification_25"></a>2.13.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -19177,7 +18971,7 @@ timestamp indicated in its <a href="#ref_EnergyMeasurementEndTimestamp">EndTimes
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_24"><a class="anchor" href="#_cluster_id_24"></a>2.14.3. Cluster ID</h4>
+<h4 id="_cluster_id_23"><a class="anchor" href="#_cluster_id_23"></a>2.13.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -19198,7 +18992,7 @@ timestamp indicated in its <a href="#ref_EnergyMeasurementEndTimestamp">EndTimes
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_16"><a class="anchor" href="#_features_16"></a>2.14.4. Features</h4>
+<h4 id="_features_15"><a class="anchor" href="#_features_15"></a>2.13.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -19258,40 +19052,40 @@ timestamp indicated in its <a href="#ref_EnergyMeasurementEndTimestamp">EndTimes
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="ref_DirectCurrentFeature"><a class="anchor" href="#ref_DirectCurrentFeature"></a>2.14.4.1. DirectCurrent Feature</h5>
+<h5 id="ref_DirectCurrentFeature"><a class="anchor" href="#ref_DirectCurrentFeature"></a>2.13.4.1. DirectCurrent Feature</h5>
 <div class="paragraph">
 <p>This feature indicates the cluster can measure a direct current.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_AlternatingCurrentFeature"><a class="anchor" href="#ref_AlternatingCurrentFeature"></a>2.14.4.2. AlternatingCurrent Feature</h5>
+<h5 id="ref_AlternatingCurrentFeature"><a class="anchor" href="#ref_AlternatingCurrentFeature"></a>2.13.4.2. AlternatingCurrent Feature</h5>
 <div class="paragraph">
 <p>This feature indicates the cluster can measure an alternating current.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_PolyphasePowerFeature"><a class="anchor" href="#ref_PolyphasePowerFeature"></a>2.14.4.3. PolyphasePower Feature</h5>
+<h5 id="ref_PolyphasePowerFeature"><a class="anchor" href="#ref_PolyphasePowerFeature"></a>2.13.4.3. PolyphasePower Feature</h5>
 <div class="paragraph">
 <p>This feature indicates the cluster represents the collective measurements for a Polyphase power supply.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_HarmonicsFeature"><a class="anchor" href="#ref_HarmonicsFeature"></a>2.14.4.4. Harmonics Feature</h5>
+<h5 id="ref_HarmonicsFeature"><a class="anchor" href="#ref_HarmonicsFeature"></a>2.13.4.4. Harmonics Feature</h5>
 <div class="paragraph">
 <p>This feature indicates the cluster can measure the harmonics of an alternating current.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_PowerQualityFeature"><a class="anchor" href="#ref_PowerQualityFeature"></a>2.14.4.5. PowerQuality Feature</h5>
+<h5 id="ref_PowerQualityFeature"><a class="anchor" href="#ref_PowerQualityFeature"></a>2.13.4.5. PowerQuality Feature</h5>
 <div class="paragraph">
 <p>This feature indicates the cluster can measure the harmonic phases of an alternating current.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_data_types_17"><a class="anchor" href="#_data_types_17"></a>2.14.5. Data Types</h4>
+<h4 id="_data_types_17"><a class="anchor" href="#_data_types_17"></a>2.13.5. Data Types</h4>
 <div class="sect4">
-<h5 id="ref_PowerModeEnum"><a class="anchor" href="#ref_PowerModeEnum"></a>2.14.5.1. PowerModeEnum Type</h5>
+<h5 id="ref_PowerModeEnum"><a class="anchor" href="#ref_PowerModeEnum"></a>2.13.5.1. PowerModeEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -19333,7 +19127,7 @@ timestamp indicated in its <a href="#ref_EnergyMeasurementEndTimestamp">EndTimes
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_MeasurementRangeStruct"><a class="anchor" href="#ref_MeasurementRangeStruct"></a>2.14.5.2. MeasurementRangeStruct Type</h5>
+<h5 id="ref_MeasurementRangeStruct"><a class="anchor" href="#ref_MeasurementRangeStruct"></a>2.13.5.2. MeasurementRangeStruct Type</h5>
 <div class="paragraph">
 <p>This struct SHALL indicate the maximum and minimum values of a given <a href="#ref_MeasurementTypeEnum">measurement type</a>
 during a measurement period, along with the observation times of these values.</p>
@@ -19485,13 +19279,13 @@ reports that only included systime.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="ref_MeasurementRangeStructMeasurementType"><a class="anchor" href="#ref_MeasurementRangeStructMeasurementType"></a>2.14.5.2.1. MeasurementType Field</h6>
+<h6 id="ref_MeasurementRangeStructMeasurementType"><a class="anchor" href="#ref_MeasurementRangeStructMeasurementType"></a>2.13.5.2.1. MeasurementType Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the type of measurement for the range provided.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MeasurementRangeStructMinField"><a class="anchor" href="#ref_MeasurementRangeStructMinField"></a>2.14.5.2.2. Min Field</h6>
+<h6 id="ref_MeasurementRangeStructMinField"><a class="anchor" href="#ref_MeasurementRangeStructMinField"></a>2.13.5.2.2. Min Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the smallest measured value for the associated measurement over
 either the period between <a href="#ref_MeasurementRangeStructStartTimestamp">StartTimestamp</a> and
@@ -19501,7 +19295,7 @@ or both.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MeasurementRangeStructMaxField"><a class="anchor" href="#ref_MeasurementRangeStructMaxField"></a>2.14.5.2.3. Max Field</h6>
+<h6 id="ref_MeasurementRangeStructMaxField"><a class="anchor" href="#ref_MeasurementRangeStructMaxField"></a>2.13.5.2.3. Max Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the largest measured value for the associated measurement over the period
 between either <a href="#ref_MeasurementRangeStructStartTimestamp">StartTimestamp</a> and
@@ -19511,7 +19305,7 @@ or both.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MeasurementRangeStructStartTimestamp"><a class="anchor" href="#ref_MeasurementRangeStructStartTimestamp"></a>2.14.5.2.4. StartTimestamp Field</h6>
+<h6 id="ref_MeasurementRangeStructStartTimestamp"><a class="anchor" href="#ref_MeasurementRangeStructStartTimestamp"></a>2.13.5.2.4. StartTimestamp Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the timestamp in UTC of the beginning of the measurement period.</p>
 </div>
@@ -19521,7 +19315,7 @@ or does not have the capability of determining the time in UTC, this field SHALL
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MeasurementRangeStructEndTimestamp"><a class="anchor" href="#ref_MeasurementRangeStructEndTimestamp"></a>2.14.5.2.5. EndTimestamp Field</h6>
+<h6 id="ref_MeasurementRangeStructEndTimestamp"><a class="anchor" href="#ref_MeasurementRangeStructEndTimestamp"></a>2.13.5.2.5. EndTimestamp Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the timestamp in UTC of the end of the measurement period.</p>
 </div>
@@ -19531,7 +19325,7 @@ or does not have the capability of determining the time in UTC, this field SHALL
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MeasurementRangeStructMinTimestampField"><a class="anchor" href="#ref_MeasurementRangeStructMinTimestampField"></a>2.14.5.2.6. MinTimestamp Field</h6>
+<h6 id="ref_MeasurementRangeStructMinTimestampField"><a class="anchor" href="#ref_MeasurementRangeStructMinTimestampField"></a>2.13.5.2.6. MinTimestamp Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the most recent timestamp in UTC that the value in the <a href="#ref_MeasurementRangeStructMinField">Min</a> field
 was measured.</p>
@@ -19544,7 +19338,7 @@ was measured.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MeasurementRangeStructMaxTimestampField"><a class="anchor" href="#ref_MeasurementRangeStructMaxTimestampField"></a>2.14.5.2.7. MaxTimestamp Field</h6>
+<h6 id="ref_MeasurementRangeStructMaxTimestampField"><a class="anchor" href="#ref_MeasurementRangeStructMaxTimestampField"></a>2.13.5.2.7. MaxTimestamp Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the most recent timestamp in UTC of the value in the <a href="#ref_MeasurementRangeStructMaxField">Max</a> field.</p>
 </div>
@@ -19556,7 +19350,7 @@ was measured.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MeasurementRangeStructStartSystime"><a class="anchor" href="#ref_MeasurementRangeStructStartSystime"></a>2.14.5.2.8. StartSystime Field</h6>
+<h6 id="ref_MeasurementRangeStructStartSystime"><a class="anchor" href="#ref_MeasurementRangeStructStartSystime"></a>2.13.5.2.8. StartSystime Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the time since boot of the beginning of the measurement period.</p>
 </div>
@@ -19568,7 +19362,7 @@ fields.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MeasurementRangeStructEndSystime"><a class="anchor" href="#ref_MeasurementRangeStructEndSystime"></a>2.14.5.2.9. EndSystime Field</h6>
+<h6 id="ref_MeasurementRangeStructEndSystime"><a class="anchor" href="#ref_MeasurementRangeStructEndSystime"></a>2.13.5.2.9. EndSystime Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the time since boot of the end of the measurement period.</p>
 </div>
@@ -19580,7 +19374,7 @@ fields.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MeasurementRangeStructMinSystimeField"><a class="anchor" href="#ref_MeasurementRangeStructMinSystimeField"></a>2.14.5.2.10. MinSystime Field</h6>
+<h6 id="ref_MeasurementRangeStructMinSystimeField"><a class="anchor" href="#ref_MeasurementRangeStructMinSystimeField"></a>2.13.5.2.10. MinSystime Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the measurement time since boot of the value in the <a href="#ref_MeasurementRangeStructMinField">Min</a> field
 was measured.</p>
@@ -19593,7 +19387,7 @@ was measured.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MeasurementRangeStructMaxSystimeField"><a class="anchor" href="#ref_MeasurementRangeStructMaxSystimeField"></a>2.14.5.2.11. MaxSystime Field</h6>
+<h6 id="ref_MeasurementRangeStructMaxSystimeField"><a class="anchor" href="#ref_MeasurementRangeStructMaxSystimeField"></a>2.13.5.2.11. MaxSystime Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the measurement time since boot of the value in the <a href="#ref_MeasurementRangeStructMaxField">Max</a> field.</p>
 </div>
@@ -19606,7 +19400,7 @@ was measured.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_HarmonicMeasurementStruct"><a class="anchor" href="#ref_HarmonicMeasurementStruct"></a>2.14.5.3. HarmonicMeasurementStruct Type</h5>
+<h5 id="ref_HarmonicMeasurementStruct"><a class="anchor" href="#ref_HarmonicMeasurementStruct"></a>2.13.5.3. HarmonicMeasurementStruct Type</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -19654,14 +19448,14 @@ was measured.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="ref_HarmonicMeasurementStructOrderField"><a class="anchor" href="#ref_HarmonicMeasurementStructOrderField"></a>2.14.5.3.1. Order Field</h6>
+<h6 id="ref_HarmonicMeasurementStructOrderField"><a class="anchor" href="#ref_HarmonicMeasurementStructOrderField"></a>2.13.5.3.1. Order Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the order of the harmonic being measured. Typically this is an odd number, but servers may
 choose to report even harmonics.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_HarmonicMeasurementStructMeasurementField"><a class="anchor" href="#ref_HarmonicMeasurementStructMeasurementField"></a>2.14.5.3.2. Measurement Field</h6>
+<h6 id="ref_HarmonicMeasurementStructMeasurementField"><a class="anchor" href="#ref_HarmonicMeasurementStructMeasurementField"></a>2.13.5.3.2. Measurement Field</h6>
 <div class="paragraph">
 <p>This field SHALL be the measured value for the given harmonic order.</p>
 </div>
@@ -19682,7 +19476,7 @@ lagging.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_25"><a class="anchor" href="#_attributes_25"></a>2.14.6. Attributes</h4>
+<h4 id="_attributes_24"><a class="anchor" href="#_attributes_24"></a>2.13.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -19900,20 +19694,20 @@ lagging.</p>
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="ref_PowerMode"><a class="anchor" href="#ref_PowerMode"></a>2.14.6.1. PowerMode Attribute</h5>
+<h5 id="ref_PowerMode"><a class="anchor" href="#ref_PowerMode"></a>2.13.6.1. PowerMode Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the current mode of the server. For some servers, such as an EV, this may change
 depending on the mode of charging or discharging.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_numberofmeasurementtypes_attribute"><a class="anchor" href="#_numberofmeasurementtypes_attribute"></a>2.14.6.2. NumberOfMeasurementTypes Attribute</h5>
+<h5 id="_numberofmeasurementtypes_attribute"><a class="anchor" href="#_numberofmeasurementtypes_attribute"></a>2.13.6.2. NumberOfMeasurementTypes Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the maximum number of measurement types the server is capable of reporting.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_PowerAccuracy"><a class="anchor" href="#ref_PowerAccuracy"></a>2.14.6.3. Accuracy Attribute</h5>
+<h5 id="ref_PowerAccuracy"><a class="anchor" href="#ref_PowerAccuracy"></a>2.13.6.3. Accuracy Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate a list of <a href="#ref_MeasurementAccuracyStruct">accuracy specifications</a>
 for the <a href="#ref_MeasurementTypeEnum">measurement types</a> supported by the server. There SHALL be an entry
@@ -19922,7 +19716,7 @@ by this server.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_Ranges"><a class="anchor" href="#ref_Ranges"></a>2.14.6.4. Ranges Attribute</h5>
+<h5 id="ref_Ranges"><a class="anchor" href="#ref_Ranges"></a>2.13.6.4. Ranges Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate a list of <a href="#ref_MeasurementRangeStruct">measured ranges</a> for different
 <a href="#ref_MeasurementTypeEnum">measurement types</a>. Each measurement type SHALL have at most
@@ -19942,7 +19736,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_Voltage"><a class="anchor" href="#ref_Voltage"></a>2.14.6.5. Voltage Attribute</h5>
+<h5 id="ref_Voltage"><a class="anchor" href="#ref_Voltage"></a>2.13.6.5. Voltage Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the most recent <a href="#ref_MeasurementTypeEnum">Voltage</a>
 reading in millivolts (mV).</p>
@@ -19964,7 +19758,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ActiveCurrent"><a class="anchor" href="#ref_ActiveCurrent"></a>2.14.6.6. ActiveCurrent Attribute</h5>
+<h5 id="ref_ActiveCurrent"><a class="anchor" href="#ref_ActiveCurrent"></a>2.13.6.6. ActiveCurrent Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the most recent <a href="#ref_MeasurementTypeEnum">ActiveCurrent</a>
 reading in milliamps (mA).</p>
@@ -19990,7 +19784,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ReactiveCurrent"><a class="anchor" href="#ref_ReactiveCurrent"></a>2.14.6.7. ReactiveCurrent Attribute</h5>
+<h5 id="ref_ReactiveCurrent"><a class="anchor" href="#ref_ReactiveCurrent"></a>2.13.6.7. ReactiveCurrent Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the most recent <a href="#ref_MeasurementTypeEnum">ReactiveCurrent</a>
 reading in milliamps (mA).</p>
@@ -20016,7 +19810,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ApparentCurrent"><a class="anchor" href="#ref_ApparentCurrent"></a>2.14.6.8. ApparentCurrent Attribute</h5>
+<h5 id="ref_ApparentCurrent"><a class="anchor" href="#ref_ApparentCurrent"></a>2.13.6.8. ApparentCurrent Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the most recent <a href="#ref_MeasurementTypeEnum">ApparentCurrent</a>
 (square root sum of the squares of active and reactive currents) reading in milliamps (mA).</p>
@@ -20038,7 +19832,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ActivePower"><a class="anchor" href="#ref_ActivePower"></a>2.14.6.9. ActivePower Attribute</h5>
+<h5 id="ref_ActivePower"><a class="anchor" href="#ref_ActivePower"></a>2.13.6.9. ActivePower Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the most recent <a href="#ref_MeasurementTypeEnum">ActivePower</a>
 reading in milliwatts (mW). If the power cannot be measured, a value of null SHALL be
@@ -20065,7 +19859,7 @@ combined active power imported or exported.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ReactivePower"><a class="anchor" href="#ref_ReactivePower"></a>2.14.6.10. ReactivePower Attribute</h5>
+<h5 id="ref_ReactivePower"><a class="anchor" href="#ref_ReactivePower"></a>2.13.6.10. ReactivePower Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the most recent <a href="#ref_MeasurementTypeEnum">ReactivePower</a>
 reading in millivolt-amps reactive (mVAR).</p>
@@ -20094,7 +19888,7 @@ combined reactive power imported or exported.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ApparentPower"><a class="anchor" href="#ref_ApparentPower"></a>2.14.6.11. ApparentPower Attribute</h5>
+<h5 id="ref_ApparentPower"><a class="anchor" href="#ref_ApparentPower"></a>2.13.6.11. ApparentPower Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the most recent <a href="#ref_MeasurementTypeEnum">ApparentPower</a>
 reading in millivolt-amps (mVA).</p>
@@ -20119,7 +19913,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_Rmsvoltage"><a class="anchor" href="#ref_Rmsvoltage"></a>2.14.6.12. RMSVoltage Attribute</h5>
+<h5 id="ref_Rmsvoltage"><a class="anchor" href="#ref_Rmsvoltage"></a>2.13.6.12. RMSVoltage Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the most recent <a href="#ref_MeasurementTypeEnum">RMSVoltage</a>
 reading in millivolts (mV).</p>
@@ -20141,7 +19935,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_Rmscurrent"><a class="anchor" href="#ref_Rmscurrent"></a>2.14.6.13. RMSCurrent Attribute</h5>
+<h5 id="ref_Rmscurrent"><a class="anchor" href="#ref_Rmscurrent"></a>2.13.6.13. RMSCurrent Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the most recent <a href="#ref_MeasurementTypeEnum">RMSCurrent</a>
 reading in milliamps (mA).</p>
@@ -20167,7 +19961,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_Rmspower"><a class="anchor" href="#ref_Rmspower"></a>2.14.6.14. RMSPower Attribute</h5>
+<h5 id="ref_Rmspower"><a class="anchor" href="#ref_Rmspower"></a>2.13.6.14. RMSPower Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the most recent <a href="#ref_MeasurementTypeEnum">RMSPower</a>
 reading in milliwatts (mW).</p>
@@ -20192,7 +19986,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_Frequency"><a class="anchor" href="#ref_Frequency"></a>2.14.6.15. Frequency Attribute</h5>
+<h5 id="ref_Frequency"><a class="anchor" href="#ref_Frequency"></a>2.13.6.15. Frequency Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the most recent <a href="#ref_MeasurementTypeEnum">Frequency</a>
 reading in millihertz (mHz).</p>
@@ -20214,7 +20008,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_HarmonicCurrents"><a class="anchor" href="#ref_HarmonicCurrents"></a>2.14.6.16. HarmonicCurrents Attribute</h5>
+<h5 id="ref_HarmonicCurrents"><a class="anchor" href="#ref_HarmonicCurrents"></a>2.13.6.16. HarmonicCurrents Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate a list of <a href="#ref_HarmonicMeasurementStruct">HarmonicMeasurementStruct</a>
 values, with each <a href="#ref_HarmonicMeasurementStruct">HarmonicMeasurementStruct</a> representing the harmonic
@@ -20234,7 +20028,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_HarmonicPhases"><a class="anchor" href="#ref_HarmonicPhases"></a>2.14.6.17. HarmonicPhases Attribute</h5>
+<h5 id="ref_HarmonicPhases"><a class="anchor" href="#ref_HarmonicPhases"></a>2.13.6.17. HarmonicPhases Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate a list of <a href="#ref_HarmonicMeasurementStruct">HarmonicMeasurementStruct</a>
 values, with each <a href="#ref_HarmonicMeasurementStruct">HarmonicMeasurementStruct</a> representing the most recent
@@ -20255,7 +20049,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_PowerFactor"><a class="anchor" href="#ref_PowerFactor"></a>2.14.6.18. PowerFactor Attribute</h5>
+<h5 id="ref_PowerFactor"><a class="anchor" href="#ref_PowerFactor"></a>2.13.6.18. PowerFactor Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the Power Factor ratio in +/- 1/100ths of a percent.</p>
 </div>
@@ -20273,7 +20067,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_NeutralCurrent"><a class="anchor" href="#ref_NeutralCurrent"></a>2.14.6.19. NeutralCurrent Attribute</h5>
+<h5 id="ref_NeutralCurrent"><a class="anchor" href="#ref_NeutralCurrent"></a>2.13.6.19. NeutralCurrent Attribute</h5>
 <div class="paragraph">
 <p>This SHALL indicate the most recent <a href="#ref_MeasurementTypeEnum">NeutralCurrent</a>
 reading in milliamps (mA). Typically this is a derived value, taking the magnitude
@@ -20303,7 +20097,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 </div>
 <div class="sect3">
-<h4 id="_events_7"><a class="anchor" href="#_events_7"></a>2.14.7. Events</h4>
+<h4 id="_events_7"><a class="anchor" href="#_events_7"></a>2.13.7. Events</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the following event:</p>
 </div>
@@ -20338,7 +20132,7 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="_measurementperiodranges_event"><a class="anchor" href="#_measurementperiodranges_event"></a>2.14.7.1. MeasurementPeriodRanges Event</h5>
+<h5 id="_measurementperiodranges_event"><a class="anchor" href="#_measurementperiodranges_event"></a>2.13.7.1. MeasurementPeriodRanges Event</h5>
 <div class="paragraph">
 <p>If supported, this event SHALL be generated at the end of a measurement period.
 The start and end times for measurement periods SHALL be determined by the server,
@@ -20381,7 +20175,7 @@ and MAY represent overlapping periods.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_ranges_field"><a class="anchor" href="#_ranges_field"></a>2.14.7.1.1. Ranges Field</h6>
+<h6 id="_ranges_field"><a class="anchor" href="#_ranges_field"></a>2.13.7.1.1. Ranges Field</h6>
 <div class="paragraph">
 <p>This SHALL indicate the value of the <a href="#ref_Ranges">Ranges</a> attribute at the time of event generation.</p>
 </div>
@@ -20493,7 +20287,7 @@ achievable at the current color.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_28"><a class="anchor" href="#_revision_history_28"></a>3.2.2. Revision History</h4>
+<h4 id="_revision_history_27"><a class="anchor" href="#_revision_history_27"></a>3.2.2. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -20538,7 +20332,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_27"><a class="anchor" href="#_classification_27"></a>3.2.3. Classification</h4>
+<h4 id="_classification_26"><a class="anchor" href="#_classification_26"></a>3.2.3. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -20586,7 +20380,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_17"><a class="anchor" href="#_features_17"></a>3.2.5. Features</h4>
+<h4 id="_features_16"><a class="anchor" href="#_features_16"></a>3.2.5. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -25083,7 +24877,7 @@ Support for Ballast Configuration cluster is provisional.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_29"><a class="anchor" href="#_revision_history_29"></a>3.3.1. Revision History</h4>
+<h4 id="_revision_history_28"><a class="anchor" href="#_revision_history_28"></a>3.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -25119,7 +24913,7 @@ Support for Ballast Configuration cluster is provisional.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_28"><a class="anchor" href="#_classification_28"></a>3.3.2. Classification</h4>
+<h4 id="_classification_27"><a class="anchor" href="#_classification_27"></a>3.3.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -25146,7 +24940,7 @@ Support for Ballast Configuration cluster is provisional.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_25"><a class="anchor" href="#_cluster_id_25"></a>3.3.3. Cluster ID</h4>
+<h4 id="_cluster_id_24"><a class="anchor" href="#_cluster_id_24"></a>3.3.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -25277,7 +25071,7 @@ the Alarms functionality is enabled and the LampAlarmMode attribute SHALL be sup
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_26"><a class="anchor" href="#_attributes_26"></a>3.3.6. Attributes</h4>
+<h4 id="_attributes_25"><a class="anchor" href="#_attributes_25"></a>3.3.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -25842,7 +25636,7 @@ status information. Note that control of pump speed is not included –
 speed is controlled by the On/Off and Level Control clusters.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_30"><a class="anchor" href="#_revision_history_30"></a>4.2.1. Revision History</h4>
+<h4 id="_revision_history_29"><a class="anchor" href="#_revision_history_29"></a>4.2.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -25879,7 +25673,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_29"><a class="anchor" href="#_classification_29"></a>4.2.2. Classification</h4>
+<h4 id="_classification_28"><a class="anchor" href="#_classification_28"></a>4.2.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -25906,7 +25700,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_26"><a class="anchor" href="#_cluster_id_26"></a>4.2.3. Cluster ID</h4>
+<h4 id="_cluster_id_25"><a class="anchor" href="#_cluster_id_25"></a>4.2.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -25927,7 +25721,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_18"><a class="anchor" href="#_features_18"></a>4.2.4. Features</h4>
+<h4 id="_features_17"><a class="anchor" href="#_features_17"></a>4.2.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -26307,7 +26101,7 @@ determined by the pump.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_27"><a class="anchor" href="#_attributes_27"></a>4.2.7. Attributes</h4>
+<h4 id="_attributes_26"><a class="anchor" href="#_attributes_26"></a>4.2.7. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -27106,7 +26900,7 @@ SHALL be returned.</p>
 <p>This cluster provides an interface to the functionality of a thermostat.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_31"><a class="anchor" href="#_revision_history_31"></a>4.3.1. Revision History</h4>
+<h4 id="_revision_history_30"><a class="anchor" href="#_revision_history_30"></a>4.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global <em>ClusterRevision</em> attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -27151,7 +26945,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_30"><a class="anchor" href="#_classification_30"></a>4.3.2. Classification</h4>
+<h4 id="_classification_29"><a class="anchor" href="#_classification_29"></a>4.3.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -27178,7 +26972,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_27"><a class="anchor" href="#_cluster_id_27"></a>4.3.3. Cluster ID</h4>
+<h4 id="_cluster_id_26"><a class="anchor" href="#_cluster_id_26"></a>4.3.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -27199,7 +26993,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_19"><a class="anchor" href="#_features_19"></a>4.3.4. Features</h4>
+<h4 id="_features_18"><a class="anchor" href="#_features_18"></a>4.3.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -28501,7 +28295,7 @@ HeatingOnly based on the current capability.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Fan only</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FanOnly</strong></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 </tr>
@@ -28640,9 +28434,6 @@ HeatingOnly based on the current capability.</p>
 <div class="paragraph">
 <p>This represents a single transition in a Thermostat schedule</p>
 </div>
-<div class="paragraph">
-<p>[options="header",valign="middle"]PresetTypeStruct</p>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -28654,17 +28445,19 @@ HeatingOnly based on the current capability.</p>
 <col style="width: 12.5%;">
 <col style="width: 12.5%;">
 </colgroup>
-<tbody>
+<thead>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ID</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Constraint</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Quality</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Access</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Conformance</p></td>
+<th class="tableblock halign-left valign-top">ID</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Quality</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Access</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TransitionTime</strong></p></td>
@@ -28722,7 +28515,7 @@ be represented by 1410 minutes since midnight.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_28"><a class="anchor" href="#_attributes_28"></a>4.3.9. Attributes</h4>
+<h4 id="_attributes_27"><a class="anchor" href="#_attributes_27"></a>4.3.9. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -30263,12 +30056,6 @@ other days unchanged. If the schedule is larger than what fits in one
 frame or contains more than 10 transitions, the schedule SHALL then be
 sent using multiple Set Weekly Schedule Commands.</p>
 </div>
-<div class="paragraph">
-<p>Each Set Weekly Schedule Command has 3 header bytes – Number of
-Transitions for Sequence, Day of Week for Sequence, and Mode for
-Sequence. The application SHALL decode the payload according to what has
-specified in the 3 header bytes.</p>
-</div>
 <div class="sect5">
 <h6 id="_numberoftransitionsforsequence_field"><a class="anchor" href="#_numberoftransitionsforsequence_field"></a>4.3.10.4.1. NumberOfTransitionsForSequence Field</h6>
 <div class="paragraph">
@@ -30301,19 +30088,19 @@ fields of each transition in the Transitions list.</p>
 </div>
 <div class="paragraph">
 <p>If the HeatSetpointPresent bit is On,
-the HeatSetpoint field SHALL be included in <strong>every</strong> entry of the Transitions list.</p>
+the HeatSetpoint field SHALL NOT be null in <strong>every</strong> entry of the Transitions list.</p>
 </div>
 <div class="paragraph">
 <p>If the HeatSetpointPresent bit is Off,
-the HeatSetpoint field SHALL NOT be included in <strong>any</strong> entry of the Transitions list.</p>
+the HeatSetpoint field SHALL be null in <strong>every</strong> entry of the Transitions list.</p>
 </div>
 <div class="paragraph">
 <p>If the CoolSetpointPresent bit is On,
-the CoolSetpoint field SHALL be included in <strong>every</strong> entry of the Transitions list.</p>
+the CoolSetpoint field SHALL NOT be null in <strong>every</strong> entry of the Transitions list.</p>
 </div>
 <div class="paragraph">
 <p>If the CoolSetpointPresent bit is Off,
-the CoolSetpoint field SHALL NOT be included in <strong>any</strong> entry of the Transitions list.</p>
+the CoolSetpoint field SHALL be null in <strong>every</strong> entry of the Transitions list.</p>
 </div>
 <div class="paragraph">
 <p>At least one of the bits in the Mode For Sequence byte SHALL be on.</p>
@@ -30669,7 +30456,7 @@ internal log system.</p>
 <p>This cluster specifies an interface to control the speed of a fan.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_32"><a class="anchor" href="#_revision_history_32"></a>4.4.1. Revision History</h4>
+<h4 id="_revision_history_31"><a class="anchor" href="#_revision_history_31"></a>4.4.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -30706,7 +30493,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_31"><a class="anchor" href="#_classification_31"></a>4.4.2. Classification</h4>
+<h4 id="_classification_30"><a class="anchor" href="#_classification_30"></a>4.4.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -30733,7 +30520,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_28"><a class="anchor" href="#_cluster_id_28"></a>4.4.3. Cluster ID</h4>
+<h4 id="_cluster_id_27"><a class="anchor" href="#_cluster_id_27"></a>4.4.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -30754,7 +30541,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_20"><a class="anchor" href="#_features_20"></a>4.4.4. Features</h4>
+<h4 id="_features_19"><a class="anchor" href="#_features_19"></a>4.4.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -31123,7 +30910,7 @@ For this setting, the sequence, speeds and duration are MS.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_29"><a class="anchor" href="#_attributes_29"></a>4.4.6. Attributes</h4>
+<h4 id="_attributes_28"><a class="anchor" href="#_attributes_28"></a>4.4.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -31739,7 +31526,7 @@ interface for a thermostat, or a thermostat controller device, that
 supports a keypad and LCD screen.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_33"><a class="anchor" href="#_revision_history_33"></a>4.5.1. Revision History</h4>
+<h4 id="_revision_history_32"><a class="anchor" href="#_revision_history_32"></a>4.5.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -31768,7 +31555,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_32"><a class="anchor" href="#_classification_32"></a>4.5.2. Classification</h4>
+<h4 id="_classification_31"><a class="anchor" href="#_classification_31"></a>4.5.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -31795,7 +31582,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_29"><a class="anchor" href="#_cluster_id_29"></a>4.5.3. Cluster ID</h4>
+<h4 id="_cluster_id_28"><a class="anchor" href="#_cluster_id_28"></a>4.5.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -31960,7 +31747,7 @@ revision number in the table below.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_30"><a class="anchor" href="#_attributes_30"></a>4.5.6. Attributes</h4>
+<h4 id="_attributes_29"><a class="anchor" href="#_attributes_29"></a>4.5.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -32119,7 +31906,7 @@ abstracted from the cluster. The cluster has a small list of mandatory
 attributes and functions and a list of optional features.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_34"><a class="anchor" href="#_revision_history_34"></a>5.2.1. Revision History</h4>
+<h4 id="_revision_history_33"><a class="anchor" href="#_revision_history_33"></a>5.2.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest
 revision number in the table below.</p>
@@ -32168,7 +31955,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_33"><a class="anchor" href="#_classification_33"></a>5.2.2. Classification</h4>
+<h4 id="_classification_32"><a class="anchor" href="#_classification_32"></a>5.2.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -32195,7 +31982,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_30"><a class="anchor" href="#_cluster_id_30"></a>5.2.3. Cluster ID</h4>
+<h4 id="_cluster_id_29"><a class="anchor" href="#_cluster_id_29"></a>5.2.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -32216,7 +32003,7 @@ revision number in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_21"><a class="anchor" href="#_features_21"></a>5.2.4. Features</h4>
+<h4 id="_features_20"><a class="anchor" href="#_features_20"></a>5.2.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -34705,7 +34492,7 @@ PIN/RFID codes are number or characters. For example, code of “1, 2, 3,
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_31"><a class="anchor" href="#_attributes_31"></a>5.2.9. Attributes</h4>
+<h4 id="_attributes_30"><a class="anchor" href="#_attributes_30"></a>5.2.9. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -42140,7 +41927,7 @@ adjusting automatic window coverings such as drapery motors, automatic
 shades, curtains and blinds.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_35"><a class="anchor" href="#_revision_history_35"></a>5.3.1. Revision History</h4>
+<h4 id="_revision_history_34"><a class="anchor" href="#_revision_history_34"></a>5.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -42180,7 +41967,7 @@ shades, curtains and blinds.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_34"><a class="anchor" href="#_classification_34"></a>5.3.2. Classification</h4>
+<h4 id="_classification_33"><a class="anchor" href="#_classification_33"></a>5.3.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -42207,7 +41994,7 @@ shades, curtains and blinds.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_31"><a class="anchor" href="#_cluster_id_31"></a>5.3.3. Cluster ID</h4>
+<h4 id="_cluster_id_30"><a class="anchor" href="#_cluster_id_30"></a>5.3.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -42228,7 +42015,7 @@ shades, curtains and blinds.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_22"><a class="anchor" href="#_features_22"></a>5.3.4. Features</h4>
+<h4 id="_features_21"><a class="anchor" href="#_features_21"></a>5.3.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -43026,7 +42813,7 @@ Global operational state SHALL always reflect the overall motion of the device.<
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_32"><a class="anchor" href="#_attributes_32"></a>5.3.6. Attributes</h4>
+<h4 id="_attributes_31"><a class="anchor" href="#_attributes_31"></a>5.3.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -44432,7 +44219,7 @@ Content App on a Video Player device.</p>
 may implement the cluster server for this cluster to simplify account login for its users.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_36"><a class="anchor" href="#_revision_history_36"></a>6.2.1. Revision History</h4>
+<h4 id="_revision_history_35"><a class="anchor" href="#_revision_history_35"></a>6.2.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -44456,7 +44243,7 @@ may implement the cluster server for this cluster to simplify account login for 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_35"><a class="anchor" href="#_classification_35"></a>6.2.2. Classification</h4>
+<h4 id="_classification_34"><a class="anchor" href="#_classification_34"></a>6.2.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -44483,7 +44270,7 @@ may implement the cluster server for this cluster to simplify account login for 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_32"><a class="anchor" href="#_cluster_id_32"></a>6.2.3. Cluster ID</h4>
+<h4 id="_cluster_id_31"><a class="anchor" href="#_cluster_id_31"></a>6.2.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -44828,7 +44615,7 @@ This command SHOULD be used by clients of a Content App to indicate the end of a
 This cluster provides identification information about the Content App such as vendor and product.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_37"><a class="anchor" href="#_revision_history_37"></a>6.3.1. Revision History</h4>
+<h4 id="_revision_history_36"><a class="anchor" href="#_revision_history_36"></a>6.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -44852,7 +44639,7 @@ This cluster provides identification information about the Content App such as v
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_36"><a class="anchor" href="#_classification_36"></a>6.3.2. Classification</h4>
+<h4 id="_classification_35"><a class="anchor" href="#_classification_35"></a>6.3.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -44879,7 +44666,7 @@ This cluster provides identification information about the Content App such as v
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_33"><a class="anchor" href="#_cluster_id_33"></a>6.3.3. Cluster ID</h4>
+<h4 id="_cluster_id_32"><a class="anchor" href="#_cluster_id_32"></a>6.3.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -45025,7 +44812,7 @@ This field SHALL be unique within a catalog.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_33"><a class="anchor" href="#_attributes_33"></a>6.3.5. Attributes</h4>
+<h4 id="_attributes_32"><a class="anchor" href="#_attributes_32"></a>6.3.5. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -45200,7 +44987,7 @@ the application corresponding to the endpoint on which the cluster is supported 
 it can support launching any application (AP feature supported).</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_38"><a class="anchor" href="#_revision_history_38"></a>6.4.1. Revision History</h4>
+<h4 id="_revision_history_37"><a class="anchor" href="#_revision_history_37"></a>6.4.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -45224,7 +45011,7 @@ it can support launching any application (AP feature supported).</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_37"><a class="anchor" href="#_classification_37"></a>6.4.2. Classification</h4>
+<h4 id="_classification_36"><a class="anchor" href="#_classification_36"></a>6.4.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -45251,7 +45038,7 @@ it can support launching any application (AP feature supported).</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_34"><a class="anchor" href="#_cluster_id_34"></a>6.4.3. Cluster ID</h4>
+<h4 id="_cluster_id_33"><a class="anchor" href="#_cluster_id_33"></a>6.4.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -45272,7 +45059,7 @@ it can support launching any application (AP feature supported).</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_23"><a class="anchor" href="#_features_23"></a>6.4.4. Features</h4>
+<h4 id="_features_22"><a class="anchor" href="#_features_22"></a>6.4.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -45471,7 +45258,7 @@ This field SHALL be unique within a catalog.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_34"><a class="anchor" href="#_attributes_34"></a>6.4.6. Attributes</h4>
+<h4 id="_attributes_33"><a class="anchor" href="#_attributes_33"></a>6.4.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -45888,7 +45675,7 @@ like a Video Player device (Smart TV, TV Setup Top Box, Smart Speaker, etc).</p>
 <p>The cluster server for Audio Output is implemented by a device that has configurable audio output.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_39"><a class="anchor" href="#_revision_history_39"></a>6.5.1. Revision History</h4>
+<h4 id="_revision_history_38"><a class="anchor" href="#_revision_history_38"></a>6.5.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -45912,7 +45699,7 @@ like a Video Player device (Smart TV, TV Setup Top Box, Smart Speaker, etc).</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_38"><a class="anchor" href="#_classification_38"></a>6.5.2. Classification</h4>
+<h4 id="_classification_37"><a class="anchor" href="#_classification_37"></a>6.5.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -45939,7 +45726,7 @@ like a Video Player device (Smart TV, TV Setup Top Box, Smart Speaker, etc).</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_35"><a class="anchor" href="#_cluster_id_35"></a>6.5.3. Cluster ID</h4>
+<h4 id="_cluster_id_34"><a class="anchor" href="#_cluster_id_34"></a>6.5.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -45960,7 +45747,7 @@ like a Video Player device (Smart TV, TV Setup Top Box, Smart Speaker, etc).</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_24"><a class="anchor" href="#_features_24"></a>6.5.4. Features</h4>
+<h4 id="_features_23"><a class="anchor" href="#_features_23"></a>6.5.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -46132,7 +45919,7 @@ This field may be blank, but SHOULD be provided when known.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_35"><a class="anchor" href="#_attributes_35"></a>6.5.6. Attributes</h4>
+<h4 id="_attributes_34"><a class="anchor" href="#_attributes_34"></a>6.5.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -46348,7 +46135,7 @@ This cluster provides a list of available channels and provides commands for abs
 <p>The cluster server for Channel is implemented by an endpoint that controls the current Channel.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_40"><a class="anchor" href="#_revision_history_40"></a>6.6.1. Revision History</h4>
+<h4 id="_revision_history_39"><a class="anchor" href="#_revision_history_39"></a>6.6.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -46372,7 +46159,7 @@ This cluster provides a list of available channels and provides commands for abs
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_39"><a class="anchor" href="#_classification_39"></a>6.6.2. Classification</h4>
+<h4 id="_classification_38"><a class="anchor" href="#_classification_38"></a>6.6.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -46399,7 +46186,7 @@ This cluster provides a list of available channels and provides commands for abs
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_36"><a class="anchor" href="#_cluster_id_36"></a>6.6.3. Cluster ID</h4>
+<h4 id="_cluster_id_35"><a class="anchor" href="#_cluster_id_35"></a>6.6.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -46420,7 +46207,7 @@ This cluster provides a list of available channels and provides commands for abs
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_25"><a class="anchor" href="#_features_25"></a>6.6.4. Features</h4>
+<h4 id="_features_24"><a class="anchor" href="#_features_24"></a>6.6.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -46752,7 +46539,7 @@ This field is optional, but SHOULD be provided when known.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_36"><a class="anchor" href="#_attributes_36"></a>6.6.6. Attributes</h4>
+<h4 id="_attributes_35"><a class="anchor" href="#_attributes_35"></a>6.6.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -47132,7 +46919,7 @@ or an endpoint representing a Content App on such a device.</p>
 the Video Player device SHALL launch the application when a client invokes the LaunchContent or LaunchURL commands.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_41"><a class="anchor" href="#_revision_history_41"></a>6.7.1. Revision History</h4>
+<h4 id="_revision_history_40"><a class="anchor" href="#_revision_history_40"></a>6.7.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -47156,7 +46943,7 @@ the Video Player device SHALL launch the application when a client invokes the L
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_40"><a class="anchor" href="#_classification_40"></a>6.7.2. Classification</h4>
+<h4 id="_classification_39"><a class="anchor" href="#_classification_39"></a>6.7.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -47183,7 +46970,7 @@ the Video Player device SHALL launch the application when a client invokes the L
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_37"><a class="anchor" href="#_cluster_id_37"></a>6.7.3. Cluster ID</h4>
+<h4 id="_cluster_id_36"><a class="anchor" href="#_cluster_id_36"></a>6.7.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -47204,7 +46991,7 @@ the Video Player device SHALL launch the application when a client invokes the L
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_26"><a class="anchor" href="#_features_26"></a>6.7.4. Features</h4>
+<h4 id="_features_25"><a class="anchor" href="#_features_25"></a>6.7.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -47970,7 +47757,7 @@ If this property is not populated, the Video Player SHALL default to logo or the
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_37"><a class="anchor" href="#_attributes_37"></a>6.7.6. Attributes</h4>
+<h4 id="_attributes_36"><a class="anchor" href="#_attributes_36"></a>6.7.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -48342,7 +48129,7 @@ Feature flags are used to indicate a specific subset that is supported.
 Device MAY support additional codes beyond what is indicated in feature flags.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_42"><a class="anchor" href="#_revision_history_42"></a>6.8.1. Revision History</h4>
+<h4 id="_revision_history_41"><a class="anchor" href="#_revision_history_41"></a>6.8.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -48366,7 +48153,7 @@ Device MAY support additional codes beyond what is indicated in feature flags.</
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_41"><a class="anchor" href="#_classification_41"></a>6.8.2. Classification</h4>
+<h4 id="_classification_40"><a class="anchor" href="#_classification_40"></a>6.8.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -48393,7 +48180,7 @@ Device MAY support additional codes beyond what is indicated in feature flags.</
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_38"><a class="anchor" href="#_cluster_id_38"></a>6.8.3. Cluster ID</h4>
+<h4 id="_cluster_id_37"><a class="anchor" href="#_cluster_id_37"></a>6.8.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -48414,7 +48201,7 @@ Device MAY support additional codes beyond what is indicated in feature flags.</
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_27"><a class="anchor" href="#_features_27"></a>6.8.4. Features</h4>
+<h4 id="_features_26"><a class="anchor" href="#_features_26"></a>6.8.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -49113,7 +48900,7 @@ The data for this command SHALL be as follows:</p>
 <p>The cluster server for Media Input is implemented by a device that has selectable input, such as a Video Player device.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_43"><a class="anchor" href="#_revision_history_43"></a>6.9.1. Revision History</h4>
+<h4 id="_revision_history_42"><a class="anchor" href="#_revision_history_42"></a>6.9.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -49137,7 +48924,7 @@ The data for this command SHALL be as follows:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_42"><a class="anchor" href="#_classification_42"></a>6.9.2. Classification</h4>
+<h4 id="_classification_41"><a class="anchor" href="#_classification_41"></a>6.9.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -49164,7 +48951,7 @@ The data for this command SHALL be as follows:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_39"><a class="anchor" href="#_cluster_id_39"></a>6.9.3. Cluster ID</h4>
+<h4 id="_cluster_id_38"><a class="anchor" href="#_cluster_id_38"></a>6.9.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -49185,7 +48972,7 @@ The data for this command SHALL be as follows:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_28"><a class="anchor" href="#_features_28"></a>6.9.4. Features</h4>
+<h4 id="_features_27"><a class="anchor" href="#_features_27"></a>6.9.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -49411,7 +49198,7 @@ This field may be blank, but SHOULD be provided when known.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_38"><a class="anchor" href="#_attributes_38"></a>6.9.6. Attributes</h4>
+<h4 id="_attributes_37"><a class="anchor" href="#_attributes_37"></a>6.9.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -49647,7 +49434,7 @@ This field may be blank, but SHOULD be provided when known.</p>
 This cluster provides an interface for controlling Media Playback.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_44"><a class="anchor" href="#_revision_history_44"></a>6.10.1. Revision History</h4>
+<h4 id="_revision_history_43"><a class="anchor" href="#_revision_history_43"></a>6.10.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -49671,7 +49458,7 @@ This cluster provides an interface for controlling Media Playback.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_43"><a class="anchor" href="#_classification_43"></a>6.10.2. Classification</h4>
+<h4 id="_classification_42"><a class="anchor" href="#_classification_42"></a>6.10.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -49698,7 +49485,7 @@ This cluster provides an interface for controlling Media Playback.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_40"><a class="anchor" href="#_cluster_id_40"></a>6.10.3. Cluster ID</h4>
+<h4 id="_cluster_id_39"><a class="anchor" href="#_cluster_id_39"></a>6.10.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -49719,7 +49506,7 @@ This cluster provides an interface for controlling Media Playback.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_29"><a class="anchor" href="#_features_29"></a>6.10.4. Features</h4>
+<h4 id="_features_28"><a class="anchor" href="#_features_28"></a>6.10.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -49951,7 +49738,7 @@ start time is specified.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_39"><a class="anchor" href="#_attributes_39"></a>6.10.6. Attributes</h4>
+<h4 id="_attributes_38"><a class="anchor" href="#_attributes_38"></a>6.10.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -50641,7 +50428,7 @@ It supports listing a set of navigation targets, tracking and changing the curre
 the Video Player device containing the endpoint SHALL launch the Content App when a client invokes the NavigateTarget command.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_45"><a class="anchor" href="#_revision_history_45"></a>6.11.1. Revision History</h4>
+<h4 id="_revision_history_44"><a class="anchor" href="#_revision_history_44"></a>6.11.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -50665,7 +50452,7 @@ the Video Player device containing the endpoint SHALL launch the Content App whe
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_44"><a class="anchor" href="#_classification_44"></a>6.11.2. Classification</h4>
+<h4 id="_classification_43"><a class="anchor" href="#_classification_43"></a>6.11.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -50692,7 +50479,7 @@ the Video Player device containing the endpoint SHALL launch the Content App whe
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_41"><a class="anchor" href="#_cluster_id_41"></a>6.11.3. Cluster ID</h4>
+<h4 id="_cluster_id_40"><a class="anchor" href="#_cluster_id_40"></a>6.11.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -50822,7 +50609,7 @@ the Video Player device containing the endpoint SHALL launch the Content App whe
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_40"><a class="anchor" href="#_attributes_40"></a>6.11.5. Attributes</h4>
+<h4 id="_attributes_39"><a class="anchor" href="#_attributes_39"></a>6.11.5. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -51119,7 +50906,7 @@ such as Robotic Vacuum Cleaners (RVCs).</p>
 It also defines a namespace for the running modes of these devices.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_46"><a class="anchor" href="#_revision_history_46"></a>7.2.1. Revision History</h4>
+<h4 id="_revision_history_45"><a class="anchor" href="#_revision_history_45"></a>7.2.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -51147,7 +50934,7 @@ It also defines a namespace for the running modes of these devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_45"><a class="anchor" href="#_classification_45"></a>7.2.2. Classification</h4>
+<h4 id="_classification_44"><a class="anchor" href="#_classification_44"></a>7.2.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -51174,7 +50961,7 @@ It also defines a namespace for the running modes of these devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_42"><a class="anchor" href="#_cluster_id_42"></a>7.2.3. Cluster ID</h4>
+<h4 id="_cluster_id_41"><a class="anchor" href="#_cluster_id_41"></a>7.2.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -51226,7 +51013,7 @@ A blank field indicates no change.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_attributes_41"><a class="anchor" href="#_attributes_41"></a>7.2.5. Attributes</h4>
+<h4 id="_attributes_40"><a class="anchor" href="#_attributes_40"></a>7.2.5. Attributes</h4>
 <div class="paragraph">
 <p>The table below lists the changes relative to the Mode Base cluster for the attributes.
 A blank field indicates no change.</p>
@@ -51375,7 +51162,7 @@ include the Cleaning mode tag in the ModeTags field.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_42"><a class="anchor" href="#_attributes_42"></a>7.2.7. Attributes</h4>
+<h4 id="_attributes_41"><a class="anchor" href="#_attributes_41"></a>7.2.7. Attributes</h4>
 <div class="sect4">
 <h5 id="_startupmode_attribute_3"><a class="anchor" href="#_startupmode_attribute_3"></a>7.2.7.1. StartUpMode Attribute</h5>
 <div class="paragraph">
@@ -51546,7 +51333,7 @@ and/or modes with the Mapping mode tag.</p>
 It also defines a namespace for the cleaning type for these devices.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_47"><a class="anchor" href="#_revision_history_47"></a>7.3.1. Revision History</h4>
+<h4 id="_revision_history_46"><a class="anchor" href="#_revision_history_46"></a>7.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -51574,7 +51361,7 @@ It also defines a namespace for the cleaning type for these devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_46"><a class="anchor" href="#_classification_46"></a>7.3.2. Classification</h4>
+<h4 id="_classification_45"><a class="anchor" href="#_classification_45"></a>7.3.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -51601,7 +51388,7 @@ It also defines a namespace for the cleaning type for these devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_43"><a class="anchor" href="#_cluster_id_43"></a>7.3.3. Cluster ID</h4>
+<h4 id="_cluster_id_42"><a class="anchor" href="#_cluster_id_42"></a>7.3.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -51653,7 +51440,7 @@ A blank field indicates no change.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_attributes_43"><a class="anchor" href="#_attributes_43"></a>7.3.5. Attributes</h4>
+<h4 id="_attributes_42"><a class="anchor" href="#_attributes_42"></a>7.3.5. Attributes</h4>
 <div class="paragraph">
 <p>The table below lists the changes relative to the Mode Base cluster for the attributes.
 A blank field indicates no change.</p>
@@ -51908,7 +51695,7 @@ to the InvalidInMode value if this restriction prevents a mode change.</p>
 <p>This cluster provides an interface for monitoring the operational state of a Robotic Vacuum Cleaner.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_48"><a class="anchor" href="#_revision_history_48"></a>7.4.1. Revision History</h4>
+<h4 id="_revision_history_47"><a class="anchor" href="#_revision_history_47"></a>7.4.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -51936,7 +51723,7 @@ to the InvalidInMode value if this restriction prevents a mode change.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_47"><a class="anchor" href="#_classification_47"></a>7.4.2. Classification</h4>
+<h4 id="_classification_46"><a class="anchor" href="#_classification_46"></a>7.4.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -52032,7 +51819,7 @@ A blank field indicates no change.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_44"><a class="anchor" href="#_cluster_id_44"></a>7.4.4. Cluster ID</h4>
+<h4 id="_cluster_id_43"><a class="anchor" href="#_cluster_id_43"></a>7.4.4. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -52469,7 +52256,7 @@ as part of that devices device type definition.</p>
 For example, the value of the Step attribute SHOULD match the incremental value by which the temperature setpoint can be changed on the physical device.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_49"><a class="anchor" href="#_revision_history_49"></a>8.2.1. Revision History</h4>
+<h4 id="_revision_history_48"><a class="anchor" href="#_revision_history_48"></a>8.2.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -52493,7 +52280,7 @@ For example, the value of the Step attribute SHOULD match the incremental value 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_48"><a class="anchor" href="#_classification_48"></a>8.2.2. Classification</h4>
+<h4 id="_classification_47"><a class="anchor" href="#_classification_47"></a>8.2.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -52520,7 +52307,7 @@ For example, the value of the Step attribute SHOULD match the incremental value 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_45"><a class="anchor" href="#_cluster_id_45"></a>8.2.3. Cluster ID</h4>
+<h4 id="_cluster_id_44"><a class="anchor" href="#_cluster_id_44"></a>8.2.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -52541,7 +52328,7 @@ For example, the value of the Step attribute SHOULD match the incremental value 
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_30"><a class="anchor" href="#_features_30"></a>8.2.4. Features</h4>
+<h4 id="_features_29"><a class="anchor" href="#_features_29"></a>8.2.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -52608,7 +52395,7 @@ the Step feature MAY be used.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_44"><a class="anchor" href="#_attributes_44"></a>8.2.5. Attributes</h4>
+<h4 id="_attributes_43"><a class="anchor" href="#_attributes_43"></a>8.2.5. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -52925,7 +52712,7 @@ and the value of SelectedTemperatureLevel SHALL remain unchanged.</p>
 namespaced enumerated values for dishwasher devices.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_50"><a class="anchor" href="#_revision_history_50"></a>8.3.1. Revision History</h4>
+<h4 id="_revision_history_49"><a class="anchor" href="#_revision_history_49"></a>8.3.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -52953,7 +52740,7 @@ namespaced enumerated values for dishwasher devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_49"><a class="anchor" href="#_classification_49"></a>8.3.2. Classification</h4>
+<h4 id="_classification_48"><a class="anchor" href="#_classification_48"></a>8.3.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -52980,7 +52767,7 @@ namespaced enumerated values for dishwasher devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_46"><a class="anchor" href="#_cluster_id_46"></a>8.3.3. Cluster ID</h4>
+<h4 id="_cluster_id_45"><a class="anchor" href="#_cluster_id_45"></a>8.3.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -53070,7 +52857,7 @@ A blank field indicates no change.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_45"><a class="anchor" href="#_attributes_45"></a>8.3.5. Attributes</h4>
+<h4 id="_attributes_44"><a class="anchor" href="#_attributes_44"></a>8.3.5. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -53209,7 +52996,7 @@ about the StartUpMode attribute.</p>
 <p>This cluster is a derived cluster of the Alarm Base cluster.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_51"><a class="anchor" href="#_revision_history_51"></a>8.4.1. Revision History</h4>
+<h4 id="_revision_history_50"><a class="anchor" href="#_revision_history_50"></a>8.4.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -53233,7 +53020,7 @@ about the StartUpMode attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_50"><a class="anchor" href="#_classification_50"></a>8.4.2. Classification</h4>
+<h4 id="_classification_49"><a class="anchor" href="#_classification_49"></a>8.4.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -53260,7 +53047,7 @@ about the StartUpMode attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_47"><a class="anchor" href="#_cluster_id_47"></a>8.4.3. Cluster ID</h4>
+<h4 id="_cluster_id_46"><a class="anchor" href="#_cluster_id_46"></a>8.4.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -53351,7 +53138,7 @@ about the StartUpMode attribute.</p>
 namespaced enumerated values for laundry washer and laundry dryer devices.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_52"><a class="anchor" href="#_revision_history_52"></a>8.5.1. Revision History</h4>
+<h4 id="_revision_history_51"><a class="anchor" href="#_revision_history_51"></a>8.5.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -53379,7 +53166,7 @@ namespaced enumerated values for laundry washer and laundry dryer devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_51"><a class="anchor" href="#_classification_51"></a>8.5.2. Classification</h4>
+<h4 id="_classification_50"><a class="anchor" href="#_classification_50"></a>8.5.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -53406,7 +53193,7 @@ namespaced enumerated values for laundry washer and laundry dryer devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_48"><a class="anchor" href="#_cluster_id_48"></a>8.5.3. Cluster ID</h4>
+<h4 id="_cluster_id_47"><a class="anchor" href="#_cluster_id_47"></a>8.5.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -53496,7 +53283,7 @@ A blank field indicates no change.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_46"><a class="anchor" href="#_attributes_46"></a>8.5.5. Attributes</h4>
+<h4 id="_attributes_45"><a class="anchor" href="#_attributes_45"></a>8.5.5. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -53661,7 +53448,7 @@ about the StartUpMode attribute.</p>
 <p>This cluster provides a way to access options associated with the operation of a laundry washer device type.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_53"><a class="anchor" href="#_revision_history_53"></a>8.6.1. Revision History</h4>
+<h4 id="_revision_history_52"><a class="anchor" href="#_revision_history_52"></a>8.6.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -53685,7 +53472,7 @@ about the StartUpMode attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_52"><a class="anchor" href="#_classification_52"></a>8.6.2. Classification</h4>
+<h4 id="_classification_51"><a class="anchor" href="#_classification_51"></a>8.6.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -53712,7 +53499,7 @@ about the StartUpMode attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_49"><a class="anchor" href="#_cluster_id_49"></a>8.6.3. Cluster ID</h4>
+<h4 id="_cluster_id_48"><a class="anchor" href="#_cluster_id_48"></a>8.6.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -53733,7 +53520,7 @@ about the StartUpMode attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_31"><a class="anchor" href="#_features_31"></a>8.6.4. Features</h4>
+<h4 id="_features_30"><a class="anchor" href="#_features_30"></a>8.6.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -53841,7 +53628,7 @@ Note that some modes may not support selection of the number of rinse cycles eve
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_47"><a class="anchor" href="#_attributes_47"></a>8.6.6. Attributes</h4>
+<h4 id="_attributes_46"><a class="anchor" href="#_attributes_46"></a>8.6.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -53952,7 +53739,7 @@ defining additional mode tags and namespaced enumerated values
 for refrigerator and temperature controlled cabinet devices.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_54"><a class="anchor" href="#_revision_history_54"></a>8.7.1. Revision History</h4>
+<h4 id="_revision_history_53"><a class="anchor" href="#_revision_history_53"></a>8.7.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -53980,7 +53767,7 @@ for refrigerator and temperature controlled cabinet devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_53"><a class="anchor" href="#_classification_53"></a>8.7.2. Classification</h4>
+<h4 id="_classification_52"><a class="anchor" href="#_classification_52"></a>8.7.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -54007,7 +53794,7 @@ for refrigerator and temperature controlled cabinet devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_50"><a class="anchor" href="#_cluster_id_50"></a>8.7.3. Cluster ID</h4>
+<h4 id="_cluster_id_49"><a class="anchor" href="#_cluster_id_49"></a>8.7.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -54097,7 +53884,7 @@ A blank field indicates no change.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_48"><a class="anchor" href="#_attributes_48"></a>8.7.5. Attributes</h4>
+<h4 id="_attributes_47"><a class="anchor" href="#_attributes_47"></a>8.7.5. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -54237,7 +54024,7 @@ A blank field indicates no change.</p>
 <p>This cluster is a derived cluster of Alarm Base cluster.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_55"><a class="anchor" href="#_revision_history_55"></a>8.8.1. Revision History</h4>
+<h4 id="_revision_history_54"><a class="anchor" href="#_revision_history_54"></a>8.8.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -54261,7 +54048,7 @@ A blank field indicates no change.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_54"><a class="anchor" href="#_classification_54"></a>8.8.2. Classification</h4>
+<h4 id="_classification_53"><a class="anchor" href="#_classification_53"></a>8.8.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -54288,7 +54075,7 @@ A blank field indicates no change.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_51"><a class="anchor" href="#_cluster_id_51"></a>8.8.3. Cluster ID</h4>
+<h4 id="_cluster_id_50"><a class="anchor" href="#_cluster_id_50"></a>8.8.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -54309,7 +54096,7 @@ A blank field indicates no change.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_32"><a class="anchor" href="#_features_32"></a>8.8.4. Features</h4>
+<h4 id="_features_31"><a class="anchor" href="#_features_31"></a>8.8.4. Features</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -54372,7 +54159,7 @@ A blank field indicates no change.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_49"><a class="anchor" href="#_attributes_49"></a>8.8.6. Attributes</h4>
+<h4 id="_attributes_48"><a class="anchor" href="#_attributes_48"></a>8.8.6. Attributes</h4>
 <div class="sect4">
 <h5 id="_mask_attribute_2"><a class="anchor" href="#_mask_attribute_2"></a>8.8.6.1. Mask Attribute</h5>
 <div class="paragraph">
@@ -54449,7 +54236,7 @@ It SHALL be re-set to 1 if the alarm is re-enabled at the device itself.</p>
 <p>This cluster provides a way to access options associated with the operation of a laundry dryer device type.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_56"><a class="anchor" href="#_revision_history_56"></a>8.9.1. Revision History</h4>
+<h4 id="_revision_history_55"><a class="anchor" href="#_revision_history_55"></a>8.9.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -54473,7 +54260,7 @@ It SHALL be re-set to 1 if the alarm is re-enabled at the device itself.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_55"><a class="anchor" href="#_classification_55"></a>8.9.2. Classification</h4>
+<h4 id="_classification_54"><a class="anchor" href="#_classification_54"></a>8.9.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -54578,7 +54365,7 @@ It SHALL be re-set to 1 if the alarm is re-enabled at the device itself.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_50"><a class="anchor" href="#_attributes_50"></a>8.9.5. Attributes</h4>
+<h4 id="_attributes_49"><a class="anchor" href="#_attributes_49"></a>8.9.5. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -54656,7 +54443,7 @@ A value of null SHALL indicate that there will be no dryness level setting for t
 <p>This cluster provides an interface for monitoring the operational state of an oven.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_57"><a class="anchor" href="#_revision_history_57"></a>8.10.1. Revision History</h4>
+<h4 id="_revision_history_56"><a class="anchor" href="#_revision_history_56"></a>8.10.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -54680,7 +54467,7 @@ A value of null SHALL indicate that there will be no dryness level setting for t
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_56"><a class="anchor" href="#_classification_56"></a>8.10.2. Classification</h4>
+<h4 id="_classification_55"><a class="anchor" href="#_classification_55"></a>8.10.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -54707,7 +54494,7 @@ A value of null SHALL indicate that there will be no dryness level setting for t
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_52"><a class="anchor" href="#_cluster_id_52"></a>8.10.3. Cluster ID</h4>
+<h4 id="_cluster_id_51"><a class="anchor" href="#_cluster_id_51"></a>8.10.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -54728,7 +54515,7 @@ A value of null SHALL indicate that there will be no dryness level setting for t
 </table>
 </div>
 <div class="sect3">
-<h4 id="_attributes_51"><a class="anchor" href="#_attributes_51"></a>8.10.4. Attributes</h4>
+<h4 id="_attributes_50"><a class="anchor" href="#_attributes_50"></a>8.10.4. Attributes</h4>
 <div class="sect4">
 <h5 id="_phaselist_attribute"><a class="anchor" href="#_phaselist_attribute"></a>8.10.4.1. PhaseList Attribute</h5>
 <div class="paragraph">
@@ -54757,7 +54544,7 @@ defining additional mode tags and namespaced enumerated values
 for oven devices.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_58"><a class="anchor" href="#_revision_history_58"></a>8.11.1. Revision History</h4>
+<h4 id="_revision_history_57"><a class="anchor" href="#_revision_history_57"></a>8.11.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -54781,7 +54568,7 @@ for oven devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_57"><a class="anchor" href="#_classification_57"></a>8.11.2. Classification</h4>
+<h4 id="_classification_56"><a class="anchor" href="#_classification_56"></a>8.11.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -55018,7 +54805,7 @@ A blank field indicates no change.</p>
 namespaced enumerated values for Microwave Oven devices.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_59"><a class="anchor" href="#_revision_history_59"></a>8.12.1. Revision History</h4>
+<h4 id="_revision_history_58"><a class="anchor" href="#_revision_history_58"></a>8.12.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -55042,7 +54829,7 @@ namespaced enumerated values for Microwave Oven devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_58"><a class="anchor" href="#_classification_58"></a>8.12.2. Classification</h4>
+<h4 id="_classification_57"><a class="anchor" href="#_classification_57"></a>8.12.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -55069,7 +54856,7 @@ namespaced enumerated values for Microwave Oven devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_53"><a class="anchor" href="#_cluster_id_53"></a>8.12.3. Cluster ID</h4>
+<h4 id="_cluster_id_52"><a class="anchor" href="#_cluster_id_52"></a>8.12.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -55090,7 +54877,7 @@ namespaced enumerated values for Microwave Oven devices.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_attributes_52"><a class="anchor" href="#_attributes_52"></a>8.12.4. Attributes</h4>
+<h4 id="_attributes_51"><a class="anchor" href="#_attributes_51"></a>8.12.4. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -55255,7 +55042,7 @@ The Operational State cluster and the Microwave Oven Mode clusters, or derivativ
 SHALL appear on the same endpoint as this cluster.</p>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_60"><a class="anchor" href="#_revision_history_60"></a>8.13.1. Revision History</h4>
+<h4 id="_revision_history_59"><a class="anchor" href="#_revision_history_59"></a>8.13.1. Revision History</h4>
 <div class="paragraph">
 <p>The global ClusterRevision attribute value SHALL be the highest revision number in the table below.</p>
 </div>
@@ -55279,7 +55066,7 @@ SHALL appear on the same endpoint as this cluster.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_classification_59"><a class="anchor" href="#_classification_59"></a>8.13.2. Classification</h4>
+<h4 id="_classification_58"><a class="anchor" href="#_classification_58"></a>8.13.2. Classification</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -55306,7 +55093,7 @@ SHALL appear on the same endpoint as this cluster.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cluster_id_54"><a class="anchor" href="#_cluster_id_54"></a>8.13.3. Cluster ID</h4>
+<h4 id="_cluster_id_53"><a class="anchor" href="#_cluster_id_53"></a>8.13.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -55327,7 +55114,7 @@ SHALL appear on the same endpoint as this cluster.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_33"><a class="anchor" href="#_features_33"></a>8.13.4. Features</h4>
+<h4 id="_features_32"><a class="anchor" href="#_features_32"></a>8.13.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -55374,7 +55161,7 @@ SHALL appear on the same endpoint as this cluster.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_attributes_53"><a class="anchor" href="#_attributes_53"></a>8.13.5. Attributes</h4>
+<h4 id="_attributes_52"><a class="anchor" href="#_attributes_52"></a>8.13.5. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -55878,8 +55665,8 @@ if that cluster or a derivative is on the same endpoint as this cluster.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 97da037 (local changes)<br>
-Last updated 2024-02-13 00:00:28 UTC
+Version master b0310ba (local changes)<br>
+Last updated 2024-02-13 07:41:53 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
