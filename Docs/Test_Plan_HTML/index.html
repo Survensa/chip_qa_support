@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 6ad2480,</span>
-<span id="revdate">2024-02-14 09:25:03 -0800</span>
+<span id="revnumber">version master d5cb99f,</span>
+<span id="revdate">2024-02-14 11:47:51 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -521,11 +521,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_commissioning_flows_test_cases">8.3. <strong>Commissioning Flows Test Cases</strong></a>
 <ul class="sectlevel3">
 <li><a href="#_tc_dd_3_1_commissioning_flow_concurrent_dut_commissionee">8.3.1. [TC-DD-3.1] Commissioning Flow - Concurrent [DUT - Commissionee]</a></li>
-<li><a href="#_tc_dd_3_2_commissioning_flow_non_concurrent_dut_commissionee">8.3.2. [TC-DD-3.2] Commissioning Flow - Non-concurrent [DUT - Commissionee]</a></li>
+<li><a href="#_tc_dd_3_2_commissioning_flow_non_concurrent_dut_commissionee_removed">8.3.2. [TC-DD-3.2] Commissioning Flow - Non-concurrent [DUT - Commissionee] - REMOVED</a></li>
 <li><a href="#_tc_dd_3_3_user_directed_commissioning_dut_commissionee">8.3.3. [TC-DD-3.3] User Directed Commissioning [DUT - Commissionee]</a></li>
 <li><a href="#_tc_dd_3_4_user_directed_commissioning_dut_commissioner">8.3.4. [TC-DD-3.4] User Directed Commissioning [DUT - Commissioner]</a></li>
 <li><a href="#_tc_dd_3_5_commissioning_flow_concurrent_dut_commissioner">8.3.5. [TC-DD-3.5] Commissioning Flow - Concurrent [DUT - Commissioner]</a></li>
-<li><a href="#_tc_dd_3_6_commissioning_flow_non_concurrent_dut_commissioner">8.3.6. [TC-DD-3.6] Commissioning Flow - Non-concurrent [DUT - Commissioner]</a></li>
+<li><a href="#_tc_dd_3_6_commissioning_flow_non_concurrent_dut_commissioner_removed">8.3.6. [TC-DD-3.6] Commissioning Flow - Non-concurrent [DUT - Commissioner] - REMOVED</a></li>
 <li><a href="#_tc_dd_3_7_commissioning_flow_concurrent_negative_scenario_dut_commissioner_removed">8.3.7. [TC-DD-3.7] Commissioning Flow - Concurrent - Negative Scenario [DUT - Commissioner] - REMOVED</a></li>
 <li><a href="#_tc_dd_3_8_commissioning_flow_non_concurrent_negative_scenario_dut_commissioner_removed">8.3.8. [TC-DD-3.8] Commissioning Flow - Non-concurrent - Negative Scenario [DUT - Commissioner] - REMOVED</a></li>
 <li><a href="#_tc_dd_3_9_commissioning_flow_custom_flow_2_dut_commissionee">8.3.9. [TC-DD-3.9] Commissioning Flow - Custom Flow = 2 [DUT - Commissionee]</a></li>
@@ -5799,7 +5799,7 @@ Commissioner can either be a Matter device which is already on a network or the 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tc_dd_3_2_commissioning_flow_non_concurrent_dut_commissionee"><a class="anchor" href="#_tc_dd_3_2_commissioning_flow_non_concurrent_dut_commissionee"></a>8.3.2. [TC-DD-3.2] Commissioning Flow - Non-concurrent [DUT - Commissionee]</h4>
+<h4 id="_tc_dd_3_2_commissioning_flow_non_concurrent_dut_commissionee_removed"><a class="anchor" href="#_tc_dd_3_2_commissioning_flow_non_concurrent_dut_commissionee_removed"></a>8.3.2. [TC-DD-3.2] Commissioning Flow - Non-concurrent [DUT - Commissionee] - REMOVED</h4>
 <div class="sect4">
 <h5 id="_category_19"><a class="anchor" href="#_category_19"></a>Category</h5>
 <div class="paragraph">
@@ -5963,7 +5963,7 @@ Commissioner can either be a Matter device which is already on a network or the 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 11</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures itself as administrator in ACL on DUT if needed</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT configures the ACL with success</p></td>
@@ -5971,7 +5971,7 @@ Commissioner can either be a Matter device which is already on a network or the 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 12</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures operational network on DUT if DUT both supports and requires</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT configures the correct operational network credentials</p></td>
@@ -5979,39 +5979,47 @@ Commissioner can either be a Matter device which is already on a network or the 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 12, 11.8.7.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 13, 11.8.7.9</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner instructs Commissionee to connect to operational network</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT does not send ConnectNetworkResponse on commissioning channel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT responds with success in the ConnectNetworkResponse command on the commissioning channel</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 13, 11.8.7.9</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commissioning channel between the Commissioner and Commissionee is terminated.</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commissioning channel between the Commissioner and Commissionee is closed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT closes the commissioning channel</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 13, 11.8.7.9</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commissionee starts the operational channel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT starts the operational channel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 14</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner starts discovery of DUT using Operational Discovery</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 15</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner opens a CASE session with DUT over operational network</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT is able to open the CASE session with TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 16</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner sends CommissioningComplete command</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT respond with success at CommissioningComplete command sent by TH</p></td>
@@ -6610,7 +6618,7 @@ Commissioner can either be a Matter device which is already on a network or the 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tc_dd_3_6_commissioning_flow_non_concurrent_dut_commissioner"><a class="anchor" href="#_tc_dd_3_6_commissioning_flow_non_concurrent_dut_commissioner"></a>8.3.6. [TC-DD-3.6] Commissioning Flow - Non-concurrent [DUT - Commissioner]</h4>
+<h4 id="_tc_dd_3_6_commissioning_flow_non_concurrent_dut_commissioner_removed"><a class="anchor" href="#_tc_dd_3_6_commissioning_flow_non_concurrent_dut_commissioner_removed"></a>8.3.6. [TC-DD-3.6] Commissioning Flow - Non-concurrent [DUT - Commissioner] - REMOVED</h4>
 <div class="sect4">
 <h5 id="_category_23"><a class="anchor" href="#_category_23"></a>Category</h5>
 <div class="paragraph">
@@ -6785,7 +6793,7 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 11</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures itself as administrator in ACL on TH if needed</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH configure the ACL with success</p></td>
@@ -6793,7 +6801,7 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 12</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures operational network on TH if TH both supports and requires</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH configure the correct operational network credentials</p></td>
@@ -6801,23 +6809,23 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 12, 11.8.7.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 13, 11.8.7.9</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner instructs Commissionee to connect to operational network</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT does not wait for ConnectNetworkResponse on commissioning channel and moves onto next step</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT waits for success in the ConnectNetworkResponse command and moves onto the next step</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 13, 11.8.7.9</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commissioning channel between the Commissioner and Commissionee is terminated.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commissioning channel between the Commissioner and Commissionee is closed, operational channel started</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 14</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner starts discovery of TH using Operational Discovery</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -6825,7 +6833,7 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 15</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner opens a CASE session with TH over operational network</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH is able to open the CASE session with DUT</p></td>
@@ -6833,7 +6841,7 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 16</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner sends CommissioningComplete command</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH respond with success at CommissioningComplete command sent by DUT</p></td>
@@ -7305,7 +7313,7 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 11</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures itself as administrator in ACL on TH if needed</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH configure the ACL with success</p></td>
@@ -7313,7 +7321,7 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 12</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures operational network on TH if TH both supports and requires</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH configure the correct operational network credentials</p></td>
@@ -7321,10 +7329,10 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 12, 11.8.7.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 13, 11.8.7.9</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner instructs Commissionee to connect to operational network</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT does not wait for ConnectNetworkResponse on commissioning channel and moves onto next step</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT waits for success in the ConnectNetworkResponse command and moves onto the next step</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
@@ -7385,7 +7393,7 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 11</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures itself as administrator in ACL on TH if needed</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH configure the ACL with success</p></td>
@@ -7393,7 +7401,7 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 12</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner configures operational network on TH if TH both supports and requires</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH configure the correct operational network credentials</p></td>
@@ -7401,7 +7409,7 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 13</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner instructs Commissionee to connect to operational network if not already connected</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH successfully connect to operational network</p></td>
@@ -7417,7 +7425,7 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 14</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner starts discovery of TH using Operational Discovery</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -7425,7 +7433,7 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 15</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner opens a CASE session with TH over operational network</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH is able to open the CASE session with DUT</p></td>
@@ -7433,7 +7441,7 @@ in the Matter network.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5 - 16</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Commissioner sends CommissioningComplete command</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH respond with success at CommissioningComplete command sent by DUT</p></td>
@@ -55505,8 +55513,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 6ad2480<br>
-Last updated 2024-02-14 17:25:18 UTC
+Version master d5cb99f<br>
+Last updated 2024-02-14 19:48:06 UTC
 </div>
 </div>
 </body>
