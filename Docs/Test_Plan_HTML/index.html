@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 70c50fd,</span>
-<span id="revdate">2024-02-15 10:09:08 -0800</span>
+<span id="revnumber">version master 89b35ab,</span>
+<span id="revdate">2024-02-15 13:31:01 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -33917,10 +33917,15 @@ Verify that the DUT does not send any response back to the TH.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as device which is the recipient of the Invoke Request Message - Server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as device which is the recipient of the Invoke Request Message - Server. This device needs nlfaultinject enabled at compile time.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH Client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as client used to set up fault injection on TH server during precondition - Client</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT as the device which sends the Invoke Request Message - Client</p></td>
 </tr>
@@ -33930,7 +33935,8 @@ Verify that the DUT does not send any response back to the TH.</p></td>
 <div class="sect4">
 <h5 id="_device_topology_64"><a class="anchor" href="#_device_topology_64"></a>Device Topology</h5>
 <div class="paragraph">
-<p>TH and DUT will be commissioned and are on the same fabric.</p>
+<p>TH device (Server) and TH client will be commissioned and are on the same fabric.<br>
+TH device (Server) and DUT will be commissioned and are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
@@ -33938,6 +33944,120 @@ Verify that the DUT does not send any response back to the TH.</p></td>
 <div class="paragraph">
 <p>Test will need a reference implementation of the cluster of which the DUT is the client.</p>
 </div>
+</div>
+<div class="sect4">
+<h5 id="_pre_conditions_32"><a class="anchor" href="#_pre_conditions_32"></a>Pre-Conditions</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 10%;">
+<col style="width: 45%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Doc. Ref.</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Condition</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission TH Client to TH device (Server), if not done so already.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH device (Server), if not done so already.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This likely requires opening the commissioning window with TH Client.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>TH Client send <code>FailAtFault</code> command to <code>FaultInjection</code> cluster to TH device (Server). FailAtFault arguments are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type: 3 (ChipFault)</p>
+</li>
+<li>
+<p>Id: 12</p>
+</li>
+<li>
+<p>NumberCallsToSkip: 3</p>
+</li>
+<li>
+<p>NumCallsToFail: 1</p>
+</li>
+<li>
+<p>TakeMutex: False</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Make sure command&#8217;s response indicates it was successful</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>TH Client send <code>FailAtFault</code> command to <code>FaultInjection</code> cluster to TH device (Server). FailAtFault arguments are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type: 3 (ChipFault)</p>
+</li>
+<li>
+<p>Id: 13</p>
+</li>
+<li>
+<p>NumberCallsToSkip: 2</p>
+</li>
+<li>
+<p>NumCallsToFail: 1</p>
+</li>
+<li>
+<p>TakeMutex: False</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Make sure command&#8217;s response indicates it was successful</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>TH Client send <code>FailAtFault</code> command to <code>FaultInjection</code> cluster to TH device (Server). FailAtFault arguments are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type: 3 (ChipFault)</p>
+</li>
+<li>
+<p>Id: 14</p>
+</li>
+<li>
+<p>NumberCallsToSkip: 1</p>
+</li>
+<li>
+<p>NumCallsToFail: 1</p>
+</li>
+<li>
+<p>TakeMutex: False</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Make sure command&#8217;s response indicates it was successful</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect4">
 <h5 id="_test_procedure_111"><a class="anchor" href="#_test_procedure_111"></a>Test Procedure</h5>
@@ -33963,44 +34083,211 @@ Verify that the DUT does not send any response back to the TH.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8.8.2.1/10.6.9</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends the Invoke Request Message to the TH. The Message should contain multiple valid unique paths.<br>
-For example this could be, Path = [[ Endpoint = Endpoint1, Cluster = ClusterID, Command = Command1 ], [ Endpoint = Endpoint1, Cluster =<br>
-ClusterID, Command = Command2 ] ] TH responds with a single command response message containing responses to both<br>
-of the messages in the same order</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">On the TH verify the received request message has the same paths as provided<br>
-in the command (compare with information provided by the manufacturer) and that the paths are unique.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>DUT sends the Invoke Request Message to the TH. The Message should contain multiple valid unique paths. For example this could be, Path =</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Endpoint = Endpoint1, Cluster = ClusterID, Command = Command1</p>
+</li>
+<li>
+<p>Endpoint = Endpoint1, Cluster = ClusterID, Command = Command2</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>TH responds with a single command response message containing responses to both of the messages in the same order</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">On the TH verify the received request message has the same paths as provided in the command (compare with information provided by the manufacturer) and that the paths are unique.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8.8.2.1/10.6.9/10.6.10.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends the Invoke Request Message to the TH. The Message should contain multiple valid unique paths<br>
-For example this could be, Path = [[ Endpoint = Endpoint1, Cluster = ClusterID, Command = Command1 ], [ Endpoint = Endpoint1, Cluster =<br>
-ClusterID, Command = Command2 ] ]. TH SHALL responds with two Invoke Response Messages and respond to the commands in the<br>
-same order</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">On the DUT, verify it does not crash.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>DUT sends the Invoke Request Message to the TH. The Message should contain multiple valid unique paths. For example this could be, Path =</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Endpoint = Endpoint1, Cluster = ClusterID, Command = Command1</p>
+</li>
+<li>
+<p>Endpoint = Endpoint1, Cluster = ClusterID, Command = Command2</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>TH SHALL responds in the following manner (some fields omitted, only critical fields for validating spec behavior are mentioned):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Invoke Response Message #1:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>InvokeResponses = [Status = (CommandPath = (Endpoint = Endpoint1, Cluster = ClusterID, Command = Command1), StatusIB = (Status = FAILURE (0x1)))]</p>
+</li>
+<li>
+<p>MoreChunkedMessages = True</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Invoke Response Message #2:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>InvokeResponses = [Status = (CommandPath = (Endpoint = Endpoint1, Cluster = ClusterID, Command = Command2), StatusIB = (Status = FAILURE (0x1)))]</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note there are two Invoke Response Messages, responses are in the same order as the request</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>On the DUT, verify it does not crash.</p>
+</div>
+<div class="paragraph">
+<p>On TH device (server) verify:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It has not crashed.</p>
+</li>
+<li>
+<p>Verify logs indicate separate Invoke Response Messages and that responses are in same order as requests.</p>
+</li>
+</ul>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8.8.2.1/10.6.9/10.6.10.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends the Invoke Request Message to the TH. The Message should contain multiple valid unique paths<br>
-For example this could be, Path = [[ Endpoint = Endpoint1, Cluster = ClusterID, Command = Command1 ], [ Endpoint = Endpoint1, Cluster =<br>
-ClusterID, Command = Command2 ] ]. TH SHALL responds with two Invoke Response Messages and respond to the commands in the<br>
-opposite order</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">On the DUT, verify it does not crash.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>DUT sends the Invoke Request Message to the TH. The Message should contain multiple valid unique paths. For example this could be, Path =</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Endpoint = Endpoint1, Cluster = ClusterID, Command = Command1</p>
+</li>
+<li>
+<p>Endpoint = Endpoint1, Cluster = ClusterID, Command = Command2</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>TH SHALL responds in the following manner (some fields omitted, only critical fields for validating spec behavior are mentioned):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Invoke Response Message #1:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>InvokeResponses = [Status = (CommandPath = (Endpoint = Endpoint1, Cluster = ClusterID, Command = Command2), StatusIB = (Status = FAILURE (0x1)))]</p>
+</li>
+<li>
+<p>MoreChunkedMessages = True</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Invoke Response Message #2:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>InvokeResponses = [Status = (CommandPath = (Endpoint = Endpoint1, Cluster = ClusterID, Command = Command1), StatusIB = (Status = FAILURE (0x1)))]</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note there are two Invoke Response Messages, the order of responses is the opposite of the order in the request</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>On the DUT, verify it does not crash.</p>
+</div>
+<div class="paragraph">
+<p>On TH device (server) verify:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It has not crashed.</p>
+</li>
+<li>
+<p>Verify logs indicate separate Invoke Response Messages and that responses are in reverse order.</p>
+</li>
+</ul>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8.8.2.1/10.6.9/10.6.10.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends the Invoke Request Message to the TH. The Message should contain multiple valid unique paths<br>
-For example this could be, Path = [[ Endpoint = Endpoint1, Cluster = ClusterID, Command = Command1 ], [ Endpoint = Endpoint1, Cluster =<br>
-ClusterID, Command = Command2 ] ]. TH SHALL responds with a single command response message containing responses to only<br>
-single command</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">On the DUT, verify it does not crash, and is able to send additional command (step 5).<br>
-<br>
-# This last step is only here to help make sure that DUT has not crashed and is able to send another non-batched command</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>DUT sends the Invoke Request Message to the TH. The Message should contain multiple valid unique paths. For example this could be, Path =</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Endpoint = Endpoint1, Cluster = ClusterID, Command = Command1</p>
+</li>
+<li>
+<p>Endpoint = Endpoint1, Cluster = ClusterID, Command = Command2</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>TH SHALL responds in the following manner (some fields omitted, only critical fields for validating spec behavior are mentioned):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Invoke Response Message #1:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>InvokeResponses = [Status = (CommandPath = (Endpoint = Endpoint1, Cluster = ClusterID, Command = Command1), StatusIB = (Status = FAILURE (0x1)))]</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note there is a single Invoke Response Messages, only one request is responded to, the other request never gets a response</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>On the DUT, verify it does not crash.</p>
+</div>
+<div class="paragraph">
+<p>On TH device (server) verify:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It has not crashed.</p>
+</li>
+<li>
+<p>Verify logs indicate single Invoke Response Message and that a response was dropped.</p>
+</li>
+</ul>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
@@ -34021,7 +34308,8 @@ verify the received request message has the same paths as provided in the comman
 the TH. The commands used may be the same for all 4 test steps<br>
 Test Step 1 requires Product Maker to provide the concrete command paths that the aforementioned instructions are targeting for<br>
 validation.<br>
-Test Step 5 requires Product Maker to provide instructions for how to trigger single command on the DUT to the TH.</p>
+Test Step 5 requires Product Maker to provide instructions for how to trigger single command on the DUT to the TH.<br>
+No other commands are allowed to be sent between <code>Pre-Conditions</code> and <code>Test Procedure</code> doing so may cause TH device (Server) to misbehave.</p>
 </div>
 <hr>
 </div>
@@ -49674,7 +49962,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pre_conditions_32"><a class="anchor" href="#_pre_conditions_32"></a>Pre-Conditions</h5>
+<h5 id="_pre_conditions_33"><a class="anchor" href="#_pre_conditions_33"></a>Pre-Conditions</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -50194,7 +50482,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pre_conditions_33"><a class="anchor" href="#_pre_conditions_33"></a>Pre-Conditions</h5>
+<h5 id="_pre_conditions_34"><a class="anchor" href="#_pre_conditions_34"></a>Pre-Conditions</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -50746,7 +51034,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pre_conditions_34"><a class="anchor" href="#_pre_conditions_34"></a>Pre-Conditions</h5>
+<h5 id="_pre_conditions_35"><a class="anchor" href="#_pre_conditions_35"></a>Pre-Conditions</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -52274,7 +52562,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pre_conditions_35"><a class="anchor" href="#_pre_conditions_35"></a>Pre-Conditions</h5>
+<h5 id="_pre_conditions_36"><a class="anchor" href="#_pre_conditions_36"></a>Pre-Conditions</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -53448,7 +53736,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pre_conditions_36"><a class="anchor" href="#_pre_conditions_36"></a>Pre-Conditions</h5>
+<h5 id="_pre_conditions_37"><a class="anchor" href="#_pre_conditions_37"></a>Pre-Conditions</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -53831,7 +54119,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pre_conditions_37"><a class="anchor" href="#_pre_conditions_37"></a>Pre-Conditions</h5>
+<h5 id="_pre_conditions_38"><a class="anchor" href="#_pre_conditions_38"></a>Pre-Conditions</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -55513,8 +55801,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 70c50fd<br>
-Last updated 2024-02-15 18:09:23 UTC
+Version master 89b35ab<br>
+Last updated 2024-02-15 21:31:17 UTC
 </div>
 </div>
 </body>
