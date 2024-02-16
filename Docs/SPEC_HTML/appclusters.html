@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master a9c9a2a (local changes),</span>
-<span id="revdate">2024-02-14 22:32:26 +0000</span>
+<span id="revnumber">version master 0221bf0 (local changes),</span>
+<span id="revdate">2024-02-16 00:01:09 +0000</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -3239,7 +3239,7 @@ in response to the receipt of a RemoveGroup command.</p>
 <p>The Scenes Management cluster provides attributes and commands for setting up and
 recalling scenes. Each scene corresponds to a set of stored values of
 specified attributes for one or more clusters on the same end point as
-the Scenes cluster.</p>
+the Scenes Management cluster.</p>
 </div>
 <div class="paragraph">
 <p>In most cases scenes are associated with a particular group identifier. Scenes
@@ -3366,7 +3366,7 @@ details are found within the specification.</p>
 <div class="sect3">
 <h4 id="_dependencies"><a class="anchor" href="#_dependencies"></a>1.4.5. Dependencies</h4>
 <div class="paragraph">
-<p>Any endpoint that implements the Scenes server cluster SHALL also
+<p>Any endpoint that implements the Scenes Management server cluster SHALL also
 implement the Groups server cluster.</p>
 </div>
 <div class="paragraph">
@@ -3526,7 +3526,7 @@ then the resource exhaustion behavior of the associated command SHALL apply.</p>
 <h6 id="_scenecount_field"><a class="anchor" href="#_scenecount_field"></a>1.4.7.2.1. SceneCount Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the number of scenes currently used in
-the server&#8217;s Scene Table on the endpoint where the Matter Scenes cluster appears.</p>
+the server&#8217;s Scene Table on the endpoint where the Scenes Management cluster appears.</p>
 </div>
 <div class="paragraph">
 <p>This only includes the count for the associated fabric.</p>
@@ -4017,9 +4017,6 @@ An ExtensionFieldSetStruct MAY be present for each Scenes-supporting cluster imp
 any commands that write a scene name SHALL simply discard the name,
 and any command that returns a scene name
 SHALL return an empty string.</p>
-</div>
-<div class="paragraph">
-<p>Note implementations before revision 5 may return the null string.</p>
 </div>
 </div>
 <div class="sect5">
@@ -10449,7 +10446,7 @@ This cluster provides the device MAC address which is a required input to the Wa
 <p>This attribute SHALL indicate the current MAC address of the device. Only 48-bit MAC Addresses SHALL be used for this attribute as required by the Wake on LAN protocol.</p>
 </div>
 <div class="paragraph">
-<p>Format of this attribute SHALL be like a hex-encoded string representing the hex address, like <code>12345678ABCD</code>.</p>
+<p>Format of this attribute SHALL be an upper-case hex-encoded string representing the hex address, like <code>12345678ABCD</code>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -13142,7 +13139,7 @@ wide range of application domains.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">various</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ConcentrationMeasurement">Concentration Measurement</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Attributes and aliases for concentration measurements.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attributes and aliases for concentration measurements</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x005C</p></td>
@@ -34997,7 +34994,7 @@ Implementers should be aware that older devices may not implement them.</p>
 <div class="sect4">
 <h5 id="_scene_table_extensions_7"><a class="anchor" href="#_scene_table_extensions_7"></a>5.2.9.1. Scene Table Extensions</h5>
 <div class="paragraph">
-<p>If the Scenes server cluster is implemented on the same endpoint, the following
+<p>If the Scenes Management server cluster is implemented on the same endpoint, the following
 attribute SHALL be part of the ExtensionFieldSetStruct of the Scene Table.</p>
 </div>
 <div class="ulist">
@@ -55665,8 +55662,8 @@ if that cluster or a derivative is on the same endpoint as this cluster.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master a9c9a2a (local changes)<br>
-Last updated 2024-02-15 00:00:41 UTC
+Version master 0221bf0 (local changes)<br>
+Last updated 2024-02-16 00:01:29 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
