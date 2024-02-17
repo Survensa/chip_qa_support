@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 0d1c288,</span>
-<span id="revdate">2024-02-16 17:04:46 +0100</span>
+<span id="revnumber">version master 9cd97bb,</span>
+<span id="revdate">2024-02-16 14:58:22 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -27274,6 +27274,18 @@ Fabric ID assigned from DUT to TH2 and save the value for future use</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.C.C03.Tx(KeySetRemove)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the DUT(Client) implement sending KeySetRemove Command?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.C.C04.Tx(KeySetReadAllIndices)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the DUT(Client) implement sending KeySetReadAllIndices Command?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -27638,75 +27650,24 @@ Fabric ID assigned from DUT to TH2 and save the value for future use</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.7.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.S.C00.Rsp(KeySetWrite)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends KeySetWrite command in the GroupKeyManagement cluster to DUT. GroupKeySet fields are as follows:</p>
-<p class="tableblock">* GroupKeySetID: 0x01a3</p>
-<p class="tableblock">* GroupKeySecurityPolicy: TrustFirst (0)</p>
-<p class="tableblock">* EpochKey0: d0d1d2d3d4d5d6d7d8d9dadbdcdddedf</p>
-<p class="tableblock">* EpochStartTime0:1</p>
-<p class="tableblock">* EpochKey1: d1d1d2d3d4d5d6d7d8d9dadbdcdddedf</p>
-<p class="tableblock">* EpochStartTime1: 18446744073709551613</p>
-<p class="tableblock">* EpochKey2: d2d1d2d3d4d5d6d7d8d9dadbdcdddedf</p>
-<p class="tableblock">* EpochStartTime2: 18446744073709551614</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.2.6.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.S.A0001(GroupTable)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads GroupTable attribute from GroupKeyManagement cluster on DUT.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that TH is able to read the GroupTable attribute list successfully.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7a</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.6.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.S.A0001(GroupTable),
-G.S.F00(GN)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH attempts to write to the GroupTable attribute from GroupKeyManagement cluster on DUT with one entry as follows:</p>
-<p class="tableblock">GroupId: 0x0104</p>
-<p class="tableblock">Endpoints: [PIXIT.G.ENDPOINT]</p>
-<p class="tableblock">GroupName: "Test Group2"</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status UNSUPPORTED_WRITE(0x88)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7b</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.6.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.S.A0001(GroupTable),
-!G.S.F00(GN)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH attempts to write to the GroupTable attribute from GroupKeyManagement cluster on DUT with one entry as follows:</p>
-<p class="tableblock">GroupId: 0x0104</p>
-<p class="tableblock">Endpoints: [PIXIT.G.ENDPOINT]</p>
-<p class="tableblock">GroupName: ""</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status UNSUPPORTED_WRITE(0x88)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.6.3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.S.A0002(MaxGroupsPerFabric)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads MaxGroupsPerFabric attribute from GroupKeyManagement cluster on DUT using a fabric-filtered read.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads MaxGroupsPerFabric attribute from GroupKeyManagement cluster on DUT.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify the MaxGroupsPerFabric attribute, Value has to be between a range of [min=0, max=65535].</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.6.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.S.A0002(MaxGroupsPerFabric)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH attempts to write MaxGroupsPerFabric attribute of GroupKeyManagement cluster to the same value as read in step 8.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status UNSUPPORTED_WRITE(0x88)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.6.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.S.A0003(MaxGroupKeysPerFabric)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads MaxGroupKeysPerFabric attribute from GroupKeyManagement cluster on DUT using a fabric-filtered read.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads MaxGroupKeysPerFabric attribute from GroupKeyManagement cluster on DUT.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the value is within the range from 1 to 65535.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.6.4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.S.A0003(MaxGroupKeysPerFabric)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH attempts to write MaxGroupKeysPerFabric attribute of GroupKeyManagement cluster on DUT to the same value as read in step 10.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status UNSUPPORTED_WRITE(0x88)</p></td>
 </tr>
 </tbody>
 </table>
@@ -27812,7 +27773,7 @@ KeySetReadAllIndices</pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.3.6.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.S.A0003(MaxGroupKeysPerFabric)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads MaxGroupKeysPerFabric  attribute from GroupKeyManagement cluster on DUT  using a fabric-filtered read. Save the value as Max_GrpKey for future use.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads MaxGroupKeysPerFabric  attribute from GroupKeyManagement cluster on DUT. Save the value as Max_GrpKey for future use.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -28632,6 +28593,15 @@ KeySetReadAllIndices</pre>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status NOT_FOUND(0x8b)</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.5.1.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.S.C03.Rsp(KeySetRemove)</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>TH removes all the existing GroupKeySetID that were added in Step 21 by sending a KeySetRemove command starting from GroupKeySetID 1 to the GroupKeyManagement cluster</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00)</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -29432,20 +29402,36 @@ KeySetReadAllIndices</pre>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">appclusters-1.3.6.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">G.S.C03.Rsp(RemoveGroup)</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>TH sends a RemoveGroup Command to the Groups cluster with the GroupID field set to 0x0101. The command is sent as a group command using GroupID 0x0103</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">appclusters-1.3.7.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">G.S.C01.Rsp(ViewGroup)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends a ViewGroup Command to the Groups cluster on Endpoint PIXIT.G.ENDPOINT over CASE with the GroupID set to 0x0101 to confirm that the RemoveGroup command from step 9 was successful</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status NOT_FOUND(0x8b)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">11</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.9.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.S.C03.Rsp(KeySetRemove)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH removes the Group key set that was added by sending a KeySetRemove command to the GroupKeyManagement cluster with the GroupKeySetID field set to 0x01a3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends SUCCESS response</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">appclusters-1.3.7.5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">G.S.C04.Rsp(RemoveAllGroups)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH cleans up the groups by sending the RemoveAllGroups command to the DUT on PIXIT.G.ENDPOINT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends SUCCESS response</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-9.10.5.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -30108,20 +30094,20 @@ EpochStartTime0 = 1</p>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.C.A0000(GroupKeyMap)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT reads GroupKeyMap Attribute from the GroupKeyManagement cluster from TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.C.C03.Tx(KeySetRemove)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends KeySetRemove Command to TH</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Verify that DUT reads GroupKeyMap attribute from the TH successfully</p>
+<p>Test Harness receives the KeySetRemove command from the DUT</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">8</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.C.A0001(GroupTable)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT reads GroupTable attribute from GroupKeyManagement cluster on TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CoreSpec-11.2.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GRPKEY.C.C04.Tx(KeySetReadAllIndices)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends KeySetReadAllIndices Command to TH</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Verify that DUT reads GroupTable attribute from the TH successfully</p>
+<p>Test Harness receives the KeySetReadAllIndices command from the DUT</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -36087,29 +36073,42 @@ Start another subscription with the DataVersionFilter field set to the data vers
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10.6.5/8.5.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR1 sends a subscription request action for an attribute and sets the MinIntervalFloor value to be same as MaxIntervalCeiling.<br>
-Activate the Subscription between CR1 and DUT.<br>
-Modify the attribute which has been subscribed to on the DUT.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends a report data with the value of the attribute after the MinIntervalFloor time.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CR1 reads the <em>ServerList</em> attribute from the Descriptor cluster on EP0. If the ICD Management cluster ID (70,0x46) is present in the list, set <code>min_interval_floor_s</code> to 0, otherwise set <code>min_interval_floor_s</code> to 3.</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.6.5/8.5.3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CR1 sends a subscription request action for an attribute and sets the MinIntervalFloor to <code>min_interval_floor_s</code> and MaxIntervalCeiling to 10.<br>
+Activate the Subscription between CR1 and DUT and record the time when the priming ReportDataMessage is received as <code>t_report</code>. Save the returned MaxInterval from the SubscribeResponseMessage as <code>max_interval_s</code>.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CR1 modifies the attribute which has been subscribed to on the DUT and waits for an incoming ReportDataMessage. Save the time that the report is received as <code>t_update</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that <code>t_update</code> - <code>t_report</code> is greater than <code>min_interval_floor_s</code> and less than the ReadClient SubscriptionTimeout (calculated by the ReadClient using <code>max_interval_s</code> and the maximum estimated network delay based on the MRP parameters for retries with backoff)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10.6.5/8.5.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CR1 sends a subscription request action for an attribute and set the MinIntervalFloor value to be greater than MaxIntervalCeiling. +</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends an error message and the subscription is not established.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10.6.5/8.5.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CR1 sends a subscription request to subscribe to a specific global attribute from all clusters on all endpoints. AttributePath = [[Attribute = Global Attribute]]. +</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the Subscription succeeds and the DUT sends back the attribute values for the global attribute.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10.6.5/8.5.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CR1 sends a subscription request to subscribe to a global attribute on an endpoint on all clusters.  AttributePath = [[Attribute = Global Attribute, Endpoint = EndpointID ]]. +</p></td>
@@ -36117,7 +36116,7 @@ Modify the attribute which has been subscribed to on the DUT.</p></td>
  Verify no data from other endpoints is sent back.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8.4.3.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CR1 sends a subscription request to the DUT with both AttributeRequests and EventRequests as empty</p></td>
@@ -55801,8 +55800,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 0d1c288<br>
-Last updated 2024-02-16 16:05:00 UTC
+Version master 9cd97bb<br>
+Last updated 2024-02-16 22:58:34 UTC
 </div>
 </div>
 </body>
