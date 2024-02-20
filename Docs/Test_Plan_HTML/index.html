@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master d9c18a3,</span>
-<span id="revdate">2024-02-19 11:38:54 -0800</span>
+<span id="revnumber">version master 1442949,</span>
+<span id="revdate">2024-02-20 08:00:47 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -5149,21 +5149,23 @@ Verify The QR code must be of sufficient size and contrast respective to surface
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.BLE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH does not respond to DUT. User power cycles the DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT restarts the ADV sending process upon reboot and uses a new address (the previous address must be stored by TH in the previous step).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT restarts the ADV sending process upon reboot and uses a new address (the previous address must be stored by TH in the previous step). Record the current time as <code>T0</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.BLE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If DUT does not support Extended Announcement: TH does not respond to DUT and DUT keeps sending ADVs. TH waits at least 15 minutes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT stops sending ADV no later than 15 minutes and no sooner than 3 minutes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH waits until <code>T0</code> + 2 minutes and 45 seconds and confirms that the DUT is still sending ADVs.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.b</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.BLE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If DUT does support Extended Announcement: TH does not respond to DUT and DUT keeps sending ADVs. TH waits at least 15 minutes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{PICS_MCODE_COM_BLE}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH waits until <code>T0</code> + 15 minutes and checks if the DUT is sending ADVs.</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>If the DUT is still sending ADVs:</p>
+</div>
+<div class="paragraph">
 <p>DUT must send ADVs at a rate equal to 1200ms.</p>
 </div>
 <div class="paragraph">
@@ -5189,16 +5191,16 @@ Verify that:</p>
 </li>
 </ul>
 </div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIFI</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH scans and finds the DUT SSID</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT SSID is not hidden and has the format: MATTER-ddd-vvvv-pppp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIFI</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH scans and finds the DUT SSID</p>
@@ -5209,9 +5211,9 @@ Verify that:</p>
 <p class="tableblock">After 2nd power cycle, DUT BSSID is random with respect X (is not X, X+1, X-1, X*2, X/2, etc.)</p>
 <p class="tableblock">DUT bcast bit is set.</p>
 <p class="tableblock">DUT locally-administered bit is set.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIFI &amp; MCORE.DD.IE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH scans and finds the DUT SSID</p></td>
@@ -5223,9 +5225,9 @@ Verify that:</p>
 <p class="tableblock">0x02 (Device Information)</p>
 <p class="tableblock">0x03 (Rotating Device Id)</p>
 <p class="tableblock">0x04 - 0xFF (Reserved)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.1, 4.3.1.5., 4.3.1.7., 4.3.1.11.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network through vendor-unique means or by commissioning the DUT onto the Matter network and opening a commissioning window. The DUT is sending mandatory Commissionable Node Discovery service records over DNS-SD.</p></td>
@@ -5237,9 +5239,9 @@ The absence of key CM SHALL imply a value of 0 (CM=0).
 CM=0 SHALL indicate that the publisher is not currently in Commissioning Mode.
 CM=1 SHALL indicate that the publisher is currently in Commissioning Mode and requires use of a passcode for commissioning provided by the Commissionee
 CM=2 SHALL indicate that the publisher is currently in Commissioning Mode and requires use of a dynamically generated passcode for commissioning corresponding to the verifier that was passed to the device using the Open Commissioning Window command.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12.a</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.6.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.TXT_KEY_VP</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending optional Commissionable Node Discovery service records over DNS-SD.</p></td>
@@ -5250,36 +5252,36 @@ If the VP key is present without a Product ID, the value SHALL contain only the 
 <p class="tableblock">For example,
 (1) VP=123 gives Vendor ID.
 (2) VP=123+456 gives Vendor ID=123 + Product ID=456.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12.b</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12.b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.8.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.TXT_KEY_DT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending optional Commissionable Node Discovery service records over DNS-SD.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validate that the following TXT key record is compliant:</p>
 <p class="tableblock">DT: Device Type (Spec 4.3.1.8.) MAY provide the publisher&#8217;s primary device type (see Section 11.22.5.3, “DeviceTypeID”). In case the device combines multiple device types, the manufacturer SHOULD choose the device type identifier of the primary function of the device for which the device wishes to be discoverable. If present, it SHALL be encoded as a variable-length decimal number in ASCII text, omitting any leading zeroes.</p>
 <p class="tableblock">For example, the DT=10 key/value pair would indicate that the primary device type is 10 (0x000a), which is the device type identifier for a Door Lock.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12.c</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12.c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.9.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.TXT_KEY_DN</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending optional Commissionable Node Discovery service records over DNS-SD.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validate that the following TXT key record is compliant:</p>
 <p class="tableblock">DN: Device Name (Spec 4.3.1.9.) MAY provide a device advertisement name. If present, it SHALL be encoded as a valid UTF-8 string with a maximum length of 32 bytes (matching the maximum length of the NodeLabel string in the Basic Information Cluster).</p>
 <p class="tableblock">For example, the DN=Living Room key/value pair indicates that the advertisement name specified by the user is 'Living Room'.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12.d</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12.d</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.10.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.TXT_KEY_RI</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending optional Commissionable Node Discovery service records over DNS-SD.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validate that the following TXT key record is compliant:</p>
 <p class="tableblock">RI: Rotating Identifier (Spec 4.3.1.10.) MAY provide a Rotating Device Identifier. If present, the value associated with the RI key SHALL contain the octets of the Rotating Device Identifier octet string encoded as the concatenation of each octet&#8217;s value as a 2-digit uppercase hexadecimal number.
 The resulting ASCII string SHALL NOT be longer than 100 characters, which implies a Rotating Device Identifier of at most 50 octets.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12.e</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12.e</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.11.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.TXT_KEY_PH</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending optional Commissionable Node Discovery service records over DNS-SD.</p></td>
@@ -5292,9 +5294,9 @@ The pairing hint represents a base-10 numeric value for a bitmap of methods supp
 <p class="tableblock">Bit 1: This SHALL be set to 1 for devices requiring Custom Commissioning Flow before they can be available for Commissioning by any Commissioner.</p>
 <p class="tableblock">Bits 8, 10, 12, 15, 17, 19: If the following bits are set to 1 in the PH, verify that the PI key is set with a value N representing a value the PH key needs to indicate action for the user to take (i.e. PH Bit 8: hold reset button for N seconds, PH Bit 12: press reset button N times)</p>
 <p class="tableblock">If the DUT=Commissionee has enabled Extended Discovery, then the PH record is required when not in Commissioning Mode (CM=0).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12.f</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12.f</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.12.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.TXT_KEY_PI</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending optional Commissionable Node Discovery service records over DNS-SD.</p></td>
@@ -5303,24 +5305,24 @@ The pairing hint represents a base-10 numeric value for a bitmap of methods supp
 The meaning of this key is dependent upon the PH key value, see Table 6, “Pairing Hint Values”.
 This key/value pair SHALL only be returned in the DNS-SD TXT record if the PH bitmap value has a bit set which has PI Dependency = True, see Table 6, “Pairing Hint Values”. The PH key SHALL NOT have more than one bit set which has a dependency on the PI key (PI Dependency = True) to avoid ambiguity in PI key usage.</p>
 <p class="tableblock">For example, given PH=256, bit 8 is set which indicates "Press Reset Button for N seconds". Therefore, a value of PI=10 would indicate that N is 10 in that context.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.2., 4.3.1.3.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.EXTENDED_DISCOVERY</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Place the DUT device into a non-commissionable state</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT is not able to be commissioned over DNS-SD.</p>
 <p class="tableblock">Verify that Commissioning Subtype='_CM' is NOT being published in the DUT&#8217;s Commissionable Node Discovery service record over DNS-SD.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.a</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.3.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending a Commissionable Node Discovery service record over DNS-SD.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT is able to be discovered over DNS-SD.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.b</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.3.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory Commissioning Subtypes: Send a browse request for '_services._dns-sd._udp' using a DNS-SD records command-line test tool (i.e. 'dns-sd -B _services._dns-sd._udp' or 'avahi-browse _services._dns-sd._udp -r')</p></td>
@@ -5328,29 +5330,23 @@ This key/value pair SHALL only be returned in the DNS-SD TXT record if the PH bi
 <p class="tableblock">1. _L&lt;dddd&gt;, where &lt;dddd&gt; provides the full 12-bit discriminator, encoded as a variable-length decimal number in ASCII text, omitting any leading zeroes.</p>
 <p class="tableblock">2. _S&lt;dd&gt;, where &lt;dd&gt; provides the upper 4 bits of the discriminator, encoded as a variable-length decimal number in ASCII text, omitting any leading zeroes.</p>
 <p class="tableblock">3. _CM, which represents "currently in Commissioning Mode" (due to any method, for example, a factory new device that has just been put into commissioning mode by the user, or an already- commissioned device which has just received the Open Commissioning Window command).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.c</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.3.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.COMMISSIONING_SUBTYPE_V | MCORE.DD.COMMISSIONING_SUBTYPE_T</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional Commissioning Subtypes: Send a browse request for '_services._dns-sd._udp' using a DNS-SD records command-line test tool (i.e. 'dns-sd -B _services._dns-sd._udp' or 'avahi-browse _services._dns-sd._udp -r')</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify each of the following Commissioning Subtypes, published in the DUT&#8217;s Commissionable Node Discovery service record over DNS-SD, matches one of the following valid subtypes:</p>
 <p class="tableblock">1. _V&lt;ddddd&gt;, where &lt;ddddd&gt; provides the 16-bit Vendor ID, encoded as a variable-length decimal number in ASCII text, omitting any leading zeroes.</p>
 <p class="tableblock">2. _T&lt;ddd&gt;, where &lt;ddd&gt; provides the device type identifier for the device, encoded as a variable- length decimal number in ASCII (UTF-8) text, omitting any leading zeroes. In case the device combines multiple device types, the manufacturer SHOULD choose the device type identifier of the primary function of the device for which the device wishes to be discoverable.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15.a</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Place the DUT device into Commissioning mode</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT is able to be discovered over DNS-SD.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">15.b</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.3., 4.3.1.13.</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Send a browse request for '_matterc._udp' using a DNS-SD records command-line test tool (i.e. 'dns-sd -B _matterc._udp' or 'avahi-browse _matterc._udp -r')</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT responds to the '_matterc._udp' browse request from the TH. Verify TH is able to read the Matter pointer records for the DUT</p></td>
 </tr>
 </tbody>
 </table>
@@ -12294,14 +12290,14 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.19.8.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH0 opens a commissioning window on the DUT</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.10.5.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH0 reads the BasicCommissioningInfo field from the General commissioning cluster saves MaxCumulativeFailsafeSeconds as <code>failsafe_max</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -12315,14 +12311,14 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.10.6.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with the ExpiryLengthSeconds field set to <code>failsafe_max</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends ArmFailSafeResponse Command to TH1 with field ErrorCode as 'OK'(0)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="csr-elements"></a>5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 Sends CSRRequest command with a random 32-byte nonce</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
@@ -12395,98 +12391,98 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the trusted root cert list from the DUT. Save the list size as <code>trusted_root_original_size</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the fabrics attribute from the DUT. Save the list size as <code>fabrics_original_size</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the NOCs attribute from the DUT using a non-fabric-filtered read. Save the list size as <code>nocs_original_size</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-validity-check"></a>12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AddTrustedRootCertificate command to DUT to install <code>Root_CA_Malformed</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that AddTrustedRootCertificate Command fails by sending the status code as INVALID_COMMAND</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificate attribute</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify it contains only <code>trusted_root_original_size</code> entries</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-ok"></a>14</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.13</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AddTrustedRootCertificate command to DUT with RootCACertificate set to <code>Root_CA_Certificate_TH1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that AddTrustedRootCertificate Command succeeds by sending the status code as SUCCESS</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificate attribute</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify it contains <code>trusted_root_original_size</code> + 1 entries</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-duplicate"></a>16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.13</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AddTrustedRootCertificate command to DUT again with the RootCACertificate field set to <code>Root_CA_Certificate_TH1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the returned Status Code is SUCCESS</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificate attribute</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify it contains <code>trusted_root_original_size</code> + 1 entries</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-re-add"></a>18</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.13</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AddTrustedRootCertificate command to DUT again with the RootCACertificate field set to <code>Root_CA_Certificate_TH1_2</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the returned Status Code is CONSTRAINT_ERROR</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificates list from DUT and saves as <code>TrustedRootsList</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there are <code>trusted_root_original_size</code> + 1 entries</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="trusted-root-attr-not-writeable"></a>20</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 appends <code>Root_CA_Certificate_TH1_2</code> to <code>TrustedRootsList</code> and writes the TrustedRootCertificates attribute with that value</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the returned status code is UNSUPPORTED_WRITE</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="root-cert-attribute-ok"></a>21</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificates list from DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there are <code>trusted_root_original_size</code> + 1 entries</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-invalid"></a>22</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.8</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -12520,7 +12516,7 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="cat-invalid"></a>23</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.8</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -12554,7 +12550,7 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-ok"></a>24</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.8</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -12582,7 +12578,7 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-re-add"></a>25</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.8</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -12610,28 +12606,28 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-attribute"></a>26</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the NOCs attribute from DUT using a fabric-filtered read and saves the list as <code>NOCList</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list contains one entry with NOC field <code>Node_Operational_Certificate_TH1</code> and ICAC field <code>Intermediate_Certificate_TH1</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-attribute-not-writeable"></a>27</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 modifies the NOC list to use <code>Node_Operational_Certificate_TH1_2</code> and <code>Intermediate_Certificate_TH1_2</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the returned status code is UNSUPPORTED_WRITE</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the NOCs attribute from DUT using a fabric-filtered read</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list contains one entry with NOC field <code>Node_Operational_Certificate_TH1</code> and ICAC field <code>Intermediate_Certificate_TH1</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fabric-label-command"></a>29</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.11</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends UpdateFabricLabel command with 'Label 1' as Label field to DUT</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
@@ -12644,14 +12640,14 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the Fabrics Attribute from DUT using a fabric-filtered read</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there is only 1 entry</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fabric-table"></a>31</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
@@ -12701,7 +12697,7 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">32</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.10.6.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds field set to 0</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -12715,21 +12711,21 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="failsafe-expiry-root-certs"></a>34</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificates list from DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that list contains <code>trusted_root_original_size</code> entries</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="failsafe-expiry-nocs"></a>35</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the NOCs attribute from DUT using a non-fabric-filtered read</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list contains <code>nocs_original_size</code> entries</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="failsafe-expiry-fabrics"></a>36</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the Fabrics attribute from the DUT using a non-fabric-filtered read</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list contains <code>fabrics_original_size</code> entries</p></td>
@@ -12743,21 +12739,21 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="trusted-root-cert-table-ok"></a>38</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificates list from DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there are <code>trusted_root_original_size</code> + 1 entries</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="noc-table-ok"></a>39</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the NOCs attribute from DUT using a non-fabric-filtered read</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list contains <code>nocs_original_size</code> + 1 entries</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the Fabrics attribute from DUT using a non-fabric-filtered</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the list contains <code>fabrics_original_size</code> + 1 entries</p></td>
@@ -12796,14 +12792,14 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">43</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.11</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends UpdateFabricLabel command with 'Label 1' as Label field to DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify status OK</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">44</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.19.8.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends an OpenCommissioningWindow command to the Administrator Commissioning cluster</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -12817,7 +12813,7 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">46</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.11</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH2 sends UpdateFabricLabel command with 'Label 2' as Label field to DUT</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
@@ -12830,7 +12826,7 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="label-conflict"></a>47</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.11</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH2 sends UpdateFabricLabel command with 'Label 1' as Label field to DUT</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
@@ -12843,7 +12839,7 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="multiple-fabric-table"></a>48</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Read the Fabrics List from DUT using a non-fabric-filtered read</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
@@ -12868,21 +12864,21 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">49</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.10.6.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT  with the ExpiryLengthSeconds field set to <code>failsafe_max</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends ArmFailSafeResponse Command to TH1 with field ErrorCode as 'OK'(0)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">50</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.13</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AddTrustedRootCertificate command to DUT with RootCACertificate set to <code>Root_CA_Certificate_TH1_1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that AddTrustedRootCertificate Command succeeds by sending the status code as SUCCESS</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="missing-csr"></a>51</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.8</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -12910,21 +12906,21 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">52</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.10.6.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to 0</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">53</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.10.6.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to <code>failsafe_max</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">54</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 Sends CSRRequest command with a random 32-byte nonce</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -12938,35 +12934,35 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">56</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.13</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends the AddTrustedRootCert command using <code>TH1_RCAC_bad_csr</code>.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">57</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.8</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends the AddNOC Command to DUT using <code>TH1_ICAC_bad_csr</code>, <code>TH1_NOC_bad_csr</code> and <code>TH1_IPK_bad_csr</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT responds with status code InvalidPublicKey</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">58</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.10.6.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to 0</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">59</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.10.6.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to <code>failsafe_max</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="csr-step"></a>60</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 Sends CSRRequest command with a random 32-byte nonce</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -12980,14 +12976,14 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">62</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.13</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends the AddTrustedRootCert command using the certs generated in step <a href="#fabric-conflict-certs">61</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fabric-conflict"></a>63</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.8</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -13012,28 +13008,28 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">64</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.10.6.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends ArmFailSafeResponse Command to TH1 with field ErrorCode as 'OK'(0)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">65</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads the TrustedRootCertificates list from DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that list contains <code>trusted_root_original_size</code> + 2 entries</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">66</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.10.6.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with the ExpiryLengthSeconds field set to <code>failsafe_max</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends ArmFailSafeResponse Command to TH1 with field ErrorCode as 'OK'(0)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="csr-step-update"></a>67</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 Sends CSRRequest command with a random 32-byte nonce and the IsForUpdateNOC field set to true</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -13062,14 +13058,14 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">69</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.13</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends AddTrustedRootCertificate command to DUT with RootCACertificate set to <code>Root_CA_Certificate_TH1_3</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that AddTrustedRootCertificate Command succeeds by sending the status code as SUCCESS</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="add-noc-for-update-csr"></a>70</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.8</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -13094,28 +13090,28 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">71</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.10.6.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends ArmFailSafe command to the DUT with ExpiryLengthSeconds set to 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends ArmFailSafeResponse Command to TH1 with field ErrorCode as 'OK'(0)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">72</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.6</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH2 reads its fabric index from the CurrentFabricIndex attribute and saves as <code>FabricIndexTH2</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="remove-invalid-fabric"></a>73</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.12</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH2 sends RemoveFabric command with Fabric Index as FabricIndexTH2 + 5 (Invalid Fabric Index) to DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends NOCResponse Command with StatusCode of InvalidFabricIndex</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">74</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH2 reads the Fabrics List from DUT using a non-fabric-filtered read</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -13124,21 +13120,21 @@ Finish and PrimaryColor should reasonably reflect the appearance of the product.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">75</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.5.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.5.6</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads its fabric index from the CurrentFabricIndex attribute and saves as <code>FabricIndex_TH1</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">76</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.12</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH0 sends RemoveFabric command with Fabric Index as FabricIndex_TH1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends NOCResponse Command with StatusCode of OK</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">77</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.17.6.12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.18.6.12</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH0 sends RemoveFabric command with Fabric Index as FabricIndex_TH1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends NOCResponse Command with StatusCode of OK</p></td>
@@ -16718,7 +16714,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <div class="ulist">
 <ul>
 <li>
-<p>CNET.S.F00(WI)</p>
+<p>CNET.S</p>
 </li>
 </ul>
 </div>
@@ -16738,30 +16734,6 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Doc. Ref.</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Condition</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Notes</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT supports CNET.S.F00(WI)</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT has a Network Commissioning cluster on endpoint PIXIT.CNET.ENDPOINT_WIFI with FeatureMap attribute of 1</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT is commissioned on PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH can communicate with the DUT</p></td>
-<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -16794,12 +16766,6 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_14"><a class="anchor" href="#_test_setup_14"></a>Test Setup</h5>
-<div class="paragraph">
-<p>PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID should be setup.</p>
-</div>
-</div>
-<div class="sect4">
 <h5 id="_test_procedure_55"><a class="anchor" href="#_test_procedure_55"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -16809,111 +16775,47 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <col style="width: 30%;">
 <col style="width: 40%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Ref</strong></th>
+<th class="tableblock halign-left valign-top"><strong>PICS</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Test Step</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Expected Outcome</strong></th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ref</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PICS</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Test Step</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.8.8.2</p>
-</li>
-<li>
-<p>11.8.8.3</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>CNET.S.C00.Rsp(ScanNetworks)</p>
-</li>
-<li>
-<p>CNET.S.C01.Tx(ScanNetworksResponse)</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends ScanNetworks command to the DUT with the SSID field set to 'null' and Breadcrumb field set to 1</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Verify that DUT sends ScanNetworksResponse command to the TH with the following fields:</p>
-</li>
-<li>
-<p>NetworkingStatus is any one of the following values: Success, NetworkNotFound, OutOfRange, RegulatoryError, UnknownError</p>
-</li>
-<li>
-<p>DebugText is of type string with max length 512 or absent</p>
-</li>
-<li>
-<p>Each element in the WiFiScanResults list will have the following fields:</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Security is of type map8 with a length range 0 to 254</p>
-</li>
-<li>
-<p>SSID is of type octstr with a length range 0 to 32. It should only show the SSIDs on bands supported by the DUT. If the DUT supports 2.4GHz or 5GHz, PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID should be listed.</p>
-</li>
-<li>
-<p>BSSID is of type octstr with a length of 6. It should only show the BSSIDs on bands supported by the DUT. (Example - If the device supports 5GHz, it must show all the BSSIDs for 5GHz).</p>
-</li>
-<li>
-<p>Channel is of type uint16 with a range 0 to 65,535</p>
-</li>
-<li>
-<p>Wi-Fi Band, if present, with a value present in the SupportedWiFiBands attribute, and in the range of values in the WiFiBandEnum.</p>
-</li>
-<li>
-<p>RSSI, if present, is of type int8 with a range of -120 to 0</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.8.8.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.4</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads Breadcrumb attribute from the General Commissioning Cluster</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the Breadcrumb attribute is set to 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the Network Commissioning Cluster <em>FeatureMap</em>. If the <em>FeatureMap</em> does not include the WI flag (bit 0), skip the remaining steps in this test case</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2a</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>11.8.8.2</p>
-</li>
-<li>
-<p>11.8.8.3</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>CNET.S.C00.Rsp(ScanNetworks)</p>
-</li>
-<li>
-<p>CNET.S.C01.Tx(ScanNetworksResponse)</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends ScanNetworks Command to the DUT with SSID field set to PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID and Breadcrumb field set to 2</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.9</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>SupportedWifiBands</em> attribute and saves as <code>supported_wifi_bands</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.6.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>Networks</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify at least one entry has Connected set to True. Save the NetworkID of that entry as <code>known_ssid</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.7.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends ScanNetworks command to the DUT with the SSID field set to 'null' and Breadcrumb field set to 1</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Verify that DUT sends ScanNetworksResponse command to the TH with the following fields:</p>
-</li>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>NetworkingStatus is Success</p>
 </li>
@@ -16921,23 +16823,29 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <p>DebugText is of type string with max length 512 or absent</p>
 </li>
 <li>
-<p>WiFiScanResults list contains at least one entry with the following fields and values:</p>
+<p>WiFiScanResults contains at least one element</p>
+</li>
+<li>
+<p>At least one of the WifiScanResults entries has an SSID of <code>known_ssid</code></p>
+</li>
+<li>
+<p>Each element in the WiFiScanResults list will have the following fields:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Security is of type map8 with a length range 0 to 254</p>
+<p>Security contains only flags supported in the WiFiSecurityBitmap Type</p>
 </li>
 <li>
-<p>SSID is PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID</p>
+<p>SSID is of type octstr with a length range 0 to 32.</p>
 </li>
 <li>
-<p>BSSID is of type octstr with a length of 6. It should only show the BSSIDs on bands supported by the DUT.(Example - If the device supports 5GHz, it must show all the BSSIDs for 5GHz)</p>
+<p>BSSID is of type octstr with a length of 6.</p>
 </li>
 <li>
-<p>Channel</p>
+<p>Channel is of type uint16 with a range 0 to 65,535</p>
 </li>
 <li>
-<p>WiFiBand, with a value present in the SupportedWiFiBands attribute.</p>
+<p>Wi-Fi Band, if present, is one of the values present in the <code>supported_wifi_bands</code> and in the range of values in the WiFiBandEnum.</p>
 </li>
 <li>
 <p>RSSI, if present, is of type int8 with a range of -120 to 0</p>
@@ -16949,21 +16857,81 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2b</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.8.8.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.10.5.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the Breadcrumb attribute from the General Commissioning Cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the Breadcrumb attribute is set to 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.7.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends ScanNetworks Command to the DUT with SSID field set to <code>known_ssid</code> and Breadcrumb field set to 2</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Verify that DUT sends ScanNetworksResponse command to the TH with the following fields:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>NetworkingStatus is Success</p>
+</li>
+<li>
+<p>DebugText is of type string with max length 512 or absent</p>
+</li>
+<li>
+<p>WiFiScanResults contains at least one element</p>
+</li>
+<li>
+<p>Each element in the WiFiScanResults list will have the following fields:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Security contains only flags supported in the WiFiSecurityBitmap Type</p>
+</li>
+<li>
+<p>SSID is <code>known_ssid</code></p>
+</li>
+<li>
+<p>BSSID is of type octstr with a length of 6.</p>
+</li>
+<li>
+<p>Channel is of type uint16 with a range 0 to 65,535</p>
+</li>
+<li>
+<p>Wi-Fi Band, if present, is one of the values present in the <code>supported_wifi_bands</code> and in the range of values in the WiFiBandEnum.</p>
+</li>
+<li>
+<p>RSSI, if present, is of type int8 with a range of -120 to 0</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.10.5.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads Breadcrumb attribute from the General Commissioning Cluster</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the Breadcrumb attribute is set to 2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2c</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11.8.8.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.11.9.7.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Turn off the Wi-Fi access points, wait 3 seconds. Sending ScanNetworks Command to the DUT with SSID field set to PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID and Breadcrumb field set to 2 from the TH.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends ScanNetworks Command to the DUT with SSID field set to a string of 31 random alphabetical characters and Breadcrumb field set to 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends the ScanNetworkResponse command with the NetworkingStatus field set to NetworkNotFound.</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_48"><a class="anchor" href="#_notestesting_considerations_48"></a>Notes/Testing Considerations</h5>
+<div class="paragraph">
+<p>Verification steps for the scan networks command should include verification that the BSSIDs returned map only to the supported bands and match to a known set configuration parameters for a given BSSID, supplied as a PIXIT. Please see <a href="https://github.com/CHIP-Specifications/chip-test-plans/issues/3989" class="bare">https://github.com/CHIP-Specifications/chip-test-plans/issues/3989</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -18634,7 +18602,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_48"><a class="anchor" href="#_notestesting_considerations_48"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_49"><a class="anchor" href="#_notestesting_considerations_49"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Steps #11- #16 cannot be executed with V1.0 SDK</p>
 </div>
@@ -21905,7 +21873,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_15"><a class="anchor" href="#_test_setup_15"></a>Test Setup</h5>
+<h5 id="_test_setup_14"><a class="anchor" href="#_test_setup_14"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commission DUT to TH, if not done so already.</p>
 </div>
@@ -21948,7 +21916,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_49"><a class="anchor" href="#_notestesting_considerations_49"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_50"><a class="anchor" href="#_notestesting_considerations_50"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -22045,7 +22013,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_16"><a class="anchor" href="#_test_setup_16"></a>Test Setup</h5>
+<h5 id="_test_setup_15"><a class="anchor" href="#_test_setup_15"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commission DUT to TH, if not done so already.</p>
 </div>
@@ -22116,7 +22084,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_50"><a class="anchor" href="#_notestesting_considerations_50"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_51"><a class="anchor" href="#_notestesting_considerations_51"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -22213,7 +22181,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_17"><a class="anchor" href="#_test_setup_17"></a>Test Setup</h5>
+<h5 id="_test_setup_16"><a class="anchor" href="#_test_setup_16"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commission DUT to TH, if not done so already.</p>
 </div>
@@ -22270,7 +22238,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_51"><a class="anchor" href="#_notestesting_considerations_51"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_52"><a class="anchor" href="#_notestesting_considerations_52"></a>Notes/Testing considerations</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -22380,7 +22348,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_18"><a class="anchor" href="#_test_setup_18"></a>Test Setup</h5>
+<h5 id="_test_setup_17"><a class="anchor" href="#_test_setup_17"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commission DUT to TH, if not done so already.</p>
 </div>
@@ -22424,7 +22392,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_52"><a class="anchor" href="#_notestesting_considerations_52"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_53"><a class="anchor" href="#_notestesting_considerations_53"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -22761,7 +22729,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_53"><a class="anchor" href="#_notestesting_considerations_53"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_54"><a class="anchor" href="#_notestesting_considerations_54"></a>Notes/Testing considerations</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -22862,7 +22830,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_19"><a class="anchor" href="#_test_setup_19"></a>Test Setup</h5>
+<h5 id="_test_setup_18"><a class="anchor" href="#_test_setup_18"></a>Test Setup</h5>
 <div class="paragraph">
 <p>The device set up as Commissioner is the Initiator and the device serving as Commissionee is the Responder</p>
 </div>
@@ -22926,7 +22894,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_54"><a class="anchor" href="#_notestesting_considerations_54"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_55"><a class="anchor" href="#_notestesting_considerations_55"></a>Notes/Testing considerations</h5>
 <div class="paragraph">
 <p>This test case needs to be cleaned up to provide additional context about preconditions, possibly merged with the main PASE test case.  TODO</p>
 </div>
@@ -23020,7 +22988,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_20"><a class="anchor" href="#_test_setup_20"></a>Test Setup</h5>
+<h5 id="_test_setup_19"><a class="anchor" href="#_test_setup_19"></a>Test Setup</h5>
 <div class="paragraph">
 <p>The TH is set up as a Commissioner/Initiator and the DUT as a Commissionee/Responder</p>
 </div>
@@ -23105,7 +23073,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_55"><a class="anchor" href="#_notestesting_considerations_55"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_56"><a class="anchor" href="#_notestesting_considerations_56"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -23196,7 +23164,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_21"><a class="anchor" href="#_test_setup_21"></a>Test Setup</h5>
+<h5 id="_test_setup_20"><a class="anchor" href="#_test_setup_20"></a>Test Setup</h5>
 <div class="paragraph">
 <p>The DUT  set up as a Commissioner/Initiator and the TH as a Commissionee/Responder</p>
 </div>
@@ -23260,7 +23228,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_56"><a class="anchor" href="#_notestesting_considerations_56"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_57"><a class="anchor" href="#_notestesting_considerations_57"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -23483,7 +23451,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_57"><a class="anchor" href="#_notestesting_considerations_57"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_58"><a class="anchor" href="#_notestesting_considerations_58"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -23580,7 +23548,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_22"><a class="anchor" href="#_test_setup_22"></a>Test Setup</h5>
+<h5 id="_test_setup_21"><a class="anchor" href="#_test_setup_21"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH is the Initiator and the DUT is the Responder. TH and the DUT are commissioned.</p>
 </div>
@@ -23850,7 +23818,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_23"><a class="anchor" href="#_test_setup_23"></a>Test Setup</h5>
+<h5 id="_test_setup_22"><a class="anchor" href="#_test_setup_22"></a>Test Setup</h5>
 <div class="paragraph">
 <p>DUT is the Initiator and the TH is the Responder.TH and the DUT are commissioned.</p>
 </div>
@@ -24103,7 +24071,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_58"><a class="anchor" href="#_notestesting_considerations_58"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_59"><a class="anchor" href="#_notestesting_considerations_59"></a>Notes/Testing considerations</h5>
 
 </div>
 </div>
@@ -24194,7 +24162,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_24"><a class="anchor" href="#_test_setup_24"></a>Test Setup</h5>
+<h5 id="_test_setup_23"><a class="anchor" href="#_test_setup_23"></a>Test Setup</h5>
 <div class="paragraph">
 <p>The TH is the Initiator and the DUT is the Responder</p>
 </div>
@@ -24556,7 +24524,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_59"><a class="anchor" href="#_notestesting_considerations_59"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_60"><a class="anchor" href="#_notestesting_considerations_60"></a>Notes/Testing considerations</h5>
 <div class="paragraph">
 <p>TODO - add ICAC scenarios</p>
 </div>
@@ -24650,7 +24618,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_25"><a class="anchor" href="#_test_setup_25"></a>Test Setup</h5>
+<h5 id="_test_setup_24"><a class="anchor" href="#_test_setup_24"></a>Test Setup</h5>
 <div class="paragraph">
 <p>The DUT is the Initiator and the TH is the Responder</p>
 </div>
@@ -25004,7 +24972,7 @@ salt (octet string with a minimum of 16 bits and maximum of 32 bits)</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_26"><a class="anchor" href="#_test_setup_26"></a>Test Setup</h5>
+<h5 id="_test_setup_25"><a class="anchor" href="#_test_setup_25"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -25039,7 +25007,7 @@ Verify on each of these Reference Devices that the appropriate attribute value h
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_60"><a class="anchor" href="#_notestesting_considerations_60"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_61"><a class="anchor" href="#_notestesting_considerations_61"></a>Notes/Testing considerations</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -25160,7 +25128,7 @@ Verify on each of these Reference Devices that the appropriate attribute value h
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_27"><a class="anchor" href="#_test_setup_27"></a>Test Setup</h5>
+<h5 id="_test_setup_26"><a class="anchor" href="#_test_setup_26"></a>Test Setup</h5>
 <div class="paragraph">
 <p>N/A</p>
 </div>
@@ -25424,7 +25392,7 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_61"><a class="anchor" href="#_notestesting_considerations_61"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_62"><a class="anchor" href="#_notestesting_considerations_62"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -25513,7 +25481,7 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_28"><a class="anchor" href="#_test_setup_28"></a>Test Setup</h5>
+<h5 id="_test_setup_27"><a class="anchor" href="#_test_setup_27"></a>Test Setup</h5>
 <div class="paragraph">
 <p>N/A</p>
 </div>
@@ -25556,7 +25524,7 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_62"><a class="anchor" href="#_notestesting_considerations_62"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_63"><a class="anchor" href="#_notestesting_considerations_63"></a>Notes/Testing considerations</h5>
 <div class="paragraph">
 <p>Open discussion over the utility of this TC. May be removed in the future!</p>
 </div>
@@ -25648,7 +25616,7 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_29"><a class="anchor" href="#_test_setup_29"></a>Test Setup</h5>
+<h5 id="_test_setup_28"><a class="anchor" href="#_test_setup_28"></a>Test Setup</h5>
 <div class="paragraph">
 <p>N/A</p>
 </div>
@@ -25704,30 +25672,31 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.4.3.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH constructs the instance name for the DUT as the 64-bit compressed Fabric identifier, and the assigned 64-bit Node identifier, each expressed as a fixed-length sixteen-character hexadecimal string, encoded as ASCII (UTF-8) text using capital letters, separated by a hyphen. For example, a Matter Node with Matter compressed fabric identifier 2906-C908-D115-D362 and Matter Node identifier 8FC7-7724-01CD-0696 has Matter operational discovery DNS‑SD instance name 2906C908D115D362-8FC7772401CD0696. Save the operational instance name as 'instance_name'</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.4.3.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH performs a query for the SRV record against the instance name <code>instance_name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify SRV record is returned</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.4.3.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH performs a query for the TXT record against the hostname found in the SRV record</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify TXT record is returned</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.4.3.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH performs a query for the AAAA record against the hostname found in the SRV record</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify AAAA record is returned</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.4.3.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH verifies the following from the returned records:</p></td>
@@ -25825,20 +25794,26 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 </li>
 </ul>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.4.3.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH performs a DNS-SD browse for _I&lt;hhhh&gt;._sub._matter._tcp.local, where &lt;hhhh&gt; is the 64-bit compressed Fabric identifier, expressed as a fixed-length, sixteen-character hexadecimal string, encoded as ASCII (UTF-8) text using capital letters.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT returns a PTR record with DNS-SD instance name set <code>instance_name</code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.4.3.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH performs a DNS-SD browse for _matter._tcp.local</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT returns a PTR record with DNS-SD instance name set <code>instance_name</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_63"><a class="anchor" href="#_notestesting_considerations_63"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_64"><a class="anchor" href="#_notestesting_considerations_64"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -25927,7 +25902,7 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_30"><a class="anchor" href="#_test_setup_30"></a>Test Setup</h5>
+<h5 id="_test_setup_29"><a class="anchor" href="#_test_setup_29"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -25982,7 +25957,7 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_64"><a class="anchor" href="#_notestesting_considerations_64"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_65"><a class="anchor" href="#_notestesting_considerations_65"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -26083,7 +26058,7 @@ available or has an invalid value, the default SESSION_ACTIVE_THRESHOLD value sh
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_31"><a class="anchor" href="#_test_setup_31"></a>Test Setup</h5>
+<h5 id="_test_setup_30"><a class="anchor" href="#_test_setup_30"></a>Test Setup</h5>
 <div class="paragraph">
 <p>N/A</p>
 </div>
@@ -26164,7 +26139,7 @@ available or has an invalid value, the default MRP_RETRY_INTERVAL_ACTIVE value m
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_65"><a class="anchor" href="#_notestesting_considerations_65"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_66"><a class="anchor" href="#_notestesting_considerations_66"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -26262,7 +26237,7 @@ available or has an invalid value, the default MRP_RETRY_INTERVAL_ACTIVE value m
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_32"><a class="anchor" href="#_test_setup_32"></a>Test Setup</h5>
+<h5 id="_test_setup_31"><a class="anchor" href="#_test_setup_31"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -26312,7 +26287,7 @@ MCORE.SC.DN_KEY</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_66"><a class="anchor" href="#_notestesting_considerations_66"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_67"><a class="anchor" href="#_notestesting_considerations_67"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -26410,7 +26385,7 @@ MCORE.SC.DN_KEY</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_33"><a class="anchor" href="#_test_setup_33"></a>Test Setup</h5>
+<h5 id="_test_setup_32"><a class="anchor" href="#_test_setup_32"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -26467,7 +26442,7 @@ MCORE.SC.DN_KEY</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_67"><a class="anchor" href="#_notestesting_considerations_67"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_68"><a class="anchor" href="#_notestesting_considerations_68"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -26571,7 +26546,7 @@ MCORE.SC.DN_KEY</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_34"><a class="anchor" href="#_test_setup_34"></a>Test Setup</h5>
+<h5 id="_test_setup_33"><a class="anchor" href="#_test_setup_33"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -26635,7 +26610,7 @@ Fabric ID assigned from DUT to TH2 and save the value for future use</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_68"><a class="anchor" href="#_notestesting_considerations_68"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_69"><a class="anchor" href="#_notestesting_considerations_69"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -26778,7 +26753,7 @@ Fabric ID assigned from DUT to TH2 and save the value for future use</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_35"><a class="anchor" href="#_test_setup_35"></a>Test Setup</h5>
+<h5 id="_test_setup_34"><a class="anchor" href="#_test_setup_34"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -26824,7 +26799,7 @@ Fabric ID assigned from DUT to TH2 and save the value for future use</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_69"><a class="anchor" href="#_notestesting_considerations_69"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_70"><a class="anchor" href="#_notestesting_considerations_70"></a>Notes/Testing considerations</h5>
 <hr>
 </div>
 </div>
@@ -26922,7 +26897,7 @@ Fabric ID assigned from DUT to TH2 and save the value for future use</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_36"><a class="anchor" href="#_test_setup_36"></a>Test Setup</h5>
+<h5 id="_test_setup_35"><a class="anchor" href="#_test_setup_35"></a>Test Setup</h5>
 <div class="paragraph">
 <p>N/A</p>
 </div>
@@ -26968,7 +26943,7 @@ Fabric ID assigned from DUT to TH2 and save the value for future use</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_70"><a class="anchor" href="#_notestesting_considerations_70"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_71"><a class="anchor" href="#_notestesting_considerations_71"></a>Notes/Testing considerations</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -27519,7 +27494,7 @@ Fabric ID assigned from DUT to TH2 and save the value for future use</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_71"><a class="anchor" href="#_notestesting_considerations_71"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_72"><a class="anchor" href="#_notestesting_considerations_72"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p><sup>*</sup> Step 5 is currently not supported and SHALL be skipped.</p>
 </div>
@@ -27591,7 +27566,7 @@ Fabric ID assigned from DUT to TH2 and save the value for future use</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_37"><a class="anchor" href="#_test_setup_37"></a>Test Setup</h5>
+<h5 id="_test_setup_36"><a class="anchor" href="#_test_setup_36"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commission DUT to TH (can be skipped if done in a preceding test).</p>
 </div>
@@ -27673,7 +27648,7 @@ Fabric ID assigned from DUT to TH2 and save the value for future use</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_72"><a class="anchor" href="#_notestesting_considerations_72"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_73"><a class="anchor" href="#_notestesting_considerations_73"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test checks for attribute values in basic ranges. The Resource Requirement test (TC-RR-1.1) will test that the minimum values are set correctly based on the device requirements.</p>
 </div>
@@ -27746,7 +27721,7 @@ KeySetReadAllIndices</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_38"><a class="anchor" href="#_test_setup_38"></a>Test Setup</h5>
+<h5 id="_test_setup_37"><a class="anchor" href="#_test_setup_37"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commission DUT to TH (can be skipped if done in a preceding test).</p>
 </div>
@@ -28696,7 +28671,7 @@ KeySetReadAllIndices</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_39"><a class="anchor" href="#_test_setup_39"></a>Test Setup</h5>
+<h5 id="_test_setup_38"><a class="anchor" href="#_test_setup_38"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -29191,7 +29166,7 @@ KeySetReadAllIndices</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_40"><a class="anchor" href="#_test_setup_40"></a>Test Setup</h5>
+<h5 id="_test_setup_39"><a class="anchor" href="#_test_setup_39"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -29562,7 +29537,7 @@ KeySetReadAllIndices</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_41"><a class="anchor" href="#_test_setup_41"></a>Test Setup</h5>
+<h5 id="_test_setup_40"><a class="anchor" href="#_test_setup_40"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -29696,7 +29671,7 @@ KeySetReadAllIndices</pre>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_73"><a class="anchor" href="#_notestesting_considerations_73"></a>Notes/Testing considerations</h5>
+<h5 id="_notestesting_considerations_74"><a class="anchor" href="#_notestesting_considerations_74"></a>Notes/Testing considerations</h5>
 <div class="paragraph">
 <p>In the above test case Groups cluster is used for testing the multicast message. Any other cluster like Identify can also be used depending on the DUT capability.</p>
 </div>
@@ -29789,7 +29764,7 @@ KeySetReadAllIndices</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_42"><a class="anchor" href="#_test_setup_42"></a>Test Setup</h5>
+<h5 id="_test_setup_41"><a class="anchor" href="#_test_setup_41"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -29997,7 +29972,7 @@ KeySetReadAllIndices</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_43"><a class="anchor" href="#_test_setup_43"></a>Test Setup</h5>
+<h5 id="_test_setup_42"><a class="anchor" href="#_test_setup_42"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -30332,7 +30307,7 @@ are separate fabrics.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_44"><a class="anchor" href="#_test_setup_44"></a>Test Setup</h5>
+<h5 id="_test_setup_43"><a class="anchor" href="#_test_setup_43"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -30535,7 +30510,7 @@ through AttestationResponse Command to TH1</p>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_45"><a class="anchor" href="#_test_setup_45"></a>Test Setup</h5>
+<h5 id="_test_setup_44"><a class="anchor" href="#_test_setup_44"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -31043,7 +31018,7 @@ fields:</p>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_46"><a class="anchor" href="#_test_setup_46"></a>Test Setup</h5>
+<h5 id="_test_setup_45"><a class="anchor" href="#_test_setup_45"></a>Test Setup</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -31269,7 +31244,7 @@ fields:</p>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_47"><a class="anchor" href="#_test_setup_47"></a>Test Setup</h5>
+<h5 id="_test_setup_46"><a class="anchor" href="#_test_setup_46"></a>Test Setup</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -32024,7 +31999,7 @@ Attestation Private Key</p>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_48"><a class="anchor" href="#_test_setup_48"></a>Test Setup</h5>
+<h5 id="_test_setup_47"><a class="anchor" href="#_test_setup_47"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -32244,7 +32219,7 @@ Attestation Private Key</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_74"><a class="anchor" href="#_notestesting_considerations_74"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_75"><a class="anchor" href="#_notestesting_considerations_75"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Steps 6,7,8 cannot be executed with V1.0 SDK</p>
 </div>
@@ -32365,7 +32340,7 @@ reports failure</p>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_49"><a class="anchor" href="#_test_setup_49"></a>Test Setup</h5>
+<h5 id="_test_setup_48"><a class="anchor" href="#_test_setup_48"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -32466,7 +32441,7 @@ corresponding CSRRequest Command</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_75"><a class="anchor" href="#_notestesting_considerations_75"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_76"><a class="anchor" href="#_notestesting_considerations_76"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Steps 3, 6, 6.1, 6.2, 6.3 cannot be executed with V1.0 SDK</p>
 </div>
@@ -32562,7 +32537,7 @@ corresponding CSRRequest Command</p></td>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_50"><a class="anchor" href="#_test_setup_50"></a>Test Setup</h5>
+<h5 id="_test_setup_49"><a class="anchor" href="#_test_setup_49"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -32729,7 +32704,7 @@ corresponding CSRRequest Command</p></td>
 
 </div>
 <div class="sect4">
-<h5 id="_test_setup_51"><a class="anchor" href="#_test_setup_51"></a>Test Setup</h5>
+<h5 id="_test_setup_50"><a class="anchor" href="#_test_setup_50"></a>Test Setup</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -33634,7 +33609,7 @@ corresponding CSRRequest Command</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_52"><a class="anchor" href="#_test_setup_52"></a>Test Setup</h5>
+<h5 id="_test_setup_51"><a class="anchor" href="#_test_setup_51"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Test will need a reference implementation of the cluster of which the DUT is the client.</p>
 </div>
@@ -33688,7 +33663,7 @@ corresponding CSRRequest Command</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_76"><a class="anchor" href="#_notestesting_considerations_76"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_77"><a class="anchor" href="#_notestesting_considerations_77"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>The Cluster and Commands should be based on the cluster implementation on the DUT.<br>
 Test Step 2 is not in scope for 1.3<br>
@@ -33757,7 +33732,7 @@ Test Step 3 can be tested by using the command scan networks.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_53"><a class="anchor" href="#_test_setup_53"></a>Test Setup</h5>
+<h5 id="_test_setup_52"><a class="anchor" href="#_test_setup_52"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Test will need a reference implementation of the cluster of which the DUT is the server</p>
 </div>
@@ -33853,7 +33828,7 @@ Verify that the DUT does not send any response back to the TH.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_77"><a class="anchor" href="#_notestesting_considerations_77"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_78"><a class="anchor" href="#_notestesting_considerations_78"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Steps #7 cannot be executed with V1.0 SDK</p>
 </div>
@@ -33926,7 +33901,7 @@ TH device (Server) and DUT will be commissioned and are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_54"><a class="anchor" href="#_test_setup_54"></a>Test Setup</h5>
+<h5 id="_test_setup_53"><a class="anchor" href="#_test_setup_53"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Test will need a reference implementation of the cluster of which the DUT is the client.</p>
 </div>
@@ -34288,7 +34263,7 @@ verify the received request message has the same paths as provided in the comman
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_78"><a class="anchor" href="#_notestesting_considerations_78"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_79"><a class="anchor" href="#_notestesting_considerations_79"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Steps 1 through 4 requires Product Maker to provide instructions for how to trigger sending multiple commands on the DUT to<br>
 the TH. The commands used may be the same for all 4 test steps<br>
@@ -34496,7 +34471,7 @@ The response to the command that required a timed invoke MAY be a cluster specif
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_79"><a class="anchor" href="#_notestesting_considerations_79"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_80"><a class="anchor" href="#_notestesting_considerations_80"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test does not try sending as many batched commands in a single invoke message indicated by <code>MaxPathsPerInvoke</code>. This is because the value provided might be higher than number of commands we can<br>
 fit into single InvokeRequest base on packet MTU size.<br>
@@ -34570,7 +34545,7 @@ If DUT supports batched commands, it SHALL provide PIXIT.DGGEN.TEST_EVENT_TRIGGE
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_55"><a class="anchor" href="#_test_setup_55"></a>Test Setup</h5>
+<h5 id="_test_setup_54"><a class="anchor" href="#_test_setup_54"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Test will need a reference implementation of the cluster of which the DUT is the client. TH with Manufacturer specific clusters and attributes to be used for Test #21.</p>
 </div>
@@ -34767,7 +34742,7 @@ On receipt of this message, TH should send a report data action with the attribu
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_80"><a class="anchor" href="#_notestesting_considerations_80"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_81"><a class="anchor" href="#_notestesting_considerations_81"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>The Cluster and Commands should be based on the cluster implementation on the DUT.</p>
 </div>
@@ -34834,7 +34809,7 @@ On receipt of this message, TH should send a report data action with the attribu
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_56"><a class="anchor" href="#_test_setup_56"></a>Test Setup</h5>
+<h5 id="_test_setup_55"><a class="anchor" href="#_test_setup_55"></a>Test Setup</h5>
 <div class="paragraph">
 <p>N/A</p>
 </div>
@@ -35162,7 +35137,7 @@ Verify that there are no errors sent back for attributes the TH has no access to
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_81"><a class="anchor" href="#_notestesting_considerations_81"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_82"><a class="anchor" href="#_notestesting_considerations_82"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>The Cluster and Commands should be based on the cluster implementation on the DUT.<br>
 Test Steps #19 cannot be executed with V1.0 SDK</p>
@@ -35235,7 +35210,7 @@ Test Steps #19 cannot be executed with V1.0 SDK</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_57"><a class="anchor" href="#_test_setup_57"></a>Test Setup</h5>
+<h5 id="_test_setup_56"><a class="anchor" href="#_test_setup_56"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Test will need a reference implementation of the cluster of which the DUT is the client.</p>
 </div>
@@ -35374,7 +35349,7 @@ Verify by sending a ReadRequest that the Write Action on TH was successful.</p><
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_82"><a class="anchor" href="#_notestesting_considerations_82"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_83"><a class="anchor" href="#_notestesting_considerations_83"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>The Cluster and Commands should be based on the cluster implementation on the DUT.<br>
 Test Steps #2 and #15 cannot be executed with V1.0 SDK</p>
@@ -35442,7 +35417,7 @@ Test Steps #2 and #15 cannot be executed with V1.0 SDK</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_58"><a class="anchor" href="#_test_setup_58"></a>Test Setup</h5>
+<h5 id="_test_setup_57"><a class="anchor" href="#_test_setup_57"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -35682,7 +35657,7 @@ TH sends a second WriteRequestMessage to the DUT to modify the value of an attri
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_83"><a class="anchor" href="#_notestesting_considerations_83"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_84"><a class="anchor" href="#_notestesting_considerations_84"></a>Notes/Testing Considerations</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -35888,7 +35863,7 @@ FabricFiltered which is of type bool +</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_84"><a class="anchor" href="#_notestesting_considerations_84"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_85"><a class="anchor" href="#_notestesting_considerations_85"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>The Expected Outcome for the tests is verified by looking at the pretty printed TLV on the TH.<br>
 Vendor needs to specify how to trigger the subscription on the DUT.</p>
@@ -36126,7 +36101,7 @@ Activate the Subscription between CR1 and DUT and record the time when the primi
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_85"><a class="anchor" href="#_notestesting_considerations_85"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_86"><a class="anchor" href="#_notestesting_considerations_86"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Steps 3, 4, 5 and 6 cannot be executed with V1.0 SDK</p>
 </div>
@@ -36418,7 +36393,7 @@ Change all or few of the attributes on the DUT</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_86"><a class="anchor" href="#_notestesting_considerations_86"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_87"><a class="anchor" href="#_notestesting_considerations_87"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>The Expected Outcome for the tests is verified by looking at the pretty printed TLV on the TH.<br>
 Test Steps 17 19, 20 and 21 cannot be executed with V1.0 SDK</p>
@@ -36526,7 +36501,7 @@ Test Steps 17 19, 20 and 21 cannot be executed with V1.0 SDK</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_87"><a class="anchor" href="#_notestesting_considerations_87"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_88"><a class="anchor" href="#_notestesting_considerations_88"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>MaxInterval time will start after all DUT initialization is done (example: bootup, connect to Wi-Fi, etc.)</p>
 </div>
@@ -36598,7 +36573,7 @@ Test Steps 17 19, 20 and 21 cannot be executed with V1.0 SDK</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_59"><a class="anchor" href="#_test_setup_59"></a>Test Setup</h5>
+<h5 id="_test_setup_58"><a class="anchor" href="#_test_setup_58"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Test will need a reference implementation of the cluster of which the DUT is the client.</p>
 </div>
@@ -36658,7 +36633,7 @@ Test Steps 17 19, 20 and 21 cannot be executed with V1.0 SDK</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_88"><a class="anchor" href="#_notestesting_considerations_88"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_89"><a class="anchor" href="#_notestesting_considerations_89"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>The DUT should have a way of triggering the Timed Request Message for Testing.<br>
 Test Step #3 might not be testable.</p>
@@ -36726,7 +36701,7 @@ Test Step #3 might not be testable.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_60"><a class="anchor" href="#_test_setup_60"></a>Test Setup</h5>
+<h5 id="_test_setup_59"><a class="anchor" href="#_test_setup_59"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH will act as the client.</p>
 </div>
@@ -36790,7 +36765,7 @@ Wait for 5 seconds(Timer has expired) and then send the Write Request Message to
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_89"><a class="anchor" href="#_notestesting_considerations_89"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_90"><a class="anchor" href="#_notestesting_considerations_90"></a>Notes/Testing Considerations</h5>
 <hr>
 <hr>
 </div>
@@ -36857,7 +36832,7 @@ Wait for 5 seconds(Timer has expired) and then send the Write Request Message to
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_61"><a class="anchor" href="#_test_setup_61"></a>Test Setup</h5>
+<h5 id="_test_setup_60"><a class="anchor" href="#_test_setup_60"></a>Test Setup</h5>
 <div class="paragraph">
 <p>DUT should be setup to generate events which the TH can read.</p>
 </div>
@@ -36976,7 +36951,7 @@ The last chunked message should not receive any status response from the DUT.</p
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_90"><a class="anchor" href="#_notestesting_considerations_90"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_91"><a class="anchor" href="#_notestesting_considerations_91"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Steps 7 and 14 cannot be executed with V1.0 SDK<br>
 '''</p>
@@ -37208,7 +37183,7 @@ Perform a factory data reset on DUT, re-subscribe to events and continue to chan
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_91"><a class="anchor" href="#_notestesting_considerations_91"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_92"><a class="anchor" href="#_notestesting_considerations_92"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Step #14 cannot be executed with V1.0 SDK.</p>
 </div>
@@ -37312,7 +37287,7 @@ FabricFiltered which is of type bool.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_92"><a class="anchor" href="#_notestesting_considerations_92"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_93"><a class="anchor" href="#_notestesting_considerations_93"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -37455,7 +37430,7 @@ TH does not respond with Subscribe Response message to DUT.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_93"><a class="anchor" href="#_notestesting_considerations_93"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_94"><a class="anchor" href="#_notestesting_considerations_94"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Steps 3,4,5 and 6 can be optional if they cannot be tested.</p>
 </div>
@@ -37634,7 +37609,7 @@ Once all the Subscription Requests are activated, send a Subscribe request messa
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_94"><a class="anchor" href="#_notestesting_considerations_94"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_95"><a class="anchor" href="#_notestesting_considerations_95"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Step #4 cannot be executed with V1.0 SDK.</p>
 </div>
@@ -37790,7 +37765,7 @@ Trigger Event1 on DUT on the fabric where RC1 is present.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_95"><a class="anchor" href="#_notestesting_considerations_95"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_96"><a class="anchor" href="#_notestesting_considerations_96"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Step #6 and #7 cannot be executed with V1.0 SDK.</p>
 </div>
@@ -37920,7 +37895,7 @@ Trigger Event1 on DUT on the fabric where RC1 is present.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_96"><a class="anchor" href="#_notestesting_considerations_96"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_97"><a class="anchor" href="#_notestesting_considerations_97"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This TC is removed for Matter 1.2 release. This test case will be modified for 1.3<br>
 Step 2 needs to be automated to be run. Please use this as an example attribute till the automated test is ready.<br>
@@ -39405,7 +39380,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_97"><a class="anchor" href="#_notestesting_considerations_97"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_98"><a class="anchor" href="#_notestesting_considerations_98"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -39671,7 +39646,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_98"><a class="anchor" href="#_notestesting_considerations_98"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_99"><a class="anchor" href="#_notestesting_considerations_99"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -39905,7 +39880,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_99"><a class="anchor" href="#_notestesting_considerations_99"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_100"><a class="anchor" href="#_notestesting_considerations_100"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -40142,7 +40117,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_100"><a class="anchor" href="#_notestesting_considerations_100"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_101"><a class="anchor" href="#_notestesting_considerations_101"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -40365,7 +40340,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_101"><a class="anchor" href="#_notestesting_considerations_101"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_102"><a class="anchor" href="#_notestesting_considerations_102"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -40584,7 +40559,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_102"><a class="anchor" href="#_notestesting_considerations_102"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_103"><a class="anchor" href="#_notestesting_considerations_103"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -40803,7 +40778,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_103"><a class="anchor" href="#_notestesting_considerations_103"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_104"><a class="anchor" href="#_notestesting_considerations_104"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -41022,7 +40997,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_104"><a class="anchor" href="#_notestesting_considerations_104"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_105"><a class="anchor" href="#_notestesting_considerations_105"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -41182,7 +41157,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_105"><a class="anchor" href="#_notestesting_considerations_105"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_106"><a class="anchor" href="#_notestesting_considerations_106"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -41338,7 +41313,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_106"><a class="anchor" href="#_notestesting_considerations_106"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_107"><a class="anchor" href="#_notestesting_considerations_107"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -41571,7 +41546,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_107"><a class="anchor" href="#_notestesting_considerations_107"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_108"><a class="anchor" href="#_notestesting_considerations_108"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -41807,7 +41782,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_108"><a class="anchor" href="#_notestesting_considerations_108"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_109"><a class="anchor" href="#_notestesting_considerations_109"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -42096,7 +42071,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_109"><a class="anchor" href="#_notestesting_considerations_109"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_110"><a class="anchor" href="#_notestesting_considerations_110"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -42339,7 +42314,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_110"><a class="anchor" href="#_notestesting_considerations_110"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_111"><a class="anchor" href="#_notestesting_considerations_111"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -42548,7 +42523,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_111"><a class="anchor" href="#_notestesting_considerations_111"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_112"><a class="anchor" href="#_notestesting_considerations_112"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -42760,7 +42735,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_112"><a class="anchor" href="#_notestesting_considerations_112"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_113"><a class="anchor" href="#_notestesting_considerations_113"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -42972,7 +42947,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_113"><a class="anchor" href="#_notestesting_considerations_113"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_114"><a class="anchor" href="#_notestesting_considerations_114"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -43184,7 +43159,7 @@ This test should be run for each endpoint on the device, using the appropriate P
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_114"><a class="anchor" href="#_notestesting_considerations_114"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_115"><a class="anchor" href="#_notestesting_considerations_115"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -43345,7 +43320,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_115"><a class="anchor" href="#_notestesting_considerations_115"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_116"><a class="anchor" href="#_notestesting_considerations_116"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -43509,7 +43484,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_116"><a class="anchor" href="#_notestesting_considerations_116"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_117"><a class="anchor" href="#_notestesting_considerations_117"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -43662,7 +43637,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_117"><a class="anchor" href="#_notestesting_considerations_117"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_118"><a class="anchor" href="#_notestesting_considerations_118"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -43812,7 +43787,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_118"><a class="anchor" href="#_notestesting_considerations_118"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_119"><a class="anchor" href="#_notestesting_considerations_119"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -43965,7 +43940,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_119"><a class="anchor" href="#_notestesting_considerations_119"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_120"><a class="anchor" href="#_notestesting_considerations_120"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -44115,7 +44090,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_120"><a class="anchor" href="#_notestesting_considerations_120"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_121"><a class="anchor" href="#_notestesting_considerations_121"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -44452,7 +44427,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_121"><a class="anchor" href="#_notestesting_considerations_121"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_122"><a class="anchor" href="#_notestesting_considerations_122"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -44792,7 +44767,7 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_122"><a class="anchor" href="#_notestesting_considerations_122"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_123"><a class="anchor" href="#_notestesting_considerations_123"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
@@ -45030,7 +45005,7 @@ If the bridge supports both actuator and sensor/switch devices, use at least one
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_62"><a class="anchor" href="#_test_setup_62"></a>Test Setup</h5>
+<h5 id="_test_setup_61"><a class="anchor" href="#_test_setup_61"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Manufacturer has provided bridge as DUT with some devices it can bridge, along<br>
 with means to setup the bridge (e.g. add/remove/rename/group bridged devices).</p>
@@ -45194,7 +45169,7 @@ cluster, derive the (application) device type(s) of the bridged device</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_123"><a class="anchor" href="#_notestesting_considerations_123"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_124"><a class="anchor" href="#_notestesting_considerations_124"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -45288,7 +45263,7 @@ are being added or deleted.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_63"><a class="anchor" href="#_test_setup_63"></a>Test Setup</h5>
+<h5 id="_test_setup_62"><a class="anchor" href="#_test_setup_62"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Manufacturer has provided bridge as DUT with some devices it can bridge, along<br>
 with means to setup the bridge (e.g. add/remove/rename/group bridged devices).</p>
@@ -45496,7 +45471,7 @@ changed</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_124"><a class="anchor" href="#_notestesting_considerations_124"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_125"><a class="anchor" href="#_notestesting_considerations_125"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -45590,7 +45565,7 @@ are renamed or operated using non-Matter means.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_64"><a class="anchor" href="#_test_setup_64"></a>Test Setup</h5>
+<h5 id="_test_setup_63"><a class="anchor" href="#_test_setup_63"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Manufacturer has provided bridge as DUT with some devices it can bridge, along<br>
 with means to setup to bridge (e.g. add/remove/rename/group bridged devices).</p>
@@ -45666,7 +45641,7 @@ cluster on the same endpoint as in 1a</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_125"><a class="anchor" href="#_notestesting_considerations_125"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_126"><a class="anchor" href="#_notestesting_considerations_126"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -45753,7 +45728,7 @@ cluster on the same endpoint as in 1a</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_65"><a class="anchor" href="#_test_setup_65"></a>Test Setup</h5>
+<h5 id="_test_setup_64"><a class="anchor" href="#_test_setup_64"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH simulates a bridge with some bridged devices; can use the <code>bridge-app</code> for this purpose.<br>
 <code>bridge-app</code> is provided with in the <code>examples</code> folder of the repo <a href="https://github.com/project-chip/connectedhomeip" class="bare">https://github.com/project-chip/connectedhomeip</a>.</p>
@@ -46068,7 +46043,7 @@ cluster on the same endpoint as in 1a</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_126"><a class="anchor" href="#_notestesting_considerations_126"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_127"><a class="anchor" href="#_notestesting_considerations_127"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
@@ -46331,7 +46306,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_127"><a class="anchor" href="#_notestesting_considerations_127"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_128"><a class="anchor" href="#_notestesting_considerations_128"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-DIAGLOG-1.1 from the Diagnostic Logs cluster section.<br>
 This test cannot be executed with V1.0 SDK.</p>
@@ -46438,7 +46413,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_128"><a class="anchor" href="#_notestesting_considerations_128"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_129"><a class="anchor" href="#_notestesting_considerations_129"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-SU-2.3 from the OTA Software Update section.</p>
 </div>
@@ -46539,7 +46514,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_129"><a class="anchor" href="#_notestesting_considerations_129"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_130"><a class="anchor" href="#_notestesting_considerations_130"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-DIAGLOG-1.3 from the Diagnostic Logs cluster section.<br>
 This test cannot be executed with V1.0 SDK.</p>
@@ -46643,7 +46618,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_130"><a class="anchor" href="#_notestesting_considerations_130"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_131"><a class="anchor" href="#_notestesting_considerations_131"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-SU-3.3 from the OTA Software Update section.</p>
 </div>
@@ -46783,7 +46758,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_131"><a class="anchor" href="#_notestesting_considerations_131"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_132"><a class="anchor" href="#_notestesting_considerations_132"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test cannot be executed with V1.0 SDK.</p>
 </div>
@@ -46916,7 +46891,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_132"><a class="anchor" href="#_notestesting_considerations_132"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_133"><a class="anchor" href="#_notestesting_considerations_133"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test cannot be executed with V1.0 SDK.</p>
 </div>
@@ -46988,7 +46963,7 @@ Metadata - Optional.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_66"><a class="anchor" href="#_test_setup_66"></a>Test Setup</h5>
+<h5 id="_test_setup_65"><a class="anchor" href="#_test_setup_65"></a>Test Setup</h5>
 <div class="paragraph">
 <p>DUT can initiate a BDX transfer with a SendInit message to TH or TH can initiate a BDX transfer with a ReceiveInit message to DUT.</p>
 </div>
@@ -47043,7 +47018,7 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_133"><a class="anchor" href="#_notestesting_considerations_133"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_134"><a class="anchor" href="#_notestesting_considerations_134"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-SU-3.3 from the OTA Software Update section or TC-DIAGLOG-1.1 from the Diagnostic Logs cluster section.</p>
 </div>
@@ -47108,7 +47083,7 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_67"><a class="anchor" href="#_test_setup_67"></a>Test Setup</h5>
+<h5 id="_test_setup_66"><a class="anchor" href="#_test_setup_66"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH can initiate a BDX transfer with a SendInit message to TH or DUT can initiate a BDX transfer with a ReceiveInit message to DUT.</p>
 </div>
@@ -47177,7 +47152,7 @@ Block Counter - Must correspond to the Block Counter which was embedded in the B
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_134"><a class="anchor" href="#_notestesting_considerations_134"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_135"><a class="anchor" href="#_notestesting_considerations_135"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-SU-2.3 from the OTA Software Update section or TC-DIAGLOG-1.3 from the Diagnostic Logs cluster section.<br>
 Test Step #4 cannot be executed with V1.0 SDK.</p>
@@ -47243,7 +47218,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_68"><a class="anchor" href="#_test_setup_68"></a>Test Setup</h5>
+<h5 id="_test_setup_67"><a class="anchor" href="#_test_setup_67"></a>Test Setup</h5>
 <div class="paragraph">
 <p>DUT sends a ReceiveInit message to TH + TH sends a ReceiveAccept message back to DUT + TH sends a Block message to DUT + DUT sends a BlockAck message back to TH. After a while, TH stops sending Blocks which leads to idle timeout and abort transfer session.</p>
 </div>
@@ -47303,7 +47278,7 @@ Block Counter - Must correspond to the Block Counter which was embedded in the B
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_135"><a class="anchor" href="#_notestesting_considerations_135"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_136"><a class="anchor" href="#_notestesting_considerations_136"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-SU-2.3 from the OTA Software Update section.<br>
 This test cannot be executed with V1.0 SDK.</p>
@@ -47418,7 +47393,7 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_136"><a class="anchor" href="#_notestesting_considerations_136"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_137"><a class="anchor" href="#_notestesting_considerations_137"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be initiated from OTA Software Update section or Diagnostic Logs cluster section. This test can also be verified with TH sending a ReceiveInit message to the DUT.<br>
 This test cannot be executed with V1.0 SDK.</p>
@@ -47523,7 +47498,7 @@ Block Counter - Must correspond to the Block Counter which was embedded in the B
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_137"><a class="anchor" href="#_notestesting_considerations_137"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_138"><a class="anchor" href="#_notestesting_considerations_138"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be initiated from OTA Software Update section or Diagnostic Logs cluster section. This test can also be verified with TH sending a SendInit message to the DUT.<br>
 This test cannot be executed with V1.0 SDK.</p>
@@ -47795,7 +47770,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_69"><a class="anchor" href="#_test_setup_69"></a>Test Setup</h5>
+<h5 id="_test_setup_68"><a class="anchor" href="#_test_setup_68"></a>Test Setup</h5>
 <div class="paragraph">
 <p>OTA-R/TH and DUT are on the same fabric. OTA-P/TH2 is commissioned later as part of the test step.</p>
 </div>
@@ -47837,7 +47812,7 @@ Endpoint number of the OTA-P/TH2 on the ProviderNodeID.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_138"><a class="anchor" href="#_notestesting_considerations_138"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_139"><a class="anchor" href="#_notestesting_considerations_139"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Vendor needs to mention steps on how to trigger the <em>AnnounceOTAProvider</em> Command.</p>
 </div>
@@ -47911,7 +47886,7 @@ Endpoint number of the OTA-P/TH2 on the ProviderNodeID.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_70"><a class="anchor" href="#_test_setup_70"></a>Test Setup</h5>
+<h5 id="_test_setup_69"><a class="anchor" href="#_test_setup_69"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH, TH2 and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -47973,7 +47948,7 @@ Wait for 2 minutes.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_139"><a class="anchor" href="#_notestesting_considerations_139"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_140"><a class="anchor" href="#_notestesting_considerations_140"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Triggering OTA on the DUT is vendor specific. This is applicable for all devices which are triggering OTA.</p>
 </div>
@@ -48038,7 +48013,7 @@ Wait for 2 minutes.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_71"><a class="anchor" href="#_test_setup_71"></a>Test Setup</h5>
+<h5 id="_test_setup_70"><a class="anchor" href="#_test_setup_70"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -48119,7 +48094,7 @@ Verify that there is a transfer of the software image after the second <em>Query
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_140"><a class="anchor" href="#_notestesting_considerations_140"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_141"><a class="anchor" href="#_notestesting_considerations_141"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Step #5 cannot be executed with V1.0 SDK.</p>
 </div>
@@ -48188,7 +48163,7 @@ Verify that there is a transfer of the software image after the second <em>Query
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_72"><a class="anchor" href="#_test_setup_72"></a>Test Setup</h5>
+<h5 id="_test_setup_71"><a class="anchor" href="#_test_setup_71"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -48257,7 +48232,7 @@ Verify that the DUT starts a new transfer of software image when sending another
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_141"><a class="anchor" href="#_notestesting_considerations_141"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_142"><a class="anchor" href="#_notestesting_considerations_142"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Requestor User Consent is specific to vendor implementation.<br>
 Test Step #3 cannot be executed with V1.0 SDK.<br>
@@ -48328,7 +48303,7 @@ Test Step #5 cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_73"><a class="anchor" href="#_test_setup_73"></a>Test Setup</h5>
+<h5 id="_test_setup_72"><a class="anchor" href="#_test_setup_72"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -48366,7 +48341,7 @@ NewVersion - verify that this is the same as the software version that was downl
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_142"><a class="anchor" href="#_notestesting_considerations_142"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_143"><a class="anchor" href="#_notestesting_considerations_143"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Vendor needs to provide instructions on how to trigger the DUT/OTA-R to send the <em>ApplyUpdateRequest</em>.</p>
 </div>
@@ -48431,7 +48406,7 @@ NewVersion - verify that this is the same as the software version that was downl
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_74"><a class="anchor" href="#_test_setup_74"></a>Test Setup</h5>
+<h5 id="_test_setup_73"><a class="anchor" href="#_test_setup_73"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -48505,7 +48480,7 @@ Verify the <em>SoftwareVersion</em> attribute from the Basic Information cluster
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_143"><a class="anchor" href="#_notestesting_considerations_143"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_144"><a class="anchor" href="#_notestesting_considerations_144"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Software version can be verified by querying the Basic Information cluster.</p>
 </div>
@@ -48570,7 +48545,7 @@ Verify the <em>SoftwareVersion</em> attribute from the Basic Information cluster
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_75"><a class="anchor" href="#_test_setup_75"></a>Test Setup</h5>
+<h5 id="_test_setup_74"><a class="anchor" href="#_test_setup_74"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -48613,7 +48588,7 @@ SoftwareVersion - verify the software version on the DUT to match the version do
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_144"><a class="anchor" href="#_notestesting_considerations_144"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_145"><a class="anchor" href="#_notestesting_considerations_145"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -48684,7 +48659,7 @@ SoftwareVersion - verify the software version on the DUT to match the version do
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_76"><a class="anchor" href="#_test_setup_76"></a>Test Setup</h5>
+<h5 id="_test_setup_75"><a class="anchor" href="#_test_setup_75"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -48774,7 +48749,7 @@ ProductID - Same as what is available in the <em>ProductID</em> attribute of the
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_145"><a class="anchor" href="#_notestesting_considerations_145"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_146"><a class="anchor" href="#_notestesting_considerations_146"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -48845,7 +48820,7 @@ ProductID - Same as what is available in the <em>ProductID</em> attribute of the
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_77"><a class="anchor" href="#_test_setup_77"></a>Test Setup</h5>
+<h5 id="_test_setup_76"><a class="anchor" href="#_test_setup_76"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
 <em>DefaultOTAProviders</em> Attribute is set by Administrators, either during Commissioning or at a later time, to set the Provider Location for the default OTA Provider Node to use for software updates on a given Fabric. There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute of the OTA Requestor should return the value as Idle.</p>
@@ -48904,7 +48879,7 @@ If the Location field is present, verify that the value is same as Basic Informa
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_146"><a class="anchor" href="#_notestesting_considerations_146"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_147"><a class="anchor" href="#_notestesting_considerations_147"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Triggering OTA on the DUT is vendor specific. This is applicable for all devices which are triggering OTA.</p>
 </div>
@@ -48973,7 +48948,7 @@ If the Location field is present, verify that the value is same as Basic Informa
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_78"><a class="anchor" href="#_test_setup_78"></a>Test Setup</h5>
+<h5 id="_test_setup_77"><a class="anchor" href="#_test_setup_77"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -49010,7 +48985,7 @@ UserConsentNeeded field is set to False.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_147"><a class="anchor" href="#_notestesting_considerations_147"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_148"><a class="anchor" href="#_notestesting_considerations_148"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Step #1 - User Consent is obtained from the user and is specific to vendor implementation.</p>
 </div>
@@ -49075,7 +49050,7 @@ UserConsentNeeded field is set to False.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_79"><a class="anchor" href="#_test_setup_79"></a>Test Setup</h5>
+<h5 id="_test_setup_78"><a class="anchor" href="#_test_setup_78"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -49173,7 +49148,7 @@ Verify that the Image downloaded by the OTA-R/TH is valid and is the same image 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_148"><a class="anchor" href="#_notestesting_considerations_148"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_149"><a class="anchor" href="#_notestesting_considerations_149"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Other than Test Case #2 all test cases assume that the software update image is available.<br>
 Test Step #2 - The DUT should not have any cached image already downloaded.<br>
@@ -49245,7 +49220,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_80"><a class="anchor" href="#_test_setup_80"></a>Test Setup</h5>
+<h5 id="_test_setup_79"><a class="anchor" href="#_test_setup_79"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -49320,7 +49295,7 @@ Verify that the DUT finishes sending the image to the TH.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_149"><a class="anchor" href="#_notestesting_considerations_149"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_150"><a class="anchor" href="#_notestesting_considerations_150"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Step #5 cannot be executed with V1.0 SDK.</p>
 </div>
@@ -49389,7 +49364,7 @@ Verify that the DUT finishes sending the image to the TH.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_81"><a class="anchor" href="#_test_setup_81"></a>Test Setup</h5>
+<h5 id="_test_setup_80"><a class="anchor" href="#_test_setup_80"></a>Test Setup</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.<br>
 Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.<br>
@@ -49446,7 +49421,7 @@ Verify that the entire OTA process is restarted on DUT when OTA-R/TH sends anoth
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_150"><a class="anchor" href="#_notestesting_considerations_150"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_151"><a class="anchor" href="#_notestesting_considerations_151"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Cases where the DUT needs to be forced to send a certain response might not be testable.</p>
 </div>
@@ -49532,7 +49507,7 @@ TH can be on either fabric depending on the test.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_82"><a class="anchor" href="#_test_setup_82"></a>Test Setup</h5>
+<h5 id="_test_setup_81"><a class="anchor" href="#_test_setup_81"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commissioner or Administrator should install necessary ACL entries at commissioning time or later to enable processing of <em>QueryImage</em> commands from OTA Requestors on their fabric.</p>
 </div>
@@ -49625,7 +49600,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_151"><a class="anchor" href="#_notestesting_considerations_151"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_152"><a class="anchor" href="#_notestesting_considerations_152"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -49691,7 +49666,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_83"><a class="anchor" href="#_test_setup_83"></a>Test Setup</h5>
+<h5 id="_test_setup_82"><a class="anchor" href="#_test_setup_82"></a>Test Setup</h5>
 <div class="paragraph">
 <p>Commission DUT to TH, if not done so already.</p>
 </div>
@@ -49728,7 +49703,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_152"><a class="anchor" href="#_notestesting_considerations_152"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_153"><a class="anchor" href="#_notestesting_considerations_153"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Vendor needs to provide a way to verify that the device is able to perform software update if OTA Requestor cluster is not supported.</p>
 </div>
@@ -50017,7 +49992,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_84"><a class="anchor" href="#_test_setup_84"></a>Test Setup</h5>
+<h5 id="_test_setup_83"><a class="anchor" href="#_test_setup_83"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -50542,7 +50517,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_85"><a class="anchor" href="#_test_setup_85"></a>Test Setup</h5>
+<h5 id="_test_setup_84"><a class="anchor" href="#_test_setup_84"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -51219,7 +51194,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_86"><a class="anchor" href="#_test_setup_86"></a>Test Setup</h5>
+<h5 id="_test_setup_85"><a class="anchor" href="#_test_setup_85"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -52629,7 +52604,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_87"><a class="anchor" href="#_test_setup_87"></a>Test Setup</h5>
+<h5 id="_test_setup_86"><a class="anchor" href="#_test_setup_86"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -53802,7 +53777,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_88"><a class="anchor" href="#_test_setup_88"></a>Test Setup</h5>
+<h5 id="_test_setup_87"><a class="anchor" href="#_test_setup_87"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -54180,7 +54155,7 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_setup_89"><a class="anchor" href="#_test_setup_89"></a>Test Setup</h5>
+<h5 id="_test_setup_88"><a class="anchor" href="#_test_setup_88"></a>Test Setup</h5>
 
 </div>
 <div class="sect4">
@@ -55320,7 +55295,7 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_153"><a class="anchor" href="#_notestesting_considerations_153"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_154"><a class="anchor" href="#_notestesting_considerations_154"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -55800,8 +55775,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master d9c18a3<br>
-Last updated 2024-02-19 19:39:07 UTC
+Version master 1442949<br>
+Last updated 2024-02-20 16:01:12 UTC
 </div>
 </div>
 </body>
