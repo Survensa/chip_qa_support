@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 1442949,</span>
-<span id="revdate">2024-02-20 08:00:47 -0800</span>
+<span id="revnumber">version master 05caccf,</span>
+<span id="revdate">2024-02-20 12:58:22 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -17540,7 +17540,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0005(LastNetworkingStatus)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads LastNetworkingStatus attribute from the DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends LastNetworkingStatus as Success which is 0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends LastNetworkingStatus as Success which is 0 or null if 'NumNetworks' - 1 == 0 entries.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
@@ -17554,7 +17554,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0006(LastNetworkID)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads LastNetworkID attribute from the DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends LastNetworkID as PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends LastNetworkID as PIXIT.CNET.WIFI_1ST_ACCESSPOINT_SSID or null if 'NumNetworks' - 1 == 0 entries.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
@@ -17932,7 +17932,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.8.7.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0005(LastNetworkingStatus)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads LastNetworkingStatus attribute from the DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends LastNetworkingStatus as Success which is 0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends LastNetworkingStatus as Success which is 0 or null if 'NumNetworks' - 1 == 0 entries.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
@@ -17946,7 +17946,7 @@ Verify that at least one of the following bits is set: Bit 4 (IsSynchronizedSlee
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CNET.S.A0006(LastNetworkID)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads LastNetworkID attribute from the DUT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends LastNetworkID as the extended PAN ID of PIXIT.CNET.THREAD_1ST_OPERATIONALDATASET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that DUT sends LastNetworkID as the extended PAN ID of PIXIT.CNET.THREAD_1ST_OPERATIONALDATASET or null if 'NumNetworks' - 1 == 0 entries.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
@@ -55775,8 +55775,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 1442949<br>
-Last updated 2024-02-20 16:01:12 UTC
+Version master 05caccf<br>
+Last updated 2024-02-20 20:58:34 UTC
 </div>
 </div>
 </body>
