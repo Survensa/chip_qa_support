@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 6fe0e0f (local changes),</span>
-<span id="revdate">2024-02-20 17:02:42 +0000</span>
+<span id="revnumber">version master 6eadc7e (local changes),</span>
+<span id="revdate">2024-02-20 21:20:55 +0000</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -6456,7 +6456,7 @@ attribute to 0.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_18"><a class="anchor" href="#_effect_on_receipt_18"></a>1.5.7.2.1. Effect on Receipt</h6>
 <div class="paragraph">
-<p>If the OffOnly feature is supported, on receipt of the On command, an INVALID_IN_STATE failure status response SHALL be sent.
+<p>If the OffOnly feature is supported, on receipt of the On command, an UNSUPPORTED_COMMAND failure status response SHALL be sent.
 Otherwise, on receipt of the On command, a server SHALL set the OnOff attribute to TRUE.</p>
 </div>
 <div class="paragraph">
@@ -6471,7 +6471,7 @@ the OffWaitTime attribute to 0.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_19"><a class="anchor" href="#_effect_on_receipt_19"></a>1.5.7.3.1. Effect on Receipt</h6>
 <div class="paragraph">
-<p>If the OffOnly feature is supported, on receipt of the Toggle command, an INVALID_IN_STATE failure status response SHALL be sent.
+<p>If the OffOnly feature is supported, on receipt of the Toggle command, an UNSUPPORTED_COMMAND failure status response SHALL be sent.
 Otherwise, on receipt of the Toggle command, if the value of the OnOff attribute is equal to
 FALSE, the server SHALL set the OnOff attribute to TRUE, otherwise,
 the server SHALL set the OnOff attribute to FALSE.</p>
@@ -55655,8 +55655,8 @@ if that cluster or a derivative is on the same endpoint as this cluster.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 6fe0e0f (local changes)<br>
-Last updated 2024-02-20 17:02:58 UTC
+Version master 6eadc7e (local changes)<br>
+Last updated 2024-02-21 00:00:43 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
