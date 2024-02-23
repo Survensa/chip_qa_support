@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 5300caa,</span>
-<span id="revdate">2024-02-22 09:28:50 -0800</span>
+<span id="revnumber">version master 4731ad6,</span>
+<span id="revdate">2024-02-22 13:33:06 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -5142,7 +5142,7 @@ Verify The QR code must be of sufficient size and contrast respective to surface
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.BLE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH does not respond to DUT and DUT keeps sending ADVs</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Between T0 and 30s, DUT should send ADVs each 20ms to 60ms</p>
-<p class="tableblock">Between 30s and 15min, DUT should send ADVs each 150ms to 1200ms</p></td>
+<p class="tableblock">Between 30s and 900s, DUT should send ADVs each 150ms to 1285ms. Allow +/- 10ms margin on the measured value.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
@@ -5167,7 +5167,8 @@ Verify The QR code must be of sufficient size and contrast respective to surface
 <p>If the DUT is still sending ADVs:</p>
 </div>
 <div class="paragraph">
-<p>DUT must send ADVs at a rate equal to 1200ms.</p>
+<p>DUT must send ADVs at an interval greater than 1200ms.
+Automated versions of this test case should add a visible note in the logs or reports if the advertising rate is not 1285ms +/- 10ms, even though this is legal, since 1285ms is a SHOULD in the core specification.</p>
 </div>
 <div class="paragraph">
 <p>The following Advertising PDU payload fields shall comply with section 5.4.2.5.6. "Advertising Data".
@@ -35962,17 +35963,14 @@ CR2 is setup such that it has limited access to the DUT based on the test step.<
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0a</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.11.2.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR1 reads the Descriptor cluster ServerList attribute from EP0. Save as ep0_servers.</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0b</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.11.2.2</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If ep0_servers contains the ICD Management cluster ID (0x0046), CR1 reads from the DUT the <em>IdleModeDuration</em> attribute and sets SUBSCRIPTION_MAX_INTERVAL_PUBLISHER_LIMIT = <em>IdleModeDuration</em>. Otherwise, set SUBSCRIPTION_MAX_INTERVAL_PUBLISHER_LIMIT = 60 mins</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CR1 reads the <em>ServerList</em> attribute from the Descriptor cluster on EP0.<br>
+If the ICD Management cluster ID (70,0x46) is present in the list:<br>
+<br>
+* CR1 reads the <em>IdleModeDuration</em> attribute from the DUT and sets SUBSCRIPTION_MAX_INTERVAL_PUBLISHER_LIMIT_SEC = <em>IdleModeDuration</em> and <code>min_interval_floor_s</code> to 0, otherwise,<br>
+set SUBSCRIPTION_MAX_INTERVAL_PUBLISHER_LIMIT_SEC = 60 mins and <code>min_interval_floor_s</code> to 3.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -36055,13 +36053,6 @@ Start another subscription with the DataVersionFilter field set to the data vers
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CR1 reads the <em>ServerList</em> attribute from the Descriptor cluster on EP0. If the ICD Management cluster ID (70,0x46) is present in the list, set <code>min_interval_floor_s</code> to 0, otherwise set <code>min_interval_floor_s</code> to 3.</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10.6.5/8.5.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CR1 sends a subscription request action for an attribute and sets the MinIntervalFloor to <code>min_interval_floor_s</code> and MaxIntervalCeiling to 10.<br>
@@ -36069,28 +36060,28 @@ Activate the Subscription between CR1 and DUT and record the time when the primi
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CR1 modifies the attribute which has been subscribed to on the DUT and waits for an incoming ReportDataMessage. Save the time that the report is received as <code>t_update</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that <code>t_update</code> - <code>t_report</code> is greater than <code>min_interval_floor_s</code> and less than the ReadClient SubscriptionTimeout (calculated by the ReadClient using <code>max_interval_s</code> and the maximum estimated network delay based on the MRP parameters for retries with backoff)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10.6.5/8.5.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CR1 sends a subscription request action for an attribute and set the MinIntervalFloor value to be greater than MaxIntervalCeiling. +</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT sends an error message and the subscription is not established.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10.6.5/8.5.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CR1 sends a subscription request to subscribe to a specific global attribute from all clusters on all endpoints. AttributePath = [[Attribute = Global Attribute]]. +</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the Subscription succeeds and the DUT sends back the attribute values for the global attribute.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10.6.5/8.5.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CR1 sends a subscription request to subscribe to a global attribute on an endpoint on all clusters.  AttributePath = [[Attribute = Global Attribute, Endpoint = EndpointID ]]. +</p></td>
@@ -36098,7 +36089,7 @@ Activate the Subscription between CR1 and DUT and record the time when the primi
  Verify no data from other endpoints is sent back.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8.4.3.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CR1 sends a subscription request to the DUT with both AttributeRequests and EventRequests as empty</p></td>
@@ -55782,8 +55773,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 5300caa<br>
-Last updated 2024-02-22 17:29:03 UTC
+Version master 4731ad6<br>
+Last updated 2024-02-22 21:33:20 UTC
 </div>
 </div>
 </body>
