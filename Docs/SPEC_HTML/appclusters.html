@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master c58d30e (local changes),</span>
-<span id="revdate">2024-02-22 21:23:54 +0000</span>
+<span id="revnumber">version master a82d062 (local changes),</span>
+<span id="revdate">2024-02-23 14:58:07 -0800</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -11608,7 +11608,8 @@ That is, a derived cluster specification of this cluster cannot define states wi
 </div>
 <div class="paragraph">
 <p>A manufacturer-specific state definition SHALL NOT duplicate the general state definitions or derived cluster state definitions.
-That is, a manufacturer-defined state defined for this cluster or a derived cluster thereof cannot define a state with the same semantics as the general states defined below or states defined in a derived cluster.</p>
+That is, a manufacturer-defined state defined for this cluster or a derived cluster thereof cannot define a state with the same semantics as the general states defined below or states defined in a derived cluster.
+Such manufacturer-specific state definitions SHALL be scoped in the context of the Vendor ID present in the Basic Information cluster.</p>
 </div>
 <div class="paragraph">
 <p>The following table defines the generally applicable states.</p>
@@ -11758,7 +11759,8 @@ That is, a derived cluster specification of this cluster cannot define errors wi
 </div>
 <div class="paragraph">
 <p>The manufacturer-specific error definitions SHALL NOT duplicate the general error definitions or derived cluster-specific error definitions.
-That is, a manufacturer-defined error defined for this cluster or a derived cluster thereof cannot define errors with the same semantics as the general errors defined below or errors defined in a derived cluster.</p>
+That is, a manufacturer-defined error defined for this cluster or a derived cluster thereof cannot define errors with the same semantics as the general errors defined below or errors defined in a derived cluster.
+Such manufacturer-specific error definitions SHALL be scoped in the context of the Vendor ID present in the Basic Information cluster.</p>
 </div>
 <div class="paragraph">
 <p>The set of ErrorStateID field values defined in each of the generic or derived Operational State cluster specifications is called ErrorState.</p>
@@ -18740,19 +18742,17 @@ most recently zero.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Priority</th>
-<th class="tableblock halign-left valign-top">Quality</th>
 <th class="tableblock halign-left valign-top">Access</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
@@ -18762,7 +18762,6 @@ most recently zero.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CumulativeEnergyMeasured</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INFO</p></td>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CUME</p></td>
 </tr>
@@ -18770,7 +18769,6 @@ most recently zero.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PeriodicEnergyMeasured</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INFO</p></td>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PERE</p></td>
 </tr>
@@ -18780,8 +18778,8 @@ most recently zero.</p>
 <h5 id="_cumulativeenergymeasured_event"><a class="anchor" href="#_cumulativeenergymeasured_event"></a>2.12.7.1. CumulativeEnergyMeasured Event</h5>
 <div class="paragraph">
 <p>This event SHALL be generated when the server takes a snapshot
-of the cumulative energy imported by the server, exported from the
-server, or both.</p>
+of the cumulative energy imported by the server, exported from the server, or both,
+but not more frequently than the rate mentioned in the description above of the related attribute.</p>
 </div>
 <div class="paragraph">
 <p>The data of this event SHALL contain the following information:</p>
@@ -20104,19 +20102,17 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Priority</th>
-<th class="tableblock halign-left valign-top">Quality</th>
 <th class="tableblock halign-left valign-top">Access</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
@@ -20126,7 +20122,6 @@ the server SHALL NOT delay marking this attribute as ready for report for longer
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MeasurementPeriodRanges</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INFO</p></td>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_Ranges">Ranges</a></p></td>
 </tr>
@@ -27653,7 +27648,7 @@ range are still satisfactory.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OutdoorTemperature</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OutdoorTemperature is derived from a remote node</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_OutdoorTemperature">OutdoorTemperature</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
@@ -27663,6 +27658,12 @@ range are still satisfactory.</p>
 </tr>
 </tbody>
 </table>
+<div class="sect5">
+<h6 id="_outdoortemperature_bit"><a class="anchor" href="#_outdoortemperature_bit"></a>4.3.8.9.1. OutdoorTemperature Bit</h6>
+<div class="paragraph">
+<p>This bit SHALL be supported if the <a href="#ref_OutdoorTemperature">OutdoorTemperature</a> attribute is supported.</p>
+</div>
+</div>
 </div>
 <div class="sect4">
 <h5 id="ref_ScheduleDayOfWeekBitmap"><a class="anchor" href="#ref_ScheduleDayOfWeekBitmap"></a>4.3.8.10. ScheduleDayOfWeekBitmap Type</h5>
@@ -55655,8 +55656,8 @@ if that cluster or a derivative is on the same endpoint as this cluster.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master c58d30e (local changes)<br>
-Last updated 2024-02-23 00:00:44 UTC
+Version master a82d062 (local changes)<br>
+Last updated 2024-02-24 00:00:22 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
