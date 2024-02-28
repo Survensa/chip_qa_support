@@ -34,12 +34,14 @@ def xlsx_to_html(input_file, output_file):
         for row in sheet.iter_rows(min_row=2):
             row_data = [
                 (
-                    "<td style='border: 1px solid black; padding: 8px;'>"
-                    + str(cell.value)
-                    + "</td>"
+                    (
+                        "<td style='border: 1px solid black; padding: 8px;'>"
+                        + str(cell.value)
+                        + "</td>"
+                    )
+                    if cell.value is not None
+                    else "<td></td>"
                 )
-                if cell.value is not None
-                else "<td></td>"
                 for cell in row
             ]
             html_file.write("<tr>" + "".join(row_data) + "</tr>\n")
