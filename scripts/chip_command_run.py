@@ -23,7 +23,7 @@ parser.add_argument(
 args = parser.parse_args()
 
 # Load configuration from YAML file
-config_path = os.path.join(os.path.expanduser("~"), "chip_command_run", "config.yaml")
+config_path = os.path.join(os.path.expanduser("~"), "chip_qa_support", "config.yaml")
 with open(config_path, "r") as config_file:
     yaml_info = yaml.safe_load(config_file)
     build = yaml_info.get("chip_tool_directory")
@@ -48,7 +48,7 @@ def run_command_from_yaml(yaml_file_path):
 
         file_path = os.path.join(os.path.expanduser("~"), build)
         save_path = os.path.join(
-            os.path.expanduser("~"), "chip_command_run", "logs", "execution_logs"
+            os.path.expanduser("~"), "chip_qa_support", "logs", "execution_logs"
         )
         os.chdir(file_path)
         date = datetime.now().strftime("%m_%Y_%d_(%I_%M_%S_%p)")
@@ -70,7 +70,7 @@ def run_command_from_yaml(yaml_file_path):
 
         # Process the specific log file immediately after running the command
         output_directory = os.path.join(
-            os.path.expanduser("~"), "chip_command_run", "logs", "validation_logs"
+            os.path.expanduser("~"), "chip_qa_support", "logs", "validation_logs"
         )
         process_log_file(log_file_path, output_directory)
         print(f"EXT:CMP : {testcase_name} ")
@@ -116,7 +116,7 @@ if __name__ == "__main__":
         .lower()
     )
     output_directory = os.path.join(
-        os.path.expanduser("~"), "chip_command_run", "logs", "validation_logs"
+        os.path.expanduser("~"), "chip_qa_support", "logs", "validation_logs"
     )
 
     if build_confirmation in ["y", "yes"]:
@@ -155,7 +155,7 @@ if __name__ == "__main__":
                 for cluster_name in selected_clusters:
                     file = vars(Cluster)[cluster_name]
                     file_path = os.path.join(
-                        os.path.expanduser("~"), "chip_command_run", "commands", file
+                        os.path.expanduser("~"), "chip_qa_support", "commands", file
                     )
                     if file.endswith(".yaml"):
                         print(f"EXT:STR : {cluster_name} INITIATED")
