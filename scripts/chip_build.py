@@ -3,7 +3,7 @@ import yaml
 import subprocess
 
 # Build inputs
-homedir = os.path.join(os.path.expanduser("~"), "chip_command_run", "config.yaml")
+homedir = os.path.join(os.path.expanduser("~"), "chip_qa_support", "config.yaml")
 
 with open(homedir, "r") as file:
     yaml_info = yaml.safe_load(file)
