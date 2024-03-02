@@ -12,7 +12,7 @@ from invoke import UnexpectedExit
 import invoke.exceptions
 
 # Load configuration from YAML file
-config_path = os.path.join(os.path.expanduser("~"), "chip_command_run", "config.yaml")
+config_path = os.path.join(os.path.expanduser("~"), "chip_qa_support", "config.yaml")
 with open(config_path, "r") as file:
     yaml_info = yaml.safe_load(file)
     build = yaml_info["chip_tool_directory"]
@@ -136,7 +136,7 @@ def code():
 def run_command(commands, testcase):
     file_path = os.path.join(os.path.expanduser("~"), build)
     save_path = os.path.join(
-        os.path.expanduser("~"), "chip_command_run", "logs", "execution_logs"
+        os.path.expanduser("~"), "chip_qa_support", "logs", "execution_logs"
     )
     testcasename(testcase)
     cd = os.getcwd()
@@ -200,7 +200,7 @@ def run_command(commands, testcase):
 
     # Process the log file immediately after running the commands
     output_directory = os.path.join(
-        os.path.expanduser("~"), "chip_command_run", "logs", "validation_logs"
+        os.path.expanduser("~"), "chip_qa_support", "logs", "validation_logs"
     )
     process_log_file(log_file_path, output_directory)
     os.chdir(cd)
@@ -261,7 +261,7 @@ if __name__ == "__main__":
         .lower()
     )
     output_directory = os.path.join(
-        os.path.expanduser("~"), "chip_command_run", "logs", "validation_logs"
+        os.path.expanduser("~"), "chip_qa_support", "logs", "validation_logs"
     )
 
     if build_confirmation in ["y", "yes"]:
@@ -277,7 +277,7 @@ if __name__ == "__main__":
             for cluster_name in selected_clusters:
                 file = "Cadmin.txt"
                 file_path = os.path.join(
-                    os.path.expanduser("~"), "chip_command_run", "commands", file
+                    os.path.expanduser("~"), "chip_qa_support", "commands", file
                 )
                 read_text_file(file_path)
                 print(
