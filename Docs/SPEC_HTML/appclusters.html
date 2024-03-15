@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 048feae (local changes),</span>
-<span id="revdate">2024-03-14 23:22:54 -0700</span>
+<span id="revnumber">version master 9533dd3 (local changes),</span>
+<span id="revdate">2024-03-15 09:18:05 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -7447,7 +7447,7 @@ The Frequency feature is provisional.
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RemainingTime</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Q</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">LT</p></td>
@@ -7623,23 +7623,6 @@ The meaning of 'level' is device dependent.</p>
 <div class="paragraph">
 <p>This attribute SHALL indicate the time remaining until the
 current command is complete - it is specified in 1/10ths of a second.</p>
-</div>
-<div class="paragraph">
-<p>The value of this attribute SHALL only be reported in the following cases:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>when it changes from 0 to any other value and vice versa, or</p>
-</li>
-<li>
-<p>when it increases.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>As this attribute is not being reported during a regular countdown,
-clients SHOULD NOT rely on the reporting of this attribute in order to keep track of the remaining duration.</p>
 </div>
 </div>
 <div class="sect4">
@@ -22707,7 +22690,7 @@ below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RemainingTime</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0 to 65534</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Q</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
@@ -23010,23 +22993,6 @@ attributes SHALL also be implemented.</p>
 <div class="paragraph">
 <p>The RemainingTime attribute holds the time remaining, in 1/10ths of a
 second, until the currently active command will be complete.</p>
-</div>
-<div class="paragraph">
-<p>The value of this attribute SHALL only be reported in the following cases:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>when it changes from 0 to any other value and vice versa, or</p>
-</li>
-<li>
-<p>when it increases.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>As this attribute is not being reported during a regular countdown,
-clients SHOULD NOT rely on the reporting of this attribute in order to keep track of the remaining duration.</p>
 </div>
 </div>
 <div class="sect4">
@@ -71128,8 +71094,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 048feae (local changes)<br>
-Last updated 2024-03-15 06:23:08 UTC
+Version master 9533dd3 (local changes)<br>
+Last updated 2024-03-15 16:18:19 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
