@@ -9,7 +9,7 @@ if [ "$ANSWER1" == "Y" ] || [ "$ANSWER1" == "y" ]; then
         echo
         read -p "Confirm whether you have updated the Cadmin Section in config.yaml (Y/N)?" ANSWER2
         if [ "$ANSWER2" == "Y" ] || [ "$ANSWER2" == "y" ]; then
-            cd ~/chip_command_run/scripts/
+            cd ~/chip_qa_support/scripts/
             python3 chip_cadmin_command_run.py "${@:3}"
         elif [ "$ANSWER2" == "N" ] || [ "$ANSWER2" == "n" ]; then
             echo
@@ -20,7 +20,7 @@ if [ "$ANSWER1" == "Y" ] || [ "$ANSWER1" == "y" ]; then
         fi
         exit
     else
-        cd ~/chip_command_run/scripts/
+        cd ~/chip_qa_support/scripts/
         python3 chip_command_run.py "$@"
     fi
 elif [ "$ANSWER1" == "N" ] || [ "$ANSWER1" == "n" ]; then
