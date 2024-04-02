@@ -50,3 +50,6 @@
     - command: "./chip-tool totalvolatileorganiccompoundsconcentrationmeasurement read level-value 1 1"
       logs:
         - " "
+    - command: "./chip-tool totalvolatileorganiccompoundsconcentrationmeasurement read uncertainty 1 1"
+      logs:
+        - " "
