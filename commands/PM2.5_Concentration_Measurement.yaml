@@ -50,3 +50,6 @@
     - command: "./chip-tool pm25concentrationmeasurement read level-value 1 1"
       logs:
         - " "
+    - command: "./chip-tool pm25concentrationmeasurement read uncertainty 1 1"
+      logs:
+        - " "
