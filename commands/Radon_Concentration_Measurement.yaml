@@ -50,3 +50,6 @@
     - command: "./chip-tool radonconcentrationmeasurement read level-value 1 1"
       logs:
         - " "
+    - command: "./chip-tool radonconcentrationmeasurement read uncertainty 1 1"
+      logs:
+        - " "
