@@ -50,3 +50,6 @@
     - command: "./chip-tool ozoneconcentrationmeasurement read level-value 1 1"
       logs:
         - " "
+    - command: "./chip-tool ozoneconcentrationmeasurement read uncertainty 1 1"
+      logs:
+        - " "
