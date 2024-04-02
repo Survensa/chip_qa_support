@@ -20,6 +20,7 @@ class Cluster:
     DGWIFI: str = "Wifi_Diag.yaml"
     DGETH: str = "Ethernet_Diag.yaml"
     DGSW: str = "Software_Diag.yaml"
+    DISHALM: str = "Dishwasher_Alarm"
     DISHM: str = "Dishwasher_Mode_Cluster.yaml"
     DRLK: str = "Door_lock.yaml"
     FLABEL: str = "Fixed_Lable.yaml"
