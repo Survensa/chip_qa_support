@@ -50,3 +50,6 @@
     - command: "./chip-tool carbondioxideconcentrationmeasurement read level-value 1 1"
       logs:
         - " "
+    - command: "./chip-tool carbondioxideconcentrationmeasurement read uncertainty 1 1"
+      logs:
+        - " "
