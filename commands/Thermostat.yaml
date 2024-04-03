@@ -47,9 +47,6 @@
     - command: "./chip-tool thermostat read  piheating-demand     1 1"
       logs:
         - " "
-    - command: "./chip-tool thermostat read hvacsystem-type-configuration  1 1"
-      logs:
-        - " "
     - command: "./chip-tool thermostat read local-temperature-calibration 1 1"
       logs:
         - " "
