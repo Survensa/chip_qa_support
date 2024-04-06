@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 6e03407,</span>
-<span id="revdate">2024-04-05 09:54:53 -0700</span>
+<span id="revnumber">version master 40c5db4,</span>
+<span id="revdate">2024-04-05 13:26:54 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -34068,7 +34068,23 @@ TH device (Server) and DUT will be commissioned and are on the same fabric.</p>
 <div class="paragraph">
 <p>TH responds with a single command response message containing responses to both of the messages in the same order</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">On the TH verify the received request message has the same paths as provided in the command (compare with information provided by the manufacturer) and that the paths are unique.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>On the DUT:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Verify it does not crash.</p>
+</li>
+<li>
+<p>Note: If validating response on DUT, responses will be based on TH servers ability to response to those requests.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>On the TH device (server) verify:<br>
+* The received request message has the same paths as provided in the command (compare with information provided by the manufacturer) and that the paths are unique.</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
@@ -34121,7 +34137,17 @@ TH device (Server) and DUT will be commissioned and are on the same fabric.</p>
 <p>Note there are two Invoke Response Messages, responses are in the same order as the request</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>On the DUT, verify it does not crash.</p>
+<p>On the DUT:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Verify it does not crash.</p>
+</li>
+<li>
+<p>Note: If validating response on DUT, it will have received 2 responses with status FAILURE(0x01).</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>On TH device (server) verify:</p>
@@ -34188,7 +34214,17 @@ TH device (Server) and DUT will be commissioned and are on the same fabric.</p>
 <p>Note there are two Invoke Response Messages, the order of responses is the opposite of the order in the request</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>On the DUT, verify it does not crash.</p>
+<p>On the DUT:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Verify it does not crash.</p>
+</li>
+<li>
+<p>Note: If validating response on DUT, it will have received 2 responses with status FAILURE(0x01).</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>On TH device (server) verify:</p>
@@ -34242,7 +34278,17 @@ TH device (Server) and DUT will be commissioned and are on the same fabric.</p>
 <p>Note there is a single Invoke Response Messages, only one request is responded to, the other request never gets a response</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>On the DUT, verify it does not crash.</p>
+<p>On the DUT:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Verify it does not crash.</p>
+</li>
+<li>
+<p>Note: If validating response on DUT, it will have received 1 responses with status FAILURE(0x01), the other command will not have been responded and might show up as Status = NO_COMMAND_RESPONSE(0xCC)</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>On TH device (server) verify:</p>
@@ -55773,8 +55819,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 6e03407<br>
-Last updated 2024-04-05 16:55:05 UTC
+Version master 40c5db4<br>
+Last updated 2024-04-05 20:27:05 UTC
 </div>
 </div>
 </body>
