@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 40c5db4,</span>
-<span id="revdate">2024-04-05 13:26:54 -0700</span>
+<span id="revnumber">version master 1bf5167,</span>
+<span id="revdate">2024-04-08 15:42:52 +0000</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1090,14 +1090,60 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
+<li><a href="#_icd_management_cluster_test_plan"><strong>ICD Management Cluster Test Plan</strong></a>
+<ul class="sectlevel1">
+<li><a href="#_pics_definition_15">51. PICS Definition</a>
+<ul class="sectlevel2">
+<li><a href="#_role_8">51.1. Role</a></li>
+<li><a href="#_server_8">51.2. Server</a>
+<ul class="sectlevel3">
+<li><a href="#_features_5">51.2.1. Features</a></li>
+<li><a href="#_attributes_10">51.2.2. Attributes</a></li>
+<li><a href="#_commands_received_7">51.2.3. Commands received</a></li>
+<li><a href="#_commands_generated_8">51.2.4. Commands generated</a></li>
+</ul>
+</li>
+<li><a href="#_client_5">51.3. Client</a>
+<ul class="sectlevel3">
+<li><a href="#_features_6">51.3.1. Features</a></li>
+<li><a href="#_attributes_11">51.3.2. Attributes</a></li>
+<li><a href="#_commands_received_8">51.3.3. Commands received</a></li>
+<li><a href="#_commands_generated_9">51.3.4. Commands generated</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_test_case_list_14">52. Test Case List</a></li>
+<li><a href="#_test_cases_14">53. Test Cases</a>
+<ul class="sectlevel2">
+<li><a href="#_attribute_test_cases">53.1. Attribute test cases</a>
+<ul class="sectlevel3">
+<li><a href="#_tc_icdm_1_1_global_attributes_with_dut_as_server">53.1.1. [TC-ICDM-1.1] Global attributes with DUT as Server</a></li>
+<li><a href="#_tc_icdm_2_1_attributes_with_dut_as_server">53.1.2. [TC-ICDM-2.1] Attributes with DUT as Server</a></li>
+</ul>
+</li>
+<li><a href="#_functional_test_cases">53.2. Functional test cases</a>
+<ul class="sectlevel3">
+<li><a href="#_tc_icdm_3_1_registerunregister_clients_with_dut_as_server">53.2.1. [TC-ICDM-3.1] Register/Unregister Clients with DUT as Server</a></li>
+<li><a href="#_tc_icdm_3_2_verify_registerclient_command_with_dut_as_server">53.2.2. [TC-ICDM-3.2] Verify RegisterClient command with DUT as Server</a></li>
+<li><a href="#_tc_icdm_3_3_verify_unregisterclient_command_with_dut_as_server">53.2.3. [TC-ICDM-3.3] Verify UnregisterClient command with DUT as Server</a></li>
+<li><a href="#_tc_icdm_3_4_icdcounter_persistence_with_dut_as_server">53.2.4. [TC-ICDM-3.4] ICDCounter persistence with DUT as Server</a></li>
+<li><a href="#_tc_icdm_4_1_stay_active_request_with_dut_as_server">53.2.5. [TC-ICDM-4.1] Stay Active Request with DUT as Server</a></li>
+<li><a href="#_tc_icdm_5_1_functionality_with_dut_as_client">53.2.6. [TC-ICDM-5.1] Functionality with DUT as Client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#_minimal_resource_requirements_test_plan"><strong>Minimal Resource Requirements Test Plan</strong></a>
 <ul class="sectlevel1">
-<li><a href="#_test_case_list_14">51. Test Case List</a></li>
-<li><a href="#_test_cases_14">52. Test Cases</a>
+<li><a href="#_test_case_list_15">54. Test Case List</a></li>
+<li><a href="#_test_cases_15">55. Test Cases</a>
 <ul class="sectlevel2">
-<li><a href="#_minimal_resource_requirements_test_cases">52.1. Minimal Resource Requirements Test Cases</a>
+<li><a href="#_minimal_resource_requirements_test_cases">55.1. Minimal Resource Requirements Test Cases</a>
 <ul class="sectlevel3">
-<li><a href="#_tc_rr_1_1_minimal_resource_requirements_for_matter_node">52.1.1. [TC-RR-1.1] Minimal Resource Requirements for Matter Node</a></li>
+<li><a href="#_tc_rr_1_1_minimal_resource_requirements_for_matter_node">55.1.1. [TC-RR-1.1] Minimal Resource Requirements for Matter Node</a></li>
 </ul>
 </li>
 </ul>
@@ -1106,14 +1152,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_system_model_test_plan"><strong>System Model Test Plan</strong></a>
 <ul class="sectlevel1">
-<li><a href="#_pics_definition_15">53. PICS Definition</a></li>
-<li><a href="#_test_case_list_15">54. Test Case List</a></li>
-<li><a href="#_test_cases_15">55. Test Cases</a>
+<li><a href="#_pics_definition_16">56. PICS Definition</a></li>
+<li><a href="#_test_case_list_16">57. Test Case List</a></li>
+<li><a href="#_test_cases_16">58. Test Cases</a>
 <ul class="sectlevel2">
-<li><a href="#_device_composition_tests">55.1. Device composition tests</a>
+<li><a href="#_device_composition_tests">58.1. Device composition tests</a>
 <ul class="sectlevel3">
-<li><a href="#_tc_sm_1_1_device_composition_root_node_dut_as_server">55.1.1. [TC-SM-1.1] Device composition - Root Node [DUT as Server]</a></li>
-<li><a href="#_tc_sm_1_2_device_composition_topology_dut_as_server">55.1.2. [TC-SM-1.2] Device composition - Topology [DUT as Server]</a></li>
+<li><a href="#_tc_sm_1_1_device_composition_root_node_dut_as_server">58.1.1. [TC-SM-1.1] Device composition - Root Node [DUT as Server]</a></li>
+<li><a href="#_tc_sm_1_2_device_composition_topology_dut_as_server">58.1.2. [TC-SM-1.2] Device composition - Topology [DUT as Server]</a></li>
 </ul>
 </li>
 </ul>
@@ -1122,13 +1168,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_device_types_test_plan"><strong>Device Types Test Plan</strong></a>
 <ul class="sectlevel1">
-<li><a href="#_pics_definition_16">56. PICS Definition</a></li>
-<li><a href="#_test_case_list_16">57. Test Case List</a></li>
-<li><a href="#_test_cases_16">58. Test Cases</a>
+<li><a href="#_pics_definition_17">59. PICS Definition</a></li>
+<li><a href="#_test_case_list_17">60. Test Case List</a></li>
+<li><a href="#_test_cases_17">61. Test Cases</a>
 <ul class="sectlevel2">
-<li><a href="#_device_composition_tests_2">58.1. Device composition tests</a>
+<li><a href="#_device_composition_tests_2">61.1. Device composition tests</a>
 <ul class="sectlevel3">
-<li><a href="#_tc_dt_1_1_base_device_type_dut_as_server">58.1.1. [TC-DT-1.1] Base Device Type [DUT as Server]</a></li>
+<li><a href="#_tc_dt_1_1_base_device_type_dut_as_server">61.1.1. [TC-DT-1.1] Base Device Type [DUT as Server]</a></li>
 </ul>
 </li>
 </ul>
@@ -54891,9 +54937,1976 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 </div>
+<h1 id="_icd_management_cluster_test_plan" class="sect0"><a class="anchor" href="#_icd_management_cluster_test_plan"></a><strong>ICD Management Cluster Test Plan</strong></h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="paragraph">
+<p><strong>Document History</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Rev</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Date</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Author</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-05-01</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Yinyi Hu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Test Plan for ICDM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-08-15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>René Josefsen</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mark EventList as not supported (#3302)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-10-27</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Yinyi Hu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Update testplan per 1.3 spec</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2024-01-23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Yinyi Hu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Update validation sequence (#3815)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2024-03-08</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Yinyi Hu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Update testplan per 1.4 spec</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pics_definition_15"><a class="anchor" href="#_pics_definition_15"></a>51. PICS Definition</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section covers the ICD Management Cluster Test Plan related PICS items that are referenced in the following test cases.  Support for an item is considered as "true" for conditional statements within the test case steps.</p>
+</div>
+<div class="sect2">
+<h3 id="_role_8"><a class="anchor" href="#_role_8"></a>51.1. Role</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Mandatory/Optional</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Notes/Additional Constraints</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.S</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the ICD Management cluster as a server?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the ICD Management cluster as a client?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_server_8"><a class="anchor" href="#_server_8"></a>51.2. Server</h3>
+<div class="sect3">
+<h4 id="_features_5"><a class="anchor" href="#_features_5"></a>51.2.1. Features</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Mandatory/Optional</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Notes/Additional Constraints</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.F00(CIP)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device support this specific cluster feature?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LITS, O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.F01(UAT)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device support this specific cluster feature?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LITS, O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.F02(LITS)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device support this specific cluster feature?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O <sup>*</sup></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><sup>*</sup>: if the DUT supports LIT it SHALL also support LITS</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_attributes_10"><a class="anchor" href="#_attributes_10"></a>51.2.2. Attributes</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Mandatory/Optional</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Notes/Additional Constraints</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0000(IdleModeDuration)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>IdleModeDuration</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.S:M</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0001(ActiveModeDuration)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>ActiveModeDuration</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.S:M</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0002(ActiveModeThreshold)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>ActiveModeThreshold</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.S:M</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>RegisteredClients</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIP:M</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0004(ICDCounter)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>ICDCounter</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIP:M</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0005(ClientsSupportedPerFabric)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>ClientsSupportedPerFabric</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIP:M</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0006(UserActiveModeTriggerHint)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>UserActiveModeTriggerHint</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UAT:M</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0007(UserActiveModeTriggerInstruction)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>UserActiveModeTriggerInstruction</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[UAT]:O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0008(OperatingMode)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>OperatingMode</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LITS:M</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_commands_received_7"><a class="anchor" href="#_commands_received_7"></a>51.2.3. Commands received</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Mandatory/Optional</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Notes/Additional Constraints</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement receiving the <em>RegisterClient</em> command?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIP</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement receiving the <em>UnregisterClient</em> command?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIP</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C03.Rsp(StayActiveRequest)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement receiving the <em>StayActiveRequest</em> command?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LITS, O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_commands_generated_8"><a class="anchor" href="#_commands_generated_8"></a>51.2.4. Commands generated</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Mandatory/Optional</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Notes/Additional Constraints</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C01.Tx(RegisterClientResponse)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement sending the <em>RegisterClientResponse</em> command?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIP</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C04.Tx(StayActiveResponse)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement sending the <em>StayActiveResponse</em> command?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LITS, O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_client_5"><a class="anchor" href="#_client_5"></a>51.3. Client</h3>
+<div class="sect3">
+<h4 id="_features_6"><a class="anchor" href="#_features_6"></a>51.3.1. Features</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Mandatory/Optional</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Notes/Additional Constraints</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.F00(CIP)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device support this specific cluster feature?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LITS, O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.F01(UAT)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device support this specific cluster feature?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LITS, O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.F02(LITS)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device support this specific cluster feature?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O <sup>*</sup></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><sup>*</sup>: if the DUT supports LIT it SHALL also support LITS</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_attributes_11"><a class="anchor" href="#_attributes_11"></a>51.3.2. Attributes</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Mandatory/Optional</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Notes/Additional Constraints</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.A0000(IdleModeDuration)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>IdleModeDuration</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.C</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.A0001(ActiveModeDuration)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>ActiveModeDuration</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.C</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.A0002(ActiveModeThreshold)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>ActiveModeThreshold</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.C</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>RegisteredClients</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIP</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.A0004(ICDCounter)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>ICDCounter</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIP</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.A0005(ClientsSupportedPerFabric)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>ClientsSupportedPerFabric</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIP</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.A0006(UserActiveModeTriggerHint)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>UserActiveModeTriggerHint</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UAT</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.A0007(UserActiveModeTriggerInstruction)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>UserActiveModeTriggerInstruction</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[UAT]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.A0008(OperatingMode)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement the <em>OperatingMode</em> attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LITS</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_commands_received_8"><a class="anchor" href="#_commands_received_8"></a>51.3.3. Commands received</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Mandatory/Optional</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Notes/Additional Constraints</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.C01.Rsp(RegisterClientResponse)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device support receiving the <em>RegisterClientResponse</em> command?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIP</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.C04.Rsp(StayActiveResponse)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement receiving the <em>StayActiveResponse</em> command?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LITS, O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_commands_generated_9"><a class="anchor" href="#_commands_generated_9"></a>51.3.4. Commands generated</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Variable</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Mandatory/Optional</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Notes/Additional Constraints</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.C00.Tx(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device support sending the <em>RegisterClient</em> command?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIP</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.C02.Tx(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement sending the <em>UnregisterClient</em> command?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIP</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.C03.Tx(StayActiveRequest)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the device implement sending the <em>StayActiveRequest</em> command?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LITS, O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_case_list_14"><a class="anchor" href="#_test_case_list_14"></a>52. Test Case List</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 85%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>TC UUID</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Test Case Name</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC-ICDM-1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Global Attributes with DUT as Server</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC-ICDM-2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attributes with DUT as Server</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC-ICDM-3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Register/Unregister Clients with DUT as Server</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC-ICDM-3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify RegisterClient command with DUT as Server</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC-ICDM-3.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify UnregisterClient command with DUT as Server</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC-ICDM-3.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDCounter persistence with DUT as Server</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC-ICDM-4.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stay Active Request with DUT as Server</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC-ICDM-5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Functionality with DUT as Client</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Note:<br>
+If the DUT or TH is a LIT device,<br>
+- if test event trigger can be used to force the DUT to stay in active mode for the duration of test, user active mode trigger is not required;<br>
+- otherwise, prior to sending command to the DUT or TH, one can either wait for the DUT or TH to switch to active mode when the  <em>IdleModeDuration</em> expires, or use the user active mode trigger to trigger the DUT or TH to switch to active mode.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_cases_14"><a class="anchor" href="#_test_cases_14"></a>53. Test Cases</h2>
+<div class="sectionbody">
+<hr>
+<div class="sect2">
+<h3 id="_attribute_test_cases"><a class="anchor" href="#_attribute_test_cases"></a>53.1. Attribute test cases</h3>
+<hr>
+<div class="sect3">
+<h4 id="_tc_icdm_1_1_global_attributes_with_dut_as_server"><a class="anchor" href="#_tc_icdm_1_1_global_attributes_with_dut_as_server"></a>53.1.1. [TC-ICDM-1.1] Global attributes with DUT as Server</h4>
+<div class="sect4">
+<h5 id="_category_199"><a class="anchor" href="#_category_199"></a>Category</h5>
+<div class="paragraph">
+<p>Functional conformance.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_200"><a class="anchor" href="#_purpose_200"></a>Purpose</h5>
+<div class="paragraph">
+<p>This test case verifies the global attributes of the cluster server.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_199"><a class="anchor" href="#_pics_199"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>ICDM.S</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_199"><a class="anchor" href="#_required_devices_199"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH as Client.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as Server.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_144"><a class="anchor" href="#_device_topology_144"></a>Device Topology</h5>
+<div class="paragraph">
+<p>TH and DUT are on the same fabric.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_199"><a class="anchor" href="#_test_procedure_199"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Ref</strong></th>
+<th class="tableblock halign-left valign-top"><strong>PICS</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Test Step</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Expected Outcome</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.7.13.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ClusterRevision</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the <em>ClusterRevision</em> attribute and has the value 2.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.7.13.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>FeatureMap</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the following bitmap32 <br>
+- bit 0 is set to 1 if ICDM_S.F00(CIP) is true, and 0 otherwise<br>
+- bit 1 is set to 1 if ICDM_S.F01(UAT) is true, and 0 otherwise<br>
+- bit 2 is set to 1 if ICDM_S.F02(LITS) is true, and 0 otherwise<br>
+- other bits SHALL be set to 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.7.13.3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>AttributeList</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the <em>AttributeList</em> attribute and have the list of supported attributes: <br>
+The list SHALL include all the mandatory entries:<br>
+0x0000, 0x0001, 0x0002<br>
+<br>
+The list includes entries based on feature support:<br>
+0x0003: SHALL be included if and only if ICDM_S.A0003(RegisteredClients)<br>
+0x0004: SHALL be included if and only if ICDM_S.A0004(ICDCounter)<br>
+0x0005: SHALL be included if and only if ICDM_S.A0005(ClientsSupportedPerFabric)<br>
+0x0006: SHALL be included if and only if ICDM_S.A0006(UserActiveModeTriggerHint)<br>
+0x0007: SHALL be included if and only if ICDM_S.A0007(UserActiveModeTriggerInstruction)<br>
+0x0008: SHALL be included if and only if ICDM_S.A0008(OperatingMode)<br>
+<br>
+0xfff8, 0xfff9, 0xfffb, 0xfffc and 0xfffd.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5<sup>*</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.7.13.6</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>EventList</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains a list of supported events empty for this cluster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.7.13.4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>AcceptedCommandList</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the <em>AcceptedCommandList</em> attribute and have the list of Accepted Command: <br>
+The list includes entries based on feature support:<br>
+0x00, 0x02: SHALL be included if and only if ICDM_S.F00(CIP)<br>
+<br>
+The list MAY include these optional entries:<br>
+0x03: SHALL be included if and only if ICDM_S.C03.Rsp(StayActiveRequest)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.7.13.5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>GeneratedCommandList</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the <em>GeneratedCommandList</em> attribute and have the list of Generated Command: <br>
+The list includes entries based on feature support:<br>
+0x01: SHALL be included if and only if ICDM_S.F00(CIP)<br>
+<br>
+The list MAY include these optional entries:<br>
+0x04: SHALL be included if and only if ICDM_S.C04.Tx(StayActiveResponse)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_154"><a class="anchor" href="#_notestesting_considerations_154"></a>Notes/Testing Considerations</h5>
+<div class="paragraph">
+<p><sup>*</sup> Step 5 is currently not supported and SHALL be skipped.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tc_icdm_2_1_attributes_with_dut_as_server"><a class="anchor" href="#_tc_icdm_2_1_attributes_with_dut_as_server"></a>53.1.2. [TC-ICDM-2.1] Attributes with DUT as Server</h4>
+<div class="sect4">
+<h5 id="_category_200"><a class="anchor" href="#_category_200"></a>Category</h5>
+<div class="paragraph">
+<p>Functional.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_201"><a class="anchor" href="#_purpose_201"></a>Purpose</h5>
+<div class="paragraph">
+<p>This test case verifies the non-global attributes of the ICD Management cluster server.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_200"><a class="anchor" href="#_pics_200"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>ICDM.S</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_200"><a class="anchor" href="#_required_devices_200"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH as Client.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as Server.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_145"><a class="anchor" href="#_device_topology_145"></a>Device Topology</h5>
+<div class="paragraph">
+<p>TH and DUT are on the same fabric.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_200"><a class="anchor" href="#_test_procedure_200"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Ref</strong></th>
+<th class="tableblock halign-left valign-top"><strong>PICS</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Test Step</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Expected Outcome</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0002(ActiveModeThreshold)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ActiveModeThreshold</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains an uint16.<br>
+If the device supports LITS, the ActiveModeThreshold SHALL NOT be smaller than 5 seconds.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0001(ActiveModeDuration)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ActiveModeDuration</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains an uint32.<br>
+The ActiveModeDuration does not include the ActiveModeThreshold.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0000(IdleModeDuration)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>IdleModeDuration</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains an uint32.<br>
+Value has to be between a range of 1 and 64800.<br>
+IdleModeDuration shall not be smaller than ActiveModeDuration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0005(ClientsSupportedPerFabric)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ClientsSupportedPerFabric</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains an uint16.<br>
+Value has to be between a range of 1 and up</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains a list.<br>
+The maximum number of entries that can be in the list SHALL be ClientsSupportedPerFabric</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0004(ICDCounter)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ICDCounter</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains an uint32</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0006(UserActiveModeTriggerHint)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>UserActiveModeTriggerHint</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains an bitmap32.<br>
+- Multiple bits in the bitmap maybe set at the same time.<br>
+- No more than one bit which has dependency on the UserActiveModeTriggerInstruction shall be set: bit 2, 5, 6, 7, 9, 10, 11, 13, 14, 15, 16.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0007(UserActiveModeTriggerInstruction)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>UserActiveModeTriggerInstruction</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If DUT response is not a null value, the value is encoded as a valid UTF-8 string with max length of 128 bytes.<br>
+<br>
+If <em>UserActiveModeTriggerHint</em> in step 8 is one of the following, DUT responses a value consists solely of an encoding of N as decimal unsigned integer using the ASCII digits 0-9, and without leading zeros.<br>
+5  - ActuateSensorSeconds<br>
+6  - ActuateSensorTimes<br>
+10 - ResetButtonSeconds<br>
+11 - ResetButtonTimes<br>
+13 - SetupButtonSeconds<br>
+15 - SetupButtonTimes<br>
+<br>
+If bit 2 in <em>UserActiveModeTriggerHint</em> in step 8 is set, <em>UserActiveModeTriggerInstruction</em> SHALL indicate a user instruction text string.<br>
+<br>
+If one of bit 7, 9, 14 in <em>UserActiveModeTriggerHint</em> in step 8 is set, <em>UserActiveModeTriggerInstruction</em> SHALL indicate a text string (color of LED)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0008(OperatingMode)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>OperatingMode</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains an enum8.<br>
+If ICD is operating as a Short Idle Time ICD, <em>OperatingMode</em> is set to 0; If ICD is operating as a Long Idle Time ICD, <em>OperatingMode</em> is set to 1.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_155"><a class="anchor" href="#_notestesting_considerations_155"></a>Notes/Testing Considerations</h5>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_functional_test_cases"><a class="anchor" href="#_functional_test_cases"></a>53.2. Functional test cases</h3>
+<hr>
+<div class="sect3">
+<h4 id="_tc_icdm_3_1_registerunregister_clients_with_dut_as_server"><a class="anchor" href="#_tc_icdm_3_1_registerunregister_clients_with_dut_as_server"></a>53.2.1. [TC-ICDM-3.1] Register/Unregister Clients with DUT as Server</h4>
+<div class="sect4">
+<h5 id="_category_201"><a class="anchor" href="#_category_201"></a>Category</h5>
+<div class="paragraph">
+<p>Functional.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_202"><a class="anchor" href="#_purpose_202"></a>Purpose</h5>
+<div class="paragraph">
+<p>This test case verifies the limit of <em>ClientsSupportedPerFabric</em> with RegisterClient and UnregisterClient commands.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_201"><a class="anchor" href="#_pics_201"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>ICDM.S</p>
+</li>
+<li>
+<p>ICDM_S.F00(CIP)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_201"><a class="anchor" href="#_required_devices_201"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH as Client.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as Server.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_146"><a class="anchor" href="#_device_topology_146"></a>Device Topology</h5>
+<div class="paragraph">
+<p>TH and DUT are on the same fabric.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pre_conditions_39"><a class="anchor" href="#_pre_conditions_39"></a>Pre-Conditions</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pre-Condition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reset Devices to factory defaults</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_201"><a class="anchor" href="#_test_procedure_201"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Ref</strong></th>
+<th class="tableblock halign-left valign-top"><strong>PICS</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Test Step</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Expected Outcome</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0005(ClientsSupportedPerFabric)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ClientsSupportedPerFabric</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>ClientsSupportedPerFabric</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
+- CheckInNodeID: registering client’s node ID<br>
+- MonitoredSubject: monitored subject ID<br>
+- Key: shared secret between the client and the ICD +</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
+Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing new entry of registered client of CheckInNodeID and MonitoredSubject from Step 2.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <em>len(RegisteredClients)</em> is less than <em>ClientsSupportedPerFabric</em>, TH repeats <em>RegisterClient</em> command with different CheckInNodeID(s) until the number of entries in <em>RegisteredClients</em> equals <em>ClientsSupportedPerFabric</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
+Verify that the DUT response contains <em>ICDCounter(s)</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing new entry(s) of registered client of CheckInNodeID(s) and MonitoredSubject(s) from Step 4.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with a different CheckInNodeID.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status RESOURCE_EXHAUSTED(0x89).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with a CheckInNodeID from Step 6.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status NOT_FOUND(0x8b).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the CheckInNodeID from Step 2.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> where CheckInNodeID and MonitoredSubject from Step 2 is not present in <em>RegisteredClients</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Repeat Step 9 with the rest of CheckInNodeIDs from the list of <em>RegisteredClients</em> from Step 4, if any.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing default entry.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the CheckInNodeID from Step 2.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status NOT_FOUND(0x8b).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_156"><a class="anchor" href="#_notestesting_considerations_156"></a>Notes/Testing Considerations</h5>
+
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tc_icdm_3_2_verify_registerclient_command_with_dut_as_server"><a class="anchor" href="#_tc_icdm_3_2_verify_registerclient_command_with_dut_as_server"></a>53.2.2. [TC-ICDM-3.2] Verify RegisterClient command with DUT as Server</h4>
+<div class="sect4">
+<h5 id="_category_202"><a class="anchor" href="#_category_202"></a>Category</h5>
+<div class="paragraph">
+<p>Functional.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_203"><a class="anchor" href="#_purpose_203"></a>Purpose</h5>
+<div class="paragraph">
+<p>This test case verifies the Verify RegisterClient command functionality/constraints of the ICD Management cluster server.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_202"><a class="anchor" href="#_pics_202"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>ICDM.S</p>
+</li>
+<li>
+<p>ICDM_S.F00(CIP)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_202"><a class="anchor" href="#_required_devices_202"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH as Client.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as Server.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_147"><a class="anchor" href="#_device_topology_147"></a>Device Topology</h5>
+<div class="paragraph">
+<p>TH and DUT are on the same fabric.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pre_conditions_40"><a class="anchor" href="#_pre_conditions_40"></a>Pre-Conditions</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pre-Condition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reset Devices to factory defaults</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ClientsSupportedPerFabric</em> attribute. <em>ClientsSupportedPerFabric</em> is greater than 1.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_202"><a class="anchor" href="#_test_procedure_202"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Ref</strong></th>
+<th class="tableblock halign-left valign-top"><strong>PICS</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Test Step</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Expected Outcome</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
+- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID1</em>)<br>
+- MonitoredSubject: monitored subject ID (<em>MonitorSubID1</em>)<br>
+- Key: shared secret between the client and the ICD (<em>Key1</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
+Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing new entry of registered client of CheckInNodeID (<em>CheckInNodeID1</em>) and MonitoredSubject (<em>MonitorSubID1</em>) from Step 2a.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2a</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Power cycle DUT</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> the same as in Step 2b.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3a</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Setup the TH such that is has administrator privileges for the ICDM cluster.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID1</em> as in Step 1a and different <em>MonitoredSubject</em> and <em>Key</em>.<br>
+- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID1</em>)<br>
+- MonitoredSubject: monitored subject ID (<em>MonitorSubID2</em>)<br>
+- Key: shared secret between the client and the ICD (<em>Key2</em>) +</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00); Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing updated entry of registered client of CheckInNodeID (<em>CheckInNodeID1</em>) and MonitoredSubject (<em>MonitorSubID2</em>) from Step 3a.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the CheckInNodeID (<em>CheckInNodeID1</em>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> where registered client entry of CheckInNodeID (<em>CheckInNodeID1</em>) is removed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the TH to Manage privilege for ICDM cluster.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
+- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID3</em>)<br>
+- MonitoredSubject: monitored subject ID (<em>MonitorSubID3</em>)<br>
+- Key: shared secret between the client and the ICD (<em>Key3</em>)<br>
+- VerificationKey: verification key (<em>VerificationKey3</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
+Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID3</em> as in Step 5a and different <em>MonitoredSubject</em> and <em>Key</em>, and an invalid <em>VerificationKey</em><br>
+- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID3</em>)<br>
+- MonitoredSubject: monitored subject ID (<em>MonitorSubID4</em>)<br>
+- Key: shared secret between the client and the ICD (<em>Key4</em>)<br>
+- VerificationKey: invalid verification key (<em>VerificationKey4</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status FAILURE(0x01).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID3</em> as in Step 5a and different <em>MonitoredSubject</em>, <em>Key</em>, and <em>VerificationKey</em><br>
+- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID3</em>)<br>
+- MonitoredSubject: monitored subject ID (<em>MonitorSubID5</em>)<br>
+- Key: shared secret between the client and the ICD (<em>Key5</em>)<br>
+- VerificationKey: valid verification key (<em>VerificationKey5</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status FAILURE(0x01).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID3</em> and <em>VerificationKey3</em> as in Step 5a and different <em>MonitoredSubject</em> and <em>Key</em><br>
+- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID3</em>)<br>
+- MonitoredSubject: monitored subject ID (<em>MonitorSubID6</em>)<br>
+- Key: shared secret between the client and the ICD (<em>Key6</em>)<br>
+- VerificationKey: verification key (<em>VerificationKey3</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
+Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the CheckInNodeID (<em>CheckInNodeID3</em>) and VerificationKey (<em>VerificationKey3</em>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Re-enable TH admin access to ICD management cluster.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_157"><a class="anchor" href="#_notestesting_considerations_157"></a>Notes/Testing Considerations</h5>
+
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tc_icdm_3_3_verify_unregisterclient_command_with_dut_as_server"><a class="anchor" href="#_tc_icdm_3_3_verify_unregisterclient_command_with_dut_as_server"></a>53.2.3. [TC-ICDM-3.3] Verify UnregisterClient command with DUT as Server</h4>
+<div class="sect4">
+<h5 id="_category_203"><a class="anchor" href="#_category_203"></a>Category</h5>
+<div class="paragraph">
+<p>Functional.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_204"><a class="anchor" href="#_purpose_204"></a>Purpose</h5>
+<div class="paragraph">
+<p>This test case verifies the Verify UnregisterClient command functionality/constraints of the ICD Management cluster server.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_203"><a class="anchor" href="#_pics_203"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>ICDM.S</p>
+</li>
+<li>
+<p>ICDM_S.F00(CIP)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_203"><a class="anchor" href="#_required_devices_203"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH as Client.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as Server.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_148"><a class="anchor" href="#_device_topology_148"></a>Device Topology</h5>
+<div class="paragraph">
+<p>TH and DUT are on the same fabric.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pre_conditions_41"><a class="anchor" href="#_pre_conditions_41"></a>Pre-Conditions</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pre-Condition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reset Devices to factory defaults</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ClientsSupportedPerFabric</em> attribute. <em>ClientsSupportedPerFabric</em> is greater than 1.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_203"><a class="anchor" href="#_test_procedure_203"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Ref</strong></th>
+<th class="tableblock halign-left valign-top"><strong>PICS</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Test Step</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Expected Outcome</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the CheckInNodeID (<em>CheckInNodeID1</em>) not in existing <em>RegisteredClients</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status NOT_FOUND(0x8b).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
+- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID2</em>)<br>
+- MonitoredSubject: monitored subject ID (<em>MonitorSubID2</em>)<br>
+- Key: shared secret between the client and the ICD (<em>Key2</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
+Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing new entry of registered client of CheckInNodeID (<em>CheckInNodeID2</em>) and MonitoredSubject (<em>MonitorSubID2</em>) from Step 2a.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the CheckInNodeID (<em>CheckInNodeID3</em>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status NOT_FOUND(0x8b).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Setup the TH such that is has administrator privileges for the ICDM cluster.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the CheckInNodeID (<em>CheckInNodeID2</em>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> where registered client entry of CheckInNodeID (<em>CheckInNodeID2</em>) and MonitoredSubject (<em>MonitorSubID2</em>) is removed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the TH to Manage privilege for ICDM cluster.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
+- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID5</em>)<br>
+- MonitoredSubject: monitored subject ID (<em>MonitorSubID5</em>)<br>
+- Key: shared secret between the client and the ICD (<em>Key5</em>)<br>
+- VerificationKey: verification key (<em>VerificationKey5</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
+Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the CheckInNodeID from Step 5a and an invalid VerificationKey.<br>
+- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID5</em>)<br>
+- VerificationKey: invalid verification key (<em>VerificationKey6</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status FAILURE(0x01).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the CheckInNodeID from Step 5a and different VerificationKey.<br>
+- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID5</em>)<br>
+- VerificationKey: valid verification key (<em>VerificationKey7</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status FAILURE(0x01).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the CheckInNodeID and VerificationKey from Step 5a.<br>
+- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID5</em>)<br>
+- VerificationKey: verification key (<em>VerificationKey5</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Re-enable TH admin access to ICD management cluster.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_158"><a class="anchor" href="#_notestesting_considerations_158"></a>Notes/Testing Considerations</h5>
+
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tc_icdm_3_4_icdcounter_persistence_with_dut_as_server"><a class="anchor" href="#_tc_icdm_3_4_icdcounter_persistence_with_dut_as_server"></a>53.2.4. [TC-ICDM-3.4] ICDCounter persistence with DUT as Server</h4>
+<div class="sect4">
+<h5 id="_category_204"><a class="anchor" href="#_category_204"></a>Category</h5>
+<div class="paragraph">
+<p>Functional.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_205"><a class="anchor" href="#_purpose_205"></a>Purpose</h5>
+<div class="paragraph">
+<p>This test case verifies the Verify ICDCounter persistence after reboot of the ICD Management cluster server.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_204"><a class="anchor" href="#_pics_204"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>ICDM.S</p>
+</li>
+<li>
+<p>ICDM_S.F00(CIP)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_204"><a class="anchor" href="#_required_devices_204"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH as Client.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as Server.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_149"><a class="anchor" href="#_device_topology_149"></a>Device Topology</h5>
+<div class="paragraph">
+<p>TH and DUT are on the same fabric.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pre_conditions_42"><a class="anchor" href="#_pre_conditions_42"></a>Pre-Conditions</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pre-Condition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reset Devices to factory defaults</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_204"><a class="anchor" href="#_test_procedure_204"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Ref</strong></th>
+<th class="tableblock halign-left valign-top"><strong>PICS</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Test Step</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Expected Outcome</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
+- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID1</em>)<br>
+- MonitoredSubject: monitored subject ID (<em>MonitorSubID1</em>)<br>
+- Key: shared secret between the client and the ICD (<em>Key1</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00); Verify that the DUT response contains <em>ICDCounter</em> of <em>IcdCounter1</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0004(ICDCounter)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ICDCounter</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains value of <em>ICDCounter</em> of <em>IcdCounter1</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2a</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reboot DUT</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0004(ICDCounter)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ICDCounter</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains value of <em>ICDCounter</em> of <em>IcdCounter2</em>, where <em>IcdCounter2</em> is greater than <em>IcdCounter1</em>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_159"><a class="anchor" href="#_notestesting_considerations_159"></a>Notes/Testing Considerations</h5>
+
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tc_icdm_4_1_stay_active_request_with_dut_as_server"><a class="anchor" href="#_tc_icdm_4_1_stay_active_request_with_dut_as_server"></a>53.2.5. [TC-ICDM-4.1] Stay Active Request with DUT as Server</h4>
+<div class="sect4">
+<h5 id="_category_205"><a class="anchor" href="#_category_205"></a>Category</h5>
+<div class="paragraph">
+<p>Functional.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_206"><a class="anchor" href="#_purpose_206"></a>Purpose</h5>
+<div class="paragraph">
+<p>This test case verifies the Stay Active Request functionality of the ICD Management cluster server.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_205"><a class="anchor" href="#_pics_205"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>ICDM.S</p>
+</li>
+<li>
+<p>ICDM_S.F02(LITS)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_205"><a class="anchor" href="#_required_devices_205"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH as Client.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as Server.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_150"><a class="anchor" href="#_device_topology_150"></a>Device Topology</h5>
+<div class="paragraph">
+<p>TH and DUT are on the same fabric.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pre_conditions_43"><a class="anchor" href="#_pre_conditions_43"></a>Pre-Conditions</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pre-Condition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_205"><a class="anchor" href="#_test_procedure_205"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Ref</strong></th>
+<th class="tableblock halign-left valign-top"><strong>PICS</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Test Step</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Expected Outcome</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C03.Rsp(StayActiveRequest)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>StayActiveRequest</em> command with <em>StayActiveDuration</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>PromisedActiveDuration</em>, which shall be equal to either 5000 ms or <em>StayActiveDuration</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_160"><a class="anchor" href="#_notestesting_considerations_160"></a>Notes/Testing Considerations</h5>
+
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tc_icdm_5_1_functionality_with_dut_as_client"><a class="anchor" href="#_tc_icdm_5_1_functionality_with_dut_as_client"></a>53.2.6. [TC-ICDM-5.1] Functionality with DUT as Client</h4>
+<div class="sect4">
+<h5 id="_category_206"><a class="anchor" href="#_category_206"></a>Category</h5>
+<div class="paragraph">
+<p>Functional</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_207"><a class="anchor" href="#_purpose_207"></a>Purpose</h5>
+<div class="paragraph">
+<p>This test case verifies the register/unregister client functionality of the cluster client.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_206"><a class="anchor" href="#_pics_206"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>ICDM.C</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_206"><a class="anchor" href="#_required_devices_206"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Device Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH as Server.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT as Client.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_151"><a class="anchor" href="#_device_topology_151"></a>Device Topology</h5>
+<div class="paragraph">
+<p>TH and DUT are on the same fabric.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_test_setup_89"><a class="anchor" href="#_test_setup_89"></a>Test Setup</h5>
+<div class="paragraph">
+<p>Commission TH to DUT (can be skipped if done in a preceding test)</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_206"><a class="anchor" href="#_test_procedure_206"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 4.7619%;">
+<col style="width: 9.5238%;">
+<col style="width: 9.5238%;">
+<col style="width: 38.0952%;">
+<col style="width: 38.0953%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Ref</strong></th>
+<th class="tableblock halign-left valign-top"><strong>PICS</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Test Step</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Expected Outcome</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.C00.Tx(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT issues an <em>C_REGISTER_CLIENT</em> command to the Test Harness.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If ICDM_C.C00.Tx(RegisterClient), Test Harness receives the <em>C_REGISTER_CLIENT</em> command from the DUT.<br>
+Verify the command has following parameters:<br>
+- ID 0 (CheckInNodeID): the type is a valid <em>node-id</em>.<br>
+- ID 1 (MonitoredSubject): the type is a valid <em>subject-id</em>.<br>
+- ID 2 (Key): the type is an <em>octstr</em>.<br>
+- Optional ID 3 (VerificationKey): the type is an <em>octstr</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.C02.Tx(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT issues an <em>C_UNREGISTER_CLIENT</em> command to the Test Harness.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If ICDM_C.C02.Tx(UnregisterClient), Test Harness receives the <em>C_UNREGISTER_CLIENT</em> command from the DUT.<br>
+Verify the command has following parameters:<br>
+- ID 0 (CheckInNodeID): the type is a <em>node-id</em>.<br>
+- Optional ID 1 (VerificationKey): the type is an <em>octstr</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_C.C03.Tx(StayActiveRequest)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT issues an <em>C_STAY_ACTIVE_REQUEST</em> command to the Test Harness.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If ICDM_C.C03.Tx(StayActiveRequest), Test Harness receives the <em>C_STAY_ACTIVE_REQUEST</em> command from the DUT.<br>
+Verify the command has following parameters:<br>
+- ID 0 (StayActiveDuration): the type is a <em>uint32</em>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_161"><a class="anchor" href="#_notestesting_considerations_161"></a>Notes/Testing Considerations</h5>
+
+</div>
+</div>
+</div>
+</div>
+</div>
 <h1 id="_minimal_resource_requirements_test_plan" class="sect0"><a class="anchor" href="#_minimal_resource_requirements_test_plan"></a><strong>Minimal Resource Requirements Test Plan</strong></h1>
 <div class="sect1">
-<h2 id="_test_case_list_14"><a class="anchor" href="#_test_case_list_14"></a>51. Test Case List</h2>
+<h2 id="_test_case_list_15"><a class="anchor" href="#_test_case_list_15"></a>54. Test Case List</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -54917,28 +56930,28 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_test_cases_14"><a class="anchor" href="#_test_cases_14"></a>52. Test Cases</h2>
+<h2 id="_test_cases_15"><a class="anchor" href="#_test_cases_15"></a>55. Test Cases</h2>
 <div class="sectionbody">
 <hr>
 <div class="sect2">
-<h3 id="_minimal_resource_requirements_test_cases"><a class="anchor" href="#_minimal_resource_requirements_test_cases"></a>52.1. Minimal Resource Requirements Test Cases</h3>
+<h3 id="_minimal_resource_requirements_test_cases"><a class="anchor" href="#_minimal_resource_requirements_test_cases"></a>55.1. Minimal Resource Requirements Test Cases</h3>
 <hr>
 <div class="sect3">
-<h4 id="_tc_rr_1_1_minimal_resource_requirements_for_matter_node"><a class="anchor" href="#_tc_rr_1_1_minimal_resource_requirements_for_matter_node"></a>52.1.1. [TC-RR-1.1] Minimal Resource Requirements for Matter Node</h4>
+<h4 id="_tc_rr_1_1_minimal_resource_requirements_for_matter_node"><a class="anchor" href="#_tc_rr_1_1_minimal_resource_requirements_for_matter_node"></a>55.1.1. [TC-RR-1.1] Minimal Resource Requirements for Matter Node</h4>
 <div class="sect4">
-<h5 id="_category_199"><a class="anchor" href="#_category_199"></a>Category</h5>
+<h5 id="_category_207"><a class="anchor" href="#_category_207"></a>Category</h5>
 <div class="paragraph">
 <p>Conformance</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_purpose_200"><a class="anchor" href="#_purpose_200"></a>Purpose</h5>
+<h5 id="_purpose_208"><a class="anchor" href="#_purpose_208"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the device meets the minimal requirements for each resource type from the list of various resources required by a Matter Node implementation.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_199"><a class="anchor" href="#_pics_199"></a>PICS</h5>
+<h5 id="_pics_207"><a class="anchor" href="#_pics_207"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54948,7 +56961,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_199"><a class="anchor" href="#_required_devices_199"></a>Required Devices</h5>
+<h5 id="_required_devices_207"><a class="anchor" href="#_required_devices_207"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54975,13 +56988,13 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_144"><a class="anchor" href="#_device_topology_144"></a>Device Topology</h5>
+<h5 id="_device_topology_152"><a class="anchor" href="#_device_topology_152"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_199"><a class="anchor" href="#_test_procedure_199"></a>Test Procedure</h5>
+<h5 id="_test_procedure_207"><a class="anchor" href="#_test_procedure_207"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4%;">
@@ -55339,7 +57352,7 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_154"><a class="anchor" href="#_notestesting_considerations_154"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_162"><a class="anchor" href="#_notestesting_considerations_162"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -55348,7 +57361,7 @@ using only ACLs with group auth mode.</p>
 </div>
 <h1 id="_system_model_test_plan" class="sect0"><a class="anchor" href="#_system_model_test_plan"></a><strong>System Model Test Plan</strong></h1>
 <div class="sect1">
-<h2 id="_pics_definition_15"><a class="anchor" href="#_pics_definition_15"></a>53. PICS Definition</h2>
+<h2 id="_pics_definition_16"><a class="anchor" href="#_pics_definition_16"></a>56. PICS Definition</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section covers the System Model Test Plan related PICS items that are referenced in the following test cases.  Support for an item is considered as "true" for conditional statements within the test case steps.</p>
@@ -55378,7 +57391,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_test_case_list_15"><a class="anchor" href="#_test_case_list_15"></a>54. Test Case List</h2>
+<h2 id="_test_case_list_16"><a class="anchor" href="#_test_case_list_16"></a>57. Test Case List</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -55403,26 +57416,26 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_test_cases_15"><a class="anchor" href="#_test_cases_15"></a>55. Test Cases</h2>
+<h2 id="_test_cases_16"><a class="anchor" href="#_test_cases_16"></a>58. Test Cases</h2>
 <div class="sectionbody">
 <hr>
 <div class="sect2">
-<h3 id="_device_composition_tests"><a class="anchor" href="#_device_composition_tests"></a>55.1. Device composition tests</h3>
+<h3 id="_device_composition_tests"><a class="anchor" href="#_device_composition_tests"></a>58.1. Device composition tests</h3>
 <hr>
 <div class="sect3">
-<h4 id="_tc_sm_1_1_device_composition_root_node_dut_as_server"><a class="anchor" href="#_tc_sm_1_1_device_composition_root_node_dut_as_server"></a>55.1.1. [TC-SM-1.1] Device composition - Root Node [DUT as Server]</h4>
+<h4 id="_tc_sm_1_1_device_composition_root_node_dut_as_server"><a class="anchor" href="#_tc_sm_1_1_device_composition_root_node_dut_as_server"></a>58.1.1. [TC-SM-1.1] Device composition - Root Node [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_category_200"><a class="anchor" href="#_category_200"></a>Category</h5>
+<h5 id="_category_208"><a class="anchor" href="#_category_208"></a>Category</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_purpose_201"><a class="anchor" href="#_purpose_201"></a>Purpose</h5>
+<h5 id="_purpose_209"><a class="anchor" href="#_purpose_209"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests root node requirements</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_200"><a class="anchor" href="#_pics_200"></a>PICS</h5>
+<h5 id="_pics_208"><a class="anchor" href="#_pics_208"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55432,7 +57445,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_200"><a class="anchor" href="#_required_devices_200"></a>Required Devices</h5>
+<h5 id="_required_devices_208"><a class="anchor" href="#_required_devices_208"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -55459,13 +57472,13 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_145"><a class="anchor" href="#_device_topology_145"></a>Device Topology</h5>
+<h5 id="_device_topology_153"><a class="anchor" href="#_device_topology_153"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_200"><a class="anchor" href="#_test_procedure_200"></a>Test Procedure</h5>
+<h5 id="_test_procedure_208"><a class="anchor" href="#_test_procedure_208"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -55522,19 +57535,19 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tc_sm_1_2_device_composition_topology_dut_as_server"><a class="anchor" href="#_tc_sm_1_2_device_composition_topology_dut_as_server"></a>55.1.2. [TC-SM-1.2] Device composition - Topology [DUT as Server]</h4>
+<h4 id="_tc_sm_1_2_device_composition_topology_dut_as_server"><a class="anchor" href="#_tc_sm_1_2_device_composition_topology_dut_as_server"></a>58.1.2. [TC-SM-1.2] Device composition - Topology [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_category_201"><a class="anchor" href="#_category_201"></a>Category</h5>
+<h5 id="_category_209"><a class="anchor" href="#_category_209"></a>Category</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_purpose_202"><a class="anchor" href="#_purpose_202"></a>Purpose</h5>
+<h5 id="_purpose_210"><a class="anchor" href="#_purpose_210"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that the topology indicated by the descriptor cluster PartsList matches the requirements in {REF_SM_ENDPOINT}.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_201"><a class="anchor" href="#_pics_201"></a>PICS</h5>
+<h5 id="_pics_209"><a class="anchor" href="#_pics_209"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55544,7 +57557,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_201"><a class="anchor" href="#_required_devices_201"></a>Required Devices</h5>
+<h5 id="_required_devices_209"><a class="anchor" href="#_required_devices_209"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -55571,13 +57584,13 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_146"><a class="anchor" href="#_device_topology_146"></a>Device Topology</h5>
+<h5 id="_device_topology_154"><a class="anchor" href="#_device_topology_154"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_201"><a class="anchor" href="#_test_procedure_201"></a>Test Procedure</h5>
+<h5 id="_test_procedure_209"><a class="anchor" href="#_test_procedure_209"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -55665,7 +57678,7 @@ using only ACLs with group auth mode.</p>
 </div>
 <h1 id="_device_types_test_plan" class="sect0"><a class="anchor" href="#_device_types_test_plan"></a><strong>Device Types Test Plan</strong></h1>
 <div class="sect1">
-<h2 id="_pics_definition_16"><a class="anchor" href="#_pics_definition_16"></a>56. PICS Definition</h2>
+<h2 id="_pics_definition_17"><a class="anchor" href="#_pics_definition_17"></a>59. PICS Definition</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section covers the Device Types Test Plan related PICS items that are referenced in the following test cases.  Support for an item is considered as "true" for conditional statements within the test case steps.</p>
@@ -55695,7 +57708,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_test_case_list_16"><a class="anchor" href="#_test_case_list_16"></a>57. Test Case List</h2>
+<h2 id="_test_case_list_17"><a class="anchor" href="#_test_case_list_17"></a>60. Test Case List</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -55716,26 +57729,26 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_test_cases_16"><a class="anchor" href="#_test_cases_16"></a>58. Test Cases</h2>
+<h2 id="_test_cases_17"><a class="anchor" href="#_test_cases_17"></a>61. Test Cases</h2>
 <div class="sectionbody">
 <hr>
 <div class="sect2">
-<h3 id="_device_composition_tests_2"><a class="anchor" href="#_device_composition_tests_2"></a>58.1. Device composition tests</h3>
+<h3 id="_device_composition_tests_2"><a class="anchor" href="#_device_composition_tests_2"></a>61.1. Device composition tests</h3>
 <hr>
 <div class="sect3">
-<h4 id="_tc_dt_1_1_base_device_type_dut_as_server"><a class="anchor" href="#_tc_dt_1_1_base_device_type_dut_as_server"></a>58.1.1. [TC-DT-1.1] Base Device Type [DUT as Server]</h4>
+<h4 id="_tc_dt_1_1_base_device_type_dut_as_server"><a class="anchor" href="#_tc_dt_1_1_base_device_type_dut_as_server"></a>61.1.1. [TC-DT-1.1] Base Device Type [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_category_202"><a class="anchor" href="#_category_202"></a>Category</h5>
+<h5 id="_category_210"><a class="anchor" href="#_category_210"></a>Category</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_purpose_203"><a class="anchor" href="#_purpose_203"></a>Purpose</h5>
+<h5 id="_purpose_211"><a class="anchor" href="#_purpose_211"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that every device type conforms to the requirements of the base device type</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_202"><a class="anchor" href="#_pics_202"></a>PICS</h5>
+<h5 id="_pics_210"><a class="anchor" href="#_pics_210"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55745,7 +57758,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_202"><a class="anchor" href="#_required_devices_202"></a>Required Devices</h5>
+<h5 id="_required_devices_210"><a class="anchor" href="#_required_devices_210"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -55772,13 +57785,13 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_147"><a class="anchor" href="#_device_topology_147"></a>Device Topology</h5>
+<h5 id="_device_topology_155"><a class="anchor" href="#_device_topology_155"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_202"><a class="anchor" href="#_test_procedure_202"></a>Test Procedure</h5>
+<h5 id="_test_procedure_210"><a class="anchor" href="#_test_procedure_210"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -55819,8 +57832,8 @@ using only ACLs with group auth mode.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 40c5db4<br>
-Last updated 2024-04-05 20:27:05 UTC
+Version master 1bf5167<br>
+Last updated 2024-04-08 15:43:07 UTC
 </div>
 </div>
 </body>
