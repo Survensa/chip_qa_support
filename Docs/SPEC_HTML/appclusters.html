@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master ab121ff (local changes),</span>
-<span id="revdate">2024-04-04 09:39:10 -0700</span>
+<span id="revnumber">version master 303bfeb (local changes),</span>
+<span id="revdate">2024-04-08 16:52:22 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -63435,7 +63435,7 @@ This command supports the following fields:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>WattSettingIndex</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 to len(SupportedWatts)-1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[WATTS].a+</p></td>
@@ -63476,8 +63476,8 @@ The value of this field SHALL be subject to the constraints of the CookTime attr
 <div class="paragraph">
 <p>This field SHALL indicate the PowerSetting associated with the operation of the device.
 The value of this field SHALL be subject to the constraints of the PowerSetting attribute of this cluster.
-If the PowerSetting field does not conform to the constraints of the PowerSetting attribute, the server SHALL
-return a CONSTRAINT_ERROR status.</p>
+If the PowerSetting field does not conform to the constraints of the PowerSetting attribute,
+the server SHALL return a CONSTRAINT_ERROR status.</p>
 </div>
 <div class="paragraph">
 <p>If this field is missing, the PowerSetting attribute SHALL be set to 100 if MaxPower is not supported by the server,
@@ -63487,8 +63487,9 @@ otherwise it SHALL be set to MaxPower if the MaxPower attribute is supported by 
 <div class="sect5">
 <h6 id="_wattsettingindex_field"><a class="anchor" href="#_wattsettingindex_field"></a>8.13.6.2.4. WattSettingIndex Field</h6>
 <div class="paragraph">
-<p>This field SHALL indicate the value to which the SelectedWattIndex should be set.
-The value of this field SHALL be subject to the constraints of the SelectedWattIndex attribute of this cluster.</p>
+<p>This field SHALL indicate the value to which the SelectedWattIndex attribute is set.
+If the value of this field is greater than or equal to the length of the SupportedWatts attribute list,
+the server SHALL return a CONSTRAINT_ERROR status and the value of the SelectedWattIndex attribute SHALL be unchanged.</p>
 </div>
 <div class="paragraph">
 <p>If this field is missing, the SelectedWattIndex attribute SHALL be set by the server
@@ -71095,8 +71096,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master ab121ff (local changes)<br>
-Last updated 2024-04-08 00:00:37 UTC
+Version master 303bfeb (local changes)<br>
+Last updated 2024-04-09 00:00:32 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
