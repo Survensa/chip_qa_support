@@ -574,19 +574,61 @@
     - command: "./chip-tool doorlock read number-of-week-day-schedules-supported-per-user 1 1"
       logs:
         - " "
-    - command: "./chip-tool doorlock read number-of-total-users-supported 1 1"
-      logs:
-        - " "
     - command: "./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000"
       logs:
         - " "
-    - command: "./chip-tool doorlock set-week-day-schedule 1 1 2  15 45 16 55 1 1"
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 1  15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 2 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 4 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 8 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 16 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 32 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 64 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 24 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 42 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 51 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 107 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 123 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 127 15 45 16 55 1 1"
       logs:
         - " "
     - command: "./chip-tool doorlock get-week-day-schedule 1 1 1 1"
       logs:
         - " "
-    - command: "./chip-tool doorlock set-week-day-schedule 0 1 7 15 45 16 55 1 1"
+    - command: "./chip-tool doorlock set-week-day-schedule 0 1 2 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 0 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 128 15 45 16 55 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-week-day-schedule 1 1 1 18 45 16 55 1 1"
       logs:
         - " "
     - command: "./chip-tool doorlock get-week-day-schedule 0 1 1 1"
