@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 303bfeb (local changes),</span>
-<span id="revdate">2024-04-08 16:52:22 -0700</span>
+<span id="revnumber">version master 5cf986a (local changes),</span>
+<span id="revdate">2024-04-11 22:47:08 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1401,6 +1401,12 @@ Davis, CA 95616, USA</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Version 1.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Robert Szewczyk</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">April 17, 2024</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version 1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Robert Szewczyk</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1592,6 +1598,12 @@ or notes a section of text with the term "provisional".</p>
 </li>
 <li>
 <p>Support for <a href="#ref_ContentControlCluster">Content Control Cluster</a> is provisional.</p>
+</li>
+<li>
+<p>Support for PowerInWatts feature of the <a href="#ref_MicrowaveOvenControlCluster">Microwave Oven Control cluster</a> is provisional</p>
+</li>
+<li>
+<p>Support for GoHome command in the <a href="#ref_RvcOperationalStateCluster">RVC Operational State cluster</a> is provisional.</p>
 </li>
 </ul>
 </div>
@@ -13360,7 +13372,7 @@ Please see the individual command sections for additional specific requirements 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OperationCompletion</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INFO</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P, O</p></td>
 </tr>
 </tbody>
 </table>
@@ -60026,7 +60038,7 @@ A blank field indicates no change.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OperationalCommandResponse</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P, O</p></td>
 </tr>
 </tbody>
 </table>
@@ -63102,7 +63114,7 @@ SHALL appear on the same endpoint as this cluster.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>WATTS</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PowerInWatts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P, O.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Power is specified in Watts</p></td>
 </tr>
 <tr>
@@ -63209,7 +63221,7 @@ SHALL appear on the same endpoint as this cluster.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">WATTS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P, WATTS</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0007</p></td>
@@ -63219,7 +63231,7 @@ SHALL appear on the same endpoint as this cluster.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">WATTS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P, WATTS</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0008</p></td>
@@ -71096,8 +71108,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 303bfeb (local changes)<br>
-Last updated 2024-04-12 00:00:41 UTC
+Version master 5cf986a (local changes)<br>
+Last updated 2024-04-12 05:47:21 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
