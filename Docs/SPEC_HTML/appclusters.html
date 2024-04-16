@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 5cf986a (local changes),</span>
-<span id="revdate">2024-04-11 22:47:08 -0700</span>
+<span id="revnumber">version master efe7424 (local changes),</span>
+<span id="revdate">2024-04-16 10:39:06 -0400</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -3410,7 +3410,7 @@ the Scenes Management cluster.</p>
 MAY also exist without a group, in which case the value 0 replaces
 the group identifier. Note that extra care is required in these cases to avoid a
 scene identifier collision, and that commands related to scenes without a group
-MAY only be unicast, i.e., they MAY not be multicast or broadcast.</p>
+MAY only be unicast, i.e., they SHALL NOT be multicast or broadcast.</p>
 </div>
 <div class="sect3">
 <h4 id="_revision_history_4"><a class="anchor" href="#_revision_history_4"></a>1.4.1. Revision History</h4>
@@ -8728,17 +8728,19 @@ For example, in a Contact Sensor device type, FALSE=open or no contact, TRUE=clo
 <h4 id="_events"><a class="anchor" href="#_events"></a>1.7.5. Events</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">Quality</th>
 <th class="tableblock halign-left valign-top">Access</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
@@ -8748,6 +8750,7 @@ For example, in a Contact Sensor device type, FALSE=open or no contact, TRUE=clo
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x00</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>StateChange</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INFO</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 </tr>
@@ -9061,7 +9064,7 @@ it does not impact alarm reporting in AlarmsActive.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0000</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CurrentSensitivityLevel</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max SupportedSensitivityLevels - 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max (SupportedSensitivityLevels - 1)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RW VO</p></td>
@@ -9081,7 +9084,7 @@ it does not impact alarm reporting in AlarmsActive.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0002</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DefaultSensitivityLevel</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max SupportedSensitivityLevels - 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max (SupportedSensitivityLevels - 1)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -9433,17 +9436,19 @@ suppressed state SHALL be cleared and the alarm mode SHALL be considered not act
 <h4 id="_events_2"><a class="anchor" href="#_events_2"></a>1.8.8. Events</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">Quality</th>
 <th class="tableblock halign-left valign-top">Access</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
@@ -9453,6 +9458,7 @@ suppressed state SHALL be cleared and the alarm mode SHALL be considered not act
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x00</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AlarmsStateChanged</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INFO</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">VIS | AUD</p></td>
 </tr>
@@ -9460,6 +9466,7 @@ suppressed state SHALL be cleared and the alarm mode SHALL be considered not act
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x01</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SensorFault</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INFO</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 </tr>
@@ -12194,7 +12201,7 @@ For each switch type, we will define the sequence of generated events for these 
 <p>short press: InitialPress, then ShortRelease</p>
 </li>
 <li>
-<p>long press (or very long press): InitialPress, then LongPress, and finally LongRelease. Please note that the LongPress event SHALL be generated exactly once for this case and SHALL not be repeated, irrespective how long the switch is pressed.</p>
+<p>long press (or very long press): InitialPress, then LongPress, and finally LongRelease. Please note that the LongPress event SHALL be generated exactly once for this case and SHALL NOT be repeated, irrespective how long the switch is pressed.</p>
 </li>
 </ul>
 </div>
@@ -13889,17 +13896,19 @@ the new alarm set as indicated by the new value of the Mask attribute.</p>
 <h4 id="_events_5"><a class="anchor" href="#_events_5"></a>1.15.8. Events</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">Quality</th>
 <th class="tableblock halign-left valign-top">Access</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
@@ -13909,6 +13918,7 @@ the new alarm set as indicated by the new value of the Mask attribute.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x00</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Notify</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INFO</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
@@ -18445,70 +18455,70 @@ specification.</p>
 <tr>
 <th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">PICS</th>
 <th class="tableblock halign-left valign-top">Substance Measured</th>
-<th class="tableblock halign-left valign-top">PICS Code</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x040C</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Carbon Monoxide Concentration Measurement</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Carbon Monoxide (CO)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CMOCONC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Carbon Monoxide (CO)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x040D</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Carbon Dioxide Concentration Measurement</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Carbon Dioxide (CO<sub>2</sub>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CDOCONC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Carbon Dioxide (CO<sub>2</sub>)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0413</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Nitrogen Dioxide Concentration Measurement</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nitrogen Dioxide (NO<sub>2</sub>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NDOCONC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nitrogen Dioxide (NO<sub>2</sub>)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0415</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ozone Concentration Measurement</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ozone (O<sub>3</sub>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OZCONC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ozone (O<sub>3</sub>)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x042A</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PM2.5 Concentration Measurement</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PM2.5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PMICONC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM2.5</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x042B</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formaldehyde Concentration Measurement</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Formaldehyde (CH2O)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">FLDCONC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Formaldehyde (CH2O)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x042C</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PM1 Concentration Measurement</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PM1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PMHCONC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM1</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x042D</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PM10 Concentration Measurement</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PM10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PMKCONC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM10</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x042E</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Total Volatile Organic Compounds Concentration Measurement</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Total Volatile Organic Compounds (TVOC)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TVOCCONC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total Volatile Organic Compounds (TVOC)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x042F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Radon Concentration Measurement</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Radon (Rn)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RNCONC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Radon (Rn)</p></td>
 </tr>
 </tbody>
 </table>
@@ -23281,7 +23291,7 @@ EnhancedColorMode attribute.</p>
 <h5 id="_colorloopactive_attribute"><a class="anchor" href="#_colorloopactive_attribute"></a>3.2.7.14. ColorLoopActive Attribute</h5>
 <div class="paragraph">
 <p>The ColorLoopActive attribute specifies the current active status of the
-color loop. If this attribute has the value 0, the color loop SHALL not
+color loop. If this attribute has the value 0, the color loop SHALL NOT
 be active. If this attribute has the value 1, the color loop SHALL be
 active. All other values (2 to 254) are reserved.</p>
 </div>
@@ -24183,7 +24193,7 @@ temperature (which MAY be before the requested transition time).</p>
 <p>If a color loop is active (i.e., the ColorLoopActive attribute is equal
 to 1), it SHALL only be stopped by sending a specific ColorLoopSet
 command frame with a request to deactivate the color loop (i.e., the
-color loop SHALL not be stopped on receipt of another command which has a 'stop' semantic such as
+color loop SHALL NOT be stopped on receipt of another command which has a 'stop' semantic such as
 the EnhancedMoveToHue command with MoveMode==Stop, or the StopMoveStep command). In addition, while a color loop is
 active, a manufacturer MAY choose to ignore incoming color commands
 which affect a change in hue.</p>
@@ -27147,15 +27157,17 @@ the Alarms functionality is enabled and the LampAlarmMode attribute SHALL be sup
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Summary</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
@@ -27163,11 +27175,13 @@ the Alarms functionality is enabled and the LampAlarmMode attribute SHALL be sup
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>BallastNonOperational</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Operational state of the ballast.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LampFailure</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Operational state of the lamps.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
@@ -27211,15 +27225,17 @@ the Alarms functionality is enabled and the LampAlarmMode attribute SHALL be sup
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Summary</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
@@ -27227,6 +27243,7 @@ the Alarms functionality is enabled and the LampAlarmMode attribute SHALL be sup
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LampBurnHours</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State of LampBurnHours alarm generation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
@@ -38158,7 +38175,7 @@ setting the LockState to Unlocked SHALL unlock the door without pulling the latc
 that is, it is possible to activate a scene with the lock actuation some seconds later.</p>
 </div>
 <div class="paragraph">
-<p>Locks that do not have an actuation mechanism SHOULD not support the Scene table extension.</p>
+<p>Locks that do not have an actuation mechanism SHOULD NOT support the Scene table extension.</p>
 </div>
 </div>
 <div class="sect4">
@@ -54708,8 +54725,8 @@ A device that supports this feature MAY only support playing audio during certai
 <h6 id="_position_field"><a class="anchor" href="#_position_field"></a>6.10.5.4.2. Position Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the associated discrete position within the media stream, in milliseconds from the beginning of the stream, being associated with the time indicated by the UpdatedAt field.
-The Position SHALL not be greater than the duration of the media if duration is specified.
-The Position SHALL not be greater than the time difference between current time and start time of the media when
+The Position SHALL NOT be greater than the duration of the media if duration is specified.
+The Position SHALL NOT be greater than the time difference between current time and start time of the media when
 start time is specified.</p>
 </div>
 <div class="paragraph">
@@ -56290,7 +56307,7 @@ the Video Player device containing the endpoint SHALL launch the Content App whe
 <h5 id="_targetlist_attribute"><a class="anchor" href="#_targetlist_attribute"></a>6.11.5.1. TargetList Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL represent a list of targets that can be navigated to within the experience presented to the user by the Endpoint (Video Player or Content App).
-The list SHALL not contain any entries with the same Identifier in the TargetInfoStruct object.</p>
+The list SHALL NOT contain any entries with the same Identifier in the TargetInfoStruct object.</p>
 </div>
 </div>
 <div class="sect4">
@@ -57879,7 +57896,7 @@ For example, if the feature does not control content within apps, then the devic
 <p>This attribute SHALL indicate a set of periods during which the playback of content on media device SHALL be blocked when the Content Control
 feature is activated. The media device SHALL reject any request to play content during one period of this attribute.
 If it is entering any one period of this attribute, the media device SHALL block content which is playing and
-generate an event EnteringBlockContentTimeWindow. There SHALL not be multiple entries in this attribute list for the same day of week.</p>
+generate an event EnteringBlockContentTimeWindow. There SHALL NOT be multiple entries in this attribute list for the same day of week.</p>
 </div>
 </div>
 </div>
@@ -58275,7 +58292,7 @@ only if the PIN passed in this command is equal to the current PIN value.</p>
 <h6 id="_bonustime_field"><a class="anchor" href="#_bonustime_field"></a>6.13.8.6.2. BonusTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the amount of extra time (in seconds) to increase  RemainingScreenTime.
-This field SHALL not exceed the remaining time of this day.</p>
+This field SHALL NOT exceed the remaining time of this day.</p>
 </div>
 </div>
 </div>
@@ -64212,7 +64229,7 @@ EVSE of the desire to increase the charging between scheduled times.</p>
 </div>
 <div class="paragraph">
 <p>It does this by sending a <a href="#ref_RequestConstraintBasedForecast">RequestConstraintBasedForecast</a> to the EVSE
-and asks it to run at a higher <a href="#ref_ConstraintsStruct_NominalPower">NominalPower</a>
+and asks it to run at a higher <a href="#ref_ConstraintsStructNominalPower">NominalPower</a>
 consumption during the constraint period, which may require it to decrease
 its charge rate outside the constraint period to achieve its required energy
 demand.</p>
@@ -64794,7 +64811,7 @@ terms of financial, GHG emissions, comfort value etc.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_CostStruct_Value"><a class="anchor" href="#ref_CostStruct_Value"></a>9.2.7.8.2. Value Field</h6>
+<h6 id="ref_CostStructValue"><a class="anchor" href="#ref_CostStructValue"></a>9.2.7.8.2. Value Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the value of the cost. This may be negative
 (indicating that it is not a cost, but a free benefit).</p>
@@ -64813,9 +64830,9 @@ then this would represent a cost of 1.02.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_CostStruct_Currency"><a class="anchor" href="#ref_CostStruct_Currency"></a>9.2.7.8.4. Currency Field</h6>
+<h6 id="ref_CostStructCurrency"><a class="anchor" href="#ref_CostStructCurrency"></a>9.2.7.8.4. Currency Field</h6>
 <div class="paragraph">
-<p>Indicates the currency for the value in the <a href="#ref_CostStruct_Value">Value</a> field. The
+<p>Indicates the currency for the value in the <a href="#ref_CostStructValue">Value</a> field. The
 value of the currency field SHALL match the values defined by [<a href="#ref_Iso4217">ISO&#160;4217</a>].</p>
 </div>
 <div class="paragraph">
@@ -65088,7 +65105,7 @@ support the <code>SFR</code> feature and instead report its internal state.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="ref_ForecastStruct_ForecastId"><a class="anchor" href="#ref_ForecastStruct_ForecastId"></a>9.2.7.10.1. ForecastId Field</h6>
+<h6 id="ref_ForecastStructForecastId"><a class="anchor" href="#ref_ForecastStructForecastId"></a>9.2.7.10.1. ForecastId Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the sequence number for the current forecast.
 If the ESA updates a forecast, it shall monotonically increase this value.</p>
@@ -65112,14 +65129,14 @@ yet started.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ForecastStruct_StartTime"><a class="anchor" href="#ref_ForecastStruct_StartTime"></a>9.2.7.10.3. StartTime Field</h6>
+<h6 id="ref_ForecastStructStartTime"><a class="anchor" href="#ref_ForecastStructStartTime"></a>9.2.7.10.3. StartTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the planned start time, in UTC, for the entire
 Forecast.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ForecastStruct_EndTime"><a class="anchor" href="#ref_ForecastStruct_EndTime"></a>9.2.7.10.4. EndTime Field</h6>
+<h6 id="ref_ForecastStructEndTime"><a class="anchor" href="#ref_ForecastStructEndTime"></a>9.2.7.10.4. EndTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the planned end time, in UTC, for the entire Forecast.</p>
 </div>
@@ -65163,14 +65180,14 @@ each slot in the list.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ForecastStruct_ForecastUpdateReason"><a class="anchor" href="#ref_ForecastStruct_ForecastUpdateReason"></a>9.2.7.10.9. ForecastUpdateReason Field</h6>
+<h6 id="ref_ForecastStructForecastUpdateReason"><a class="anchor" href="#ref_ForecastStructForecastUpdateReason"></a>9.2.7.10.9. ForecastUpdateReason Field</h6>
 <div class="paragraph">
 <p>This field SHALL contain the reason the current Forecast was generated.</p>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_SlotStruct"><a class="anchor" href="#ref_SlotStruct"></a>9.2.7.11. SlotStruct</h5>
+<h5 id="ref_SlotStruct"><a class="anchor" href="#ref_SlotStruct"></a>9.2.7.11. SlotStruct Type</h5>
 <div class="paragraph">
 <p>This indicates a specific stage of an ESA&#8217;s operation.</p>
 </div>
@@ -65436,7 +65453,7 @@ Forecast attribute to be updated, since this value may change every 1
 second.</p>
 </div>
 <div class="paragraph">
-<p>Note that if the ESA is currently paused, then this value SHALL not change.</p>
+<p>Note that if the ESA is currently paused, then this value SHALL NOT change.</p>
 </div>
 <div class="paragraph">
 <p>When the Forecast attribute is read, then this value SHALL be the most
@@ -65508,7 +65525,7 @@ adjustment request commands, or adjust other ESAs power to compensate.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStruct_NominalPower"><a class="anchor" href="#ref_SlotStruct_NominalPower"></a>9.2.7.11.10. NominalPower Field</h6>
+<h6 id="ref_SlotStructNominalPower"><a class="anchor" href="#ref_SlotStructNominalPower"></a>9.2.7.11.10. NominalPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the expected power that the appliance will use during
 this slot. It may be considered the average value over the slot, and some
@@ -65583,7 +65600,7 @@ meta data that an EMS may use to optimize a system.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStruct_MinPowerAdjustment"><a class="anchor" href="#ref_SlotStruct_MinPowerAdjustment"></a>9.2.7.11.15. MinPowerAdjustment Field</h6>
+<h6 id="ref_SlotStructMinPowerAdjustment"><a class="anchor" href="#ref_SlotStructMinPowerAdjustment"></a>9.2.7.11.15. MinPowerAdjustment Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the minimum power that the appliance can be requested
 to use.</p>
@@ -65591,33 +65608,33 @@ to use.</p>
 <div class="paragraph">
 <p>For example, some EVSEs cannot be switched on to charge below 6A which may
 equate to ~1.3kW in EU markets. If the slot indicates a
-<a href="#ref_SlotStruct_NominalPower">NominalPower</a> of 0W (indicating it is expecting to be off),
+<a href="#ref_SlotStructNominalPower">NominalPower</a> of 0W (indicating it is expecting to be off),
 this allows an ESA to indicate it could be switched on to charge, but this would
 be the minimum power limit it can be set to.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStruct_MaxPowerAdjustment"><a class="anchor" href="#ref_SlotStruct_MaxPowerAdjustment"></a>9.2.7.11.16. MaxPowerAdjustment Field</h6>
+<h6 id="ref_SlotStructMaxPowerAdjustment"><a class="anchor" href="#ref_SlotStructMaxPowerAdjustment"></a>9.2.7.11.16. MaxPowerAdjustment Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum power that the appliance can be requested
 to use.</p>
 </div>
 <div class="paragraph">
 <p>For example, an EVSE may be limited by its electrical supply to 32A which would
-be ~7.6kW in EU markets. If the slot indicates a <a href="#ref_SlotStruct_NominalPower">NominalPower</a>
+be ~7.6kW in EU markets. If the slot indicates a <a href="#ref_SlotStructNominalPower">NominalPower</a>
 of 0W (indicating it is expecting to be off), this allows an ESA to indicate it
 could be switched on to charge, but this would be the maximum power limit it can
 be set to.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStruct_MinDurationAdjustment"><a class="anchor" href="#ref_SlotStruct_MinDurationAdjustment"></a>9.2.7.11.17. MinDurationAdjustment Field</h6>
+<h6 id="ref_SlotStructMinDurationAdjustment"><a class="anchor" href="#ref_SlotStructMinDurationAdjustment"></a>9.2.7.11.17. MinDurationAdjustment Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the minimum time, in seconds, that the slot can be
 requested to shortened to.</p>
 </div>
 <div class="paragraph">
-<p>For example, if the slot indicates a <a href="#ref_SlotStruct_NominalPower">NominalPower</a> of 0W
+<p>For example, if the slot indicates a <a href="#ref_SlotStructNominalPower">NominalPower</a> of 0W
 (indicating it is expecting to be off), this would allow an ESA to specify the
 minimum time it could be switched on for. This is to help protect the appliance
 from being damaged by short cycling times.</p>
@@ -65628,19 +65645,19 @@ minutes.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStruct_MaxDurationAdjustment"><a class="anchor" href="#ref_SlotStruct_MaxDurationAdjustment"></a>9.2.7.11.18. MaxDurationAdjustment Field</h6>
+<h6 id="ref_SlotStructMaxDurationAdjustment"><a class="anchor" href="#ref_SlotStructMaxDurationAdjustment"></a>9.2.7.11.18. MaxDurationAdjustment Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum time, in seconds, that the slot can be
 requested to extended to.</p>
 </div>
 <div class="paragraph">
-<p>For example, if the slot indicates a <a href="#ref_SlotStruct_NominalPower">NominalPower</a> of 0W
+<p>For example, if the slot indicates a <a href="#ref_SlotStructNominalPower">NominalPower</a> of 0W
 (indicating it is expecting to be off), this allows an ESA to specify the
 maximum time it could be switched on for. This may allow a battery or water
 heater to indicate the maximum duration that it can charge for before becoming
 full. In the case of a battery inverter which can be discharged, it may equally
 indicate the maximum time the battery could be discharged for (at the
-<a href="#ref_SlotStruct_MaxPowerAdjustment">MaxPowerAdjustment</a> power level).</p>
+<a href="#ref_SlotStructMaxPowerAdjustment">MaxPowerAdjustment</a> power level).</p>
 </div>
 </div>
 </div>
@@ -65715,8 +65732,8 @@ maximum length of the Slots list constraint).</p>
 <h6 id="_nominalpower_field"><a class="anchor" href="#_nominalpower_field"></a>9.2.7.12.2. NominalPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the new requested power that the ESA SHALL operate at.
-It MUST be between the <a href="#ref_SlotStruct_MinPowerAdjustment">MinPowerAdjustment</a> and
-<a href="#ref_SlotStruct_MaxPowerAdjustment">MaxPowerAdjustment</a> for the slot as advertised by the ESA.</p>
+It MUST be between the <a href="#ref_SlotStructMinPowerAdjustment">MinPowerAdjustment</a> and
+<a href="#ref_SlotStructMaxPowerAdjustment">MaxPowerAdjustment</a> for the slot as advertised by the ESA.</p>
 </div>
 </div>
 <div class="sect5">
@@ -65724,8 +65741,8 @@ It MUST be between the <a href="#ref_SlotStruct_MinPowerAdjustment">MinPowerAdju
 <div class="paragraph">
 <p>This field SHALL indicate the new requested duration, in seconds, that the ESA
 SHALL extend or shorten the slot duration to. It MUST be between the
-<a href="#ref_SlotStruct_MinDurationAdjustment">MinDurationAdjustment</a> and
-<a href="#ref_SlotStruct_MaxDurationAdjustment">MaxDurationAdjustment</a> for the slot as advertised by the ESA.</p>
+<a href="#ref_SlotStructMinDurationAdjustment">MinDurationAdjustment</a> and
+<a href="#ref_SlotStructMaxDurationAdjustment">MaxDurationAdjustment</a> for the slot as advertised by the ESA.</p>
 </div>
 </div>
 </div>
@@ -65775,7 +65792,7 @@ its energy consumption during this period.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Duration</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">elapsed-s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 to 86400</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 86400</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -65814,7 +65831,7 @@ its energy consumption during this period.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="ref_ConstraintsStruct_StartTime"><a class="anchor" href="#ref_ConstraintsStruct_StartTime"></a>9.2.7.13.1. StartTime Field</h6>
+<h6 id="ref_ConstraintsStructStartTime"><a class="anchor" href="#ref_ConstraintsStructStartTime"></a>9.2.7.13.1. StartTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the start time of the constraint period that the
 client wishes the ESA to compute a new Forecast.</p>
@@ -65824,13 +65841,13 @@ client wishes the ESA to compute a new Forecast.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ConstraintsStruct_Duration"><a class="anchor" href="#ref_ConstraintsStruct_Duration"></a>9.2.7.13.2. Duration Field</h6>
+<h6 id="ref_ConstraintsStructDuration"><a class="anchor" href="#ref_ConstraintsStructDuration"></a>9.2.7.13.2. Duration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the duration of the constraint in seconds.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ConstraintsStruct_NominalPower"><a class="anchor" href="#ref_ConstraintsStruct_NominalPower"></a>9.2.7.13.3. NominalPower Field</h6>
+<h6 id="ref_ConstraintsStructNominalPower"><a class="anchor" href="#ref_ConstraintsStructNominalPower"></a>9.2.7.13.3. NominalPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the nominal power that client wishes the ESA to
 operate at during the constrained period. It MUST be between the
@@ -65845,7 +65862,7 @@ if it supports <code>PFR</code>.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ConstraintsStruct_MaximumEnergy"><a class="anchor" href="#ref_ConstraintsStruct_MaximumEnergy"></a>9.2.7.13.4. MaximumEnergy Field</h6>
+<h6 id="ref_ConstraintsStructMaximumEnergy"><a class="anchor" href="#ref_ConstraintsStructMaximumEnergy"></a>9.2.7.13.4. MaximumEnergy Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum energy that can be transferred to or from
 the ESA during the constraint period.</p>
@@ -65858,7 +65875,7 @@ the ESA during the constraint period.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ConstraintsStruct_LoadControl"><a class="anchor" href="#ref_ConstraintsStruct_LoadControl"></a>9.2.7.13.5. LoadControl Field</h6>
+<h6 id="ref_ConstraintsStructLoadControl"><a class="anchor" href="#ref_ConstraintsStructLoadControl"></a>9.2.7.13.5. LoadControl Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the turn up or turn down nature that the grid wants as
 the outcome by the ESA during the constraint period.</p>
@@ -66273,7 +66290,7 @@ An EMS may subscribe to the
 </div>
 <div class="paragraph">
 <p>If the ESA is in the LocalOptOut or OptOut states, so it cannot be controlled by
-an EMS for local optimization reasons, it SHALL  reject any commands which have
+an EMS for local optimization reasons, it SHALL reject any commands which have
 the <a href="#ref_AdjustmentCauseEnum">AdjustmentCauseEnum</a> value LocalOptimization.
 If the ESA is in the GridOptOut or OptOut states, so it cannot be controlled by
 an EMS for grid optimization reasons, it SHALL reject any commands which have
@@ -66368,7 +66385,7 @@ information it may obtain.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">STA|FA|CON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">STA | FA | CON</p></td>
 </tr>
 </tbody>
 </table>
@@ -66472,7 +66489,7 @@ for details), and the <a href="#ref_ESAState">ESAState</a> is Online.</p>
 SUCCESS if the adjustment is accepted; otherwise the command SHALL be rejected
 with FAILURE. If the ESA supports the <code>PFR</code> or <code>SFR</code> features, the <a href="#ref_Forecast">Forecast</a>
 attribute is updated, including noting the Cause value in the
-<a href="#ref_ForecastStruct_ForecastUpdateReason">ForecastUpdateReason</a>.</p>
+<a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Start of adjustment</strong></p>
@@ -66559,7 +66576,7 @@ rejected with FAILURE.</p>
 Online and the command status returned SHALL be SUCCESS.
 If the ESA supports the <code>PFR</code> or <code>SFR</code> features, the <a href="#ref_Forecast">Forecast</a>
 attribute is updated, including updating the
-<a href="#ref_ForecastStruct_ForecastUpdateReason">ForecastUpdateReason</a> to <code>Internal Optimization</code>.</p>
+<a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a> to <code>Internal Optimization</code>.</p>
 </div>
 </div>
 </div>
@@ -66620,7 +66637,7 @@ future.</p>
 </div>
 <div class="paragraph">
 <p>A client can estimate the entire Forecast sequence duration by computing
-the <a href="#ref_ForecastStruct_EndTime">EndTime</a> - <a href="#ref_ForecastStruct_StartTime">StartTime</a>
+the <a href="#ref_ForecastStructEndTime">EndTime</a> - <a href="#ref_ForecastStructStartTime">StartTime</a>
 fields from the <a href="#ref_Forecast">Forecast</a> attribute, and therefore avoid scheduling
 the start time too late.</p>
 </div>
@@ -66655,7 +66672,7 @@ be rejected with FAILURE.</p>
 <p>The command status returned SHALL be SUCCESS if the StartTime in the Forecast is
 updated. The ESA SHALL update its <a href="#ref_Forecast">Forecast</a> attribute using the new
 <a href="#ref_RequestedStartTime">RequestedStartTime</a> including a new ForecastId, StartTime, EndTime, and
-<a href="#ref_ForecastStruct_ForecastUpdateReason">ForecastUpdateReason</a>.</p>
+<a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a>.</p>
 </div>
 </div>
 </div>
@@ -66749,7 +66766,7 @@ range then the command SHALL be rejected with CONSTRAINT_ERROR.</p>
 </div>
 <div class="paragraph">
 <p>The ESA SHALL update its update its <a href="#ref_Forecast">Forecast</a> to account for the pause,
-including updating the <a href="#ref_ForecastStruct_ForecastUpdateReason">ForecastUpdateReason</a>
+including updating the <a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a>
 from the Cause field.</p>
 </div>
 <div class="paragraph">
@@ -66936,8 +66953,8 @@ slots in a single command by sending a list of modifications.</p>
 <div class="paragraph">
 <p>If the ESA accepts the requested Forecast then it SHALL update its
 <a href="#ref_Forecast">Forecast</a> attribute (incrementing its
-<a href="#ref_ForecastStruct_ForecastId">ForecastId</a>, and updating its
-<a href="#ref_ForecastStruct_ForecastUpdateReason">ForecastUpdateReason</a> from the Cause value)
+<a href="#ref_ForecastStructForecastId">ForecastId</a>, and updating its
+<a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a> from the Cause value)
 and run the revised Forecast as its new intended operation.</p>
 </div>
 <div class="paragraph">
@@ -67181,8 +67198,8 @@ too hot or too cold, or a battery to be insufficiently charged).</p>
 </div>
 <div class="paragraph">
 <p>If the ESA can meet the requested power limits, it SHALL regenerate a new Power
-Forecast with a new <a href="#ref_ForecastStruct_ForecastId">ForecastId</a> and
-<a href="#ref_ForecastStruct_ForecastUpdateReason">ForecastUpdateReason</a> from the Cause value.</p>
+Forecast with a new <a href="#ref_ForecastStructForecastId">ForecastId</a> and
+<a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a> from the Cause value.</p>
 </div>
 <div class="paragraph">
 <p>If an appliance has already begun running a program (and agreed to modify its
@@ -67212,7 +67229,7 @@ adjustment request commands, and re-evaluate its forecast for intended
 operation ignoring those previous requests.</p>
 </div>
 <div class="paragraph">
-<p>If the ESA <a href="#ref_ForecastStruct_ForecastUpdateReason">ForecastUpdateReason</a> was already
+<p>If the ESA <a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a> was already
 <code>Internal Optimization</code>, then the command SHALL be rejected with FAILURE.</p>
 </div>
 <div class="paragraph">
@@ -67220,7 +67237,7 @@ operation ignoring those previous requests.</p>
 if required, and the command status returned SHALL be SUCCESS.
 The ESA SHALL update its <a href="#ref_Forecast">Forecast</a> attribute to match its new
 intended operation, and update the
-<a href="#ref_ForecastStruct_ForecastUpdateReason">ForecastUpdateReason</a> to <code>Internal Optimization</code>.</p>
+<a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a> to <code>Internal Optimization</code>.</p>
 </div>
 </div>
 </div>
@@ -67229,17 +67246,19 @@ intended operation, and update the
 <h4 id="_events_16"><a class="anchor" href="#_events_16"></a>9.2.10. Events</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">Quality</th>
 <th class="tableblock halign-left valign-top">Access</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
@@ -67249,6 +67268,7 @@ intended operation, and update the
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x00</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PowerAdjustStart</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INFO</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PA</p></td>
 </tr>
@@ -67256,6 +67276,7 @@ intended operation, and update the
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x01</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PowerAdjustEnd</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INFO</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PA</p></td>
 </tr>
@@ -67263,6 +67284,7 @@ intended operation, and update the
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x02</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Paused</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INFO</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PAU</p></td>
 </tr>
@@ -67270,6 +67292,7 @@ intended operation, and update the
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x03</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Resumed</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INFO</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PAU</p></td>
 </tr>
@@ -68281,7 +68304,7 @@ however this is up to the client to carefully choose a value.</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-If the EVSE can obtain the Battery Capacity of the vehicle, it SHOULD not
+If the EVSE can obtain the Battery Capacity of the vehicle, it SHOULD NOT
 limit this AddedEnergy value to the Battery Capacity of the vehicle, since the
 EV may also require energy for heating and cooling of the battery during
 charging, or for heating or cooling the cabin.
@@ -71108,8 +71131,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 5cf986a (local changes)<br>
-Last updated 2024-04-16 00:00:36 UTC
+Version master efe7424 (local changes)<br>
+Last updated 2024-04-16 14:39:19 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
