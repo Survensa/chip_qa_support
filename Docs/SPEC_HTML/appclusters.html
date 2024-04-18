@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master efe7424 (local changes),</span>
-<span id="revdate">2024-04-16 10:39:06 -0400</span>
+<span id="revnumber">version master 881dd36 (local changes),</span>
+<span id="revdate">2024-04-17 16:24:24 -0400</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -5595,10 +5595,7 @@ server continues from step 3.</p>
 <p>If the GetSceneMembership command was received as a unicast, the
 server SHALL then generate a GetSceneMembershipResponse command with
 the Status field set to the evaluated status. If the GetSceneMembership
-command was not received as a unicast, the server SHALL only
-generate a GetSceneMembershipResponse command with the Status field
-set to the evaluated status if an entry within the Scene Table
-corresponds to the GroupID.</p>
+command was received as a groupcast, the server SHALL NOT generate a response.</p>
 </li>
 </ol>
 </div>
@@ -71131,8 +71128,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master efe7424 (local changes)<br>
-Last updated 2024-04-17 00:00:39 UTC
+Version master 881dd36 (local changes)<br>
+Last updated 2024-04-18 00:00:57 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
