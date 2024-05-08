@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 4e29381,</span>
-<span id="revdate">2024-05-07 10:14:15 -0700</span>
+<span id="revnumber">version master ce2614a,</span>
+<span id="revdate">2024-05-07 13:23:04 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -55810,12 +55810,6 @@ The list MAY include these optional entries:<br>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_145"><a class="anchor" href="#_device_topology_145"></a>Device Topology</h5>
-<div class="paragraph">
-<p>TH and DUT are on the same fabric.</p>
-</div>
-</div>
-<div class="sect4">
 <h5 id="_test_procedure_200"><a class="anchor" href="#_test_procedure_200"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -55839,7 +55833,7 @@ The list MAY include these optional entries:<br>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH (can be skipped if done in a preceding test).</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -55880,8 +55874,7 @@ Value has to be between a range of 1 and up</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains a list.<br>
-The maximum number of entries that can be in the list SHALL be ClientsSupportedPerFabric</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains a list.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
@@ -55923,8 +55916,7 @@ If one of bit 7, 9, 14 in <em>UserActiveModeTriggerHint</em> in step 8 is set, <
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0008(OperatingMode)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>OperatingMode</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains an enum8.<br>
-If ICD is operating as a Short Idle Time ICD, <em>OperatingMode</em> is set to 0; If ICD is operating as a Long Idle Time ICD, <em>OperatingMode</em> is set to 1.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains an enum8.</p></td>
 </tr>
 </tbody>
 </table>
@@ -55995,7 +55987,7 @@ If ICD is operating as a Short Idle Time ICD, <em>OperatingMode</em> is set to 0
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_146"><a class="anchor" href="#_device_topology_146"></a>Device Topology</h5>
+<h5 id="_device_topology_145"><a class="anchor" href="#_device_topology_145"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -56016,11 +56008,11 @@ If ICD is operating as a Short Idle Time ICD, <em>OperatingMode</em> is set to 0
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reset Devices to factory defaults</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH (can be skipped if done in a preceding test).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute. <em>RegisteredClients</em> is empty.</p></td>
 </tr>
 </tbody>
 </table>
@@ -56050,7 +56042,14 @@ If ICD is operating as a Short Idle Time ICD, <em>OperatingMode</em> is set to 0
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0005(ClientsSupportedPerFabric)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ClientsSupportedPerFabric</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>ClientsSupportedPerFabric</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Store the value of <em>ClientsSupportedPerFabric</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0004(ICDCounter)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ICDCounter</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Store the value of <em>ICDCounter</em>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
@@ -56059,16 +56058,16 @@ If ICD is operating as a Short Idle Time ICD, <em>OperatingMode</em> is set to 0
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
 - CheckInNodeID: registering client’s node ID<br>
 - MonitoredSubject: monitored subject ID<br>
-- Key: shared secret between the client and the ICD +</p></td>
+- Key: shared secret between the client and the ICD</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
-Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+Verify that the DUT response contains the value of <em>ICDCounter</em> which should be equal or higher than the <em>IcdCounter</em> in Step 1b.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing new entry of registered client of CheckInNodeID and MonitoredSubject from Step 2.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> which includes an entry with the CheckInNodeID and MonitoredSubject from Step 2.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
@@ -56076,14 +56075,14 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If <em>len(RegisteredClients)</em> is less than <em>ClientsSupportedPerFabric</em>, TH repeats <em>RegisterClient</em> command with different CheckInNodeID(s) until the number of entries in <em>RegisteredClients</em> equals <em>ClientsSupportedPerFabric</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
-Verify that the DUT response contains <em>ICDCounter(s)</em>.</p></td>
+Verify that the DUT response contains the value(s) of <em>ICDCounter(s)</em> which should be equal or higher than the <em>IcdCounter</em> in Step 1b.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing new entry(s) of registered client of CheckInNodeID(s) and MonitoredSubject(s) from Step 4.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> which includes entry(s) of CheckInNodeID(s) and MonitoredSubject(s) from Step 4.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
@@ -56096,7 +56095,7 @@ Verify that the DUT response contains <em>ICDCounter(s)</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with a CheckInNodeID from Step 6.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the CheckInNodeID from Step 6.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status NOT_FOUND(0x8b).</p></td>
 </tr>
 <tr>
@@ -56125,7 +56124,7 @@ Verify that the DUT response contains <em>ICDCounter(s)</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing default entry.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains an empty list.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
@@ -56199,7 +56198,7 @@ Verify that the DUT response contains <em>ICDCounter(s)</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_147"><a class="anchor" href="#_device_topology_147"></a>Device Topology</h5>
+<h5 id="_device_topology_146"><a class="anchor" href="#_device_topology_146"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -56220,15 +56219,11 @@ Verify that the DUT response contains <em>ICDCounter(s)</em>.</p></td>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reset Devices to factory defaults</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission TH to DUT (can be skipped if done in a preceding test).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ClientsSupportedPerFabric</em> attribute. <em>ClientsSupportedPerFabric</em> is greater than 1.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute. <em>RegisteredClients</em> is empty.</p></td>
 </tr>
 </tbody>
 </table>
@@ -56258,9 +56253,9 @@ Verify that the DUT response contains <em>ICDCounter(s)</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
-- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID1</em>)<br>
-- MonitoredSubject: monitored subject ID (<em>MonitorSubID1</em>)<br>
-- Key: shared secret between the client and the ICD (<em>Key1</em>)</p></td>
+- CheckInNodeID: <em>CheckInNodeID1</em><br>
+- MonitoredSubject: <em>MonitorSubID1</em><br>
+- Key: <em>Key1</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
 Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </tr>
@@ -56269,7 +56264,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing new entry of registered client of CheckInNodeID (<em>CheckInNodeID1</em>) and MonitoredSubject (<em>MonitorSubID1</em>) from Step 2a.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing an entry of registered client with the <em>CheckInNodeID1</em> and <em>MonitorSubID1</em> from Step 1a.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2a</p></td>
@@ -56283,112 +56278,160 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> the same as in Step 2b.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the same value of <em>RegisteredClients</em>  as in Step 1b.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3a</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Setup the TH such that is has administrator privileges for the ICDM cluster.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID1</em> as in Step 1a and different <em>MonitorSubID2</em> and <em>Key2</em>.<br>
+- CheckInNodeID: <em>CheckInNodeID1</em><br>
+- MonitoredSubject: <em>MonitorSubID2</em><br>
+- Key: <em>Key2</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00);<br>
+Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3b</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID1</em> as in Step 1a and different <em>MonitoredSubject</em> and <em>Key</em>.<br>
-- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID1</em>)<br>
-- MonitoredSubject: monitored subject ID (<em>MonitorSubID2</em>)<br>
-- Key: shared secret between the client and the ICD (<em>Key2</em>) +</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00); Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing the updated registered client entry of <em>CheckInNodeID1</em> and <em>MonitorSubID2</em> from Step 3a.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3c</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing updated entry of registered client of CheckInNodeID (<em>CheckInNodeID1</em>) and MonitoredSubject (<em>MonitorSubID2</em>) from Step 3a.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID1</em> as in Step 1a and different <em>MonitorSubID3</em> and <em>Key3</em>, and an invalid <em>VerificationKey3</em><br>
+- CheckInNodeID: <em>CheckInNodeID1</em><br>
+- MonitoredSubject: <em>MonitorSubID3</em><br>
+- Key: <em>Key3</em><br>
+- VerificationKey: <em>VerificationKey3</em> +</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00);<br>
+Verify that the DUT response contains <em>ICDCounter</em>. <br>
+The invalid <em>VerificationKey3</em> is ignored.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3d</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the CheckInNodeID (<em>CheckInNodeID1</em>).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3e</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> where registered client entry of CheckInNodeID (<em>CheckInNodeID1</em>) is removed.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing the updated registered client entry of <em>CheckInNodeID1</em> and <em>MonitorSubID3</em> from Step 3c.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID1</em> as in Step 1a and different <em>MonitorSubID4</em> and <em>Key4</em>, and a valid wrong <em>VerificationKey4</em><br>
+- CheckInNodeID: <em>CheckInNodeID1</em><br>
+- MonitoredSubject: <em>MonitorSubID4</em><br>
+- Key: <em>Key4</em><br>
+- VerificationKey: <em>VerificationKey4</em> +</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00);<br>
+Verify that the DUT response contains <em>ICDCounter</em>. <br>
+The valid wrong <em>VerificationKey4</em> is ignored.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3f</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing the updated registered client entry of <em>CheckInNodeID1</em> and <em>MonitorSubID4</em> from Step 3e.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with <em>CheckInNodeID1</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.A0003(RegisteredClients)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> where the registered client entry of <em>CheckInNodeID1</em> is removed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the TH to Manage privilege for ICDM cluster.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
-- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID3</em>)<br>
-- MonitoredSubject: monitored subject ID (<em>MonitorSubID3</em>)<br>
-- Key: shared secret between the client and the ICD (<em>Key3</em>)<br>
-- VerificationKey: verification key (<em>VerificationKey3</em>)</p></td>
+- CheckInNodeID: <em>CheckInNodeID5</em><br>
+- MonitoredSubject: <em>MonitorSubID5</em><br>
+- Key: <em>Key5</em><br>
+- VerificationKey: <em>VerificationKey5</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
 Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID3</em> as in Step 5a and different <em>MonitoredSubject</em> and <em>Key</em>, and an invalid <em>VerificationKey</em><br>
-- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID3</em>)<br>
-- MonitoredSubject: monitored subject ID (<em>MonitorSubID4</em>)<br>
-- Key: shared secret between the client and the ICD (<em>Key4</em>)<br>
-- VerificationKey: invalid verification key (<em>VerificationKey4</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID5</em> as in Step 6a and different <em>MonitorSubID6</em> and <em>Key6</em>, and an invalid <em>VerificationKey6</em><br>
+- CheckInNodeID: <em>CheckInNodeID5</em><br>
+- MonitoredSubject: <em>MonitorSubID6</em><br>
+- Key: <em>Key6</em><br>
+- VerificationKey: <em>VerificationKey6</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status FAILURE(0x01).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID3</em> as in Step 5a and different <em>MonitoredSubject</em>, <em>Key</em>, and <em>VerificationKey</em><br>
-- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID3</em>)<br>
-- MonitoredSubject: monitored subject ID (<em>MonitorSubID5</em>)<br>
-- Key: shared secret between the client and the ICD (<em>Key5</em>)<br>
-- VerificationKey: valid verification key (<em>VerificationKey5</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID5</em> as in Step 6a and different <em>MonitorSubID7</em> and <em>Key7</em>, and an valid wrong <em>VerificationKey7</em><br>
+- CheckInNodeID: <em>CheckInNodeID5</em><br>
+- MonitoredSubject: <em>MonitorSubID7</em><br>
+- Key: <em>Key7</em><br>
+- VerificationKey: <em>VerificationKey7</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status FAILURE(0x01).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6d</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C00.Rsp(RegisterClient)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID3</em> and <em>VerificationKey3</em> as in Step 5a and different <em>MonitoredSubject</em> and <em>Key</em><br>
-- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID3</em>)<br>
-- MonitoredSubject: monitored subject ID (<em>MonitorSubID6</em>)<br>
-- Key: shared secret between the client and the ICD (<em>Key6</em>)<br>
-- VerificationKey: verification key (<em>VerificationKey3</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID5</em> and <em>VerificationKey5</em> as in Step 6a and different <em>MonitorSubID9</em> and <em>Key9</em><br>
+- CheckInNodeID: <em>CheckInNodeID5</em><br>
+- MonitoredSubject: <em>MonitorSubID9</em><br>
+- Key: <em>Key9</em><br>
+- VerificationKey: <em>VerificationKey5</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
 Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the CheckInNodeID (<em>CheckInNodeID3</em>) and VerificationKey (<em>VerificationKey3</em>).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Re-enable TH admin access to ICD management cluster.</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM_S.C02.Rsp(UnregisterClient)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the <em>CheckInNodeID5</em> and <em>VerificationKey5</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_post_conditions"><a class="anchor" href="#_post_conditions"></a>Post-Conditions</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Post-Condition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Re-enable TH admin access to ICD management cluster. Recommission DUT to TH if needed.</p></td>
 </tr>
 </tbody>
 </table>
@@ -56455,7 +56498,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_148"><a class="anchor" href="#_device_topology_148"></a>Device Topology</h5>
+<h5 id="_device_topology_147"><a class="anchor" href="#_device_topology_147"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -56680,7 +56723,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_149"><a class="anchor" href="#_device_topology_149"></a>Device Topology</h5>
+<h5 id="_device_topology_148"><a class="anchor" href="#_device_topology_148"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -56826,7 +56869,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_150"><a class="anchor" href="#_device_topology_150"></a>Device Topology</h5>
+<h5 id="_device_topology_149"><a class="anchor" href="#_device_topology_149"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -56941,7 +56984,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_151"><a class="anchor" href="#_device_topology_151"></a>Device Topology</h5>
+<h5 id="_device_topology_150"><a class="anchor" href="#_device_topology_150"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -57098,7 +57141,7 @@ Verify the command has following parameters:<br>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_152"><a class="anchor" href="#_device_topology_152"></a>Device Topology</h5>
+<h5 id="_device_topology_151"><a class="anchor" href="#_device_topology_151"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -57582,7 +57625,7 @@ Verify the command has following parameters:<br>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_153"><a class="anchor" href="#_device_topology_153"></a>Device Topology</h5>
+<h5 id="_device_topology_152"><a class="anchor" href="#_device_topology_152"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
@@ -57694,7 +57737,7 @@ Verify the command has following parameters:<br>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_154"><a class="anchor" href="#_device_topology_154"></a>Device Topology</h5>
+<h5 id="_device_topology_153"><a class="anchor" href="#_device_topology_153"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
@@ -57895,7 +57938,7 @@ Verify the command has following parameters:<br>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_155"><a class="anchor" href="#_device_topology_155"></a>Device Topology</h5>
+<h5 id="_device_topology_154"><a class="anchor" href="#_device_topology_154"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
@@ -57942,8 +57985,8 @@ Verify the command has following parameters:<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 4e29381<br>
-Last updated 2024-05-07 17:14:30 UTC
+Version master ce2614a<br>
+Last updated 2024-05-07 20:23:18 UTC
 </div>
 </div>
 </body>
