@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 43a5313 (local changes),</span>
-<span id="revdate">2024-05-08 07:33:29 -0700</span>
+<span id="revnumber">version master c74841c (local changes),</span>
+<span id="revdate">2024-05-08 16:02:43 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1601,6 +1601,9 @@ or notes a section of text with the term "provisional".</p>
 </li>
 <li>
 <p>Support for GoHome command in the <a href="#ref_RvcOperationalStateCluster">RVC Operational State cluster</a> is provisional.</p>
+</li>
+<li>
+<p>Support for <a href="#ref_ScenesCluster">Scenes Management Cluster</a> is provisional.</p>
 </li>
 </ul>
 </div>
@@ -3409,6 +3412,18 @@ the group identifier. Note that extra care is required in these cases to avoid a
 scene identifier collision, and that commands related to scenes without a group
 MAY only be unicast, i.e., they SHALL NOT be multicast or broadcast.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Support for Scenes Management cluster is provisional.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
 <h4 id="_revision_history_4"><a class="anchor" href="#_revision_history_4"></a>1.4.1. Revision History</h4>
 <div class="paragraph">
@@ -3464,19 +3479,22 @@ MAY only be unicast, i.e., they SHALL NOT be multicast or broadcast.</p>
 <h4 id="_cluster_id_3"><a class="anchor" href="#_cluster_id_3"></a>1.4.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0062</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scenes Management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
 </tr>
 </tbody>
 </table>
@@ -70990,8 +71008,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 43a5313 (local changes)<br>
-Last updated 2024-05-08 14:33:47 UTC
+Version master c74841c (local changes)<br>
+Last updated 2024-05-09 00:00:39 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
