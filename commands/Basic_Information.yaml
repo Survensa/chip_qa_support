@@ -209,3 +209,21 @@
     - command: "./chip-tool basicinformation read product-appearance 1 0"
       logs:
         - " "
+    - command: "./chip-tool basicinformation read specification-version 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool basicinformation write-by-id 0x0015 '1234567890' 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool basicinformation read specification-version 1 0"
+      logs:
+        - " "
+    - command: "./chip-tool basicinformation read max-paths-per-invoke 1 0"
+      logs:
+        - " "    
+    - command: "../chip-tool basicinformation write-by-id 0x0016 '12345' 1 0"
+      logs:
+        - " "  
+    - command: "./chip-tool basicinformation read max-paths-per-invoke 1 0"
+      logs:
+        - " "        
