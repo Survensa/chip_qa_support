@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 19cc339 (local changes),</span>
-<span id="revdate">2024-05-13 17:52:58 -0700</span>
+<span id="revnumber">version master 4639aeb (local changes),</span>
+<span id="revdate">2024-05-14 07:03:30 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -17699,22 +17699,28 @@ conform to this cluster definition.</p>
 <tr>
 <th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">PICS</th>
 <th class="tableblock halign-left valign-top">Resource Type</th>
-<th class="tableblock halign-left valign-top">PICS Code</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0071</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HEPA Filter Monitoring</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HEPA Filter</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HEPAFREMON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HEPA Filter</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0072</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Activated Carbon Filter Monitoring</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Activated Carbon Filter</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ACFREMON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Activated Carbon Filter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0079</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Water Tank Level Monitoring</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WTLREPMON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Water Tank Level</p></td>
 </tr>
 </tbody>
 </table>
@@ -17930,8 +17936,8 @@ Devices SHOULD use globally-recognized IDs over OEM specific ones.</p>
 <th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Constraint</th>
 <th class="tableblock halign-left valign-top">Quality</th>
-<th class="tableblock halign-left valign-top">Access</th>
 <th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Access</th>
 <th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
@@ -27703,17 +27709,13 @@ later (hotter) part of the day.</p>
 </tr>
 </tbody>
 </table>
-<div id="ref_PccTypicalUsageFigure" class="imageblock">
-<div class="content">
-<img src="app_clusters/images/hvac/pump_devices.svg" alt="pump devices">
+<div id="ref_PccTypicalUsageFigure" class="paragraph">
+<div class="title">Typical Usage of Pump Configuration and Control Cluster</div>
+<p>image::./images/hvac/pump_devices.svg</p>
 </div>
-<div class="title">Figure 12. Typical Usage of Pump Configuration and Control Cluster</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="app_clusters/images/hvac/thermostat_devices.svg" alt="thermostat devices">
-</div>
-<div class="title">Figure 13. Example Usage of the Thermostat and Related Clusters"</div>
+<div class="paragraph">
+<div class="title">Example Usage of the Thermostat and Related Clusters"</div>
+<p>image::./images/hvac/thermostat_devices.svg</p>
 </div>
 </div>
 </div>
@@ -34920,7 +34922,7 @@ be used in any application domain.</p>
 <div class="content">
 <img src="app_clusters/images/closures/media/image2.jpeg" alt="image2" width="375" height="339">
 </div>
-<div class="title">Figure 14. Typical Usage of the Closures Clusters</div>
+<div class="title">Figure 12. Typical Usage of the Closures Clusters</div>
 </div>
 </div>
 </div>
@@ -63598,7 +63600,7 @@ Energy Management Cluster server.</p>
 <div class="content">
 <img src="app_clusters/images/energy/media/ESA_EMS_Cluster.png" alt="ESA EMS Cluster">
 </div>
-<div class="title">Figure 15. Example of the how an EMS is a client of multiple ESAs Energy Management clusters.</div>
+<div class="title">Figure 13. Example of the how an EMS is a client of multiple ESAs Energy Management clusters.</div>
 </div>
 <div class="paragraph">
 <p>This cluster is intended to be generic in nature and could apply to any
@@ -63653,7 +63655,7 @@ times.</p>
 <div class="content">
 <img src="app_clusters/images/energy/media/HVAC_ESA_Example_with_EMS.png" alt="HVAC ESA Example with EMS">
 </div>
-<div class="title">Figure 16. Example of the how an HVAC may use multiple clusters</div>
+<div class="title">Figure 14. Example of the how an HVAC may use multiple clusters</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -64126,7 +64128,7 @@ of current flow towards a load.</p>
 <div class="content">
 <img src="app_clusters/images/energy/media/Power_Definition.png" alt="Power Definition">
 </div>
-<div class="title">Figure 17. Power flows towards loads</div>
+<div class="title">Figure 15. Power flows towards loads</div>
 </div>
 <div class="paragraph">
 <p><strong>Solar PV inverter example:</strong> A solar PV inverter is normally connected to the
@@ -71026,8 +71028,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 19cc339 (local changes)<br>
-Last updated 2024-05-14 00:53:12 UTC
+Version master 4639aeb (local changes)<br>
+Last updated 2024-05-14 14:03:46 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
