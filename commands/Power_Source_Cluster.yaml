@@ -26,6 +26,39 @@
     - command: "./chip-tool powersource read description 1 1"
       logs:
         - " "
+    - command: "./chip-tool powersource read wired-assessed-input-voltage 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read wired-assessed-input-frequency 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read wired-current-type 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read wired-assessed-current 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read wired-nominal-voltage 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read wired-maximum-current 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read wired-present 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read active-wired-faults 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-voltage  1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-percent-remaining 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-time-remaining 1 1"
+      logs:
+        - " "
     - command: "./chip-tool powersource read bat-charge-level 1 1"
       logs:
         - " "
@@ -33,5 +66,50 @@
       logs:
         - " "
     - command: "./chip-tool powersource read bat-replaceability 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-present 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read active-bat-faults 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-replacement-description 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-common-designation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-ansidesignation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-iecdesignation 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-approved-chemistry 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-capacity 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-quantity 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-charge-state 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-time-to-full-charge 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-functional-while-charging 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read bat-charging-current 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read active-bat-charge-faults 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool powersource read endpoint-list 1 1"
       logs:
         - " "
