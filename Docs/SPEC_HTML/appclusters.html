@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 4639aeb (local changes),</span>
-<span id="revdate">2024-05-14 07:03:30 -0700</span>
+<span id="revnumber">version master 94cb042 (local changes),</span>
+<span id="revdate">2024-05-17 10:57:49 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1263,9 +1263,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_revision_history_67">9.4.1. Revision History</a></li>
 <li><a href="#_classification_66">9.4.2. Classification</a></li>
 <li><a href="#_cluster_id_64">9.4.3. Cluster ID</a></li>
-<li><a href="#_derived_cluster_namespace_8">9.4.4. Derived Cluster Namespace</a></li>
-<li><a href="#_mode_constraints_2">9.4.5. Mode Constraints</a></li>
-<li><a href="#_mode_examples_5">9.4.6. Mode Examples</a></li>
+<li><a href="#_data_types_52">9.4.4. Data Types</a></li>
+<li><a href="#_attributes_59">9.4.5. Attributes</a></li>
+<li><a href="#_derived_cluster_namespace_8">9.4.6. Derived Cluster Namespace</a></li>
+<li><a href="#_mode_examples_5">9.4.7. Mode Examples</a></li>
 </ul>
 </li>
 <li><a href="#ref_EnergyPreferenceCluster">9.5. Energy Preference Cluster</a>
@@ -1274,8 +1275,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_classification_67">9.5.2. Classification</a></li>
 <li><a href="#_cluster_id_65">9.5.3. Cluster ID</a></li>
 <li><a href="#_features_39">9.5.4. Features</a></li>
-<li><a href="#_data_types_52">9.5.5. Data Types</a></li>
-<li><a href="#_attributes_59">9.5.6. Attributes</a></li>
+<li><a href="#_data_types_53">9.5.5. Data Types</a></li>
+<li><a href="#_attributes_60">9.5.6. Attributes</a></li>
 </ul>
 </li>
 <li><a href="#ref_DeviceEnergyManagementModeCluster">9.6. Device Energy Management Mode Cluster</a>
@@ -1283,7 +1284,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_revision_history_69">9.6.1. Revision History</a></li>
 <li><a href="#_classification_68">9.6.2. Classification</a></li>
 <li><a href="#_cluster_id_66">9.6.3. Cluster ID</a></li>
-<li><a href="#_data_types_53">9.6.4. Data Types</a></li>
+<li><a href="#_data_types_54">9.6.4. Data Types</a></li>
 <li><a href="#_derived_cluster_namespace_9">9.6.5. Derived Cluster Namespace</a></li>
 <li><a href="#_mode_examples_6">9.6.6. Mode Examples</a></li>
 </ul>
@@ -1576,7 +1577,7 @@ or notes a section of text with the term "provisional".</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Support for Pulse Width Modulation cluster and for the Frequency feature of the <a href="#ref_LevelControlCluster">Level control cluster</a> is provisional.</p>
+<p>Support for the Frequency feature of the <a href="#ref_LevelControlCluster">Level control cluster</a> is provisional.</p>
 </li>
 <li>
 <p>Support for <a href="#ref_BallastConfigurationCluster">Ballast Configuration Cluster</a> is provisional.</p>
@@ -1953,16 +1954,16 @@ revision number in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0B</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ChannelChange</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">e.g., Colored light turns orange for 8 seconds;
-                           non-colored light switches to the maximum brightness for 0.5s and then minimum brightness for 7.5s.</p></td>
+                          non-colored light switches to the maximum brightness for 0.5s and then minimum brightness for 7.5s.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0xFE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FinishEffect</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Complete the current effect sequence before
-                           terminating. e.g., if in the middle of a breathe effect (as above),
-                           first complete the current 1s breathe effect and then terminate the
-                           effect.</p></td>
+                          terminating. e.g., if in the middle of a breathe effect (as above),
+                          first complete the current 1s breathe effect and then terminate the
+                          effect.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -2049,19 +2050,14 @@ revision number in the table below.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M<sup>*</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><sup>*</sup> IdentifyType represents a mandatory attribute that was previously not
-present or optional. Implementers should be aware that older devices may
-not implement it.</p>
-</div>
 <div class="sect4">
-<h5 id="ref_IdentifyTimeAttribute"><a class="anchor" href="#ref_IdentifyTimeAttribute"></a>1.2.5.1. IdentifyTime Attribute</h5>
+<h5 id="ref_IdentifyTime"><a class="anchor" href="#ref_IdentifyTime"></a>1.2.5.1. IdentifyTime Attribute</h5>
 <div class="paragraph">
-<p>This attribute specifies the remaining length of time, in
+<p>This attribute SHALL represent the remaining length of time, in
 seconds, that the endpoint will continue to identify itself.</p>
 </div>
 <div class="paragraph">
@@ -2079,11 +2075,11 @@ SHALL terminate its identification state.</p>
 <div class="sect4">
 <h5 id="_identifytype_attribute"><a class="anchor" href="#_identifytype_attribute"></a>1.2.5.2. IdentifyType Attribute</h5>
 <div class="paragraph">
-<p>This attribute specifies how the
+<p>This attribute SHALL indicate how the
 identification state is presented to the user.</p>
 </div>
 <div class="paragraph">
-<p>This field SHALL contain one of the values defined in <a href="#ref_IdentifyTypeEnum">IdentifyTypeEnum</a>.
+<p>This attribute SHALL contain one of the values defined in <a href="#ref_IdentifyTypeEnum">IdentifyTypeEnum</a>.
 The value None SHALL NOT be used if the device is capable of presenting its identification state
 using one of the other methods defined in <a href="#ref_IdentifyTypeEnum">IdentifyTypeEnum</a>.</p>
 </div>
@@ -2132,8 +2128,7 @@ using one of the other methods defined in <a href="#ref_IdentifyTypeEnum">Identi
 <div class="sect4">
 <h5 id="_identify_command"><a class="anchor" href="#_identify_command"></a>1.2.6.1. Identify Command</h5>
 <div class="paragraph">
-<p>This command starts or stops the receiving device identifying
-itself.</p>
+<p>This command starts or stops the receiving device identifying itself.</p>
 </div>
 <div class="paragraph">
 <p>This command SHALL have the following data fields:</p>
@@ -2177,7 +2172,7 @@ itself.</p>
 <p>On receipt of this command, the device SHALL set the IdentifyTime
 attribute to the value of the IdentifyTime field. This then starts,
 continues, or stops the device&#8217;s identification state as detailed in
-<a href="#ref_IdentifyTimeAttribute">IdentifyTime Attribute</a>.</p>
+<a href="#ref_IdentifyTime">IdentifyTime</a>.</p>
 </div>
 </div>
 </div>
@@ -2241,7 +2236,7 @@ during commissioning.</p>
 <div class="sect5">
 <h6 id="_effectidentifier_field"><a class="anchor" href="#_effectidentifier_field"></a>1.2.6.2.1. EffectIdentifier Field</h6>
 <div class="paragraph">
-<p>This field specifies the identify effect to use and SHALL contain one of
+<p>This field SHALL indicate the identify effect to use and SHALL contain one of
 the non-reserved values in <a href="#ref_EffectIdentifierEnum">EffectIdentifierEnum</a>.</p>
 </div>
 <div class="paragraph">
@@ -2253,11 +2248,9 @@ but they SHOULD indicate during testing how they handle each effect.</p>
 <div class="sect5">
 <h6 id="_effectvariant_field"><a class="anchor" href="#_effectvariant_field"></a>1.2.6.2.2. EffectVariant Field</h6>
 <div class="paragraph">
-<p>This field is used to indicate
-which variant of the effect, indicated in the EffectIdentifier field,
-SHOULD be triggered. If a device does not support the given variant, it
-SHALL use the default variant. This field SHALL contain one of the
-values in <a href="#ref_EffectVariantEnum">EffectVariantEnum</a>.</p>
+<p>This field SHALL indicate which variant of the effect, indicated in the EffectIdentifier field, SHOULD be triggered.
+If a device does not support the given variant, it SHALL use the default variant.
+This field SHALL contain one of the values in <a href="#ref_EffectVariantEnum">EffectVariantEnum</a>.</p>
 </div>
 </div>
 <div class="sect5">
@@ -2427,15 +2420,17 @@ added.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Bit</th>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Summary</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
@@ -2443,6 +2438,7 @@ added.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>GroupNames</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ability to store a name for a group.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
@@ -2522,7 +2518,7 @@ All other bits SHALL be 0.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AddGroup</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AddGroupResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -2530,7 +2526,7 @@ All other bits SHALL be 0.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ViewGroup</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ViewGroupResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -2538,7 +2534,7 @@ All other bits SHALL be 0.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>GetGroupMembership</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GetGroupMembershipResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -2546,7 +2542,7 @@ All other bits SHALL be 0.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RemoveGroup</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RemoveGroupResponse</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -2554,7 +2550,7 @@ All other bits SHALL be 0.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RemoveAllGroups</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -2562,7 +2558,7 @@ All other bits SHALL be 0.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AddGroupIfIdentifying</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8658; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M F</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -2722,7 +2718,7 @@ the server SHALL NOT generate an AddGroupResponse command.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>See <a href="#ref_AddGroupResponseCommand">AddGroupResponse Command</a> for a description of the response command.</p>
+<p>See <a href="#ref_AddGroupResponseCommand">AddGroupResponse</a> for a description of the response command.</p>
 </div>
 </div>
 </div>
@@ -2796,7 +2792,7 @@ the server SHALL NOT generate a ViewGroupResponse command.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>See <a href="#ref_ViewGroupResponseCommand">ViewGroupResponse Command</a> for a description of the response command.</p>
+<p>See <a href="#ref_ViewGroupResponseCommand">ViewGroupResponse</a> for a description of the response command.</p>
 </div>
 </div>
 </div>
@@ -2935,7 +2931,7 @@ the server SHALL NOT generate a RemoveGroupResponse command.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>See <a href="#ref_RemoveGroupResponseCommand">RemoveGroupResponse Command</a> for a description of the response command.</p>
+<p>See <a href="#ref_RemoveGroupResponseCommand">RemoveGroupResponse</a> for a description of the response command.</p>
 </div>
 <div class="paragraph">
 <p>Additionally, if the Scenes Management cluster is supported on the same endpoint,
@@ -7037,46 +7033,22 @@ represent a single instance of the device level control.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">ID</th>
-<th class="tableblock halign-left valign-top">Hierarchy</th>
 <th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0008</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Base</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Level Control</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x001C</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Derived</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pulse Width Modulation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Pulse Width Modulation cluster is provisional.
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_features_4"><a class="anchor" href="#_features_4"></a>1.6.4. Features</h4>
@@ -7125,9 +7097,7 @@ Pulse Width Modulation cluster is provisional.
 <td class="tableblock halign-left valign-top"><p class="tableblock">Frequency</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Supports frequency attributes and behavior.
-                                                    The Pulse Width Modulation cluster was created
-                                                    for frequency control.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supports frequency attributes and behavior.</p></td>
 </tr>
 </tbody>
 </table>
@@ -7154,7 +7124,7 @@ introduced between them. Facilities are provided to introduce
 dependencies if required.</p>
 </div>
 <div class="sect5">
-<h6 id="ref_OnOffCommandsEffectCurrentLevel"><a class="anchor" href="#ref_OnOffCommandsEffectCurrentLevel"></a>1.6.4.1.1. Effect of On/Off Commands on the CurrentLevel Attribute</h6>
+<h6 id="ref_OnOffCommandsEffectCurrentLevel"><a class="anchor" href="#ref_OnOffCommandsEffectCurrentLevel"></a>1.6.4.1.1. Effect of On/Off Commands on the CurrentLevel attribute</h6>
 <div class="paragraph">
 <p>The <a href="#ref_OnLevel">OnLevel</a> attribute determines whether commands of
 the On/Off cluster have a permanent effect on the CurrentLevel
@@ -7493,7 +7463,7 @@ The Frequency feature is provisional.
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0002</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MinLevel</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 to MaxLevel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max MaxLevel</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -7523,7 +7493,7 @@ The Frequency feature is provisional.
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0005</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MinFrequency</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 to MaxFrequency</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max MaxFrequency</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -7763,7 +7733,7 @@ rate, the OnOffTransitionTime attribute SHOULD NOT be implemented.</p>
 attribute is set to when the OnOff attribute of an On/Off cluster on
 the same endpoint is set to TRUE, as a result of processing an On/Off
 cluster command. If the OnLevel attribute is not implemented, or is
-set to the null value, it has no effect. For more details see <a href="#ref_OnOffCommandsEffectCurrentLevel">Effect of On/Off Commands on the CurrentLevel Attribute</a>.</p>
+set to the null value, it has no effect. For more details see <a href="#ref_OnOffCommandsEffectCurrentLevel">Effect of On/Off Commands on the CurrentLevel attribute</a>.</p>
 </div>
 <div class="paragraph">
 <p>OnLevel represents a mandatory field that was previously not present
@@ -7962,7 +7932,7 @@ prior to the restart.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Level</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 to 254</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 254</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -8482,7 +8452,7 @@ On/Off clusters are on the same endpoint and the Lighting feature is set.</p>
 <th class="tableblock halign-left valign-top">OnOff</th>
 <th class="tableblock halign-left valign-top">Physical Device</th>
 <th class="tableblock halign-left valign-top">Device Output<br>
-                                                                                                                              Result</th>
+                                                                                                                                                    Result</th>
 </tr>
 </thead>
 <tbody>
@@ -10249,7 +10219,7 @@ For example: A LightBlinking cluster ID supports blinking modes for a light (and
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ChangeToModeResponse command: StatusText must be provided for InvalidInMode status.
-Require at least one standard mode tag. Define reserved ranges for base/derived clusters</p></td>
+             Require at least one standard mode tag. Define reserved ranges for base/derived clusters</p></td>
 </tr>
 </tbody>
 </table>
@@ -10775,7 +10745,7 @@ in the On/Off cluster as described in the table below:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ChangeToModeResponse</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client &#8656; server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
@@ -10842,7 +10812,7 @@ the ChangeToModeResponse command SHALL:</p>
 <li>
 <p>Have the Status set to a product-specific Status value representing the error,
 or GenericFailure if a more specific error cannot be provided.
-See <a href="#ref_ModeBaseStatusField">Status Field</a> for details.</p>
+See <a href="#ref_ModeBaseStatusField">Status</a> field for details.</p>
 </li>
 <li>
 <p>Provide a human readable string in the StatusText field.</p>
@@ -70141,7 +70111,7 @@ in the table below.</p>
 <tr>
 <th class="tableblock halign-left valign-top">Hierarchy</th>
 <th class="tableblock halign-left valign-top">Role</th>
-<th class="tableblock halign-left valign-top">Context</th>
+<th class="tableblock halign-left valign-top">Scope</th>
 <th class="tableblock halign-left valign-top">PICS Code</th>
 </tr>
 </thead>
@@ -70177,13 +70147,89 @@ in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_derived_cluster_namespace_8"><a class="anchor" href="#_derived_cluster_namespace_8"></a>9.4.4. Derived Cluster Namespace</h4>
+<h4 id="_data_types_52"><a class="anchor" href="#_data_types_52"></a>9.4.4. Data Types</h4>
+<div class="sect4">
+<h5 id="_modeoptionstruct_type_6"><a class="anchor" href="#_modeoptionstruct_type_6"></a>9.4.4.1. ModeOptionStruct Type</h5>
+<div class="paragraph">
+<p>The table below lists the changes relative to the Mode Base cluster for the fields of the ModeOptionStruct type.
+A blank field indicates no change.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">ID</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Quality</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Access</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Label</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mode</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ModeTags</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 to 8</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_attributes_59"><a class="anchor" href="#_attributes_59"></a>9.4.5. Attributes</h4>
+<div class="sect4">
+<h5 id="_supportedmodes_attribute_3"><a class="anchor" href="#_supportedmodes_attribute_3"></a>9.4.5.1. SupportedModes Attribute</h5>
+<div class="paragraph">
+<p>At least one entry in the SupportedModes attribute SHALL include the Manual mode tag
+in the ModeTags field list.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_derived_cluster_namespace_8"><a class="anchor" href="#_derived_cluster_namespace_8"></a>9.4.6. Derived Cluster Namespace</h4>
 <div class="paragraph">
 <p>This namespace includes definitions for data associated exclusively with the
 derived cluster.</p>
 </div>
 <div class="sect4">
-<h5 id="_mode_tags_8"><a class="anchor" href="#_mode_tags_8"></a>9.4.4.1. Mode Tags</h5>
+<h5 id="_mode_tags_8"><a class="anchor" href="#_mode_tags_8"></a>9.4.6.1. Mode Tags</h5>
 <div class="paragraph">
 <p>The following table defines the derived cluster specific ModeTag values.</p>
 </div>
@@ -70214,14 +70260,14 @@ derived cluster.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_manual_tag"><a class="anchor" href="#_manual_tag"></a>9.4.4.1.1. Manual Tag</h6>
+<h6 id="_manual_tag"><a class="anchor" href="#_manual_tag"></a>9.4.6.1.1. Manual Tag</h6>
 <div class="paragraph">
 <p>While in this mode, the EVSE needs to be sent an EnableEvseCharging or
 EnableEvseDischarging command to make the EVSE start charging or discharging.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_timeofuse_tag"><a class="anchor" href="#_timeofuse_tag"></a>9.4.4.1.2. TimeOfUse Tag</h6>
+<h6 id="_timeofuse_tag"><a class="anchor" href="#_timeofuse_tag"></a>9.4.6.1.2. TimeOfUse Tag</h6>
 <div class="paragraph">
 <p>While in this mode, the EVSE will attempt to automatically start charging based
 on the user&#8217;s charging targets and a Time of Use tariff to charge at the cheapest
@@ -70229,7 +70275,7 @@ times of the day.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_solarcharging_tag"><a class="anchor" href="#_solarcharging_tag"></a>9.4.4.1.3. SolarCharging Tag</h6>
+<h6 id="_solarcharging_tag"><a class="anchor" href="#_solarcharging_tag"></a>9.4.6.1.3. SolarCharging Tag</h6>
 <div class="paragraph">
 <p>While in this mode, the EVSE will attempt to automatically start charging based
 on available excess solar PV generation, limiting the charging power to avoid
@@ -70239,54 +70285,7 @@ imported energy from the grid.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_mode_constraints_2"><a class="anchor" href="#_mode_constraints_2"></a>9.4.5. Mode Constraints</h4>
-<div class="paragraph">
-<p>The table below lists the changes relative to the Mode Base cluster for the
-fields of the ModeOptionStruct type. A blank field indicates no change.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-<col style="width: 12.5%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">ID</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Constraint</th>
-<th class="tableblock halign-left valign-top">Quality</th>
-<th class="tableblock halign-left valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Access</th>
-<th class="tableblock halign-left valign-top">Conformance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ModeTags</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 to 8</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>At least one entry in the SupportedModes attribute SHALL include the Manual mode tag
-in the ModeTags field list.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_mode_examples_5"><a class="anchor" href="#_mode_examples_5"></a>9.4.6. Mode Examples</h4>
+<h4 id="_mode_examples_5"><a class="anchor" href="#_mode_examples_5"></a>9.4.7. Mode Examples</h4>
 <div class="paragraph">
 <p>A few examples of EVSE modes and their mode tags are provided
 below.</p>
@@ -70457,7 +70456,7 @@ must elapse without user interaction before it goes to sleep.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_data_types_52"><a class="anchor" href="#_data_types_52"></a>9.5.5. Data Types</h4>
+<h4 id="_data_types_53"><a class="anchor" href="#_data_types_53"></a>9.5.5. Data Types</h4>
 <div class="sect4">
 <h5 id="ref_EnergyPriorityEnum"><a class="anchor" href="#ref_EnergyPriorityEnum"></a>9.5.5.1. EnergyPriorityEnum Type</h5>
 <div class="paragraph">
@@ -70597,7 +70596,7 @@ given step value.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_59"><a class="anchor" href="#_attributes_59"></a>9.5.6. Attributes</h4>
+<h4 id="_attributes_60"><a class="anchor" href="#_attributes_60"></a>9.5.6. Attributes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -70864,9 +70863,9 @@ Support for Device Energy Management Mode cluster is provisional.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_data_types_53"><a class="anchor" href="#_data_types_53"></a>9.6.4. Data Types</h4>
+<h4 id="_data_types_54"><a class="anchor" href="#_data_types_54"></a>9.6.4. Data Types</h4>
 <div class="sect4">
-<h5 id="_modeoptionstruct_type_6"><a class="anchor" href="#_modeoptionstruct_type_6"></a>9.6.4.1. ModeOptionStruct Type</h5>
+<h5 id="_modeoptionstruct_type_7"><a class="anchor" href="#_modeoptionstruct_type_7"></a>9.6.4.1. ModeOptionStruct Type</h5>
 <div class="paragraph">
 <p>The table below lists the changes relative to the Mode Base cluster for the fields of the ModeOptionStruct type.
 A blank field indicates no change.</p>
@@ -71028,8 +71027,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 4639aeb (local changes)<br>
-Last updated 2024-05-17 00:00:30 UTC
+Version master 94cb042 (local changes)<br>
+Last updated 2024-05-17 17:58:05 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
