@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 2c59439,</span>
-<span id="revdate">2024-05-16 12:22:11 -0700</span>
+<span id="revnumber">version master 08590f8,</span>
+<span id="revdate">2024-05-21 15:25:23 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -14484,7 +14484,7 @@ conditions:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.17.5.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>TH1 does a non-fabric-filtered read of the <code>Fabrics</code> attribute from the Node Operational Credentials cluster. Save the FabricIndex for TH1 as <a id="TH1_FABRICINDEX"></a> <code>TH1_Fabric_Index</code> for future use.</p>
+<p>TH1 does a fabric-filtered read of the <code>Fabrics</code> attribute from the Node Operational Credentials cluster. Save the FabricIndex for TH1 as <a id="TH1_FABRICINDEX"></a> <code>TH1_Fabric_Index</code> for future use.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Verify that there is a single entry in the list and the FabricIndex for that entry matches <a href="#TH1_FABRICINDEX"><code>TH1_Fabric_Index</code></a>.</p>
@@ -14620,13 +14620,22 @@ conditions:</p>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11.17.5.2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>TH2 does a non-fabric-filtered read of the <code>Fabrics</code> attribute from the Node Operational Credentials cluster</p>
+<p>TH1 does a fabric-filtered read of the <code>Fabrics</code> attribute from the Node Operational Credentials cluster</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there are 2 entries in the list where one entry matches <a href="#TH1_FABRICINDEX"><code>TH1_Fabric_Index</code></a> and the other matches <a href="#TH2_FABRICINDEX"><code>TH2_Fabric_Index</code></a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there is one entry in the list that matches <a href="#TH1_FABRICINDEX"><code>TH1_Fabric_Index</code></a> .</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.17.5.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>TH2 does a fabric-filtered read of the <code>Fabrics</code> attribute from the Node Operational Credentials cluster</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that there is one entry in the list that matches  <a href="#TH2_FABRICINDEX"><code>TH2_Fabric_Index</code></a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
@@ -58065,8 +58074,8 @@ Verify the command has following parameters:<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 2c59439<br>
-Last updated 2024-05-16 19:22:27 UTC
+Version master 08590f8<br>
+Last updated 2024-05-21 22:25:39 UTC
 </div>
 </div>
 </body>
