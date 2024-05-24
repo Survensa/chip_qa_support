@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master d40015e (local changes),</span>
-<span id="revdate">2024-05-23 09:02:45 -0700</span>
+<span id="revnumber">version master 32a2fca (local changes),</span>
+<span id="revdate">2024-05-23 16:30:00 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -64287,6 +64287,10 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Updates to match cluster spec updates</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bug fixes found during PICS production</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -64368,7 +64372,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PA</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PowerAdjustment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an EMS to make a temporary power
                                                                              adjustment (within the limits offered by the ESA).</p></td>
 </tr>
@@ -64376,7 +64380,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PFR</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PowerForecastReporting</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(STA|PAU|FA|CON)&amp;(!SFR),O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(STA|PAU|FA|CON|!PA)&amp;!SFR,O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an ESA to advertise its indicative
                                                                              future power consumption vs time.</p></td>
 </tr>
@@ -64384,7 +64388,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SFR</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">StateForecastReporting</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(STA|PAU|FA|CON)&amp;(!PFR),O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(STA|PAU|FA|CON|!PA)&amp;!PFR,X</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an ESA to advertise its indicative
                                                                              future state vs time.</p></td>
 </tr>
@@ -64392,7 +64396,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>STA</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">StartTimeAdjustment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an EMS to delay an ESA&#8217;s
                                                                              planned operation.</p></td>
 </tr>
@@ -64400,7 +64404,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PAU</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pausable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an EMS to pause an ESA&#8217;s
                                                                              planned operation.</p></td>
 </tr>
@@ -64408,7 +64412,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FA</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ForecastAdjustment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P,O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an EMS to adjust an ESA&#8217;s
                                                                              planned operation.</p></td>
 </tr>
@@ -64416,12 +64420,19 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CON</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ConstraintBasedAdjustment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P,O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an EMS to request constraints to an ESA&#8217;s
                                                                              planned operation.</p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>The conformance rules specified above can be described as:
+* At least one of the features SHALL be supported.
+* At most one of the 'SFR' and 'PFR' features SHALL be supported.
+* If one or more of the 'STA', 'PAU', 'FA', or 'CON' features are supported, then either the 'PFR' or the 'SFR' feature SHALL also be supported.
+* If PA is supported, SFR SHALL NOT be supported</p>
+</div>
 <div class="sect4">
 <h5 id="_poweradjustment_feature"><a class="anchor" href="#_poweradjustment_feature"></a>9.2.4.1. PowerAdjustment Feature</h5>
 <div class="paragraph">
@@ -64975,7 +64986,7 @@ being too hot or too cold.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Paused</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ESA is currently paused by a client using the PauseRequest command</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[FA]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PAU</p></td>
 </tr>
 </tbody>
 </table>
@@ -65161,7 +65172,49 @@ being too hot or too cold.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_CostStruct"><a class="anchor" href="#ref_CostStruct"></a>9.2.7.8. CostStruct Type</h5>
+<h5 id="ref_PowerAdjustReasonEnum"><a class="anchor" href="#ref_PowerAdjustReasonEnum"></a>9.2.7.8. PowerAdjustReasonEnum Type</h5>
+<div class="paragraph">
+<p>This data type is derived from enum8.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Summary</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NoAdjustment</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There is no Power Adjustment active</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LocalOptimizationAdjustment</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There is PowerAdjustment active due to local EMS optimization</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>GridOptimizationAdjustment</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There is PowerAdjustment active due to local EMS optimization</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="ref_CostStruct"><a class="anchor" href="#ref_CostStruct"></a>9.2.7.9. CostStruct Type</h5>
 <div class="paragraph">
 <p>This indicates a generic mechanism for expressing cost to run an appliance, in
 terms of financial, GHG emissions, comfort value etc.</p>
@@ -65233,14 +65286,14 @@ terms of financial, GHG emissions, comfort value etc.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_costtype_field"><a class="anchor" href="#_costtype_field"></a>9.2.7.8.1. CostType Field</h6>
+<h6 id="_costtype_field"><a class="anchor" href="#_costtype_field"></a>9.2.7.9.1. CostType Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the type of cost being represented (see
 <a href="#ref_CostTypeEnum">CostTypeEnum</a>).</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_CostStructValue"><a class="anchor" href="#ref_CostStructValue"></a>9.2.7.8.2. Value Field</h6>
+<h6 id="ref_CostStructValue"><a class="anchor" href="#ref_CostStructValue"></a>9.2.7.9.2. Value Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the value of the cost. This may be negative
 (indicating that it is not a cost, but a free benefit).</p>
@@ -65251,7 +65304,7 @@ represent a benefit of 3.02.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_decimalpoints_field"><a class="anchor" href="#_decimalpoints_field"></a>9.2.7.8.3. DecimalPoints Field</h6>
+<h6 id="_decimalpoints_field"><a class="anchor" href="#_decimalpoints_field"></a>9.2.7.9.3. DecimalPoints Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the number of digits to the right of the decimal point
 in the Value field. For example, if the Value was 102 and DecimalPoints was 2,
@@ -65259,7 +65312,7 @@ then this would represent a cost of 1.02.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_CostStructCurrency"><a class="anchor" href="#ref_CostStructCurrency"></a>9.2.7.8.4. Currency Field</h6>
+<h6 id="ref_CostStructCurrency"><a class="anchor" href="#ref_CostStructCurrency"></a>9.2.7.9.4. Currency Field</h6>
 <div class="paragraph">
 <p>Indicates the currency for the value in the <a href="#ref_CostStructValue">Value</a> field. The
 value of the currency field SHALL match the values defined by [<a href="#ref_Iso4217">ISO&#160;4217</a>].</p>
@@ -65270,7 +65323,7 @@ value of the currency field SHALL match the values defined by [<a href="#ref_Iso
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_PowerAdjustStruct"><a class="anchor" href="#ref_PowerAdjustStruct"></a>9.2.7.9. PowerAdjustStruct Type</h5>
+<h5 id="ref_PowerAdjustStruct"><a class="anchor" href="#ref_PowerAdjustStruct"></a>9.2.7.10. PowerAdjustStruct Type</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -65335,10 +65388,20 @@ value of the currency field SHALL match the values defined by [<a href="#ref_Iso
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cause</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_PowerAdjustReasonEnum">PowerAdjustReasonEnum</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_minpower_field"><a class="anchor" href="#_minpower_field"></a>9.2.7.9.1. MinPower Field</h6>
+<h6 id="_minpower_field"><a class="anchor" href="#_minpower_field"></a>9.2.7.10.1. MinPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the minimum power that the ESA can have its power
 adjusted to.</p>
@@ -65352,7 +65415,7 @@ loads (e.g. charging a battery inverter).</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_maxpower_field"><a class="anchor" href="#_maxpower_field"></a>9.2.7.9.2. MaxPower Field</h6>
+<h6 id="_maxpower_field"><a class="anchor" href="#_maxpower_field"></a>9.2.7.10.2. MaxPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum power that the ESA can have its power
 adjusted to.</p>
@@ -65381,7 +65444,7 @@ MaxPower becomes 0W.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_minduration_field"><a class="anchor" href="#_minduration_field"></a>9.2.7.9.3. MinDuration field</h6>
+<h6 id="_minduration_field"><a class="anchor" href="#_minduration_field"></a>9.2.7.10.3. MinDuration field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the minimum duration, in seconds, that a controller
 may invoke an ESA power adjustment. Manufacturers may use this to as an
@@ -65393,7 +65456,7 @@ adjustments.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_maxduration_field"><a class="anchor" href="#_maxduration_field"></a>9.2.7.9.4. MaxDuration field</h6>
+<h6 id="_maxduration_field"><a class="anchor" href="#_maxduration_field"></a>9.2.7.10.4. MaxDuration field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum duration, in seconds, that a controller
 may invoke an ESA power adjustment. Manufacturers may use this to protect the
@@ -65404,9 +65467,15 @@ sufficient headroom to use or store energy in the ESA or for any other reason.</
 <p>Note that MinDuration SHALL be less than MaxDuration.</p>
 </div>
 </div>
+<div class="sect5">
+<h6 id="_cause_field"><a class="anchor" href="#_cause_field"></a>9.2.7.10.5. Cause field</h6>
+<div class="paragraph">
+<p>This field SHALL indicate the cause of the currently active power adjustment.</p>
+</div>
+</div>
 </div>
 <div class="sect4">
-<h5 id="ref_ForecastStruct"><a class="anchor" href="#ref_ForecastStruct"></a>9.2.7.10. ForecastStruct Type</h5>
+<h5 id="ref_ForecastStruct"><a class="anchor" href="#ref_ForecastStruct"></a>9.2.7.11. ForecastStruct Type</h5>
 <div class="paragraph">
 <p>This indicates a list of 'slots' describing the overall timing of the ESA&#8217;s
 planned energy and power use, with different power and energy demands per slot.
@@ -65444,7 +65513,7 @@ support the <code>SFR</code> feature and instead report its internal state.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ForecastId</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uint32</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
@@ -65503,7 +65572,7 @@ support the <code>SFR</code> feature and instead report its internal state.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>IsPauseable</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>IsPausable</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -65534,7 +65603,7 @@ support the <code>SFR</code> feature and instead report its internal state.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="ref_ForecastStructForecastId"><a class="anchor" href="#ref_ForecastStructForecastId"></a>9.2.7.10.1. ForecastId Field</h6>
+<h6 id="ref_ForecastStructForecastId"><a class="anchor" href="#ref_ForecastStructForecastId"></a>9.2.7.11.1. ForecastId Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the sequence number for the current forecast.
 If the ESA updates a forecast, it shall monotonically increase this value.</p>
@@ -65550,7 +65619,7 @@ learn about any new forecasts.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_activeslotnumber_field"><a class="anchor" href="#_activeslotnumber_field"></a>9.2.7.10.2. ActiveSlotNumber Field</h6>
+<h6 id="_activeslotnumber_field"><a class="anchor" href="#_activeslotnumber_field"></a>9.2.7.11.2. ActiveSlotNumber Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate which element of the Slots list is currently active in
 the Forecast sequence. A null value indicates that the sequence has not
@@ -65558,20 +65627,20 @@ yet started.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ForecastStructStartTime"><a class="anchor" href="#ref_ForecastStructStartTime"></a>9.2.7.10.3. StartTime Field</h6>
+<h6 id="ref_ForecastStructStartTime"><a class="anchor" href="#ref_ForecastStructStartTime"></a>9.2.7.11.3. StartTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the planned start time, in UTC, for the entire
 Forecast.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ForecastStructEndTime"><a class="anchor" href="#ref_ForecastStructEndTime"></a>9.2.7.10.4. EndTime Field</h6>
+<h6 id="ref_ForecastStructEndTime"><a class="anchor" href="#ref_ForecastStructEndTime"></a>9.2.7.11.4. EndTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the planned end time, in UTC, for the entire Forecast.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_earlieststarttime_field"><a class="anchor" href="#_earlieststarttime_field"></a>9.2.7.10.5. EarliestStartTime Field</h6>
+<h6 id="_earlieststarttime_field"><a class="anchor" href="#_earlieststarttime_field"></a>9.2.7.11.5. EarliestStartTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the earliest start time, in UTC, that the entire
 Forecast can be shifted to.</p>
@@ -65581,7 +65650,7 @@ Forecast can be shifted to.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_latestendtime_field"><a class="anchor" href="#_latestendtime_field"></a>9.2.7.10.6. LatestEndTime Field</h6>
+<h6 id="_latestendtime_field"><a class="anchor" href="#_latestendtime_field"></a>9.2.7.11.6. LatestEndTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the latest end time, in UTC, for the entire Forecast.</p>
 </div>
@@ -65591,7 +65660,7 @@ vehicle, by which time the charging session must end.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_ispauseable_field"><a class="anchor" href="#_ispauseable_field"></a>9.2.7.10.7. IsPauseable Field</h6>
+<h6 id="_ispausable_field"><a class="anchor" href="#_ispausable_field"></a>9.2.7.11.7. IsPausable Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate that some part of the Forecast can be paused. It aims
 to allow a client to read this flag and if it is false, then none of the slots
@@ -65600,7 +65669,7 @@ each slot in the list.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_slots_field"><a class="anchor" href="#_slots_field"></a>9.2.7.10.8. Slots Field</h6>
+<h6 id="_slots_field"><a class="anchor" href="#_slots_field"></a>9.2.7.11.8. Slots Field</h6>
 <div class="paragraph">
 <p>This field SHALL contain a list of SlotStructs.</p>
 </div>
@@ -65609,14 +65678,14 @@ each slot in the list.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ForecastStructForecastUpdateReason"><a class="anchor" href="#ref_ForecastStructForecastUpdateReason"></a>9.2.7.10.9. ForecastUpdateReason Field</h6>
+<h6 id="ref_ForecastStructForecastUpdateReason"><a class="anchor" href="#ref_ForecastStructForecastUpdateReason"></a>9.2.7.11.9. ForecastUpdateReason Field</h6>
 <div class="paragraph">
 <p>This field SHALL contain the reason the current Forecast was generated.</p>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_SlotStruct"><a class="anchor" href="#ref_SlotStruct"></a>9.2.7.11. SlotStruct Type</h5>
+<h5 id="ref_SlotStruct"><a class="anchor" href="#ref_SlotStruct"></a>9.2.7.12. SlotStruct Type</h5>
 <div class="paragraph">
 <p>This indicates a specific stage of an ESA&#8217;s operation.</p>
 </div>
@@ -65696,7 +65765,7 @@ each slot in the list.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SlotIsPauseable</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SlotIsPausable</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -65812,7 +65881,7 @@ each slot in the list.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FA &amp; (PFR|SFR)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FA</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
@@ -65822,33 +65891,33 @@ each slot in the list.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FA &amp; (PFR|SFR)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FA</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_minduration_field_2"><a class="anchor" href="#_minduration_field_2"></a>9.2.7.11.1. MinDuration Field</h6>
+<h6 id="_minduration_field_2"><a class="anchor" href="#_minduration_field_2"></a>9.2.7.12.1. MinDuration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the minimum time (in seconds) that the
 appliance expects to be in this slot for.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_maxduration_field_2"><a class="anchor" href="#_maxduration_field_2"></a>9.2.7.11.2. MaxDuration Field</h6>
+<h6 id="_maxduration_field_2"><a class="anchor" href="#_maxduration_field_2"></a>9.2.7.12.2. MaxDuration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum time (in seconds) that the
 appliance expects to be in this slot for.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_DefaultDuration"><a class="anchor" href="#ref_DefaultDuration"></a>9.2.7.11.3. DefaultDuration Field</h6>
+<h6 id="ref_DefaultDuration"><a class="anchor" href="#ref_DefaultDuration"></a>9.2.7.12.3. DefaultDuration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the expected time (in seconds) that the
 appliance expects to be in this slot for.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ElapsedSlotTime"><a class="anchor" href="#ref_ElapsedSlotTime"></a>9.2.7.11.4. ElapsedSlotTime Field</h6>
+<h6 id="ref_ElapsedSlotTime"><a class="anchor" href="#ref_ElapsedSlotTime"></a>9.2.7.12.4. ElapsedSlotTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the time (in seconds) that has already elapsed whilst
 in this slot. If the slot has not yet been started, then it SHALL be 0. Once the
@@ -65866,7 +65935,7 @@ recent value.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_RemainingSlotTime"><a class="anchor" href="#ref_RemainingSlotTime"></a>9.2.7.11.5. RemainingSlotTime Field</h6>
+<h6 id="ref_RemainingSlotTime"><a class="anchor" href="#ref_RemainingSlotTime"></a>9.2.7.12.5. RemainingSlotTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the time (in seconds) that is estimated to be
 remaining.</p>
@@ -65890,13 +65959,13 @@ recent value.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotIsPausable"><a class="anchor" href="#ref_SlotIsPausable"></a>9.2.7.11.6. SlotIsPausable Field</h6>
+<h6 id="ref_SlotIsPausable"><a class="anchor" href="#ref_SlotIsPausable"></a>9.2.7.12.6. SlotIsPausable Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate whether this slot can be paused.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MinPauseDuration"><a class="anchor" href="#ref_MinPauseDuration"></a>9.2.7.11.7. MinPauseDuration Field</h6>
+<h6 id="ref_MinPauseDuration"><a class="anchor" href="#ref_MinPauseDuration"></a>9.2.7.12.7. MinPauseDuration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the shortest period that the slot can be paused for.
 This can be set to avoid controllers trying to pause ESAs for short periods and then
@@ -65905,13 +65974,13 @@ to be consumed with restarting of an operation.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MaxPauseDuration"><a class="anchor" href="#ref_MaxPauseDuration"></a>9.2.7.11.8. MaxPauseDuration Field</h6>
+<h6 id="ref_MaxPauseDuration"><a class="anchor" href="#ref_MaxPauseDuration"></a>9.2.7.12.8. MaxPauseDuration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the longest period that the slot can be paused for.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ManufacturerESAState"><a class="anchor" href="#ref_ManufacturerESAState"></a>9.2.7.11.9. ManufacturerESAState Field</h6>
+<h6 id="ref_ManufacturerESAState"><a class="anchor" href="#ref_ManufacturerESAState"></a>9.2.7.12.9. ManufacturerESAState Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate a manufacturer defined value indicating the state of
 the ESA.</p>
@@ -65954,7 +66023,7 @@ adjustment request commands, or adjust other ESAs power to compensate.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStructNominalPower"><a class="anchor" href="#ref_SlotStructNominalPower"></a>9.2.7.11.10. NominalPower Field</h6>
+<h6 id="ref_SlotStructNominalPower"><a class="anchor" href="#ref_SlotStructNominalPower"></a>9.2.7.12.10. NominalPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the expected power that the appliance will use during
 this slot. It may be considered the average value over the slot, and some
@@ -65962,7 +66031,7 @@ variation from this would be expected (for example, as it is ramping up).</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_minpower_field_2"><a class="anchor" href="#_minpower_field_2"></a>9.2.7.11.11. MinPower Field</h6>
+<h6 id="_minpower_field_2"><a class="anchor" href="#_minpower_field_2"></a>9.2.7.12.11. MinPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the lowest power that the appliance expects to use
 during this slot. (e.g. during a ramp up it may be 0W).</p>
@@ -65973,7 +66042,7 @@ a negative power.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_maxpower_field_2"><a class="anchor" href="#_maxpower_field_2"></a>9.2.7.11.12. MaxPower Field</h6>
+<h6 id="_maxpower_field_2"><a class="anchor" href="#_maxpower_field_2"></a>9.2.7.12.12. MaxPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum power that the appliance expects to use
 during this slot. (e.g. during a ramp up it may be 0W). This field ignores the
@@ -65985,7 +66054,7 @@ a negative power.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_nominalenergy_field"><a class="anchor" href="#_nominalenergy_field"></a>9.2.7.11.13. NominalEnergy Field</h6>
+<h6 id="_nominalenergy_field"><a class="anchor" href="#_nominalenergy_field"></a>9.2.7.12.13. NominalEnergy Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the expected energy that the appliance expects to use
 or produce during this slot.</p>
@@ -65996,7 +66065,7 @@ a negative energy.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_costs_field"><a class="anchor" href="#_costs_field"></a>9.2.7.11.14. Costs Field</h6>
+<h6 id="_costs_field"><a class="anchor" href="#_costs_field"></a>9.2.7.12.14. Costs Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the current estimated cost for operating.</p>
 </div>
@@ -66029,7 +66098,7 @@ meta data that an EMS may use to optimize a system.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStructMinPowerAdjustment"><a class="anchor" href="#ref_SlotStructMinPowerAdjustment"></a>9.2.7.11.15. MinPowerAdjustment Field</h6>
+<h6 id="ref_SlotStructMinPowerAdjustment"><a class="anchor" href="#ref_SlotStructMinPowerAdjustment"></a>9.2.7.12.15. MinPowerAdjustment Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the minimum power that the appliance can be requested
 to use.</p>
@@ -66043,7 +66112,7 @@ be the minimum power limit it can be set to.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStructMaxPowerAdjustment"><a class="anchor" href="#ref_SlotStructMaxPowerAdjustment"></a>9.2.7.11.16. MaxPowerAdjustment Field</h6>
+<h6 id="ref_SlotStructMaxPowerAdjustment"><a class="anchor" href="#ref_SlotStructMaxPowerAdjustment"></a>9.2.7.12.16. MaxPowerAdjustment Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum power that the appliance can be requested
 to use.</p>
@@ -66057,7 +66126,7 @@ be set to.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStructMinDurationAdjustment"><a class="anchor" href="#ref_SlotStructMinDurationAdjustment"></a>9.2.7.11.17. MinDurationAdjustment Field</h6>
+<h6 id="ref_SlotStructMinDurationAdjustment"><a class="anchor" href="#ref_SlotStructMinDurationAdjustment"></a>9.2.7.12.17. MinDurationAdjustment Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the minimum time, in seconds, that the slot can be
 requested to shortened to.</p>
@@ -66074,7 +66143,7 @@ minutes.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStructMaxDurationAdjustment"><a class="anchor" href="#ref_SlotStructMaxDurationAdjustment"></a>9.2.7.11.18. MaxDurationAdjustment Field</h6>
+<h6 id="ref_SlotStructMaxDurationAdjustment"><a class="anchor" href="#ref_SlotStructMaxDurationAdjustment"></a>9.2.7.12.18. MaxDurationAdjustment Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum time, in seconds, that the slot can be
 requested to extended to.</p>
@@ -66091,7 +66160,7 @@ indicate the maximum time the battery could be discharged for (at the
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_SlotAdjustmentStruct"><a class="anchor" href="#ref_SlotAdjustmentStruct"></a>9.2.7.12. SlotAdjustmentStruct Type</h5>
+<h5 id="ref_SlotAdjustmentStruct"><a class="anchor" href="#ref_SlotAdjustmentStruct"></a>9.2.7.13. SlotAdjustmentStruct Type</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -66134,7 +66203,7 @@ indicate the maximum time the battery could be discharged for (at the
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PFR</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
@@ -66149,7 +66218,7 @@ indicate the maximum time the battery could be discharged for (at the
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_slotindex_field"><a class="anchor" href="#_slotindex_field"></a>9.2.7.12.1. SlotIndex Field</h6>
+<h6 id="_slotindex_field"><a class="anchor" href="#_slotindex_field"></a>9.2.7.13.1. SlotIndex Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the index into the Slots list within the
 <a href="#ref_Forecast">Forecast</a> that is to be modified. It SHALL be less than the actual length
@@ -66158,15 +66227,21 @@ maximum length of the Slots list constraint).</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_nominalpower_field"><a class="anchor" href="#_nominalpower_field"></a>9.2.7.12.2. NominalPower Field</h6>
+<h6 id="_nominalpower_field"><a class="anchor" href="#_nominalpower_field"></a>9.2.7.13.2. NominalPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the new requested power that the ESA SHALL operate at.
-It MUST be between the <a href="#ref_SlotStructMinPowerAdjustment">MinPowerAdjustment</a> and
-<a href="#ref_SlotStructMaxPowerAdjustment">MaxPowerAdjustment</a> for the slot as advertised by the ESA.</p>
+It MUST be between the <a href="#ref_AbsMinPower">AbsMinPower</a> and <a href="#ref_AbsMaxPower">AbsMaxPower</a>
+attributes as advertised by the ESA if it supports <code>PFR</code>.</p>
+</div>
+<div class="paragraph">
+<p>This is a signed value and can be used to indicate charging or discharging.</p>
+</div>
+<div class="paragraph">
+<p>If the ESA does NOT support <code>PFR</code> this value SHALL be ignored by the ESA.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_duration_field_3"><a class="anchor" href="#_duration_field_3"></a>9.2.7.12.3. Duration Field</h6>
+<h6 id="_duration_field_3"><a class="anchor" href="#_duration_field_3"></a>9.2.7.13.3. Duration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the new requested duration, in seconds, that the ESA
 SHALL extend or shorten the slot duration to. It MUST be between the
@@ -66176,7 +66251,7 @@ SHALL extend or shorten the slot duration to. It MUST be between the
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ConstraintsStruct"><a class="anchor" href="#ref_ConstraintsStruct"></a>9.2.7.13. ConstraintsStruct Type</h5>
+<h5 id="ref_ConstraintsStruct"><a class="anchor" href="#ref_ConstraintsStruct"></a>9.2.7.14. ConstraintsStruct Type</h5>
 <div class="paragraph">
 <p>The ConstraintsStruct allows a client to inform an ESA about a constraint period
 (such as a grid event, or perhaps excess solar PV). The format allows the client
@@ -66260,7 +66335,7 @@ its energy consumption during this period.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="ref_ConstraintsStructStartTime"><a class="anchor" href="#ref_ConstraintsStructStartTime"></a>9.2.7.13.1. StartTime Field</h6>
+<h6 id="ref_ConstraintsStructStartTime"><a class="anchor" href="#ref_ConstraintsStructStartTime"></a>9.2.7.14.1. StartTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the start time of the constraint period that the
 client wishes the ESA to compute a new Forecast.</p>
@@ -66270,13 +66345,13 @@ client wishes the ESA to compute a new Forecast.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ConstraintsStructDuration"><a class="anchor" href="#ref_ConstraintsStructDuration"></a>9.2.7.13.2. Duration Field</h6>
+<h6 id="ref_ConstraintsStructDuration"><a class="anchor" href="#ref_ConstraintsStructDuration"></a>9.2.7.14.2. Duration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the duration of the constraint in seconds.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ConstraintsStructNominalPower"><a class="anchor" href="#ref_ConstraintsStructNominalPower"></a>9.2.7.13.3. NominalPower Field</h6>
+<h6 id="ref_ConstraintsStructNominalPower"><a class="anchor" href="#ref_ConstraintsStructNominalPower"></a>9.2.7.14.3. NominalPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the nominal power that client wishes the ESA to
 operate at during the constrained period. It MUST be between the
@@ -66291,7 +66366,7 @@ if it supports <code>PFR</code>.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ConstraintsStructMaximumEnergy"><a class="anchor" href="#ref_ConstraintsStructMaximumEnergy"></a>9.2.7.13.4. MaximumEnergy Field</h6>
+<h6 id="ref_ConstraintsStructMaximumEnergy"><a class="anchor" href="#ref_ConstraintsStructMaximumEnergy"></a>9.2.7.14.4. MaximumEnergy Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum energy that can be transferred to or from
 the ESA during the constraint period.</p>
@@ -66304,7 +66379,7 @@ the ESA during the constraint period.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ConstraintsStructLoadControl"><a class="anchor" href="#ref_ConstraintsStructLoadControl"></a>9.2.7.13.5. LoadControl Field</h6>
+<h6 id="ref_ConstraintsStructLoadControl"><a class="anchor" href="#ref_ConstraintsStructLoadControl"></a>9.2.7.14.5. LoadControl Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the turn up or turn down nature that the grid wants as
 the outcome by the ESA during the constraint period.</p>
@@ -66723,8 +66798,36 @@ an EMS for local optimization reasons, it SHALL reject any commands which have
 the <a href="#ref_AdjustmentCauseEnum">AdjustmentCauseEnum</a> value LocalOptimization.
 If the ESA is in the GridOptOut or OptOut states, so it cannot be controlled by
 an EMS for grid optimization reasons, it SHALL reject any commands which have
-the <a href="#ref_AdjustmentCauseEnum">AdjustmentCauseEnum</a> value GridOptimization.
-If the ESA is in the LocalOptOut, GridOptOut, or NoOptOut states, the device
+the <a href="#ref_AdjustmentCauseEnum">AdjustmentCauseEnum</a> value GridOptimization.</p>
+</div>
+<div class="paragraph">
+<p>If the user changes the Opt-Out state of the ESA which is currently operating
+with a Forecast that is due to a previous <a href="#ref_StartTimeAdjustRequest">StartTimeAdjustRequest</a>,
+<a href="#ref_ModifyForecastRequest">ModifyForecastRequest</a> or <a href="#ref_RequestConstraintBasedForecast">RequestConstraintBasedForecast</a> command
+that would now not be permitted due to the new Opt-out state (i.e. the
+<a href="#ref_Forecast">Forecast</a> attribute <a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a> field
+currently contains a reason which is now opted out),
+the ESA SHALL behave as if it had received a <a href="#ref_CancelRequest">CancelRequest</a> command.</p>
+</div>
+<div class="paragraph">
+<p>If the user changes the Opt-Out state of the ESA which currently has the <a href="#ref_ESAStateEnum">ESAStateEnum</a>
+with value <code>Paused</code> due to a previous <a href="#ref_PauseRequest">PauseRequest</a> command
+that would now not be permitted due to the new Opt-out state, and the ESA supports the
+<code>PFR</code> or <code>SFR</code> features (i.e. the
+<a href="#ref_Forecast">Forecast</a> attribute <a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a> field
+currently contains a reason which is now opted out),
+the ESA SHALL behave as if it had received a <a href="#ref_ResumeRequest">ResumeRequest</a> command.</p>
+</div>
+<div class="paragraph">
+<p>If the user changes the Opt-Out state of the ESA which currently has the <a href="#ref_ESAStateEnum">ESAStateEnum</a>
+with value <code>PowerAdjustActive</code> due to a previous <a href="#ref_PowerAdjustRequest">PowerAdjustRequest</a> command
+that would now not be permitted due to the new Opt-out state (i.e. the
+<a href="#ref_Forecast">Forecast</a> attribute <a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a> field
+currently contains a reason which is now opted out),
+the ESA SHALL behave as if it had received a <a href="#ref_CancelPowerAdjustRequest">CancelPowerAdjustRequest</a> command.</p>
+</div>
+<div class="paragraph">
+<p>If the ESA is in the LocalOptOut, GridOptOut, or NoOptOut states, the device
 is still permitted to optimize its own energy usage, for example, using tariff
 information it may obtain.</p>
 </div>
@@ -66898,7 +67001,7 @@ power for.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_cause_field"><a class="anchor" href="#_cause_field"></a>9.2.9.1.3. Cause Field</h6>
+<h6 id="_cause_field_2"><a class="anchor" href="#_cause_field_2"></a>9.2.9.1.3. Cause Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the cause of the request from the EMS.</p>
 </div>
@@ -66914,11 +67017,13 @@ for details), and the <a href="#ref_ESAState">ESAState</a> is Online.</p>
 </div>
 <div class="paragraph">
 <p>If the PowerAdjustRequest command is accepted, then the ESA SHALL change its
-<a href="#ref_ESAState">ESAState</a> to PowerAdjustActive. The command status returned SHALL be
-SUCCESS if the adjustment is accepted; otherwise the command SHALL be rejected
-with FAILURE. If the ESA supports the <code>PFR</code> or <code>SFR</code> features, the <a href="#ref_Forecast">Forecast</a>
-attribute is updated, including noting the Cause value in the
-<a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a>.</p>
+<a href="#ref_ESAState">ESAState</a> to PowerAdjustActive, and the <a href="#ref_PowerAdjustmentCapability">PowerAdjustmentCapability</a>
+attribute SHALL be updated to set the Cause value from the Cause field of this command.</p>
+</div>
+<div class="paragraph">
+<p>The command status returned SHALL be SUCCESS if the adjustment is accepted;
+otherwise the command SHALL be rejected with CONSTRAINT_ERROR if the Power, Duration, or Cause
+values are not permitted as above, or with FAILURE otherwise.</p>
 </div>
 <div class="paragraph">
 <p><strong>Start of adjustment</strong></p>
@@ -66940,8 +67045,10 @@ levels.</p>
 </div>
 <div class="paragraph">
 <p>The ESA SHALL also generate a <a href="#ref_PowerAdjustEndEvent">PowerAdjustEnd</a> Event with a cause
-code to indicate a 'Normal completion' and the <a href="#ref_ESAState">ESAState</a> SHALL be
-restored to Online.</p>
+code to indicate a 'Normal completion', the <a href="#ref_ESAState">ESAState</a> SHALL be
+restored to Online, and the
+<a href="#ref_PowerAdjustmentCapability">PowerAdjustmentCapability</a> attribute SHALL be updated to set the Cause
+value to 'NoAdjustment'.</p>
 </div>
 <div class="paragraph">
 <p><strong>Failure or Opt-out during adjustment</strong></p>
@@ -66953,7 +67060,9 @@ then the ESA SHALL generate a <a href="#ref_PowerAdjustEndEvent">PowerAdjustEnd<
 the end of the session, with the appropriate cause code.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="#ref_ESAState">ESAState</a> SHALL be updated to reflect the new state.</p>
+<p>The <a href="#ref_ESAState">ESAState</a> SHALL be updated to reflect the new state, and the
+<a href="#ref_PowerAdjustmentCapability">PowerAdjustmentCapability</a> attribute SHALL be updated to set the Cause
+value to 'NoAdjustment'.</p>
 </div>
 <div class="paragraph">
 <p><strong>Receiving a new PowerAdjustRequest command when adjustment is on-going</strong></p>
@@ -66961,7 +67070,9 @@ the end of the session, with the appropriate cause code.</p>
 <div class="paragraph">
 <p>If an existing power adjustment is already happening, and a new
 PowerAdjustRequest command is received, then if the ESA allows it, the ESA SHALL
-return SUCCESS. If the ESA does not permit this new PowerAdjustmentRequest
+return SUCCESS, and the <a href="#ref_PowerAdjustmentCapability">PowerAdjustmentCapability</a>
+attribute SHALL be updated to set the Cause value from the Cause field of the new
+command. If the ESA does not permit this new PowerAdjustmentRequest
 command to interrupt the adjustment that is in progress, it SHALL return BUSY.</p>
 </div>
 <div class="paragraph">
@@ -66980,7 +67091,9 @@ new request.</p>
 <p>After the client has sent its last command and after this command duration
 expires then the last active power adjustment has been completed. This final
 command causes the <a href="#ref_PowerAdjustEndEvent">PowerAdjustEnd</a> Event to be generated when the
-<a href="#ref_ESAState">ESAState</a> is restored to Online.</p>
+<a href="#ref_ESAState">ESAState</a> is restored to Online, and the
+<a href="#ref_PowerAdjustmentCapability">PowerAdjustmentCapability</a> attribute SHALL be updated to set the Cause
+value to 'NoAdjustment'.</p>
 </div>
 </div>
 </div>
@@ -66997,15 +67110,14 @@ to normal (or idle) power levels.</p>
 </div>
 <div class="paragraph">
 <p>If the <a href="#ref_ESAState">ESAState</a> is not PowerAdjustActive, then the command SHALL be
-rejected with FAILURE.</p>
+rejected with INVALID_IN_STATE.</p>
 </div>
 <div class="paragraph">
 <p>If the command is accepted, the ESA SHALL generate an
 <a href="#ref_PowerAdjustEndEvent">PowerAdjustEnd</a> Event and the <a href="#ref_ESAState">ESAState</a> SHALL be restored to
-Online and the command status returned SHALL be SUCCESS.
-If the ESA supports the <code>PFR</code> or <code>SFR</code> features, the <a href="#ref_Forecast">Forecast</a>
-attribute is updated, including updating the
-<a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a> to <code>Internal Optimization</code>.</p>
+Online, the
+<a href="#ref_PowerAdjustmentCapability">PowerAdjustmentCapability</a> attribute SHALL be updated to set the Cause
+value to 'NoAdjustment', and the command status returned SHALL be SUCCESS.</p>
 </div>
 </div>
 </div>
@@ -67077,7 +67189,7 @@ sequence duration, SHALL be before the LatestEndTime.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_cause_field_2"><a class="anchor" href="#_cause_field_2"></a>9.2.9.3.2. Cause Field</h6>
+<h6 id="_cause_field_3"><a class="anchor" href="#_cause_field_3"></a>9.2.9.3.2. Cause Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the cause of the request from the EMS.</p>
 </div>
@@ -67093,7 +67205,8 @@ modify the Start Time.</p>
 </div>
 <div class="paragraph">
 <p>If the RequestedStartTime value resulted in a time shift which is outside the
-time constraints of EarliestStartTime and LatestEndTime, then the command SHALL
+time constraints of EarliestStartTime and LatestEndTime,
+or the Cause is not permitted, then the command SHALL
 be rejected with CONSTRAINT_ERROR; in other failure scenarios the command SHALL
 be rejected with FAILURE.</p>
 </div>
@@ -67162,7 +67275,7 @@ in the ActiveSlotNumber index in the Slots list in the Forecast.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_cause_field_3"><a class="anchor" href="#_cause_field_3"></a>9.2.9.4.2. Cause Field</h6>
+<h6 id="_cause_field_4"><a class="anchor" href="#_cause_field_4"></a>9.2.9.4.2. Cause Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the cause of the request from the EMS.</p>
 </div>
@@ -67170,15 +67283,16 @@ in the ActiveSlotNumber index in the Slots list in the Forecast.</p>
 <div class="sect5">
 <h6 id="_effect_upon_receipt_5"><a class="anchor" href="#_effect_upon_receipt_5"></a>9.2.9.4.3. Effect upon receipt</h6>
 <div class="paragraph">
-<p>Upon receipt, if the ESA supports <code>PAU</code> and the SlotIsPauseable field is
+<p>Upon receipt, if the ESA supports <code>PAU</code> and the SlotIsPausable field is
 true in the ActiveSlotNumber index in the Slots list, the <a href="#ref_OptOutState">OptOutState</a>
 permits the specified <a href="#ref_AdjustmentCauseEnum">AdjustmentCauseEnum</a> (see <a href="#ref_OptOutState">OptOutState</a>
 for details), and the <a href="#ref_OptOutState">OptOutState</a>
 is Online or PowerAdjustActive,
-the ESA SHALL allow its current operation to be Paused.</p>
+the ESA SHALL allow its current operation to be Paused. If the Cause is not
+permitted, then the command SHALL be rejected with CONSTRAINT_ERROR.</p>
 </div>
 <div class="paragraph">
-<p>If the ESA SlotIsPauseable field is false for the ActiveSlotNumber, then the
+<p>If the ESA SlotIsPausable field is false for the ActiveSlotNumber, then the
 command SHALL be rejected with FAILURE.</p>
 </div>
 <div class="paragraph">
@@ -67267,7 +67381,8 @@ accordingly to reflect its current state.</p>
 </div>
 <div class="paragraph">
 <p>The command status returned SHALL be SUCCESS if the operation is resumed,
-otherwise the command SHALL be rejected with FAILURE.</p>
+or the command SHALL be rejected with the response INVALID_IN_STATE&gt; if the
+ESA is not currently Paused, otherwise the command SHALL be rejected with FAILURE.</p>
 </div>
 <div class="paragraph">
 <p>The ESA SHALL update its <a href="#ref_Forecast">Forecast</a> to account for the resumption
@@ -67345,7 +67460,7 @@ modified in the corresponding Forecast with matching ForecastId.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_cause_field_4"><a class="anchor" href="#_cause_field_4"></a>9.2.9.6.3. Cause Field</h6>
+<h6 id="_cause_field_5"><a class="anchor" href="#_cause_field_5"></a>9.2.9.6.3. Cause Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the cause of the request from the EMS.</p>
 </div>
@@ -67399,8 +67514,10 @@ on an agreed set of changes.</p>
 adjustments then it SHALL reject the entire command.</p>
 </div>
 <div class="paragraph">
-<p>The command status returned SHALL be SUCCESS if the entire list of
-<a href="#ref_SlotAdjustmentStruct">SlotAdjustmentStruct</a> are accepted, otherwise the command SHALL be
+<p>If the Cause is not permitted, or the requested forecast exceeds any of the limits in
+the respective slots, then the command SHALL be rejected with CONSTRAINT_ERROR,
+otherwise if the ForecastId is valid, and the entire list of <a href="#ref_SlotAdjustmentStruct">SlotAdjustmentStruct</a>
+are accepted, the command status returned SHALL be SUCCESS, otherwise the command SHALL be
 rejected with FAILURE.</p>
 </div>
 </div>
@@ -67592,7 +67709,7 @@ use more or less energy using the LoadControl field as follows:</p>
 </table>
 </div>
 <div class="sect5">
-<h6 id="_cause_field_5"><a class="anchor" href="#_cause_field_5"></a>9.2.9.7.2. Cause Field</h6>
+<h6 id="_cause_field_6"><a class="anchor" href="#_cause_field_6"></a>9.2.9.7.2. Cause Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the cause of the request from the EMS.</p>
 </div>
@@ -67638,8 +67755,9 @@ The new reported Forecast will start from the current time, i.e. the slots that
 have already been completed SHALL NOT be included in the new forecast.</p>
 </div>
 <div class="paragraph">
-<p>The command status returned SHALL be SUCCESS, otherwise the command SHALL be
-rejected with FAILURE.</p>
+<p>The command status returned SHALL be SUCCESS, otherwise if the Cause is not permitted,
+the command SHALL be rejected with CONSTRAINT_ERROR,
+otherwise the command SHALL be rejected with FAILURE.</p>
 </div>
 </div>
 </div>
@@ -67659,7 +67777,7 @@ operation ignoring those previous requests.</p>
 </div>
 <div class="paragraph">
 <p>If the ESA <a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a> was already
-<code>Internal Optimization</code>, then the command SHALL be rejected with FAILURE.</p>
+<code>Internal Optimization</code>, then the command SHALL be rejected with INVALID_IN_STATE.</p>
 </div>
 <div class="paragraph">
 <p>If the command is accepted, the ESA SHALL update its <a href="#ref_ESAState">ESAState</a>
@@ -67790,7 +67908,7 @@ intended operation, and update the
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_cause_field_6"><a class="anchor" href="#_cause_field_6"></a>9.2.10.2.1. Cause Field</h6>
+<h6 id="_cause_field_7"><a class="anchor" href="#_cause_field_7"></a>9.2.10.2.1. Cause Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the reason why the power adjustment session ended.</p>
 </div>
@@ -67865,7 +67983,7 @@ and resumes operation.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_cause_field_7"><a class="anchor" href="#_cause_field_7"></a>9.2.10.4.1. Cause Field</h6>
+<h6 id="_cause_field_8"><a class="anchor" href="#_cause_field_8"></a>9.2.10.4.1. Cause Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the reason why the pause ended.</p>
 </div>
@@ -71645,8 +71763,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master d40015e (local changes)<br>
-Last updated 2024-05-23 16:02:58 UTC
+Version master 32a2fca (local changes)<br>
+Last updated 2024-05-24 00:00:32 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
