@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master c422c51 (local changes),</span>
-<span id="revdate">2024-05-28 08:50:06 -0700</span>
+<span id="revnumber">version master 98206e1 (local changes),</span>
+<span id="revdate">2024-05-29 10:32:54 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -64508,22 +64508,19 @@ in the table below.</p>
 <h4 id="_cluster_id_62"><a class="anchor" href="#_cluster_id_62"></a>9.2.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0098</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Device Energy Management</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
 </tr>
 </tbody>
 </table>
@@ -64635,7 +64632,10 @@ are switched on and off.</p>
 <p><strong>EVSE Example:</strong> An EMS may therefore be able to turn on the EVSE (if the vehicle
 is plugged in) and can start charging the vehicle, and periodically modify the
 charging power depending on PV generation and other home loads, so as to
-minimize import and export to the grid.</p>
+minimize import and export to the grid.
+An EMS may also use this feature to control the discharging (and re-charging)
+of the vehicle if the EVSE and vehicle support the V2X feature of the EVSE cluster
+of the associated EVSE device.</p>
 </div>
 </div>
 <div class="sect4">
@@ -68253,6 +68253,10 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Added Q quality for SessionDuration, SessionEnergyCharged and SessionEnergyDischarged</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Updates to V2X and associated areas</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -68331,7 +68335,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PREF</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ChargingPreferences</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P,M</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">EVSE supports storing user charging preferences</p></td>
 </tr>
 <tr>
@@ -68375,23 +68379,24 @@ This range requirement can be converted into a daily energy demand with a target
 charging completion time.</p>
 </div>
 <div class="paragraph">
-<p>The EVSE itself MAY use this information (or may allow a controller such as an
+<p>The EVSE itself can use this information (or may allow a controller such as an
 EMS) to compute an optimized charging schedule.</p>
 </div>
 <div class="paragraph">
-<p>An EVSE device MAY implement the Device Energy Management cluster <code>PFR</code> (Power
-Forecast Reporting) and <code>FA</code> (Forecast Adjustment) features. This can help a
-controller (such as an EMS) to optimize the EVSE against other ESAs. For
-example, a solar PV ESA may share its Forecast and allow the EVSE to know the
-best time to charge so that any excess solar generation is used to charge the
-EV.</p>
+<p>An EVSE device which includes a Device Energy Management device with the
+Device Energy Management cluster <code>PFR</code> (Power
+Forecast Reporting) feature can use the charging preferences information to
+produce its power forecast.</p>
 </div>
 <div class="paragraph">
 <p>EVSE devices that support the Device Energy Management cluster&#8217;s <code>FA</code> feature
 can have their charging profiles set by a controller device such as an EMS. For
 example, if the EVSE advertises a simple power forecast which allows the EMS to
 adjust over a wide range of power and time durations, then the EVSE may allow
-the EMS to propose a revised optimized forecast (which is the charging profile).</p>
+the EMS to propose a revised optimized forecast (which is the charging profile).
+For example, a solar PV ESA may also share its Forecast, so enabling an EMS to adjust the EVSE forecast
+to the best time to charge so that any excess solar generation is used to charge the
+EV.</p>
 </div>
 <div class="paragraph">
 <p>See the <a href="#ref_DeviceEnergyManagementCluster">Device Energy Management Cluster</a> for more details.</p>
@@ -68447,6 +68452,13 @@ authorization of RIFD UID is outside the scope of this cluster.</p>
 <div class="paragraph">
 <p>If the EVSE can support bi-directional charging, it may be possible to request
 that the vehicle can discharge to the home or grid.</p>
+</div>
+<div class="paragraph">
+<p>The charging and discharging may be controlled by a home Energy Management System (EMS)
+using the Device Energy Management cluster of the associated Device Energy Management device.
+For example, an EMS may use the <code>PA</code> (Power Adjustment) feature to continually adjust
+the charge/discharge current to/from the EV so as to minimise the energy flow
+from/to the grid as the demand in the home and the solar supply to the home both fluctuate.</p>
 </div>
 </div>
 </div>
@@ -68675,8 +68687,14 @@ it is unplugged.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DisabledDiagnostics</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The EV is not currently allowed to charge or discharge due
-                                to Diagnostics Mode.</p></td>
+                                to self-diagnostics mode.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enabled</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The EV is currently allowed to charge and discharge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[V2X]</p></td>
 </tr>
 </tbody>
 </table>
@@ -69942,27 +69960,32 @@ since the start of the session.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_54"><a class="anchor" href="#_effect_on_receipt_54"></a>9.3.9.1.1. Effect on Receipt</h6>
 <div class="paragraph">
-<p>Upon receipt of the Disable command the EVSE will stop power flow between
+<p>Upon receipt of the Disable command the EVSE will stop any power flow between
 the EV and EVSE.</p>
 </div>
 <div class="paragraph">
 <p>If the command cannot be handled, a status of FAILURE SHALL be returned.</p>
 </div>
 <div class="paragraph">
-<p>If successful, the ChargingEnabledUntil and DischargingEnabledUntil attributes
-SHALL be set to 0x0, the SupplyState attribute changed to Disabled, and a
+<p>If the <a href="#ref_SupplyStateAttribute">SupplyState</a> attribute is already Disabled, a
 response with status of SUCCESS SHALL be returned.</p>
 </div>
 <div class="paragraph">
-<p>If any energy was being transferred, then a corresponding
-<a href="#ref_EnergyTransferStoppedEvent">EnergyTransferStopped</a> event SHALL be generated.</p>
+<p>Otherwise, if successful, the <a href="#ref_ChargingEnabledUntilAttribute">ChargingEnabledUntil</a> and <a href="#ref_DischargingEnabledUntilAttribute">DischargingEnabledUntil</a> attributes
+SHALL be set to 0x0, the <a href="#ref_SupplyStateAttribute">SupplyState</a> attribute changed to Disabled, and a
+response with status of SUCCESS SHALL be returned.</p>
+</div>
+<div class="paragraph">
+<p>If any energy was being transferred,
+then a corresponding <a href="#ref_EnergyTransferStopped">EnergyTransferStopped</a> event SHALL be generated.</p>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="ref_EnableChargingCommand"><a class="anchor" href="#ref_EnableChargingCommand"></a>9.3.9.2. EnableCharging Command</h5>
 <div class="paragraph">
-<p>Allows a client to enable the EVSE to charge an EV.</p>
+<p>This command allows a client to enable the EVSE to charge an EV,
+and to provide or update the maximum and minimum charge current.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -70034,7 +70057,7 @@ to the EV in trickle mode. The EVSE current limit can be advertised to an EV in
 0.6A steps.</p>
 </div>
 <div class="paragraph">
-<p>The value of the MinimumChargeCurrent attribute SHALL be set to the value of
+<p>The value of the <a href="#ref_MinimumChargeCurrentAttribute">MinimumChargeCurrent</a> attribute SHALL be set to the value of
 this field (see <a href="#ref_MinimumChargeCurrentAttribute">MinimumChargeCurrent</a> attribute for further
 details).</p>
 </div>
@@ -70065,8 +70088,9 @@ active, then the command SHALL be ignored and a response with a status of
 FAILURE SHALL be returned.</p>
 </div>
 <div class="paragraph">
-<p>If successful, the SupplyState attribute SHALL be set to ChargingEnabled, and a
-response with status of SUCCESS SHALL be returned.</p>
+<p>If successful, the <a href="#ref_SupplyStateAttribute">SupplyState</a> attribute SHALL be set to
+ChargingEnabled (if previously Disabled) or Enabled (if previously DischargingEnabled),
+and a response with status of SUCCESS SHALL be returned.</p>
 </div>
 <div class="paragraph">
 <p>The timestamp indicated in the <a href="#ref_ChargingEnabledUntilAttribute">ChargingEnabledUntil</a> attribute
@@ -70081,14 +70105,17 @@ the EVSE should enable charging indefinitely.</p>
 <p>If the ChargingEnabledUntil time is not null, then when this time expires then
 the EVSE SHALL stop charging and SHALL update the <a href="#ref_StateAttribute">State</a>
 attribute to indicate it is no longer charging, and SHALL update the
-<a href="#ref_SupplyStateAttribute">SupplyState</a> attribute to Disabled.</p>
+<a href="#ref_SupplyStateAttribute">SupplyState</a> attribute to Disabled (if <a href="#ref_DischargingEnabledUntilAttribute">DischargingEnabledUntil</a>
+is also in the past) or DischargingEnabled (if <a href="#ref_DischargingEnabledUntilAttribute">DischargingEnabledUntil</a>
+is in the future or null).</p>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="ref_EnableDischargingCommand"><a class="anchor" href="#ref_EnableDischargingCommand"></a>9.3.9.3. EnableDischarging Command</h5>
 <div class="paragraph">
-<p>Allows a client to enable the EVSE to discharge an EV.</p>
+<p>Upon receipt, this SHALL allow a client to enable the discharge of an EV,
+and to provide or update the maximum discharge current.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -70139,8 +70166,8 @@ attribute to indicate it is no longer charging, and SHALL update the
 automatically disabled.</p>
 </div>
 <div class="paragraph">
-<p>A value in the past in this field SHALL disable the EVSE whereas a null value
-SHALL enable it permanently.</p>
+<p>A value in the past in this field SHALL disable the EVSE discharging whereas a null
+value SHALL enable EVSE discharging permanently.</p>
 </div>
 </div>
 <div class="sect5">
@@ -70156,7 +70183,7 @@ stored and persisted across reboots by the EVSE to the value of this field.</p>
 <h6 id="_effect_on_receipt_56"><a class="anchor" href="#_effect_on_receipt_56"></a>9.3.9.3.3. Effect on Receipt</h6>
 <div class="paragraph">
 <p>Upon receipt, this SHALL allow the EVSE to discharge the EV until the specified
-timestamp within the current limits specified in the fields of the command.</p>
+timestamp, and allows a maximum current limit to be specified in the fields of the command.</p>
 </div>
 <div class="paragraph">
 <p>If there is currently an error present on the EVSE, or Diagnostics are currently
@@ -70164,8 +70191,9 @@ active, then the command SHALL be ignored and a response with a status of
 FAILURE SHALL be returned.</p>
 </div>
 <div class="paragraph">
-<p>If successful, the SupplyState attribute SHALL be set to DischargingEnabled, and
-a response with status of SUCCESS SHALL be returned.</p>
+<p>If successful, the <a href="#ref_SupplyStateAttribute">SupplyState</a> attribute SHALL be set to
+DischargingEnabled (if previously Disabled) or Enabled (if previously ChargingEnabled),
+and a response with status of SUCCESS SHALL be returned.</p>
 </div>
 <div class="paragraph">
 <p>The timestamp indicated in the <a href="#ref_DischargingEnabledUntilAttribute">DischargingEnabledUntil</a>
@@ -70180,7 +70208,9 @@ then the EVSE should enable discharging indefinitely.</p>
 <p>If the DischargingEnabledUntil time is not null, then when this time expires
 then the EVSE SHALL stop discharging and SHALL update the <a href="#ref_StateAttribute">State</a>
 attribute to indicate it is no longer discharging, and SHALL update the
-<a href="#ref_SupplyStateAttribute">SupplyState</a> attribute to Disabled.</p>
+<a href="#ref_SupplyStateAttribute">SupplyState</a> attribute to Disabled (if <a href="#ref_ChargingEnabledUntilAttribute">ChargingEnabledUntil</a>
+is also in the past) or ChargingEnabled (if <a href="#ref_ChargingEnabledUntilAttribute">ChargingEnabledUntil</a>
+is in the future or null).</p>
 </div>
 </div>
 </div>
@@ -70624,7 +70654,7 @@ the session when the EV was plugged in, until it was unplugged.</p>
 <h6 id="_sessionenergycharged_field"><a class="anchor" href="#_sessionenergycharged_field"></a>9.3.10.2.4. SessionEnergyCharged Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the total amount of energy transferred from the EVSE
-to the EV during the session. This value SHALL always be positive.</p>
+to the EV during the session.</p>
 </div>
 <div class="paragraph">
 <p>Note that if bi-directional charging occurs during the session, then this value
@@ -70636,7 +70666,7 @@ SHALL NOT be a net value of charging and discharging energy.</p>
 <h6 id="_sessionenergydischarged_field"><a class="anchor" href="#_sessionenergydischarged_field"></a>9.3.10.2.5. SessionEnergyDischarged Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the total amount of energy transferred from the EV
-to the EVSE during the session. This value SHALL always be positive.</p>
+to the EVSE during the session.</p>
 </div>
 <div class="paragraph">
 <p>Note that if bi-directional discharging occurs during the session, then this
@@ -70648,7 +70678,10 @@ and SHALL NOT be a net value of charging and discharging energy.</p>
 <div class="sect4">
 <h5 id="ref_EnergyTransferStarted"><a class="anchor" href="#ref_EnergyTransferStarted"></a>9.3.10.3. EnergyTransferStarted Event</h5>
 <div class="paragraph">
-<p>This event SHALL be generated when the EV starts charging or discharging.</p>
+<p>This event SHALL be generated whenever the EV starts charging or discharging,
+except when an EV has switched between charging and discharging
+under the control of the PowerAdjustment feature of the
+Device Energy Management cluster of the associated Device Energy Management device.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -70699,6 +70732,15 @@ and SHALL NOT be a net value of charging and discharging energy.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MaximumDischargingCurrent</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">amperage-mA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">min 0</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">V2X</p></td>
+</tr>
 </tbody>
 </table>
 <div class="sect5">
@@ -70718,26 +70760,39 @@ the time the event was generated.</p>
 <div class="sect5">
 <h6 id="_maximumcurrent_field"><a class="anchor" href="#_maximumcurrent_field"></a>9.3.10.3.3. MaximumCurrent Field</h6>
 <div class="paragraph">
-<p>This field SHALL indicate the value of the maximum charging or discharging
+<p>This field SHALL indicate the value of the maximum charging
 current at the time the event was generated.</p>
 </div>
 <div class="paragraph">
-<p>This field is signed. A positive value indicates the EV has been enabled for
+<p>A non-zero value indicates that the EV has been enabled for
 charging and the value is taken directly from the
-<a href="#ref_MaximumChargeCurrentAttribute">MaximumChargeCurrent</a> attribute.</p>
+<a href="#ref_MaximumChargeCurrentAttribute">MaximumChargeCurrent</a> attribute.
+A zero value indicates that the EV has not been enabled for
+charging.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_maximumdischargingcurrent_field"><a class="anchor" href="#_maximumdischargingcurrent_field"></a>9.3.10.3.4. MaximumDischargingCurrent Field</h6>
+<div class="paragraph">
+<p>This field SHALL indicate the value of the maximum discharging
+current at the time the event was generated.</p>
 </div>
 <div class="paragraph">
-<p>A negative value indicates that the EV has been enabled for discharging and the
-value can be taken from the <a href="#ref_MaximumDischargeCurrentAttribute">MaximumDischargeCurrent</a> attribute
-with its sign inverted. i.e. if the <a href="#ref_MaximumDischargeCurrentAttribute">MaximumDischargeCurrent</a> was
-32000mA, this would be represented here as -32000mA.</p>
+<p>A non-zero value indicates that the EV has been enabled for
+discharging and the value is taken directly from the
+<a href="#ref_MaximumDischargeCurrentAttribute">MaximumDischargeCurrent</a> attribute.
+A zero value indicates that the EV has not been enabled for
+discharging.</p>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_EnergyTransferStoppedEvent"><a class="anchor" href="#ref_EnergyTransferStoppedEvent"></a>9.3.10.4. EnergyTransferStopped Event</h5>
+<h5 id="ref_EnergyTransferStopped"><a class="anchor" href="#ref_EnergyTransferStopped"></a>9.3.10.4. EnergyTransferStopped Event</h5>
 <div class="paragraph">
-<p>This event SHALL be generated when the EV stops charging or discharging.</p>
+<p>This event SHALL be generated whenever the EV stops charging or discharging,
+except when an EV has switched between charging and discharging
+under the control of the PowerAdjustment feature of the
+Device Energy Management cluster of the associated Device Energy Management device.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -70797,6 +70852,15 @@ with its sign inverted. i.e. if the <a href="#ref_MaximumDischargeCurrentAttribu
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>EnergyDischarged</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">energy-mWh</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">min 0</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">V2X</p></td>
+</tr>
 </tbody>
 </table>
 <div class="sect5">
@@ -70820,12 +70884,17 @@ prior to the energy transfer stopping.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_energy_transferred_field"><a class="anchor" href="#_energy_transferred_field"></a>9.3.10.4.4. Energy Transferred Field</h6>
+<h6 id="_energytransferred_field"><a class="anchor" href="#_energytransferred_field"></a>9.3.10.4.4. EnergyTransferred Field</h6>
 <div class="paragraph">
-<p>This field SHALL indicate the amount of energy transferred between the EVSE and
-EV since the previous EnergyTransferStarted event. This is a signed value in mWh.
-Positive values indicate the amount of energy transferred to the vehicle.
-Negative values indicate energy transferred from the vehicle.</p>
+<p>This field SHALL indicate the amount of energy transferred from the EVSE to the
+EV since the previous EnergyTransferStarted event, in mWh.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_energydischarged_field"><a class="anchor" href="#_energydischarged_field"></a>9.3.10.4.5. EnergyDischarged Field</h6>
+<div class="paragraph">
+<p>This field SHALL indicate the amount of energy transferred from the EV to the
+EVSE since the previous EnergyTransferStarted event, in mWh.</p>
 </div>
 </div>
 </div>
@@ -71139,6 +71208,15 @@ A blank field indicates no change.</p>
 <p>At least one entry in the SupportedModes attribute SHALL include the Manual mode tag
 in the ModeTags field list.</p>
 </div>
+<div class="paragraph">
+<p>Modes with entries in the SupportedModes attribute which contain multiple mode tags permitting
+charging or discharging under different conditions SHALL permit the charging or discharging
+to occur if any of the conditions are satisfied.</p>
+</div>
+<div class="paragraph">
+<p>Modes SHALL NOT have both the Manual tag and the TimeOfUse or SolarCharging tags defined
+in the SupportedModes attribute.</p>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -71176,29 +71254,57 @@ derived cluster.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x4002</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SolarCharging</strong></p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x4003</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>V2X</strong></p></td>
+</tr>
 </tbody>
 </table>
 <div class="sect5">
 <h6 id="_manual_tag"><a class="anchor" href="#_manual_tag"></a>9.4.6.1.1. Manual Tag</h6>
 <div class="paragraph">
-<p>While in this mode, the EVSE needs to be sent an EnableEvseCharging or
-EnableEvseDischarging command to make the EVSE start charging or discharging.</p>
+<p>While in modes with this tag, and once enabled with the EnableCharging command,
+the EVSE will permit charging based on demand from the EV.</p>
 </div>
 </div>
 <div class="sect5">
 <h6 id="_timeofuse_tag"><a class="anchor" href="#_timeofuse_tag"></a>9.4.6.1.2. TimeOfUse Tag</h6>
 <div class="paragraph">
-<p>While in this mode, the EVSE will attempt to automatically start charging based
-on the user&#8217;s charging targets and a Time of Use tariff to charge at the cheapest
-times of the day.</p>
+<p>While in modes with this tag, and once enabled with the EnableCharging command,
+the EVSE will attempt to automatically start charging based
+on the user&#8217;s charging targets (for example, set based on a Time of Use tariff to charge at the cheapest
+times of the day).</p>
 </div>
 </div>
 <div class="sect5">
 <h6 id="_solarcharging_tag"><a class="anchor" href="#_solarcharging_tag"></a>9.4.6.1.3. SolarCharging Tag</h6>
 <div class="paragraph">
-<p>While in this mode, the EVSE will attempt to automatically start charging based
+<p>While in modes with this tag, and once enabled with the EnableCharging,
+the EVSE will attempt to automatically start charging based
 on available excess solar PV generation, limiting the charging power to avoid
-imported energy from the grid.</p>
+importing energy from the grid.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_v2x_tag"><a class="anchor" href="#_v2x_tag"></a>9.4.6.1.4. V2X Tag</h6>
+<div class="paragraph">
+<p>While in modes with this tag, and once enabled with the EnableDischarging command,
+the EVSE will permit discharging based on the current charge state of the EV,
+and its control from an associated Device Energy Management cluster.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+being in a mode with this tag set or not does not affect the handling of
+the EnableDischarging command by the Energy EVSE cluster, but once enabled,
+only modes with this tag enable the discharging to actually occur.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -71222,6 +71328,9 @@ below.</p>
 </li>
 <li>
 <p>For the "Auto-scheduled with Solar charging" mode, tags: 0x4001 (TimeOfUse), 0x4002 (SolarCharging)</p>
+</li>
+<li>
+<p>For the "Vehicle-to-home with Solar charging" mode, tags: 0x4002 (SolarCharging), 0x4003 (V2X)</p>
 </li>
 </ul>
 </div>
@@ -71946,8 +72055,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master c422c51 (local changes)<br>
-Last updated 2024-05-29 00:00:29 UTC
+Version master 98206e1 (local changes)<br>
+Last updated 2024-05-29 17:33:07 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
