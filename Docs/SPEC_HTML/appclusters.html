@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 2dc0c0a (local changes),</span>
-<span id="revdate">2024-05-29 23:09:18 -0700</span>
+<span id="revnumber">version master 0ccce40 (local changes),</span>
+<span id="revdate">2024-05-30 11:06:35 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -602,7 +602,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_events_3">1.13.6. Events</a></li>
 <li><a href="#ref_SwitchSequenceEvents">1.13.7. Sequence of generated events</a></li>
 <li><a href="#ref_MultiPressDetails">1.13.8. Sequence of events for MultiPress</a></li>
-<li><a href="#ref_MultiPositionDetails">1.13.9. Multi Position Details</a></li>
+<li><a href="#_summary_of_cases_for_ms_feature_flag">1.13.9. Summary of cases for MS feature flag</a></li>
+<li><a href="#ref_MultiPositionDetails">1.13.10. Multi Position Details</a></li>
 </ul>
 </li>
 <li><a href="#ref_OperationalStateCluster">1.14. Operational State Cluster</a>
@@ -11554,6 +11555,12 @@ An interested client MAY subscribe to these attributes/events and thus be inform
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Initial Release</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Behavior clarifications for ambiguous combinations of events;
+             Introduction of TotalNumberOfPressesCounted == 0 when MultiPressMax is exceeded;
+             Introduction of ActionSwitch feature.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -11649,22 +11656,29 @@ An interested client MAY subscribe to these attributes/events and thus be inform
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MSR</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MomentarySwitchRelease</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[MS]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Switch supports release</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[MS &amp; !AS]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Switch supports release events generation</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MSL</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MomentarySwitchLongPress</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[MS &amp; MSR]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Switch supports long press</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[MS &amp; (MSR | AS)]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Switch supports long press detection</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MSM</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MomentarySwitchMultiPress</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[MS &amp; MSR]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Switch supports multi-press</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AS, [MS &amp; MSR]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Switch supports multi-press detection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AS</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ActionSwitch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[MS]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Switch is momentary, targeted at specific user actions (focus on multi-press and optionally long press) with a reduced event generation scheme</p></td>
 </tr>
 </tbody>
 </table>
@@ -11769,16 +11783,45 @@ Also see <a href="#ref_MultiPositionDetails">Multi Position Details</a> for the 
 <div class="sect4">
 <h5 id="_currentposition_attribute"><a class="anchor" href="#_currentposition_attribute"></a>1.13.5.2. CurrentPosition Attribute</h5>
 <div class="paragraph">
-<p>This attribute SHALL indicate the position of the switch.
-The valid range is zero to NumberOfPositions-1.
-CurrentPosition value 0 SHALL be assigned to the default position of the switch: for example
+<p>This attribute SHALL indicate the position of the switch.</p>
+</div>
+<div class="paragraph">
+<p>The valid range is zero to NumberOfPositions - 1.</p>
+</div>
+<div class="paragraph">
+<p>CurrentPosition value 0 SHALL be assigned to the default position of the switch: for example
 the "open" state of a rocker switch, or the "idle" state of a push button switch.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_multipressmax_attribute"><a class="anchor" href="#_multipressmax_attribute"></a>1.13.5.3. MultiPressMax Attribute</h5>
 <div class="paragraph">
-<p>This attribute SHALL indicate how many consecutive presses can be detected and reported by a momentary switch which supports multi-press (e.g. it will report the value 3 if it can detect single press, double press and triple press, but not quad press and beyond).</p>
+<p>This attribute SHALL indicate how many consecutive presses can be detected and reported by a momentary switch which supports multi-press.</p>
+</div>
+<div class="paragraph">
+<p>For example, a momentary switch supporting single press, double press and triple press, but not quad press and beyond, would return the value 3.</p>
+</div>
+<div class="paragraph">
+<p>When more than MultiPressMax presses are detected within a multi-press sequence:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The server for cluster revision \$&lt;\$ 2 SHOULD generate a MultiPressComplete event
+with the TotalNumberOfPressesCounted field set to the value of the MultiPressMax attribute,
+and avoid generating any further InitialPress and MultiPressOngoing events until the switch has become fully idle
+(i.e. no longer in the process of counting presses within the multipress).</p>
+</li>
+<li>
+<p>The server for cluster revision \$&gt;=\$ 2 SHALL generate a MultiPressComplete event
+with the TotalNumberOfPressesCounted field set to zero (indicating an aborted sequence),
+and SHALL NOT generate any further InitialPress and MultiPressOngoing events until the switch has become fully idle
+(i.e. no longer in the process of counting presses within the multipress).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This approach avoids unintentionally causing intermediate actions where there is a very long sequence of presses beyond MultiPressMax that MAY be taken in account specially by switches (e.g. to trigger special behavior such as factory reset for which generating events towards the client is not appropriate).</p>
 </div>
 </div>
 </div>
@@ -11842,7 +11885,7 @@ the "open" state of a rocker switch, or the "idle" state of a push button switch
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MultiPressOngoing</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INFO</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">V</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MSM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MSM &amp; !AS</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x06</p></td>
@@ -11951,9 +11994,53 @@ It MAY have been delayed by debouncing within the switch.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_longpress_event"><a class="anchor" href="#_longpress_event"></a>1.13.6.3. LongPress Event</h5>
+<h5 id="ref_SwitchClusterLongPressEvent"><a class="anchor" href="#ref_SwitchClusterLongPressEvent"></a>1.13.6.3. LongPress Event</h5>
 <div class="paragraph">
-<p>This event SHALL be generated, when the momentary switch has been pressed for a "long" time (this time interval is manufacturer determined (e.g. since it depends on the switch physics)).</p>
+<p>This event SHALL be generated when the momentary switch has been pressed for a "long" time.
+The time interval constituting a "long" time is manufacturer-determined, since it depends on the switch physics.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When the AS feature is present, this event:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>SHALL NOT be generated during a multi-press sequence (since a long press is a separate cycle from any multi-press cycles);</p>
+</li>
+<li>
+<p>SHALL only be generated after the first InitialPress following a MultiPressComplete when a long press is detected after the idle time.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Else, when the MSM feature is present, this event:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>SHALL NOT be generated during a multi-press sequence (since a long press is a separate cycle from any multi-press cycles);</p>
+</li>
+<li>
+<p>SHALL only be generated after the first InitialPress following a MultiPressComplete when a long press is detected after the idle time;</p>
+</li>
+<li>
+<p>SHALL NOT be generated after a MultiPressOngoing event without an intervening MultiPressComplete event.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The above constraints imply that for a given activity detection cycle of a switch supporting MSM and/or MSL features,
+the entire activity is either a single long press detection cycle of (InitialPress, LongPress, LongRelease),
+or a single multi-press detection cycle (ending in MultiPressComplete),
+where presses that would otherwise be reported as long presses are instead reported as a counted press in the MultiPressComplete event,
+and as InitialPress/ShortRelease pairs otherwise (where applicable).</p>
+</div>
+<div class="paragraph">
+<p>The rationale for this constraint is the ambiguity of interpretation of events when mixing long presses and multi-press events.</p>
 </div>
 <div class="paragraph">
 <p>The data of this event SHALL contain the following information:</p>
@@ -12001,12 +12088,17 @@ It MAY have been delayed by debouncing within the switch.</p>
 <div class="sect4">
 <h5 id="_shortrelease_event"><a class="anchor" href="#_shortrelease_event"></a>1.13.6.4. ShortRelease Event</h5>
 <div class="paragraph">
+<p>If the server supports the Action Switch (AS) feature, this event SHALL NOT be generated at all,
+since support for the Action Switch feature forbids support of the Momentary Switch ShortRelease (MSR) feature.
+Otherwise, the following paragraphs describe the situations where this event is generated.</p>
+</div>
+<div class="paragraph">
 <p>This event SHALL be generated, when the momentary switch has been released (after debouncing).</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>If the server supports the Momentary Switch LongPress (MSL) feature, this event SHALL be generated when the switch is released if <em><strong>no</strong></em> LongPress event had been generated since the previous InitialPress event.</p>
+<p>If the server supports the Momentary Switch LongPress (MSL) feature, then this event SHALL be generated when the switch is released if <em><strong>no</strong></em> LongPress event had been generated since the previous InitialPress event.</p>
 </li>
 <li>
 <p>If the server does not support the Momentary Switch LongPress (MSL) feature, this event SHALL be generated when the switch is released - even when the switch was pressed for a long time.</p>
@@ -12111,7 +12203,12 @@ Also see <a href="#ref_SwitchSequenceEvents">Section 1.13.7, &#8220;Sequence of 
 <div class="sect4">
 <h5 id="_multipressongoing_event"><a class="anchor" href="#_multipressongoing_event"></a>1.13.6.6. MultiPressOngoing Event</h5>
 <div class="paragraph">
-<p>This event SHALL be generated to indicate how many times the momentary switch has been pressed in a multi-press sequence, <em>during</em> that sequence. See <a href="#ref_MultiPressDetails">Multi Press Details</a> below.</p>
+<p>If the server supports the Action Switch (AS) feature, this event SHALL NOT be generated at all.
+Otherwise, the following paragraphs describe the situations where this event is generated.</p>
+</div>
+<div class="paragraph">
+<p>This event SHALL be generated to indicate how many times the momentary switch has been pressed
+in a multi-press sequence, <em>during</em> that sequence. See <a href="#ref_MultiPressDetails">Multi Press Details</a> below.</p>
 </div>
 <div class="paragraph">
 <p>The data of this event SHALL contain the following information:</p>
@@ -12227,7 +12324,7 @@ Also see <a href="#ref_SwitchSequenceEvents">Section 1.13.7, &#8220;Sequence of 
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TotalNumberOfPressesCounted</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 to MultiPressMax</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max MultiPressMax</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -12243,7 +12340,10 @@ Also see <a href="#ref_SwitchSequenceEvents">Section 1.13.7, &#8220;Sequence of 
 <div class="ulist">
 <ul>
 <li>
-<p>a value of 1 when there was one press in a multi-press sequence (and the sequence has ended), i.e. there was no double press (or more),</p>
+<p>a value of 0 when there was an aborted multi-press sequence, where the number of presses goes beyond MultiPressMax presses,</p>
+</li>
+<li>
+<p>a value of 1 when there was exactly one press in a multi-press sequence (and the sequence has ended), i.e. there was no double press (or more),</p>
 </li>
 <li>
 <p>a value of 2 when there were exactly two presses in a multi-press sequence (and the sequence has ended),</p>
@@ -12255,6 +12355,22 @@ Also see <a href="#ref_SwitchSequenceEvents">Section 1.13.7, &#8220;Sequence of 
 <p>a value of N when there were exactly N presses in a multi-press sequence (and the sequence has ended).</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The introduction of TotalNumberOfPressesCounted supporting the value <code>0</code> MAY impact clients of
+switches using cluster revision 1 since such servers would not use this value of TotalNumberOfPressesCounted to indicate an aborted sequence.
+Clients SHOULD always act using the TotalNumberOfPressesCounted field taken into account
+since for values beyond from 1 to MultiPressMax, the user action that led to the event was
+different depending on the count.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -12281,19 +12397,48 @@ For each switch type, we will define the sequence of generated events for these 
 <p>In the three interactions described in the subsections below, if the NumberOfPositions attribute is equal to 2, the InitialPress and LongPress events have the NewPosition field set to 1 and the ShortRelease and LongRelease events have the PreviousPosition field set to 1. For larger values of the NumberOfPositions attribute, see <a href="#ref_MultiPositionDetails">Multi Position Details</a>.</p>
 </div>
 <div class="sect4">
-<h5 id="_supports_initialpress_longpress_shortrelease_longrelease"><a class="anchor" href="#_supports_initialpress_longpress_shortrelease_longrelease"></a>1.13.7.1. Supports InitialPress + LongPress + ShortRelease + LongRelease</h5>
+<h5 id="ref_SwitchLongPressSupport"><a class="anchor" href="#ref_SwitchLongPressSupport"></a>1.13.7.1. Switches with long-press detection support (MSL feature)</h5>
 <div class="paragraph">
-<p>This switch (with feature flags MS &amp; MSR &amp; MSL) SHALL generate either a sequence of two or three (depending on how long the switch is pressed) events for one interaction cycle, in the order given below and illustrated in the figure below.</p>
+<p>This switch (with feature flags MS &amp; MSL) SHALL generate either a sequence of two or three (depending on how long the switch is pressed) events for one interaction cycle, in the order given below and illustrated in the figure below.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>short press: InitialPress, then ShortRelease</p>
+<p>Upon a short press:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generate InitialPress</p>
 </li>
 <li>
-<p>long press (or very long press): InitialPress, then LongPress, and finally LongRelease. Please note that the LongPress event SHALL be generated exactly once for this case and SHALL NOT be repeated, irrespective how long the switch is pressed.</p>
+<p>If MSR supported, generate ShortRelease</p>
+</li>
+<li>
+<p>If AS and/or MSM supported, generate MultiPressComplete(1)</p>
 </li>
 </ul>
+</div>
+</li>
+<li>
+<p>Upon a long press (or very long press):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generate InitialPress</p>
+</li>
+<li>
+<p>Generate LongPress</p>
+</li>
+<li>
+<p>Generate LongRelease (and NOT MultiPressComplete(1))</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Please note that the LongPress event SHALL be generated exactly once for this case and SHALL NOT be repeated, irrespective how long the switch is pressed.</p>
 </div>
 <div class="paragraph">
 <p>The image shows a time representation of the state of the switch (low=not pressed, high=pressed) with the colored dots indicating the various events generated at that moment in time.</p>
@@ -12306,19 +12451,29 @@ For each switch type, we will define the sequence of generated events for these 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_supports_initialpress_shortrelease_but_not_longpress_longrelease"><a class="anchor" href="#_supports_initialpress_shortrelease_but_not_longpress_longrelease"></a>1.13.7.2. Supports InitialPress + ShortRelease (but not LongPress, LongRelease)</h5>
+<h5 id="_switches_without_long_press_detection_support"><a class="anchor" href="#_switches_without_long_press_detection_support"></a>1.13.7.2. Switches without long-press detection support</h5>
 <div class="paragraph">
-<p>This switch (with feature flags MS &amp; MSR &amp; !MSL) does not generate events for the "longpress" case and therefore it SHALL generate a sequence of two events for one interaction cycle, irrespective of how long the switch is pressed, in the order given and illustrated below.</p>
+<p>This switch (with feature flags MS &amp; (MSR | AS) &amp; !MSL) does not generate events for the "longpress" case and therefore it SHALL generate a sequence of two events for one interaction cycle, irrespective of how long the switch is pressed, in the order given and illustrated below.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>any press length: InitialPress, then ShortRelease</p>
+<p>Any press length:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If MSR is supported and AS is not supported : InitialPress, then ShortRelease</p>
+</li>
+<li>
+<p>If MSR is not supported and AS is supported : InitialPress, then MultiPressComplete(1)</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Please note that even after a "long" period being pressed, the release event is ShortRelease. A device with this set of feature flags SHALL NOT generate the LongPress and LongRelease events.</p>
+<p>Please note that even after a "long" period being pressed, the release event is never LongRelease. A device without the MSL feature flag SHALL NOT generate the LongPress and LongRelease events.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -12328,9 +12483,9 @@ For each switch type, we will define the sequence of generated events for these 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_supports_initialpress_but_not_longpress_shortrelease_and_longrelease"><a class="anchor" href="#_supports_initialpress_but_not_longpress_shortrelease_and_longrelease"></a>1.13.7.3. Supports InitialPress (but not LongPress, ShortRelease and LongRelease)</h5>
+<h5 id="_supports_ms_only_not_msr_msl_msm_as"><a class="anchor" href="#_supports_ms_only_not_msr_msl_msm_as"></a>1.13.7.3. Supports MS only, not (MSR | MSL | MSM | AS)</h5>
 <div class="paragraph">
-<p>This switch (with feature flags MS &amp; !MSR &amp; !MSL) SHALL generate a single InitialPress event for one interaction cycle, irrespective of how long the switch is pressed, as illustrated in the figure below.</p>
+<p>This switch (with feature flags MS &amp; !MSR &amp; !MSL &amp; !MSM &amp; !AS) SHALL generate a single InitialPress event for one interaction cycle, irrespective of how long the switch is pressed, as illustrated in the figure below.</p>
 </div>
 <div class="paragraph">
 <p>A device with this set of feature flags SHALL NOT generate any of the ShortRelease, LongPress and LongRelease events.</p>
@@ -12346,8 +12501,37 @@ For each switch type, we will define the sequence of generated events for these 
 <div class="sect3">
 <h4 id="ref_MultiPressDetails"><a class="anchor" href="#ref_MultiPressDetails"></a>1.13.8. Sequence of events for MultiPress</h4>
 <div class="paragraph">
-<p>Multi-press detection is a feature of momentary switches (indicated with feature flag MSM) that they can count and report sequences of press-release cycles within a certain time frame, for example to indicate that the user has pressed the switch once, twice or three (or even more) times in succession. The definition of the time window for this detection is manufacturer-specific since it depends on the switch physics. The maximum number of presses which can be detected and reported SHALL be indicated in attribute MultiPressMax. The minimum value and default value for MultiPressMax are both 2.<br>
-A switch supporting MultiPress SHALL set feature flags MS &amp; MSR &amp; MSM, and optionally also feature flag MSL. It SHALL generate the MultiPressOngoing and MultiPressFinished events in <em>addition</em> to the other events defined for momentary switches (i.e. InitialPress, ShortRelease, and in case of MSL, LongPress and LongRelease).</p>
+<p>Multi-press detection is a feature of momentary switches (indicated with feature flag MSM, with optional AS) that they can count and report sequences of press-release cycles within a certain time frame, for example to indicate that the user has pressed the switch once, twice or three (or even more) times in succession. The definition of the time window for this detection is manufacturer-specific since it depends on the switch physics. The maximum number of presses which can be detected and reported SHALL be indicated in attribute MultiPressMax. The minimum value and default value for MultiPressMax are both 2.<br></p>
+</div>
+<div class="paragraph">
+<p>A switch supporting MultiPress SHALL set feature flags MS &amp; MSM, and MAY optionally support MSL, MSR, and AS.</p>
+</div>
+<div class="paragraph">
+<p>The ActionSwitch (AS) feature flag is a behavior selector which, when present, reduces the number of events generated by the switch.</p>
+</div>
+<div class="sect4">
+<h5 id="_multi_press_behavior_when_actionsswitch_as_feature_flag_is_absent"><a class="anchor" href="#_multi_press_behavior_when_actionsswitch_as_feature_flag_is_absent"></a>1.13.8.1. Multi-press behavior when ActionsSwitch (AS) feature flag is absent</h5>
+<div class="paragraph">
+<p>A switch with the MSM feature flag, and not the AS flag feature flag present:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SHALL generate an InitialPress event at the start of every button press within a button multi-press cycle;</p>
+</li>
+<li>
+<p>SHALL generate a ShortRelease event at the end of every button press within a button multi-press cycle;</p>
+</li>
+<li>
+<p>SHALL generate a MultiPressOngoing event after the InitialPress event of the second and subsequent presses of a button multi-press cycle;</p>
+</li>
+<li>
+<p>SHALL generate a MultiPressComplete at the end of a multi-press cycle, including single presses;</p>
+</li>
+<li>
+<p>SHALL NOT (for cluster revision \$&gt;=\$2) or SHOULD NOT (for cluster revision \$&lt;\$2) generate any LongPress and LongRelease events within the multi-press cycle.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>The MultiPressOngoing event is provided for parties interested in keeping track of the actual presses during the multi-press sequence. The MultiPressComplete event is provided for parties interested in the outcome of the whole sequence: after the multi-press sequence has ended, they will receive the MultiPressComplete event indicating how many times the switch was pressed.</p>
@@ -12358,18 +12542,24 @@ A switch supporting MultiPress SHALL set feature flags MS &amp; MSR &amp; MSM, a
 <div class="ulist">
 <ul>
 <li>
-<p>single press sequence: after the press and release moments, the InitialPress and ShortRelease events SHALL be generated. After some further time, when the switch has detected that there is no second press, it SHALL generate MultiPressComplete(1) since it has detected that the sequence consisted of one press. No MultiPressOngoing event SHALL be generated for this case.</p>
+<p>Single press sequence: after the press and release moments, the InitialPress and ShortRelease events SHALL be generated. After some further time, when the switch has detected that there is no second press, it SHALL generate MultiPressComplete(1) since it has detected that the sequence consisted of one press. No MultiPressOngoing event SHALL be generated for this case.</p>
 </li>
 <li>
-<p>double press sequence: after each of the press and release moments, the InitialPress and ShortRelease events SHALL be generated. Additionally, when the switch is pressed for the second time, the MultiPressOngoing(2) event SHALL be generated, as the switch has detected the second press. Note that this event coincides with the second InitialPress event; both SHALL be generated. After some further time, when the switch has detected that there is no third press, it SHALL generate MultiPressComplete(2) since it has detected that the sequence consisted of two presses.</p>
+<p>Double press sequence: after each of the press and release moments, the InitialPress and ShortRelease events SHALL be generated. Additionally, when the switch is pressed for the second time, the MultiPressOngoing(2) event SHALL be generated, as the switch has detected the second press. Note that this event coincides with the second InitialPress event; both SHALL be generated. After some further time, when the switch has detected that there is no third press, it SHALL generate MultiPressComplete(2) since it has detected that the sequence consisted of two presses.</p>
 </li>
 <li>
-<p>third press sequence: after each press and release moments, the InitialPress and ShortRelease events SHALL be generated. Additionally, when the switch is pressed for the second time, the MultiPressOngoing(2) event SHALL be generated, as the switch has detected the second press. Note that this event coincides with the second InitialPress event; both SHALL be generated. Additionally, when the switch is pressed for the third time, the MultiPressOngoing(3) event SHALL be generated, as the switch has detected the third press. Note that this event coincides with the third InitialPress event; both SHALL be generated. After some further time, when the switch has detected that there is no fourth press, it SHALL generate MultiPressComplete(3) since it has detected that the sequence consisted of three presses.</p>
+<p>Triple press sequence: after each press and release moments, the InitialPress and ShortRelease events SHALL be generated. Additionally, when the switch is pressed for the second time, the MultiPressOngoing(2) event SHALL be generated, as the switch has detected the second press. Note that this event coincides with the second InitialPress event; both SHALL be generated. Additionally, when the switch is pressed for the third time, the MultiPressOngoing(3) event SHALL be generated, as the switch has detected the third press. Note that this event coincides with the third InitialPress event; both SHALL be generated. After some further time, when the switch has detected that there is no fourth press, it SHALL generate MultiPressComplete(3) since it has detected that the sequence consisted of three presses.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>For the above cases where multiple events need to be generated at the same time, the MultiPressOngoing event SHALL be generated directly after the InitialPress event.</p>
+</div>
+<div class="paragraph">
+<p>The above cases specifically did not generate LongPress and LongRelease events within the sequence
+(even though the figure below illustrates a longer press duration for the second press in one of the cases),
+since multi-press sequences SHOULD/SHALL NOT generate LongPress and LongRelease events within the sequence
+(see <a href="#ref_SwitchClusterLongPressEvent">Section 1.13.6.3, &#8220;LongPress Event&#8221;</a> for more details).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -12395,15 +12585,189 @@ As with the other figures, sufficient debounce time needs to be take into accoun
 </tr>
 </table>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Several of the events require very low congestion and latency in the final system to be usable for real-time control and use cases.
+Care must be taken during design not to rely on very low latency and real-time event timestamps if the low-latency assumptions do not hold.
+</td>
+</tr>
+</table>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="app_clusters/images/general/SwitchDevice_multipress.svg" alt="SwitchDevice multipress">
 </div>
-<div class="title">Figure 6. Switch device with multi-press events</div>
+<div class="title">Figure 6. Switch device with multi-press events and AS feature flag absent</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_multi_press_behavior_when_actionsswitch_as_feature_flag_is_present"><a class="anchor" href="#_multi_press_behavior_when_actionsswitch_as_feature_flag_is_present"></a>1.13.8.2. Multi-press behavior when ActionsSwitch (AS) feature flag is present</h5>
+<div class="paragraph">
+<p>When the ActionSwitch feature flag is present, the following changes apply compared to the case where it is not present:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>InitialPress is only ever generated at the very start of a button press sequence.</p>
+</li>
+<li>
+<p>ShortRelease is never generated, including at the end of button presses within a multi-press sequence.</p>
+</li>
+<li>
+<p>MultiPressOngoing is never generated.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A switch with the MSM &amp; AS feature flags present:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SHALL only generate an InitialPress event at the start of every button press cycle (whether long or not);</p>
+</li>
+<li>
+<p>SHALL NOT generate ShortRelease events;</p>
+</li>
+<li>
+<p>SHALL NOT generate MultiPressOngoing events;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Furthermore, a press cycle with MSM &amp; AS feature flags present is always <strong>either</strong> a long-press cycle (if MSL supported), <strong>or</strong> a multi-press cycle.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the MSL feature flag is supported and the cycle is deemed "long" during the first press cycle after InitialPress, then the switch SHALL react as described in <a href="#ref_SwitchLongPressSupport">Section 1.13.7.1, &#8220;Switches with long-press detection support (MSL feature)&#8221;</a>,
+and SHALL NOT consider this to be the start of a multi-press sequence
+(see last case illustrated in <a href="#ref_SwitchMultiPressActionDiagram">Figure 7, &#8220;Switch device with multi-press events and AS feature flag present&#8221;</a>).</p>
+</li>
+<li>
+<p>If the MSL feature flag is not supported or if the first button press cycle is short, then the switch SHALL count presses until the switch becomes sufficiently idle, and SHALL NOT generate LongPress and LongRelease events for intermediate presses within the multi-press cycle that are "long".</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Because of these simplifications, clients can decide to act purely on the following to determine user action:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>LongRelease (if supported) to determine the end of a long press.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>InitialPress and LongPress (if supported), if needed, to detect the start of the press and long-press periods so that actions such as "do action X while long pressed and stop on release" can be supported.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>MultiPressComplete to determine the end of a series of presses (0 .. MultiPressMax)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Only the final count of presses detected by the switch is provided.</p>
+</li>
+<li>
+<p>The value of 0 indicates an aborted press (e.g. maybe too many presses in a row, button held down for too long, etc).</p>
+</li>
+<li>
+<p>The value of 1 indicates a single press, 2 a double-press, etc.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Because of the omission of ShortRelease, MultiPressOngoing and the "inner" InitialPress events, less network traffic is generated, while not missing the overall "action" intent from the end-user.</p>
+</div>
+<div class="paragraph">
+<p>In the figure below, 4 sequences of user interaction are indicated:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Single press sequence: after the initial press detection, the InitialPress event is generated. After some further time, when the switch has detected that there is no second press, and the press is not a long press (if supported), it generates the MultiPressComplete(1) event since it has detected that the sequence consisted of one press.</p>
+</li>
+<li>
+<p>Double press sequence: after the initial press detection, the InitialPress event is generated. After some further time, when the switch has detected that there is no third press, it generates the MultiPressComplete(2) event since it has detected that the sequence consisted of two presses.</p>
+</li>
+<li>
+<p>N-press sequence: after the initial press detection, the InitialPress event is generated. Additionally, when the switch is pressed for the second time, we note that the press is long, but there is not a LongPress or LongRelease event, since long presses inside a multi-press sequences are treated as short presses. After some further time, when the switch has detected that there are no further presses beyond N presses, it generates a MultiPressComplete(N) event since it has detected that the sequence consisted of N presses.</p>
+</li>
+<li>
+<p>Long press sequence followed by N-press sequence:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This case contains to two separate sequences, since a long press sequence is always an independent sequence, and does not get reported as "long" within multi-presses (see previous example case).</p>
+</li>
+<li>
+<p>The first sequence is a Long Press sequence of: InitialPress, LongPress, and finally, LongRelease.</p>
+</li>
+<li>
+<p>The second sequence, whether immediate or not, is a N-press sequence of: InitialPress, and finally, MultiPressComplete(N).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="ref_SwitchMultiPressActionDiagram" class="imageblock">
+<div class="content">
+<img src="app_clusters/images/general/SwitchDevice_multipress_action.svg" alt="SwitchDevice multipress action">
+</div>
+<div class="title">Figure 7. Switch device with multi-press events and AS feature flag present</div>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="ref_MultiPositionDetails"><a class="anchor" href="#ref_MultiPositionDetails"></a>1.13.9. Multi Position Details</h4>
+<h4 id="_summary_of_cases_for_ms_feature_flag"><a class="anchor" href="#_summary_of_cases_for_ms_feature_flag"></a>1.13.9. Summary of cases for MS feature flag</h4>
+<div class="paragraph">
+<p>Given the variety of situations that may arise due to the different switch capabilities,
+the following describes the edges that would be 100% unambiguous to understand user action intents:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>MS &amp; !MSR &amp; !MSM: Every action cycle is only a single InitialPress event.</p>
+</li>
+<li>
+<p>MS &amp; !MSM: Every action cycle ends on ShortRelease or LongRelease (if MSL supported), depending on long or short press and MSR/MSL feature flag support.</p>
+</li>
+<li>
+<p>MS &amp; MSM: Every action cycle ends on either LongRelease (if MSL supported and first press was long) or MultiPressComplete.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The AS feature flag does not change the outcome of which events can be used for action detection.</p>
+</li>
+<li>
+<p>The AS feature flag is backwards compatible with previous revisions of this cluster.</p>
+</li>
+<li>
+<p>The AS feature flag primarily offers a reduction of events generated.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The above list is relevant for the case of a client which does not use the events indicating progress during the action cycle (i.e. ShortRelease, MultiPressOngoing, repeated InitialPress) for its operation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ref_MultiPositionDetails"><a class="anchor" href="#ref_MultiPositionDetails"></a>1.13.10. Multi Position Details</h4>
 <div class="paragraph">
 <p>This section will discuss some archetypes of switch devices with more than 2 positions and how they SHALL set attribute values and generate events matching their characteristics.</p>
 </div>
@@ -12412,7 +12776,7 @@ As with the other figures, sufficient debounce time needs to be take into accoun
 For the ShortRelease, LongRelease and MultiPressComplete events, the field PreviousPosition SHALL be set to the value corresponding to the position of the switch just preceding the (latest) release.</p>
 </div>
 <div class="sect4">
-<h5 id="_latching_switch_with_n_stable_positions_n2_with_fixed_sequence"><a class="anchor" href="#_latching_switch_with_n_stable_positions_n2_with_fixed_sequence"></a>1.13.9.1. Latching Switch with N stable positions (N&gt;2) with fixed sequence</h5>
+<h5 id="_latching_switch_with_n_stable_positions_n2_with_fixed_sequence"><a class="anchor" href="#_latching_switch_with_n_stable_positions_n2_with_fixed_sequence"></a>1.13.10.1. Latching Switch with N stable positions (N&gt;2) with fixed sequence</h5>
 <div class="paragraph">
 <p>With such a device, the user can move the switch from a position M to positions M-1 and M+1 (either with a wraparound between the end positions, or fixed stop at the end positions).<br>
 On each interaction with the switch device, it SHALL generate a SwitchLatched event with the NewPosition field set to the value associated with the new position.<br>
@@ -12425,7 +12789,7 @@ Due to the physical constraints, such an event will have a NewPosition field whi
 <div class="content">
 <img src="app_clusters/images/general/SwitchDevice_3positions.svg" alt="SwitchDevice 3positions">
 </div>
-<div class="title">Figure 7. Rotary switch device with 3 positions</div>
+<div class="title">Figure 8. Rotary switch device with 3 positions</div>
 </div>
 <div class="paragraph">
 <p>In another example, a switch has 8 positions, associated with values 0 through 7. In this case, the physics of the switch allow wraparound: from position 0 it can be moved to position 1 or to position 7.</p>
@@ -12434,11 +12798,11 @@ Due to the physical constraints, such an event will have a NewPosition field whi
 <div class="content">
 <img src="app_clusters/images/general/SwitchDevice_8positions.svg" alt="SwitchDevice 8positions">
 </div>
-<div class="title">Figure 8. Rotary switch device with 8 positions and wraparound</div>
+<div class="title">Figure 9. Rotary switch device with 8 positions and wraparound</div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_latching_switch_with_n_stable_positions_n2_with_random_sequence_example_radio_buttons"><a class="anchor" href="#_latching_switch_with_n_stable_positions_n2_with_random_sequence_example_radio_buttons"></a>1.13.9.2. Latching Switch with N stable positions (N&gt;2) with random sequence (example: radio buttons)</h5>
+<h5 id="_latching_switch_with_n_stable_positions_n2_with_random_sequence_example_radio_buttons"><a class="anchor" href="#_latching_switch_with_n_stable_positions_n2_with_random_sequence_example_radio_buttons"></a>1.13.10.2. Latching Switch with N stable positions (N&gt;2) with random sequence (example: radio buttons)</h5>
 <div class="paragraph">
 <p>With such a device, the user can press any of the available buttons,
 so this switch does not show the incrementing or decrementing behavior of NewPosition which we discussed for the latching switch with fixed sequence.
@@ -12450,11 +12814,11 @@ Then the user first presses the "D" button, and the switch device generates a Sw
 <div class="content">
 <img src="app_clusters/images/general/SwitchDevice_radiobuttons.svg" alt="SwitchDevice radiobuttons">
 </div>
-<div class="title">Figure 9. Switch device with radio buttons</div>
+<div class="title">Figure 10. Switch device with radio buttons</div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_momentary_switch_with_2_or_more_non_stable_positions"><a class="anchor" href="#_momentary_switch_with_2_or_more_non_stable_positions"></a>1.13.9.3. Momentary Switch with 2 or more non-stable positions</h5>
+<h5 id="_momentary_switch_with_2_or_more_non_stable_positions"><a class="anchor" href="#_momentary_switch_with_2_or_more_non_stable_positions"></a>1.13.10.3. Momentary Switch with 2 or more non-stable positions</h5>
 <div class="paragraph">
 <p>For a Momentary Switch with more than 1 stable position, it depends on the physics of the switch device which sequence of events will be generated.</p>
 </div>
@@ -12485,7 +12849,7 @@ Upon release of the bottom side, the event ShortRelease (PreviousPosition=2) is 
 <div class="content">
 <img src="app_clusters/images/general/SwitchDevice_shutter.svg" alt="SwitchDevice shutter">
 </div>
-<div class="title">Figure 10. Up/down control switch device</div>
+<div class="title">Figure 11. Up/down control switch device</div>
 </div>
 <div class="paragraph">
 <p>Another variant (figure below, example: joystick) has a control handle with a neutral position in the middle (left figure) which corresponds to CurrentPosition=0.
@@ -12516,7 +12880,7 @@ ShortRelease (PreviousPosition=5)  // back to middle (from South)</pre>
 <div class="content">
 <img src="app_clusters/images/general/SwitchDevice_joystick.svg" alt="SwitchDevice joystick">
 </div>
-<div class="title">Figure 11. Switch device with joystick</div>
+<div class="title">Figure 12. Switch device with joystick</div>
 </div>
 <div class="paragraph">
 <p>Therefore, in the "joystick" variation, there could be a succession of InitialPress events without an intermediate ShortRelease events - unlike
@@ -35681,7 +36045,7 @@ be used in any application domain.</p>
 <div class="content">
 <img src="app_clusters/images/closures/media/image2.jpeg" alt="image2" width="375" height="339">
 </div>
-<div class="title">Figure 12. Typical Usage of the Closures Clusters</div>
+<div class="title">Figure 13. Typical Usage of the Closures Clusters</div>
 </div>
 </div>
 </div>
@@ -64322,13 +64686,13 @@ Energy Smart Appliance (ESA).</p>
 </div>
 <div class="paragraph">
 <p>In most deployments the EMS will be the client, and the ESA will host the
-Energy Management Cluster server.</p>
+Device Energy Management Cluster server.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="app_clusters/images/energy/media/ESA_EMS_Cluster.png" alt="ESA EMS Cluster">
 </div>
-<div class="title">Figure 13. Example of the how an EMS is a client of multiple ESAs Energy Management clusters.</div>
+<div class="title">Figure 14. Example of the how an EMS is a client of multiple ESAs Device Energy Management clusters.</div>
 </div>
 <div class="paragraph">
 <p>This cluster is intended to be generic in nature and could apply to any
@@ -64383,7 +64747,7 @@ times.</p>
 <div class="content">
 <img src="app_clusters/images/energy/media/HVAC_ESA_Example_with_EMS.png" alt="HVAC ESA Example with EMS">
 </div>
-<div class="title">Figure 14. Example of the how an HVAC may use multiple clusters</div>
+<div class="title">Figure 15. Example of the how an HVAC may use multiple clusters</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -64493,19 +64857,22 @@ in the table below.</p>
 <h4 id="_cluster_id_62"><a class="anchor" href="#_cluster_id_62"></a>9.2.3. Cluster ID</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0098</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Device Energy Management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
 </tr>
 </tbody>
 </table>
@@ -64539,7 +64906,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PowerAdjustment</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an EMS to make a temporary power
-                                                                             adjustment (within the limits offered by the ESA).</p></td>
+                                                                           adjustment (within the limits offered by the ESA).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -64547,7 +64914,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PowerForecastReporting</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[!PA].a,(STA|PAU|FA|CON),O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an ESA to advertise its indicative
-                                                                             future power consumption vs time.</p></td>
+                                                                           future power consumption vs time.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
@@ -64555,7 +64922,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">StateForecastReporting</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[!PA].a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an ESA to advertise its indicative
-                                                                             future state vs time.</p></td>
+                                                                           future state vs time.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
@@ -64563,7 +64930,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">StartTimeAdjustment</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an EMS to delay an ESA&#8217;s
-                                                                             planned operation.</p></td>
+                                                                           planned operation.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
@@ -64571,7 +64938,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pausable</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an EMS to pause an ESA&#8217;s
-                                                                             planned operation.</p></td>
+                                                                           planned operation.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
@@ -64579,7 +64946,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ForecastAdjustment</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an EMS to adjust an ESA&#8217;s
-                                                                             planned operation.</p></td>
+                                                                           planned operation.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
@@ -64587,7 +64954,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ConstraintBasedAdjustment</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows an EMS to request constraints to an ESA&#8217;s
-                                                                             planned operation.</p></td>
+                                                                           planned operation.</p></td>
 </tr>
 </tbody>
 </table>
@@ -64861,35 +65228,37 @@ specific details.</p>
 <div class="paragraph">
 <p>Power is defined in the main specification (see Data Model) in units of
 milliwatts. It is a signed value, where positive values indicate the direction
-of current flow towards a load.</p>
+of power flow into the node.
+A negative value indicates that the device is supplying power, and thus reducing the overall
+load of the premises on the grid supply.</p>
 </div>
-<div id="ref_PowerFlowsTowardsLoadsPositiveValues" class="imageblock">
+<div id="ref_PowerFlowsIntoDevicesPositiveValues" class="imageblock">
 <div class="content">
 <img src="app_clusters/images/energy/media/Power_Definition.png" alt="Power Definition">
 </div>
-<div class="title">Figure 15. Power flows towards loads</div>
+<div class="title">Figure 16. Power flows into devices</div>
 </div>
 <div class="paragraph">
 <p><strong>Solar PV inverter example:</strong> A solar PV inverter is normally connected to the
-home loads, so its generation power will be indicated as a positive integer.
+premises wiring, so its generation power will be indicated as a negative integer, since power is flowing out of the node towards the mains connection.
 Note that at night (when there is no solar production) the PV inverter will
-consume some standby power, and this will result in a small negative power
+consume some standby power, and this will result in a small positive power
 reading.</p>
 </div>
 <div class="paragraph">
-<p><strong>Grid Power:</strong> Power from the grid typically flows towards the home loads, so
-positive power values are indicating that current is flowing into the home.
+<p><strong>Grid Power:</strong> Power from the grid is measured by a utility meter which is imported into the node, so
+positive power values indicate that power is flowing into the premises.
 Negative values indicate power is flowing back towards the grid.</p>
 </div>
 <div class="paragraph">
 <p><strong>EVSE example:</strong> An EVSE provides power to the EV (when charging) so a positive
-value indicates that the EV is charging, and negative value indicates that the
-EV is discharging.</p>
+value indicates that the power is flowing into the EVSE from the mains supply when the EV is charging, and is acting as a load on the grid supply,
+and negative value indicates that the EV is discharging.</p>
 </div>
 <div class="paragraph">
 <p><strong>BESS example:</strong> A battery storage inverter normally provides power to loads when
-discharging, so positive power indicates discharging (to a load), and negative
-power indicates charging.</p>
+discharging, so negative power indicates discharging (power is flowing back to the mains supply) therefore reducing the load on the grid,
+and positive power indicates power flowing from the mains to the battery during charging (adding load to the grid).</p>
 </div>
 <div class="paragraph">
 <p><strong>Washing Machine example:</strong> A washing machine only consumes power (i.e. is a
@@ -65556,16 +65925,6 @@ value of the currency field SHALL match the values defined by [<a href="#ref_Iso
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cause</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_PowerAdjustReasonEnum">PowerAdjustReasonEnum</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-</tr>
 </tbody>
 </table>
 <div class="sect5">
@@ -65635,15 +65994,147 @@ sufficient headroom to use or store energy in the ESA or for any other reason.</
 <p>Note that MinDuration SHALL be less than MaxDuration.</p>
 </div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="ref_PowerAdjustCapabilityStruct"><a class="anchor" href="#ref_PowerAdjustCapabilityStruct"></a>9.2.7.11. PowerAdjustCapabilityStruct Type</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">ID</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Quality</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Access</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PowerAdjustCapability</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list[<a href="#ref_PowerAdjustStruct">PowerAdjustStruct</a>]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max 8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cause</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_PowerAdjustReasonEnum">PowerAdjustReasonEnum</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="ref_PowerAdjustCapability"><a class="anchor" href="#ref_PowerAdjustCapability"></a>9.2.7.12. PowerAdjustCapability</h5>
+<div class="paragraph">
+<p>This field SHALL indicate how the ESA can be adjusted at the current time.</p>
+</div>
+<div class="paragraph">
+<p>For example, a battery storage inverter may need to regulate its internal
+temperature, or the charging rate of the battery may be limited due to cold
+temperatures, or a change in the state of charge of the battery may mean that
+the maximum charging or discharging rate is limited.</p>
+</div>
+<div class="paragraph">
+<p>An empty list SHALL indicate that no power adjustment is currently possible.</p>
+</div>
+<div class="paragraph">
+<p>Multiple entries in the list allow to indicate that permutations of scenarios
+may be possible.</p>
+</div>
+<div class="paragraph">
+<p>For example, a 10kWh battery could be at 80% state of charge. If charging at
+2kW, then it would be full in 1 hour. However, it could be discharged at 2kW
+for 4 hours.</p>
+</div>
+<div class="paragraph">
+<p>In this example the list of <a href="#ref_PowerAdjustStruct">PowerAdjustStructs</a> allows
+multiple scenarios to be offered as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock"><strong>Entry [0] - Charging option:</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MinPower</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">-2000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Watts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MaxPower</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Watts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MinDuration</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">seconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MaxDuration</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3600</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">seconds (1 hour)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock"><strong>Entry [1] - Discharging option:</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MinPower</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Watts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MaxPower</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Watts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MinDuration</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">seconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MaxDuration</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">14400</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">seconds (4 hours)</p></td>
+</tr>
+</tbody>
+</table>
 <div class="sect5">
-<h6 id="_cause_field"><a class="anchor" href="#_cause_field"></a>9.2.7.10.5. Cause field</h6>
+<h6 id="_cause_field"><a class="anchor" href="#_cause_field"></a>9.2.7.12.1. Cause field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the cause of the currently active power adjustment.</p>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ForecastStruct"><a class="anchor" href="#ref_ForecastStruct"></a>9.2.7.11. ForecastStruct Type</h5>
+<h5 id="ref_ForecastStruct"><a class="anchor" href="#ref_ForecastStruct"></a>9.2.7.13. ForecastStruct Type</h5>
 <div class="paragraph">
 <p>This indicates a list of 'slots' describing the overall timing of the ESA&#8217;s
 planned energy and power use, with different power and energy demands per slot.
@@ -65771,7 +66262,7 @@ support the <code>SFR</code> feature and instead report its internal state.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="ref_ForecastStructForecastId"><a class="anchor" href="#ref_ForecastStructForecastId"></a>9.2.7.11.1. ForecastId Field</h6>
+<h6 id="ref_ForecastStructForecastId"><a class="anchor" href="#ref_ForecastStructForecastId"></a>9.2.7.13.1. ForecastId Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the sequence number for the current forecast.
 If the ESA updates a forecast, it shall monotonically increase this value.</p>
@@ -65787,7 +66278,7 @@ learn about any new forecasts.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_activeslotnumber_field"><a class="anchor" href="#_activeslotnumber_field"></a>9.2.7.11.2. ActiveSlotNumber Field</h6>
+<h6 id="_activeslotnumber_field"><a class="anchor" href="#_activeslotnumber_field"></a>9.2.7.13.2. ActiveSlotNumber Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate which element of the Slots list is currently active in
 the Forecast sequence. A null value indicates that the sequence has not
@@ -65795,20 +66286,20 @@ yet started.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ForecastStructStartTime"><a class="anchor" href="#ref_ForecastStructStartTime"></a>9.2.7.11.3. StartTime Field</h6>
+<h6 id="ref_ForecastStructStartTime"><a class="anchor" href="#ref_ForecastStructStartTime"></a>9.2.7.13.3. StartTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the planned start time, in UTC, for the entire
 Forecast.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ForecastStructEndTime"><a class="anchor" href="#ref_ForecastStructEndTime"></a>9.2.7.11.4. EndTime Field</h6>
+<h6 id="ref_ForecastStructEndTime"><a class="anchor" href="#ref_ForecastStructEndTime"></a>9.2.7.13.4. EndTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the planned end time, in UTC, for the entire Forecast.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_earlieststarttime_field"><a class="anchor" href="#_earlieststarttime_field"></a>9.2.7.11.5. EarliestStartTime Field</h6>
+<h6 id="_earlieststarttime_field"><a class="anchor" href="#_earlieststarttime_field"></a>9.2.7.13.5. EarliestStartTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the earliest start time, in UTC, that the entire
 Forecast can be shifted to.</p>
@@ -65818,7 +66309,7 @@ Forecast can be shifted to.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_latestendtime_field"><a class="anchor" href="#_latestendtime_field"></a>9.2.7.11.6. LatestEndTime Field</h6>
+<h6 id="_latestendtime_field"><a class="anchor" href="#_latestendtime_field"></a>9.2.7.13.6. LatestEndTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the latest end time, in UTC, for the entire Forecast.</p>
 </div>
@@ -65828,7 +66319,7 @@ vehicle, by which time the charging session must end.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_ispausable_field"><a class="anchor" href="#_ispausable_field"></a>9.2.7.11.7. IsPausable Field</h6>
+<h6 id="_ispausable_field"><a class="anchor" href="#_ispausable_field"></a>9.2.7.13.7. IsPausable Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate that some part of the Forecast can be paused. It aims
 to allow a client to read this flag and if it is false, then none of the slots
@@ -65837,7 +66328,7 @@ each slot in the list.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_slots_field"><a class="anchor" href="#_slots_field"></a>9.2.7.11.8. Slots Field</h6>
+<h6 id="_slots_field"><a class="anchor" href="#_slots_field"></a>9.2.7.13.8. Slots Field</h6>
 <div class="paragraph">
 <p>This field SHALL contain a list of SlotStructs.</p>
 </div>
@@ -65846,14 +66337,14 @@ each slot in the list.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ForecastStructForecastUpdateReason"><a class="anchor" href="#ref_ForecastStructForecastUpdateReason"></a>9.2.7.11.9. ForecastUpdateReason Field</h6>
+<h6 id="ref_ForecastStructForecastUpdateReason"><a class="anchor" href="#ref_ForecastStructForecastUpdateReason"></a>9.2.7.13.9. ForecastUpdateReason Field</h6>
 <div class="paragraph">
 <p>This field SHALL contain the reason the current Forecast was generated.</p>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_SlotStruct"><a class="anchor" href="#ref_SlotStruct"></a>9.2.7.12. SlotStruct Type</h5>
+<h5 id="ref_SlotStruct"><a class="anchor" href="#ref_SlotStruct"></a>9.2.7.14. SlotStruct Type</h5>
 <div class="paragraph">
 <p>This indicates a specific stage of an ESA&#8217;s operation.</p>
 </div>
@@ -66064,28 +66555,28 @@ each slot in the list.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_minduration_field_2"><a class="anchor" href="#_minduration_field_2"></a>9.2.7.12.1. MinDuration Field</h6>
+<h6 id="_minduration_field_2"><a class="anchor" href="#_minduration_field_2"></a>9.2.7.14.1. MinDuration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the minimum time (in seconds) that the
 appliance expects to be in this slot for.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_maxduration_field_2"><a class="anchor" href="#_maxduration_field_2"></a>9.2.7.12.2. MaxDuration Field</h6>
+<h6 id="_maxduration_field_2"><a class="anchor" href="#_maxduration_field_2"></a>9.2.7.14.2. MaxDuration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum time (in seconds) that the
 appliance expects to be in this slot for.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_DefaultDuration"><a class="anchor" href="#ref_DefaultDuration"></a>9.2.7.12.3. DefaultDuration Field</h6>
+<h6 id="ref_DefaultDuration"><a class="anchor" href="#ref_DefaultDuration"></a>9.2.7.14.3. DefaultDuration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the expected time (in seconds) that the
 appliance expects to be in this slot for.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ElapsedSlotTime"><a class="anchor" href="#ref_ElapsedSlotTime"></a>9.2.7.12.4. ElapsedSlotTime Field</h6>
+<h6 id="ref_ElapsedSlotTime"><a class="anchor" href="#ref_ElapsedSlotTime"></a>9.2.7.14.4. ElapsedSlotTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the time (in seconds) that has already elapsed whilst
 in this slot. If the slot has not yet been started, then it SHALL be 0. Once the
@@ -66103,7 +66594,7 @@ recent value.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_RemainingSlotTime"><a class="anchor" href="#ref_RemainingSlotTime"></a>9.2.7.12.5. RemainingSlotTime Field</h6>
+<h6 id="ref_RemainingSlotTime"><a class="anchor" href="#ref_RemainingSlotTime"></a>9.2.7.14.5. RemainingSlotTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the time (in seconds) that is estimated to be
 remaining.</p>
@@ -66127,13 +66618,13 @@ recent value.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotIsPausable"><a class="anchor" href="#ref_SlotIsPausable"></a>9.2.7.12.6. SlotIsPausable Field</h6>
+<h6 id="ref_SlotIsPausable"><a class="anchor" href="#ref_SlotIsPausable"></a>9.2.7.14.6. SlotIsPausable Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate whether this slot can be paused.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MinPauseDuration"><a class="anchor" href="#ref_MinPauseDuration"></a>9.2.7.12.7. MinPauseDuration Field</h6>
+<h6 id="ref_MinPauseDuration"><a class="anchor" href="#ref_MinPauseDuration"></a>9.2.7.14.7. MinPauseDuration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the shortest period that the slot can be paused for.
 This can be set to avoid controllers trying to pause ESAs for short periods and then
@@ -66142,13 +66633,13 @@ to be consumed with restarting of an operation.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_MaxPauseDuration"><a class="anchor" href="#ref_MaxPauseDuration"></a>9.2.7.12.8. MaxPauseDuration Field</h6>
+<h6 id="ref_MaxPauseDuration"><a class="anchor" href="#ref_MaxPauseDuration"></a>9.2.7.14.8. MaxPauseDuration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the longest period that the slot can be paused for.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ManufacturerESAState"><a class="anchor" href="#ref_ManufacturerESAState"></a>9.2.7.12.9. ManufacturerESAState Field</h6>
+<h6 id="ref_ManufacturerESAState"><a class="anchor" href="#ref_ManufacturerESAState"></a>9.2.7.14.9. ManufacturerESAState Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate a manufacturer defined value indicating the state of
 the ESA.</p>
@@ -66191,7 +66682,7 @@ adjustment request commands, or adjust other ESAs power to compensate.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStructNominalPower"><a class="anchor" href="#ref_SlotStructNominalPower"></a>9.2.7.12.10. NominalPower Field</h6>
+<h6 id="ref_SlotStructNominalPower"><a class="anchor" href="#ref_SlotStructNominalPower"></a>9.2.7.14.10. NominalPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the expected power that the appliance will use during
 this slot. It may be considered the average value over the slot, and some
@@ -66199,7 +66690,7 @@ variation from this would be expected (for example, as it is ramping up).</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_minpower_field_2"><a class="anchor" href="#_minpower_field_2"></a>9.2.7.12.11. MinPower Field</h6>
+<h6 id="_minpower_field_2"><a class="anchor" href="#_minpower_field_2"></a>9.2.7.14.11. MinPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the lowest power that the appliance expects to use
 during this slot. (e.g. during a ramp up it may be 0W).</p>
@@ -66210,7 +66701,7 @@ a negative power.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_maxpower_field_2"><a class="anchor" href="#_maxpower_field_2"></a>9.2.7.12.12. MaxPower Field</h6>
+<h6 id="_maxpower_field_2"><a class="anchor" href="#_maxpower_field_2"></a>9.2.7.14.12. MaxPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum power that the appliance expects to use
 during this slot. (e.g. during a ramp up it may be 0W). This field ignores the
@@ -66222,7 +66713,7 @@ a negative power.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_nominalenergy_field"><a class="anchor" href="#_nominalenergy_field"></a>9.2.7.12.13. NominalEnergy Field</h6>
+<h6 id="_nominalenergy_field"><a class="anchor" href="#_nominalenergy_field"></a>9.2.7.14.13. NominalEnergy Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the expected energy that the appliance expects to use
 or produce during this slot.</p>
@@ -66233,7 +66724,7 @@ a negative energy.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_costs_field"><a class="anchor" href="#_costs_field"></a>9.2.7.12.14. Costs Field</h6>
+<h6 id="_costs_field"><a class="anchor" href="#_costs_field"></a>9.2.7.14.14. Costs Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the current estimated cost for operating.</p>
 </div>
@@ -66266,7 +66757,7 @@ meta data that an EMS may use to optimize a system.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStructMinPowerAdjustment"><a class="anchor" href="#ref_SlotStructMinPowerAdjustment"></a>9.2.7.12.15. MinPowerAdjustment Field</h6>
+<h6 id="ref_SlotStructMinPowerAdjustment"><a class="anchor" href="#ref_SlotStructMinPowerAdjustment"></a>9.2.7.14.15. MinPowerAdjustment Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the minimum power that the appliance can be requested
 to use.</p>
@@ -66280,7 +66771,7 @@ be the minimum power limit it can be set to.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStructMaxPowerAdjustment"><a class="anchor" href="#ref_SlotStructMaxPowerAdjustment"></a>9.2.7.12.16. MaxPowerAdjustment Field</h6>
+<h6 id="ref_SlotStructMaxPowerAdjustment"><a class="anchor" href="#ref_SlotStructMaxPowerAdjustment"></a>9.2.7.14.16. MaxPowerAdjustment Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum power that the appliance can be requested
 to use.</p>
@@ -66294,7 +66785,7 @@ be set to.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStructMinDurationAdjustment"><a class="anchor" href="#ref_SlotStructMinDurationAdjustment"></a>9.2.7.12.17. MinDurationAdjustment Field</h6>
+<h6 id="ref_SlotStructMinDurationAdjustment"><a class="anchor" href="#ref_SlotStructMinDurationAdjustment"></a>9.2.7.14.17. MinDurationAdjustment Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the minimum time, in seconds, that the slot can be
 requested to shortened to.</p>
@@ -66311,7 +66802,7 @@ minutes.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_SlotStructMaxDurationAdjustment"><a class="anchor" href="#ref_SlotStructMaxDurationAdjustment"></a>9.2.7.12.18. MaxDurationAdjustment Field</h6>
+<h6 id="ref_SlotStructMaxDurationAdjustment"><a class="anchor" href="#ref_SlotStructMaxDurationAdjustment"></a>9.2.7.14.18. MaxDurationAdjustment Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum time, in seconds, that the slot can be
 requested to extended to.</p>
@@ -66328,7 +66819,7 @@ indicate the maximum time the battery could be discharged for (at the
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_SlotAdjustmentStruct"><a class="anchor" href="#ref_SlotAdjustmentStruct"></a>9.2.7.13. SlotAdjustmentStruct Type</h5>
+<h5 id="ref_SlotAdjustmentStruct"><a class="anchor" href="#ref_SlotAdjustmentStruct"></a>9.2.7.15. SlotAdjustmentStruct Type</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -66386,7 +66877,7 @@ indicate the maximum time the battery could be discharged for (at the
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_slotindex_field"><a class="anchor" href="#_slotindex_field"></a>9.2.7.13.1. SlotIndex Field</h6>
+<h6 id="_slotindex_field"><a class="anchor" href="#_slotindex_field"></a>9.2.7.15.1. SlotIndex Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the index into the Slots list within the
 <a href="#ref_Forecast">Forecast</a> that is to be modified. It SHALL be less than the actual length
@@ -66395,7 +66886,7 @@ maximum length of the Slots list constraint).</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_nominalpower_field"><a class="anchor" href="#_nominalpower_field"></a>9.2.7.13.2. NominalPower Field</h6>
+<h6 id="_nominalpower_field"><a class="anchor" href="#_nominalpower_field"></a>9.2.7.15.2. NominalPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the new requested power that the ESA SHALL operate at.
 It MUST be between the <a href="#ref_AbsMinPower">AbsMinPower</a> and <a href="#ref_AbsMaxPower">AbsMaxPower</a>
@@ -66409,7 +66900,7 @@ attributes as advertised by the ESA if it supports <code>PFR</code>.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_duration_field_3"><a class="anchor" href="#_duration_field_3"></a>9.2.7.13.3. Duration Field</h6>
+<h6 id="_duration_field_3"><a class="anchor" href="#_duration_field_3"></a>9.2.7.15.3. Duration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the new requested duration, in seconds, that the ESA
 SHALL extend or shorten the slot duration to. It MUST be between the
@@ -66419,7 +66910,7 @@ SHALL extend or shorten the slot duration to. It MUST be between the
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ConstraintsStruct"><a class="anchor" href="#ref_ConstraintsStruct"></a>9.2.7.14. ConstraintsStruct Type</h5>
+<h5 id="ref_ConstraintsStruct"><a class="anchor" href="#ref_ConstraintsStruct"></a>9.2.7.16. ConstraintsStruct Type</h5>
 <div class="paragraph">
 <p>The ConstraintsStruct allows a client to inform an ESA about a constraint period
 (such as a grid event, or perhaps excess solar PV). The format allows the client
@@ -66503,7 +66994,7 @@ its energy consumption during this period.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="ref_ConstraintsStructStartTime"><a class="anchor" href="#ref_ConstraintsStructStartTime"></a>9.2.7.14.1. StartTime Field</h6>
+<h6 id="ref_ConstraintsStructStartTime"><a class="anchor" href="#ref_ConstraintsStructStartTime"></a>9.2.7.16.1. StartTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the start time of the constraint period that the
 client wishes the ESA to compute a new Forecast.</p>
@@ -66513,13 +67004,13 @@ client wishes the ESA to compute a new Forecast.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ConstraintsStructDuration"><a class="anchor" href="#ref_ConstraintsStructDuration"></a>9.2.7.14.2. Duration Field</h6>
+<h6 id="ref_ConstraintsStructDuration"><a class="anchor" href="#ref_ConstraintsStructDuration"></a>9.2.7.16.2. Duration Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the duration of the constraint in seconds.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="ref_ConstraintsStructNominalPower"><a class="anchor" href="#ref_ConstraintsStructNominalPower"></a>9.2.7.14.3. NominalPower Field</h6>
+<h6 id="ref_ConstraintsStructNominalPower"><a class="anchor" href="#ref_ConstraintsStructNominalPower"></a>9.2.7.16.3. NominalPower Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the nominal power that client wishes the ESA to
 operate at during the constrained period. It MUST be between the
@@ -66529,12 +67020,9 @@ if it supports <code>PFR</code>.</p>
 <div class="paragraph">
 <p>This is a signed value and can be used to indicate charging or discharging.</p>
 </div>
-<div class="paragraph">
-<p>If the ESA does NOT support <code>PFR</code> this value SHALL be ignored by the ESA.</p>
-</div>
 </div>
 <div class="sect5">
-<h6 id="ref_ConstraintsStructMaximumEnergy"><a class="anchor" href="#ref_ConstraintsStructMaximumEnergy"></a>9.2.7.14.4. MaximumEnergy Field</h6>
+<h6 id="ref_ConstraintsStructMaximumEnergy"><a class="anchor" href="#ref_ConstraintsStructMaximumEnergy"></a>9.2.7.16.4. MaximumEnergy Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the maximum energy that can be transferred to or from
 the ESA during the constraint period.</p>
@@ -66542,12 +67030,9 @@ the ESA during the constraint period.</p>
 <div class="paragraph">
 <p>This is a signed value and can be used to indicate charging or discharging.</p>
 </div>
-<div class="paragraph">
-<p>If the ESA does NOT support <code>PFR</code> this value MAY be ignored by the ESA.</p>
-</div>
 </div>
 <div class="sect5">
-<h6 id="ref_ConstraintsStructLoadControl"><a class="anchor" href="#ref_ConstraintsStructLoadControl"></a>9.2.7.14.5. LoadControl Field</h6>
+<h6 id="ref_ConstraintsStructLoadControl"><a class="anchor" href="#ref_ConstraintsStructLoadControl"></a>9.2.7.16.5. LoadControl Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the turn up or turn down nature that the grid wants as
 the outcome by the ESA during the constraint period.</p>
@@ -66643,8 +67128,8 @@ A positive value indicates a request to use more energy.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0005</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PowerAdjustmentCapability</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list[<a href="#ref_PowerAdjustStruct">PowerAdjustStruct</a>]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max 8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_PowerAdjustCapabilityStruct">PowerAdjustCapabilityStruct</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -66856,86 +67341,14 @@ have a AbsMinPower: -2000, AbsMaxPower: 3000W.</p>
 <div class="sect4">
 <h5 id="ref_PowerAdjustmentCapability"><a class="anchor" href="#ref_PowerAdjustmentCapability"></a>9.2.8.6. PowerAdjustmentCapability Attribute</h5>
 <div class="paragraph">
-<p>This attribute SHALL indicate how the ESA can be adjusted at the current time.
+<p>This attribute SHALL indicate how the ESA can be adjusted at the current time,
+and the state of any active adjustment.
 This attribute SHOULD be updated regularly by ESAs.</p>
 </div>
 <div class="paragraph">
-<p>For example, a battery storage inverter may need to regulate its internal
-temperature, or the charging rate of the battery may be limited due to cold
-temperatures, or a change in the state of charge of the battery may mean that
-the maximum charging or discharging rate is limited.</p>
+<p>An null value indicates that no power adjustment is currently possible,
+and nor is any adjustment currently active.</p>
 </div>
-<div class="paragraph">
-<p>An empty list SHALL indicate that no power adjustment is currently possible.</p>
-</div>
-<div class="paragraph">
-<p>Multiple entries in the list allow to indicate that permutations of scenarios
-may be possible.</p>
-</div>
-<div class="paragraph">
-<p>For example, a 10kWh battery could be at 80% state of charge. If charging at
-2kW, then it would be full in 1 hour. However, it could be discharged at 2kW
-for 4 hours.</p>
-</div>
-<div class="paragraph">
-<p>In this example the list of <a href="#ref_PowerAdjustStruct">PowerAdjustStructs</a> allows
-multiple scenarios to be offered as follows:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock"><strong>Entry [0] - Charging option:</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">MinPower</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">-2000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Watts</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">MaxPower</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Watts</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">MinDuration</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">60</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">seconds</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">MaxDuration</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">3600</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">seconds (1 hour)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock"><strong>Entry [1] - Discharging option:</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">MinPower</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Watts</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">MaxPower</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">2000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Watts</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">MinDuration</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">60</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">seconds</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">MaxDuration</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">14400</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">seconds (4 hours)</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect4">
 <h5 id="ref_Forecast"><a class="anchor" href="#ref_Forecast"></a>9.2.8.7. Forecast Attribute</h5>
@@ -67742,7 +68155,9 @@ constraints.</p>
 <h6 id="_constraints_field"><a class="anchor" href="#_constraints_field"></a>9.2.9.7.1. Constraints Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the series of turn up or turn down power requests that
-the ESA is being asked to constrain its operation within.</p>
+the ESA is being asked to constrain its operation within.
+These requests SHALL be in the future, SHALL be in chronological order,
+starting with the earliest start time, and SHALL NOT overlap in time.</p>
 </div>
 <div class="paragraph">
 <p>For example, a grid event which requires devices to reduce power (turn down)
@@ -67905,8 +68320,8 @@ increased heat losses in the inverter, so the total energy required to charge a
 battery with 10kWh of stored energy may vary based on charging power.</p>
 </div>
 <div class="paragraph">
-<p>The ESA SHALL inspect the requested power limits to ensure that there are no
-overlapping elements. The ESA manufacturer may also reject the request if it
+<p>The ESA SHALL inspect the constraints field to ensure that the constraints
+defined for that field and its elements are met. The ESA manufacturer may also reject the request if it
 could cause the user&#8217;s preferences to be breached (e.g. may cause the home to be
 too hot or too cold, or a battery to be insufficiently charged).</p>
 </div>
@@ -67924,6 +68339,7 @@ have already been completed SHALL NOT be included in the new forecast.</p>
 </div>
 <div class="paragraph">
 <p>The command status returned SHALL be SUCCESS, otherwise if the Cause is not permitted,
+or the constraints field value does not meet the defined constraints,
 the command SHALL be rejected with CONSTRAINT_ERROR,
 otherwise the command SHALL be rejected with FAILURE.</p>
 </div>
@@ -72040,8 +72456,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 2dc0c0a (local changes)<br>
-Last updated 2024-05-30 06:09:34 UTC
+Version master 0ccce40 (local changes)<br>
+Last updated 2024-05-30 18:06:49 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
