@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master f2f82ff (local changes),</span>
-<span id="revdate">2024-05-31 10:54:22 -0700</span>
+<span id="revnumber">version master b365290 (local changes),</span>
+<span id="revdate">2024-05-31 16:09:52 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1973,10 +1973,8 @@ revision number in the table below.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0xFE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FinishEffect</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Complete the current effect sequence before
-                          terminating. e.g., if in the middle of a breathe effect (as above),
-                          first complete the current 1s breathe effect and then terminate the
-                          effect.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Complete the current effect sequence before terminating. e.g., if in the middle of a breathe effect
+                          (as above), first complete the current 1s breathe effect and then terminate the effect.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
@@ -66170,7 +66168,7 @@ support the <code>SFR</code> feature and instead report its internal state.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ForecastId</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ForecastID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint32</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -66261,7 +66259,7 @@ support the <code>SFR</code> feature and instead report its internal state.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="ref_ForecastStructForecastId"><a class="anchor" href="#ref_ForecastStructForecastId"></a>9.2.7.13.1. ForecastId Field</h6>
+<h6 id="ref_ForecastStructForecastID"><a class="anchor" href="#ref_ForecastStructForecastID"></a>9.2.7.13.1. ForecastID Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the sequence number for the current forecast.
 If the ESA updates a forecast, it shall monotonically increase this value.</p>
@@ -66273,7 +66271,7 @@ The loss of a subscription and subsequent re-subscription allows the EMS to
 learn about any new forecasts.</p>
 </div>
 <div class="paragraph">
-<p>The value of ForecastId is allowed to wrap.</p>
+<p>The value of ForecastID is allowed to wrap.</p>
 </div>
 </div>
 <div class="sect5">
@@ -67793,7 +67791,7 @@ be rejected with FAILURE.</p>
 <div class="paragraph">
 <p>The command status returned SHALL be SUCCESS if the StartTime in the Forecast is
 updated. The ESA SHALL update its <a href="#ref_Forecast">Forecast</a> attribute using the new
-<a href="#ref_RequestedStartTime">RequestedStartTime</a> including a new ForecastId, StartTime, EndTime, and
+<a href="#ref_RequestedStartTime">RequestedStartTime</a> including a new ForecastID, StartTime, EndTime, and
 <a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a>.</p>
 </div>
 </div>
@@ -67999,7 +67997,7 @@ after the pause.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ForecastId</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ForecastID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint32</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -68027,16 +68025,16 @@ after the pause.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_forecastid_field"><a class="anchor" href="#_forecastid_field"></a>9.2.9.6.1. ForecastId Field</h6>
+<h6 id="_forecastid_field"><a class="anchor" href="#_forecastid_field"></a>9.2.9.6.1. ForecastID Field</h6>
 <div class="paragraph">
-<p>This field SHALL indicate the ForecastId that is to be modified.</p>
+<p>This field SHALL indicate the ForecastID that is to be modified.</p>
 </div>
 </div>
 <div class="sect5">
 <h6 id="_slotadjustments_field"><a class="anchor" href="#_slotadjustments_field"></a>9.2.9.6.2. SlotAdjustments Field</h6>
 <div class="paragraph">
 <p>This field SHALL contain a list of SlotAdjustment parameters that should be
-modified in the corresponding Forecast with matching ForecastId.</p>
+modified in the corresponding Forecast with matching ForecastID.</p>
 </div>
 </div>
 <div class="sect5">
@@ -68077,7 +68075,7 @@ slots in a single command by sending a list of modifications.</p>
 <div class="paragraph">
 <p>If the ESA accepts the requested Forecast then it SHALL update its
 <a href="#ref_Forecast">Forecast</a> attribute (incrementing its
-<a href="#ref_ForecastStructForecastId">ForecastId</a>, and updating its
+<a href="#ref_ForecastStructForecastID">ForecastID</a>, and updating its
 <a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a> from the Cause value)
 and run the revised Forecast as its new intended operation.</p>
 </div>
@@ -68096,7 +68094,7 @@ adjustments then it SHALL reject the entire command.</p>
 <div class="paragraph">
 <p>If the Cause is not permitted, or the requested forecast exceeds any of the limits in
 the respective slots, then the command SHALL be rejected with CONSTRAINT_ERROR,
-otherwise if the ForecastId is valid, and the entire list of <a href="#ref_SlotAdjustmentStruct">SlotAdjustmentStruct</a>
+otherwise if the ForecastID is valid, and the entire list of <a href="#ref_SlotAdjustmentStruct">SlotAdjustmentStruct</a>
 are accepted, the command status returned SHALL be SUCCESS, otherwise the command SHALL be
 rejected with FAILURE.</p>
 </div>
@@ -68326,7 +68324,7 @@ too hot or too cold, or a battery to be insufficiently charged).</p>
 </div>
 <div class="paragraph">
 <p>If the ESA can meet the requested power limits, it SHALL regenerate a new Power
-Forecast with a new <a href="#ref_ForecastStructForecastId">ForecastId</a> and
+Forecast with a new <a href="#ref_ForecastStructForecastID">ForecastID</a> and
 <a href="#ref_ForecastStructForecastUpdateReason">ForecastUpdateReason</a> from the Cause value.</p>
 </div>
 <div class="paragraph">
@@ -72455,8 +72453,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master f2f82ff (local changes)<br>
-Last updated 2024-05-31 17:54:38 UTC
+Version master b365290 (local changes)<br>
+Last updated 2024-06-01 00:00:34 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
