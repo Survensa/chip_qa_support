@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master af135a1,</span>
-<span id="revdate">2024-06-03 10:31:09 -0700</span>
+<span id="revnumber">version master a1e2dad,</span>
+<span id="revdate">2024-06-04 15:18:40 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -56319,11 +56319,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reset Devices to factory defaults</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission TH to DUT (can be skipped if done in a preceding test).</p></td>
 </tr>
 </tbody>
 </table>
@@ -56349,19 +56345,9 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.S.C00.Rsp(RegisterClient)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
-- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID1</em>)<br>
-- MonitoredSubject: monitored subject ID (<em>MonitorSubID1</em>)<br>
-- Key: shared secret between the client and the ICD (<em>Key1</em>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00); Verify that the DUT response contains <em>ICDCounter</em> of <em>IcdCounter1</em>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.S.A0004(ICDCounter)</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ICDCounter</em> attribute.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains value of <em>ICDCounter</em> of <em>IcdCounter1</em>.</p></td>
 </tr>
@@ -56375,9 +56361,11 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ICDM.S.A0004(ICDCounter)</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ICDCounter</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains value of <em>ICDCounter</em> of <em>IcdCounter2</em>, where <em>IcdCounter2</em> is greater than <em>IcdCounter1</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains value of <em>ICDCounter</em> and stores in <em>IcdCounter2</em>.<br>
+<em>IcdCounter2</em> is greater or equal to <em>IcdCounter1</em>.<br>
+<em>ICDCounter</em> attribute can roll over. If the attribute rolls over, it will be greater or equal to 0.</p></td>
 </tr>
 </tbody>
 </table>
@@ -57973,8 +57961,8 @@ Verify the command has following parameters:<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master af135a1<br>
-Last updated 2024-06-03 17:31:24 UTC
+Version master a1e2dad<br>
+Last updated 2024-06-04 22:18:54 UTC
 </div>
 </div>
 </body>
