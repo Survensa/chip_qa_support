@@ -640,6 +640,12 @@
     - command: "./chip-tool doorlock clear-week-day-schedule 1 1 1 1"
       logs:
         - " "
+    - command: "./chip-tool doorlock clear-week-day-schedule 0 1 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock clear-week-day-schedule 1 0 1 1"
+      logs:
+        - " "
     - command: "./chip-tool doorlock get-week-day-schedule 1 1 1 1"
       logs:
         - " "
@@ -667,6 +673,9 @@
       logs:
         - " "
     - command: "./chip-tool doorlock clear-holiday-schedule 1 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock clear-holiday-schedule 0 1 1"
       logs:
         - " "
     - command: "./chip-tool doorlock get-holiday-schedule 1 1 1"
@@ -745,6 +754,9 @@
     - command: "./chip-tool doorlock get-user 2 1 1"
       logs:
         - " "
+    - command: "./chip-tool doorlock get-user 0 1 1"
+      logs:
+        - " "
     - command: "./chip-tool doorlock set-user 2 2 null null null null null 1 1 --timedInteractionTimeoutMs 1000"
       logs:
         - " "
@@ -811,6 +823,9 @@
       logs:
         - " "
     - command: "./chip-tool doorlock clear-credential  '{ \"credentialType\" : 8 , \"credentialIndex\" : 2 }'  1 1 --timedInteractionTimeoutMs 1000"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock read number-of-credentials-supported-per-user 1 1"
       logs:
         - " "
     - command: "./chip-tool doorlock clear-user 2 1 1 --timedInteractionTimeoutMs 1000"
