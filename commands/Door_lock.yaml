@@ -828,6 +828,33 @@
     - command: "./chip-tool doorlock read number-of-credentials-supported-per-user 1 1"
       logs:
         - " "
+    - command: "./chip-tool doorlock set-user 0 1 xxx 6452 1 0 0 1 1  --timedInteractionTimeoutMs 1000"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-credential 0 '{ \"credentialType\" : 1, \"credentialIndex\" : 1 }' 123451 1 null null 1 1 --timedInteractionTimeoutMs 1000"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-credential 0 '{ \"credentialType\" : 1, \"credentialIndex\" : 2 }' 123452 1 null null 1 1 --timedInteractionTimeoutMs 1000"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-credential 0 '{ \"credentialType\" : 1, \"credentialIndex\" : 3 }' 123453 1 null null 1 1 --timedInteractionTimeoutMs 1000"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-credential 0 '{ \"credentialType\" : 1, \"credentialIndex\" : 4 }' 123454 1 null null 1 1 --timedInteractionTimeoutMs 1000"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-credential 0 '{ \"credentialType\" : 1, \"credentialIndex\" : 5 }' 123455 1 null null 1 1 --timedInteractionTimeoutMs 1000"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock set-credential 0 '{ \"credentialType\" : 1, \"credentialIndex\" : 6 }' 923456 1 null null 1 1 --timedInteractionTimeoutMs 1000"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock clear-credential  '{ \"credentialType\" : 1 , \"credentialIndex\" : 65534 }'  1 1 --timedInteractionTimeoutMs 1000"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock clear-user 1 1 1 --timedInteractionTimeoutMs 1000"
+      logs:
+        - " "
     - command: "./chip-tool doorlock clear-user 2 1 1 --timedInteractionTimeoutMs 1000"
       logs:
         - " "
@@ -872,10 +899,16 @@
     - command: "./chip-tool doorlock read wrong-code-entry-limit 1 1"
       logs:
         - " "
+    - command: "./chip-tool doorlock write wrong-code-entry-limit 0 1 1"
+      logs:
+        - " "
     - command: "./chip-tool doorlock write user-code-temporary-disable-time 15 1 1"
       logs:
         - " "
     - command: "./chip-tool doorlock read user-code-temporary-disable-time 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool doorlock write user-code-temporary-disable-time 0 1 1"
       logs:
         - " "
     - command: "./chip-tool doorlock unbolt-door 1 1 --timedInteractionTimeoutMs 1000 --PINCode 12345678"
