@@ -221,7 +221,7 @@
     - command: "./chip-tool basicinformation read max-paths-per-invoke 1 0"
       logs:
         - " "    
-    - command: "../chip-tool basicinformation write-by-id 0x0016 '12345' 1 0"
+    - command: "./chip-tool basicinformation write-by-id 0x0016 '12345' 1 0"
       logs:
         - " "  
     - command: "./chip-tool basicinformation read max-paths-per-invoke 1 0"
