@@ -80,7 +80,7 @@ def run_command_from_yaml(yaml_file_path):
         print(f"{Fore.GREEN}EXT:CMP : {testcase_name}{Style.RESET_ALL} ")
         print(f"{Fore.GREEN}EXT:LOG : {log_filename}{Style.RESET_ALL}")
         print(
-            f"{Fore.YELLOW}nEXT:COS : ****************************************************************{Style.RESET_ALL}"
+            f"{Fore.YELLOW}EXT:COS : ****************************************************************{Style.RESET_ALL}"
         )
 
 
@@ -153,7 +153,7 @@ if __name__ == "__main__":
                 .lower()
             )
             print(
-                f"{Fore.YELLOW}EXT:COS : ****************************************************************{Style.RESET_ALL}"
+                f"\n{Fore.YELLOW}EXT:COS : ****************************************************************{Style.RESET_ALL}"
             )
         else:
             clusters_confirmation = (
