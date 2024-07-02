@@ -7,6 +7,9 @@ import time
 from datetime import datetime
 from dataclasses import fields
 from cluster_data import Cluster
+from colorama import Fore, Style, init
+
+init(autoreset=True)
 
 clusters = fields(Cluster)
 cluster_name = [field.name for field in clusters]
@@ -62,7 +65,7 @@ def run_command_from_yaml(yaml_file_path):
 
         for command_data in commands:
             command = command_data["command"]
-            print(f"EXT:CMD : {command}")
+            print(f"{Fore.BLUE}EXT:CMD : {command}{Style.RESET_ALL}")
             with open(log_file_path, "a") as cluster_textfile:
                 cluster_textfile.write(f"Command: {command}\n")
             subprocess.run(
@@ -74,17 +77,15 @@ def run_command_from_yaml(yaml_file_path):
             os.path.expanduser("~"), "chip_qa_support", "logs", "validation_logs"
         )
         process_log_file(log_file_path, output_directory)
-        print(f"EXT:CMP : {testcase_name} ")
-        print(f"EXT:LOG : {log_filename}")
+        print(f"{Fore.GREEN}EXT:CMP : {testcase_name}{Style.RESET_ALL} ")
+        print(f"{Fore.GREEN}EXT:LOG : {log_filename}{Style.RESET_ALL}")
         print(
-            "EXT:COS : ****************************************************************"
+            f"{Fore.YELLOW}nEXT:COS : ****************************************************************{Style.RESET_ALL}"
         )
-
 
 # Function to get the current epoch time
 def get_epoch_time():
     return int(time.time())
-
 
 # Function to process log files and save them
 def process_log_file(input_file_path, output_directory):
@@ -106,7 +107,7 @@ def process_log_file(input_file_path, output_directory):
             match2 = re.search(r"(CHIP:DMG|CHIP:TOO|\[DMG\]|\[TOO\])(.*)", line)
             match3 = re.search(r"^Command:", line)
             if match1:
-                output_file.write("\n" + line + "\n")
+                output_file.write("\n" + line + "\n")            
             if match2:
                 chip_text = match2.group(1).strip()
                 trailing_text = match2.group(2).strip()
@@ -117,13 +118,12 @@ def process_log_file(input_file_path, output_directory):
         end_epoch = get_epoch_time()
         output_file.write(f"\n# {end_epoch}")
 
-
 if __name__ == "__main__":
     selected_clusters = args.cluster
 
     build_confirmation = (
         input(
-            f"\nEXT:ASK : Confirm the Chip-Tool Build Path: {build} (Y/Yes to confirm): "
+            f"\n{Fore.MAGENTA}EXT:ASK : Confirm the Chip-Tool Build Path: {build} (Y/Yes to confirm):{Style.RESET_ALL} "
         )
         .strip()
         .lower()
@@ -144,24 +144,24 @@ if __name__ == "__main__":
         if not selected_clusters:
             clusters_confirmation = (
                 input(
-                    "\nEXT:ASK : Proceed with all the clusters for execution (Y/Yes to proceed): "
+                    f"\n{Fore.MAGENTA}EXT:ASK : Proceed with all the clusters for execution (Y/Yes to proceed):{Style.RESET_ALL} "
                 )
                 .strip()
                 .lower()
             )
             print(
-                "\nEXT:COS : ****************************************************************"
+                f"{Fore.YELLOW}EXT:COS : ****************************************************************{Style.RESET_ALL}"
             )
         else:
             clusters_confirmation = (
                 input(
-                    f"\nEXT:ASK : Proceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed): "
+                    f"\n{Fore.MAGENTA}EXT:ASK : Proceed with selected Clusters {selected_clusters} for execution (Y/Yes to proceed):{Style.RESET_ALL} "
                 )
                 .strip()
                 .lower()
             )
             print(
-                "\nEXT:COS : ****************************************************************"
+                f"\n{Fore.YELLOW}EXT:COS : ****************************************************************{Style.RESET_ALL}"
             )
         if clusters_confirmation in ["y", "yes"]:
             if selected_clusters:
@@ -171,22 +171,22 @@ if __name__ == "__main__":
                         os.path.expanduser("~"), "chip_qa_support", "commands", file
                     )
                     if file.endswith(".yaml"):
-                        print(f"EXT:STR : {cluster_name} INITIATED")
+                        print(f"{Fore.CYAN}EXT:STR : {cluster_name} INITIATED{Style.RESET_ALL}")
                         try:
                             run_command_from_yaml(file_path)
-                            print(f"EXT:STP : {cluster_name} COMPLETED")
+                            print(f"{Fore.CYAN}EXT:STP : {cluster_name} COMPLETED{Style.RESET_ALL}")
                         except Exception as e:
-                            print(f"EXT:ERR : {cluster_name}: {str(e)}")
+                            print(f"{Fore.RED}EXT:ERR : {cluster_name}: {str(e)}{Style.RESET_ALL}")
                     print(
-                        f"\nEXT:SUS : Execution completed and Logged in {output_directory}"
+                        f"\n{Fore.YELLOW}EXT:SUS : Execution completed and Logged in {output_directory}{Style.RESET_ALL}\n"
                     )
             else:
-                print("\nEXT:CNL : No cluster selected for execution.")
+                print(f"\n{Fore.YELLOW}EXT:CNL : No cluster selected for execution.{Style.RESET_ALL}\n")
         else:
             print(
-                f"\nEXT:CNL : Execution Canceled With The User Input: {clusters_confirmation}"
+                f"\n{Fore.YELLOW}EXT:CNL : Execution Canceled With The User Input: {clusters_confirmation}{Style.RESET_ALL}\n"
             )
     else:
         print(
-            f"\nEXT:CNL : Execution Canceled With The User Input: {build_confirmation}"
+            f"\nEXT:CNL : Execution Canceled With The User Input: {build_confirmation}\n"
         )
