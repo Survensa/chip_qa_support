@@ -83,9 +83,11 @@ def run_command_from_yaml(yaml_file_path):
             f"{Fore.YELLOW}nEXT:COS : ****************************************************************{Style.RESET_ALL}"
         )
 
+
 # Function to get the current epoch time
 def get_epoch_time():
     return int(time.time())
+
 
 # Function to process log files and save them
 def process_log_file(input_file_path, output_directory):
@@ -107,7 +109,7 @@ def process_log_file(input_file_path, output_directory):
             match2 = re.search(r"(CHIP:DMG|CHIP:TOO|\[DMG\]|\[TOO\])(.*)", line)
             match3 = re.search(r"^Command:", line)
             if match1:
-                output_file.write("\n" + line + "\n")            
+                output_file.write("\n" + line + "\n")
             if match2:
                 chip_text = match2.group(1).strip()
                 trailing_text = match2.group(2).strip()
@@ -117,6 +119,7 @@ def process_log_file(input_file_path, output_directory):
                 output_file.write("\n" + line + "\n\n")
         end_epoch = get_epoch_time()
         output_file.write(f"\n# {end_epoch}")
+
 
 if __name__ == "__main__":
     selected_clusters = args.cluster
@@ -171,17 +174,25 @@ if __name__ == "__main__":
                         os.path.expanduser("~"), "chip_qa_support", "commands", file
                     )
                     if file.endswith(".yaml"):
-                        print(f"{Fore.CYAN}EXT:STR : {cluster_name} INITIATED{Style.RESET_ALL}")
+                        print(
+                            f"{Fore.CYAN}EXT:STR : {cluster_name} INITIATED{Style.RESET_ALL}"
+                        )
                         try:
                             run_command_from_yaml(file_path)
-                            print(f"{Fore.CYAN}EXT:STP : {cluster_name} COMPLETED{Style.RESET_ALL}")
+                            print(
+                                f"{Fore.CYAN}EXT:STP : {cluster_name} COMPLETED{Style.RESET_ALL}"
+                            )
                         except Exception as e:
-                            print(f"{Fore.RED}EXT:ERR : {cluster_name}: {str(e)}{Style.RESET_ALL}")
+                            print(
+                                f"{Fore.RED}EXT:ERR : {cluster_name}: {str(e)}{Style.RESET_ALL}"
+                            )
                     print(
                         f"\n{Fore.YELLOW}EXT:SUS : Execution completed and Logged in {output_directory}{Style.RESET_ALL}\n"
                     )
             else:
-                print(f"\n{Fore.YELLOW}EXT:CNL : No cluster selected for execution.{Style.RESET_ALL}\n")
+                print(
+                    f"\n{Fore.YELLOW}EXT:CNL : No cluster selected for execution.{Style.RESET_ALL}\n"
+                )
         else:
             print(
                 f"\n{Fore.YELLOW}EXT:CNL : Execution Canceled With The User Input: {clusters_confirmation}{Style.RESET_ALL}\n"
