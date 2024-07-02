@@ -80,9 +80,11 @@ def run_command_from_yaml(yaml_file_path):
             "EXT:COS : ****************************************************************"
         )
 
+
 # Function to get the current epoch time
 def get_epoch_time():
     return int(time.time())
+
 
 # Function to process log files and save them
 def process_log_file(input_file_path, output_directory):
@@ -104,7 +106,7 @@ def process_log_file(input_file_path, output_directory):
             match2 = re.search(r"(CHIP:DMG|CHIP:TOO|\[DMG\]|\[TOO\])(.*)", line)
             match3 = re.search(r"^Command:", line)
             if match1:
-                output_file.write("\n" + line + "\n")            
+                output_file.write("\n" + line + "\n")
             if match2:
                 chip_text = match2.group(1).strip()
                 trailing_text = match2.group(2).strip()
@@ -114,6 +116,7 @@ def process_log_file(input_file_path, output_directory):
                 output_file.write("\n" + line + "\n\n")
         end_epoch = get_epoch_time()
         output_file.write(f"\n# {end_epoch}")
+
 
 if __name__ == "__main__":
     selected_clusters = args.cluster
