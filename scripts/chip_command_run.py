@@ -38,9 +38,11 @@ path = "../commands"
 # Change the directory
 os.chdir(path)
 
+
 def remove_ansi_escape_codes(text):
-    ansi_escape = re.compile(r'\x1b\[[0-9;]*m')
-    return ansi_escape.sub('', text)
+    ansi_escape = re.compile(r"\x1b\[[0-9;]*m")
+    return ansi_escape.sub("", text)
+
 
 def run_command_from_yaml(yaml_file_path):
     with open(yaml_file_path, "r") as yaml_file:
@@ -70,12 +72,12 @@ def run_command_from_yaml(yaml_file_path):
             command = command_data["command"]
             print(f"{Fore.BLUE}EXT:CMD : {command}{Style.RESET_ALL}")
             with open(log_file_path, "a") as cluster_textfile:
-                cluster_textfile.write(f"Command: {remove_ansi_escape_codes(command)}\n")
-            result = subprocess.run(
-                command, shell=True, text=True, capture_output=True
-            )
-            stdout = result.stdout if result.stdout else ''
-            stderr = result.stderr if result.stderr else ''
+                cluster_textfile.write(
+                    f"Command: {remove_ansi_escape_codes(command)}\n"
+                )
+            result = subprocess.run(command, shell=True, text=True, capture_output=True)
+            stdout = result.stdout if result.stdout else ""
+            stderr = result.stderr if result.stderr else ""
             with open(log_file_path, "a") as cluster_textfile:
                 cluster_textfile.write(remove_ansi_escape_codes(stdout))
                 cluster_textfile.write(remove_ansi_escape_codes(stderr))
