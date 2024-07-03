@@ -38,8 +38,10 @@ path = "../commands"
 # Change the directory
 os.chdir(path)
 
+def remove_ansi_escape_codes(text):
+    ansi_escape = re.compile(r'\x1b\[[0-9;]*m')
+    return ansi_escape.sub('', text)
 
-# Function to run chip commands in terminal
 def run_command_from_yaml(yaml_file_path):
     with open(yaml_file_path, "r") as yaml_file:
         yaml_input = yaml.safe_load(yaml_file)
@@ -54,6 +56,7 @@ def run_command_from_yaml(yaml_file_path):
         save_path = os.path.join(
             os.path.expanduser("~"), "chip_qa_support", "logs", "execution_logs"
         )
+        os.makedirs(save_path, exist_ok=True)
         os.chdir(file_path)
         date = datetime.now().strftime("%m_%Y_%d_(%I_%M_%S_%p)")
 
@@ -67,21 +70,24 @@ def run_command_from_yaml(yaml_file_path):
             command = command_data["command"]
             print(f"{Fore.BLUE}EXT:CMD : {command}{Style.RESET_ALL}")
             with open(log_file_path, "a") as cluster_textfile:
-                cluster_textfile.write(f"Command: {command}\n")
-            subprocess.run(
-                command, shell=True, text=True, stdout=open(log_file_path, "a+")
+                cluster_textfile.write(f"Command: {remove_ansi_escape_codes(command)}\n")
+            result = subprocess.run(
+                command, shell=True, text=True, capture_output=True
             )
+            stdout = result.stdout if result.stdout else ''
+            stderr = result.stderr if result.stderr else ''
+            with open(log_file_path, "a") as cluster_textfile:
+                cluster_textfile.write(remove_ansi_escape_codes(stdout))
+                cluster_textfile.write(remove_ansi_escape_codes(stderr))
 
         # Process the specific log file immediately after running the command
         output_directory = os.path.join(
             os.path.expanduser("~"), "chip_qa_support", "logs", "validation_logs"
         )
         process_log_file(log_file_path, output_directory)
-        print(f"{Fore.GREEN}EXT:CMP : {testcase_name}{Style.RESET_ALL} ")
+        print(f"{Fore.GREEN}EXT:CMP : {testcase_name}{Style.RESET_ALL}")
         print(f"{Fore.GREEN}EXT:LOG : {log_filename}{Style.RESET_ALL}")
-        print(
-            f"{Fore.YELLOW}EXT:COS : ****************************************************************{Style.RESET_ALL}"
-        )
+        print(f"{Fore.YELLOW}EXT:COS : {'*' * 64}{Style.RESET_ALL}")
 
 
 # Function to get the current epoch time
@@ -104,15 +110,15 @@ def process_log_file(input_file_path, output_directory):
         start_epoch = get_epoch_time()
         output_file.write(f"# {start_epoch}\n")
         for line in input_file:
-            line = line.strip()
+            line = line.rstrip()
             match1 = re.search(r"^Test Case:", line)
             match2 = re.search(r"(CHIP:DMG|CHIP:TOO|\[DMG\]|\[TOO\])(.*)", line)
             match3 = re.search(r"^Command:", line)
             if match1:
                 output_file.write("\n" + line + "\n")
             if match2:
-                chip_text = match2.group(1).strip()
-                trailing_text = match2.group(2).strip()
+                chip_text = match2.group(1).rstrip()
+                trailing_text = match2.group(2).rstrip()
                 output_line = f"{chip_text} {trailing_text}"
                 output_file.write(output_line + "\n")
             if match3:
@@ -152,9 +158,7 @@ if __name__ == "__main__":
                 .strip()
                 .lower()
             )
-            print(
-                f"\n{Fore.YELLOW}EXT:COS : ****************************************************************{Style.RESET_ALL}"
-            )
+            print(f"\n{Fore.YELLOW}EXT:COS : {'*' * 64}{Style.RESET_ALL}")
         else:
             clusters_confirmation = (
                 input(
@@ -163,9 +167,7 @@ if __name__ == "__main__":
                 .strip()
                 .lower()
             )
-            print(
-                f"\n{Fore.YELLOW}EXT:COS : ****************************************************************{Style.RESET_ALL}"
-            )
+            print(f"\n{Fore.YELLOW}EXT:COS : {'*' * 64}{Style.RESET_ALL}")
         if clusters_confirmation in ["y", "yes"]:
             if selected_clusters:
                 for cluster_name in selected_clusters:
