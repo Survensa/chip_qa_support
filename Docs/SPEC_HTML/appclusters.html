@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 1369e26 (local changes),</span>
-<span id="revdate">2024-07-08 21:26:37 -0700</span>
+<span id="revnumber">version master 4961435 (local changes),</span>
+<span id="revdate">2024-07-09 11:14:40 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -7047,7 +7047,9 @@ revision number in the table below.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Added Q quality for CurrentLevel, CurrentFrequency and RemainingTime attributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Added Q quality for CurrentLevel, CurrentFrequency and RemainingTime attributes,<br>
+             added clarifications for behavior related to Step value and<br>
+             adjusted constraint of DefaultMoveRate</p></td>
 </tr>
 </tbody>
 </table>
@@ -7611,7 +7613,7 @@ The Frequency feature is provisional.
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0014</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DefaultMoveRate</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">min 1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RW VO</p></td>
@@ -8191,20 +8193,22 @@ field MAY be disregarded.</p>
 <div class="sect5">
 <h6 id="_rate_field"><a class="anchor" href="#_rate_field"></a>1.6.7.2.2. Rate Field</h6>
 <div class="paragraph">
-<p>This field SHALL indicate the rate of movement in units per second. The
-actual rate of movement SHOULD be as close to this rate as the device is
-able. If the Rate field is equal to null, then the value in DefaultMoveRate
-attribute SHALL be used. However, if the Rate field is equal to null and the
-DefaultMoveRate attribute is not supported, or if the Rate field is equal to null and
-the value of the DefaultMoveRate attribute is equal to null, then the device SHOULD
-move as fast as it is able. If the device is not able to move at a
-variable rate, this field MAY be disregarded.</p>
+<p>This field SHALL indicate the rate of movement in units per second.
+The actual rate of movement SHOULD be as close to this rate as the device is able.
+If the Rate field is null, then the value of the DefaultMoveRate attribute SHALL be used if that attribute is supported and its value is not null.
+If the Rate field is null and the DefaultMoveRate attribute is either not supported or set to null,
+then the device SHOULD move as fast as it is able.
+If the device is not able to move at a variable rate, this field MAY be disregarded.</p>
 </div>
 </div>
 <div class="sect5">
 <h6 id="_effect_on_receipt_24"><a class="anchor" href="#_effect_on_receipt_24"></a>1.6.7.2.3. Effect on Receipt</h6>
 <div class="paragraph">
-<p>On receipt of this command, a device SHALL first create and process a
+<p>On receipt of this command, if the Rate field has a value of zero,
+the command has no effect and a response SHALL be returned with the status code set to INVALID_COMMAND.</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, a device SHALL first create and process a
 temporary Options bitmap as described in the <a href="#ref_MoveToLevel">MoveToLevel</a> command.</p>
 </div>
 <div class="paragraph">
@@ -8338,7 +8342,11 @@ field MAY be disregarded.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_25"><a class="anchor" href="#_effect_on_receipt_25"></a>1.6.7.3.4. Effect on Receipt</h6>
 <div class="paragraph">
-<p>On receipt of this command, a device SHALL first create and process a
+<p>On receipt of this command, if the StepSize field has a value of zero,
+the command has no effect and a response SHALL be returned with the status code set to INVALID_COMMAND.</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, a device SHALL first create and process a
 temporary Options bitmap as described in the <a href="#ref_MoveToLevel">MoveToLevel</a> command.</p>
 </div>
 <div class="paragraph">
@@ -17629,7 +17637,7 @@ including configuration and provision of notifications of occupancy status.</p>
 <div class="paragraph">
 <p>With the introduction of new sensor modalities in cluster revision 5, the indication for those modalities SHALL be done using feature bits.
 Indication of those new modalities is not feasible via the legacy attributes OccupancySensorType and OccupancySensorTypeBitmap.
-Servers SHALL set these attributes for backward compatibility with clients with ClusterRevision \$&lt;=\$ 4 as described <a href="#ref_OccupancySensorTypeAndBitmap">below</a>.
+Servers SHALL set these attributes for backward compatibility with clients with ClusterRevision \$&lt;=\$ 4 as described in <a href="#ref_OccupancySensorTypeAndBitmap">OccupancySensorType and OccupancySensorTypeBitmap Attributes</a>.
 Clients with ClusterRevision \$&gt;=\$ 5 SHOULD use a server&#8217;s ClientRevision attribute, and SHOULD ignore these legacy attributes.</p>
 </div>
 <div class="paragraph">
@@ -17699,7 +17707,7 @@ For this case, the legacy timing attributes linked to PIR (i.e. PIROccupiedToUno
 <h4 id="_features_12"><a class="anchor" href="#_features_12"></a>2.7.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.
-For sensor devices implementing multiple of these modalities, please see the guidance provided in the Occupancy Sensor device type description.</p>
+For sensor devices implementing multiple modalities, please see the guidance provided in the Occupancy Sensor device type description.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -18325,7 +18333,7 @@ Also see <a href="#ref_OccupancyBackwardCompatibility">Backward Compatibility se
 <p>if attribute HoldTime is not supported, these 9 legacy attributes SHALL NOT be supported</p>
 </li>
 <li>
-<p>if modality PIR is supported, or neither of the modalities PIR, US and is supported:</p>
+<p>if modality PIR is supported, or none of the modalities PIR, US, and PHY is supported:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -23388,7 +23396,8 @@ achievable at the current color.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Added Q quality for CurrentHue, CurrentSaturation, CurrentX, CurrentY, EnhancedCurrentHue and RemainingTime attributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Added Q quality for CurrentHue, CurrentSaturation, CurrentX, CurrentY, EnhancedCurrentHue and RemainingTime attributes<br>
+             and added clarifications for behavior related to Step values</p></td>
 </tr>
 </tbody>
 </table>
@@ -23520,7 +23529,7 @@ linked with the CurrentLevel attribute in the Level Control cluster.</p>
 <div class="paragraph">
 <p>If the CoupleColorTempToLevel bit of the Options attribute of the
 Level Control cluster is equal to 1 and the ColorMode or
-EnhancedColorMode attribute is set to 2 (color temperature) then
+EnhancedColorMode attribute is set to 2 (ColorTemperatureMireds) then
 a change in the CurrentLevel attribute SHALL affect the
 ColorTemperatureMireds attribute. This relationship is manufacturer
 specific, with the qualification that the maximum value of the
@@ -25127,7 +25136,7 @@ bound on the value of the color temperature in kelvins supported by the device.<
 <div class="paragraph">
 <p>This attribute SHALL indicate the desired startup color temperature value the light SHALL use when it is supplied
 with power and this value SHALL be reflected in the ColorTemperatureMireds attribute.
-In addition, the ColorMode and EnhancedColorMode attributes SHALL be set to 2 (color temperature).
+In addition, the ColorMode and EnhancedColorMode attributes SHALL be set to 2 (ColorTemperatureMireds).
 The values of the StartUpColorTemperatureMireds attribute are listed in the table below,</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -25733,11 +25742,7 @@ if both distances are the same, the Up direction SHALL be taken.</p>
 <h6 id="_rate_field_2"><a class="anchor" href="#_rate_field_2"></a>3.2.8.5.2. Rate Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the rate of movement in steps per second.
-A step is a change in the device’s hue of one unit.
-If the MoveMode field is set to 1 (Up) or 3 (Down) and the Rate field has a value of zero,
-the command has no effect and a response command SHALL be sent in response,
-with the status code set to INVALID_COMMAND.
-If the MoveMode field is set to 0 (Stop), the Rate field SHALL be ignored.</p>
+A step is a change in the device’s hue of one unit.</p>
 </div>
 </div>
 <div class="sect5">
@@ -25749,9 +25754,30 @@ If the MoveMode field is set to 0 (Stop), the Rate field SHALL be ignored.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_29"><a class="anchor" href="#_effect_on_receipt_29"></a>3.2.8.5.4. Effect on Receipt</h6>
 <div class="paragraph">
-<p>On receipt of this command, a device SHALL set the ColorMode attribute
-to the value 0 and SHALL then move from its current hue in an up or down
-direction in a continuous fashion, as detailed in the following table.</p>
+<p>On receipt of this command,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the MoveMode field is set to 1 (Up) or 3 (Down):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the Rate field has a value of zero, the command has no effect
+and a response SHALL be returned with the status code set to INVALID_COMMAND.</p>
+</li>
+<li>
+<p>Otherwise, a device SHALL set the ColorMode attribute to the value 0 (CurrentHueAndCurrentSaturation)
+and SHALL then move from its current hue in an up or down direction in a continuous fashion,
+as detailed in the table.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If the MoveMode field is set to 0 (Stop), the Rate field SHALL be completely ignored.</p>
+</li>
+</ul>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -25898,9 +25924,13 @@ for TransitionTime data fields in other clusters / commands.
 <div class="sect5">
 <h6 id="_effect_on_receipt_30"><a class="anchor" href="#_effect_on_receipt_30"></a>3.2.8.6.5. Effect on Receipt</h6>
 <div class="paragraph">
-<p>On receipt of this command, a device SHALL set the ColorMode attribute
-to the value 0 and SHALL then move from its current hue in an up or down
-direction by one step, as detailed in the following table.</p>
+<p>On receipt of this command, if the StepSize field has a value of zero, the command has no effect and
+a response SHALL be returned with the status code set to INVALID_COMMAND.</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, a device SHALL set the ColorMode attribute
+to the value 0 (CurrentHueAndCurrentSaturation) and SHALL then move from its current hue in an up or down
+direction by one step, as detailed in the table.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -26000,7 +26030,7 @@ direction by one step, as detailed in the following table.</p>
 <h6 id="_effect_on_receipt_31"><a class="anchor" href="#_effect_on_receipt_31"></a>3.2.8.7.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute to
-the value 0 and SHALL then move from its current saturation to the value
+the value 0 (CurrentHueAndCurrentSaturation) and SHALL then move from its current saturation to the value
 given in the Saturation field.</p>
 </div>
 <div class="paragraph">
@@ -26077,19 +26107,12 @@ TransitionTime field, in 1/10ths of a second.</p>
 <div class="paragraph">
 <p>This field SHALL indicate the mode of movement, as described in the <a href="#ref_MoveHue">MoveHue</a> command.</p>
 </div>
-<div class="paragraph">
-<p>If the MoveMode field is equal to 0 (Stop), the Rate field SHALL be ignored.</p>
-</div>
 </div>
 <div class="sect5">
 <h6 id="_rate_field_3"><a class="anchor" href="#_rate_field_3"></a>3.2.8.8.2. Rate Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the rate of movement in steps per second.
-A step is a change in the device’s saturation of one unit.
-If the MoveMode field is set to 1 (Up) or 3 (Down) and the Rate field has a value of zero,
-the command has no effect and a response command SHALL be sent in response,
-with the status code set to INVALID_COMMAND. If the MoveMode field is set to
-0 (Stop) the Rate field SHALL be ignored.</p>
+A step is a change in the device’s saturation of one unit.</p>
 </div>
 </div>
 <div class="sect5">
@@ -26101,9 +26124,30 @@ with the status code set to INVALID_COMMAND. If the MoveMode field is set to
 <div class="sect5">
 <h6 id="_effect_on_receipt_32"><a class="anchor" href="#_effect_on_receipt_32"></a>3.2.8.8.4. Effect on Receipt</h6>
 <div class="paragraph">
-<p>On receipt of this command, a device SHALL set the ColorMode attribute
-to the value 0 and SHALL then move from its current saturation in an up
-or down direction in a continuous fashion, as detailed in the following table.</p>
+<p>On receipt of this command,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the MoveMode field is set to 1 (Up) or 3 (Down)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the Rate field has a value of zero, the command has no effect and
+a response SHALL be returned with the status code set to INVALID_COMMAND.</p>
+</li>
+<li>
+<p>Otherwise, a device SHALL set the ColorMode attribute to the value 0 (CurrentHueAndCurrentSaturation)
+and SHALL then move from its current saturation in an up or down direction in a continuous fashion,
+as detailed in the table.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If the MoveMode field is set to 0 (Stop), the Rate field SHALL be completely ignored.</p>
+</li>
+</ul>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -26248,8 +26292,12 @@ for TransitionTime data fields in other clusters / commands.
 <div class="sect5">
 <h6 id="_effect_on_receipt_33"><a class="anchor" href="#_effect_on_receipt_33"></a>3.2.8.9.5. Effect on Receipt</h6>
 <div class="paragraph">
-<p>On receipt of this command, a device SHALL set the ColorMode attribute
-to the value 0 and SHALL then move from its current saturation in an up
+<p>On receipt of this command, if the StepSize field has a value of zero, the command has no effect and
+a response SHALL be returned with the status code set to INVALID_COMMAND.</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, a device SHALL set the ColorMode attribute
+to the value 0 (CurrentHueAndCurrentSaturation) and SHALL then move from its current saturation in an up
 or down direction by one step.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -26359,7 +26407,7 @@ or down direction by one step.</p>
 <h6 id="_effect_on_receipt_34"><a class="anchor" href="#_effect_on_receipt_34"></a>3.2.8.10.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute
-to the value 0 and SHALL then move from its current hue and saturation
+to the value 0 (CurrentHueAndCurrentSaturation) and SHALL then move from its current hue and saturation
 to the values given in the Hue and Saturation fields.</p>
 </div>
 <div class="paragraph">
@@ -26456,7 +26504,7 @@ Color Space.</p>
 <h6 id="_effect_on_receipt_35"><a class="anchor" href="#_effect_on_receipt_35"></a>3.2.8.11.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the value of the ColorMode attribute,
-where implemented, to 1, and SHALL then move from its current color to the color
+where implemented, to 1 (CurrentXAndCurrentY), and SHALL then move from its current color to the color
 given in the ColorX and ColorY fields.</p>
 </div>
 <div class="paragraph">
@@ -26556,18 +26604,19 @@ A step is a change in the device’s CurrentY attribute of one unit.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_36"><a class="anchor" href="#_effect_on_receipt_36"></a>3.2.8.12.4. Effect on Receipt</h6>
 <div class="paragraph">
-<p>On receipt of this command, a device SHALL set the value of the
-ColorMode attribute, where implemented, to 1, and SHALL then move
+<p>On receipt of this command, if both the RateX and RateY fields contain a value of zero,
+no movement SHALL be carried out, and the command execution SHALL have no effect
+other than stopping the operation of any previously received command of
+this cluster.
+While this command (when used with both the RateX and RateY fields set to zero) can be used to stop any operation of this cluster,
+it is recommended to instead use the <a href="#ref_StopMoveStep">StopMoveStep</a> command to achieve this goal.</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, a device SHALL set the value of the
+ColorMode attribute, where implemented, to 1 (CurrentXAndCurrentY), and SHALL then move
 from its current color in a continuous fashion according to the rates
 specified. This movement SHALL continue until the target color for the
 next step cannot be implemented on this device.</p>
-</div>
-<div class="paragraph">
-<p>If both the RateX and RateY fields contain a value of zero, no movement
-SHALL be carried out, and the command execution SHALL have no effect
-other than stopping the operation of any previously received command of
-this cluster. This command can thus be used to stop the operation of any
-other command of this cluster.</p>
 </div>
 </div>
 </div>
@@ -26665,8 +26714,12 @@ the time that SHALL be taken to perform the color change.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_37"><a class="anchor" href="#_effect_on_receipt_37"></a>3.2.8.13.4. Effect on Receipt</h6>
 <div class="paragraph">
-<p>On receipt of this command, a device SHALL set the value of the ColorMode attribute,
-where implemented, to 1, and SHALL then move from its current color by the color step indicated.</p>
+<p>On receipt of this command, if both the StepX and StepY fields contain a value of zero, the command has no effect and
+a response SHALL be returned with the status code set to INVALID_COMMAND.</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, a device SHALL set the value of the ColorMode attribute,
+where implemented, to 1 (CurrentXAndCurrentY), and SHALL then move from its current color by the color step indicated.</p>
 </div>
 <div class="paragraph">
 <p>The movement SHALL be continuous, i.e., not a step function,
@@ -26755,7 +26808,7 @@ signed 16-bit integers then more than one step command SHOULD be issued.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_38"><a class="anchor" href="#_effect_on_receipt_38"></a>3.2.8.14.2. Effect on Receipt</h6>
 <div class="paragraph">
-<p>On receipt of this command, a device SHALL set the value of the ColorMode attribute, where implemented, to 2,
+<p>On receipt of this command, a device SHALL set the value of the ColorMode attribute, where implemented, to 2 (ColorTemperatureMireds),
 and SHALL then move from its current color to the color given by the ColorTemperatureMired field.</p>
 </div>
 <div class="paragraph">
@@ -26871,7 +26924,7 @@ during the transition is along the 'Black Body Line'.</p>
 <h6 id="_effect_on_receipt_39"><a class="anchor" href="#_effect_on_receipt_39"></a>3.2.8.15.5. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute
-to 0 and set the EnhancedColorMode attribute to the value 3.
+to 0 (CurrentHueAndCurrentSaturation) and set the EnhancedColorMode attribute to the value 3 (EnhancedCurrentHueAndCurrentSaturation).
 The device SHALL then move from its current enhanced hue to the value given in the EnhancedHue field.</p>
 </div>
 <div class="paragraph">
@@ -26950,19 +27003,12 @@ and the time taken to move to the new enhanced hue SHALL be equal to the Transit
 <div class="paragraph">
 <p>This field SHALL indicate the mode of movement, as described in the <a href="#ref_MoveHue">MoveHue</a> command.</p>
 </div>
-<div class="paragraph">
-<p>If the MoveMode field is equal to 0 (Stop), the Rate field SHALL be ignored.</p>
-</div>
 </div>
 <div class="sect5">
 <h6 id="_rate_field_4"><a class="anchor" href="#_rate_field_4"></a>3.2.8.16.2. Rate field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the rate of movement in steps per second.
-A step is a change in the extended hue of a device by one unit.
-If the MoveMode field is set to 1 (Up) or 3 (Down) and the Rate field has a value of zero,
-the command has no effect and a response command SHALL be sent in response,
-with the status code set to INVALID_COMMAND. If the MoveMode field is set to 0 (stop)
-the Rate field SHALL be ignored.</p>
+A step is a change in the extended hue of a device by one unit.</p>
 </div>
 </div>
 <div class="sect5">
@@ -26974,9 +27020,31 @@ the Rate field SHALL be ignored.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_40"><a class="anchor" href="#_effect_on_receipt_40"></a>3.2.8.16.4. Effect on receipt</h6>
 <div class="paragraph">
-<p>On receipt of this command, a device SHALL set the ColorMode attribute
-to 0 and set the EnhancedColorMode attribute to the value 3.
-The device SHALL then move from its current enhanced hue in an up or down direction in a continuous fashion, as detailed in the following table.</p>
+<p>On receipt of this command,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the MoveMode field is set to 1 (Up) or 3 (Down)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the Rate field has a value of zero, the command has no effect
+and a response SHALL be returned with the status code set to INVALID_COMMAND.</p>
+</li>
+<li>
+<p>Otherwise, a device SHALL set the ColorMode attribute to 0 (CurrentHueAndCurrentSaturation)
+and set the EnhancedColorMode attribute to the value 3 (EnhancedCurrentHueAndCurrentSaturation).
+The device SHALL then move from its current enhanced hue in an up or down direction in a continuous fashion,
+as detailed in the table.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If the MoveMode field is set to 0 (Stop), the Rate field SHALL be completely ignored.</p>
+</li>
+</ul>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -27130,9 +27198,13 @@ while the TransitionTime data field of the StepHue command is of data type uint8
 <div class="sect5">
 <h6 id="_effect_on_receipt_41"><a class="anchor" href="#_effect_on_receipt_41"></a>3.2.8.17.5. Effect on Receipt</h6>
 <div class="paragraph">
-<p>On receipt of this command, a device SHALL set the ColorMode attribute to 0 and
-the EnhancedColorMode attribute to the value 3.
-The device SHALL then move from its current enhanced hue in an up or down direction by one step, as detailed in the following table.</p>
+<p>On receipt of this command, if the StepSize field has a value of zero, the command has no effect and
+a response SHALL be returned with the status code set to INVALID_COMMAND.</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, a device SHALL set the ColorMode attribute to 0 (CurrentHueAndCurrentSaturation) and
+the EnhancedColorMode attribute to the value 3 (EnhancedCurrentHueAndCurrentSaturation).
+The device SHALL then move from its current enhanced hue in an up or down direction by one step, as detailed in the table.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -27265,7 +27337,7 @@ and from their current saturation to a target saturation.</p>
 <h6 id="_effect_on_receipt_42"><a class="anchor" href="#_effect_on_receipt_42"></a>3.2.8.18.5. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, a device SHALL set the ColorMode attribute
-to the value 0 and set the EnhancedColorMode attribute to the value 3.
+to the value 0 (CurrentHueAndCurrentSaturation) and set the EnhancedColorMode attribute to the value 3 (EnhancedCurrentHueAndCurrentSaturation).
 The device SHALL then move from its current enhanced hue and
 saturation to the values given in the EnhancedHue and Saturation fields.</p>
 </div>
@@ -27477,10 +27549,9 @@ immediately react on updates of the ColorLoopDirection and ColorLoopTime attribu
 </div>
 </div>
 <div class="sect4">
-<h5 id="_stopmovestep_command"><a class="anchor" href="#_stopmovestep_command"></a>3.2.8.20. StopMoveStep Command</h5>
+<h5 id="ref_StopMoveStep"><a class="anchor" href="#ref_StopMoveStep"></a>3.2.8.20. StopMoveStep Command</h5>
 <div class="paragraph">
-<p>This command is provided to allow MoveTo and Step commands to be stopped.
-(Note this automatically provides symmetry to the Level Control cluster.)</p>
+<p>This command is provided to allow MoveTo and Step commands to be stopped.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -27489,7 +27560,19 @@ immediately react on updates of the ColorLoopDirection and ColorLoopTime attribu
 <div class="title">Note</div>
 </td>
 <td class="content">
-the StopMoveStep command has no effect on an active color loop.
+This automatically provides symmetry to the Level Control cluster.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The StopMoveStep command has no effect on an active color loop.
 </td>
 </tr>
 </table>
@@ -27644,11 +27727,7 @@ their present value upon receipt of the StopMoveStep command, and the RemainingT
 <h6 id="_rate_field_5"><a class="anchor" href="#_rate_field_5"></a>3.2.8.21.2. Rate Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the rate of movement in steps per second.
-A step is a change in the color temperature of a device by one unit.
-If the MoveMode field is set to 1 (Up) or 3 (Down) and the Rate field has a value of zero,
-the command has no effect and a response command SHALL be sent in response,
-with the status code set to INVALID_COMMAND.
-If the MoveMode field is set to 0 (Stop), the Rate field SHALL be ignored.</p>
+A step is a change in the color temperature of a device by one unit.</p>
 </div>
 </div>
 <div class="sect5">
@@ -27692,8 +27771,30 @@ ColorTempPhysicalMaxMireds SHALL be used as the upper bound for the ColorTempera
 <div class="sect5">
 <h6 id="_effect_on_receipt_45"><a class="anchor" href="#_effect_on_receipt_45"></a>3.2.8.21.6. Effect on Receipt</h6>
 <div class="paragraph">
-<p>On receipt of this command, a device SHALL set both the ColorMode and EnhancedColorMode attributes to 2.
-The device SHALL then move from its current color temperature in an up or down direction in a continuous fashion, as detailed in the following table.</p>
+<p>On receipt of this command,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the MoveMode field is set to 1 (Up) or 3 (Down)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the Rate field has a value of zero, the command has no effect
+and a response SHALL be returned with the status code set to INVALID_COMMAND.</p>
+</li>
+<li>
+<p>Otherwise, a device SHALL set both the ColorMode and EnhancedColorMode attributes to 2 (ColorTemperatureMireds)
+The device SHALL then move from its current color temperature in an up or down direction in a continuous fashion,
+as detailed in the table.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If the MoveMode field is set to 0 (Stop), the Rate field SHALL be completely ignored.</p>
+</li>
+</ul>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -27884,8 +27985,12 @@ ColorTempPhysicalMaxMireds SHALL be used as the upper bound for the ColorTempera
 <div class="sect5">
 <h6 id="_effect_on_receipt_46"><a class="anchor" href="#_effect_on_receipt_46"></a>3.2.8.22.7. Effect on Receipt</h6>
 <div class="paragraph">
-<p>On receipt of this command, a device SHALL set both the ColorMode and EnhancedColorMode attributes to 2.
-The device SHALL then move from its current color temperature in an up or down direction by one step, as detailed in the following table.</p>
+<p>On receipt of this command, if the StepSize field has a value of zero, the command has no effect and
+a response SHALL be returned with the status code set to INVALID_COMMAND.</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, a device SHALL set both the ColorMode and EnhancedColorMode attributes to 2 (ColorTemperatureMireds).
+The device SHALL then move from its current color temperature in an up or down direction by one step, as detailed in the table.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -64436,7 +64541,7 @@ This command supports the following fields:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O.b+</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -64445,7 +64550,7 @@ This command supports the following fields:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1 to MaxCookTime</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O.b+</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
@@ -64454,7 +64559,7 @@ This command supports the following fields:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MinPower to MaxPower</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MaxPower</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[PWRNUM].a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[PWRNUM].b+</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
@@ -64463,7 +64568,7 @@ This command supports the following fields:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[WATTS].a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[WATTS].b+</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
@@ -66106,7 +66211,7 @@ the maximum charging or discharging rate is limited.</p>
 <p>An empty list SHALL indicate that no power adjustment is currently possible.</p>
 </div>
 <div class="paragraph">
-<p>Multiple entries in the list allow to indicate that permutations of scenarios
+<p>Multiple entries in the list allow indicating that permutations of scenarios
 may be possible.</p>
 </div>
 <div class="paragraph">
@@ -69398,7 +69503,7 @@ the time needed to charge.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[SOC], O.a+</p></td>
 </tr>
 </tbody>
 </table>
@@ -69445,7 +69550,7 @@ reach the target.</p>
 before the TargetTimeMinutesPastMidnight.</p>
 </div>
 <div class="paragraph">
-<p>If the EVSE can obtain the SoC of the vehicle:</p>
+<p>If the EVSE supports the SOC feature and can obtain the SoC of the vehicle:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -69463,13 +69568,14 @@ charge the vehicle until the vehicle decides to stop charging.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>If the EVSE cannot obtain the SoC of the vehicle:</p>
+<p>If the EVSE does not support the SOC feature or cannot obtain the SoC of the vehicle:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>in this case, the AddedEnergy field SHALL take precedence over the
-TargetSoC field, and the TargetSoC field may only take the values null or 100%.</p>
+<p>the AddedEnergy field SHALL take precedence over the
+TargetSoC field, and if the EVSE does not support the SOC feature
+then the TargetSoC field may only take the values null or 100%.</p>
 </li>
 <li>
 <p>if the AddedEnergy field has not been provided, the EVSE SHOULD assume the
@@ -69551,7 +69657,7 @@ charging, or for heating or cooling the cabin.
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -69561,7 +69667,7 @@ charging, or for heating or cooling the cabin.
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
 </table>
@@ -70070,8 +70176,8 @@ random delay between 0-599s and add this to its initial planned start time.</p>
 next scheduled charge based on the charging preferences.</p>
 </div>
 <div class="paragraph">
-<p>If this is null it indicates that there is no scheduled charging,
-or that the vehicle is not plugged in.</p>
+<p>A null value indicates that there is no scheduled charging (for example, the EVSE Mode is set to use Manual mode tag),
+or that the vehicle is not plugged in with the SupplyState indicating that charging is enabled.</p>
 </div>
 </div>
 <div class="sect4">
@@ -70081,8 +70187,8 @@ or that the vehicle is not plugged in.</p>
 the next scheduled charge based on the charging preferences.</p>
 </div>
 <div class="paragraph">
-<p>If this is null it indicates that there is no scheduled charging,
-or that the vehicle is not plugged in.</p>
+<p>A null value indicates that there is no scheduled charging (for example, the EVSE Mode is set to use Manual mode tag),
+or that the vehicle is not plugged in with the SupplyState indicating that charging is enabled.</p>
 </div>
 </div>
 <div class="sect4">
@@ -70408,7 +70514,7 @@ since the start of the session.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_54"><a class="anchor" href="#_effect_on_receipt_54"></a>9.3.9.1.1. Effect on Receipt</h6>
 <div class="paragraph">
-<p>Upon receipt of the Disable command the EVSE will stop any power flow between
+<p>On receipt of this command, the EVSE will stop any power flow between
 the EV and EVSE.</p>
 </div>
 <div class="paragraph">
@@ -70527,7 +70633,7 @@ value, and then later adjusted above this value, the resulting
 <div class="sect5">
 <h6 id="_effect_on_receipt_55"><a class="anchor" href="#_effect_on_receipt_55"></a>9.3.9.2.4. Effect on Receipt</h6>
 <div class="paragraph">
-<p>Upon receipt, this SHALL allow the EVSE to charge the EV until the specified
+<p>On receipt of this command, this SHALL allow the EVSE to charge the EV until the specified
 timestamp within the current limits specified in the fields of the command.</p>
 </div>
 <div class="paragraph">
@@ -70630,7 +70736,7 @@ stored and persisted across reboots by the EVSE to the value of this field.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_56"><a class="anchor" href="#_effect_on_receipt_56"></a>9.3.9.3.3. Effect on Receipt</h6>
 <div class="paragraph">
-<p>Upon receipt, this SHALL allow the EVSE to discharge the EV until the specified
+<p>On receipt of this command, this SHALL allow the EVSE to discharge the EV until the specified
 timestamp, and allows a maximum current limit to be specified in the fields of the command.</p>
 </div>
 <div class="paragraph">
@@ -70670,7 +70776,7 @@ is in the future or null).</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_57"><a class="anchor" href="#_effect_on_receipt_57"></a>9.3.9.4.1. Effect on Receipt</h6>
 <div class="paragraph">
-<p>Upon receipt of the StartDiagnostics command, the EVSE SHALL enter a
+<p>On receipt of this command, the EVSE SHALL enter a
 Diagnostics state only if the SupplyState attribute is in the Disabled
 state.</p>
 </div>
@@ -70739,7 +70845,7 @@ included in a single ChargingTargetSchedule within this list field.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_58"><a class="anchor" href="#_effect_on_receipt_58"></a>9.3.9.5.2. Effect on Receipt</h6>
 <div class="paragraph">
-<p>Upon receipt of the SetTargets command, the EVSE SHALL validate that all of the
+<p>On receipt of this command, the EVSE SHALL validate that all of the
 charging targets are within a valid range, and that each day of the week is
 included in at most one of the ChargingTargetSchedule, if they are not then the response
 SHALL be CONSTRAINT_ERROR.</p>
@@ -70814,7 +70920,7 @@ accordingly.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_59"><a class="anchor" href="#_effect_on_receipt_59"></a>9.3.9.6.1. Effect on Receipt</h6>
 <div class="paragraph">
-<p>Upon receipt, the EVSE SHALL send the <a href="#ref_GetTargetsResponseCommand">GetTargetsResponse</a> command
+<p>On receipt of this command, the EVSE SHALL send the <a href="#ref_GetTargetsResponseCommand">GetTargetsResponse</a> command
 to the client.</p>
 </div>
 </div>
@@ -70873,7 +70979,7 @@ with their associated days of the week.</p>
 <div class="sect5">
 <h6 id="_effect_on_receipt_60"><a class="anchor" href="#_effect_on_receipt_60"></a>9.3.9.8.1. Effect on Receipt</h6>
 <div class="paragraph">
-<p>Upon receipt, all weekly targets that are currently stored SHALL be cleared
+<p>On receipt of this command, all weekly targets that are currently stored SHALL be cleared
 and a default response of SUCCESS SHALL be sent in response. There are no error
 responses to this command.</p>
 </div>
@@ -71182,7 +71288,7 @@ Device Energy Management cluster of the associated Device Energy Management devi
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MaximumDischargingCurrent</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MaximumDischargeCurrent</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">amperage-mA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">min 0</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -71220,7 +71326,7 @@ charging.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_maximumdischargingcurrent_field"><a class="anchor" href="#_maximumdischargingcurrent_field"></a>9.3.10.3.4. MaximumDischargingCurrent Field</h6>
+<h6 id="_maximumdischargecurrent_field_2"><a class="anchor" href="#_maximumdischargecurrent_field_2"></a>9.3.10.3.4. MaximumDischargeCurrent Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the value of the maximum discharging
 current at the time the event was generated.</p>
@@ -72503,8 +72609,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 1369e26 (local changes)<br>
-Last updated 2024-07-09 04:26:49 UTC
+Version master 4961435 (local changes)<br>
+Last updated 2024-07-09 18:14:53 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
