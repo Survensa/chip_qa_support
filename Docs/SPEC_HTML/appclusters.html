@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master d0f665d (local changes),</span>
-<span id="revdate">2024-07-03 08:34:14 -0700</span>
+<span id="revnumber">version master f46c946 (local changes),</span>
+<span id="revdate">2024-07-08 16:32:06 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1496,6 +1496,11 @@ At the time of publication, the editions indicated were valid. All standards and
 </tr>
 </thead>
 <tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="ref_CIE1931"></a> [CIE&#160;1931]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://en.wikipedia.org/wiki/CIE_1931_color_space" class="bare">https://en.wikipedia.org/wiki/CIE_1931_color_space</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission Internationale de l&#8217;Éclairage CIE 1931 Color Space</p></td>
+</tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="ref_DialRegistry"></a> [DIALRegistry]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.dial-multiscreen.org/dial-registry/namespace-database" class="bare">http://www.dial-multiscreen.org/dial-registry/namespace-database</a></p></td>
@@ -17610,7 +17615,7 @@ including configuration and provision of notifications of occupancy status.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Rework to allow adding more sensing (using feature flags);
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rework to
              add modalities: radar-, ambient-sensing- and vision-based sensors;
              add sensitivity setting (via co-located BooleanStateConfiguration cluster on same endpoint);
              add new attribute for tuning the sensor&#8217;s reporting;
@@ -18312,18 +18317,56 @@ When doing so, the provided values SHALL be consistent with the values in the Ho
 Also see <a href="#ref_OccupancyBackwardCompatibility">Backward Compatibility section</a>.</p>
 </div>
 <div class="paragraph">
-<p>The conformance rules for these attributes as documented in the attribute table above can be explained as follows:
-* if attribute HoldTime is not supported, these 9 legacy attributes SHALL NOT be supported
-* if modality PIR is supported, or neither of the modalities PIR, US and is supported:
-<strong> the 3 legacy attributes related to PIR MAY be supported (if allowed by the other rules)
-</strong> the 6 legacy attributes related to Ultrasonic and PhysicalContact SHALL NOT be supported
-* if modality US is supported:
-<strong> the 3 legacy attributes related to UltraSonic MAY be supported (if allowed by the other rules)
-</strong> the 6 legacy attributes related to PIR and PhysicalContact SHALL NOT be supported
-* if modality PHY is supported:
-<strong> the 3 legacy attributes related to PhysicalContact MAY be supported (if allowed by the other rules)
-</strong> the 6 legacy attributes related to PIR and Ultrasonic SHALL NOT be supported
-* the legacy attributes related to UnoccupiedToOccupiedDelay and UnoccupiedToOccupiedThreshold for a certain modality SHALL be both supported or both not supported</p>
+<p>The conformance rules for these attributes as documented in the attribute table above can be explained as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>if attribute HoldTime is not supported, these 9 legacy attributes SHALL NOT be supported</p>
+</li>
+<li>
+<p>if modality PIR is supported, or neither of the modalities PIR, US and is supported:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the 3 legacy attributes related to PIR MAY be supported (if allowed by the other rules)</p>
+</li>
+<li>
+<p>the 6 legacy attributes related to Ultrasonic and PhysicalContact SHALL NOT be supported</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>if modality US is supported:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the 3 legacy attributes related to UltraSonic MAY be supported (if allowed by the other rules)</p>
+</li>
+<li>
+<p>the 6 legacy attributes related to PIR and PhysicalContact SHALL NOT be supported</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>if modality PHY is supported:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the 3 legacy attributes related to PhysicalContact MAY be supported (if allowed by the other rules)</p>
+</li>
+<li>
+<p>the 6 legacy attributes related to PIR and Ultrasonic SHALL NOT be supported</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>the legacy attributes related to UnoccupiedToOccupiedDelay and UnoccupiedToOccupiedThreshold for a certain modality SHALL be both supported or both not supported</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
@@ -21595,7 +21638,7 @@ at the UTC time indicated in <a href="#ref_ImportedResetTimestamp">ImportedReset
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CumulativeEnergyImported</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_EnergyMeasurementStruct">EnergyMeasurementStruct</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IMPE &amp; CUME</p></td>
@@ -21605,7 +21648,7 @@ at the UTC time indicated in <a href="#ref_ImportedResetTimestamp">ImportedReset
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CumulativeEnergyExported</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_EnergyMeasurementStruct">EnergyMeasurementStruct</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">EXPE &amp; CUME</p></td>
@@ -21615,7 +21658,7 @@ at the UTC time indicated in <a href="#ref_ImportedResetTimestamp">ImportedReset
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PeriodicEnergyImported</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_EnergyMeasurementStruct">EnergyMeasurementStruct</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IMPE &amp; PERE</p></td>
@@ -21625,7 +21668,7 @@ at the UTC time indicated in <a href="#ref_ImportedResetTimestamp">ImportedReset
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PeriodicEnergyExported</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_EnergyMeasurementStruct">EnergyMeasurementStruct</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">EXPE &amp; PERE</p></td>
@@ -22566,7 +22609,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Voltage</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">voltage-mV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-2<sup>62</sup> to 2<sup>62</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
@@ -22576,7 +22619,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ActiveCurrent</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">amperage-mA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-2<sup>62</sup> to 2<sup>62</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
@@ -22586,7 +22629,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ReactiveCurrent</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">amperage-mA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-2<sup>62</sup> to 2<sup>62</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[ALTC]</p></td>
@@ -22596,7 +22639,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ApparentCurrent</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">amperage-mA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0 to 2<sup>62</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[ALTC]</p></td>
@@ -22606,7 +22649,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ActivePower</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">power-mW</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-2<sup>62</sup> to 2<sup>62</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -22616,7 +22659,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ReactivePower</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">power-mW</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-2<sup>62</sup> to 2<sup>62</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[ALTC]</p></td>
@@ -22626,7 +22669,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ApparentPower</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">power-mW</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-2<sup>62</sup> to 2<sup>62</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[ALTC]</p></td>
@@ -22636,7 +22679,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RMSVoltage</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">voltage-mV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-2<sup>62</sup> to 2<sup>62</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[ALTC]</p></td>
@@ -22646,7 +22689,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RMSCurrent</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">amperage-mA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-2<sup>62</sup> to 2<sup>62</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[ALTC]</p></td>
@@ -22656,7 +22699,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RMSPower</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">power-mW</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-2<sup>62</sup> to 2<sup>62</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[ALTC]</p></td>
@@ -22666,7 +22709,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Frequency</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int64</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0 to 1000000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[ALTC]</p></td>
@@ -22676,7 +22719,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HarmonicCurrents</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">list[<a href="#ref_HarmonicMeasurementStruct">HarmonicMeasurementStruct</a>]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HARM</p></td>
@@ -22686,7 +22729,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HarmonicPhases</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">list[<a href="#ref_HarmonicMeasurementStruct">HarmonicMeasurementStruct</a>]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PWRQ</p></td>
@@ -22696,7 +22739,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PowerFactor</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int64</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-10000 to 10000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[ALTC]</p></td>
@@ -22706,7 +22749,7 @@ lagging.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NeutralCurrent</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">amperage-mA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-2<sup>62</sup> to 2<sup>62</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[POLY]</p></td>
@@ -23285,9 +23328,8 @@ in lux (lx).</p>
 <h3 id="ref_ColorControlCluster"><a class="anchor" href="#ref_ColorControlCluster"></a>3.2. Color Control Cluster</h3>
 <div class="paragraph">
 <p>This cluster provides an interface for changing the color of a light.
-Color is specified according to the Commission Internationale de
-l&#8217;Éclairage (CIE) specification CIE 1931 Color Space, [I1]. Color
-control is carried out in terms of x,y values, as defined by this
+Color is specified according to the <a href="#ref_CIE1931">CIE 1931 Color space</a>.
+Color control is carried out in terms of x,y values, as defined by this
 specification.</p>
 </div>
 <div class="paragraph">
@@ -24054,35 +24096,31 @@ value of the StartHue field.</p>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 50%;">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
 <th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Summary</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Conformance</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Decrement</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Decrement the hue in the color loop.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Increment</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Increment the hue in the color loop.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
@@ -24191,7 +24229,7 @@ value of the StartHue field.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ColorTemperatureMireds</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">max 65279</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PSN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P S N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">250 (4000K)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CT</p></td>
@@ -24221,7 +24259,7 @@ value of the StartHue field.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NumberOfPrimaries</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">max 6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F X</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -24251,7 +24289,7 @@ value of the StartHue field.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Primary1Intensity</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F X</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NumberOfPrimaries &gt; 0, O</p></td>
@@ -24281,7 +24319,7 @@ value of the StartHue field.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Primary2Intensity</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F X</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NumberOfPrimaries &gt; 1, O</p></td>
@@ -24311,7 +24349,7 @@ value of the StartHue field.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Primary3Intensity</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F X</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NumberOfPrimaries &gt; 2, O</p></td>
@@ -24341,7 +24379,7 @@ value of the StartHue field.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Primary4Intensity</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F X</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NumberOfPrimaries &gt; 3, O</p></td>
@@ -24371,7 +24409,7 @@ value of the StartHue field.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Primary5Intensity</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F X</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NumberOfPrimaries &gt; 4, O</p></td>
@@ -24401,7 +24439,7 @@ value of the StartHue field.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Primary6Intensity</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F X</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NumberOfPrimaries &gt; 5, O</p></td>
@@ -24531,7 +24569,7 @@ value of the StartHue field.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>EnhancedColorMode</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_EnhancedColorModeEnum">EnhancedColorModeEnum</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -24541,7 +24579,7 @@ value of the StartHue field.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ColorLoopActive</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">max 1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CL</p></td>
@@ -24551,7 +24589,7 @@ value of the StartHue field.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ColorLoopDirection</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">max 1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CL</p></td>
@@ -24561,7 +24599,7 @@ value of the StartHue field.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ColorLoopTime</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CL</p></td>
@@ -24632,7 +24670,7 @@ value of the StartHue field.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>StartUpColorTemperatureMireds</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint16</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">max 65279</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">NX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N X</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RW VM</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CT | ColorTemperatureMireds</p></td>
@@ -24959,7 +24997,7 @@ and the effect on dependent commands.</p>
 <h5 id="_enhancedcurrenthue_attribute"><a class="anchor" href="#_enhancedcurrenthue_attribute"></a>3.2.7.12. EnhancedCurrentHue Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the non-equidistant steps along
-the CIE 1931 color triangle, and it provides 16-bits precision.</p>
+the <a href="#ref_CIE1931">CIE 1931 color triangle</a>, and it provides 16-bits precision.</p>
 </div>
 <div class="paragraph">
 <p>The upper 8 bits of this attribute SHALL be used as an index in the
@@ -35367,7 +35405,7 @@ a specific position, as a percentage, of its full range of motion.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RemainingDuration</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">elapsed-s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -35397,7 +35435,7 @@ a specific position, as a percentage, of its full range of motion.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CurrentLevel</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">percent</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XQ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">LVL</p></td>
@@ -64956,11 +64994,23 @@ in the table below.</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>The conformance rules specified above can be described as:
-* At least one of the features SHALL be supported.
-* At most one of the 'SFR' and 'PFR' features SHALL be supported.
-* If one or more of the 'STA', 'PAU', 'FA', or 'CON' features are supported, then either the 'PFR' or the 'SFR' feature SHALL also be supported.
-* If PA is supported, SFR SHALL NOT be supported</p>
+<p>The conformance rules specified above can be described as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>At least one of the features SHALL be supported.</p>
+</li>
+<li>
+<p>At most one of the 'SFR' and 'PFR' features SHALL be supported.</p>
+</li>
+<li>
+<p>If one or more of the 'STA', 'PAU', 'FA', or 'CON' features are supported, then either the 'PFR' or the 'SFR' feature SHALL also be supported.</p>
+</li>
+<li>
+<p>If PA is supported, SFR SHALL NOT be supported</p>
+</li>
+</ul>
 </div>
 <div class="sect4">
 <h5 id="_poweradjustment_feature"><a class="anchor" href="#_poweradjustment_feature"></a>9.2.4.1. PowerAdjustment Feature</h5>
@@ -72453,8 +72503,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master d0f665d (local changes)<br>
-Last updated 2024-07-08 00:00:48 UTC
+Version master f46c946 (local changes)<br>
+Last updated 2024-07-09 00:00:49 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
