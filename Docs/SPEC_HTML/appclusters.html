@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 4961435 (local changes),</span>
-<span id="revdate">2024-07-09 11:14:40 -0700</span>
+<span id="revnumber">version master 99a6b8d (local changes),</span>
+<span id="revdate">2024-07-09 14:53:22 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1268,9 +1268,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_classification_66">9.4.2. Classification</a></li>
 <li><a href="#_cluster_id_64">9.4.3. Cluster ID</a></li>
 <li><a href="#_data_types_53">9.4.4. Data Types</a></li>
-<li><a href="#_attributes_60">9.4.5. Attributes</a></li>
-<li><a href="#_derived_cluster_namespace_8">9.4.6. Derived Cluster Namespace</a></li>
-<li><a href="#_mode_examples_5">9.4.7. Mode Examples</a></li>
+<li><a href="#_features_40">9.4.5. Features</a></li>
+<li><a href="#_attributes_60">9.4.6. Attributes</a></li>
+<li><a href="#_derived_cluster_namespace_8">9.4.7. Derived Cluster Namespace</a></li>
+<li><a href="#_mode_examples_5">9.4.8. Mode Examples</a></li>
 </ul>
 </li>
 <li><a href="#ref_EnergyPreferenceCluster">9.5. Energy Preference Cluster</a>
@@ -1278,7 +1279,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_revision_history_68">9.5.1. Revision History</a></li>
 <li><a href="#_classification_67">9.5.2. Classification</a></li>
 <li><a href="#_cluster_id_65">9.5.3. Cluster ID</a></li>
-<li><a href="#_features_40">9.5.4. Features</a></li>
+<li><a href="#_features_41">9.5.4. Features</a></li>
 <li><a href="#_data_types_54">9.5.5. Data Types</a></li>
 <li><a href="#_attributes_61">9.5.6. Attributes</a></li>
 </ul>
@@ -4670,9 +4671,7 @@ the last one within the ExtensionFieldSet SHALL be the one recorded.</p>
 <li>
 <p>If the AddScene command was received as a unicast, the server SHALL
 then generate an AddSceneResponse command with the Status field set to
-the evaluated status.
-If the AddScene command was received as a groupcast,
-the server SHALL NOT generate an AddSceneResponse command.</p>
+the evaluated status.</p>
 </li>
 </ol>
 </div>
@@ -4842,9 +4841,7 @@ and the status SHALL be SUCCESS.</p>
 <li>
 <p>If the ViewScene command was received as a unicast, the server SHALL
 then generate a ViewSceneResponse command with the retrieved scene
-entry and the Status field set to the evaluated status.
-If the ViewScene command was received as a groupcast,
-the server SHALL NOT generate a ViewSceneResponse command.</p>
+entry and the Status field set to the evaluated status.</p>
 </li>
 </ol>
 </div>
@@ -5071,9 +5068,7 @@ the status SHALL be SUCCESS.</p>
 <li>
 <p>If the RemoveScene command was received as a unicast, the server
 SHALL then generate a RemoveSceneResponse command with the Status
-field set to the evaluated status.
-If the RemoveScene command was received as a groupcast,
-the server SHALL NOT generate a RemoveSceneResponse command.</p>
+field set to the evaluated status.</p>
 </li>
 </ol>
 </div>
@@ -5218,9 +5213,7 @@ GroupID field, from its Scene Table and the status SHALL be SUCCESS.</p>
 <li>
 <p>If the RemoveAllScenes command was received as a unicast, the server
 SHALL then generate a RemoveAllScenesResponse command with the Status
-field set to the evaluated status.
-If the RemoveAllScenes command was received as a groupcast,
-the server SHALL NOT generate a RemoveAllScenesResponse command.</p>
+field set to the evaluated status.</p>
 </li>
 </ol>
 </div>
@@ -5379,9 +5372,7 @@ The status SHALL be SUCCESS.</p>
 <li>
 <p>If the StoreScene command was received as a unicast, the server SHALL
 then generate a StoreSceneResponse command with the Status field set
-to the evaluated status.<br>
-If the StoreScene command was received as a groupcast,
-the server SHALL NOT generate a StoreSceneResponse command.</p>
+to the evaluated status.<br></p>
 </li>
 </ol>
 </div>
@@ -5574,8 +5565,7 @@ The status SHALL be SUCCESS.</p>
 </li>
 <li>
 <p>If the RecallScene command was received as a unicast, the server SHALL then generate a response with the Status field set
-to the evaluated status.
-If the RecallScene command was received as a groupcast, the server SHALL NOT generate a response.</p>
+to the evaluated status.</p>
 </li>
 </ol>
 </div>
@@ -5659,8 +5649,7 @@ server continues from step 3.</p>
 <li>
 <p>If the GetSceneMembership command was received as a unicast, the
 server SHALL then generate a GetSceneMembershipResponse command with
-the Status field set to the evaluated status. If the GetSceneMembership
-command was received as a groupcast, the server SHALL NOT generate a response.</p>
+the Status field set to the evaluated status.</p>
 </li>
 </ol>
 </div>
@@ -5949,9 +5938,7 @@ In this case, scenes already copied SHALL be kept.</p>
 <li>
 <p>If the CopyScene command was received as a unicast, the server SHALL
 then generate a CopySceneResponse command with the Status field set to
-the evaluated status.
-If the CopyScene command was received as a groupcast,
-the server SHALL NOT generate a CopySceneResponse command.</p>
+the evaluated status.</p>
 </li>
 </ol>
 </div>
@@ -34178,37 +34165,37 @@ For this setting, the sequence, speeds and duration are MS.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off/Low/Med/High</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OffLowMedHigh</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan is capable of off, low, medium and high modes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[!AUT].a</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off/Low/High</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OffLowHigh</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan is capable of off, low and high modes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[!AUT].a</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off/Low/Med/High/Auto</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OffLowMedHighAuto</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan is capable of off, low, medium, high and auto modes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[AUT].a</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off/Low/High/Auto</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OffLowHighAuto</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan is capable of off, low, high and auto modes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[AUT].a</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off/High/Auto</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OffHighAuto</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan is capable of off, high and auto modes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[AUT].a</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Off/High</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OffHigh</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fan is capable of off and high modes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[!AUT].a</p></td>
 </tr>
@@ -48049,7 +48036,7 @@ of CONSTRAINT_ERROR will be returned.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O.b</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -48058,7 +48045,7 @@ of CONSTRAINT_ERROR will be returned.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O.b</p></td>
 </tr>
 </tbody>
 </table>
@@ -48171,7 +48158,7 @@ of CONSTRAINT_ERROR will be returned.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O.c</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -48180,7 +48167,7 @@ of CONSTRAINT_ERROR will be returned.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">O.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O.c</p></td>
 </tr>
 </tbody>
 </table>
@@ -65392,7 +65379,7 @@ load of the premises on the grid supply.</p>
 </div>
 <div class="paragraph">
 <p><strong>Solar PV inverter example:</strong> A solar PV inverter is normally connected to the
-premises wiring, so its generation power will be indicated as a negative integer, since power is flowing out of the node towards the mains connection.
+premises' wiring, so its generation power will be indicated as a negative integer, since power is flowing out of the node towards the mains connection.
 Note that at night (when there is no solar production) the PV inverter will
 consume some standby power, and this will result in a small positive power
 reading.</p>
@@ -67740,9 +67727,9 @@ power for.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_upon_receipt_2"><a class="anchor" href="#_effect_upon_receipt_2"></a>9.2.9.1.4. Effect upon receipt</h6>
+<h6 id="_effect_on_receipt_54"><a class="anchor" href="#_effect_on_receipt_54"></a>9.2.9.1.4. Effect on receipt</h6>
 <div class="paragraph">
-<p>Upon receipt, the ESA SHALL validate that the Power and Duration specified in
+<p>On receipt of this command, the ESA SHALL validate that the Power and Duration specified in
 the command are within the limits of its current operation and advertised
 <a href="#ref_PowerAdjustmentCapability">PowerAdjustmentCapability</a> attribute, the <a href="#ref_OptOutState">OptOutState</a>
 permits the specified <a href="#ref_AdjustmentCauseEnum">AdjustmentCauseEnum</a> (see <a href="#ref_OptOutState">OptOutState</a>
@@ -67836,9 +67823,9 @@ value to 'NoAdjustment'.</p>
 <p>Allows a client to cancel an ongoing PowerAdjustmentRequest operation.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_upon_receipt_3"><a class="anchor" href="#_effect_upon_receipt_3"></a>9.2.9.2.1. Effect upon receipt</h6>
+<h6 id="_effect_on_receipt_55"><a class="anchor" href="#_effect_on_receipt_55"></a>9.2.9.2.1. Effect on receipt</h6>
 <div class="paragraph">
-<p>Upon receipt, the ESA SHALL end the active power adjustment session and return
+<p>On receipt of this command, the ESA SHALL end the active power adjustment session and return
 to normal (or idle) power levels.</p>
 </div>
 <div class="paragraph">
@@ -67928,9 +67915,9 @@ sequence duration, SHALL be before the LatestEndTime.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_upon_receipt_4"><a class="anchor" href="#_effect_upon_receipt_4"></a>9.2.9.3.3. Effect upon receipt</h6>
+<h6 id="_effect_on_receipt_56"><a class="anchor" href="#_effect_on_receipt_56"></a>9.2.9.3.3. Effect on receipt</h6>
 <div class="paragraph">
-<p>Upon receipt, if the ESA supports <code>STA</code>, and the <a href="#ref_OptOutState">OptOutState</a>
+<p>On receipt of this command, if the ESA supports <code>STA</code>, and the <a href="#ref_OptOutState">OptOutState</a>
 permits the specified <a href="#ref_AdjustmentCauseEnum">AdjustmentCauseEnum</a> (see <a href="#ref_OptOutState">OptOutState</a> for details),
 and the RequestedStartTime adjustment would be within constraints
 described in <a href="#ref_RequestedStartTime">RequestedStartTime</a> then ESA SHALL accept the request to
@@ -68014,9 +68001,9 @@ in the ActiveSlotNumber index in the Slots list in the Forecast.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_upon_receipt_5"><a class="anchor" href="#_effect_upon_receipt_5"></a>9.2.9.4.3. Effect upon receipt</h6>
+<h6 id="_effect_on_receipt_57"><a class="anchor" href="#_effect_on_receipt_57"></a>9.2.9.4.3. Effect on receipt</h6>
 <div class="paragraph">
-<p>Upon receipt, if the ESA supports <code>PAU</code> and the SlotIsPausable field is
+<p>On receipt of this command, if the ESA supports <code>PAU</code> and the SlotIsPausable field is
 true in the ActiveSlotNumber index in the Slots list, the <a href="#ref_OptOutState">OptOutState</a>
 permits the specified <a href="#ref_AdjustmentCauseEnum">AdjustmentCauseEnum</a> (see <a href="#ref_OptOutState">OptOutState</a>
 for details), and the <a href="#ref_OptOutState">OptOutState</a>
@@ -68101,9 +68088,9 @@ Fault.</p>
 of operation.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_upon_receipt_6"><a class="anchor" href="#_effect_upon_receipt_6"></a>9.2.9.5.1. Effect upon receipt</h6>
+<h6 id="_effect_on_receipt_58"><a class="anchor" href="#_effect_on_receipt_58"></a>9.2.9.5.1. Effect on receipt</h6>
 <div class="paragraph">
-<p>Upon receipt, if the ESA supports <code>PAU</code> and it is currently Paused, the ESA MAY
+<p>On receipt of this command, if the ESA supports <code>PAU</code> and it is currently Paused, the ESA MAY
 decide not to resume immediately if the <a href="#ref_MinPauseDuration">MinPauseDuration</a> has not yet
 elapsed. This behavior is manufacturer specific.</p>
 </div>
@@ -68199,9 +68186,9 @@ modified in the corresponding Forecast with matching ForecastID.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_upon_receipt_7"><a class="anchor" href="#_effect_upon_receipt_7"></a>9.2.9.6.4. Effect upon receipt</h6>
+<h6 id="_effect_on_receipt_59"><a class="anchor" href="#_effect_on_receipt_59"></a>9.2.9.6.4. Effect on receipt</h6>
 <div class="paragraph">
-<p>Upon receipt, if the ESA supports <code>FA</code>, and the <a href="#ref_OptOutState">OptOutState</a>
+<p>On receipt of this command, if the ESA supports <code>FA</code>, and the <a href="#ref_OptOutState">OptOutState</a>
 permits the specified <a href="#ref_AdjustmentCauseEnum">AdjustmentCauseEnum</a> (see <a href="#ref_OptOutState">OptOutState</a>
 for details), it SHALL attempt to adjust its forecast.</p>
 </div>
@@ -68450,9 +68437,9 @@ use more or less energy using the LoadControl field as follows:</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_upon_receipt_8"><a class="anchor" href="#_effect_upon_receipt_8"></a>9.2.9.7.3. Effect upon receipt</h6>
+<h6 id="_effect_on_receipt_60"><a class="anchor" href="#_effect_on_receipt_60"></a>9.2.9.7.3. Effect on receipt</h6>
 <div class="paragraph">
-<p>Upon receipt, if the ESA supports <code>CON</code>, and the <a href="#ref_OptOutState">OptOutState</a>
+<p>On receipt of this command, if the ESA supports <code>CON</code>, and the <a href="#ref_OptOutState">OptOutState</a>
 permits the specified <a href="#ref_AdjustmentCauseEnum">AdjustmentCauseEnum</a> (see <a href="#ref_OptOutState">OptOutState</a>
 for details), it may be requested to generate a new forecast by a client.</p>
 </div>
@@ -68505,9 +68492,9 @@ otherwise the command SHALL be rejected with FAILURE.</p>
 <a href="#ref_RequestConstraintBasedForecast">RequestConstraintBasedForecast</a> command.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_upon_receipt_9"><a class="anchor" href="#_effect_upon_receipt_9"></a>9.2.9.8.1. Effect upon receipt</h6>
+<h6 id="_effect_on_receipt_61"><a class="anchor" href="#_effect_on_receipt_61"></a>9.2.9.8.1. Effect on receipt</h6>
 <div class="paragraph">
-<p>Upon receipt, the ESA SHALL attempt to cancel the effects of any previous
+<p>On receipt of this command, the ESA SHALL attempt to cancel the effects of any previous
 adjustment request commands, and re-evaluate its forecast for intended
 operation ignoring those previous requests.</p>
 </div>
@@ -70512,7 +70499,7 @@ since the start of the session.</p>
 <p>Allows a client to disable the EVSE from charging and discharging.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_54"><a class="anchor" href="#_effect_on_receipt_54"></a>9.3.9.1.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_62"><a class="anchor" href="#_effect_on_receipt_62"></a>9.3.9.1.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, the EVSE will stop any power flow between
 the EV and EVSE.</p>
@@ -70631,7 +70618,7 @@ value, and then later adjusted above this value, the resulting
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_55"><a class="anchor" href="#_effect_on_receipt_55"></a>9.3.9.2.4. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_63"><a class="anchor" href="#_effect_on_receipt_63"></a>9.3.9.2.4. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, this SHALL allow the EVSE to charge the EV until the specified
 timestamp within the current limits specified in the fields of the command.</p>
@@ -70734,7 +70721,7 @@ stored and persisted across reboots by the EVSE to the value of this field.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_56"><a class="anchor" href="#_effect_on_receipt_56"></a>9.3.9.3.3. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_64"><a class="anchor" href="#_effect_on_receipt_64"></a>9.3.9.3.3. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, this SHALL allow the EVSE to discharge the EV until the specified
 timestamp, and allows a maximum current limit to be specified in the fields of the command.</p>
@@ -70774,7 +70761,7 @@ is in the future or null).</p>
 <p>Allows a client to put the EVSE into a self-diagnostics mode.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_57"><a class="anchor" href="#_effect_on_receipt_57"></a>9.3.9.4.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_65"><a class="anchor" href="#_effect_on_receipt_65"></a>9.3.9.4.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, the EVSE SHALL enter a
 Diagnostics state only if the SupplyState attribute is in the Disabled
@@ -70843,7 +70830,7 @@ included in a single ChargingTargetSchedule within this list field.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_58"><a class="anchor" href="#_effect_on_receipt_58"></a>9.3.9.5.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_66"><a class="anchor" href="#_effect_on_receipt_66"></a>9.3.9.5.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, the EVSE SHALL validate that all of the
 charging targets are within a valid range, and that each day of the week is
@@ -70918,7 +70905,7 @@ accordingly.</p>
 <p>Allows a client to retrieve the current set of charging targets.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_59"><a class="anchor" href="#_effect_on_receipt_59"></a>9.3.9.6.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_67"><a class="anchor" href="#_effect_on_receipt_67"></a>9.3.9.6.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, the EVSE SHALL send the <a href="#ref_GetTargetsResponseCommand">GetTargetsResponse</a> command
 to the client.</p>
@@ -70977,7 +70964,7 @@ with their associated days of the week.</p>
 <p>Allows a client to clear all stored charging targets.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_60"><a class="anchor" href="#_effect_on_receipt_60"></a>9.3.9.8.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_68"><a class="anchor" href="#_effect_on_receipt_68"></a>9.3.9.8.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, all weekly targets that are currently stored SHALL be cleared
 and a default response of SUCCESS SHALL be sent in response. There are no error
@@ -71755,9 +71742,105 @@ A blank field indicates no change.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes_60"><a class="anchor" href="#_attributes_60"></a>9.4.5. Attributes</h4>
+<h4 id="_features_40"><a class="anchor" href="#_features_40"></a>9.4.5. Features</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Bit</th>
+<th class="tableblock halign-left valign-top">Code</th>
+<th class="tableblock halign-left valign-top">Feature</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
+<th class="tableblock halign-left valign-top">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DEPONOFF</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OnOff</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dependency with the OnOff cluster</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_attributes_60"><a class="anchor" href="#_attributes_60"></a>9.4.6. Attributes</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">ID</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Quality</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Access</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SupportedModes</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0001</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CurrentMode</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0002</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>StartUpMode</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x0003</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OnMode</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
+</tr>
+</tbody>
+</table>
 <div class="sect4">
-<h5 id="_supportedmodes_attribute_10"><a class="anchor" href="#_supportedmodes_attribute_10"></a>9.4.5.1. SupportedModes Attribute</h5>
+<h5 id="_supportedmodes_attribute_10"><a class="anchor" href="#_supportedmodes_attribute_10"></a>9.4.6.1. SupportedModes Attribute</h5>
 <div class="paragraph">
 <p>At least one entry in the SupportedModes attribute SHALL include the Manual mode tag
 in the ModeTags field list.</p>
@@ -71774,13 +71857,13 @@ in the SupportedModes attribute.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_derived_cluster_namespace_8"><a class="anchor" href="#_derived_cluster_namespace_8"></a>9.4.6. Derived Cluster Namespace</h4>
+<h4 id="_derived_cluster_namespace_8"><a class="anchor" href="#_derived_cluster_namespace_8"></a>9.4.7. Derived Cluster Namespace</h4>
 <div class="paragraph">
 <p>This namespace includes definitions for data associated exclusively with the
 derived cluster.</p>
 </div>
 <div class="sect4">
-<h5 id="_mode_tags_8"><a class="anchor" href="#_mode_tags_8"></a>9.4.6.1. Mode Tags</h5>
+<h5 id="_mode_tags_8"><a class="anchor" href="#_mode_tags_8"></a>9.4.7.1. Mode Tags</h5>
 <div class="paragraph">
 <p>The following table defines the derived cluster specific ModeTag values.</p>
 </div>
@@ -71815,14 +71898,14 @@ derived cluster.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_manual_tag"><a class="anchor" href="#_manual_tag"></a>9.4.6.1.1. Manual Tag</h6>
+<h6 id="_manual_tag"><a class="anchor" href="#_manual_tag"></a>9.4.7.1.1. Manual Tag</h6>
 <div class="paragraph">
 <p>While in modes with this tag, and once enabled with the EnableCharging command,
 the EVSE will permit charging based on demand from the EV.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_timeofuse_tag"><a class="anchor" href="#_timeofuse_tag"></a>9.4.6.1.2. TimeOfUse Tag</h6>
+<h6 id="_timeofuse_tag"><a class="anchor" href="#_timeofuse_tag"></a>9.4.7.1.2. TimeOfUse Tag</h6>
 <div class="paragraph">
 <p>While in modes with this tag, and once enabled with the EnableCharging command,
 the EVSE will attempt to automatically start charging based
@@ -71831,7 +71914,7 @@ times of the day).</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_solarcharging_tag"><a class="anchor" href="#_solarcharging_tag"></a>9.4.6.1.3. SolarCharging Tag</h6>
+<h6 id="_solarcharging_tag"><a class="anchor" href="#_solarcharging_tag"></a>9.4.7.1.3. SolarCharging Tag</h6>
 <div class="paragraph">
 <p>While in modes with this tag, and once enabled with the EnableCharging,
 the EVSE will attempt to automatically start charging based
@@ -71840,7 +71923,7 @@ importing energy from the grid.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_v2x_tag"><a class="anchor" href="#_v2x_tag"></a>9.4.6.1.4. V2X Tag</h6>
+<h6 id="_v2x_tag"><a class="anchor" href="#_v2x_tag"></a>9.4.7.1.4. V2X Tag</h6>
 <div class="paragraph">
 <p>While in modes with this tag, and once enabled with the EnableDischarging command,
 the EVSE will permit discharging based on the current charge state of the EV,
@@ -71864,7 +71947,7 @@ only modes with this tag enable the discharging to actually occur.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_mode_examples_5"><a class="anchor" href="#_mode_examples_5"></a>9.4.7. Mode Examples</h4>
+<h4 id="_mode_examples_5"><a class="anchor" href="#_mode_examples_5"></a>9.4.8. Mode Examples</h4>
 <div class="paragraph">
 <p>A few examples of EVSE modes and their mode tags are provided
 below.</p>
@@ -71983,7 +72066,7 @@ Support for Energy Preference cluster is provisional.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_features_40"><a class="anchor" href="#_features_40"></a>9.5.4. Features</h4>
+<h4 id="_features_41"><a class="anchor" href="#_features_41"></a>9.5.4. Features</h4>
 <div class="paragraph">
 <p>This cluster SHALL support the FeatureMap bitmap attribute as defined below.</p>
 </div>
@@ -72609,8 +72692,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 4961435 (local changes)<br>
-Last updated 2024-07-09 18:14:53 UTC
+Version master 99a6b8d (local changes)<br>
+Last updated 2024-07-10 00:00:29 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
