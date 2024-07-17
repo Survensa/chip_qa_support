@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master ad9a9ce (local changes),</span>
-<span id="revdate">2024-07-11 15:57:01 -0700</span>
+<span id="revnumber">version master 20c6d7f (local changes),</span>
+<span id="revdate">2024-07-16 13:38:14 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -30630,13 +30630,13 @@ range are still satisfactory.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1..0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CoolingStage</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Stage of cooling the HVAC system is using.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2..3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3..2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HeatingStage</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Stage of heating the HVAC system is using.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -46415,17 +46415,17 @@ maintenance mode:</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1..0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Global</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Global operational state.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2..3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3..2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Lift</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lift operational state.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4..5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5..4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tilt</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tilt operational state.</p></td>
 </tr>
@@ -49305,6 +49305,10 @@ it can support launching any application (AP feature supported).</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Initial Release</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Addition of new states to StatusEnum</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -49418,13 +49422,31 @@ it can support launching any application (AP feature supported).</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AppNotAvailable</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Requested app is not available.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requested app is not available</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SystemBusy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Video platform unable to honor command.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Video platform unable to honor command</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PendingUserApproval</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User approval for app download is pending</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Downloading</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Downloading the requested app</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Installing</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Installing the requested app</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 </tr>
 </tbody>
@@ -72692,8 +72714,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master ad9a9ce (local changes)<br>
-Last updated 2024-07-16 00:00:53 UTC
+Version master 20c6d7f (local changes)<br>
+Last updated 2024-07-17 00:00:29 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
