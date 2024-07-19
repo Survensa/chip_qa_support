@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 0556ac7 (local changes),</span>
-<span id="revdate">2024-07-17 23:42:55 -0700</span>
+<span id="revnumber">version master f78c257 (local changes),</span>
+<span id="revdate">2024-07-18 15:25:46 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -33214,7 +33214,7 @@ the value is clamped to those limits. This is not considered an error condition.
 <div class="sect5">
 <h6 id="_heat_bit"><a class="anchor" href="#_heat_bit"></a>4.3.10.2.1. Heat Bit</h6>
 <div class="paragraph">
-<p>If the server does not support the HEAT feature then it SHALL respond with INVALID_ARGUMENT.
+<p>If the server does not support the HEAT feature then it SHALL respond with INVALID_COMMAND.
 If the server supports the AUTO feature and the resulting setpoint would be invalid solely due to
 <a href="#ref_MinSetpointDeadBand">MinSetpointDeadBand</a> then the Cooling setpoint SHALL be increased sufficiently to maintain the deadband.</p>
 </div>
@@ -33222,7 +33222,7 @@ If the server supports the AUTO feature and the resulting setpoint would be inva
 <div class="sect5">
 <h6 id="_cool_bit"><a class="anchor" href="#_cool_bit"></a>4.3.10.2.2. Cool Bit</h6>
 <div class="paragraph">
-<p>If the server does not support the COOL feature then it SHALL respond with INVALID_ARGUMENT.
+<p>If the server does not support the COOL feature then it SHALL respond with INVALID_COMMAND.
 If the server supports the AUTO feature and the resulting setpoint would be invalid solely due to
 <a href="#ref_MinSetpointDeadBand">MinSetpointDeadBand</a> then the Heating setpoint SHALL be decreased sufficiently to maintain the deadband.</p>
 </div>
@@ -33251,7 +33251,7 @@ SHALL be sent in response.</p>
 </div>
 <div class="paragraph">
 <p>When a command is received that requires a total number of transitions greater than the device supports,
-the status of the response SHALL be INSUFFICIENT_SPACE.</p>
+the status of the response SHALL be RESOURCE_EXHAUSTED.</p>
 </div>
 <div class="paragraph">
 <p>When any of the setpoints sent in the sequence is out of range (AbsMin/MaxSetPointLimit), or
@@ -36445,9 +36445,13 @@ a credential.</p>
 </div>
 <div class="paragraph">
 <p>Week Day Schedules are used to restrict access to a specified time window on certain days
-of the week. The schedule is repeated each week. When a schedule is cleared this
-clears the access restrictions and grants unrestricted access to the user.
-The lock MAY automatically adjust the UserType when a schedule is created or cleared.</p>
+of the week. The schedule is repeated each week.</p>
+</div>
+<div class="paragraph">
+<p>The lock MAY automatically adjust the UserType when a schedule is created or cleared.</p>
+</div>
+<div class="paragraph">
+<p>Support for WeekDayAccessSchedules requires that the lock has the capability of keeping track of local time.</p>
 </div>
 </div>
 <div class="sect4">
@@ -36506,10 +36510,14 @@ This feature supports notification commands and masks used to filter these notif
 a credential.</p>
 </div>
 <div class="paragraph">
-<p>Year Day Schedules are used to restrict access to a specified date and time window.
-When a schedule is cleared this clears the access restrictions and grants
-unrestricted access to the user. The lock MAY automatically adjust the
+<p>Year Day Schedules are used to restrict access to a specified date and time window.</p>
+</div>
+<div class="paragraph">
+<p>The lock MAY automatically adjust the
 UserType when a schedule is created or cleared.</p>
+</div>
+<div class="paragraph">
+<p>Support for YearDayAccessSchedules requires that the lock has the capability of keeping track of local time.</p>
 </div>
 </div>
 <div class="sect4">
@@ -36518,6 +36526,9 @@ UserType when a schedule is created or cleared.</p>
 <p>This feature is used to setup Holiday Schedule in the lock device. A Holiday
 Schedule sets a start and stop end date/time for the lock to use the specified
 operating mode set by the Holiday Schedule.</p>
+</div>
+<div class="paragraph">
+<p>Support for HolidaySchedules requires that the lock has the capability of keeping track of local time.</p>
 </div>
 </div>
 <div class="sect4">
@@ -38094,12 +38105,38 @@ operation performed.</p>
 <div class="paragraph">
 <p>This value SHALL indicate the user has the ability to open lock within a specific time period (e.g., guest).</p>
 </div>
+<div class="paragraph">
+<p>When UserType is set to YearDayScheduleUser, user access SHALL be restricted as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If no YearDaySchedules are set for the user, then access SHALL be denied</p>
+</li>
+<li>
+<p>If one or more YearDaySchedules are set, user access SHALL be granted if and only if the current time falls within at least one of the YearDaySchedules.  If current time is not known, user access SHALL NOT be granted.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect5">
 <h6 id="_weekdayscheduleuser_value"><a class="anchor" href="#_weekdayscheduleuser_value"></a>5.2.6.19.3. WeekDayScheduleUser Value</h6>
 <div class="paragraph">
 <p>This value SHALL indicate the user has the ability to open lock based on specific time period within a
 reoccurring weekly schedule (e.g., cleaning worker).</p>
+</div>
+<div class="paragraph">
+<p>When UserType is set to WeekDayScheduleUser, user access SHALL be restricted as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If no WeekDaySchedules are set for the user, then access SHALL be denied</p>
+</li>
+<li>
+<p>If one or more WeekDaySchedules are set, user access SHALL be granted if and only if the current time falls within at least one of the WeekDaySchedules.  If current time is not known, user access SHALL NOT be granted.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect5">
@@ -38149,6 +38186,25 @@ is honored.</p>
 <h6 id="_schedulerestricteduser_value"><a class="anchor" href="#_schedulerestricteduser_value"></a>5.2.6.19.9. ScheduleRestrictedUser Value</h6>
 <div class="paragraph">
 <p>This value SHALL indicate the user access is restricted by Week Day and/or Year Day schedule.</p>
+</div>
+<div class="paragraph">
+<p>When UserType is set to ScheduleRestrictedUser, user access SHALL be restricted as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If no WeekDaySchedules and no YearDaySchedules are set for the user, then access SHALL be denied</p>
+</li>
+<li>
+<p>If one or more WeekDaySchedules are set, but no YearDaySchedules are set for the user, then user access SHALL be equivalent to the WeekDayScheduleUser UserType</p>
+</li>
+<li>
+<p>If one or more YearDaySchedules are set, but no WeekDaySchedules are set for the user, then user access SHALL be equivalent to the YearDayScheduleUser UserType</p>
+</li>
+<li>
+<p>If one or WeekDaySchedules are set AND one or more YearDaySchedules are set, then user access SHALL be granted if and only if the current time falls within at least one of the WeekDaySchedules AND the current time falls within at least one of the YearDaySchedules.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect5">
@@ -41588,10 +41644,6 @@ when a Week Day schedule is set.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">INVALID_COMMAND</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>One or more fields violates constraints or is invalid.</p>
-</div>
-<div class="paragraph">
-<p>Door lock is unable to set Week Day schedule for more than one day in
-DaysMask map (e.g. need to use separate schedules for each day).</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -42792,14 +42844,6 @@ to clear schedules to switch).</pre>
 <h6 id="_usertype_field"><a class="anchor" href="#_usertype_field"></a>5.2.10.24.2. UserType Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the user type.</p>
-</div>
-<div class="paragraph">
-<p>If UserType is currently YearDayScheduleUser, WeekDayScheduleUser, or
-ScheduleRestrictedUser and the new UserType is UnrestrictedUser then all
-existing Year Day and/or Week Day schedules SHALL be ignored or disabled
-(if this transition is supported by the door lock). If UserType is
-ScheduleRestrictedUser and the new UserType is ScheduleRestrictedUser then
-all existing Year Day and/or Week Day schedules SHALL be applied or enabled.</p>
 </div>
 </div>
 </div>
@@ -72714,8 +72758,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 0556ac7 (local changes)<br>
-Last updated 2024-07-18 06:43:12 UTC
+Version master f78c257 (local changes)<br>
+Last updated 2024-07-18 22:25:58 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
