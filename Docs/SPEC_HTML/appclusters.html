@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master f78c257 (local changes),</span>
-<span id="revdate">2024-07-18 15:25:46 -0700</span>
+<span id="revnumber">version master 8df51b0 (local changes),</span>
+<span id="revdate">2024-07-18 16:57:14 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -58152,7 +58152,64 @@ Support for Content Control cluster is provisional.
 <div class="sect3">
 <h4 id="_data_types_39"><a class="anchor" href="#_data_types_39"></a>6.13.5. Data Types</h4>
 <div class="sect4">
-<h5 id="ref_RatingNameStruct"><a class="anchor" href="#ref_RatingNameStruct"></a>6.13.5.1. RatingNameStruct Type</h5>
+<h5 id="ref_DayOfWeekBitmap"><a class="anchor" href="#ref_DayOfWeekBitmap"></a>6.13.5.1. DayOfWeekBitmap type</h5>
+<div class="paragraph">
+<p>This data type is derived from map8.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Bit</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Sunday</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sunday</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Monday</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Monday</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tuesday</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tuesday</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Wednesday</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wednesday</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Thursday</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thursday</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Friday</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Friday</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Saturday</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Saturday</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="ref_RatingNameStruct"><a class="anchor" href="#ref_RatingNameStruct"></a>6.13.5.2. RatingNameStruct Type</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -58200,7 +58257,7 @@ Support for Content Control cluster is provisional.
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_ratingname_field"><a class="anchor" href="#_ratingname_field"></a>6.13.5.1.1. RatingName Field</h6>
+<h6 id="_ratingname_field"><a class="anchor" href="#_ratingname_field"></a>6.13.5.2.1. RatingName Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the name of the rating level of the applied rating system.
 The applied rating system is dependent upon the region or country where the Node has been provisioned,
@@ -58208,14 +58265,14 @@ and may vary from one country to another.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_ratingnamedesc_field"><a class="anchor" href="#_ratingnamedesc_field"></a>6.13.5.1.2. RatingNameDesc Field</h6>
+<h6 id="_ratingnamedesc_field"><a class="anchor" href="#_ratingnamedesc_field"></a>6.13.5.2.2. RatingNameDesc Field</h6>
 <div class="paragraph">
 <p>This field SHALL specify a human readable (displayable) description for RatingName.</p>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_BlockChannelStruct"><a class="anchor" href="#ref_BlockChannelStruct"></a>6.13.5.2. BlockChannelStruct Type</h5>
+<h5 id="ref_BlockChannelStruct"><a class="anchor" href="#ref_BlockChannelStruct"></a>6.13.5.3. BlockChannelStruct Type</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -58283,14 +58340,14 @@ and may vary from one country to another.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_blockchannelindex_field"><a class="anchor" href="#_blockchannelindex_field"></a>6.13.5.2.1. BlockChannelIndex Field</h6>
+<h6 id="_blockchannelindex_field"><a class="anchor" href="#_blockchannelindex_field"></a>6.13.5.3.1. BlockChannelIndex Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate a unique index value for a blocked channel. This value may be used to indicate one selected channel which
 will be removed from BlockChannelList attribute.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_majornumber_field_3"><a class="anchor" href="#_majornumber_field_3"></a>6.13.5.2.2. MajorNumber Field</h6>
+<h6 id="_majornumber_field_3"><a class="anchor" href="#_majornumber_field_3"></a>6.13.5.3.2. MajorNumber Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the channel major number value (for example, using ATSC format). When
 the channel number is expressed as a string, such as "13.1" or "256", the major number would be 13
@@ -58298,7 +58355,7 @@ or 256, respectively. This field is required but SHALL be set to 0 for channels 
 </div>
 </div>
 <div class="sect5">
-<h6 id="_minornumber_field_3"><a class="anchor" href="#_minornumber_field_3"></a>6.13.5.2.3. MinorNumber Field</h6>
+<h6 id="_minornumber_field_3"><a class="anchor" href="#_minornumber_field_3"></a>6.13.5.3.3. MinorNumber Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the channel minor number value (for example, using ATSC format). When
 the channel number is expressed as a string, such as "13.1" or "256", the minor number would be 1
@@ -58306,7 +58363,7 @@ or 0, respectively. This field is required but SHALL be set to 0 for channels su
 </div>
 </div>
 <div class="sect5">
-<h6 id="_identifier"><a class="anchor" href="#_identifier"></a>6.13.5.2.4. Identifier</h6>
+<h6 id="_identifier"><a class="anchor" href="#_identifier"></a>6.13.5.3.4. Identifier</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the unique identifier for a specific channel. This field is optional,
 but SHOULD be provided when MajorNumber and MinorNumber are not available.</p>
@@ -58314,7 +58371,7 @@ but SHOULD be provided when MajorNumber and MinorNumber are not available.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_AppInfoStruct"><a class="anchor" href="#ref_AppInfoStruct"></a>6.13.5.3. AppInfoStruct Type</h5>
+<h5 id="ref_AppInfoStruct"><a class="anchor" href="#ref_AppInfoStruct"></a>6.13.5.4. AppInfoStruct Type</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -58362,7 +58419,7 @@ but SHOULD be provided when MajorNumber and MinorNumber are not available.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_catalogvendorid_field_3"><a class="anchor" href="#_catalogvendorid_field_3"></a>6.13.5.3.1. CatalogVendorID Field</h6>
+<h6 id="_catalogvendorid_field_3"><a class="anchor" href="#_catalogvendorid_field_3"></a>6.13.5.4.1. CatalogVendorID Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the CSA-issued vendor ID for the catalog. The DIAL registry SHALL use value 0x0000.</p>
 </div>
@@ -58371,14 +58428,14 @@ but SHOULD be provided when MajorNumber and MinorNumber are not available.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_applicationid_field_3"><a class="anchor" href="#_applicationid_field_3"></a>6.13.5.3.2. ApplicationID field</h6>
+<h6 id="_applicationid_field_3"><a class="anchor" href="#_applicationid_field_3"></a>6.13.5.4.2. ApplicationID field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the application identifier, expressed as a string, such as "PruneVideo" or "Company X". This field SHALL be unique within a catalog.</p>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_TimeWindowStruct"><a class="anchor" href="#ref_TimeWindowStruct"></a>6.13.5.4. TimeWindowStruct Type</h5>
+<h5 id="ref_TimeWindowStruct"><a class="anchor" href="#ref_TimeWindowStruct"></a>6.13.5.5. TimeWindowStruct Type</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -58436,81 +58493,24 @@ but SHOULD be provided when MajorNumber and MinorNumber are not available.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_timewindowindex_field"><a class="anchor" href="#_timewindowindex_field"></a>6.13.5.4.1. TimeWindowIndex Field</h6>
+<h6 id="_timewindowindex_field"><a class="anchor" href="#_timewindowindex_field"></a>6.13.5.5.1. TimeWindowIndex Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate a unique index of a specific time window.
 This value may be used to indicate a selected time window which will be removed from the BlockContentTimeWindow attribute.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_dayofweek_field"><a class="anchor" href="#_dayofweek_field"></a>6.13.5.4.2. DayOfWeek Field</h6>
+<h6 id="_dayofweek_field"><a class="anchor" href="#_dayofweek_field"></a>6.13.5.5.2. DayOfWeek Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate a day of week.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_timeperiod_field"><a class="anchor" href="#_timeperiod_field"></a>6.13.5.4.3. TimePeriod Field</h6>
+<h6 id="_timeperiod_field"><a class="anchor" href="#_timeperiod_field"></a>6.13.5.5.3. TimePeriod Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate one or more discrete time periods.</p>
 </div>
 </div>
-</div>
-<div class="sect4">
-<h5 id="ref_DayOfWeekBitmap"><a class="anchor" href="#ref_DayOfWeekBitmap"></a>6.13.5.5. DayOfWeekBitmap type</h5>
-<div class="paragraph">
-<p>This data type is derived from map8.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">bit</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Summary</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Sunday</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sunday</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Monday</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Monday</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tuesday</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Tuesday</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Wednesday</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Wednesday</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Thursday</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Thursday</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Friday</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Friday</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Saturday</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Saturday</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect4">
 <h5 id="ref_TimePeriodStruct"><a class="anchor" href="#ref_TimePeriodStruct"></a>6.13.5.6. TimePeriodStruct type</h5>
@@ -60373,20 +60373,31 @@ for an optimal subsequent cleaning experience.
 <div class="sect3">
 <h4 id="_mode_use"><a class="anchor" href="#_mode_use"></a>7.2.8. Mode Use</h4>
 <div class="paragraph">
-<p>Starting a cleaning cycle SHALL be done by switching from a mode with the Idle mode tag
+<p>If the DirectModeChange feature is not present:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Clients SHALL start a cleaning cycle by switching from a mode with the Idle mode tag
 to a mode with the Cleaning mode tag.</p>
-</div>
-<div class="paragraph">
-<p>Stopping a cleaning cycle SHALL be done by switching from a mode with the Cleaning mode tag
+</li>
+<li>
+<p>Clients SHALL stop a cleaning cycle by switching from a mode with the Cleaning mode tag
 to a mode with the Idle mode tag.</p>
-</div>
-<div class="paragraph">
-<p>Starting a mapping cycle SHALL be done by switching from a mode with the Idle mode tag
+</li>
+<li>
+<p>Clients SHALL start a mapping cycle by switching from a mode with the Idle mode tag
 to a mode with the Mapping mode tag.</p>
+</li>
+<li>
+<p>Clients SHALL stop a mapping cycle by switching from a mode with the Mapping mode tag
+to a mode with the Idle mode tag.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Stopping a mapping cycle SHALL be done by switching from a mode with the Mapping mode tag
-to a mode with the Idle mode tag.</p>
+<p>If the DirectModeChange feature is present, clients MAY change between run modes without
+needing to set an Idle mode first.</p>
 </div>
 <div class="paragraph">
 <p>The RVC Run Mode cluster&#8217;s SupportedModes attribute MAY include multiple modes with the Cleaning mode tag,
@@ -72758,8 +72769,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master f78c257 (local changes)<br>
-Last updated 2024-07-18 22:25:58 UTC
+Version master 8df51b0 (local changes)<br>
+Last updated 2024-07-19 02:00:06 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
