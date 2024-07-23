@@ -1,20 +1,3 @@
-- testcase: "[TC-LVL-1.1] Global attributes with server as DUT"
-  commands:
-    - command: "./chip-tool levelcontrol read cluster-revision 1 1"
-      logs:
-        - " "
-    - command: "./chip-tool levelcontrol read feature-map 1 1"
-      logs:
-        - " "
-    - command: "./chip-tool levelcontrol read attribute-list 1 1"
-      logs:
-        - " "
-    - command: "./chip-tool levelcontrol read  accepted-command-list  1 1"
-      logs:
-        - " "
-    - command: "./chip-tool levelcontrol read generated-command-list  1 1"
-      logs:
-        - " "
 - testcase: "[TC-LVL-2.1] Read cluster attributes (DUT as Server)"
   commands:
     - command: "./chip-tool levelcontrol read current-level 1 1"
@@ -308,6 +291,18 @@
     - command: "./chip-tool levelcontrol read current-level 1 1"
       logs:
         - " "
+    - command: "./chip-tool levelcontrol read min-level 1 1"
+      logs:
+        - " "
+    - command: " ./chip-tool levelcontrol move-to-level 1 0  0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool levelcontrol move 0 0 0 0 1 1"
+      logs:
+        - " "
+     - command: " ./chip-tool levelcontrol read current-level 1 1"
+      logs:
+        - " "        
 - testcase: "[TC-LVL-5.1] Step Verification (DUT as Server)"
   commands:
     - command: "./chip-tool levelcontrol write  options 0x00 1 1"
