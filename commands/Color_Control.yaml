@@ -605,7 +605,7 @@
     - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
       logs:
         - " "
-     - command: "./chip-tool colorcontrol move-saturation 1 0 0 0 1 1"
+    - command: "./chip-tool colorcontrol move-saturation 1 0 0 0 1 1"
       logs:
         - " "
     - command: "./chip-tool colorcontrol move-saturation 3 0 0 0 1 1"
