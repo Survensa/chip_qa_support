@@ -231,7 +231,7 @@
         - " "
 - testcase: "[TC-LVL-4.1] Move Verification (DUT as Server)"
   commands:
-    - command: "./chip-tool levelcontrol write  options 0x00 1 1"
+    - command: "./chip-tool levelcontrol write options 0x00 1 1"
       logs:
         - " "
     - command: "./chip-tool levelcontrol read max-level 1 1"
