@@ -300,6 +300,9 @@
     - command: "./chip-tool levelcontrol move 0 0 0 0 1 1"
       logs:
         - " "
+    - command: "sleep 5"
+      logs:
+       - " "
      - command: " ./chip-tool levelcontrol read current-level 1 1"
       logs:
         - " "        
