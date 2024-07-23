@@ -369,7 +369,13 @@
         - " "
     - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
       logs:
+    - command: " ./chip-tool colorcontrol move-hue 1 0 0 0 1 1"
+      logs:
         - " "
+    - command: "./chip-tool colorcontrol move-hue 3 0 0 0 1 1"
+      logs:    - " "
+    - command: "./chip-tool colorcontrol move-hue 0 0 0 0 1 1"
+      logs:    - " "      
 - testcase: "[TC-CC-3.3] Hue Step functionality with server as DUT"
   commands:
     - command: "./chip-tool colorcontrol write options 0x00 1 1"
@@ -432,6 +438,11 @@
     - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
       logs:
         - " "
+            - command: "./chip-tool colorcontrol step-hue 1 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-hue 3 0 0 0 0 1 1"
+      logs:    - " "
 - testcase: "[TC-CC-3.4] Hue functionality with client as DUT"
   commands:
     - command: "./chip-tool onoff on 1 1"
@@ -591,6 +602,15 @@
     - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
       logs:
         - " "
+     - command: "./chip-tool colorcontrol move-saturation 1 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-saturation 3 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-saturation 0 0 0 0 1 1"
+      logs:
+        - " "   
 - testcase: "[TC-CC-4.3] Saturation Step functionality with server as DUT"
   commands:
     - command: "./chip-tool colorcontrol write options 0x00 1 1"
@@ -671,6 +691,12 @@
     - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
       logs:
         - " "
+    - command: "./chip-tool colorcontrol step-saturation 1 0 200 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol step-saturation 3 0 200 0 0 1 1"
+      logs:
+        - " "   
 - testcase: "[TC-CC-4.4] MoveToHueAndSaturation functionality with server as DUT"
   commands:
     - command: "./chip-tool colorcontrol write options 0x00 1 1"
@@ -967,6 +993,9 @@
     - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
       logs:
         - " "
+    - command: "./chip-tool colorcontrol move-color 0 0 0 0 1 1"
+      logs:
+        - " "     
 - testcase: "[TC-CC-5.3] Color Step functionality with server as DUT"
   commands:
     - command: "./chip-tool colorcontrol write options 0x00 1 1"
@@ -1014,6 +1043,9 @@
     - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
       logs:
         - " "
+    - command: "./chip-tool colorcontrol step-color 0 0 200 0 0 1 1"
+      logs:
+        - " "  
 - testcase: "[TC-CC-5.4] Color functionality with client as DUT"
   commands:
     - command: "./chip-tool onoff on 1 1"
@@ -1194,6 +1226,15 @@
     - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
       logs:
         - " "
+    - command: "./chip-tool colorcontrol move-color-temperature  1  0 0  65279 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-color-temperature  3 0 0 65279 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol move-color-temperature  0  0 0 65279 0 0 1 1"
+      logs:
+        - " "
 - testcase: "[TC-CC-6.3] Color Temperature Step functionality with server as DUT"
   commands:
     - command: "./chip-tool colorcontrol write options 0x00 1 1"
@@ -1260,6 +1301,12 @@
       logs:
         - " "
     - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+    - command: " ./chip-tool colorcontrol step-color-temperature 1 0 0 0 65279 0 0 1 1"
+      logs:
+        - " "
+    - command: " ./chip-tool colorcontrol step-color-temperature 3 0 0 0 65279 0 0 1 1"
       logs:
         - " "
 - testcase: "[TC-CC-6.4] Color Temperature functionality with client as DUT"
@@ -1511,6 +1558,15 @@
     - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
       logs:
         - " "
+     - command: "./chip-tool colorcontrol enhanced-move-to-hue 1 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 3 0 0 0 0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-move-to-hue 0 0 0 0 0 1 1"
+      logs:
+        - " "
 - testcase: "[TC-CC-7.3] Enhanced Step functionality with server as DUT"
   commands:
     - command: "./chip-tool colorcontrol write options 0x00 1 1"
@@ -1583,6 +1639,12 @@
       logs:
         - " "
     - command: "./chip-tool colorcontrol read enhanced-color-mode 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-step-hue 1 0 0 0  0 1 1"
+      logs:
+        - " "
+    - command: "./chip-tool colorcontrol enhanced-step-hue 3 0 0 0  0 1 1"
       logs:
         - " "
 - testcase: "[TC-CC-7.4] MoveToEnhancedHueAndSaturation functionality with server as DUT"
