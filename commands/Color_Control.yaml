@@ -373,9 +373,11 @@
       logs:
         - " "
     - command: "./chip-tool colorcontrol move-hue 3 0 0 0 1 1"
-      logs:    - " "
+      logs:   
+        - " "
     - command: "./chip-tool colorcontrol move-hue 0 0 0 0 1 1"
-      logs:    - " "      
+      logs:   
+        - " "      
 - testcase: "[TC-CC-3.3] Hue Step functionality with server as DUT"
   commands:
     - command: "./chip-tool colorcontrol write options 0x00 1 1"
@@ -442,7 +444,8 @@
       logs:
         - " "
     - command: "./chip-tool colorcontrol step-hue 3 0 0 0 0 1 1"
-      logs:    - " "
+      logs:    
+        - " "
 - testcase: "[TC-CC-3.4] Hue functionality with client as DUT"
   commands:
     - command: "./chip-tool onoff on 1 1"
