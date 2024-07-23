@@ -303,9 +303,9 @@
     - command: "sleep 5"
       logs:
        - " "
-     - command: " ./chip-tool levelcontrol read current-level 1 1"
+    - command: " ./chip-tool levelcontrol read current-level 1 1"
       logs:
-        - " "        
+       - " "        
 - testcase: "[TC-LVL-5.1] Step Verification (DUT as Server)"
   commands:
     - command: "./chip-tool levelcontrol write  options 0x00 1 1"
