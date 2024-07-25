@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master db37e2a (local changes),</span>
-<span id="revdate">2024-07-23 07:00:34 -0700</span>
+<span id="revnumber">version master 858573d (local changes),</span>
+<span id="revdate">2024-07-24 16:58:53 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -33157,12 +33157,6 @@ measured locally or remotely (over the network).</p>
 </table>
 <div class="sect4">
 <h5 id="_setpointraiselower_command"><a class="anchor" href="#_setpointraiselower_command"></a>4.3.10.1. SetpointRaiseLower Command</h5>
-<div class="paragraph">
-<p>Upon receipt, the attributes for the indicated setpoint(s) SHALL have the amount specified in the Amount field added to them.
-If the resulting value is outside the limits imposed by <a href="#ref_MinCoolSetpointLimit">MinCoolSetpointLimit</a>,
-<a href="#ref_MaxCoolSetpointLimit">MaxCoolSetpointLimit</a>, <a href="#ref_MinHeatSetpointLimit">MinHeatSetpointLimit</a> and <a href="#ref_MaxHeatSetpointLimit">MaxHeatSetpointLimit</a>,
-the value is clamped to those limits. This is not considered an error condition.</p>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 14.2857%;">
@@ -33205,73 +33199,66 @@ the value is clamped to those limits. This is not considered an error condition.
 </tr>
 </tbody>
 </table>
-</div>
-<div class="sect4">
-<h5 id="_mode_field_4"><a class="anchor" href="#_mode_field_4"></a>4.3.10.2. Mode Field</h5>
+<div class="sect5">
+<h6 id="_mode_field_4"><a class="anchor" href="#_mode_field_4"></a>4.3.10.1.1. Mode Field</h6>
 <div class="paragraph">
 <p>The field SHALL specify which setpoints are to be adjusted.</p>
 </div>
-<div class="sect5">
-<h6 id="_heat_bit"><a class="anchor" href="#_heat_bit"></a>4.3.10.2.1. Heat Bit</h6>
+<div class="sect6">
+<h7 id="_heat_value"><a class="anchor" href="#_heat_value"></a>4.3.10.1.1.1. Heat Value</h7>
 <div class="paragraph">
 <p>If the server does not support the HEAT feature then it SHALL respond with INVALID_COMMAND.
 If the server supports the AUTO feature and the resulting setpoint would be invalid solely due to
 <a href="#ref_MinSetpointDeadBand">MinSetpointDeadBand</a> then the Cooling setpoint SHALL be increased sufficiently to maintain the deadband.</p>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_cool_bit"><a class="anchor" href="#_cool_bit"></a>4.3.10.2.2. Cool Bit</h6>
+<div class="sect6">
+<h7 id="_cool_value"><a class="anchor" href="#_cool_value"></a>4.3.10.1.1.2. Cool Value</h7>
 <div class="paragraph">
 <p>If the server does not support the COOL feature then it SHALL respond with INVALID_COMMAND.
 If the server supports the AUTO feature and the resulting setpoint would be invalid solely due to
 <a href="#ref_MinSetpointDeadBand">MinSetpointDeadBand</a> then the Heating setpoint SHALL be decreased sufficiently to maintain the deadband.</p>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_both_bit"><a class="anchor" href="#_both_bit"></a>4.3.10.2.3. Both Bit</h6>
+<div class="sect6">
+<h7 id="_both_value"><a class="anchor" href="#_both_value"></a>4.3.10.1.1.3. Both Value</h7>
 <div class="paragraph">
 <p>The client MAY indicate Both regardless of the server feature support.
 The server SHALL only adjust the setpoint that it supports and not respond with an error.</p>
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_amount_field"><a class="anchor" href="#_amount_field"></a>4.3.10.3. Amount Field</h5>
+<div class="sect5">
+<h6 id="_amount_field"><a class="anchor" href="#_amount_field"></a>4.3.10.1.2. Amount Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the amount (possibly negative) that
 should be added to the setpoint(s), in steps of 0.1°C.</p>
 </div>
 </div>
+<div class="sect5">
+<h6 id="_effect_on_receipt_47"><a class="anchor" href="#_effect_on_receipt_47"></a>4.3.10.1.3. Effect on Receipt</h6>
+<div class="paragraph">
+<p>Upon receipt, the attributes for the indicated setpoint(s) SHALL have the amount specified in the Amount field added to them.
+If the resulting value is outside the limits imposed by <a href="#ref_MinCoolSetpointLimit">MinCoolSetpointLimit</a>,
+<a href="#ref_MaxCoolSetpointLimit">MaxCoolSetpointLimit</a>, <a href="#ref_MinHeatSetpointLimit">MinHeatSetpointLimit</a> and <a href="#ref_MaxHeatSetpointLimit">MaxHeatSetpointLimit</a>,
+the value is clamped to those limits. This is not considered an error condition.</p>
+</div>
+</div>
+</div>
 <div class="sect4">
-<h5 id="ref_SetWeeklySchedule"><a class="anchor" href="#ref_SetWeeklySchedule"></a>4.3.10.4. SetWeeklySchedule Command</h5>
+<h5 id="ref_SetWeeklySchedule"><a class="anchor" href="#ref_SetWeeklySchedule"></a>4.3.10.2. SetWeeklySchedule Command</h5>
 <div class="paragraph">
-<p>Upon receipt, the weekly schedule for updating setpoints SHALL be stored in the
-thermostat and SHOULD begin at the time of receipt. A status code
-SHALL be sent in response.</p>
-</div>
-<div class="paragraph">
-<p>When a command is received that requires a total number of transitions greater than the device supports,
-the status of the response SHALL be RESOURCE_EXHAUSTED.</p>
-</div>
-<div class="paragraph">
-<p>When any of the setpoints sent in the sequence is out of range (AbsMin/MaxSetPointLimit), or
-when the Mode for Sequence field includes a mode not supported by the device,
-the status of the response SHALL be CONSTRAINT_ERROR and no setpoints from the entire
-sequence SHOULD be used.</p>
-</div>
-<div class="paragraph">
-<p>When an overlapping transition is detected, the status of the response SHALL be FAILURE.</p>
-</div>
-<div class="paragraph">
-<p>When a device which does not support multiple days in a command receives a command with
-more than one bit set in the DayOfWeekForSequence field, or
-when a device which does not support multiple modes in a command receives a command with
-more than one bit set in the ModeForSequence field, or
-when the contents of the Transitions field does not agree with NumberOfTransitionsForSequence,
-DayOfWeekForSequence or ModeForSequence, the status of the response SHALL be INVALID_COMMAND.</p>
-</div>
-<div class="paragraph">
-<p>When the transitions could be added successfully, the status of the response SHALL be SUCCESS.</p>
+<p>This command is used to update the thermostat weekly
+setpoint schedule from a management system. If the thermostat already
+has a weekly setpoint schedule programmed, then it SHOULD replace each
+daily setpoint set as it receives the updates from the management
+system. For example, if the thermostat has 4 setpoints for every day of
+the week and is sent a SetWeeklySchedule command with one setpoint
+for Saturday then the thermostat SHOULD remove all 4 setpoints for
+Saturday and replace those with the updated setpoint but leave all
+other days unchanged. If the schedule is larger than what fits in one
+frame or contains more than 10 transitions, the schedule SHALL then be
+sent using multiple SetWeeklySchedule Commands.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -33333,21 +33320,8 @@ DayOfWeekForSequence or ModeForSequence, the status of the response SHALL be INV
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>The set weekly schedule command is used to update the thermostat weekly
-setpoint schedule from a management system. If the thermostat already
-has a weekly setpoint schedule programmed, then it SHOULD replace each
-daily setpoint set as it receives the updates from the management
-system. For example, if the thermostat has 4 setpoints for every day of
-the week and is sent a Set Weekly Schedule command with one setpoint
-for Saturday then the thermostat SHOULD remove all 4 setpoints for
-Saturday and replace those with the updated setpoint but leave all
-other days unchanged. If the schedule is larger than what fits in one
-frame or contains more than 10 transitions, the schedule SHALL then be
-sent using multiple Set Weekly Schedule Commands.</p>
-</div>
 <div class="sect5">
-<h6 id="_numberoftransitionsforsequence_field"><a class="anchor" href="#_numberoftransitionsforsequence_field"></a>4.3.10.4.1. NumberOfTransitionsForSequence Field</h6>
+<h6 id="_numberoftransitionsforsequence_field"><a class="anchor" href="#_numberoftransitionsforsequence_field"></a>4.3.10.2.1. NumberOfTransitionsForSequence Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate how many
 individual transitions to expect for this sequence of commands. If a
@@ -33357,7 +33331,7 @@ containing the separate information that the device needs to set.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_dayofweekforsequence_field"><a class="anchor" href="#_dayofweekforsequence_field"></a>4.3.10.4.2. DayOfWeekForSequence Field</h6>
+<h6 id="_dayofweekforsequence_field"><a class="anchor" href="#_dayofweekforsequence_field"></a>4.3.10.2.2. DayOfWeekForSequence Field</h6>
 <div class="paragraph">
 <p>This field SHALL represent the day of the week at which all the transitions
 within the payload of the command SHOULD be associated to. This field is
@@ -33371,7 +33345,7 @@ transition. There can be up to 10 transitions for each command.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_modeforsequence_field"><a class="anchor" href="#_modeforsequence_field"></a>4.3.10.4.3. ModeForSequence Field</h6>
+<h6 id="_modeforsequence_field"><a class="anchor" href="#_modeforsequence_field"></a>4.3.10.2.3. ModeForSequence Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate how the application decodes the setpoint
 fields of each transition in the Transitions list.</p>
@@ -33401,23 +33375,46 @@ to ensure the command is decoded and handled correctly.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_transitions_field"><a class="anchor" href="#_transitions_field"></a>4.3.10.4.4. Transitions Field</h6>
+<h6 id="_transitions_field"><a class="anchor" href="#_transitions_field"></a>4.3.10.2.4. Transitions Field</h6>
 <div class="paragraph">
 <p>This field SHALL contain the list of setpoint transitions used to update the specified daily schedules</p>
 </div>
 </div>
+<div class="sect5">
+<h6 id="_effect_on_receipt_48"><a class="anchor" href="#_effect_on_receipt_48"></a>4.3.10.2.5. Effect on Receipt</h6>
+<div class="paragraph">
+<p>Upon receipt, the weekly schedule for updating setpoints SHALL be stored in the
+thermostat and SHOULD begin at the time of receipt. A status code
+SHALL be sent in response.</p>
+</div>
+<div class="paragraph">
+<p>When a command is received that requires a total number of transitions greater than the device supports,
+the status of the response SHALL be INSUFFICIENT_SPACE.</p>
+</div>
+<div class="paragraph">
+<p>When any of the setpoints sent in the sequence is out of range (AbsMin/MaxSetPointLimit), or
+when the Mode for Sequence field includes a mode not supported by the device,
+the status of the response SHALL be CONSTRAINT_ERROR and no setpoints from the entire
+sequence SHOULD be used.</p>
+</div>
+<div class="paragraph">
+<p>When an overlapping transition is detected, the status of the response SHALL be FAILURE.</p>
+</div>
+<div class="paragraph">
+<p>When a device which does not support multiple days in a command receives a command with
+more than one bit set in the DayOfWeekForSequence field, or
+when a device which does not support multiple modes in a command receives a command with
+more than one bit set in the ModeForSequence field, or
+when the contents of the Transitions field does not agree with NumberOfTransitionsForSequence,
+DayOfWeekForSequence or ModeForSequence, the status of the response SHALL be INVALID_COMMAND.</p>
+</div>
+<div class="paragraph">
+<p>When the transitions could be added successfully, the status of the response SHALL be SUCCESS.</p>
+</div>
+</div>
 </div>
 <div class="sect4">
-<h5 id="_getweeklyschedule_command"><a class="anchor" href="#_getweeklyschedule_command"></a>4.3.10.5. GetWeeklySchedule Command</h5>
-<div class="paragraph">
-<p>Upon receipt, the unit SHOULD send in return the Get
-Weekly Schedule Response command. The Days to Return and Mode to Return
-fields are defined as bitmask for the flexibility to support multiple
-days and multiple modes within one command. If thermostat cannot handle
-incoming command with multiple days and/or multiple modes within one
-command, it SHALL send default response of INVALID_COMMAND in
-return.</p>
-</div>
+<h5 id="_getweeklyschedule_command"><a class="anchor" href="#_getweeklyschedule_command"></a>4.3.10.3. GetWeeklySchedule Command</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 14.2857%;">
@@ -33461,7 +33458,7 @@ return.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_daystoreturn_field"><a class="anchor" href="#_daystoreturn_field"></a>4.3.10.5.1. DaysToReturn Field</h6>
+<h6 id="_daystoreturn_field"><a class="anchor" href="#_daystoreturn_field"></a>4.3.10.3.1. DaysToReturn Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the number of days the client would like to return
 the setpoint values for and could be any combination of single days or
@@ -33469,16 +33466,28 @@ the entire week.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_modetoreturn_field"><a class="anchor" href="#_modetoreturn_field"></a>4.3.10.5.2. ModeToReturn Field</h6>
+<h6 id="_modetoreturn_field"><a class="anchor" href="#_modetoreturn_field"></a>4.3.10.3.2. ModeToReturn Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the mode the client would like to return the set
 point values for and could be any combination of heat only, cool only or
 heat &amp; cool.</p>
 </div>
 </div>
+<div class="sect5">
+<h6 id="_effect_on_receipt_49"><a class="anchor" href="#_effect_on_receipt_49"></a>4.3.10.3.3. Effect on Receipt</h6>
+<div class="paragraph">
+<p>Upon receipt, the unit SHOULD send in return the Get
+Weekly Schedule Response command. The Days to Return and Mode to Return
+fields are defined as bitmask for the flexibility to support multiple
+days and multiple modes within one command. If thermostat cannot handle
+incoming command with multiple days and/or multiple modes within one
+command, it SHALL send default response of INVALID_COMMAND in
+return.</p>
+</div>
+</div>
 </div>
 <div class="sect4">
-<h5 id="_getweeklyscheduleresponse_command"><a class="anchor" href="#_getweeklyscheduleresponse_command"></a>4.3.10.6. GetWeeklyScheduleResponse Command</h5>
+<h5 id="_getweeklyscheduleresponse_command"><a class="anchor" href="#_getweeklyscheduleresponse_command"></a>4.3.10.4. GetWeeklyScheduleResponse Command</h5>
 <div class="paragraph">
 <p>This command has the same payload format as the Set Weekly Schedule.</p>
 </div>
@@ -33544,7 +33553,7 @@ heat &amp; cool.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_clearweeklyschedule_command"><a class="anchor" href="#_clearweeklyschedule_command"></a>4.3.10.7. ClearWeeklySchedule Command</h5>
+<h5 id="_clearweeklyschedule_command"><a class="anchor" href="#_clearweeklyschedule_command"></a>4.3.10.5. ClearWeeklySchedule Command</h5>
 <div class="paragraph">
 <p>This command is used to clear the weekly schedule.
 The Clear weekly schedule has no payload.</p>
@@ -33556,7 +33565,7 @@ response. There are no error responses to this command.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_getrelaystatuslog_command"><a class="anchor" href="#_getrelaystatuslog_command"></a>4.3.10.8. GetRelayStatusLog Command</h5>
+<h5 id="_getrelaystatuslog_command"><a class="anchor" href="#_getrelaystatuslog_command"></a>4.3.10.6. GetRelayStatusLog Command</h5>
 <div class="paragraph">
 <p>This command is used to query the thermostat
 internal relay status log. This command has no payload.</p>
@@ -33607,7 +33616,7 @@ following items as a response:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_getrelaystatuslogresponse_command"><a class="anchor" href="#_getrelaystatuslogresponse_command"></a>4.3.10.9. GetRelayStatusLogResponse Command</h5>
+<h5 id="_getrelaystatuslogresponse_command"><a class="anchor" href="#_getrelaystatuslogresponse_command"></a>4.3.10.7. GetRelayStatusLogResponse Command</h5>
 <div class="paragraph">
 <p>This command is sent from the thermostat cluster server in response to
 the Get Relay Status Log. After the Relay Status Entry is sent over the
@@ -33693,7 +33702,7 @@ the thermostat internal log.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_timeofday_field"><a class="anchor" href="#_timeofday_field"></a>4.3.10.9.1. TimeOfDay Field</h6>
+<h6 id="_timeofday_field"><a class="anchor" href="#_timeofday_field"></a>4.3.10.7.1. TimeOfDay Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the sample time of the day, in minutes since midnight, when
 the relay status was captured for this associated log entry. For
@@ -33702,7 +33711,7 @@ and 11:30pm will be represented by 1410 minutes since midnight.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_relaystatus_field"><a class="anchor" href="#_relaystatus_field"></a>4.3.10.9.2. RelayStatus Field</h6>
+<h6 id="_relaystatus_field"><a class="anchor" href="#_relaystatus_field"></a>4.3.10.7.2. RelayStatus Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the relay status for thermostat when the log is captured. Each
 bit represents one relay used by the thermostat. If the bit is on, the
@@ -33711,27 +33720,27 @@ create its own mapping between the bitmap and the associated relay.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_localtemperature_field"><a class="anchor" href="#_localtemperature_field"></a>4.3.10.9.3. LocalTemperature Field</h6>
+<h6 id="_localtemperature_field"><a class="anchor" href="#_localtemperature_field"></a>4.3.10.7.3. LocalTemperature Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the <a href="#ref_LocalTemperature">LocalTemperature</a> when the log is captured.
 The null value indicates that LocalTemperature was invalid or unavailable.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_humidity_field"><a class="anchor" href="#_humidity_field"></a>4.3.10.9.4. Humidity Field</h6>
+<h6 id="_humidity_field"><a class="anchor" href="#_humidity_field"></a>4.3.10.7.4. Humidity Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the humidity as a percentage when the log was
 captured. The null value indicates that the humidity value was invalid or unknown.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_setpoint_field"><a class="anchor" href="#_setpoint_field"></a>4.3.10.9.5. Setpoint Field</h6>
+<h6 id="_setpoint_field"><a class="anchor" href="#_setpoint_field"></a>4.3.10.7.5. Setpoint Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the target setpoint temperature when the log is captured.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_unreadentries_field"><a class="anchor" href="#_unreadentries_field"></a>4.3.10.9.6. UnreadEntries Field</h6>
+<h6 id="_unreadentries_field"><a class="anchor" href="#_unreadentries_field"></a>4.3.10.7.6. UnreadEntries Field</h6>
 <div class="paragraph">
 <p>This field SHALL indicate the number of unread entries within the thermostat
 internal log system.</p>
@@ -35890,7 +35899,7 @@ until closed by the user or some other automation.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_47"><a class="anchor" href="#_effect_on_receipt_47"></a>4.6.8.1.3. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_50"><a class="anchor" href="#_effect_on_receipt_50"></a>4.6.8.1.3. Effect on Receipt</h6>
 <div class="paragraph">
 <p>If the device has registered a fault, that prevents it from performing the requested action,
 the command SHALL be ignored and a FAILURE_DUE_TO_FAULT status SHALL be returned.</p>
@@ -35945,7 +35954,7 @@ When the movement is complete, the device SHALL set the <a href="#ref_CurrentSta
 <p>This command is used to set the valve to its closed position.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_48"><a class="anchor" href="#_effect_on_receipt_48"></a>4.6.8.2.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_51"><a class="anchor" href="#_effect_on_receipt_51"></a>4.6.8.2.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>If the device has registered a fault that causes it to prevent the valve to perform the requested action,
 the command SHALL be ignored and a FAILURE_DUE_TO_FAULT status SHALL be returned.</p>
@@ -48033,7 +48042,7 @@ The server attributes supported SHALL be updated as follows:</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_49"><a class="anchor" href="#_effect_on_receipt_49"></a>5.3.7.4.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_52"><a class="anchor" href="#_effect_on_receipt_52"></a>5.3.7.4.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>Upon receipt of this command, the window covering will adjust the lift position to
 the value specified in the LiftValue field, as long as that value is not larger
@@ -48155,7 +48164,7 @@ If the device is only a tilt control device, then the command SHOULD be ignored 
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_50"><a class="anchor" href="#_effect_on_receipt_50"></a>5.3.7.6.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_53"><a class="anchor" href="#_effect_on_receipt_53"></a>5.3.7.6.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>Upon receipt of this command, the window covering will adjust the tilt position
 to the value specified in the TiltValue field, as long as that value is not larger
@@ -61742,7 +61751,7 @@ The value of this field SHALL be between 0 and the length of the SupportedTemper
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_51"><a class="anchor" href="#_effect_on_receipt_51"></a>8.2.6.1.3. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_54"><a class="anchor" href="#_effect_on_receipt_54"></a>8.2.6.1.3. Effect on Receipt</h6>
 <div class="paragraph">
 <p>If the TargetTemperature or TargetTemperatureLevel fields of the command meet all constraints
 but the server is unable to execute the command at the time the command is received by the server
@@ -64697,7 +64706,7 @@ to the index associated with the highest Watt setting for the selected CookMode.
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_52"><a class="anchor" href="#_effect_on_receipt_52"></a>8.13.6.2.6. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_55"><a class="anchor" href="#_effect_on_receipt_55"></a>8.13.6.2.6. Effect on Receipt</h6>
 <div class="paragraph">
 <p>If this command is received while the operational state of the server cannot support the command in that state,
 the server SHALL respond with an INVALID_IN_STATE response and the attributes and state SHALL remain unchanged.
@@ -64790,7 +64799,7 @@ the server SHALL respond with a response of INVALID_COMMAND and the attributes a
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_53"><a class="anchor" href="#_effect_on_receipt_53"></a>8.13.6.3.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_56"><a class="anchor" href="#_effect_on_receipt_56"></a>8.13.6.3.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>Upon receipt of this command, if the sum of the value of the TimeToAdd field
 and the current value of the CookTime attribute is greater than the MaxCookTime attribute,
@@ -67804,7 +67813,7 @@ power for.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_54"><a class="anchor" href="#_effect_on_receipt_54"></a>9.2.9.1.4. Effect on receipt</h6>
+<h6 id="_effect_on_receipt_57"><a class="anchor" href="#_effect_on_receipt_57"></a>9.2.9.1.4. Effect on receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, the ESA SHALL validate that the Power and Duration specified in
 the command are within the limits of its current operation and advertised
@@ -67900,7 +67909,7 @@ value to 'NoAdjustment'.</p>
 <p>Allows a client to cancel an ongoing PowerAdjustmentRequest operation.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_55"><a class="anchor" href="#_effect_on_receipt_55"></a>9.2.9.2.1. Effect on receipt</h6>
+<h6 id="_effect_on_receipt_58"><a class="anchor" href="#_effect_on_receipt_58"></a>9.2.9.2.1. Effect on receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, the ESA SHALL end the active power adjustment session and return
 to normal (or idle) power levels.</p>
@@ -67992,7 +68001,7 @@ sequence duration, SHALL be before the LatestEndTime.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_56"><a class="anchor" href="#_effect_on_receipt_56"></a>9.2.9.3.3. Effect on receipt</h6>
+<h6 id="_effect_on_receipt_59"><a class="anchor" href="#_effect_on_receipt_59"></a>9.2.9.3.3. Effect on receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, if the ESA supports <code>STA</code>, and the <a href="#ref_OptOutState">OptOutState</a>
 permits the specified <a href="#ref_AdjustmentCauseEnum">AdjustmentCauseEnum</a> (see <a href="#ref_OptOutState">OptOutState</a> for details),
@@ -68078,7 +68087,7 @@ in the ActiveSlotNumber index in the Slots list in the Forecast.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_57"><a class="anchor" href="#_effect_on_receipt_57"></a>9.2.9.4.3. Effect on receipt</h6>
+<h6 id="_effect_on_receipt_60"><a class="anchor" href="#_effect_on_receipt_60"></a>9.2.9.4.3. Effect on receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, if the ESA supports <code>PAU</code> and the SlotIsPausable field is
 true in the ActiveSlotNumber index in the Slots list, the <a href="#ref_OptOutState">OptOutState</a>
@@ -68165,7 +68174,7 @@ Fault.</p>
 of operation.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_58"><a class="anchor" href="#_effect_on_receipt_58"></a>9.2.9.5.1. Effect on receipt</h6>
+<h6 id="_effect_on_receipt_61"><a class="anchor" href="#_effect_on_receipt_61"></a>9.2.9.5.1. Effect on receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, if the ESA supports <code>PAU</code> and it is currently Paused, the ESA MAY
 decide not to resume immediately if the <a href="#ref_MinPauseDuration">MinPauseDuration</a> has not yet
@@ -68263,7 +68272,7 @@ modified in the corresponding Forecast with matching ForecastID.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_59"><a class="anchor" href="#_effect_on_receipt_59"></a>9.2.9.6.4. Effect on receipt</h6>
+<h6 id="_effect_on_receipt_62"><a class="anchor" href="#_effect_on_receipt_62"></a>9.2.9.6.4. Effect on receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, if the ESA supports <code>FA</code>, and the <a href="#ref_OptOutState">OptOutState</a>
 permits the specified <a href="#ref_AdjustmentCauseEnum">AdjustmentCauseEnum</a> (see <a href="#ref_OptOutState">OptOutState</a>
@@ -68514,7 +68523,7 @@ use more or less energy using the LoadControl field as follows:</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_60"><a class="anchor" href="#_effect_on_receipt_60"></a>9.2.9.7.3. Effect on receipt</h6>
+<h6 id="_effect_on_receipt_63"><a class="anchor" href="#_effect_on_receipt_63"></a>9.2.9.7.3. Effect on receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, if the ESA supports <code>CON</code>, and the <a href="#ref_OptOutState">OptOutState</a>
 permits the specified <a href="#ref_AdjustmentCauseEnum">AdjustmentCauseEnum</a> (see <a href="#ref_OptOutState">OptOutState</a>
@@ -68569,7 +68578,7 @@ otherwise the command SHALL be rejected with FAILURE.</p>
 <a href="#ref_RequestConstraintBasedForecast">RequestConstraintBasedForecast</a> command.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_61"><a class="anchor" href="#_effect_on_receipt_61"></a>9.2.9.8.1. Effect on receipt</h6>
+<h6 id="_effect_on_receipt_64"><a class="anchor" href="#_effect_on_receipt_64"></a>9.2.9.8.1. Effect on receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, the ESA SHALL attempt to cancel the effects of any previous
 adjustment request commands, and re-evaluate its forecast for intended
@@ -70576,7 +70585,7 @@ since the start of the session.</p>
 <p>Allows a client to disable the EVSE from charging and discharging.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_62"><a class="anchor" href="#_effect_on_receipt_62"></a>9.3.9.1.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_65"><a class="anchor" href="#_effect_on_receipt_65"></a>9.3.9.1.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, the EVSE will stop any power flow between
 the EV and EVSE.</p>
@@ -70695,7 +70704,7 @@ value, and then later adjusted above this value, the resulting
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_63"><a class="anchor" href="#_effect_on_receipt_63"></a>9.3.9.2.4. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_66"><a class="anchor" href="#_effect_on_receipt_66"></a>9.3.9.2.4. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, this SHALL allow the EVSE to charge the EV until the specified
 timestamp within the current limits specified in the fields of the command.</p>
@@ -70798,7 +70807,7 @@ stored and persisted across reboots by the EVSE to the value of this field.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_64"><a class="anchor" href="#_effect_on_receipt_64"></a>9.3.9.3.3. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_67"><a class="anchor" href="#_effect_on_receipt_67"></a>9.3.9.3.3. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, this SHALL allow the EVSE to discharge the EV until the specified
 timestamp, and allows a maximum current limit to be specified in the fields of the command.</p>
@@ -70838,7 +70847,7 @@ is in the future or null).</p>
 <p>Allows a client to put the EVSE into a self-diagnostics mode.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_65"><a class="anchor" href="#_effect_on_receipt_65"></a>9.3.9.4.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_68"><a class="anchor" href="#_effect_on_receipt_68"></a>9.3.9.4.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, the EVSE SHALL enter a
 Diagnostics state only if the SupplyState attribute is in the Disabled
@@ -70907,7 +70916,7 @@ included in a single ChargingTargetSchedule within this list field.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_66"><a class="anchor" href="#_effect_on_receipt_66"></a>9.3.9.5.2. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_69"><a class="anchor" href="#_effect_on_receipt_69"></a>9.3.9.5.2. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, the EVSE SHALL validate that all of the
 charging targets are within a valid range, and that each day of the week is
@@ -70982,7 +70991,7 @@ accordingly.</p>
 <p>Allows a client to retrieve the current set of charging targets.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_67"><a class="anchor" href="#_effect_on_receipt_67"></a>9.3.9.6.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_70"><a class="anchor" href="#_effect_on_receipt_70"></a>9.3.9.6.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, the EVSE SHALL send the <a href="#ref_GetTargetsResponseCommand">GetTargetsResponse</a> command
 to the client.</p>
@@ -71041,7 +71050,7 @@ with their associated days of the week.</p>
 <p>Allows a client to clear all stored charging targets.</p>
 </div>
 <div class="sect5">
-<h6 id="_effect_on_receipt_68"><a class="anchor" href="#_effect_on_receipt_68"></a>9.3.9.8.1. Effect on Receipt</h6>
+<h6 id="_effect_on_receipt_71"><a class="anchor" href="#_effect_on_receipt_71"></a>9.3.9.8.1. Effect on Receipt</h6>
 <div class="paragraph">
 <p>On receipt of this command, all weekly targets that are currently stored SHALL be cleared
 and a default response of SUCCESS SHALL be sent in response. There are no error
@@ -72769,8 +72778,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master db37e2a (local changes)<br>
-Last updated 2024-07-24 00:00:40 UTC
+Version master 858573d (local changes)<br>
+Last updated 2024-07-25 00:00:42 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
