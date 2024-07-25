@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 2587d5f,</span>
-<span id="revdate">2024-07-23 20:11:34 -0700</span>
+<span id="revnumber">version master 77d298f,</span>
+<span id="revdate">2024-07-25 00:23:06 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -2558,6 +2558,12 @@ Support for an item is considered as "true" for conditional statements within th
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the commissioner support Discovery Capability over Wi-Fi PAF?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Does the commissioner support Discovery Capability over IP Network?</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.ROLE.COMMISSIONER:M</p></td>
@@ -2687,6 +2693,12 @@ Support for an item is considered as "true" for conditional statements within th
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.TXT_KEY_PI</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Does the commissionee device support TXT Key 'PI' (Pairing Instruction) in it&#8217;s DNS-SD TXT Records for Commissionable Node Discovery?</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PICS_MCORE_COM_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the commissioner support Commissioning over Wi-Fi PAF?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIFI &amp; MCORE.DD.DISCOVERY_PAF:M</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
@@ -5023,8 +5035,8 @@ Verify The QR code must be of sufficient size and contrast respective to surface
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If TH is aware of the DUT&#8217;s Discovery Capability Bitmask, it SHALL initiate Device Discovery in any order of priority on all the networking technologies that are supported by both the TH and the DUT</p>
-<p class="tableblock">If TH is unaware of the DUT&#8217;s Discovery Capability Bitmask, it SHALL initiate Device Discovery in any order on all the networking technologies it supports out of Wi-Fi Soft-AP, BLE, and on IP network discovery.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT selects a transport in any order of priority.</p></td>
+<p class="tableblock">If TH is unaware of the DUT&#8217;s Discovery Capability Bitmask, it MAY initiate Device Discovery in any order on all the networking technologies it supports out of Wi-Fi Soft-AP, Wi-Fi PAF, BLE, and on IP network discovery, or initiate Device Discovery on a specific networking technology.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT selects a transport in any order of priority, or a specific networking technology.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
@@ -5105,7 +5117,7 @@ Verify The QR code must be of sufficient size and contrast respective to surface
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7.b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">{PICS_MCODE_COM_BLE}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.BLE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH waits until <code>T0</code> + 15 minutes and checks if the DUT is sending ADVs.</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>If the DUT is still sending ADVs:</p>
@@ -5139,16 +5151,63 @@ Verify that:</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIFI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH scans and finds the DUT SSID</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT SSID is not hidden and has the format: MATTER-ddd-vvvv-pppp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIFI &amp; MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH is configured to perform commissioning on Channel 6 in 2.4GH band.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>TH begins scanning on the configured 2.4GHz band channel.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8.b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIFI &amp; (NOT MCORE.COM.BLE) &amp; MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH is configured to perform commissioning on Channel 44 in 5GH band if it is in non-ETSI regulatory domains and on Channel 149 in 5GHz band if it is in ETSI regulatory domains.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>TH begins scanning on the configured 5GHz band channel.</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIFI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIFI &amp; MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT begins sending Wi-Fi PAF Publish messages.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The following data  in the "service_specific_info" field of the Wi-Fi PAF Publish Frame shall comply with section 5.4.2.6.3. "Publisher Operating Parameters".
+Verify that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>12-bit "Discriminator" field in Matter service data is populated</p>
+</li>
+<li>
+<p>16-bit "Vendor ID" field in Matter service data is set to Vendor ID or 0 if elided</p>
+</li>
+<li>
+<p>16-bit "Product ID" field in Matter service data is set to Product ID or 0 elided</p>
+</li>
+<li>
+<p>"Extended Data" bit is set to 1 if Extended Data exists otherwise set to 0 (Bit[0] of last byte)</p>
+</li>
+<li>
+<p>"Extended Announcement" bit is set to 0 in Matter service data (Bit[1] of last byte)</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIFI &amp; MCORE.DD.DISCOVERY_SOFTAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH scans and finds the DUT SSID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT SSID is not hidden and has the format: MATTER-ddd-vvvv-pppp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIFI &amp; MCORE.DD.DISCOVERY_SOFTAP</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH scans and finds the DUT SSID</p>
 <p class="tableblock">TH sends to DUT a 1st power cycle command (or reset manually)</p>
 <p class="tableblock">TH sends to DUT a 2nd power cycle command (or reset manually)</p></td>
@@ -5159,7 +5218,7 @@ Verify that:</p>
 <p class="tableblock">DUT locally-administered bit is set.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.COM.WIFI &amp; MCORE.DD.IE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH scans and finds the DUT SSID</p></td>
@@ -5173,7 +5232,7 @@ Verify that:</p>
 <p class="tableblock">0x04 - 0xFF (Reserved)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.2.1, 4.3.1.5., 4.3.1.7., 4.3.1.11.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network through vendor-unique means or by commissioning the DUT onto the Matter network and opening a commissioning window. The DUT is sending mandatory Commissionable Node Discovery service records over DNS-SD.</p></td>
@@ -5187,7 +5246,7 @@ CM=1 SHALL indicate that the publisher is currently in Commissioning Mode and re
 CM=2 SHALL indicate that the publisher is currently in Commissioning Mode and requires use of a dynamically generated passcode for commissioning corresponding to the verifier that was passed to the device using the Open Commissioning Window command.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.6.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.TXT_KEY_VP</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending optional Commissionable Node Discovery service records over DNS-SD.</p></td>
@@ -5200,7 +5259,7 @@ If the VP key is present without a Product ID, the value SHALL contain only the 
 (2) VP=123+456 gives Vendor ID=123 + Product ID=456.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12.b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.8.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.TXT_KEY_DT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending optional Commissionable Node Discovery service records over DNS-SD.</p></td>
@@ -5209,7 +5268,7 @@ If the VP key is present without a Product ID, the value SHALL contain only the 
 <p class="tableblock">For example, the DT=10 key/value pair would indicate that the primary device type is 10 (0x000a), which is the device type identifier for a Door Lock.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12.c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.9.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.TXT_KEY_DN</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending optional Commissionable Node Discovery service records over DNS-SD.</p></td>
@@ -5218,7 +5277,7 @@ If the VP key is present without a Product ID, the value SHALL contain only the 
 <p class="tableblock">For example, the DN=Living Room key/value pair indicates that the advertisement name specified by the user is 'Living Room'.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12.d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.d</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.10.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.TXT_KEY_RI</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending optional Commissionable Node Discovery service records over DNS-SD.</p></td>
@@ -5227,7 +5286,7 @@ If the VP key is present without a Product ID, the value SHALL contain only the 
 The resulting ASCII string SHALL NOT be longer than 100 characters, which implies a Rotating Device Identifier of at most 50 octets.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12.e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.e</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.11.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.TXT_KEY_PH</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending optional Commissionable Node Discovery service records over DNS-SD.</p></td>
@@ -5242,7 +5301,7 @@ The pairing hint represents a base-10 numeric value for a bitmap of methods supp
 <p class="tableblock">If the DUT=Commissionee has enabled Extended Discovery, then the PH record is required when not in Commissioning Mode (CM=0).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12.f</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.f</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.12.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.TXT_KEY_PI</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending optional Commissionable Node Discovery service records over DNS-SD.</p></td>
@@ -5253,7 +5312,7 @@ This key/value pair SHALL only be returned in the DNS-SD TXT record if the PH bi
 <p class="tableblock">For example, given PH=256, bit 8 is set which indicates "Press Reset Button for N seconds". Therefore, a value of PI=10 would indicate that N is 10 in that context.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.2., 4.3.1.3.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.EXTENDED_DISCOVERY</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Place the DUT device into a non-commissionable state</p></td>
@@ -5261,14 +5320,14 @@ This key/value pair SHALL only be returned in the DNS-SD TXT record if the PH bi
 <p class="tableblock">Verify that Commissioning Subtype='_CM' is NOT being published in the DUT&#8217;s Commissionable Node Discovery service record over DNS-SD.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.3.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH and DUT are connected to the same network and the DUT is sending a Commissionable Node Discovery service record over DNS-SD.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT is able to be discovered over DNS-SD.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15.b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.3.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory Commissioning Subtypes: Send a browse request for '_services._dns-sd._udp' using a DNS-SD records command-line test tool (i.e. 'dns-sd -B _services._dns-sd._udp' or 'avahi-browse _services._dns-sd._udp -r')</p></td>
@@ -5278,7 +5337,7 @@ This key/value pair SHALL only be returned in the DNS-SD TXT record if the PH bi
 <p class="tableblock">3. _CM, which represents "currently in Commissioning Mode" (due to any method, for example, a factory new device that has just been put into commissioning mode by the user, or an already- commissioned device which has just received the Open Commissioning Window command).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15.c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.3.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.COMMISSIONING_SUBTYPE_V | MCORE.DD.COMMISSIONING_SUBTYPE_T</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional Commissioning Subtypes: Send a browse request for '_services._dns-sd._udp' using a DNS-SD records command-line test tool (i.e. 'dns-sd -B _services._dns-sd._udp' or 'avahi-browse _services._dns-sd._udp -r')</p></td>
@@ -5287,14 +5346,14 @@ This key/value pair SHALL only be returned in the DNS-SD TXT record if the PH bi
 <p class="tableblock">2. _T&lt;ddd&gt;, where &lt;ddd&gt; provides the device type identifier for the device, encoded as a variable- length decimal number in ASCII (UTF-8) text, omitting any leading zeroes. In case the device combines multiple device types, the manufacturer SHOULD choose the device type identifier of the primary function of the device for which the device wishes to be discoverable.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Place the DUT device into Commissioning mode</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT is able to be discovered over DNS-SD.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15.b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16.b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.3., 4.3.1.13.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Send a browse request for '_matterc._udp' using a DNS-SD records command-line test tool (i.e. 'dns-sd -B _matterc._udp' or 'avahi-browse _matterc._udp -r')</p></td>
@@ -5452,11 +5511,27 @@ This key/value pair SHALL only be returned in the DNS-SD TXT record if the PH bi
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.3.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_BLE</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT must find TH and provide onboarding data for validation.</p>
-<p class="tableblock">Pass Criteria: DUT is able to report the Onboarding payload as set on TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT must find TH and provide onboarding data for validation.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.4.3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH is configured with the default channel to be Channel 6 in 2.4GHz. If TH has a 5GHz Wi-Fi radio, TH is configured with an additional channel list that includes Channel 44 and the operating channel Wi-Fi network the DUT is on if it is operating in non-ETSI regulatory domains and includes Channel 149 if it is operating in ETSI regulatory domains.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH must start sending Wi-Fi PAF Publish Frames on the default channel and the channel list.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.4.3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT starts Wi-Fi PAF scan in its configured channel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT must find TH and provide onboarding data to for validation.</p>
+<p class="tableblock">Pass Criteria: DUT is able to report the Onboarding payload as set on TH</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.3.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
@@ -5464,7 +5539,7 @@ This key/value pair SHALL only be returned in the DNS-SD TXT record if the PH bi
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH must start SoftAP using Wi-Fi transport</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3.b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.3.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
@@ -5473,7 +5548,7 @@ This key/value pair SHALL only be returned in the DNS-SD TXT record if the PH bi
 <p class="tableblock">Pass Criteria: DUT is able to report the Onboarding payload as set on TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.3.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
@@ -5481,7 +5556,7 @@ This key/value pair SHALL only be returned in the DNS-SD TXT record if the PH bi
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4.b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.3.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
@@ -5489,7 +5564,7 @@ This key/value pair SHALL only be returned in the DNS-SD TXT record if the PH bi
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH must start SoftAP using Wi-Fi transport</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4.c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.3.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
@@ -5498,7 +5573,7 @@ This key/value pair SHALL only be returned in the DNS-SD TXT record if the PH bi
 <p class="tableblock">Pass Criteria: DUT is able to report the Onboarding payload as set on TH</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.3.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -7776,8 +7851,8 @@ data that a commissionee may require in order to complete the commissioning proc
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.7.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Standard Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 0, supports IP Network for its Discovery Capability and is already on the same IP network as the DUT commissioner. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 0 and supports Wi-Fi PAF for its Discovery Capability. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User has a QR code to pass into DUT</p></td>
 </tr>
 <tr>
@@ -7792,16 +7867,16 @@ data that a commissionee may require in order to complete the commissioning proc
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Using the DUT, parse the TH&#8217;s QR code and follow any steps needed for the Commissioner/Commissionee to complete the commissioning process using IP Network</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Using the DUT, parse the TH&#8217;s QR code and follow any steps needed for the Commissioner/Commissionee to complete the commissioning process using Wi-Fi PAF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT parses QR code and DUT commissions TH to the Matter network</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.7.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Standard Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 0 and supports SoftAP for its Discovery Capability. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 0, supports IP Network for its Discovery Capability and is already on the same IP network as the DUT commissioner. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User has a QR code to pass into DUT</p></td>
 </tr>
 <tr>
@@ -7814,6 +7889,30 @@ data that a commissionee may require in order to complete the commissioning proc
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3.c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Using the DUT, parse the TH&#8217;s QR code and follow any steps needed for the Commissioner/Commissionee to complete the commissioning process using IP Network</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT parses QR code and DUT commissions TH to the Matter network</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 0 and supports SoftAP for its Discovery Capability. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User has a QR code to pass into DUT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.SCAN_QR_CODE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scan the QR code from the previous step using the DUT.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify the QR code has been scanned successfully.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
@@ -7991,8 +8090,8 @@ data that a commissionee may require in order to complete the commissioning proc
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.7.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User-Intent Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 1 and supports IP Network for its Discovery Capability. Commissionee is NOT in commissioning mode. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-Intent Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 1 and supports Wi-Fi PAF for its Discovery Capability. Commissionee is NOT in commissioning mode. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User has a QR code to pass into DUT.</p></td>
 </tr>
 <tr>
@@ -8007,7 +8106,7 @@ data that a commissionee may require in order to complete the commissioning proc
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_PAF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT parses QR code.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT has parsed the QR code. Verify TH has not been commissioned to the Matter network.</p></td>
 </tr>
@@ -8015,16 +8114,16 @@ data that a commissionee may require in order to complete the commissioning proc
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.d</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User should follow any TH-specific steps for putting the TH Commissionee device into commissioning mode and to complete the commissioning process using IP Network.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User should follow any TH-specific steps for putting the TH Commissionee device into commissioning mode and to complete the commissioning process using Wi-Fi PAF.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT commissions TH to the Matter network.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.7.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User-Intent Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 1 and supports SoftAP for its Discovery Capability. Commissionee is NOT in commissioning mode. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-Intent Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 1 and supports IP Network for its Discovery Capability. Commissionee is NOT in commissioning mode. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User has a QR code to pass into DUT.</p></td>
 </tr>
 <tr>
@@ -8039,12 +8138,44 @@ data that a commissionee may require in order to complete the commissioning proc
 <td class="tableblock halign-left valign-top"><p class="tableblock">3.c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT parses QR code.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT has parsed the QR code. Verify TH has not been commissioned to the Matter network.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3.d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User should follow any TH-specific steps for putting the TH Commissionee device into commissioning mode and to complete the commissioning process using IP Network.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT commissions TH to the Matter network.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.7.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-Intent Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 1 and supports SoftAP for its Discovery Capability. Commissionee is NOT in commissioning mode. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User has a QR code to pass into DUT.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.SCAN_QR_CODE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scan the QR code from the previous step using the DUT.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify the QR code has been scanned successfully.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT parses QR code.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT has parsed the QR code. Verify TH has not been commissioned to the Matter network.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.d</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
@@ -8222,8 +8353,8 @@ data that a commissionee may require in order to complete the commissioning proc
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.7.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Custom Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 2 and supports IP Network for its Discovery Capability. Commissionee is NOT in commissioning mode. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 2 and supports Wi-Fi PAF for its Discovery Capability. Commissionee is NOT in commissioning mode. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User has a QR code to pass into DUT.</p></td>
 </tr>
 <tr>
@@ -8238,7 +8369,7 @@ data that a commissionee may require in order to complete the commissioning proc
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_PAF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT parses QR code.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT has parsed the QR code. Verify TH has not been commissioned to the Matter network.</p></td>
 </tr>
@@ -8246,16 +8377,16 @@ data that a commissionee may require in order to complete the commissioning proc
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.d</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.7.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User should follow any TH-specific steps, unless the DUT has alternative means to guide the user to successful commissioning, for putting the TH Commissionee into commissioning mode, for triggering the DUT Commissioner for commissioning, and for completing the commissioning process using IP Network.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User should follow any TH-specific steps, unless the DUT has alternative means to guide the user to successful commissioning, for putting the TH Commissionee into commissioning mode, for triggering the DUT Commissioner for commissioning, and for completing the commissioning process using Wi-Fi PAF.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT commissions TH to the Matter network.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3.a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.7.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Custom Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 2 and supports SoftAP for its Discovery Capability. Commissionee is NOT in commissioning mode. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 2 and supports IP Network for its Discovery Capability. Commissionee is NOT in commissioning mode. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User has a QR code to pass into DUT.</p></td>
 </tr>
 <tr>
@@ -8270,12 +8401,44 @@ data that a commissionee may require in order to complete the commissioning proc
 <td class="tableblock halign-left valign-top"><p class="tableblock">3.c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT parses QR code.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT has parsed the QR code. Verify TH has not been commissioned to the Matter network.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3.d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_IP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User should follow any TH-specific steps, unless the DUT has alternative means to guide the user to successful commissioning, for putting the TH Commissionee into commissioning mode, for triggering the DUT Commissioner for commissioning, and for completing the commissioning process using IP Network.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT commissions TH to the Matter network.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom Commissioning Flow: Use a Commissionee with a QR code that has the Custom Flow field set to 2 and supports SoftAP for its Discovery Capability. Commissionee is NOT in commissioning mode. Ensure the Version bit string follows the current Matter spec. documentation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User has a QR code to pass into DUT.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.SCAN_QR_CODE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scan the QR code from the previous step using the DUT.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify the QR code has been scanned successfully.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT parses QR code.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT has parsed the QR code. Verify TH has not been commissioned to the Matter network.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.d</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.7.3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_SOFTAP</p></td>
@@ -8453,6 +8616,22 @@ data that a commissionee may require in order to complete the commissioning proc
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_BLE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Scan/read the QR code of the TH device using the DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If TH Commissionee&#8217;s Discovery Capabilities do not support BLE, ensure that the DUT commissions the TH onto the Matter network over a capability that is NOT BLE. In this example, over OnNetwork.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Using the QR code from Step 1, ensure the TH&#8217;s Discovery Capability bit string is NOT set to Wi-Fi PAF for discovery (i.e. set to OnNetwork discovery capability)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User has a QR code generated to pass into DUT. Using the example provided above, the payload would be "MT:-24J029Q00KA0648G00".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.DD.DISCOVERY_PAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scan/read the QR code of the TH device using the DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If TH Commissionee&#8217;s Discovery Capabilities do not support Wi-Fi PAF, ensure that the DUT commissions the TH onto the Matter network over a capability that is NOT Wi-Fi PAF. In this example, over OnNetwork.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4.a</p></td>
@@ -57146,8 +57325,8 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 2587d5f<br>
-Last updated 2024-07-24 03:11:46 UTC
+Version master 77d298f<br>
+Last updated 2024-07-25 07:23:19 UTC
 </div>
 </div>
 </body>
