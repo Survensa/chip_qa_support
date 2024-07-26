@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 588a011 (local changes),</span>
-<span id="revdate">2024-07-24 20:57:19 -0700</span>
+<span id="revnumber">version master 6b9409e (local changes),</span>
+<span id="revdate">2024-07-25 14:39:26 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -30382,7 +30382,7 @@ Individual attribute descriptions detail the actions to be taken should a confli
 </ul>
 </div>
 <div class="paragraph">
-<p>and if, and only if, the AUTO feature is supported, a deadband must be maintained between Heating and Cooling setpoints and limits:</p>
+<p>If, and only if, the AUTO feature is supported, a deadband must be maintained between Heating and Cooling setpoints and limits:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -32507,9 +32507,16 @@ constrained to a range of -2.5°C to 2.5°C.
 <p>This attribute SHALL indicate the cooling mode setpoint when the room is occupied.</p>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="#ref_SetpointLimits">Setpoint Limits</a> for constraints. If an attempt is made to
-set this attribute such that these constraints are violated, a response with the
-status code CONSTRAINT_ERROR SHALL be returned.</p>
+<p>Refer to <a href="#ref_SetpointLimits">Setpoint Limits</a> for constraints.</p>
+</div>
+<div class="paragraph">
+<p>If an attempt is made to set this attribute to a value greater than <a href="#ref_MaxCoolSetpointLimit">MaxCoolSetpointLimit</a>
+or less than <a href="#ref_MinCoolSetpointLimit">MinCoolSetpointLimit</a>, a response with the status code CONSTRAINT_ERROR
+SHALL be returned.</p>
+</div>
+<div class="paragraph">
+<p>If this attribute is set to a value that is less than (<a href="#ref_OccupiedHeatingSetpoint">OccupiedHeatingSetpoint</a> + <a href="#ref_MinSetpointDeadBand">MinSetpointDeadBand</a>),
+the value of <a href="#ref_OccupiedHeatingSetpoint">OccupiedHeatingSetpoint</a> SHALL be adjusted to (<a href="#ref_OccupiedCoolingSetpoint">OccupiedCoolingSetpoint</a> - <a href="#ref_MinSetpointDeadBand">MinSetpointDeadBand</a>).</p>
 </div>
 <div class="paragraph">
 <p>If the occupancy status of the room is unknown, this attribute SHALL be used as
@@ -32522,9 +32529,16 @@ the cooling mode setpoint.</p>
 <p>This attribute SHALL indicate the heating mode setpoint when the room is occupied.</p>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="#ref_SetpointLimits">Setpoint Limits</a> for constraints. If an attempt is made to
-set this attribute such that these constraints are violated, a response with the
-status code CONSTRAINT_ERROR SHALL be returned.</p>
+<p>Refer to <a href="#ref_SetpointLimits">Setpoint Limits</a> for constraints.</p>
+</div>
+<div class="paragraph">
+<p>If an attempt is made to set this attribute to a value greater than <a href="#ref_MaxHeatSetpointLimit">MaxHeatSetpointLimit</a>
+or less than <a href="#ref_MinHeatSetpointLimit">MinHeatSetpointLimit</a>, a response with the status code CONSTRAINT_ERROR
+SHALL be returned.</p>
+</div>
+<div class="paragraph">
+<p>If this attribute is set to a value that is greater than (<a href="#ref_OccupiedCoolingSetpoint">OccupiedCoolingSetpoint</a> - <a href="#ref_MinSetpointDeadBand">MinSetpointDeadBand</a>),
+the value of <a href="#ref_OccupiedCoolingSetpoint">OccupiedCoolingSetpoint</a> SHALL be adjusted to (<a href="#ref_OccupiedHeatingSetpoint">OccupiedHeatingSetpoint</a> + <a href="#ref_MinSetpointDeadBand">MinSetpointDeadBand</a>).</p>
 </div>
 <div class="paragraph">
 <p>If the occupancy status of the room is unknown, this attribute SHALL be
@@ -32537,9 +32551,16 @@ used as the heating mode setpoint.</p>
 <p>This attribute SHALL indicate the cooling mode setpoint when the room is unoccupied.</p>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="#ref_SetpointLimits">Setpoint Limits</a> for constraints. If an attempt is made to
-set this attribute such that these constraints are violated, a response with the
-status code CONSTRAINT_ERROR SHALL be returned.</p>
+<p>Refer to <a href="#ref_SetpointLimits">Setpoint Limits</a> for constraints.</p>
+</div>
+<div class="paragraph">
+<p>If an attempt is made to set this attribute to a value greater than <a href="#ref_MaxCoolSetpointLimit">MaxCoolSetpointLimit</a>
+or less than <a href="#ref_MinCoolSetpointLimit">MinCoolSetpointLimit</a>, a response with the status code CONSTRAINT_ERROR
+SHALL be returned.</p>
+</div>
+<div class="paragraph">
+<p>If this attribute is set to a value that is less than (<a href="#ref_UnoccupiedHeatingSetpoint">UnoccupiedHeatingSetpoint</a> + <a href="#ref_MinSetpointDeadBand">MinSetpointDeadBand</a>),
+the value of <a href="#ref_UnoccupiedHeatingSetpoint">UnoccupiedHeatingSetpoint</a> SHALL be adjusted to (<a href="#ref_UnoccupiedCoolingSetpoint">UnoccupiedCoolingSetpoint</a> - <a href="#ref_MinSetpointDeadBand">MinSetpointDeadBand</a>).</p>
 </div>
 <div class="paragraph">
 <p>If the occupancy status of the room is unknown, this attribute SHALL NOT
@@ -32552,9 +32573,16 @@ be used.</p>
 <p>This attribute SHALL indicate the heating mode setpoint when the room is unoccupied.</p>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="#ref_SetpointLimits">Setpoint Limits</a> for constraints. If an attempt is made to
-set this attribute such that these constraints are violated, a response with the
-status code CONSTRAINT_ERROR SHALL be returned.</p>
+<p>Refer to <a href="#ref_SetpointLimits">Setpoint Limits</a> for constraints.</p>
+</div>
+<div class="paragraph">
+<p>If an attempt is made to set this attribute to a value greater than <a href="#ref_MaxHeatSetpointLimit">MaxHeatSetpointLimit</a>
+or less than <a href="#ref_MinHeatSetpointLimit">MinHeatSetpointLimit</a>, a response with the status code CONSTRAINT_ERROR
+SHALL be returned.</p>
+</div>
+<div class="paragraph">
+<p>If this attribute is set to a value that is greater than (<a href="#ref_UnoccupiedCoolingSetpoint">UnoccupiedCoolingSetpoint</a> - <a href="#ref_MinSetpointDeadBand">MinSetpointDeadBand</a>),
+the value of <a href="#ref_UnoccupiedCoolingSetpoint">UnoccupiedCoolingSetpoint</a> SHALL be adjusted to (<a href="#ref_UnoccupiedHeatingSetpoint">UnoccupiedHeatingSetpoint</a> + <a href="#ref_MinSetpointDeadBand">MinSetpointDeadBand</a>).</p>
 </div>
 <div class="paragraph">
 <p>If the occupancy status of the room is unknown, this attribute SHALL NOT
@@ -32634,13 +32662,7 @@ with the status code CONSTRAINT_ERROR SHALL be returned.</p>
 between the Heat Setpoint and the Cool Setpoint.</p>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="#ref_SetpointLimits">Setpoint Limits</a> for constraints. If an attempt is made to
-set this attribute to a value which conflicts with setpoint values then those
-setpoints SHALL be adjusted by the minimum amount to permit this
-attribute to be set to the desired value.
-If an attempt is made to set this attribute to a value which is not consistent
-with the constraints and cannot be resolved by modifying setpoints then a response
-with the status code CONSTRAINT_ERROR SHALL be returned.</p>
+<p>Refer to <a href="#ref_SetpointLimits">Setpoint Limits</a> for constraints.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -32651,6 +32673,19 @@ with the status code CONSTRAINT_ERROR SHALL be returned.</p>
 <td class="content">
 Prior to revision 8 of this cluster specification the value of this attribute was
 constrained to a range of 0°C to 2.5°C.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+For backwards compatibility, this attribute is optionally writeable. However any writes
+to this attribute SHALL be silently ignored.
 </td>
 </tr>
 </table>
@@ -72778,8 +72813,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 588a011 (local changes)<br>
-Last updated 2024-07-25 03:57:32 UTC
+Version master 6b9409e (local changes)<br>
+Last updated 2024-07-26 00:00:29 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
