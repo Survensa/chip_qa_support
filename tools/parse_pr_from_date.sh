@@ -2,17 +2,21 @@
 
 # Function to display usage
 usage() {
-  echo "Usage: $0 --dir <directory> --from <since_date>"
+  echo "Usage: $0 --dir <directory> --from <since_date> [--to <until_date>]"
   echo "  --dir      [PWD path] Directory to check"
   echo "  --from     [YYYY-MM-DD] The date to check from"
+  echo "  --to       [YYYY-MM-DD] The date to check to (default: latest)"
   exit 1
 }
 
 # Parse command-line arguments
+TO_DATE="HEAD"  # Default to latest commit if --to is not provided
+
 while [[ "$#" -gt 0 ]]; do
   case $1 in
     --dir) DIRECTORY="$2"; shift ;;
     --from) SINCE_DATE="$2"; shift ;;
+    --to) TO_DATE="$2"; shift ;;
     *) usage ;;
   esac
   shift
@@ -35,10 +39,10 @@ cd "$DIRECTORY" || { echo "Error: Could not change to directory '$DIRECTORY'"; e
 # Check if we're in the correct directory
 echo "Current directory: $(pwd)"
 
-# Find commits after the specified date affecting files in the directory
+# Find commits between the specified dates affecting files in the directory
 echo "Running git log command for files in the directory..."
 
-git log --since="$SINCE_DATE" --pretty=format:"%H %ad %s" --name-only --date=format:'%Y-%m-%d' -- "$DIRECTORY" | awk '
+git log --since="$SINCE_DATE" --until="$TO_DATE" --pretty=format:"%H %ad %s" --name-only --date=format:'%Y-%m-%d' -- "$DIRECTORY" | awk '
   /^[0-9a-f]{40} / {
     commit_hash = $1
     commit_date = $2
