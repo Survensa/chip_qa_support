@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 17edc82 (local changes),</span>
-<span id="revdate">2024-07-26 15:02:06 -0700</span>
+<span id="revnumber">version master 3878b10 (local changes),</span>
+<span id="revdate">2024-07-29 11:05:01 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -7670,7 +7670,7 @@ attribute, corresponding to the MoveToLevel command, SHALL be ignored.</p>
 The meaning of 'level' is device dependent.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -7732,7 +7732,7 @@ clients SHOULD NOT rely on the reporting of this attribute in order to keep trac
 A CurrentFrequency of 0 is unknown.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -10053,7 +10053,7 @@ Clients seeking the option for either <code>HIGH</code> or <code>MAX</code> will
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CurrentMode</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uint8</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -10081,21 +10081,7 @@ Clients seeking the option for either <code>HIGH</code> or <code>MAX</code> will
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="_scene_table_extensions_3"><a class="anchor" href="#_scene_table_extensions_3"></a>1.9.6.1. Scene Table Extensions</h5>
-<div class="paragraph">
-<p>If the Scenes Management server cluster is implemented on the same endpoint, the following
-attribute SHALL be part of the ExtensionFieldSetStruct of the Scene Table.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>CurrentMode</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_description_attribute"><a class="anchor" href="#_description_attribute"></a>1.9.6.2. Description Attribute</h5>
+<h5 id="_description_attribute"><a class="anchor" href="#_description_attribute"></a>1.9.6.1. Description Attribute</h5>
 <div class="paragraph">
 <p>This attribute describes the purpose of the server, in readable text.</p>
 </div>
@@ -10106,7 +10092,7 @@ This allows the user to tell the purpose of each of the instances.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_StandardNamespaceAttribute"><a class="anchor" href="#ref_StandardNamespaceAttribute"></a>1.9.6.3. StandardNamespace Attribute</h5>
+<h5 id="ref_StandardNamespaceAttribute"><a class="anchor" href="#ref_StandardNamespaceAttribute"></a>1.9.6.2. StandardNamespace Attribute</h5>
 <div class="paragraph">
 <p>This attribute, when not null, SHALL indicate a single standard namespace for any standard semantic tag value supported in this or any other cluster instance with the same value of this attribute.
 A null value indicates no standard namespace, and therefore, no standard semantic tags are provided in this cluster instance.
@@ -10114,14 +10100,14 @@ Each standard namespace and corresponding values and value meanings SHALL be def
 </div>
 </div>
 <div class="sect4">
-<h5 id="_supportedmodes_attribute"><a class="anchor" href="#_supportedmodes_attribute"></a>1.9.6.4. SupportedModes Attribute</h5>
+<h5 id="_supportedmodes_attribute"><a class="anchor" href="#_supportedmodes_attribute"></a>1.9.6.3. SupportedModes Attribute</h5>
 <div class="paragraph">
 <p>This attribute is the list of supported modes that may be selected for the CurrentMode attribute.
 Each item in this list represents a unique mode as indicated by the Mode field of the ModeOptionStruct. Each entry in this list SHALL have a unique value for the Mode field.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ModeSelectCurrentMode"><a class="anchor" href="#ref_ModeSelectCurrentMode"></a>1.9.6.5. CurrentMode Attribute</h5>
+<h5 id="ref_ModeSelectCurrentMode"><a class="anchor" href="#ref_ModeSelectCurrentMode"></a>1.9.6.4. CurrentMode Attribute</h5>
 <div class="paragraph">
 <p>This attribute represents the current mode of the server.</p>
 </div>
@@ -10130,7 +10116,7 @@ Each item in this list represents a unique mode as indicated by the Mode field o
 </div>
 </div>
 <div class="sect4">
-<h5 id="_startupmode_attribute"><a class="anchor" href="#_startupmode_attribute"></a>1.9.6.6. StartUpMode Attribute</h5>
+<h5 id="_startupmode_attribute"><a class="anchor" href="#_startupmode_attribute"></a>1.9.6.5. StartUpMode Attribute</h5>
 <div class="paragraph">
 <p>The StartUpMode attribute value indicates the desired startup mode for the server when it is supplied with power.</p>
 </div>
@@ -10153,7 +10139,7 @@ After an OTA restart, the CurrentMode attribute SHALL return to its value prior 
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_OnMode"><a class="anchor" href="#ref_OnMode"></a>1.9.6.7. OnMode Attribute</h5>
+<h5 id="ref_OnMode"><a class="anchor" href="#ref_OnMode"></a>1.9.6.6. OnMode Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the value of CurrentMode that depends on the state of the On/Off cluster on the same endpoint.
 If this attribute is not present or is set to null, it SHALL NOT have an effect,
@@ -10193,7 +10179,7 @@ otherwise the CurrentMode attribute SHALL depend on the OnOff attribute of the O
 <p>The value of this field SHALL match the Mode field of one of the entries in the SupportedModes attribute.</p>
 </div>
 <div class="sect5">
-<h6 id="ref_ModeSelectOnModeWithPowerUp"><a class="anchor" href="#ref_ModeSelectOnModeWithPowerUp"></a>1.9.6.7.1. OnMode with Power Up</h6>
+<h6 id="ref_ModeSelectOnModeWithPowerUp"><a class="anchor" href="#ref_ModeSelectOnModeWithPowerUp"></a>1.9.6.6.1. OnMode with Power Up</h6>
 <div class="paragraph">
 <p>If the On/Off feature is supported and the On/Off cluster attribute <a href="#_startuponoff_attribute">StartUpOnOff</a> is present,
  with a value of On (turn on at power up),
@@ -10677,7 +10663,7 @@ that is a derivation of this cluster).</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CurrentMode</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uint8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -10705,21 +10691,7 @@ that is a derivation of this cluster).</p>
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="_scene_table_extensions_4"><a class="anchor" href="#_scene_table_extensions_4"></a>1.10.6.1. Scene Table Extensions</h5>
-<div class="paragraph">
-<p>If the Scenes Management server cluster is implemented on the same endpoint, the following
-attribute SHALL be part of the ExtensionFieldSetStruct of the Scene Table.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>CurrentMode</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_supportedmodes_attribute_2"><a class="anchor" href="#_supportedmodes_attribute_2"></a>1.10.6.2. SupportedModes Attribute</h5>
+<h5 id="_supportedmodes_attribute_2"><a class="anchor" href="#_supportedmodes_attribute_2"></a>1.10.6.1. SupportedModes Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL contain the list of supported modes that may be selected for the CurrentMode attribute.
 Each item in this list represents a unique mode as indicated by the Mode field of the <a href="#ref_ModeOptionStruct">ModeOptionStruct</a>.</p>
@@ -10732,7 +10704,7 @@ Each item in this list represents a unique mode as indicated by the Mode field o
 </div>
 </div>
 <div class="sect4">
-<h5 id="_currentmode_attribute"><a class="anchor" href="#_currentmode_attribute"></a>1.10.6.3. CurrentMode Attribute</h5>
+<h5 id="_currentmode_attribute"><a class="anchor" href="#_currentmode_attribute"></a>1.10.6.2. CurrentMode Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the current mode of the server.</p>
 </div>
@@ -10748,7 +10720,7 @@ from a fabric other than the one which last executed a ChangeToMode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_startupmode_attribute_2"><a class="anchor" href="#_startupmode_attribute_2"></a>1.10.6.4. StartUpMode Attribute</h5>
+<h5 id="_startupmode_attribute_2"><a class="anchor" href="#_startupmode_attribute_2"></a>1.10.6.3. StartUpMode Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the desired startup mode for the server when it is supplied with power.</p>
 </div>
@@ -10771,7 +10743,7 @@ After an OTA restart, the CurrentMode attribute SHALL return to its value prior 
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ModeBaseOnMode"><a class="anchor" href="#ref_ModeBaseOnMode"></a>1.10.6.5. OnMode Attribute</h5>
+<h5 id="ref_ModeBaseOnMode"><a class="anchor" href="#ref_ModeBaseOnMode"></a>1.10.6.4. OnMode Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate whether the value of CurrentMode
 depends on the state of the On/Off cluster on the same endpoint.
@@ -10813,7 +10785,7 @@ in the On/Off cluster as described in the table below:</p>
 <p>The value of this field SHALL match the Mode field of one of the entries in the SupportedModes attribute.</p>
 </div>
 <div class="sect5">
-<h6 id="ref_ModeBaseOnModeWithPowerUp"><a class="anchor" href="#ref_ModeBaseOnModeWithPowerUp"></a>1.10.6.5.1. OnMode with Power Up</h6>
+<h6 id="ref_ModeBaseOnModeWithPowerUp"><a class="anchor" href="#ref_ModeBaseOnModeWithPowerUp"></a>1.10.6.4.1. OnMode with Power Up</h6>
 <div class="paragraph">
 <p>If the On/Off feature is supported and the On/Off cluster attribute <a href="#_startuponoff_attribute">StartUpOnOff</a> is present,
  with a value of On (turn on at power up),
@@ -13438,7 +13410,7 @@ the ErrorStateDetails contains "left wheel blocked".</p>
 <p>A value of null represents that there is no time currently defined until operation completion. This MAY happen, for example, because no operation is in progress or because the completion time is unknown.</p>
 </div>
 <div class="paragraph">
-<p>Changes to this value SHALL be marked as reportable in the following cases:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -24682,7 +24654,7 @@ value of the StartHue field.</p>
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="_scene_table_extensions_5"><a class="anchor" href="#_scene_table_extensions_5"></a>3.2.7.1. Scene Table Extensions</h5>
+<h5 id="_scene_table_extensions_3"><a class="anchor" href="#_scene_table_extensions_3"></a>3.2.7.1. Scene Table Extensions</h5>
 <div class="paragraph">
 <p>If the Scenes Management server cluster is implemented on the same endpoint,
 the following attributes SHALL be part of the ExtensionFieldSetStruct of the Scene Table.
@@ -24757,7 +24729,7 @@ It is updated as fast as practical during commands that change the hue.</p>
 <p>where CurrentHue is in the range from 0 to 254 inclusive.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -24791,7 +24763,7 @@ It is updated as fast as practical during commands that change the saturation.</
 <p>where CurrentSaturation is in the range from 0 to 254 inclusive.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -24850,7 +24822,7 @@ It is updated as fast as practical during commands that change the color.</p>
 <p>where CurrentX is in the range from 0 to 65279 inclusive.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -24885,7 +24857,7 @@ It is updated as fast as practical during commands that change the color.</p>
 <p>where CurrentY is in the range from 0 to 65279 inclusive.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -25015,7 +24987,7 @@ SHALL contain a hue value in the range 0 to 254, calculated from the
 EnhancedCurrentHue attribute.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -29799,7 +29771,7 @@ attribute is a signed value, values of capacity less than
 zero have no physical meaning.<br></p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -29827,7 +29799,7 @@ attribute will indicate the null value.</p>
 <p>Valid range is 0 to 65.534 RPM.<br></p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -29874,7 +29846,7 @@ attribute will indicate the null value.</p>
 <p>Valid range is 0 to 16,777,214 Watts.<br></p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -31894,7 +31866,7 @@ be represented by 1410 minutes since midnight.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OccupiedCoolingSetpoint</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">temperature</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">NS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">26°C</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RW VO</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">COOL</p></td>
@@ -31904,7 +31876,7 @@ be represented by 1410 minutes since midnight.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OccupiedHeatingSetpoint</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">temperature</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">NS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20°C</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RW VO</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HEAT</p></td>
@@ -32004,7 +31976,7 @@ be represented by 1410 minutes since midnight.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SystemMode</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_SystemModeEnum">SystemModeEnum</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">NS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RW VM</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -32282,30 +32254,7 @@ be represented by 1410 minutes since midnight.</p>
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="_scene_table_extensions_6"><a class="anchor" href="#_scene_table_extensions_6"></a>4.3.9.1. Scene Table Extensions</h5>
-<div class="paragraph">
-<p>If the Scenes Management server cluster is implemented on the same endpoint, the following
-attributes SHALL be part of the ExtensionFieldSetStruct of the Scene Table.
-If the implicit form of the ExtensionFieldSetStruct is used, the order of
-the attributes in the AttributeValueList is in the given order,
-i.e., the attribute listed as 1 is added first:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="#ref_OccupiedCoolingSetpoint">OccupiedCoolingSetpoint</a></p>
-</li>
-<li>
-<p><a href="#ref_OccupiedHeatingSetpoint">OccupiedHeatingSetpoint</a></p>
-</li>
-<li>
-<p><a href="#ref_SystemMode">SystemMode</a></p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ref_CalculatedLocalTemperature"><a class="anchor" href="#ref_CalculatedLocalTemperature"></a>4.3.9.2. Calculated Local Temperature</h5>
+<h5 id="ref_CalculatedLocalTemperature"><a class="anchor" href="#ref_CalculatedLocalTemperature"></a>4.3.9.1. Calculated Local Temperature</h5>
 <div class="paragraph">
 <p>The local temperature SHALL be calculated from the <em>measured temperature</em>,
 including any adjustments applied by <a href="#ref_LocalTemperatureCalibration">LocalTemperatureCalibration</a> attribute (if any)
@@ -32334,7 +32283,7 @@ is not reported in the <a href="#ref_LocalTemperature">LocalTemperature</a> attr
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_LocalTemperature"><a class="anchor" href="#ref_LocalTemperature"></a>4.3.9.3. LocalTemperature Attribute</h5>
+<h5 id="ref_LocalTemperature"><a class="anchor" href="#ref_LocalTemperature"></a>4.3.9.2. LocalTemperature Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the current <a href="#ref_CalculatedLocalTemperature">Calculated Local Temperature</a>, when available.</p>
 </div>
@@ -32361,7 +32310,7 @@ In that case, the LocalTemperature attribute SHALL always report null.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -32375,13 +32324,13 @@ In that case, the LocalTemperature attribute SHALL always report null.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_OutdoorTemperature"><a class="anchor" href="#ref_OutdoorTemperature"></a>4.3.9.4. OutdoorTemperature Attribute</h5>
+<h5 id="ref_OutdoorTemperature"><a class="anchor" href="#ref_OutdoorTemperature"></a>4.3.9.3. OutdoorTemperature Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the outdoor temperature,
 as measured locally or remotely (over the network).</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -32395,14 +32344,14 @@ as measured locally or remotely (over the network).</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_Occupancy"><a class="anchor" href="#ref_Occupancy"></a>4.3.9.5. Occupancy Attribute</h5>
+<h5 id="ref_Occupancy"><a class="anchor" href="#ref_Occupancy"></a>4.3.9.4. Occupancy Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate whether the heated/cooled space is occupied or
 not, as measured locally or remotely (over the network).</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_AbsMinHeatSetpointLimit"><a class="anchor" href="#ref_AbsMinHeatSetpointLimit"></a>4.3.9.6. AbsMinHeatSetpointLimit Attribute</h5>
+<h5 id="ref_AbsMinHeatSetpointLimit"><a class="anchor" href="#ref_AbsMinHeatSetpointLimit"></a>4.3.9.5. AbsMinHeatSetpointLimit Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the absolute minimum
 level that the heating setpoint MAY be set to. This is a limitation
@@ -32413,7 +32362,7 @@ imposed by the manufacturer.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_AbsMaxHeatSetpointLimit"><a class="anchor" href="#ref_AbsMaxHeatSetpointLimit"></a>4.3.9.7. AbsMaxHeatSetpointLimit Attribute</h5>
+<h5 id="ref_AbsMaxHeatSetpointLimit"><a class="anchor" href="#ref_AbsMaxHeatSetpointLimit"></a>4.3.9.6. AbsMaxHeatSetpointLimit Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the absolute maximum
 level that the heating setpoint MAY be set to. This is a limitation
@@ -32424,7 +32373,7 @@ imposed by the manufacturer.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_AbsMinCoolSetpointLimit"><a class="anchor" href="#ref_AbsMinCoolSetpointLimit"></a>4.3.9.8. AbsMinCoolSetpointLimit Attribute</h5>
+<h5 id="ref_AbsMinCoolSetpointLimit"><a class="anchor" href="#ref_AbsMinCoolSetpointLimit"></a>4.3.9.7. AbsMinCoolSetpointLimit Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the absolute minimum
 level that the cooling setpoint MAY be set to. This is a limitation
@@ -32435,7 +32384,7 @@ imposed by the manufacturer.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_AbsMaxCoolSetpointLimit"><a class="anchor" href="#ref_AbsMaxCoolSetpointLimit"></a>4.3.9.9. AbsMaxCoolSetpointLimit Attribute</h5>
+<h5 id="ref_AbsMaxCoolSetpointLimit"><a class="anchor" href="#ref_AbsMaxCoolSetpointLimit"></a>4.3.9.8. AbsMaxCoolSetpointLimit Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the absolute maximum
 level that the cooling setpoint MAY be set to. This is a limitation
@@ -32446,7 +32395,7 @@ imposed by the manufacturer.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_picoolingdemand_attribute"><a class="anchor" href="#_picoolingdemand_attribute"></a>4.3.9.10. PICoolingDemand Attribute</h5>
+<h5 id="_picoolingdemand_attribute"><a class="anchor" href="#_picoolingdemand_attribute"></a>4.3.9.9. PICoolingDemand Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the
 level of cooling demanded by the PI (proportional integral) control loop
@@ -32459,7 +32408,7 @@ cooling device.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_piheatingdemand_attribute"><a class="anchor" href="#_piheatingdemand_attribute"></a>4.3.9.11. PIHeatingDemand Attribute</h5>
+<h5 id="_piheatingdemand_attribute"><a class="anchor" href="#_piheatingdemand_attribute"></a>4.3.9.10. PIHeatingDemand Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the
 level of heating demanded by the PI loop in percent. This value is 0
@@ -32471,7 +32420,7 @@ heating device.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_hvacsystemtypeconfiguration_attribute"><a class="anchor" href="#_hvacsystemtypeconfiguration_attribute"></a>4.3.9.12. HVACSystemTypeConfiguration Attribute</h5>
+<h5 id="_hvacsystemtypeconfiguration_attribute"><a class="anchor" href="#_hvacsystemtypeconfiguration_attribute"></a>4.3.9.11. HVACSystemTypeConfiguration Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the HVAC system
 type controlled by the thermostat. If the thermostat uses physical DIP
@@ -32482,7 +32431,7 @@ programming capability.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_LocalTemperatureCalibration"><a class="anchor" href="#ref_LocalTemperatureCalibration"></a>4.3.9.13. LocalTemperatureCalibration Attribute</h5>
+<h5 id="ref_LocalTemperatureCalibration"><a class="anchor" href="#ref_LocalTemperatureCalibration"></a>4.3.9.12. LocalTemperatureCalibration Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the offset the Thermostat server SHALL make to the measured
 temperature (locally or remotely) to adjust the <a href="#ref_CalculatedLocalTemperature">Calculated Local Temperature</a>
@@ -32516,7 +32465,7 @@ constrained to a range of -2.5°C to 2.5°C.
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_OccupiedCoolingSetpoint"><a class="anchor" href="#ref_OccupiedCoolingSetpoint"></a>4.3.9.14. OccupiedCoolingSetpoint Attribute</h5>
+<h5 id="ref_OccupiedCoolingSetpoint"><a class="anchor" href="#ref_OccupiedCoolingSetpoint"></a>4.3.9.13. OccupiedCoolingSetpoint Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the cooling mode setpoint when the room is occupied.</p>
 </div>
@@ -32538,7 +32487,7 @@ the cooling mode setpoint.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_OccupiedHeatingSetpoint"><a class="anchor" href="#ref_OccupiedHeatingSetpoint"></a>4.3.9.15. OccupiedHeatingSetpoint Attribute</h5>
+<h5 id="ref_OccupiedHeatingSetpoint"><a class="anchor" href="#ref_OccupiedHeatingSetpoint"></a>4.3.9.14. OccupiedHeatingSetpoint Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the heating mode setpoint when the room is occupied.</p>
 </div>
@@ -32560,7 +32509,7 @@ used as the heating mode setpoint.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_UnoccupiedCoolingSetpoint"><a class="anchor" href="#ref_UnoccupiedCoolingSetpoint"></a>4.3.9.16. UnoccupiedCoolingSetpoint Attribute</h5>
+<h5 id="ref_UnoccupiedCoolingSetpoint"><a class="anchor" href="#ref_UnoccupiedCoolingSetpoint"></a>4.3.9.15. UnoccupiedCoolingSetpoint Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the cooling mode setpoint when the room is unoccupied.</p>
 </div>
@@ -32582,7 +32531,7 @@ be used.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_UnoccupiedHeatingSetpoint"><a class="anchor" href="#ref_UnoccupiedHeatingSetpoint"></a>4.3.9.17. UnoccupiedHeatingSetpoint Attribute</h5>
+<h5 id="ref_UnoccupiedHeatingSetpoint"><a class="anchor" href="#ref_UnoccupiedHeatingSetpoint"></a>4.3.9.16. UnoccupiedHeatingSetpoint Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the heating mode setpoint when the room is unoccupied.</p>
 </div>
@@ -32604,7 +32553,7 @@ be used.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_MinHeatSetpointLimit"><a class="anchor" href="#ref_MinHeatSetpointLimit"></a>4.3.9.18. MinHeatSetpointLimit Attribute</h5>
+<h5 id="ref_MinHeatSetpointLimit"><a class="anchor" href="#ref_MinHeatSetpointLimit"></a>4.3.9.17. MinHeatSetpointLimit Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the minimum level that the heating setpoint MAY be set to.</p>
 </div>
@@ -32625,7 +32574,7 @@ with the status code CONSTRAINT_ERROR SHALL be returned.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_MaxHeatSetpointLimit"><a class="anchor" href="#ref_MaxHeatSetpointLimit"></a>4.3.9.19. MaxHeatSetpointLimit Attribute</h5>
+<h5 id="ref_MaxHeatSetpointLimit"><a class="anchor" href="#ref_MaxHeatSetpointLimit"></a>4.3.9.18. MaxHeatSetpointLimit Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the maximum level that the heating setpoint MAY be set to.</p>
 </div>
@@ -32640,7 +32589,7 @@ with the status code CONSTRAINT_ERROR SHALL be returned.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_MinCoolSetpointLimit"><a class="anchor" href="#ref_MinCoolSetpointLimit"></a>4.3.9.20. MinCoolSetpointLimit Attribute</h5>
+<h5 id="ref_MinCoolSetpointLimit"><a class="anchor" href="#ref_MinCoolSetpointLimit"></a>4.3.9.19. MinCoolSetpointLimit Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the minimum level that the cooling setpoint MAY be set to.</p>
 </div>
@@ -32655,7 +32604,7 @@ with the status code CONSTRAINT_ERROR SHALL be returned.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_MaxCoolSetpointLimit"><a class="anchor" href="#ref_MaxCoolSetpointLimit"></a>4.3.9.21. MaxCoolSetpointLimit Attribute</h5>
+<h5 id="ref_MaxCoolSetpointLimit"><a class="anchor" href="#ref_MaxCoolSetpointLimit"></a>4.3.9.20. MaxCoolSetpointLimit Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the maximum level that the cooling setpoint MAY be set to.</p>
 </div>
@@ -32670,7 +32619,7 @@ with the status code CONSTRAINT_ERROR SHALL be returned.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_MinSetpointDeadBand"><a class="anchor" href="#ref_MinSetpointDeadBand"></a>4.3.9.22. MinSetpointDeadBand Attribute</h5>
+<h5 id="ref_MinSetpointDeadBand"><a class="anchor" href="#ref_MinSetpointDeadBand"></a>4.3.9.21. MinSetpointDeadBand Attribute</h5>
 <div class="paragraph">
 <p>On devices which support the AUTO feature, this attribute SHALL indicate the minimum difference
 between the Heat Setpoint and the Cool Setpoint.</p>
@@ -32706,7 +32655,7 @@ to this attribute SHALL be silently ignored.
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_RemoteSensing"><a class="anchor" href="#ref_RemoteSensing"></a>4.3.9.23. RemoteSensing Attribute</h5>
+<h5 id="ref_RemoteSensing"><a class="anchor" href="#ref_RemoteSensing"></a>4.3.9.22. RemoteSensing Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate when
 the local temperature, outdoor temperature and occupancy are being
@@ -32722,21 +32671,21 @@ is present, the write SHALL fail and the server SHALL report a CONSTRAINT_ERROR.
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ControlSequenceOfOperation"><a class="anchor" href="#ref_ControlSequenceOfOperation"></a>4.3.9.24. ControlSequenceOfOperation Attribute</h5>
+<h5 id="ref_ControlSequenceOfOperation"><a class="anchor" href="#ref_ControlSequenceOfOperation"></a>4.3.9.23. ControlSequenceOfOperation Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the overall operating environment of the thermostat, and thus
 the possible system modes that the thermostat can operate in.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_SystemMode"><a class="anchor" href="#ref_SystemMode"></a>4.3.9.25. SystemMode Attribute</h5>
+<h5 id="ref_SystemMode"><a class="anchor" href="#ref_SystemMode"></a>4.3.9.24. SystemMode Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the current operating mode of the thermostat. Its value SHALL be limited
 by the <a href="#ref_ControlSequenceOfOperation">ControlSequenceOfOperation</a> attribute.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_alarmmask_attribute"><a class="anchor" href="#_alarmmask_attribute"></a>4.3.9.26. AlarmMask Attribute</h5>
+<h5 id="_alarmmask_attribute"><a class="anchor" href="#_alarmmask_attribute"></a>4.3.9.25. AlarmMask Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate whether each of the alarms in <a href="#ref_AlarmCodeBitmap">AlarmCodeBitmap</a> is enabled.</p>
 </div>
@@ -32747,7 +32696,7 @@ generated, with the alarm code field set as listed in <a href="#ref_AlarmCodeBit
 </div>
 </div>
 <div class="sect4">
-<h5 id="_thermostatrunningmode_attribute"><a class="anchor" href="#_thermostatrunningmode_attribute"></a>4.3.9.27. ThermostatRunningMode Attribute</h5>
+<h5 id="_thermostatrunningmode_attribute"><a class="anchor" href="#_thermostatrunningmode_attribute"></a>4.3.9.26. ThermostatRunningMode Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the running mode of the thermostat.
 This attribute uses the same values as <a href="#ref_SystemModeEnum">SystemModeEnum</a> but
@@ -32756,7 +32705,7 @@ additional information when the thermostat&#8217;s system mode is in auto mode.<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_startofweek_attribute"><a class="anchor" href="#_startofweek_attribute"></a>4.3.9.28. StartOfWeek Attribute</h5>
+<h5 id="_startofweek_attribute"><a class="anchor" href="#_startofweek_attribute"></a>4.3.9.27. StartOfWeek Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the day of the week that this thermostat
 considers to be the start of week for weekly setpoint scheduling.</p>
@@ -32768,21 +32717,21 @@ response means that the weekly scheduling is supported.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_numberofweeklytransitions_attribute"><a class="anchor" href="#_numberofweeklytransitions_attribute"></a>4.3.9.29. NumberOfWeeklyTransitions Attribute</h5>
+<h5 id="_numberofweeklytransitions_attribute"><a class="anchor" href="#_numberofweeklytransitions_attribute"></a>4.3.9.28. NumberOfWeeklyTransitions Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate how many weekly
 schedule transitions the thermostat is capable of handling.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_numberofdailytransitions_attribute"><a class="anchor" href="#_numberofdailytransitions_attribute"></a>4.3.9.30. NumberOfDailyTransitions Attribute</h5>
+<h5 id="_numberofdailytransitions_attribute"><a class="anchor" href="#_numberofdailytransitions_attribute"></a>4.3.9.29. NumberOfDailyTransitions Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate how many daily schedule
 transitions the thermostat is capable of handling.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_TemperatureSetpointHold"><a class="anchor" href="#ref_TemperatureSetpointHold"></a>4.3.9.31. TemperatureSetpointHold Attribute</h5>
+<h5 id="ref_TemperatureSetpointHold"><a class="anchor" href="#ref_TemperatureSetpointHold"></a>4.3.9.30. TemperatureSetpointHold Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the temperature hold status on the
 thermostat. If hold status is on, the thermostat
@@ -32794,7 +32743,7 @@ SHOULD also implement the <a href="#ref_TemperatureSetpointHoldDuration">Tempera
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_TemperatureSetpointHoldDuration"><a class="anchor" href="#ref_TemperatureSetpointHoldDuration"></a>4.3.9.32. TemperatureSetpointHoldDuration Attribute</h5>
+<h5 id="ref_TemperatureSetpointHoldDuration"><a class="anchor" href="#ref_TemperatureSetpointHoldDuration"></a>4.3.9.31. TemperatureSetpointHoldDuration Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the period in minutes for which a
 setpoint hold is active. Thermostats that support hold for a specified
@@ -32804,7 +32753,7 @@ unused. All other values are reserved.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_thermostatprogrammingoperationmode_attribute"><a class="anchor" href="#_thermostatprogrammingoperationmode_attribute"></a>4.3.9.33. ThermostatProgrammingOperationMode Attribute</h5>
+<h5 id="_thermostatprogrammingoperationmode_attribute"><a class="anchor" href="#_thermostatprogrammingoperationmode_attribute"></a>4.3.9.32. ThermostatProgrammingOperationMode Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the
 operational state of the thermostat&#8217;s programming. The thermostat SHALL
@@ -32840,7 +32789,7 @@ programming configurations.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_thermostatrunningstate_attribute"><a class="anchor" href="#_thermostatrunningstate_attribute"></a>4.3.9.34. ThermostatRunningState Attribute</h5>
+<h5 id="_thermostatrunningstate_attribute"><a class="anchor" href="#_thermostatrunningstate_attribute"></a>4.3.9.33. ThermostatRunningState Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the current relay state of the heat,
 cool, and fan relays.</p>
@@ -32850,7 +32799,7 @@ cool, and fan relays.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_SetpointChangeSource"><a class="anchor" href="#ref_SetpointChangeSource"></a>4.3.9.35. SetpointChangeSource Attribute</h5>
+<h5 id="ref_SetpointChangeSource"><a class="anchor" href="#ref_SetpointChangeSource"></a>4.3.9.34. SetpointChangeSource Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the source of the current active
 <a href="#ref_OccupiedCoolingSetpoint">OccupiedCoolingSetpoint</a> or
@@ -32867,7 +32816,7 @@ source of setpoint changes made at the thermostat.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_SetpointChangeAmount"><a class="anchor" href="#ref_SetpointChangeAmount"></a>4.3.9.36. SetpointChangeAmount Attribute</h5>
+<h5 id="ref_SetpointChangeAmount"><a class="anchor" href="#ref_SetpointChangeAmount"></a>4.3.9.35. SetpointChangeAmount Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the delta between the
 current active <a href="#ref_OccupiedCoolingSetpoint">OccupiedCoolingSetpoint</a> or <a href="#ref_OccupiedHeatingSetpoint">OccupiedHeatingSetpoint</a>
@@ -32880,14 +32829,14 @@ the <a href="#ref_SetpointChangeSource">SetpointChangeSource</a> attribute; devi
 </div>
 </div>
 <div class="sect4">
-<h5 id="_setpointchangesourcetimestamp_attribute"><a class="anchor" href="#_setpointchangesourcetimestamp_attribute"></a>4.3.9.37. SetpointChangeSourceTimestamp Attribute</h5>
+<h5 id="_setpointchangesourcetimestamp_attribute"><a class="anchor" href="#_setpointchangesourcetimestamp_attribute"></a>4.3.9.36. SetpointChangeSourceTimestamp Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the time in UTC
 at which the <a href="#ref_SetpointChangeAmount">SetpointChangeAmount</a> attribute change was recorded.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_OccupiedSetback"><a class="anchor" href="#ref_OccupiedSetback"></a>4.3.9.38. OccupiedSetback Attribute</h5>
+<h5 id="ref_OccupiedSetback"><a class="anchor" href="#ref_OccupiedSetback"></a>4.3.9.37. OccupiedSetback Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the amount that the Thermostat
 server will allow the <a href="#ref_CalculatedLocalTemperature">Calculated Local Temperature</a>
@@ -32923,7 +32872,7 @@ SUCCESS response.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_OccupiedSetbackMin"><a class="anchor" href="#ref_OccupiedSetbackMin"></a>4.3.9.39. OccupiedSetbackMin Attribute</h5>
+<h5 id="ref_OccupiedSetbackMin"><a class="anchor" href="#ref_OccupiedSetbackMin"></a>4.3.9.38. OccupiedSetbackMin Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the minimum value that the
 Thermostat server will allow the <a href="#ref_OccupiedSetback">OccupiedSetback</a> attribute to be
@@ -32934,7 +32883,7 @@ configured by a user.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_OccupiedSetbackMax"><a class="anchor" href="#ref_OccupiedSetbackMax"></a>4.3.9.40. OccupiedSetbackMax Attribute</h5>
+<h5 id="ref_OccupiedSetbackMax"><a class="anchor" href="#ref_OccupiedSetbackMax"></a>4.3.9.39. OccupiedSetbackMax Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the maximum value that the
 Thermostat server will allow the <a href="#ref_OccupiedSetback">OccupiedSetback</a> attribute to be
@@ -32945,7 +32894,7 @@ configured by a user.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_UnoccupiedSetback"><a class="anchor" href="#ref_UnoccupiedSetback"></a>4.3.9.41. UnoccupiedSetback Attribute</h5>
+<h5 id="ref_UnoccupiedSetback"><a class="anchor" href="#ref_UnoccupiedSetback"></a>4.3.9.40. UnoccupiedSetback Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the amount that the Thermostat
 server will allow the <a href="#ref_CalculatedLocalTemperature">Calculated Local Temperature</a> to float above the
@@ -32980,7 +32929,7 @@ SUCCESS response.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_UnoccupiedSetbackMin"><a class="anchor" href="#ref_UnoccupiedSetbackMin"></a>4.3.9.42. UnoccupiedSetbackMin Attribute</h5>
+<h5 id="ref_UnoccupiedSetbackMin"><a class="anchor" href="#ref_UnoccupiedSetbackMin"></a>4.3.9.41. UnoccupiedSetbackMin Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the minimum value that the Thermostat server
 will allow the <a href="#ref_UnoccupiedSetback">UnoccupiedSetback</a> attribute to be
@@ -32991,7 +32940,7 @@ configured by a user.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_UnoccupiedSetbackMax"><a class="anchor" href="#ref_UnoccupiedSetbackMax"></a>4.3.9.43. UnoccupiedSetbackMax Attribute</h5>
+<h5 id="ref_UnoccupiedSetbackMax"><a class="anchor" href="#ref_UnoccupiedSetbackMax"></a>4.3.9.42. UnoccupiedSetbackMax Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the maximum value that the
 Thermostat server will allow the <a href="#ref_UnoccupiedSetback">UnoccupiedSetback</a>
@@ -33002,7 +32951,7 @@ attribute to be configured by a user.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_EmergencyHeatDelta"><a class="anchor" href="#ref_EmergencyHeatDelta"></a>4.3.9.44. EmergencyHeatDelta Attribute</h5>
+<h5 id="ref_EmergencyHeatDelta"><a class="anchor" href="#ref_EmergencyHeatDelta"></a>4.3.9.43. EmergencyHeatDelta Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the delta between the <a href="#ref_CalculatedLocalTemperature">Calculated Local Temperature</a>
 and the <a href="#ref_OccupiedHeatingSetpoint">OccupiedHeatingSetpoint</a> or <a href="#ref_UnoccupiedHeatingSetpoint">UnoccupiedHeatingSetpoint</a>
@@ -33059,7 +33008,7 @@ space to be quickly heated to the desired level set by the user.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_actype_attribute"><a class="anchor" href="#_actype_attribute"></a>4.3.9.45. ACType Attribute</h5>
+<h5 id="_actype_attribute"><a class="anchor" href="#_actype_attribute"></a>4.3.9.44. ACType Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the type of Mini Split <a href="#ref_AcTypeEnum">ACTypeEnum</a>
 of Mini Split AC is defined depending on how Cooling and Heating condition
@@ -33067,44 +33016,44 @@ is achieved by Mini Split AC.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_AcCapacity"><a class="anchor" href="#ref_AcCapacity"></a>4.3.9.46. ACCapacity Attribute</h5>
+<h5 id="ref_AcCapacity"><a class="anchor" href="#ref_AcCapacity"></a>4.3.9.45. ACCapacity Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate capacity of Mini Split AC in terms of the format defined by
 the <a href="#ref_AcCapacityFormat">ACCapacityFormat</a> attribute</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_acrefrigeranttype_attribute"><a class="anchor" href="#_acrefrigeranttype_attribute"></a>4.3.9.47. ACRefrigerantType Attribute</h5>
+<h5 id="_acrefrigeranttype_attribute"><a class="anchor" href="#_acrefrigeranttype_attribute"></a>4.3.9.46. ACRefrigerantType Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate type of refrigerant used within the Mini Split AC.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_accompressortype_attribute"><a class="anchor" href="#_accompressortype_attribute"></a>4.3.9.48. ACCompressorType Attribute</h5>
+<h5 id="_accompressortype_attribute"><a class="anchor" href="#_accompressortype_attribute"></a>4.3.9.47. ACCompressorType Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the type of compressor used within the Mini Split AC.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_acerrorcode_attribute"><a class="anchor" href="#_acerrorcode_attribute"></a>4.3.9.49. ACErrorCode Attribute</h5>
+<h5 id="_acerrorcode_attribute"><a class="anchor" href="#_acerrorcode_attribute"></a>4.3.9.48. ACErrorCode Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the type of errors encountered within the Mini Split AC.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_aclouverposition_attribute"><a class="anchor" href="#_aclouverposition_attribute"></a>4.3.9.50. ACLouverPosition Attribute</h5>
+<h5 id="_aclouverposition_attribute"><a class="anchor" href="#_aclouverposition_attribute"></a>4.3.9.49. ACLouverPosition Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the position of Louver on the AC.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_accoiltemperature_attribute"><a class="anchor" href="#_accoiltemperature_attribute"></a>4.3.9.51. ACCoilTemperature Attribute</h5>
+<h5 id="_accoiltemperature_attribute"><a class="anchor" href="#_accoiltemperature_attribute"></a>4.3.9.50. ACCoilTemperature Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the temperature of the AC coil, as
 measured locally or remotely (over the network).</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -33118,7 +33067,7 @@ measured locally or remotely (over the network).</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_AcCapacityFormat"><a class="anchor" href="#ref_AcCapacityFormat"></a>4.3.9.52. ACCapacityFormat Attribute</h5>
+<h5 id="ref_AcCapacityFormat"><a class="anchor" href="#ref_AcCapacityFormat"></a>4.3.9.51. ACCapacityFormat Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the format for the <a href="#ref_AcCapacity">ACCapacity</a> attribute.</p>
 </div>
@@ -34570,7 +34519,7 @@ There MAY be a temporary mismatch between the value of this attribute and the va
 See <a href="#ref_PercentRules">Section 4.4.6.3.1</a> for more details.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -34645,7 +34594,7 @@ based on the speed value being in the corresponding range.</p>
 There MAY be a temporary mismatch between the value of this attribute and the value of the <a href="#ref_SpeedSetting">SpeedSetting</a> attribute due to other system requirements that would not allow the fan to operate at the requested setting.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -35775,7 +35724,7 @@ the actual level of the valve during the movement.</p>
 <p>A value of null SHALL indicate that the current state is not known.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -38566,7 +38515,7 @@ PIN/RFID codes are number or characters. For example, code of “1, 2, 3,
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LockState</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_LockStateEnum">LockStateEnum</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X P S</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X P</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
@@ -38949,52 +38898,7 @@ represent mandatory fields that were previously not present or optional.
 Implementers should be aware that older devices may not implement them.</p>
 </div>
 <div class="sect4">
-<h5 id="_scene_table_extensions_7"><a class="anchor" href="#_scene_table_extensions_7"></a>5.2.9.1. Scene Table Extensions</h5>
-<div class="paragraph">
-<p>If the Scenes Management server cluster is implemented on the same endpoint, the following
-attribute SHALL be part of the ExtensionFieldSetStruct of the Scene Table.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>LockState</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>When the LockState attribute is part of a Scene table, the attribute is treated as a writable command;
-that is:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Setting the LockState to Locked SHALL command the lock to lock.</p>
-</li>
-<li>
-<p>Setting the LockState to Unlocked SHALL command the lock to unlock.</p>
-</li>
-<li>
-<p>If a lock supports the <a href="#ref_Unbolting">Unbolting</a> feature,
-setting the LockState to Unlocked SHALL unlock the door without pulling the latch.</p>
-</li>
-<li>
-<p>Setting the LockState attribute to Unlatched SHALL command the lock to unlock and pull the latch.</p>
-</li>
-<li>
-<p>Trying to write the LockState attribute to Not Fully Locked SHALL be ignored and not change the state of the lock.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The Transition Time field in the Scene table will be treated as a delay before setting the LockState attribute;
-that is, it is possible to activate a scene with the lock actuation some seconds later.</p>
-</div>
-<div class="paragraph">
-<p>Locks that do not have an actuation mechanism SHOULD NOT support the Scene table extension.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_lockstate_attribute"><a class="anchor" href="#_lockstate_attribute"></a>5.2.9.2. LockState Attribute</h5>
+<h5 id="_lockstate_attribute"><a class="anchor" href="#_lockstate_attribute"></a>5.2.9.1. LockState Attribute</h5>
 <div class="paragraph">
 <p>This attribute may be NULL if the lock hardware does not currently
 know the status of the locking mechanism. For example, a lock may not know the
@@ -39009,13 +38913,13 @@ dead latched state.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_locktype_attribute"><a class="anchor" href="#_locktype_attribute"></a>5.2.9.3. LockType Attribute</h5>
+<h5 id="_locktype_attribute"><a class="anchor" href="#_locktype_attribute"></a>5.2.9.2. LockType Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the type of door lock as defined in <a href="#ref_LockTypeEnum">LockTypeEnum</a>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_actuatorenabled_attribute"><a class="anchor" href="#_actuatorenabled_attribute"></a>5.2.9.4. ActuatorEnabled Attribute</h5>
+<h5 id="_actuatorenabled_attribute"><a class="anchor" href="#_actuatorenabled_attribute"></a>5.2.9.3. ActuatorEnabled Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate if the lock is currently able to
 (Enabled) or not able to (Disabled) process remote Lock, Unlock, or
@@ -39048,7 +38952,7 @@ Unlock with Timeout commands.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_doorstate_attribute"><a class="anchor" href="#_doorstate_attribute"></a>5.2.9.5. DoorState Attribute</h5>
+<h5 id="_doorstate_attribute"><a class="anchor" href="#_doorstate_attribute"></a>5.2.9.4. DoorState Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the current door state as defined in <a href="#ref_DoorStateEnum">DoorStateEnum</a>.</p>
 </div>
@@ -39058,79 +38962,79 @@ of the current door state.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_dooropenevents_attribute"><a class="anchor" href="#_dooropenevents_attribute"></a>5.2.9.6. DoorOpenEvents Attribute</h5>
+<h5 id="_dooropenevents_attribute"><a class="anchor" href="#_dooropenevents_attribute"></a>5.2.9.5. DoorOpenEvents Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL hold the number of door open events that have occurred
 since it was last zeroed.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_doorclosedevents_attribute"><a class="anchor" href="#_doorclosedevents_attribute"></a>5.2.9.7. DoorClosedEvents Attribute</h5>
+<h5 id="_doorclosedevents_attribute"><a class="anchor" href="#_doorclosedevents_attribute"></a>5.2.9.6. DoorClosedEvents Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL hold the number of door closed events that have occurred
 since it was last zeroed.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_openperiod_attribute"><a class="anchor" href="#_openperiod_attribute"></a>5.2.9.8. OpenPeriod Attribute</h5>
+<h5 id="_openperiod_attribute"><a class="anchor" href="#_openperiod_attribute"></a>5.2.9.7. OpenPeriod Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL hold the number of minutes the door has been open since
 the last time it transitioned from closed to open.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_numberoftotaluserssupported_attribute"><a class="anchor" href="#_numberoftotaluserssupported_attribute"></a>5.2.9.9. NumberOfTotalUsersSupported Attribute</h5>
+<h5 id="_numberoftotaluserssupported_attribute"><a class="anchor" href="#_numberoftotaluserssupported_attribute"></a>5.2.9.8. NumberOfTotalUsersSupported Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the number of total users supported by the lock.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_numberofpinuserssupported_attribute"><a class="anchor" href="#_numberofpinuserssupported_attribute"></a>5.2.9.10. NumberOfPINUsersSupported Attribute</h5>
+<h5 id="_numberofpinuserssupported_attribute"><a class="anchor" href="#_numberofpinuserssupported_attribute"></a>5.2.9.9. NumberOfPINUsersSupported Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the number of PIN users supported.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_numberofrfiduserssupported_attribute"><a class="anchor" href="#_numberofrfiduserssupported_attribute"></a>5.2.9.11. NumberOfRFIDUsersSupported Attribute</h5>
+<h5 id="_numberofrfiduserssupported_attribute"><a class="anchor" href="#_numberofrfiduserssupported_attribute"></a>5.2.9.10. NumberOfRFIDUsersSupported Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the number of RFID users supported.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_numberofweekdayschedulessupportedperuser_attribute"><a class="anchor" href="#_numberofweekdayschedulessupportedperuser_attribute"></a>5.2.9.12. NumberOfWeekDaySchedulesSupportedPerUser Attribute</h5>
+<h5 id="_numberofweekdayschedulessupportedperuser_attribute"><a class="anchor" href="#_numberofweekdayschedulessupportedperuser_attribute"></a>5.2.9.11. NumberOfWeekDaySchedulesSupportedPerUser Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the number of configurable week day schedule supported per user.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_numberofyeardayschedulessupportedperuser_attribute"><a class="anchor" href="#_numberofyeardayschedulessupportedperuser_attribute"></a>5.2.9.13. NumberOfYearDaySchedulesSupportedPerUser Attribute</h5>
+<h5 id="_numberofyeardayschedulessupportedperuser_attribute"><a class="anchor" href="#_numberofyeardayschedulessupportedperuser_attribute"></a>5.2.9.12. NumberOfYearDaySchedulesSupportedPerUser Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the number of configurable year day schedule supported per user.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_numberofholidayschedulessupported_attribute"><a class="anchor" href="#_numberofholidayschedulessupported_attribute"></a>5.2.9.14. NumberOfHolidaySchedulesSupported Attribute</h5>
+<h5 id="_numberofholidayschedulessupported_attribute"><a class="anchor" href="#_numberofholidayschedulessupported_attribute"></a>5.2.9.13. NumberOfHolidaySchedulesSupported Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the number of holiday schedules supported for the entire door lock
 device.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_maxpincodelength_attribute"><a class="anchor" href="#_maxpincodelength_attribute"></a>5.2.9.15. MaxPINCodeLength Attribute</h5>
+<h5 id="_maxpincodelength_attribute"><a class="anchor" href="#_maxpincodelength_attribute"></a>5.2.9.14. MaxPINCodeLength Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the maximum length in bytes of a PIN Code on
 this device.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_minpincodelength_attribute"><a class="anchor" href="#_minpincodelength_attribute"></a>5.2.9.16. MinPINCodeLength Attribute</h5>
+<h5 id="_minpincodelength_attribute"><a class="anchor" href="#_minpincodelength_attribute"></a>5.2.9.15. MinPINCodeLength Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the minimum length in bytes of a PIN Code on
 this device.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_maxrfidcodelength_attribute"><a class="anchor" href="#_maxrfidcodelength_attribute"></a>5.2.9.17. MaxRFIDCodeLength Attribute</h5>
+<h5 id="_maxrfidcodelength_attribute"><a class="anchor" href="#_maxrfidcodelength_attribute"></a>5.2.9.16. MaxRFIDCodeLength Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the maximum length in bytes of a RFID Code on
 this device. The value depends on the RFID code range specified by the
@@ -39139,7 +39043,7 @@ code, a value of 20 (equals 10 Byte ISO 14443A UID) is recommended.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_minrfidcodelength_attribute"><a class="anchor" href="#_minrfidcodelength_attribute"></a>5.2.9.18. MinRFIDCodeLength Attribute</h5>
+<h5 id="_minrfidcodelength_attribute"><a class="anchor" href="#_minrfidcodelength_attribute"></a>5.2.9.17. MinRFIDCodeLength Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the minimum length in bytes of a RFID Code on
 this device. The value depends on the RFID code range specified by the
@@ -39148,14 +39052,14 @@ code, a value of 8 (equals 4 Byte ISO 14443A UID) is recommended.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_credentialrulessupport_attribute"><a class="anchor" href="#_credentialrulessupport_attribute"></a>5.2.9.19. CredentialRulesSupport Attribute</h5>
+<h5 id="_credentialrulessupport_attribute"><a class="anchor" href="#_credentialrulessupport_attribute"></a>5.2.9.18. CredentialRulesSupport Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL contain a bitmap with the bits set for the values of <a href="#ref_CredentialRuleEnum">CredentialRuleEnum</a>
 supported on this device.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_numberofcredentialssupportedperuser_attribute"><a class="anchor" href="#_numberofcredentialssupportedperuser_attribute"></a>5.2.9.20. NumberOfCredentialsSupportedPerUser Attribute</h5>
+<h5 id="_numberofcredentialssupportedperuser_attribute"><a class="anchor" href="#_numberofcredentialssupportedperuser_attribute"></a>5.2.9.19. NumberOfCredentialsSupportedPerUser Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the number of credentials that could be assigned for each user.</p>
 </div>
@@ -39173,20 +39077,20 @@ in the database is 8.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_language_attribute"><a class="anchor" href="#_language_attribute"></a>5.2.9.21. Language Attribute</h5>
+<h5 id="_language_attribute"><a class="anchor" href="#_language_attribute"></a>5.2.9.20. Language Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the language for the on-screen or audible user interface using
 a 2-byte language code from ISO-639-1.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_ledsettings_attribute"><a class="anchor" href="#_ledsettings_attribute"></a>5.2.9.22. LEDSettings Attribute</h5>
+<h5 id="_ledsettings_attribute"><a class="anchor" href="#_ledsettings_attribute"></a>5.2.9.21. LEDSettings Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the settings for the LED support, as defined by <a href="#ref_LedSettingEnum">LEDSettingEnum</a>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_autorelocktime_attribute"><a class="anchor" href="#_autorelocktime_attribute"></a>5.2.9.23. AutoRelockTime Attribute</h5>
+<h5 id="_autorelocktime_attribute"><a class="anchor" href="#_autorelocktime_attribute"></a>5.2.9.22. AutoRelockTime Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the number of seconds to wait after unlocking a lock before it
 automatically locks again. 0=disabled. If set, unlock operations from
@@ -39195,20 +39099,20 @@ specific command.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_soundvolume_attribute"><a class="anchor" href="#_soundvolume_attribute"></a>5.2.9.24. SoundVolume Attribute</h5>
+<h5 id="_soundvolume_attribute"><a class="anchor" href="#_soundvolume_attribute"></a>5.2.9.23. SoundVolume Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the sound volume on a door lock as defined by <a href="#ref_SoundVolumeEnum">SoundVolumeEnum</a>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_operatingmode_attribute"><a class="anchor" href="#_operatingmode_attribute"></a>5.2.9.25. OperatingMode Attribute</h5>
+<h5 id="_operatingmode_attribute"><a class="anchor" href="#_operatingmode_attribute"></a>5.2.9.24. OperatingMode Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the current operating mode of the lock
 as defined in <a href="#ref_DoorLockOperatingModeEnum">OperatingModeEnum</a>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_supportedoperatingmodes_attribute"><a class="anchor" href="#_supportedoperatingmodes_attribute"></a>5.2.9.26. SupportedOperatingModes Attribute</h5>
+<h5 id="_supportedoperatingmodes_attribute"><a class="anchor" href="#_supportedoperatingmodes_attribute"></a>5.2.9.25. SupportedOperatingModes Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL contain a bitmap with all operating bits of the OperatingMode attribute
 supported by the lock. All operating modes NOT supported by a lock SHALL be
@@ -39217,7 +39121,7 @@ the related bit to be set.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_defaultconfigurationregister_attribute"><a class="anchor" href="#_defaultconfigurationregister_attribute"></a>5.2.9.27. DefaultConfigurationRegister Attribute</h5>
+<h5 id="_defaultconfigurationregister_attribute"><a class="anchor" href="#_defaultconfigurationregister_attribute"></a>5.2.9.26. DefaultConfigurationRegister Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL represent the default configurations as they are
 physically set on the device (example: hardware dip switch setting,
@@ -39245,44 +39149,44 @@ setting on the server, the client SHOULD read/write to the Sound Volume
 attribute.</p>
 </div>
 <div class="sect5">
-<h6 id="_localprogramming_bit_2"><a class="anchor" href="#_localprogramming_bit_2"></a>5.2.9.27.1. LocalProgramming Bit</h6>
+<h6 id="_localprogramming_bit_2"><a class="anchor" href="#_localprogramming_bit_2"></a>5.2.9.26.1. LocalProgramming Bit</h6>
 <div class="paragraph">
 <p>This bit SHALL indicate the default value of the EnableLocalProgramming attribute.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_keypadinterface_bit_2"><a class="anchor" href="#_keypadinterface_bit_2"></a>5.2.9.27.2. KeypadInterface Bit</h6>
+<h6 id="_keypadinterface_bit_2"><a class="anchor" href="#_keypadinterface_bit_2"></a>5.2.9.26.2. KeypadInterface Bit</h6>
 <div class="paragraph">
 <p>This bit SHALL indicate the default state of the keypad interface.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_remoteinterface_bit_2"><a class="anchor" href="#_remoteinterface_bit_2"></a>5.2.9.27.3. RemoteInterface Bit</h6>
+<h6 id="_remoteinterface_bit_2"><a class="anchor" href="#_remoteinterface_bit_2"></a>5.2.9.26.3. RemoteInterface Bit</h6>
 <div class="paragraph">
 <p>This bit SHALL indicate the default state of the remote interface.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_soundvolume_bit_2"><a class="anchor" href="#_soundvolume_bit_2"></a>5.2.9.27.4. SoundVolume Bit</h6>
+<h6 id="_soundvolume_bit_2"><a class="anchor" href="#_soundvolume_bit_2"></a>5.2.9.26.4. SoundVolume Bit</h6>
 <div class="paragraph">
 <p>This bit SHALL indicate the default value of SoundVolume attribute.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_autorelocktime_bit_2"><a class="anchor" href="#_autorelocktime_bit_2"></a>5.2.9.27.5. AutoRelockTime Bit</h6>
+<h6 id="_autorelocktime_bit_2"><a class="anchor" href="#_autorelocktime_bit_2"></a>5.2.9.26.5. AutoRelockTime Bit</h6>
 <div class="paragraph">
 <p>This bit SHALL indicate the default value of AutoRelockTime attribute.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_ledsettings_bit_2"><a class="anchor" href="#_ledsettings_bit_2"></a>5.2.9.27.6. LEDSettings Bit</h6>
+<h6 id="_ledsettings_bit_2"><a class="anchor" href="#_ledsettings_bit_2"></a>5.2.9.26.6. LEDSettings Bit</h6>
 <div class="paragraph">
 <p>This bit SHALL indicate the default value of LEDSettings attribute.</p>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_enablelocalprogramming_attribute"><a class="anchor" href="#_enablelocalprogramming_attribute"></a>5.2.9.28. EnableLocalProgramming Attribute</h5>
+<h5 id="_enablelocalprogramming_attribute"><a class="anchor" href="#_enablelocalprogramming_attribute"></a>5.2.9.27. EnableLocalProgramming Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL enable/disable local programming on the door lock of certain features (see
 LocalProgrammingFeatures attribute). If this value is set to
@@ -39294,21 +39198,21 @@ enabled by default.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_enableonetouchlocking_attribute"><a class="anchor" href="#_enableonetouchlocking_attribute"></a>5.2.9.29. EnableOneTouchLocking Attribute</h5>
+<h5 id="_enableonetouchlocking_attribute"><a class="anchor" href="#_enableonetouchlocking_attribute"></a>5.2.9.28. EnableOneTouchLocking Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL enable/disable the ability to lock the door lock with a single touch on
 the door lock.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_enableinsidestatusled_attribute"><a class="anchor" href="#_enableinsidestatusled_attribute"></a>5.2.9.30. EnableInsideStatusLED Attribute</h5>
+<h5 id="_enableinsidestatusled_attribute"><a class="anchor" href="#_enableinsidestatusled_attribute"></a>5.2.9.29. EnableInsideStatusLED Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL enable/disable an inside LED that allows the user to see at a glance if
 the door is locked.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_enableprivacymodebutton_attribute"><a class="anchor" href="#_enableprivacymodebutton_attribute"></a>5.2.9.31. EnablePrivacyModeButton Attribute</h5>
+<h5 id="_enableprivacymodebutton_attribute"><a class="anchor" href="#_enableprivacymodebutton_attribute"></a>5.2.9.30. EnablePrivacyModeButton Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL enable/disable a button inside the door that is used to put the lock
 into privacy mode. When the lock is in privacy mode it cannot be
@@ -39316,7 +39220,7 @@ manipulated from the outside.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_localprogrammingfeatures_attribute"><a class="anchor" href="#_localprogrammingfeatures_attribute"></a>5.2.9.32. LocalProgrammingFeatures Attribute</h5>
+<h5 id="_localprogrammingfeatures_attribute"><a class="anchor" href="#_localprogrammingfeatures_attribute"></a>5.2.9.31. LocalProgrammingFeatures Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the local programming features that will be disabled when
 EnableLocalProgramming attribute is set to False. If a door lock doesn&#8217;t
@@ -39331,7 +39235,7 @@ features SHALL be enabled regardless of the bits set to 0 in this attribute.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_wrongcodeentrylimit_attribute"><a class="anchor" href="#_wrongcodeentrylimit_attribute"></a>5.2.9.33. WrongCodeEntryLimit Attribute</h5>
+<h5 id="_wrongcodeentrylimit_attribute"><a class="anchor" href="#_wrongcodeentrylimit_attribute"></a>5.2.9.32. WrongCodeEntryLimit Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the number of incorrect Pin codes or RFID presentment attempts a user is
 allowed to enter before the lock will enter a lockout state. The value of this attribute
@@ -39349,7 +39253,7 @@ The lock SHALL reset the counter if a valid credential is presented.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_usercodetemporarydisabletime_attribute"><a class="anchor" href="#_usercodetemporarydisabletime_attribute"></a>5.2.9.34. UserCodeTemporaryDisableTime Attribute</h5>
+<h5 id="_usercodetemporarydisabletime_attribute"><a class="anchor" href="#_usercodetemporarydisabletime_attribute"></a>5.2.9.33. UserCodeTemporaryDisableTime Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the number of seconds that the lock shuts down following wrong code
 entry. Valid range is 1-255 seconds. Device can shut down to lock user
@@ -39360,7 +39264,7 @@ CONSTRAINT_ERROR.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_sendpinovertheair_attribute"><a class="anchor" href="#_sendpinovertheair_attribute"></a>5.2.9.35. SendPINOverTheAir Attribute</h5>
+<h5 id="_sendpinovertheair_attribute"><a class="anchor" href="#_sendpinovertheair_attribute"></a>5.2.9.34. SendPINOverTheAir Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the door locks ability to send PINs
 over the air. If the attribute is True it is ok for the door lock server to send PINs
@@ -39378,7 +39282,7 @@ message payload. If the attribute value is False, 0x04 0xFF 0xFF 0xFF
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_RequirePinForRemoteOperation"><a class="anchor" href="#ref_RequirePinForRemoteOperation"></a>5.2.9.36. RequirePINForRemoteOperation Attribute</h5>
+<h5 id="ref_RequirePinForRemoteOperation"><a class="anchor" href="#ref_RequirePinForRemoteOperation"></a>5.2.9.35. RequirePINForRemoteOperation Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate if the door lock requires an optional PIN.
 If this attribute is set to True, the door lock server requires that an optional
@@ -39387,7 +39291,7 @@ Lock, Unlock, Unlock with Timeout and Toggle in order to function.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_expiringusertimeout_attribute"><a class="anchor" href="#_expiringusertimeout_attribute"></a>5.2.9.37. ExpiringUserTimeout Attribute</h5>
+<h5 id="_expiringusertimeout_attribute"><a class="anchor" href="#_expiringusertimeout_attribute"></a>5.2.9.36. ExpiringUserTimeout Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the number of minutes a PIN, RFID, Fingerprint, or other credential associated
 with a user of type ExpiringUser SHALL remain valid after its first use
@@ -39396,7 +39300,7 @@ corresponding user record SHALL be set to OccupiedDisabled.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_alarmmask_attribute_2"><a class="anchor" href="#_alarmmask_attribute_2"></a>5.2.9.38. AlarmMask Attribute</h5>
+<h5 id="_alarmmask_attribute_2"><a class="anchor" href="#_alarmmask_attribute_2"></a>5.2.9.37. AlarmMask Attribute</h5>
 <div class="paragraph">
 <p>This attribute is only supported if the Alarms cluster is on the same endpoint.
 The alarm mask is used to turn on/off alarms for particular functions. Alarms
@@ -45371,7 +45275,7 @@ Global operational state SHALL always reflect the overall motion of the device.<
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CurrentPositionLiftPercentage<sup>1</sup></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">percent</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X N S P Q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X N P Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[LF &amp; PA_LF]</p></td>
@@ -45381,7 +45285,7 @@ Global operational state SHALL always reflect the overall motion of the device.<
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CurrentPositionTiltPercentage<sup>1</sup></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">percent</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0 to 100</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X N S P Q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X N P Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[TL &amp; PA_TL]</p></td>
@@ -45401,7 +45305,7 @@ Global operational state SHALL always reflect the overall motion of the device.<
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TargetPositionLiftPercent100ths<sup>2</sup></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">percent100ths</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XSP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X P</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">LF &amp; PA_LF</p></td>
@@ -45411,7 +45315,7 @@ Global operational state SHALL always reflect the overall motion of the device.<
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TargetPositionTiltPercent100ths<sup>2</sup></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">percent100ths</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XSP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X P</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TL &amp; PA_TL</p></td>
@@ -45577,84 +45481,33 @@ Global operational state SHALL always reflect the overall motion of the device.<
 </table>
 </div>
 <div class="sect4">
-<h5 id="_scene_table_extensions_8"><a class="anchor" href="#_scene_table_extensions_8"></a>5.3.6.1. Scene Table Extensions</h5>
-<div class="paragraph">
-<p>If the Scenes Management server cluster is implemented on the same endpoint, the following
-attributes SHALL be part of the ExtensionFieldSetStruct of the Scene Table.
-If the implicit form of the ExtensionFieldSetStruct is used, the order of
-the attributes in the AttributeValueList is in the given order,
-i.e., the attribute listed as 1 is added first:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>CurrentPositionLiftPercentage</p>
-</li>
-<li>
-<p>CurrentPositionTiltPercentage</p>
-</li>
-<li>
-<p>TargetPositionLiftPercent100ths</p>
-</li>
-<li>
-<p>TargetPositionTiltPercent100ths</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>When a Percentage attribute is part of a Scene Table, the attribute is treated as a writeable command,
-that is, activate a motion (lift or tilt) on the window covering device
-to the percentage specified in the Scene Table over the specified transition time.</p>
-</div>
-<div class="paragraph">
-<p>The device MAY treat the commands as linear transitions if appropriate or MAY accelerate and decelerate as it deems necessary.</p>
-</div>
-<div class="paragraph">
-<p>For position aware devices, a percentage written by a scene to either the current or target lift/tilt attributes MUST be treated as a
-GoToLiftPercentage/GoToTiltPercentage command.
-Using the CurrentPosition Attribute results in writing the received percentage to the associated
-TargetPosition and activate the motion (lift or tilt) of the window covering device to the
-specified percentage.</p>
-</div>
-<div class="paragraph">
-<p>For position unaware devices, a percentage of 0 is treated as a UpOrOpen command and a non-zero
-percentage is treated as an DownOrClose command and the device will ignore the transition time and
-transition as fast as appropriate for that device.</p>
-</div>
-<div class="paragraph">
-<p>Attributes in the Scene Table that are not supported by the device
-(according to the FeatureMap attribute) SHALL be present in the scene table but
-ignored.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ref_Type"><a class="anchor" href="#ref_Type"></a>5.3.6.2. Type Attribute</h5>
+<h5 id="ref_Type"><a class="anchor" href="#ref_Type"></a>5.3.6.1. Type Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL identify the type of window covering.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_physicalclosedlimitlift_attribute"><a class="anchor" href="#_physicalclosedlimitlift_attribute"></a>5.3.6.3. PhysicalClosedLimitLift Attribute</h5>
+<h5 id="_physicalclosedlimitlift_attribute"><a class="anchor" href="#_physicalclosedlimitlift_attribute"></a>5.3.6.2. PhysicalClosedLimitLift Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the maximum possible
 encoder position possible (Unit <em>cm</em>, centimeters) to position the height of the window covering lift.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_physicalclosedlimittilt_attribute"><a class="anchor" href="#_physicalclosedlimittilt_attribute"></a>5.3.6.4. PhysicalClosedLimitTilt Attribute</h5>
+<h5 id="_physicalclosedlimittilt_attribute"><a class="anchor" href="#_physicalclosedlimittilt_attribute"></a>5.3.6.3. PhysicalClosedLimitTilt Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the maximum possible
 encoder position possible (Unit <em>0.1°</em>, tenths of a degree) to position the angle of the window covering tilt.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_currentpositionlift_attribute"><a class="anchor" href="#_currentpositionlift_attribute"></a>5.3.6.5. CurrentPositionLift Attribute</h5>
+<h5 id="_currentpositionlift_attribute"><a class="anchor" href="#_currentpositionlift_attribute"></a>5.3.6.4. CurrentPositionLift Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the actual lift position
 (Unit <em>cm</em>, centimeters) of the window covering from the fully-open position.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -45674,13 +45527,13 @@ encoder position possible (Unit <em>0.1°</em>, tenths of a degree) to position 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_currentpositiontilt_attribute"><a class="anchor" href="#_currentpositiontilt_attribute"></a>5.3.6.6. CurrentPositionTilt Attribute</h5>
+<h5 id="_currentpositiontilt_attribute"><a class="anchor" href="#_currentpositiontilt_attribute"></a>5.3.6.5. CurrentPositionTilt Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the actual tilt position
 (Unit <em>0.1°</em>, tenths of a degree) of the window covering from the fully-open position.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -45700,21 +45553,21 @@ encoder position possible (Unit <em>0.1°</em>, tenths of a degree) to position 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_numberofactuationslift_attribute"><a class="anchor" href="#_numberofactuationslift_attribute"></a>5.3.6.7. NumberOfActuationsLift Attribute</h5>
+<h5 id="_numberofactuationslift_attribute"><a class="anchor" href="#_numberofactuationslift_attribute"></a>5.3.6.6. NumberOfActuationsLift Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the total number of
 lift/slide actuations applied to the window covering since the device was installed.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_numberofactuationstilt_attribute"><a class="anchor" href="#_numberofactuationstilt_attribute"></a>5.3.6.8. NumberOfActuationsTilt Attribute</h5>
+<h5 id="_numberofactuationstilt_attribute"><a class="anchor" href="#_numberofactuationstilt_attribute"></a>5.3.6.7. NumberOfActuationsTilt Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the total number of
 tilt actuations applied to the window covering since the device was installed.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ConfigStatus"><a class="anchor" href="#ref_ConfigStatus"></a>5.3.6.9. ConfigStatus Attribute</h5>
+<h5 id="ref_ConfigStatus"><a class="anchor" href="#ref_ConfigStatus"></a>5.3.6.8. ConfigStatus Attribute</h5>
 <div class="paragraph">
 <p>This attribute specifies the configuration and status information of the window covering.</p>
 </div>
@@ -45723,13 +45576,13 @@ tilt actuations applied to the window covering since the device was installed.</
 The behavior causing the setting or clearing of each bit is vendor specific.</p>
 </div>
 <div class="sect5">
-<h6 id="_operational_bit"><a class="anchor" href="#_operational_bit"></a>5.3.6.9.1. Operational Bit</h6>
+<h6 id="_operational_bit"><a class="anchor" href="#_operational_bit"></a>5.3.6.8.1. Operational Bit</h6>
 <div class="paragraph">
 <p>The <a href="#ref_SafetyStatus">SafetyStatus</a> &amp; <a href="#ref_Mode">Mode</a> attributes might affect this bit state.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_liftmovementreversed_bit"><a class="anchor" href="#_liftmovementreversed_bit"></a>5.3.6.9.2. LiftMovementReversed Bit</h6>
+<h6 id="_liftmovementreversed_bit"><a class="anchor" href="#_liftmovementreversed_bit"></a>5.3.6.8.2. LiftMovementReversed Bit</h6>
 <div class="paragraph">
 <p>This bit identifies if the directions of the lift/slide movements
 have been reversed in order for commands (e.g: Open, Close, GoTos) to match the physical installation conditions</p>
@@ -45739,26 +45592,26 @@ have been reversed in order for commands (e.g: Open, Close, GoTos) to match the 
 </div>
 </div>
 <div class="sect5">
-<h6 id="_liftencodercontrolled_bit_2"><a class="anchor" href="#_liftencodercontrolled_bit_2"></a>5.3.6.9.3. LiftEncoderControlled Bit</h6>
+<h6 id="_liftencodercontrolled_bit_2"><a class="anchor" href="#_liftencodercontrolled_bit_2"></a>5.3.6.8.3. LiftEncoderControlled Bit</h6>
 <div class="paragraph">
 <p>This bit is ignored if the device does not support the PositionAwareLift feature (PA_LF).</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_tiltencodercontrolled_bit_2"><a class="anchor" href="#_tiltencodercontrolled_bit_2"></a>5.3.6.9.4. TiltEncoderControlled Bit</h6>
+<h6 id="_tiltencodercontrolled_bit_2"><a class="anchor" href="#_tiltencodercontrolled_bit_2"></a>5.3.6.8.4. TiltEncoderControlled Bit</h6>
 <div class="paragraph">
 <p>This bit is ignored if the device does not support the PositionAwareTilt feature (PA_TL).</p>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_currentpositionliftpercent100ths_attribute"><a class="anchor" href="#_currentpositionliftpercent100ths_attribute"></a>5.3.6.10. CurrentPositionLiftPercent100ths Attribute</h5>
+<h5 id="_currentpositionliftpercent100ths_attribute"><a class="anchor" href="#_currentpositionliftpercent100ths_attribute"></a>5.3.6.9. CurrentPositionLiftPercent100ths Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the actual position as a percentage with a minimal step of 0.01%.
 E.g Max 10000 equals 100.00%.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -45778,13 +45631,13 @@ E.g Max 10000 equals 100.00%.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_currentpositiontiltpercent100ths_attribute"><a class="anchor" href="#_currentpositiontiltpercent100ths_attribute"></a>5.3.6.11. CurrentPositionTiltPercent100ths Attribute</h5>
+<h5 id="_currentpositiontiltpercent100ths_attribute"><a class="anchor" href="#_currentpositiontiltpercent100ths_attribute"></a>5.3.6.10. CurrentPositionTiltPercent100ths Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the actual position as a percentage with a minimal step of 0.01%.
 E.g Max 10000 equals 100.00%.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -45804,13 +45657,13 @@ E.g Max 10000 equals 100.00%.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_currentpositionliftpercentage_attribute"><a class="anchor" href="#_currentpositionliftpercentage_attribute"></a>5.3.6.12. CurrentPositionLiftPercentage Attribute</h5>
+<h5 id="_currentpositionliftpercentage_attribute"><a class="anchor" href="#_currentpositionliftpercentage_attribute"></a>5.3.6.11. CurrentPositionLiftPercentage Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the actual position as a percentage from 0% to 100% with 1% default step.
 This attribute is equal to CurrentPositionLiftPercent100ths attribute divided by 100.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -45830,13 +45683,13 @@ This attribute is equal to CurrentPositionLiftPercent100ths attribute divided by
 </div>
 </div>
 <div class="sect4">
-<h5 id="_currentpositiontiltpercentage_attribute"><a class="anchor" href="#_currentpositiontiltpercentage_attribute"></a>5.3.6.13. CurrentPositionTiltPercentage Attribute</h5>
+<h5 id="_currentpositiontiltpercentage_attribute"><a class="anchor" href="#_currentpositiontiltpercentage_attribute"></a>5.3.6.12. CurrentPositionTiltPercentage Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the actual position as a percentage from 0% to 100% with 1% default step.
 This attribute is equal to CurrentPositionTiltPercent100ths attribute divided by 100.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -45856,27 +45709,27 @@ This attribute is equal to CurrentPositionTiltPercent100ths attribute divided by
 </div>
 </div>
 <div class="sect4">
-<h5 id="_targetpositionliftpercent100ths_attribute"><a class="anchor" href="#_targetpositionliftpercent100ths_attribute"></a>5.3.6.14. TargetPositionLiftPercent100ths Attribute</h5>
+<h5 id="_targetpositionliftpercent100ths_attribute"><a class="anchor" href="#_targetpositionliftpercent100ths_attribute"></a>5.3.6.13. TargetPositionLiftPercent100ths Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the position where the window covering lift
 will go or is moving to as a percentage (Unit <em>0.01%</em>).</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_targetpositiontiltpercent100ths_attribute"><a class="anchor" href="#_targetpositiontiltpercent100ths_attribute"></a>5.3.6.15. TargetPositionTiltPercent100ths Attribute</h5>
+<h5 id="_targetpositiontiltpercent100ths_attribute"><a class="anchor" href="#_targetpositiontiltpercent100ths_attribute"></a>5.3.6.14. TargetPositionTiltPercent100ths Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the position where the window covering tilt
 will go or is moving to as a percentage (Unit <em>0.01%</em>).</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_operationalstatus_attribute"><a class="anchor" href="#_operationalstatus_attribute"></a>5.3.6.16. OperationalStatus Attribute</h5>
+<h5 id="_operationalstatus_attribute"><a class="anchor" href="#_operationalstatus_attribute"></a>5.3.6.15. OperationalStatus Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the currently ongoing operations and applies to all type of devices.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_EndProductType"><a class="anchor" href="#ref_EndProductType"></a>5.3.6.17. EndProductType Attribute</h5>
+<h5 id="ref_EndProductType"><a class="anchor" href="#ref_EndProductType"></a>5.3.6.16. EndProductType Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHOULD provide more detail about the product type than can be determined from the main category indicated by the Type attribute.</p>
 </div>
@@ -46080,35 +45933,35 @@ will go or is moving to as a percentage (Unit <em>0.01%</em>).</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_installedopenlimitlift_attribute"><a class="anchor" href="#_installedopenlimitlift_attribute"></a>5.3.6.18. InstalledOpenLimitLift Attribute</h5>
+<h5 id="_installedopenlimitlift_attribute"><a class="anchor" href="#_installedopenlimitlift_attribute"></a>5.3.6.17. InstalledOpenLimitLift Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the open limit for
 lifting the window covering whether position (in centimeters) is encoded or timed.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_installedclosedlimitlift_attribute"><a class="anchor" href="#_installedclosedlimitlift_attribute"></a>5.3.6.19. InstalledClosedLimitLift Attribute</h5>
+<h5 id="_installedclosedlimitlift_attribute"><a class="anchor" href="#_installedclosedlimitlift_attribute"></a>5.3.6.18. InstalledClosedLimitLift Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the closed limit for
 lifting the window covering whether position (in centimeters) is encoded or timed.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_installedopenlimittilt_attribute"><a class="anchor" href="#_installedopenlimittilt_attribute"></a>5.3.6.20. InstalledOpenLimitTilt Attribute</h5>
+<h5 id="_installedopenlimittilt_attribute"><a class="anchor" href="#_installedopenlimittilt_attribute"></a>5.3.6.19. InstalledOpenLimitTilt Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the open limit for
 tilting the window covering whether position (in tenth of a degree) is encoded or timed.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_installedclosedlimittilt_attribute"><a class="anchor" href="#_installedclosedlimittilt_attribute"></a>5.3.6.21. InstalledClosedLimitTilt Attribute</h5>
+<h5 id="_installedclosedlimittilt_attribute"><a class="anchor" href="#_installedclosedlimittilt_attribute"></a>5.3.6.20. InstalledClosedLimitTilt Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL indicate the closed limit for
 tilting the window covering whether position (in tenth of a degree) is encoded or timed.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_Mode"><a class="anchor" href="#ref_Mode"></a>5.3.6.22. Mode Attribute</h5>
+<h5 id="ref_Mode"><a class="anchor" href="#ref_Mode"></a>5.3.6.21. Mode Attribute</h5>
 <div class="paragraph">
 <p>The Mode attribute allows configuration of the window covering, such
 as: reversing the motor direction, placing the window covering into
@@ -46124,13 +45977,13 @@ or any out of bounds bits set, must be ignored and a response containing
 the status of CONSTRAINT_ERROR will be returned.</p>
 </div>
 <div class="sect5">
-<h6 id="_motordirectionreversed_bit"><a class="anchor" href="#_motordirectionreversed_bit"></a>5.3.6.22.1. MotorDirectionReversed Bit</h6>
+<h6 id="_motordirectionreversed_bit"><a class="anchor" href="#_motordirectionreversed_bit"></a>5.3.6.21.1. MotorDirectionReversed Bit</h6>
 <div class="paragraph">
 <p>This bit SHALL control the <a href="#ref_LiftMovementReversed">LiftMovementReversed Bit</a> bit in the <a href="#ref_ConfigStatus">ConfigStatus Attribute</a> attribute.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_calibrationmode_bit_2"><a class="anchor" href="#_calibrationmode_bit_2"></a>5.3.6.22.2. CalibrationMode Bit</h6>
+<h6 id="_calibrationmode_bit_2"><a class="anchor" href="#_calibrationmode_bit_2"></a>5.3.6.21.2. CalibrationMode Bit</h6>
 <div class="paragraph">
 <p>If in calibration mode, all commands (e.g: UpOrOpen, DownOrClose, GoTos)
 that can result in movement, could be accepted and result in a
@@ -46154,7 +46007,7 @@ to its not operational value, if applicable during calibration mode.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_maintenancemode_bit_2"><a class="anchor" href="#_maintenancemode_bit_2"></a>5.3.6.22.3. MaintenanceMode Bit</h6>
+<h6 id="_maintenancemode_bit_2"><a class="anchor" href="#_maintenancemode_bit_2"></a>5.3.6.21.3. MaintenanceMode Bit</h6>
 <div class="paragraph">
 <p>While in maintenance mode, all commands (e.g: UpOrOpen, DownOrClose, GoTos) or local inputs
 that can result in movement, must be ignored and respond with a BUSY status.
@@ -46163,7 +46016,7 @@ Additionally, the <a href="#ref_Operational">Operational Bit</a> bit of the <a h
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_SafetyStatus"><a class="anchor" href="#ref_SafetyStatus"></a>5.3.6.23. SafetyStatus Attribute</h5>
+<h5 id="ref_SafetyStatus"><a class="anchor" href="#ref_SafetyStatus"></a>5.3.6.22. SafetyStatus Attribute</h5>
 <div class="paragraph">
 <p>The SafetyStatus attribute reflects the state of the safety sensors and the common issues preventing movements.
 By default for nominal operation all flags are cleared (0).
@@ -67608,11 +67461,7 @@ in the table below.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Added Q quality for SessionDuration, SessionEnergyCharged and SessionEnergyDischarged</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Updates to V2X and associated areas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Added Q quality for SessionDuration, SessionEnergyCharged and SessionEnergyDischarged. Updates to V2X and associated areas. Make PREF mandatory.</p></td>
 </tr>
 </tbody>
 </table>
@@ -67699,14 +67548,14 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SOC</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SoCReporting</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P,O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">EVSE supports reporting of vehicle State of Charge (SoC)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PNC</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PlugAndCharge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P,O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">EVSE supports PLC to support Plug and Charge</p></td>
 </tr>
 <tr>
@@ -67720,7 +67569,7 @@ in the table below.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>V2X</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">V2X</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P,O</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">EVSE supports bi-directional charging / discharging</p></td>
 </tr>
 </tbody>
@@ -69002,8 +68851,9 @@ or that the vehicle is not plugged in with the SupplyState indicating that charg
 attempt to add to the vehicle in the next charging target.</p>
 </div>
 <div class="paragraph">
-<p>If this is null it indicates that there is no scheduled charging,
-or that the EVSE is using the TargetSoC method to charge the vehicle.</p>
+<p>A null value indicates that there is no scheduled charging (for example, the EVSE Mode is set to use Manual mode tag),
+or that the vehicle is not plugged in with the SupplyState indicating that charging is enabled,
+or that the next <a href="#ref_ChargingTargetStruct">ChargingTargetStruct</a> is using the TargetSoC value to charge the vehicle.</p>
 </div>
 </div>
 <div class="sect4">
@@ -69013,9 +68863,9 @@ or that the EVSE is using the TargetSoC method to charge the vehicle.</p>
 reach when the vehicle is next charged.</p>
 </div>
 <div class="paragraph">
-<p>If this is null it indicates that there is no scheduled charging,
-or that the EVSE cannot obtain the current State of Charge from the
-vehicle.</p>
+<p>A null value indicates that there is no scheduled charging (for example, the EVSE Mode is set to use Manual mode tag),
+or that the vehicle is not plugged in with the SupplyState indicating that charging is enabled,
+or that the next <a href="#ref_ChargingTargetStruct">ChargingTargetStruct</a> is using the AddedEnergy value to charge the vehicle.</p>
 </div>
 <div class="paragraph">
 <p>If the SOC feature is not supported, only the values null and 100% are supported.</p>
@@ -69153,7 +69003,7 @@ Manufacturers SHALL ensure this can be correctly calculated if there has been an
 power failure or reboot since the start of the session.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -69180,7 +69030,7 @@ this can be correctly calculated if there has been an power failure or reboot
 since the start of the session.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -69207,7 +69057,7 @@ this can be correctly calculated if there has been an power failure or reboot
 since the start of the session.</p>
 </div>
 <div class="paragraph">
-<p>The value of this attribute SHALL only be reported:</p>
+<p>Changes to this attribute SHALL only be marked as reportable in the following cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -71509,8 +71359,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 17edc82 (local changes)<br>
-Last updated 2024-07-29 00:00:41 UTC
+Version master 3878b10 (local changes)<br>
+Last updated 2024-07-29 18:05:17 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
