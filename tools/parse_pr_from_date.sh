@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Follow the below before running the script
+# install dependency : sudo apt-get install dos2unix
+# convert the file   : dos2unix ./parse_pr_from_date.sh
+
 # Function to display usage
 usage() {
   echo "Usage: $0 --dir <directory> --from <since_date> [--to <until_date>]"
