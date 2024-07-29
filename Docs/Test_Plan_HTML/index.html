@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 941a183,</span>
-<span id="revdate">2024-07-26 16:28:58 -0700</span>
+<span id="revnumber">version master e35ebe2,</span>
+<span id="revdate">2024-07-29 10:03:17 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -912,6 +912,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_tc_cadmin_1_24_open_commissioning_window_durations_min_and_min_1_ecm_dut_commissionee">37.1.20. [TC-CADMIN-1.24] Open commissioning window - durations min and min-1 [ECM] [DUT - Commissionee]</a></li>
 <li><a href="#_tc_cadmin_1_25_subscription_to_the_attributes_verify_subscription_response_ecm_dut_commissionee">37.1.21. [TC-CADMIN-1.25] Subscription to the attributes - verify subscription response [ECM] [DUT - Commissionee]</a></li>
 <li><a href="#_tc_cadmin_1_26_subscription_to_the_attributes_verify_subscription_response_bcm_dut_commissionee">37.1.22. [TC-CADMIN-1.26] Subscription to the attributes - verify subscription response [BCM] [DUT - Commissionee]</a></li>
+<li><a href="#_tc_cadmin_1_27_anchor_fabric_administrator_behavior_using_jcm_dut_administrator_of_anchor_fabric">37.1.23. [TC-CADMIN-1.27] Anchor Fabric Administrator Behavior using JCM [DUT - Administrator of Anchor Fabric]</a></li>
+<li><a href="#_tc_cadmin_1_28_joining_fabric_administrator_behavior_using_jcm_dut_administrator_of_joining_fabric">37.1.24. [TC-CADMIN-1.28] Joining Fabric Administrator Behavior using JCM [DUT - Administrator of Joining Fabric]</a></li>
 </ul>
 </li>
 </ul>
@@ -1982,6 +1984,10 @@ Davis, CA 95616, USA</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Power Topology Cluster</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./cluster/power_topology.adoc">Document #</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service Area Cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./cluster/service_area.adoc">Document #</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -10203,6 +10209,12 @@ Support for an item is considered as "true" for conditional statements within th
 <td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Does the DUT(server) support the DeviceLocation attribute?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -10964,6 +10976,197 @@ Support for an item is considered as "true" for conditional statements within th
 <td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0016(MaxPathsPerInvoke)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads MaxPathsPerInvoke attribute from DUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that MaxPathsPerInvoke remains unchanged.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">68</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads DeviceLocation from the DUT.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>If the DeviceLocation value is null, skip past step 81.</p>
+</li>
+<li>
+<p>Verify that the DeviceLocation value is of type LocationDescriptorStruct</p>
+</li>
+<li>
+<p>Verify that the <code>LocationName</code> field of the DeviceLocation struct value is not null and has a length of 128 characters or less</p>
+</li>
+<li>
+<p>Verify that the <code>FloorNumber</code> field of the DeviceLocation struct value is either null or is an int16 value</p>
+</li>
+<li>
+<p>Verify that the <code>AreaType</code> field of the DeviceLocation struct value is either null or is in the range of tag values defined in the Common Area Namespace specification</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">69</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH writes DeviceLocation to the DUT, with the <code>LocationName</code> field set to a string of 129 characters.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT responds with CONSTRAINT_ERROR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">70</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH writes DeviceLocation to the DUT, with the <code>LocationName</code> field set to an empty string, the <code>FloorNumber</code> field set to null, and the <code>AreaType</code> field set to null.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT responds with CONSTRAINT_ERROR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">71</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH writes DeviceLocation to the DUT, with the <code>AreaType</code> field set to a value which is NOT in the range of tag values defined in the Common Area Namespace specification (e.g. 0x100).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT responds with CONSTRAINT_ERROR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">72</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH writes DeviceLocation to the DUT, with the <code>LocationName</code> field set to "my location", the <code>FloorNumber</code> field set to null, and the <code>AreaType</code> field set to null.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT responds with SUCCESS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">73</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads DeviceLocation from the DUT.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Verify that the DeviceLocation value is of type LocationDescriptorStruct</p>
+</li>
+<li>
+<p>Verify that the <code>LocationName</code> field of the DeviceLocation struct value is set to "my location"</p>
+</li>
+<li>
+<p>Verify that the <code>FloorNumber</code> field of the DeviceLocation struct value is null</p>
+</li>
+<li>
+<p>Verify that the <code>AreaType</code> field of the DeviceLocation struct value is null</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">74</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH writes DeviceLocation to the DUT, with the <code>LocationName</code> field set to an empty string, the <code>FloorNumber</code> field set to -1, and the <code>AreaType</code> field set to null.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT responds with SUCCESS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">75</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads DeviceLocation from the DUT.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Verify that the DeviceLocation value is of type LocationDescriptorStruct</p>
+</li>
+<li>
+<p>Verify that the <code>LocationName</code> field of the DeviceLocation struct value is an empty string</p>
+</li>
+<li>
+<p>Verify that the <code>FloorNumber</code> field of the DeviceLocation struct value is -1</p>
+</li>
+<li>
+<p>Verify that the <code>AreaType</code> field of the DeviceLocation struct value is null</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">76</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH writes DeviceLocation to the DUT, with the <code>LocationName</code> field set to an empty string, the <code>FloorNumber</code> field set to null, and the <code>AreaType</code> field set to 0x1.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT responds with SUCCESS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">77</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads DeviceLocation from the DUT.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Verify that the DeviceLocation value is of type LocationDescriptorStruct</p>
+</li>
+<li>
+<p>Verify that the <code>LocationName</code> field of the DeviceLocation struct value is an empty string</p>
+</li>
+<li>
+<p>Verify that the <code>FloorNumber</code> field of the DeviceLocation struct value is null</p>
+</li>
+<li>
+<p>Verify that the <code>AreaType</code> field of the DeviceLocation struct value is 0x1</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">78</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH writes DeviceLocation to the DUT, with the <code>LocationName</code> field set to an empty string, the <code>FloorNumber</code> field set to zero, and the <code>AreaType</code> field set to 0x1.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT responds with SUCCESS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">79</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads DeviceLocation from the DUT.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Verify that the DeviceLocation value is of type LocationDescriptorStruct</p>
+</li>
+<li>
+<p>Verify that the <code>LocationName</code> field of the DeviceLocation struct value is an empty string</p>
+</li>
+<li>
+<p>Verify that the <code>FloorNumber</code> field of the DeviceLocation struct value is 0</p>
+</li>
+<li>
+<p>Verify that the <code>AreaType</code> field of the DeviceLocation struct value is 0x1</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH writes DeviceLocation to the DUT, with the <code>LocationName</code> field set to a string of 128 characters (e.g. 16 concatenations of the word "location"), the <code>FloorNumber</code> field set to 200, and the <code>AreaType</code> field set to 0x2.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT responds with SUCCESS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">81</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0017(DeviceLocation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads DeviceLocation from the DUT.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Verify that the DeviceLocation value is of type LocationDescriptorStruct</p>
+</li>
+<li>
+<p>Verify that the <code>LocationName</code> field of the DeviceLocation struct value matches the string used at the previous step</p>
+</li>
+<li>
+<p>Verify that the <code>FloorNumber</code> field of the DeviceLocation struct value is 200</p>
+</li>
+<li>
+<p>Verify that the <code>AreaType</code> field of the DeviceLocation struct value is 0x2</p>
+</li>
+</ul>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -37867,6 +38070,14 @@ This test should be run for each endpoint on the device, using the appropriate P
 <td class="tableblock halign-left valign-top"><p class="tableblock">TC-CADMIN-1.26</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Subscription to the attributes - verify subscription response [BCM] [DUT - Commissionee]</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC-CADMIN-1.27</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Anchor Fabric Administrator Behavior using JCM [DUT - Administrator of Anchor Fabric]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC-CADMIN-1.28</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Joining Fabric Administrator Behavior using JCM [DUT - Administrator of Joining Fabric]</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -42341,6 +42552,475 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 </div>
 <div class="sect4">
 <h5 id="_notestesting_considerations_113"><a class="anchor" href="#_notestesting_considerations_113"></a>Notes/Testing Considerations</h5>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tc_cadmin_1_27_anchor_fabric_administrator_behavior_using_jcm_dut_administrator_of_anchor_fabric"><a class="anchor" href="#_tc_cadmin_1_27_anchor_fabric_administrator_behavior_using_jcm_dut_administrator_of_anchor_fabric"></a>37.1.23. [TC-CADMIN-1.27] Anchor Fabric Administrator Behavior using JCM [DUT - Administrator of Anchor Fabric]</h4>
+<div class="sect4">
+<h5 id="_category_2"><a class="anchor" href="#_category_2"></a>Category</h5>
+<div class="paragraph">
+<p>Functional</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_156"><a class="anchor" href="#_purpose_156"></a>Purpose</h5>
+<div class="paragraph">
+<p>This test case verifies that a DUT that is Administrator and support Joint Fabrics feature can act as an Administrator of an Anchor Fabric.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_155"><a class="anchor" href="#_pics_155"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>CADMIN.C</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_155"><a class="anchor" href="#_required_devices_155"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT - Administrator of the Anchor Fabric 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_DEV1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as Device commissioned in Fabric 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AJF2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness - Administrator of the Joiner Fabric 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_DEV2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as Device commissioned in Fabric 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_DEV3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as Device commissioned in Joint Fabric</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_preconditions_78"><a class="anchor" href="#_preconditions_78"></a>Preconditions</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Doc. Ref.</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Condition</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Notes</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reset Devices to factory defaults</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_105"><a class="anchor" href="#_device_topology_105"></a>Device Topology</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Fabric 1: DUT_AAF &#8656;&#8658; TH_DEV1</p>
+</li>
+<li>
+<p>Fabric 2: TH_AJF2 &#8656;&#8658; TH_DEV2</p>
+</li>
+<li>
+<p>Uncommissioned: TH_DEV3</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_155"><a class="anchor" href="#_test_procedure_155"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ref</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PICS</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Test Step</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AAF starts a commissioning process with TH_DEV1 on Fabric 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_DEV1 is commissioned by DUT_AAF on Fabric 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AJF2 starts a commissioning process with TH_DEV2 on Fabric 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_DEV2 is commissioned by TH_AJF2 on Fabric 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.19.8.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open Commissioning Window on TH_AJF2 using either ECM or BCM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify TH_AJF2 opens its Commissioning window to allow another commissioning</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AAF starts a commissioning process with TH_AJF2 on Fabric 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AJF2 is commissioned by DUT_AAF on Fabric 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.4.11</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AJF2 perform JCM Vendor ID Validation to ensure the RCAC presented by DUT_AAF is associated to the Vendor ID corresponding to DUT_AAF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>ec-pub-key</em>,<em>pub-key-algo</em> and <em>ec-curve-id</em> parameters from RCAC presented by DUT_AAF must match the ones extracted from the certificate received from DCL based on Vendor ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.26.5.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AJF2 requests DUT_AAF to sign its ICA certificate by invoking ICACSRRequest Command</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AJF2 send ICA CSR as DER-encoded string inside ICACSR parameter of the ICACSRRequest command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.6.3.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AAF perform validation of the request from TH_AJF2 using ICA Cross Signing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AAF must verify that ICA CSR follows the encoding and rules from <em>PKCS#10</em> and it&#8217;s signature can be validated using <em>Public-Key</em>. Parameters from ICA CSR sent by TH_AJF2 (<em>ec-pub-key</em>,<em>pub-key-algo</em> and <em>ec-curve-id</em>) must match the parameters extracted from the certificate received from DCL based on Vendor ID. The certificate returned from DCL must have the Basic Constrains Extension marked as <em>critical</em> and <em>cA</em> field set to FALSE.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.6.3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AAF use its AnchorCA to sign TH_AJF2 ICA CSR and return the signed ICAC to TH_AJF2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AJF2 receive the ICAC signed with DUT_AAF1 AnchorCA</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.6.3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AJF2 updates the NOC on TH_DEV2 with a new NOC issued by ICAC received from DUT_AAF1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0004</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AAF1 read ProductID of TH_DEV2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify the value is in range [1, 65534]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0004</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AJF2 read ProductID of TH_DEV1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify the value is in range [1, 65534]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AAF starts commissioning process with TH_DEV3 on Joint Fabric</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_DEV3 is commissioned by DUT_AAF on Joint Fabric</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0004</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AAF1 read ProductID of TH_DEV3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify the value is in range [1, 65534]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0004</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AJF2 read ProductID of TH_DEV3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify the value is in range [1, 65534]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_114"><a class="anchor" href="#_notestesting_considerations_114"></a>Notes/Testing Considerations</h5>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tc_cadmin_1_28_joining_fabric_administrator_behavior_using_jcm_dut_administrator_of_joining_fabric"><a class="anchor" href="#_tc_cadmin_1_28_joining_fabric_administrator_behavior_using_jcm_dut_administrator_of_joining_fabric"></a>37.1.24. [TC-CADMIN-1.28] Joining Fabric Administrator Behavior using JCM [DUT - Administrator of Joining Fabric]</h4>
+<div class="sect4">
+<h5 id="_category_3"><a class="anchor" href="#_category_3"></a>Category</h5>
+<div class="paragraph">
+<p>Functional</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purpose_157"><a class="anchor" href="#_purpose_157"></a>Purpose</h5>
+<div class="paragraph">
+<p>This test case verifies that a DUT with Joint Fabrics feature can act as an Administrator of Joining Fabric.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_156"><a class="anchor" href="#_pics_156"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>CADMIN.C</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_156"><a class="anchor" href="#_required_devices_156"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AJF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT - Administrator of the Joining Fabric 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_DEV1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as Device commissioned in Fabric 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AAF2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness - Administrator of the Anchor Fabric 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_DEV2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as Device commissioned in Fabric 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_DEV3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test harness as Device commissioned in Joint Fabric</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_preconditions_79"><a class="anchor" href="#_preconditions_79"></a>Preconditions</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Doc. Ref.</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Condition</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Notes</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reset Devices to factory defaults</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_106"><a class="anchor" href="#_device_topology_106"></a>Device Topology</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Fabric 1: DUT_AJF &#8656;&#8658; TH_DEV1</p>
+</li>
+<li>
+<p>Fabric 2: TH_AAF2 &#8656;&#8658; TH_DEV2</p>
+</li>
+<li>
+<p>Uncommissioned: TH_DEV3</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_156"><a class="anchor" href="#_test_procedure_156"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ref</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PICS</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Test Step</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AJF starts a commissioning process with TH_DEV1 on Fabric 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_DEV1 is commissioned by DUT_AJF on Fabric 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AAF2 starts a commissioning process with TH_DEV2 on Fabric 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_DEV2 is commissioned by TH_AAF2 on Fabric 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.19.8.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open Commissioning Window on DUT_AJF using either ECM or BCM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT_AJF opens its Commissioning window to allow another commissioning</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.3.1.13</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNS-SD records shows DUT_AJF advertising</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DNS-SD advertisement has JF key with a value between 1 and 15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AAF2 starts a commissioning process with DUT_AJF on Fabric 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AJF is commissioned by TH_AAF2 on Fabric 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.4.11</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AJF perform JCM Vendor ID Validation to ensure the RCAC presented by TH_AAF2 is associated to the Vendor ID corresponding to TH_AAF2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>ec-pub-key</em>,<em>pub-key-algo</em> and <em>ec-curve-id</em> parameters from RCAC presented by TH_AAF2 must match the ones extracted from the certificate received from DCL based on Vendor ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.26.5.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AJF requests TH_AAF2 to sign its ICA certificate by invoking ICACSRRequest Command</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AJF send ICA CSR as DER-encoded string inside ICACSR parameter of the ICACSRRequest command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.6.3.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AAF2 perform validation of the request from DUT_AJF using ICA Cross Signing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AAF2 must verify that ICA CSR follows the encoding and rules from <em>PKCS#10</em> and it&#8217;s signature can be validated using <em>Public-Key</em>. Parameters from ICA CSR sent by TH_AJF2 (<em>ec-pub-key</em>,<em>pub-key-algo</em> and <em>ec-curve-id</em>) must match the parameters extracted from the certificate received from DCL based on Vendor ID. The certificate returned from DCL must have the Basic Constrains Extension marked as <em>critical</em> and <em>cA</em> field set to FALSE.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.6.3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AAF2 use its AnchorCA to sign DUT_AJF ICA CSR and return the signed ICAC to DUT_AJF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AJF receive the ICAC signed with TH_AAF2 AnchorCA</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.6.3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AJF update the NOC on TH_DEV1 with a new NOC issued by ICAC received from TH_AAF2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0004</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AJF read ProductID of TH_DEV2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify the value is in range [1, 65534]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0004</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AAF2 read ProductID of TH_DEV1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify the value is in range [1, 65534]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AJF starts commissioning process with TH_DEV3 on Joint Fabric</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_DEV3 is commissioned by DUT_AJF on Joint Fabric</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0004</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_AJF read ProductID of TH_DEV3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify the value is in range [1, 65534]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BINFO.S.A0004</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_AAF2 read ProductID of TH_DEV3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify the value is in range [1, 65534]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_115"><a class="anchor" href="#_notestesting_considerations_115"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
@@ -42491,13 +43171,13 @@ If the device already has the CommissionedFabrics attribute equal to the Support
 <div class="sect3">
 <h4 id="ref_TC-BR-1"><a class="anchor" href="#ref_TC-BR-1"></a>40.1.1. [TC-BR-1] Basics of bridging (DUT server)</h4>
 <div class="sect4">
-<h5 id="_purpose_156"><a class="anchor" href="#_purpose_156"></a>Purpose</h5>
+<h5 id="_purpose_158"><a class="anchor" href="#_purpose_158"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the basic principles of bridging.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_155"><a class="anchor" href="#_pics_155"></a>PICS</h5>
+<h5 id="_pics_157"><a class="anchor" href="#_pics_157"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -42539,7 +43219,7 @@ If the bridge supports both actuator and sensor/switch devices, use at least one
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_155"><a class="anchor" href="#_required_devices_155"></a>Required Devices</h5>
+<h5 id="_required_devices_157"><a class="anchor" href="#_required_devices_157"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -42566,7 +43246,7 @@ If the bridge supports both actuator and sensor/switch devices, use at least one
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_105"><a class="anchor" href="#_device_topology_105"></a>Device Topology</h5>
+<h5 id="_device_topology_107"><a class="anchor" href="#_device_topology_107"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -42579,7 +43259,7 @@ with means to setup the bridge (e.g. add/remove/rename/group bridged devices).</
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_155"><a class="anchor" href="#_test_procedure_155"></a>Test Procedure</h5>
+<h5 id="_test_procedure_157"><a class="anchor" href="#_test_procedure_157"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4.7619%;">
@@ -42736,21 +43416,21 @@ cluster, derive the (application) device type(s) of the bridged device</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_114"><a class="anchor" href="#_notestesting_considerations_114"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_116"><a class="anchor" href="#_notestesting_considerations_116"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
 <div class="sect3">
 <h4 id="ref_TC-BR-2"><a class="anchor" href="#ref_TC-BR-2"></a>40.1.2. [TC-BR-2] Changing the set of bridged devices (DUT server)</h4>
 <div class="sect4">
-<h5 id="_purpose_157"><a class="anchor" href="#_purpose_157"></a>Purpose</h5>
+<h5 id="_purpose_159"><a class="anchor" href="#_purpose_159"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the functionality of the bridge when bridged devices<br>
 are being added or deleted.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_156"><a class="anchor" href="#_pics_156"></a>PICS</h5>
+<h5 id="_pics_158"><a class="anchor" href="#_pics_158"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -42791,7 +43471,7 @@ are being added or deleted.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_156"><a class="anchor" href="#_required_devices_156"></a>Required Devices</h5>
+<h5 id="_required_devices_158"><a class="anchor" href="#_required_devices_158"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -42818,7 +43498,7 @@ are being added or deleted.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_106"><a class="anchor" href="#_device_topology_106"></a>Device Topology</h5>
+<h5 id="_device_topology_108"><a class="anchor" href="#_device_topology_108"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -42831,7 +43511,7 @@ with means to setup the bridge (e.g. add/remove/rename/group bridged devices).</
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_156"><a class="anchor" href="#_test_procedure_156"></a>Test Procedure</h5>
+<h5 id="_test_procedure_158"><a class="anchor" href="#_test_procedure_158"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4.7619%;">
@@ -43032,21 +43712,21 @@ changed</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_115"><a class="anchor" href="#_notestesting_considerations_115"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_117"><a class="anchor" href="#_notestesting_considerations_117"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
 <div class="sect3">
 <h4 id="ref_TC-BR-3"><a class="anchor" href="#ref_TC-BR-3"></a>40.1.3. [TC-BR-3] Changing name and state of a bridged device (DUT server)</h4>
 <div class="sect4">
-<h5 id="_purpose_158"><a class="anchor" href="#_purpose_158"></a>Purpose</h5>
+<h5 id="_purpose_160"><a class="anchor" href="#_purpose_160"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the functionality of the bridge when bridged devices<br>
 are renamed or operated using non-Matter means.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_157"><a class="anchor" href="#_pics_157"></a>PICS</h5>
+<h5 id="_pics_159"><a class="anchor" href="#_pics_159"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -43087,7 +43767,7 @@ are renamed or operated using non-Matter means.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_157"><a class="anchor" href="#_required_devices_157"></a>Required Devices</h5>
+<h5 id="_required_devices_159"><a class="anchor" href="#_required_devices_159"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -43114,7 +43794,7 @@ are renamed or operated using non-Matter means.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_107"><a class="anchor" href="#_device_topology_107"></a>Device Topology</h5>
+<h5 id="_device_topology_109"><a class="anchor" href="#_device_topology_109"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -43127,7 +43807,7 @@ with means to setup to bridge (e.g. add/remove/rename/group bridged devices).</p
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_157"><a class="anchor" href="#_test_procedure_157"></a>Test Procedure</h5>
+<h5 id="_test_procedure_159"><a class="anchor" href="#_test_procedure_159"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4.7619%;">
@@ -43196,20 +43876,20 @@ cluster on the same endpoint as in 1a</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_116"><a class="anchor" href="#_notestesting_considerations_116"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_118"><a class="anchor" href="#_notestesting_considerations_118"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
 <div class="sect3">
 <h4 id="ref_TC-BR-4"><a class="anchor" href="#ref_TC-BR-4"></a>40.1.4. [TC-BR-4] DUT client handling of bridges (DUT client)</h4>
 <div class="sect4">
-<h5 id="_purpose_159"><a class="anchor" href="#_purpose_159"></a>Purpose</h5>
+<h5 id="_purpose_161"><a class="anchor" href="#_purpose_161"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the basic principles of bridging - including the handling of DUT of composed devices, and changes in endpoints being exposed.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_158"><a class="anchor" href="#_pics_158"></a>PICS</h5>
+<h5 id="_pics_160"><a class="anchor" href="#_pics_160"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -43244,7 +43924,7 @@ cluster on the same endpoint as in 1a</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_158"><a class="anchor" href="#_required_devices_158"></a>Required Devices</h5>
+<h5 id="_required_devices_160"><a class="anchor" href="#_required_devices_160"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -43271,7 +43951,7 @@ cluster on the same endpoint as in 1a</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_108"><a class="anchor" href="#_device_topology_108"></a>Device Topology</h5>
+<h5 id="_device_topology_110"><a class="anchor" href="#_device_topology_110"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -43284,7 +43964,7 @@ cluster on the same endpoint as in 1a</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_158"><a class="anchor" href="#_test_procedure_158"></a>Test Procedure</h5>
+<h5 id="_test_procedure_160"><a class="anchor" href="#_test_procedure_160"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4.7619%;">
@@ -43592,7 +44272,7 @@ cluster on the same endpoint as in 1a</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_117"><a class="anchor" href="#_notestesting_considerations_117"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_119"><a class="anchor" href="#_notestesting_considerations_119"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
@@ -43759,13 +44439,13 @@ cluster on the same endpoint as in 1a</p></td>
 <div class="sect3">
 <h4 id="_tc_bdx_1_1_sender_initiated_bdx_transfer_session_removed"><a class="anchor" href="#_tc_bdx_1_1_sender_initiated_bdx_transfer_session_removed"></a>43.1.1. [TC-BDX-1.1] Sender Initiated BDX Transfer Session - REMOVED</h4>
 <div class="sect4">
-<h5 id="_purpose_160"><a class="anchor" href="#_purpose_160"></a>Purpose</h5>
+<h5 id="_purpose_162"><a class="anchor" href="#_purpose_162"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the SendInit message contains the necessary information to initiate the BDX transfer session.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_159"><a class="anchor" href="#_pics_159"></a>PICS</h5>
+<h5 id="_pics_161"><a class="anchor" href="#_pics_161"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -43778,7 +44458,7 @@ cluster on the same endpoint as in 1a</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_159"><a class="anchor" href="#_required_devices_159"></a>Required Devices</h5>
+<h5 id="_required_devices_161"><a class="anchor" href="#_required_devices_161"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -43805,13 +44485,13 @@ cluster on the same endpoint as in 1a</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_109"><a class="anchor" href="#_device_topology_109"></a>Device Topology</h5>
+<h5 id="_device_topology_111"><a class="anchor" href="#_device_topology_111"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_159"><a class="anchor" href="#_test_procedure_159"></a>Test Procedure</h5>
+<h5 id="_test_procedure_161"><a class="anchor" href="#_test_procedure_161"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -43849,7 +44529,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_118"><a class="anchor" href="#_notestesting_considerations_118"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_120"><a class="anchor" href="#_notestesting_considerations_120"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-DIAGLOG-1.1 from the Diagnostic Logs cluster section.<br>
 This test cannot be executed with V1.0 SDK.</p>
@@ -43860,13 +44540,13 @@ This test cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_bdx_1_2_receiver_initiated_bdx_transfer_session"><a class="anchor" href="#_tc_bdx_1_2_receiver_initiated_bdx_transfer_session"></a>43.1.2. [TC-BDX-1.2] Receiver Initiated BDX Transfer Session</h4>
 <div class="sect4">
-<h5 id="_purpose_161"><a class="anchor" href="#_purpose_161"></a>Purpose</h5>
+<h5 id="_purpose_163"><a class="anchor" href="#_purpose_163"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the ReceiveInit message contains the necessary information to initiate the BDX transfer session.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_160"><a class="anchor" href="#_pics_160"></a>PICS</h5>
+<h5 id="_pics_162"><a class="anchor" href="#_pics_162"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -43879,7 +44559,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_160"><a class="anchor" href="#_required_devices_160"></a>Required Devices</h5>
+<h5 id="_required_devices_162"><a class="anchor" href="#_required_devices_162"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -43906,13 +44586,13 @@ This test cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_110"><a class="anchor" href="#_device_topology_110"></a>Device Topology</h5>
+<h5 id="_device_topology_112"><a class="anchor" href="#_device_topology_112"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_160"><a class="anchor" href="#_test_procedure_160"></a>Test Procedure</h5>
+<h5 id="_test_procedure_162"><a class="anchor" href="#_test_procedure_162"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -43950,7 +44630,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_119"><a class="anchor" href="#_notestesting_considerations_119"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_121"><a class="anchor" href="#_notestesting_considerations_121"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-SU-2.3 from the OTA Software Update section.</p>
 </div>
@@ -43960,13 +44640,13 @@ Metadata - Optional.</p></td>
 <div class="sect3">
 <h4 id="_tc_bdx_1_3_response_to_sender_initiated_bdx_transfer_session_removed"><a class="anchor" href="#_tc_bdx_1_3_response_to_sender_initiated_bdx_transfer_session_removed"></a>43.1.3. [TC-BDX-1.3] Response to Sender Initiated BDX Transfer Session - REMOVED</h4>
 <div class="sect4">
-<h5 id="_purpose_162"><a class="anchor" href="#_purpose_162"></a>Purpose</h5>
+<h5 id="_purpose_164"><a class="anchor" href="#_purpose_164"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the SendAccept message contains the necessary information to initiate the BDX transfer session.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_161"><a class="anchor" href="#_pics_161"></a>PICS</h5>
+<h5 id="_pics_163"><a class="anchor" href="#_pics_163"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -43979,7 +44659,7 @@ Metadata - Optional.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_161"><a class="anchor" href="#_required_devices_161"></a>Required Devices</h5>
+<h5 id="_required_devices_163"><a class="anchor" href="#_required_devices_163"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -44006,13 +44686,13 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_111"><a class="anchor" href="#_device_topology_111"></a>Device Topology</h5>
+<h5 id="_device_topology_113"><a class="anchor" href="#_device_topology_113"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_161"><a class="anchor" href="#_test_procedure_161"></a>Test Procedure</h5>
+<h5 id="_test_procedure_163"><a class="anchor" href="#_test_procedure_163"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -44045,7 +44725,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_120"><a class="anchor" href="#_notestesting_considerations_120"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_122"><a class="anchor" href="#_notestesting_considerations_122"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-DIAGLOG-1.3 from the Diagnostic Logs cluster section.<br>
 This test cannot be executed with V1.0 SDK.</p>
@@ -44056,13 +44736,13 @@ This test cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_bdx_1_4_response_to_receiver_initiated_bdx_transfer_session"><a class="anchor" href="#_tc_bdx_1_4_response_to_receiver_initiated_bdx_transfer_session"></a>43.1.4. [TC-BDX-1.4] Response to Receiver Initiated BDX Transfer Session</h4>
 <div class="sect4">
-<h5 id="_purpose_163"><a class="anchor" href="#_purpose_163"></a>Purpose</h5>
+<h5 id="_purpose_165"><a class="anchor" href="#_purpose_165"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the ReceiveAccept message contains the necessary information to initiate the BDX transfer session.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_162"><a class="anchor" href="#_pics_162"></a>PICS</h5>
+<h5 id="_pics_164"><a class="anchor" href="#_pics_164"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -44075,7 +44755,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_162"><a class="anchor" href="#_required_devices_162"></a>Required Devices</h5>
+<h5 id="_required_devices_164"><a class="anchor" href="#_required_devices_164"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -44102,13 +44782,13 @@ This test cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_112"><a class="anchor" href="#_device_topology_112"></a>Device Topology</h5>
+<h5 id="_device_topology_114"><a class="anchor" href="#_device_topology_114"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_162"><a class="anchor" href="#_test_procedure_162"></a>Test Procedure</h5>
+<h5 id="_test_procedure_164"><a class="anchor" href="#_test_procedure_164"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -44143,7 +44823,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_121"><a class="anchor" href="#_notestesting_considerations_121"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_123"><a class="anchor" href="#_notestesting_considerations_123"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-SU-3.3 from the OTA Software Update section.</p>
 </div>
@@ -44153,13 +44833,13 @@ Metadata - Optional.</p></td>
 <div class="sect3">
 <h4 id="_tc_bdx_1_5_response_to_sender_initiated_bdx_transfer_session_negative_scenario_removed"><a class="anchor" href="#_tc_bdx_1_5_response_to_sender_initiated_bdx_transfer_session_negative_scenario_removed"></a>43.1.5. [TC-BDX-1.5] Response to Sender Initiated BDX Transfer Session - Negative Scenario - REMOVED</h4>
 <div class="sect4">
-<h5 id="_purpose_164"><a class="anchor" href="#_purpose_164"></a>Purpose</h5>
+<h5 id="_purpose_166"><a class="anchor" href="#_purpose_166"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT aborts the BDX transfer session with an appropriate error.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_163"><a class="anchor" href="#_pics_163"></a>PICS</h5>
+<h5 id="_pics_165"><a class="anchor" href="#_pics_165"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -44172,7 +44852,7 @@ Metadata - Optional.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_163"><a class="anchor" href="#_required_devices_163"></a>Required Devices</h5>
+<h5 id="_required_devices_165"><a class="anchor" href="#_required_devices_165"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -44199,13 +44879,13 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_113"><a class="anchor" href="#_device_topology_113"></a>Device Topology</h5>
+<h5 id="_device_topology_115"><a class="anchor" href="#_device_topology_115"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_163"><a class="anchor" href="#_test_procedure_163"></a>Test Procedure</h5>
+<h5 id="_test_procedure_165"><a class="anchor" href="#_test_procedure_165"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -44277,7 +44957,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_122"><a class="anchor" href="#_notestesting_considerations_122"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_124"><a class="anchor" href="#_notestesting_considerations_124"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test cannot be executed with V1.0 SDK.</p>
 </div>
@@ -44287,13 +44967,13 @@ Metadata - Optional.</p></td>
 <div class="sect3">
 <h4 id="_tc_bdx_1_6_response_to_receiver_initiated_bdx_transfer_session_negative_scenario_removed"><a class="anchor" href="#_tc_bdx_1_6_response_to_receiver_initiated_bdx_transfer_session_negative_scenario_removed"></a>43.1.6. [TC-BDX-1.6] Response to Receiver Initiated BDX Transfer Session - Negative Scenario - REMOVED</h4>
 <div class="sect4">
-<h5 id="_purpose_165"><a class="anchor" href="#_purpose_165"></a>Purpose</h5>
+<h5 id="_purpose_167"><a class="anchor" href="#_purpose_167"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT aborts the BDX transfer session with an appropriate error.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_164"><a class="anchor" href="#_pics_164"></a>PICS</h5>
+<h5 id="_pics_166"><a class="anchor" href="#_pics_166"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -44306,7 +44986,7 @@ Metadata - Optional.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_164"><a class="anchor" href="#_required_devices_164"></a>Required Devices</h5>
+<h5 id="_required_devices_166"><a class="anchor" href="#_required_devices_166"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -44333,13 +45013,13 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_114"><a class="anchor" href="#_device_topology_114"></a>Device Topology</h5>
+<h5 id="_device_topology_116"><a class="anchor" href="#_device_topology_116"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_164"><a class="anchor" href="#_test_procedure_164"></a>Test Procedure</h5>
+<h5 id="_test_procedure_166"><a class="anchor" href="#_test_procedure_166"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -44404,7 +45084,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_123"><a class="anchor" href="#_notestesting_considerations_123"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_125"><a class="anchor" href="#_notestesting_considerations_125"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test cannot be executed with V1.0 SDK.</p>
 </div>
@@ -44418,13 +45098,13 @@ Metadata - Optional.</p></td>
 <div class="sect3">
 <h4 id="_tc_bdx_2_1_synchronous_file_sending"><a class="anchor" href="#_tc_bdx_2_1_synchronous_file_sending"></a>43.2.1. [TC-BDX-2.1] Synchronous File Sending</h4>
 <div class="sect4">
-<h5 id="_purpose_166"><a class="anchor" href="#_purpose_166"></a>Purpose</h5>
+<h5 id="_purpose_168"><a class="anchor" href="#_purpose_168"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT can successfully send files in Synchronous mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_165"><a class="anchor" href="#_pics_165"></a>PICS</h5>
+<h5 id="_pics_167"><a class="anchor" href="#_pics_167"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -44434,7 +45114,7 @@ Metadata - Optional.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_165"><a class="anchor" href="#_required_devices_165"></a>Required Devices</h5>
+<h5 id="_required_devices_167"><a class="anchor" href="#_required_devices_167"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -44461,7 +45141,7 @@ Metadata - Optional.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_115"><a class="anchor" href="#_device_topology_115"></a>Device Topology</h5>
+<h5 id="_device_topology_117"><a class="anchor" href="#_device_topology_117"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -44473,7 +45153,7 @@ Metadata - Optional.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_165"><a class="anchor" href="#_test_procedure_165"></a>Test Procedure</h5>
+<h5 id="_test_procedure_167"><a class="anchor" href="#_test_procedure_167"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -44522,7 +45202,7 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_124"><a class="anchor" href="#_notestesting_considerations_124"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_126"><a class="anchor" href="#_notestesting_considerations_126"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-SU-3.3 from the OTA Software Update section or TC-DIAGLOG-1.1 from the Diagnostic Logs cluster section.</p>
 </div>
@@ -44532,13 +45212,13 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 <div class="sect3">
 <h4 id="_tc_bdx_2_2_synchronous_file_receiving"><a class="anchor" href="#_tc_bdx_2_2_synchronous_file_receiving"></a>43.2.2. [TC-BDX-2.2] Synchronous File Receiving</h4>
 <div class="sect4">
-<h5 id="_purpose_167"><a class="anchor" href="#_purpose_167"></a>Purpose</h5>
+<h5 id="_purpose_169"><a class="anchor" href="#_purpose_169"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT can successfully receive files in Synchronous mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_166"><a class="anchor" href="#_pics_166"></a>PICS</h5>
+<h5 id="_pics_168"><a class="anchor" href="#_pics_168"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -44548,7 +45228,7 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_166"><a class="anchor" href="#_required_devices_166"></a>Required Devices</h5>
+<h5 id="_required_devices_168"><a class="anchor" href="#_required_devices_168"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -44575,7 +45255,7 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_116"><a class="anchor" href="#_device_topology_116"></a>Device Topology</h5>
+<h5 id="_device_topology_118"><a class="anchor" href="#_device_topology_118"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -44587,7 +45267,7 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_166"><a class="anchor" href="#_test_procedure_166"></a>Test Procedure</h5>
+<h5 id="_test_procedure_168"><a class="anchor" href="#_test_procedure_168"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -44650,7 +45330,7 @@ Block Counter - Must correspond to the Block Counter which was embedded in the B
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_125"><a class="anchor" href="#_notestesting_considerations_125"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_127"><a class="anchor" href="#_notestesting_considerations_127"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-SU-2.3 from the OTA Software Update section or TC-DIAGLOG-1.3 from the Diagnostic Logs cluster section.<br>
 Test Step #4 cannot be executed with V1.0 SDK.</p>
@@ -44661,13 +45341,13 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_bdx_2_3_restart_synchronous_file_receiving_removed"><a class="anchor" href="#_tc_bdx_2_3_restart_synchronous_file_receiving_removed"></a>43.2.3. [TC-BDX-2.3] Restart Synchronous File Receiving - REMOVED</h4>
 <div class="sect4">
-<h5 id="_purpose_168"><a class="anchor" href="#_purpose_168"></a>Purpose</h5>
+<h5 id="_purpose_170"><a class="anchor" href="#_purpose_170"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT can successfully restart receiving files in Synchronous mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_167"><a class="anchor" href="#_pics_167"></a>PICS</h5>
+<h5 id="_pics_169"><a class="anchor" href="#_pics_169"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -44677,7 +45357,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_167"><a class="anchor" href="#_required_devices_167"></a>Required Devices</h5>
+<h5 id="_required_devices_169"><a class="anchor" href="#_required_devices_169"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -44704,7 +45384,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_117"><a class="anchor" href="#_device_topology_117"></a>Device Topology</h5>
+<h5 id="_device_topology_119"><a class="anchor" href="#_device_topology_119"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -44716,7 +45396,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_167"><a class="anchor" href="#_test_procedure_167"></a>Test Procedure</h5>
+<h5 id="_test_procedure_169"><a class="anchor" href="#_test_procedure_169"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -44770,7 +45450,7 @@ Block Counter - Must correspond to the Block Counter which was embedded in the B
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_126"><a class="anchor" href="#_notestesting_considerations_126"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_128"><a class="anchor" href="#_notestesting_considerations_128"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be verified using TC-SU-2.3 from the OTA Software Update section.<br>
 This test cannot be executed with V1.0 SDK.</p>
@@ -44781,13 +45461,13 @@ This test cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_bdx_2_4_asynchronous_file_sending_removed"><a class="anchor" href="#_tc_bdx_2_4_asynchronous_file_sending_removed"></a>43.2.4. [TC-BDX-2.4] Asynchronous File Sending - REMOVED</h4>
 <div class="sect4">
-<h5 id="_purpose_169"><a class="anchor" href="#_purpose_169"></a>Purpose</h5>
+<h5 id="_purpose_171"><a class="anchor" href="#_purpose_171"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT can successfully send files in Asynchronous mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_168"><a class="anchor" href="#_pics_168"></a>PICS</h5>
+<h5 id="_pics_170"><a class="anchor" href="#_pics_170"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -44797,7 +45477,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_168"><a class="anchor" href="#_required_devices_168"></a>Required Devices</h5>
+<h5 id="_required_devices_170"><a class="anchor" href="#_required_devices_170"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -44824,13 +45504,13 @@ This test cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_118"><a class="anchor" href="#_device_topology_118"></a>Device Topology</h5>
+<h5 id="_device_topology_120"><a class="anchor" href="#_device_topology_120"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_168"><a class="anchor" href="#_test_procedure_168"></a>Test Procedure</h5>
+<h5 id="_test_procedure_170"><a class="anchor" href="#_test_procedure_170"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -44879,7 +45559,7 @@ Verify that the pre-negotiated file size was transferred, if a definite size had
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_127"><a class="anchor" href="#_notestesting_considerations_127"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_129"><a class="anchor" href="#_notestesting_considerations_129"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be initiated from OTA Software Update section or Diagnostic Logs cluster section. This test can also be verified with TH sending a ReceiveInit message to the DUT.<br>
 This test cannot be executed with V1.0 SDK.</p>
@@ -44890,13 +45570,13 @@ This test cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_bdx_2_5_asynchronous_file_receiving_removed"><a class="anchor" href="#_tc_bdx_2_5_asynchronous_file_receiving_removed"></a>43.2.5. [TC-BDX-2.5] Asynchronous File Receiving - REMOVED</h4>
 <div class="sect4">
-<h5 id="_purpose_170"><a class="anchor" href="#_purpose_170"></a>Purpose</h5>
+<h5 id="_purpose_172"><a class="anchor" href="#_purpose_172"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT can successfully receive files in Asynchronous mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_169"><a class="anchor" href="#_pics_169"></a>PICS</h5>
+<h5 id="_pics_171"><a class="anchor" href="#_pics_171"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -44906,7 +45586,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_169"><a class="anchor" href="#_required_devices_169"></a>Required Devices</h5>
+<h5 id="_required_devices_171"><a class="anchor" href="#_required_devices_171"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -44933,13 +45613,13 @@ This test cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_119"><a class="anchor" href="#_device_topology_119"></a>Device Topology</h5>
+<h5 id="_device_topology_121"><a class="anchor" href="#_device_topology_121"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_169"><a class="anchor" href="#_test_procedure_169"></a>Test Procedure</h5>
+<h5 id="_test_procedure_171"><a class="anchor" href="#_test_procedure_171"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -44978,7 +45658,7 @@ Block Counter - Must correspond to the Block Counter which was embedded in the B
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_128"><a class="anchor" href="#_notestesting_considerations_128"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_130"><a class="anchor" href="#_notestesting_considerations_130"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>This test can be initiated from OTA Software Update section or Diagnostic Logs cluster section. This test can also be verified with TH sending a SendInit message to the DUT.<br>
 This test cannot be executed with V1.0 SDK.</p>
@@ -45190,13 +45870,13 @@ This test cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_su_1_1_invoke_announceotaprovider_from_admindut_to_ota_r"><a class="anchor" href="#_tc_su_1_1_invoke_announceotaprovider_from_admindut_to_ota_r"></a>46.1.1. [TC-SU-1.1] Invoke AnnounceOTAProvider from Admin(DUT) to OTA-R</h4>
 <div class="sect4">
-<h5 id="_purpose_171"><a class="anchor" href="#_purpose_171"></a>Purpose</h5>
+<h5 id="_purpose_173"><a class="anchor" href="#_purpose_173"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT is able to invoke the <em>AnnounceOTAProvider</em> command on the OTA-R.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_170"><a class="anchor" href="#_pics_170"></a>PICS</h5>
+<h5 id="_pics_172"><a class="anchor" href="#_pics_172"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -45206,7 +45886,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_170"><a class="anchor" href="#_required_devices_170"></a>Required Devices</h5>
+<h5 id="_required_devices_172"><a class="anchor" href="#_required_devices_172"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -45238,7 +45918,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_120"><a class="anchor" href="#_device_topology_120"></a>Device Topology</h5>
+<h5 id="_device_topology_122"><a class="anchor" href="#_device_topology_122"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH, TH2 and DUT are on the same fabric.</p>
 </div>
@@ -45250,7 +45930,7 @@ This test cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_170"><a class="anchor" href="#_test_procedure_170"></a>Test Procedure</h5>
+<h5 id="_test_procedure_172"><a class="anchor" href="#_test_procedure_172"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -45286,7 +45966,7 @@ Endpoint number of the OTA-P/TH2 on the ProviderNodeID.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_129"><a class="anchor" href="#_notestesting_considerations_129"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_131"><a class="anchor" href="#_notestesting_considerations_131"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Vendor needs to mention steps on how to trigger the <em>AnnounceOTAProvider</em> Command.</p>
 </div>
@@ -45300,13 +45980,13 @@ Endpoint number of the OTA-P/TH2 on the ProviderNodeID.</p></td>
 <div class="sect3">
 <h4 id="_tc_su_2_1_queryimage_command_from_dut_to_ota_p"><a class="anchor" href="#_tc_su_2_1_queryimage_command_from_dut_to_ota_p"></a>46.2.1. [TC-SU-2.1] QueryImage Command from DUT to OTA-P</h4>
 <div class="sect4">
-<h5 id="_purpose_172"><a class="anchor" href="#_purpose_172"></a>Purpose</h5>
+<h5 id="_purpose_174"><a class="anchor" href="#_purpose_174"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT is able to successfully send a <em>QueryImage</em> command to the OTA-P</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_171"><a class="anchor" href="#_pics_171"></a>PICS</h5>
+<h5 id="_pics_173"><a class="anchor" href="#_pics_173"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -45316,7 +45996,7 @@ Endpoint number of the OTA-P/TH2 on the ProviderNodeID.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_171"><a class="anchor" href="#_required_devices_171"></a>Required Devices</h5>
+<h5 id="_required_devices_173"><a class="anchor" href="#_required_devices_173"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -45348,7 +46028,7 @@ Endpoint number of the OTA-P/TH2 on the ProviderNodeID.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_121"><a class="anchor" href="#_device_topology_121"></a>Device Topology</h5>
+<h5 id="_device_topology_123"><a class="anchor" href="#_device_topology_123"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH, TH2 and DUT are on the same fabric.</p>
 </div>
@@ -45362,7 +46042,7 @@ There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_171"><a class="anchor" href="#_test_procedure_171"></a>Test Procedure</h5>
+<h5 id="_test_procedure_173"><a class="anchor" href="#_test_procedure_173"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -45416,7 +46096,7 @@ Wait for 2 minutes.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_130"><a class="anchor" href="#_notestesting_considerations_130"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_132"><a class="anchor" href="#_notestesting_considerations_132"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Triggering OTA on the DUT is vendor specific. This is applicable for all devices which are triggering OTA.</p>
 </div>
@@ -45426,13 +46106,13 @@ Wait for 2 minutes.</p></td>
 <div class="sect3">
 <h4 id="_tc_su_2_2_handling_different_queryimageresponse_scenarios_on_requestor"><a class="anchor" href="#_tc_su_2_2_handling_different_queryimageresponse_scenarios_on_requestor"></a>46.2.2. [TC-SU-2.2] Handling Different QueryImageResponse Scenarios on Requestor</h4>
 <div class="sect4">
-<h5 id="_purpose_173"><a class="anchor" href="#_purpose_173"></a>Purpose</h5>
+<h5 id="_purpose_175"><a class="anchor" href="#_purpose_175"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec on different scenarios of the <em>QueryImageResponse</em> Command from the OTA-P.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_172"><a class="anchor" href="#_pics_172"></a>PICS</h5>
+<h5 id="_pics_174"><a class="anchor" href="#_pics_174"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -45442,7 +46122,7 @@ Wait for 2 minutes.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_172"><a class="anchor" href="#_required_devices_172"></a>Required Devices</h5>
+<h5 id="_required_devices_174"><a class="anchor" href="#_required_devices_174"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -45469,7 +46149,7 @@ Wait for 2 minutes.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_122"><a class="anchor" href="#_device_topology_122"></a>Device Topology</h5>
+<h5 id="_device_topology_124"><a class="anchor" href="#_device_topology_124"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -45483,7 +46163,7 @@ There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_172"><a class="anchor" href="#_test_procedure_172"></a>Test Procedure</h5>
+<h5 id="_test_procedure_174"><a class="anchor" href="#_test_procedure_174"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -45556,7 +46236,7 @@ Verify that there is a transfer of the software image after the second <em>Query
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_131"><a class="anchor" href="#_notestesting_considerations_131"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_133"><a class="anchor" href="#_notestesting_considerations_133"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Step #5 cannot be executed with V1.0 SDK.</p>
 </div>
@@ -45570,13 +46250,13 @@ Verify that there is a transfer of the software image after the second <em>Query
 <div class="sect3">
 <h4 id="_tc_su_2_3_transfer_of_software_update_images_between_dut_and_thota_p"><a class="anchor" href="#_tc_su_2_3_transfer_of_software_update_images_between_dut_and_thota_p"></a>46.3.1. [TC-SU-2.3] Transfer of Software Update Images between DUT and TH/OTA-P</h4>
 <div class="sect4">
-<h5 id="_purpose_174"><a class="anchor" href="#_purpose_174"></a>Purpose</h5>
+<h5 id="_purpose_176"><a class="anchor" href="#_purpose_176"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec when it is transferring images from the TH/OTA-P.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_173"><a class="anchor" href="#_pics_173"></a>PICS</h5>
+<h5 id="_pics_175"><a class="anchor" href="#_pics_175"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -45586,7 +46266,7 @@ Verify that there is a transfer of the software image after the second <em>Query
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_173"><a class="anchor" href="#_required_devices_173"></a>Required Devices</h5>
+<h5 id="_required_devices_175"><a class="anchor" href="#_required_devices_175"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -45613,7 +46293,7 @@ Verify that there is a transfer of the software image after the second <em>Query
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_123"><a class="anchor" href="#_device_topology_123"></a>Device Topology</h5>
+<h5 id="_device_topology_125"><a class="anchor" href="#_device_topology_125"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -45627,7 +46307,7 @@ There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_173"><a class="anchor" href="#_test_procedure_173"></a>Test Procedure</h5>
+<h5 id="_test_procedure_175"><a class="anchor" href="#_test_procedure_175"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -45688,7 +46368,7 @@ Verify that the DUT starts a new transfer of software image when sending another
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_132"><a class="anchor" href="#_notestesting_considerations_132"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_134"><a class="anchor" href="#_notestesting_considerations_134"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Requestor User Consent is specific to vendor implementation.<br>
 Test Step #3 cannot be executed with V1.0 SDK.<br>
@@ -45704,13 +46384,13 @@ Test Step #5 cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_su_2_4_applyupdaterequest_command_from_dut_to_ota_p"><a class="anchor" href="#_tc_su_2_4_applyupdaterequest_command_from_dut_to_ota_p"></a>46.4.1. [TC-SU-2.4] ApplyUpdateRequest Command from DUT to OTA-P</h4>
 <div class="sect4">
-<h5 id="_purpose_175"><a class="anchor" href="#_purpose_175"></a>Purpose</h5>
+<h5 id="_purpose_177"><a class="anchor" href="#_purpose_177"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec when it is applying the software update.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_174"><a class="anchor" href="#_pics_174"></a>PICS</h5>
+<h5 id="_pics_176"><a class="anchor" href="#_pics_176"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -45720,7 +46400,7 @@ Test Step #5 cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_174"><a class="anchor" href="#_required_devices_174"></a>Required Devices</h5>
+<h5 id="_required_devices_176"><a class="anchor" href="#_required_devices_176"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -45747,7 +46427,7 @@ Test Step #5 cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_124"><a class="anchor" href="#_device_topology_124"></a>Device Topology</h5>
+<h5 id="_device_topology_126"><a class="anchor" href="#_device_topology_126"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -45761,7 +46441,7 @@ There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_174"><a class="anchor" href="#_test_procedure_174"></a>Test Procedure</h5>
+<h5 id="_test_procedure_176"><a class="anchor" href="#_test_procedure_176"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -45791,7 +46471,7 @@ NewVersion - verify that this is the same as the software version that was downl
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_133"><a class="anchor" href="#_notestesting_considerations_133"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_135"><a class="anchor" href="#_notestesting_considerations_135"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Vendor needs to provide instructions on how to trigger the DUT/OTA-R to send the <em>ApplyUpdateRequest</em>.</p>
 </div>
@@ -45801,13 +46481,13 @@ NewVersion - verify that this is the same as the software version that was downl
 <div class="sect3">
 <h4 id="_tc_su_2_5_handling_different_applyupdateresponse_scenarios_on_requestor"><a class="anchor" href="#_tc_su_2_5_handling_different_applyupdateresponse_scenarios_on_requestor"></a>46.4.2. [TC-SU-2.5] Handling Different ApplyUpdateResponse Scenarios on Requestor</h4>
 <div class="sect4">
-<h5 id="_purpose_176"><a class="anchor" href="#_purpose_176"></a>Purpose</h5>
+<h5 id="_purpose_178"><a class="anchor" href="#_purpose_178"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec when it is applying the software update.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_175"><a class="anchor" href="#_pics_175"></a>PICS</h5>
+<h5 id="_pics_177"><a class="anchor" href="#_pics_177"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -45817,7 +46497,7 @@ NewVersion - verify that this is the same as the software version that was downl
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_175"><a class="anchor" href="#_required_devices_175"></a>Required Devices</h5>
+<h5 id="_required_devices_177"><a class="anchor" href="#_required_devices_177"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -45844,7 +46524,7 @@ NewVersion - verify that this is the same as the software version that was downl
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_125"><a class="anchor" href="#_device_topology_125"></a>Device Topology</h5>
+<h5 id="_device_topology_127"><a class="anchor" href="#_device_topology_127"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -45861,7 +46541,7 @@ There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_175"><a class="anchor" href="#_test_procedure_175"></a>Test Procedure</h5>
+<h5 id="_test_procedure_177"><a class="anchor" href="#_test_procedure_177"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -45924,7 +46604,7 @@ Verify the <em>SoftwareVersion</em> attribute from the Basic Information cluster
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_134"><a class="anchor" href="#_notestesting_considerations_134"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_136"><a class="anchor" href="#_notestesting_considerations_136"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Software version can be verified by querying the Basic Information cluster.</p>
 </div>
@@ -45934,13 +46614,13 @@ Verify the <em>SoftwareVersion</em> attribute from the Basic Information cluster
 <div class="sect3">
 <h4 id="_tc_su_2_6_notifyupdateapplied_command_from_dut_to_ota_p"><a class="anchor" href="#_tc_su_2_6_notifyupdateapplied_command_from_dut_to_ota_p"></a>46.4.3. [TC-SU-2.6] NotifyUpdateApplied Command from DUT to OTA-P</h4>
 <div class="sect4">
-<h5 id="_purpose_177"><a class="anchor" href="#_purpose_177"></a>Purpose</h5>
+<h5 id="_purpose_179"><a class="anchor" href="#_purpose_179"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec when it is applying the software update.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_176"><a class="anchor" href="#_pics_176"></a>PICS</h5>
+<h5 id="_pics_178"><a class="anchor" href="#_pics_178"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -45950,7 +46630,7 @@ Verify the <em>SoftwareVersion</em> attribute from the Basic Information cluster
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_176"><a class="anchor" href="#_required_devices_176"></a>Required Devices</h5>
+<h5 id="_required_devices_178"><a class="anchor" href="#_required_devices_178"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -45977,7 +46657,7 @@ Verify the <em>SoftwareVersion</em> attribute from the Basic Information cluster
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_126"><a class="anchor" href="#_device_topology_126"></a>Device Topology</h5>
+<h5 id="_device_topology_128"><a class="anchor" href="#_device_topology_128"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -45996,7 +46676,7 @@ Action field is set to "Proceed"</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_176"><a class="anchor" href="#_test_procedure_176"></a>Test Procedure</h5>
+<h5 id="_test_procedure_178"><a class="anchor" href="#_test_procedure_178"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46026,7 +46706,7 @@ SoftwareVersion - verify the software version on the DUT to match the version do
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_135"><a class="anchor" href="#_notestesting_considerations_135"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_137"><a class="anchor" href="#_notestesting_considerations_137"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -46037,13 +46717,13 @@ SoftwareVersion - verify the software version on the DUT to match the version do
 <div class="sect3">
 <h4 id="_tc_su_2_7_verifying_events_on_ota_rdut"><a class="anchor" href="#_tc_su_2_7_verifying_events_on_ota_rdut"></a>46.5.1. [TC-SU-2.7] Verifying Events on OTA-R(DUT)</h4>
 <div class="sect4">
-<h5 id="_purpose_178"><a class="anchor" href="#_purpose_178"></a>Purpose</h5>
+<h5 id="_purpose_180"><a class="anchor" href="#_purpose_180"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec when events are generated.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_177"><a class="anchor" href="#_pics_177"></a>PICS</h5>
+<h5 id="_pics_179"><a class="anchor" href="#_pics_179"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46053,7 +46733,7 @@ SoftwareVersion - verify the software version on the DUT to match the version do
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_177"><a class="anchor" href="#_required_devices_177"></a>Required Devices</h5>
+<h5 id="_required_devices_179"><a class="anchor" href="#_required_devices_179"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46085,7 +46765,7 @@ SoftwareVersion - verify the software version on the DUT to match the version do
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_127"><a class="anchor" href="#_device_topology_127"></a>Device Topology</h5>
+<h5 id="_device_topology_129"><a class="anchor" href="#_device_topology_129"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -46100,7 +46780,7 @@ OTA-SUB should be setup such that it is subscribing to the OTA events from the D
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_177"><a class="anchor" href="#_test_procedure_177"></a>Test Procedure</h5>
+<h5 id="_test_procedure_179"><a class="anchor" href="#_test_procedure_179"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46181,7 +46861,7 @@ ProductID - Same as what is available in the <em>ProductID</em> attribute of the
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_136"><a class="anchor" href="#_notestesting_considerations_136"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_138"><a class="anchor" href="#_notestesting_considerations_138"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -46192,13 +46872,13 @@ ProductID - Same as what is available in the <em>ProductID</em> attribute of the
 <div class="sect3">
 <h4 id="_tc_su_2_8_ota_functionality_in_multi_fabric_scenario"><a class="anchor" href="#_tc_su_2_8_ota_functionality_in_multi_fabric_scenario"></a>46.6.1. [TC-SU-2.8] OTA Functionality in Multi Fabric Scenario</h4>
 <div class="sect4">
-<h5 id="_purpose_179"><a class="anchor" href="#_purpose_179"></a>Purpose</h5>
+<h5 id="_purpose_181"><a class="anchor" href="#_purpose_181"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT is able to successfully send a <em>QueryImage</em> command to the OTA-P in multi fabric scenario.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_178"><a class="anchor" href="#_pics_178"></a>PICS</h5>
+<h5 id="_pics_180"><a class="anchor" href="#_pics_180"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46208,7 +46888,7 @@ ProductID - Same as what is available in the <em>ProductID</em> attribute of the
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_178"><a class="anchor" href="#_required_devices_178"></a>Required Devices</h5>
+<h5 id="_required_devices_180"><a class="anchor" href="#_required_devices_180"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46240,7 +46920,7 @@ ProductID - Same as what is available in the <em>ProductID</em> attribute of the
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_128"><a class="anchor" href="#_device_topology_128"></a>Device Topology</h5>
+<h5 id="_device_topology_130"><a class="anchor" href="#_device_topology_130"></a>Device Topology</h5>
 <div class="paragraph">
 <p>Commission TH1 and TH2 on different fabrics and DUT to both these fabrics.</p>
 </div>
@@ -46253,7 +46933,7 @@ ProductID - Same as what is available in the <em>ProductID</em> attribute of the
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_178"><a class="anchor" href="#_test_procedure_178"></a>Test Procedure</h5>
+<h5 id="_test_procedure_180"><a class="anchor" href="#_test_procedure_180"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46305,7 +46985,7 @@ If the Location field is present, verify that the value is same as Basic Informa
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_137"><a class="anchor" href="#_notestesting_considerations_137"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_139"><a class="anchor" href="#_notestesting_considerations_139"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Triggering OTA on the DUT is vendor specific. This is applicable for all devices which are triggering OTA.</p>
 </div>
@@ -46319,13 +46999,13 @@ If the Location field is present, verify that the value is same as Basic Informa
 <div class="sect3">
 <h4 id="_tc_su_3_1_queryimageresponse_from_dut_to_ota_r"><a class="anchor" href="#_tc_su_3_1_queryimageresponse_from_dut_to_ota_r"></a>46.7.1. [TC-SU-3.1] QueryImageResponse from DUT to OTA-R</h4>
 <div class="sect4">
-<h5 id="_purpose_180"><a class="anchor" href="#_purpose_180"></a>Purpose</h5>
+<h5 id="_purpose_182"><a class="anchor" href="#_purpose_182"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec when it receives a QueryImageRequest from the OTA-R.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_179"><a class="anchor" href="#_pics_179"></a>PICS</h5>
+<h5 id="_pics_181"><a class="anchor" href="#_pics_181"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46335,7 +47015,7 @@ If the Location field is present, verify that the value is same as Basic Informa
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_179"><a class="anchor" href="#_required_devices_179"></a>Required Devices</h5>
+<h5 id="_required_devices_181"><a class="anchor" href="#_required_devices_181"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46362,7 +47042,7 @@ If the Location field is present, verify that the value is same as Basic Informa
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_129"><a class="anchor" href="#_device_topology_129"></a>Device Topology</h5>
+<h5 id="_device_topology_131"><a class="anchor" href="#_device_topology_131"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -46376,7 +47056,7 @@ There is no ongoing OTA process, and reading the <em>UpdateState</em> Attribute 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_179"><a class="anchor" href="#_test_procedure_179"></a>Test Procedure</h5>
+<h5 id="_test_procedure_181"><a class="anchor" href="#_test_procedure_181"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46405,7 +47085,7 @@ UserConsentNeeded field is set to False.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_138"><a class="anchor" href="#_notestesting_considerations_138"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_140"><a class="anchor" href="#_notestesting_considerations_140"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Step #1 - User Consent is obtained from the user and is specific to vendor implementation.</p>
 </div>
@@ -46415,13 +47095,13 @@ UserConsentNeeded field is set to False.</p></td>
 <div class="sect3">
 <h4 id="_tc_su_3_2_handling_different_queryimageresponse_scenarios_on_provider"><a class="anchor" href="#_tc_su_3_2_handling_different_queryimageresponse_scenarios_on_provider"></a>46.7.2. [TC-SU-3.2] Handling Different QueryImageResponse Scenarios on Provider</h4>
 <div class="sect4">
-<h5 id="_purpose_181"><a class="anchor" href="#_purpose_181"></a>Purpose</h5>
+<h5 id="_purpose_183"><a class="anchor" href="#_purpose_183"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec in sending the correct <em>QueryImageResponse</em> to the OTA-R.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_180"><a class="anchor" href="#_pics_180"></a>PICS</h5>
+<h5 id="_pics_182"><a class="anchor" href="#_pics_182"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46431,7 +47111,7 @@ UserConsentNeeded field is set to False.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_180"><a class="anchor" href="#_required_devices_180"></a>Required Devices</h5>
+<h5 id="_required_devices_182"><a class="anchor" href="#_required_devices_182"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46458,7 +47138,7 @@ UserConsentNeeded field is set to False.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_130"><a class="anchor" href="#_device_topology_130"></a>Device Topology</h5>
+<h5 id="_device_topology_132"><a class="anchor" href="#_device_topology_132"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -46472,7 +47152,7 @@ DUT should be able to get user consent prior to <em>QueryImageResponse</em> when
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_180"><a class="anchor" href="#_test_procedure_180"></a>Test Procedure</h5>
+<h5 id="_test_procedure_182"><a class="anchor" href="#_test_procedure_182"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46562,7 +47242,7 @@ Verify that the Image downloaded by the OTA-R/TH is valid and is the same image 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_139"><a class="anchor" href="#_notestesting_considerations_139"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_141"><a class="anchor" href="#_notestesting_considerations_141"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Other than Test Case #2 all test cases assume that the software update image is available.<br>
 Test Step #2 - The DUT should not have any cached image already downloaded.<br>
@@ -46579,13 +47259,13 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 <div class="sect3">
 <h4 id="_tc_su_3_3_transfer_of_software_update_images_between_dut_and_ota_r"><a class="anchor" href="#_tc_su_3_3_transfer_of_software_update_images_between_dut_and_ota_r"></a>46.8.1. [TC-SU-3.3] Transfer of Software Update Images between DUT and OTA-R</h4>
 <div class="sect4">
-<h5 id="_purpose_182"><a class="anchor" href="#_purpose_182"></a>Purpose</h5>
+<h5 id="_purpose_184"><a class="anchor" href="#_purpose_184"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec when it is transferring images to the TH/OTA-R.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_181"><a class="anchor" href="#_pics_181"></a>PICS</h5>
+<h5 id="_pics_183"><a class="anchor" href="#_pics_183"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46595,7 +47275,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_181"><a class="anchor" href="#_required_devices_181"></a>Required Devices</h5>
+<h5 id="_required_devices_183"><a class="anchor" href="#_required_devices_183"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46622,7 +47302,7 @@ Test Step #4 cannot be executed with V1.0 SDK.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_131"><a class="anchor" href="#_device_topology_131"></a>Device Topology</h5>
+<h5 id="_device_topology_133"><a class="anchor" href="#_device_topology_133"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -46636,7 +47316,7 @@ DUT should be able to get user consent prior to <em>QueryImageResponse</em> when
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_181"><a class="anchor" href="#_test_procedure_181"></a>Test Procedure</h5>
+<h5 id="_test_procedure_183"><a class="anchor" href="#_test_procedure_183"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46703,7 +47383,7 @@ Verify that the DUT finishes sending the image to the TH.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_140"><a class="anchor" href="#_notestesting_considerations_140"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_142"><a class="anchor" href="#_notestesting_considerations_142"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Step #5 cannot be executed with V1.0 SDK.</p>
 </div>
@@ -46717,13 +47397,13 @@ Verify that the DUT finishes sending the image to the TH.</p></td>
 <div class="sect3">
 <h4 id="_tc_su_3_4_handling_different_applyupdateresponse_scenarios_on_provider"><a class="anchor" href="#_tc_su_3_4_handling_different_applyupdateresponse_scenarios_on_provider"></a>46.9.1. [TC-SU-3.4] Handling Different ApplyUpdateResponse Scenarios on Provider</h4>
 <div class="sect4">
-<h5 id="_purpose_183"><a class="anchor" href="#_purpose_183"></a>Purpose</h5>
+<h5 id="_purpose_185"><a class="anchor" href="#_purpose_185"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec on when a software update should be applied by the OTA-R.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_182"><a class="anchor" href="#_pics_182"></a>PICS</h5>
+<h5 id="_pics_184"><a class="anchor" href="#_pics_184"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46733,7 +47413,7 @@ Verify that the DUT finishes sending the image to the TH.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_182"><a class="anchor" href="#_required_devices_182"></a>Required Devices</h5>
+<h5 id="_required_devices_184"><a class="anchor" href="#_required_devices_184"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46760,7 +47440,7 @@ Verify that the DUT finishes sending the image to the TH.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_132"><a class="anchor" href="#_device_topology_132"></a>Device Topology</h5>
+<h5 id="_device_topology_134"><a class="anchor" href="#_device_topology_134"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -46774,7 +47454,7 @@ DUT should be able to get user consent prior to <em>QueryImageResponse</em> when
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_182"><a class="anchor" href="#_test_procedure_182"></a>Test Procedure</h5>
+<h5 id="_test_procedure_184"><a class="anchor" href="#_test_procedure_184"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46823,7 +47503,7 @@ Verify that the entire OTA process is restarted on DUT when OTA-R/TH sends anoth
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_141"><a class="anchor" href="#_notestesting_considerations_141"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_143"><a class="anchor" href="#_notestesting_considerations_143"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Test Cases where the DUT needs to be forced to send a certain response might not be testable.</p>
 </div>
@@ -46837,13 +47517,13 @@ Verify that the entire OTA process is restarted on DUT when OTA-R/TH sends anoth
 <div class="sect3">
 <h4 id="_tc_su_4_1_verifying_cluster_attributes_on_ota_rdut"><a class="anchor" href="#_tc_su_4_1_verifying_cluster_attributes_on_ota_rdut"></a>46.10.1. [TC-SU-4.1] Verifying Cluster Attributes on OTA-R(DUT)</h4>
 <div class="sect4">
-<h5 id="_purpose_184"><a class="anchor" href="#_purpose_184"></a>Purpose</h5>
+<h5 id="_purpose_186"><a class="anchor" href="#_purpose_186"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT behaves according to the spec with the Cluster attributes.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_183"><a class="anchor" href="#_pics_183"></a>PICS</h5>
+<h5 id="_pics_185"><a class="anchor" href="#_pics_185"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -46853,7 +47533,7 @@ Verify that the entire OTA process is restarted on DUT when OTA-R/TH sends anoth
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_183"><a class="anchor" href="#_required_devices_183"></a>Required Devices</h5>
+<h5 id="_required_devices_185"><a class="anchor" href="#_required_devices_185"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -46895,7 +47575,7 @@ Verify that the entire OTA process is restarted on DUT when OTA-R/TH sends anoth
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_133"><a class="anchor" href="#_device_topology_133"></a>Device Topology</h5>
+<h5 id="_device_topology_135"><a class="anchor" href="#_device_topology_135"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH2 and TH4 are on the same fabric and TH3 is on a different fabric.<br>
 DUT is commissioned to both these fabrics.<br>
@@ -46909,7 +47589,7 @@ TH can be on either fabric depending on the test.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_183"><a class="anchor" href="#_test_procedure_183"></a>Test Procedure</h5>
+<h5 id="_test_procedure_185"><a class="anchor" href="#_test_procedure_185"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -46996,7 +47676,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_142"><a class="anchor" href="#_notestesting_considerations_142"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_144"><a class="anchor" href="#_notestesting_considerations_144"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -47007,13 +47687,13 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 <div class="sect3">
 <h4 id="_tc_su_5_1_verifying_vendor_specific_ota_implementation_on_dut"><a class="anchor" href="#_tc_su_5_1_verifying_vendor_specific_ota_implementation_on_dut"></a>46.11.1. [TC-SU-5.1] Verifying vendor specific OTA implementation on DUT</h4>
 <div class="sect4">
-<h5 id="_purpose_185"><a class="anchor" href="#_purpose_185"></a>Purpose</h5>
+<h5 id="_purpose_187"><a class="anchor" href="#_purpose_187"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the DUT is able to successfully perform software update by vendor specific means if OTA Requestor cluster is not supported.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_184"><a class="anchor" href="#_pics_184"></a>PICS</h5>
+<h5 id="_pics_186"><a class="anchor" href="#_pics_186"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -47023,7 +47703,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_184"><a class="anchor" href="#_required_devices_184"></a>Required Devices</h5>
+<h5 id="_required_devices_186"><a class="anchor" href="#_required_devices_186"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -47050,7 +47730,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_134"><a class="anchor" href="#_device_topology_134"></a>Device Topology</h5>
+<h5 id="_device_topology_136"><a class="anchor" href="#_device_topology_136"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -47062,7 +47742,7 @@ Unknown, Idle, Querying, DelayedOnQuery, Downloading, Applying, DelayedOnApply, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_184"><a class="anchor" href="#_test_procedure_184"></a>Test Procedure</h5>
+<h5 id="_test_procedure_186"><a class="anchor" href="#_test_procedure_186"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 10%;">
@@ -47093,7 +47773,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_143"><a class="anchor" href="#_notestesting_considerations_143"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_145"><a class="anchor" href="#_notestesting_considerations_145"></a>Notes/Testing Considerations</h5>
 <div class="paragraph">
 <p>Vendor needs to provide a way to verify that the device is able to perform software update if OTA Requestor cluster is not supported.</p>
 </div>
@@ -47288,7 +47968,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <div class="sect3">
 <h4 id="_tc_ace_1_1_privileges"><a class="anchor" href="#_tc_ace_1_1_privileges"></a>50.1.1. [TC-ACE-1.1] Privileges</h4>
 <div class="sect4">
-<h5 id="_purpose_186"><a class="anchor" href="#_purpose_186"></a>Purpose</h5>
+<h5 id="_purpose_188"><a class="anchor" href="#_purpose_188"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -47310,7 +47990,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_185"><a class="anchor" href="#_pics_185"></a>PICS</h5>
+<h5 id="_pics_187"><a class="anchor" href="#_pics_187"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -47347,7 +48027,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_185"><a class="anchor" href="#_required_devices_185"></a>Required Devices</h5>
+<h5 id="_required_devices_187"><a class="anchor" href="#_required_devices_187"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -47380,7 +48060,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_185"><a class="anchor" href="#_test_procedure_185"></a>Test Procedure</h5>
+<h5 id="_test_procedure_187"><a class="anchor" href="#_test_procedure_187"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -47811,7 +48491,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <div class="sect3">
 <h4 id="_tc_ace_1_2_subscriptions"><a class="anchor" href="#_tc_ace_1_2_subscriptions"></a>50.1.2. [TC-ACE-1.2] Subscriptions</h4>
 <div class="sect4">
-<h5 id="_purpose_187"><a class="anchor" href="#_purpose_187"></a>Purpose</h5>
+<h5 id="_purpose_189"><a class="anchor" href="#_purpose_189"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -47824,7 +48504,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_186"><a class="anchor" href="#_pics_186"></a>PICS</h5>
+<h5 id="_pics_188"><a class="anchor" href="#_pics_188"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -47861,7 +48541,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_186"><a class="anchor" href="#_required_devices_186"></a>Required Devices</h5>
+<h5 id="_required_devices_188"><a class="anchor" href="#_required_devices_188"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -47899,7 +48579,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_186"><a class="anchor" href="#_test_procedure_186"></a>Test Procedure</h5>
+<h5 id="_test_procedure_188"><a class="anchor" href="#_test_procedure_188"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -48351,7 +49031,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <div class="sect3">
 <h4 id="_tc_ace_1_3_subjects"><a class="anchor" href="#_tc_ace_1_3_subjects"></a>50.1.3. [TC-ACE-1.3] Subjects</h4>
 <div class="sect4">
-<h5 id="_purpose_188"><a class="anchor" href="#_purpose_188"></a>Purpose</h5>
+<h5 id="_purpose_190"><a class="anchor" href="#_purpose_190"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -48370,7 +49050,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_187"><a class="anchor" href="#_pics_187"></a>PICS</h5>
+<h5 id="_pics_189"><a class="anchor" href="#_pics_189"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -48527,7 +49207,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_187"><a class="anchor" href="#_required_devices_187"></a>Required Devices</h5>
+<h5 id="_required_devices_189"><a class="anchor" href="#_required_devices_189"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -48570,7 +49250,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_187"><a class="anchor" href="#_test_procedure_187"></a>Test Procedure</h5>
+<h5 id="_test_procedure_189"><a class="anchor" href="#_test_procedure_189"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -49861,7 +50541,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <div class="sect3">
 <h4 id="_tc_ace_1_4_targets"><a class="anchor" href="#_tc_ace_1_4_targets"></a>50.1.4. [TC-ACE-1.4] Targets</h4>
 <div class="sect4">
-<h5 id="_purpose_189"><a class="anchor" href="#_purpose_189"></a>Purpose</h5>
+<h5 id="_purpose_191"><a class="anchor" href="#_purpose_191"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -49892,7 +50572,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_188"><a class="anchor" href="#_pics_188"></a>PICS</h5>
+<h5 id="_pics_190"><a class="anchor" href="#_pics_190"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -49941,7 +50621,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_188"><a class="anchor" href="#_required_devices_188"></a>Required Devices</h5>
+<h5 id="_required_devices_190"><a class="anchor" href="#_required_devices_190"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -49974,7 +50654,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_188"><a class="anchor" href="#_test_procedure_188"></a>Test Procedure</h5>
+<h5 id="_test_procedure_190"><a class="anchor" href="#_test_procedure_190"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -51047,7 +51727,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <div class="sect3">
 <h4 id="_tc_ace_1_5_multi_fabric"><a class="anchor" href="#_tc_ace_1_5_multi_fabric"></a>50.1.5. [TC-ACE-1.5] Multi-fabric</h4>
 <div class="sect4">
-<h5 id="_purpose_190"><a class="anchor" href="#_purpose_190"></a>Purpose</h5>
+<h5 id="_purpose_192"><a class="anchor" href="#_purpose_192"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -51057,7 +51737,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_189"><a class="anchor" href="#_pics_189"></a>PICS</h5>
+<h5 id="_pics_191"><a class="anchor" href="#_pics_191"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -51103,7 +51783,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_189"><a class="anchor" href="#_required_devices_189"></a>Required Devices</h5>
+<h5 id="_required_devices_191"><a class="anchor" href="#_required_devices_191"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -51141,7 +51821,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_189"><a class="anchor" href="#_test_procedure_189"></a>Test Procedure</h5>
+<h5 id="_test_procedure_191"><a class="anchor" href="#_test_procedure_191"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -51423,7 +52103,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <div class="sect3">
 <h4 id="_tc_ace_1_6_group_auth_mode"><a class="anchor" href="#_tc_ace_1_6_group_auth_mode"></a>50.1.6. [TC-ACE-1.6] Group auth mode</h4>
 <div class="sect4">
-<h5 id="_purpose_191"><a class="anchor" href="#_purpose_191"></a>Purpose</h5>
+<h5 id="_purpose_193"><a class="anchor" href="#_purpose_193"></a>Purpose</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -51434,7 +52114,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_190"><a class="anchor" href="#_pics_190"></a>PICS</h5>
+<h5 id="_pics_192"><a class="anchor" href="#_pics_192"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -51480,7 +52160,7 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_190"><a class="anchor" href="#_required_devices_190"></a>Required Devices</h5>
+<h5 id="_required_devices_192"><a class="anchor" href="#_required_devices_192"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -51513,7 +52193,7 @@ using only ACLs with group auth mode.</p>
 
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_190"><a class="anchor" href="#_test_procedure_190"></a>Test Procedure</h5>
+<h5 id="_test_procedure_192"><a class="anchor" href="#_test_procedure_192"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 7.6923%;">
@@ -51850,13 +52530,13 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_ace_2_1_attribute_read_privilege_enforcement_dut_as_server"><a class="anchor" href="#_tc_ace_2_1_attribute_read_privilege_enforcement_dut_as_server"></a>50.1.7. [TC-ACE-2.1] Attribute read privilege enforcement - [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_192"><a class="anchor" href="#_purpose_192"></a>Purpose</h5>
+<h5 id="_purpose_194"><a class="anchor" href="#_purpose_194"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that all attributes on the DUT require the appropriate access control privilege for reading.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_191"><a class="anchor" href="#_pics_191"></a>PICS</h5>
+<h5 id="_pics_193"><a class="anchor" href="#_pics_193"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -51866,7 +52546,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_191"><a class="anchor" href="#_required_devices_191"></a>Required Devices</h5>
+<h5 id="_required_devices_193"><a class="anchor" href="#_required_devices_193"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -51898,7 +52578,7 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_191"><a class="anchor" href="#_test_procedure_191"></a>Test Procedure</h5>
+<h5 id="_test_procedure_193"><a class="anchor" href="#_test_procedure_193"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -51982,13 +52662,13 @@ using only ACLs with group auth mode.</p>
 <div class="sect3">
 <h4 id="_tc_ace_2_2_attribute_write_privilege_enforcement_dut_as_server"><a class="anchor" href="#_tc_ace_2_2_attribute_write_privilege_enforcement_dut_as_server"></a>50.1.8. [TC-ACE-2.2] Attribute write privilege enforcement - [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_193"><a class="anchor" href="#_purpose_193"></a>Purpose</h5>
+<h5 id="_purpose_195"><a class="anchor" href="#_purpose_195"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that all attributes on the DUT require the appropriate access control privilege for writing and that non-writeable attributes cannot be written.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_192"><a class="anchor" href="#_pics_192"></a>PICS</h5>
+<h5 id="_pics_194"><a class="anchor" href="#_pics_194"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -51998,7 +52678,7 @@ using only ACLs with group auth mode.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_192"><a class="anchor" href="#_required_devices_192"></a>Required Devices</h5>
+<h5 id="_required_devices_194"><a class="anchor" href="#_required_devices_194"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -52030,7 +52710,7 @@ using only ACLs with group auth mode.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_192"><a class="anchor" href="#_test_procedure_192"></a>Test Procedure</h5>
+<h5 id="_test_procedure_194"><a class="anchor" href="#_test_procedure_194"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -52783,13 +53463,13 @@ If the DUT or TH is a LIT device,<br>
 <div class="sect3">
 <h4 id="_tc_icdm_2_1_attributes_with_dut_as_server"><a class="anchor" href="#_tc_icdm_2_1_attributes_with_dut_as_server"></a>55.1.1. [TC-ICDM-2.1] Attributes with DUT as Server</h4>
 <div class="sect4">
-<h5 id="_purpose_194"><a class="anchor" href="#_purpose_194"></a>Purpose</h5>
+<h5 id="_purpose_196"><a class="anchor" href="#_purpose_196"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the non-global attributes of the ICD Management Cluster server.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_193"><a class="anchor" href="#_pics_193"></a>PICS</h5>
+<h5 id="_pics_195"><a class="anchor" href="#_pics_195"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -52799,7 +53479,7 @@ If the DUT or TH is a LIT device,<br>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_193"><a class="anchor" href="#_required_devices_193"></a>Required Devices</h5>
+<h5 id="_required_devices_195"><a class="anchor" href="#_required_devices_195"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -52828,7 +53508,7 @@ If the DUT or TH is a LIT device,<br>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_193"><a class="anchor" href="#_test_procedure_193"></a>Test Procedure</h5>
+<h5 id="_test_procedure_195"><a class="anchor" href="#_test_procedure_195"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -52955,7 +53635,7 @@ Value has to be between a range of IdleModeDuration and 64800.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_144"><a class="anchor" href="#_notestesting_considerations_144"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_146"><a class="anchor" href="#_notestesting_considerations_146"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -52966,13 +53646,13 @@ Value has to be between a range of IdleModeDuration and 64800.</p></td>
 <div class="sect3">
 <h4 id="_tc_icdm_3_1_registerunregister_clients_with_dut_as_server"><a class="anchor" href="#_tc_icdm_3_1_registerunregister_clients_with_dut_as_server"></a>55.2.1. [TC-ICDM-3.1] Register/Unregister Clients with DUT as Server</h4>
 <div class="sect4">
-<h5 id="_purpose_195"><a class="anchor" href="#_purpose_195"></a>Purpose</h5>
+<h5 id="_purpose_197"><a class="anchor" href="#_purpose_197"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the limit of <em>ClientsSupportedPerFabric</em> with RegisterClient and UnregisterClient commands.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_194"><a class="anchor" href="#_pics_194"></a>PICS</h5>
+<h5 id="_pics_196"><a class="anchor" href="#_pics_196"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -52985,7 +53665,7 @@ Value has to be between a range of IdleModeDuration and 64800.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_194"><a class="anchor" href="#_required_devices_194"></a>Required Devices</h5>
+<h5 id="_required_devices_196"><a class="anchor" href="#_required_devices_196"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -53014,7 +53694,7 @@ Value has to be between a range of IdleModeDuration and 64800.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_135"><a class="anchor" href="#_device_topology_135"></a>Device Topology</h5>
+<h5 id="_device_topology_137"><a class="anchor" href="#_device_topology_137"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -53041,7 +53721,7 @@ Value has to be between a range of IdleModeDuration and 64800.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_194"><a class="anchor" href="#_test_procedure_194"></a>Test Procedure</h5>
+<h5 id="_test_procedure_196"><a class="anchor" href="#_test_procedure_196"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -53168,7 +53848,7 @@ Verify that the DUT response contains the value(s) of <em>ICDCounter(s)</em> whi
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_145"><a class="anchor" href="#_notestesting_considerations_145"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_147"><a class="anchor" href="#_notestesting_considerations_147"></a>Notes/Testing Considerations</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -53187,13 +53867,13 @@ Verify that the DUT response contains the value(s) of <em>ICDCounter(s)</em> whi
 <div class="sect3">
 <h4 id="_tc_icdm_3_2_verify_registerclient_command_with_dut_as_server"><a class="anchor" href="#_tc_icdm_3_2_verify_registerclient_command_with_dut_as_server"></a>55.2.2. [TC-ICDM-3.2] Verify RegisterClient Command with DUT as Server</h4>
 <div class="sect4">
-<h5 id="_purpose_196"><a class="anchor" href="#_purpose_196"></a>Purpose</h5>
+<h5 id="_purpose_198"><a class="anchor" href="#_purpose_198"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the Verify RegisterClient command functionality/constraints of the ICD Management Cluster server.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_195"><a class="anchor" href="#_pics_195"></a>PICS</h5>
+<h5 id="_pics_197"><a class="anchor" href="#_pics_197"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -53206,7 +53886,7 @@ Verify that the DUT response contains the value(s) of <em>ICDCounter(s)</em> whi
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_195"><a class="anchor" href="#_required_devices_195"></a>Required Devices</h5>
+<h5 id="_required_devices_197"><a class="anchor" href="#_required_devices_197"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -53235,7 +53915,7 @@ Verify that the DUT response contains the value(s) of <em>ICDCounter(s)</em> whi
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_136"><a class="anchor" href="#_device_topology_136"></a>Device Topology</h5>
+<h5 id="_device_topology_138"><a class="anchor" href="#_device_topology_138"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -53262,7 +53942,7 @@ Verify that the DUT response contains the value(s) of <em>ICDCounter(s)</em> whi
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_195"><a class="anchor" href="#_test_procedure_195"></a>Test Procedure</h5>
+<h5 id="_test_procedure_197"><a class="anchor" href="#_test_procedure_197"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -53557,7 +54237,7 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_146"><a class="anchor" href="#_notestesting_considerations_146"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_148"><a class="anchor" href="#_notestesting_considerations_148"></a>Notes/Testing Considerations</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -53579,13 +54259,13 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 <div class="sect3">
 <h4 id="_tc_icdm_3_3_verify_unregisterclient_command_with_dut_as_server"><a class="anchor" href="#_tc_icdm_3_3_verify_unregisterclient_command_with_dut_as_server"></a>55.2.3. [TC-ICDM-3.3] Verify UnregisterClient Command with DUT as Server</h4>
 <div class="sect4">
-<h5 id="_purpose_197"><a class="anchor" href="#_purpose_197"></a>Purpose</h5>
+<h5 id="_purpose_199"><a class="anchor" href="#_purpose_199"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the Verify UnregisterClient command functionality/constraints of the ICD Management Cluster server.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_196"><a class="anchor" href="#_pics_196"></a>PICS</h5>
+<h5 id="_pics_198"><a class="anchor" href="#_pics_198"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -53598,7 +54278,7 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_196"><a class="anchor" href="#_required_devices_196"></a>Required Devices</h5>
+<h5 id="_required_devices_198"><a class="anchor" href="#_required_devices_198"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -53627,7 +54307,7 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_137"><a class="anchor" href="#_device_topology_137"></a>Device Topology</h5>
+<h5 id="_device_topology_139"><a class="anchor" href="#_device_topology_139"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -53654,7 +54334,7 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_196"><a class="anchor" href="#_test_procedure_196"></a>Test Procedure</h5>
+<h5 id="_test_procedure_198"><a class="anchor" href="#_test_procedure_198"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -53954,7 +54634,7 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_147"><a class="anchor" href="#_notestesting_considerations_147"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_149"><a class="anchor" href="#_notestesting_considerations_149"></a>Notes/Testing Considerations</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -53976,13 +54656,13 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 <div class="sect3">
 <h4 id="_tc_icdm_3_4_icdcounter_persistence_with_dut_as_server"><a class="anchor" href="#_tc_icdm_3_4_icdcounter_persistence_with_dut_as_server"></a>55.2.4. [TC-ICDM-3.4] ICDCounter Persistence with DUT as Server</h4>
 <div class="sect4">
-<h5 id="_purpose_198"><a class="anchor" href="#_purpose_198"></a>Purpose</h5>
+<h5 id="_purpose_200"><a class="anchor" href="#_purpose_200"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the Verify ICDCounter persistence after reboot of the ICD Management Cluster server.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_197"><a class="anchor" href="#_pics_197"></a>PICS</h5>
+<h5 id="_pics_199"><a class="anchor" href="#_pics_199"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -53995,7 +54675,7 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_197"><a class="anchor" href="#_required_devices_197"></a>Required Devices</h5>
+<h5 id="_required_devices_199"><a class="anchor" href="#_required_devices_199"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54024,7 +54704,7 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_138"><a class="anchor" href="#_device_topology_138"></a>Device Topology</h5>
+<h5 id="_device_topology_140"><a class="anchor" href="#_device_topology_140"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -54051,7 +54731,7 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_197"><a class="anchor" href="#_test_procedure_197"></a>Test Procedure</h5>
+<h5 id="_test_procedure_199"><a class="anchor" href="#_test_procedure_199"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -54097,20 +54777,20 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_148"><a class="anchor" href="#_notestesting_considerations_148"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_150"><a class="anchor" href="#_notestesting_considerations_150"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
 <div class="sect3">
 <h4 id="_tc_icdm_4_1_stay_active_request_with_dut_as_server"><a class="anchor" href="#_tc_icdm_4_1_stay_active_request_with_dut_as_server"></a>55.2.5. [TC-ICDM-4.1] Stay Active Request with DUT as Server</h4>
 <div class="sect4">
-<h5 id="_purpose_199"><a class="anchor" href="#_purpose_199"></a>Purpose</h5>
+<h5 id="_purpose_201"><a class="anchor" href="#_purpose_201"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the Stay Active Request functionality of the ICD Management Cluster server.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_198"><a class="anchor" href="#_pics_198"></a>PICS</h5>
+<h5 id="_pics_200"><a class="anchor" href="#_pics_200"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54123,7 +54803,7 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_198"><a class="anchor" href="#_required_devices_198"></a>Required Devices</h5>
+<h5 id="_required_devices_200"><a class="anchor" href="#_required_devices_200"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54152,7 +54832,7 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_139"><a class="anchor" href="#_device_topology_139"></a>Device Topology</h5>
+<h5 id="_device_topology_141"><a class="anchor" href="#_device_topology_141"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -54179,7 +54859,7 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_198"><a class="anchor" href="#_test_procedure_198"></a>Test Procedure</h5>
+<h5 id="_test_procedure_200"><a class="anchor" href="#_test_procedure_200"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -54225,20 +54905,20 @@ Verify that the DUT response contains <em>PromisedActiveDuration2</em>, which sh
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_149"><a class="anchor" href="#_notestesting_considerations_149"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_151"><a class="anchor" href="#_notestesting_considerations_151"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
 <div class="sect3">
 <h4 id="_tc_icdm_5_1_operating_mode_with_dut_as_server"><a class="anchor" href="#_tc_icdm_5_1_operating_mode_with_dut_as_server"></a>55.2.6. [TC-ICDM-5.1] Operating Mode with DUT as Server</h4>
 <div class="sect4">
-<h5 id="_purpose_200"><a class="anchor" href="#_purpose_200"></a>Purpose</h5>
+<h5 id="_purpose_202"><a class="anchor" href="#_purpose_202"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the LIT devices operating mode functionality with single fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_199"><a class="anchor" href="#_pics_199"></a>PICS</h5>
+<h5 id="_pics_201"><a class="anchor" href="#_pics_201"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54251,7 +54931,7 @@ Verify that the DUT response contains <em>PromisedActiveDuration2</em>, which sh
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_199"><a class="anchor" href="#_required_devices_199"></a>Required Devices</h5>
+<h5 id="_required_devices_201"><a class="anchor" href="#_required_devices_201"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54301,7 +54981,7 @@ Verify that the DUT response contains <em>PromisedActiveDuration2</em>, which sh
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_199"><a class="anchor" href="#_test_procedure_199"></a>Test Procedure</h5>
+<h5 id="_test_procedure_201"><a class="anchor" href="#_test_procedure_201"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -54391,20 +55071,20 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_150"><a class="anchor" href="#_notestesting_considerations_150"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_152"><a class="anchor" href="#_notestesting_considerations_152"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
 <div class="sect3">
 <h4 id="_tc_icdm_5_2_operating_mode_with_dut_as_server_multi_fabrics"><a class="anchor" href="#_tc_icdm_5_2_operating_mode_with_dut_as_server_multi_fabrics"></a>55.2.7. [TC-ICDM-5.2] Operating Mode with DUT as Server - Multi-Fabrics</h4>
 <div class="sect4">
-<h5 id="_purpose_201"><a class="anchor" href="#_purpose_201"></a>Purpose</h5>
+<h5 id="_purpose_203"><a class="anchor" href="#_purpose_203"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the LIT devices operating mode functionality with multi-fabrics.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_200"><a class="anchor" href="#_pics_200"></a>PICS</h5>
+<h5 id="_pics_202"><a class="anchor" href="#_pics_202"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54417,7 +55097,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_200"><a class="anchor" href="#_required_devices_200"></a>Required Devices</h5>
+<h5 id="_required_devices_202"><a class="anchor" href="#_required_devices_202"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54476,7 +55156,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_200"><a class="anchor" href="#_test_procedure_200"></a>Test Procedure</h5>
+<h5 id="_test_procedure_202"><a class="anchor" href="#_test_procedure_202"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -54619,20 +55299,20 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_151"><a class="anchor" href="#_notestesting_considerations_151"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_153"><a class="anchor" href="#_notestesting_considerations_153"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
 <div class="sect3">
 <h4 id="_tc_icdm_6_1_functionality_with_dut_as_client"><a class="anchor" href="#_tc_icdm_6_1_functionality_with_dut_as_client"></a>55.2.8. [TC-ICDM-6.1] Functionality with DUT as Client</h4>
 <div class="sect4">
-<h5 id="_purpose_202"><a class="anchor" href="#_purpose_202"></a>Purpose</h5>
+<h5 id="_purpose_204"><a class="anchor" href="#_purpose_204"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the register/unregister client functionality of the cluster client.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_201"><a class="anchor" href="#_pics_201"></a>PICS</h5>
+<h5 id="_pics_203"><a class="anchor" href="#_pics_203"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54642,7 +55322,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_201"><a class="anchor" href="#_required_devices_201"></a>Required Devices</h5>
+<h5 id="_required_devices_203"><a class="anchor" href="#_required_devices_203"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54671,7 +55351,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_140"><a class="anchor" href="#_device_topology_140"></a>Device Topology</h5>
+<h5 id="_device_topology_142"><a class="anchor" href="#_device_topology_142"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -54683,7 +55363,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_201"><a class="anchor" href="#_test_procedure_201"></a>Test Procedure</h5>
+<h5 id="_test_procedure_203"><a class="anchor" href="#_test_procedure_203"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4.7619%;">
@@ -54737,7 +55417,7 @@ Verify the command has following parameters:<br>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_152"><a class="anchor" href="#_notestesting_considerations_152"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_154"><a class="anchor" href="#_notestesting_considerations_154"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
@@ -54852,14 +55532,14 @@ Support for an item is considered as "true" for conditional statements within th
 <div class="sect3">
 <h4 id="_tc_icdb_1_1_icd_check_in_protocol_register_client_idle_mode_duration_dut_as_server"><a class="anchor" href="#_tc_icdb_1_1_icd_check_in_protocol_register_client_idle_mode_duration_dut_as_server"></a>58.1.1. [TC-ICDB-1.1] ICD Check-In Protocol - Register client - idle mode duration [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_203"><a class="anchor" href="#_purpose_203"></a>Purpose</h5>
+<h5 id="_purpose_205"><a class="anchor" href="#_purpose_205"></a>Purpose</h5>
 <div class="paragraph">
 <p>Test validates that an ICD will send Check-In messages when entering Active mode if no subscription is active.<br>
 This test validates device enters active mode after idle mode duration.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_202"><a class="anchor" href="#_pics_202"></a>PICS</h5>
+<h5 id="_pics_204"><a class="anchor" href="#_pics_204"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -54872,7 +55552,7 @@ This test validates device enters active mode after idle mode duration.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_202"><a class="anchor" href="#_required_devices_202"></a>Required Devices</h5>
+<h5 id="_required_devices_204"><a class="anchor" href="#_required_devices_204"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -54920,7 +55600,7 @@ This test validates device enters active mode after idle mode duration.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_202"><a class="anchor" href="#_test_procedure_202"></a>Test Procedure</h5>
+<h5 id="_test_procedure_204"><a class="anchor" href="#_test_procedure_204"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -55005,7 +55685,7 @@ Verify that the DUT response contains <em>ICDCounter_</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_153"><a class="anchor" href="#_notestesting_considerations_153"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_155"><a class="anchor" href="#_notestesting_considerations_155"></a>Notes/Testing Considerations</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55024,14 +55704,14 @@ Verify that the DUT response contains <em>ICDCounter_</em>.</p></td>
 <div class="sect3">
 <h4 id="_tc_icdb_1_2_icd_check_in_protocol_register_client_user_active_mode_trigger_dut_as_server"><a class="anchor" href="#_tc_icdb_1_2_icd_check_in_protocol_register_client_user_active_mode_trigger_dut_as_server"></a>58.1.2. [TC-ICDB-1.2] ICD Check-In Protocol - Register client - user active mode trigger [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_204"><a class="anchor" href="#_purpose_204"></a>Purpose</h5>
+<h5 id="_purpose_206"><a class="anchor" href="#_purpose_206"></a>Purpose</h5>
 <div class="paragraph">
 <p>Test validates that an ICD will send Check-In messages when entering Active mode if no subscription is active.<br>
 This test validates device enters active mode when using the user active mode trigger.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_203"><a class="anchor" href="#_pics_203"></a>PICS</h5>
+<h5 id="_pics_205"><a class="anchor" href="#_pics_205"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55044,7 +55724,7 @@ This test validates device enters active mode when using the user active mode tr
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_203"><a class="anchor" href="#_required_devices_203"></a>Required Devices</h5>
+<h5 id="_required_devices_205"><a class="anchor" href="#_required_devices_205"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -55092,7 +55772,7 @@ This test validates device enters active mode when using the user active mode tr
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_203"><a class="anchor" href="#_test_procedure_203"></a>Test Procedure</h5>
+<h5 id="_test_procedure_205"><a class="anchor" href="#_test_procedure_205"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -55192,7 +55872,7 @@ Vendor specific interaction/action is required.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_154"><a class="anchor" href="#_notestesting_considerations_154"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_156"><a class="anchor" href="#_notestesting_considerations_156"></a>Notes/Testing Considerations</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55211,13 +55891,13 @@ Vendor specific interaction/action is required.</p></td>
 <div class="sect3">
 <h4 id="_tc_icdb_1_3_icd_check_in_protocol_client_response_dut_as_client"><a class="anchor" href="#_tc_icdb_1_3_icd_check_in_protocol_client_response_dut_as_client"></a>58.1.3. [TC-ICDB-1.3] ICD Check-In Protocol - Client response [DUT as Client]</h4>
 <div class="sect4">
-<h5 id="_purpose_205"><a class="anchor" href="#_purpose_205"></a>Purpose</h5>
+<h5 id="_purpose_207"><a class="anchor" href="#_purpose_207"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies client response to valid/invalid check-in counter</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_204"><a class="anchor" href="#_pics_204"></a>PICS</h5>
+<h5 id="_pics_206"><a class="anchor" href="#_pics_206"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55230,7 +55910,7 @@ Vendor specific interaction/action is required.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_204"><a class="anchor" href="#_required_devices_204"></a>Required Devices</h5>
+<h5 id="_required_devices_206"><a class="anchor" href="#_required_devices_206"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -55259,7 +55939,7 @@ Vendor specific interaction/action is required.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_141"><a class="anchor" href="#_device_topology_141"></a>Device Topology</h5>
+<h5 id="_device_topology_143"><a class="anchor" href="#_device_topology_143"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
@@ -55286,7 +55966,7 @@ Vendor specific interaction/action is required.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_204"><a class="anchor" href="#_test_procedure_204"></a>Test Procedure</h5>
+<h5 id="_test_procedure_206"><a class="anchor" href="#_test_procedure_206"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -55343,7 +56023,7 @@ Vendor specific interaction/action is required.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_155"><a class="anchor" href="#_notestesting_considerations_155"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_157"><a class="anchor" href="#_notestesting_considerations_157"></a>Notes/Testing Considerations</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55368,13 +56048,13 @@ Test event trigger is required in Step 2.</p>
 <div class="sect3">
 <h4 id="_tc_icdb_2_1_icd_state_machine_with_client_registration_and_no_active_subscription_single_fabric_dut_as_server"><a class="anchor" href="#_tc_icdb_2_1_icd_state_machine_with_client_registration_and_no_active_subscription_single_fabric_dut_as_server"></a>58.2.1. [TC-ICDB-2.1] ICD State Machine - With client registration and no active subscription - Single Fabric [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_206"><a class="anchor" href="#_purpose_206"></a>Purpose</h5>
+<h5 id="_purpose_208"><a class="anchor" href="#_purpose_208"></a>Purpose</h5>
 <div class="paragraph">
 <p>Verify that after client registration, ICD state machine enters check-in state and periodically sends check-in message if there is no active subscription session presences.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_205"><a class="anchor" href="#_pics_205"></a>PICS</h5>
+<h5 id="_pics_207"><a class="anchor" href="#_pics_207"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55387,7 +56067,7 @@ Test event trigger is required in Step 2.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_205"><a class="anchor" href="#_required_devices_205"></a>Required Devices</h5>
+<h5 id="_required_devices_207"><a class="anchor" href="#_required_devices_207"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -55435,7 +56115,7 @@ Test event trigger is required in Step 2.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_205"><a class="anchor" href="#_test_procedure_205"></a>Test Procedure</h5>
+<h5 id="_test_procedure_207"><a class="anchor" href="#_test_procedure_207"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -55502,20 +56182,20 @@ If <em>RegisteredClients</em> is not empty, TH sends <em>UnregisterClient</em> c
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_156"><a class="anchor" href="#_notestesting_considerations_156"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_158"><a class="anchor" href="#_notestesting_considerations_158"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
 <div class="sect3">
 <h4 id="_tc_icdb_2_2_icd_state_machine_with_client_registration_and_active_subscription_single_fabric_dut_as_server"><a class="anchor" href="#_tc_icdb_2_2_icd_state_machine_with_client_registration_and_active_subscription_single_fabric_dut_as_server"></a>58.2.2. [TC-ICDB-2.2] ICD State Machine - With client registration and active subscription - Single Fabric [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_207"><a class="anchor" href="#_purpose_207"></a>Purpose</h5>
+<h5 id="_purpose_209"><a class="anchor" href="#_purpose_209"></a>Purpose</h5>
 <div class="paragraph">
 <p>Verify that after client registration and subscription request, ICD state machine enters subscribed state, periodically sends subscription reports, and stop sending check-in message till subscription is torn down.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_206"><a class="anchor" href="#_pics_206"></a>PICS</h5>
+<h5 id="_pics_208"><a class="anchor" href="#_pics_208"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55528,7 +56208,7 @@ If <em>RegisteredClients</em> is not empty, TH sends <em>UnregisterClient</em> c
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_206"><a class="anchor" href="#_required_devices_206"></a>Required Devices</h5>
+<h5 id="_required_devices_208"><a class="anchor" href="#_required_devices_208"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -55582,7 +56262,7 @@ If <em>RegisteredClients</em> is not empty, TH sends <em>UnregisterClient</em> c
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_206"><a class="anchor" href="#_test_procedure_206"></a>Test Procedure</h5>
+<h5 id="_test_procedure_208"><a class="anchor" href="#_test_procedure_208"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -55659,20 +56339,20 @@ Modify one or more device attributes by either manual trigger or write access at
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_157"><a class="anchor" href="#_notestesting_considerations_157"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_159"><a class="anchor" href="#_notestesting_considerations_159"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
 <div class="sect3">
 <h4 id="_tc_icdb_2_3_icd_state_machine_with_both_client_registrations_and_no_active_subscription_multiple_fabrics_dut_as_server"><a class="anchor" href="#_tc_icdb_2_3_icd_state_machine_with_both_client_registrations_and_no_active_subscription_multiple_fabrics_dut_as_server"></a>58.2.3. [TC-ICDB-2.3] ICD State Machine - With both client registrations and no active subscription - Multiple Fabrics [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_208"><a class="anchor" href="#_purpose_208"></a>Purpose</h5>
+<h5 id="_purpose_210"><a class="anchor" href="#_purpose_210"></a>Purpose</h5>
 <div class="paragraph">
 <p>Verify that after multiple client registrations, ICD state machine enters check-in state for each client and periodically sends check-in message if there is no active subscription session presences on any fabrics.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_207"><a class="anchor" href="#_pics_207"></a>PICS</h5>
+<h5 id="_pics_209"><a class="anchor" href="#_pics_209"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55685,7 +56365,7 @@ Modify one or more device attributes by either manual trigger or write access at
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_207"><a class="anchor" href="#_required_devices_207"></a>Required Devices</h5>
+<h5 id="_required_devices_209"><a class="anchor" href="#_required_devices_209"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -55742,7 +56422,7 @@ Modify one or more device attributes by either manual trigger or write access at
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_207"><a class="anchor" href="#_test_procedure_207"></a>Test Procedure</h5>
+<h5 id="_test_procedure_209"><a class="anchor" href="#_test_procedure_209"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -55835,21 +56515,21 @@ DUT stops sending check-in message to TH2.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_158"><a class="anchor" href="#_notestesting_considerations_158"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_160"><a class="anchor" href="#_notestesting_considerations_160"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
 <div class="sect3">
 <h4 id="_tc_icdb_2_4_icd_state_machine_multiple_fabrics_dut_as_server"><a class="anchor" href="#_tc_icdb_2_4_icd_state_machine_multiple_fabrics_dut_as_server"></a>58.2.4. [TC-ICDB-2.4] ICD State Machine - Multiple Fabrics [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_209"><a class="anchor" href="#_purpose_209"></a>Purpose</h5>
+<h5 id="_purpose_211"><a class="anchor" href="#_purpose_211"></a>Purpose</h5>
 <div class="paragraph">
 <p>Verify that with multiple fabrics, as long as there is 1 or more client registration and 1 or more active subscriptions, ICD state machine enters subscribed state, periodically sends subscription reports, and stops sending check-in message.<br>
 ICD state machine would return to check-in state and resume periodic check-in message if there is no more active subscription on any fabrics.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_208"><a class="anchor" href="#_pics_208"></a>PICS</h5>
+<h5 id="_pics_210"><a class="anchor" href="#_pics_210"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -55862,7 +56542,7 @@ ICD state machine would return to check-in state and resume periodic check-in me
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_208"><a class="anchor" href="#_required_devices_208"></a>Required Devices</h5>
+<h5 id="_required_devices_210"><a class="anchor" href="#_required_devices_210"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -55919,7 +56599,7 @@ ICD state machine would return to check-in state and resume periodic check-in me
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_208"><a class="anchor" href="#_test_procedure_208"></a>Test Procedure</h5>
+<h5 id="_test_procedure_210"><a class="anchor" href="#_test_procedure_210"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -56006,20 +56686,20 @@ DUT stops subscription reports to both TH1 and TH2.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_159"><a class="anchor" href="#_notestesting_considerations_159"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_161"><a class="anchor" href="#_notestesting_considerations_161"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
 <div class="sect3">
 <h4 id="_tc_icdb_2_5_icd_state_machine_with_1_client_registration_with_subscription_and_1_unregistered_client_with_subscription_multiple_fabrics_dut_as_server"><a class="anchor" href="#_tc_icdb_2_5_icd_state_machine_with_1_client_registration_with_subscription_and_1_unregistered_client_with_subscription_multiple_fabrics_dut_as_server"></a>58.2.5. [TC-ICDB-2.5] ICD State Machine - With 1 client registration with subscription and 1 unregistered client with subscription - Multiple Fabrics [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_210"><a class="anchor" href="#_purpose_210"></a>Purpose</h5>
+<h5 id="_purpose_212"><a class="anchor" href="#_purpose_212"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the ICD server behaviour with 1 client registration with subscription and 1 unregistered client with subscription with multiple fabrics.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_209"><a class="anchor" href="#_pics_209"></a>PICS</h5>
+<h5 id="_pics_211"><a class="anchor" href="#_pics_211"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -56032,7 +56712,7 @@ DUT stops subscription reports to both TH1 and TH2.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_209"><a class="anchor" href="#_required_devices_209"></a>Required Devices</h5>
+<h5 id="_required_devices_211"><a class="anchor" href="#_required_devices_211"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -56089,7 +56769,7 @@ DUT stops subscription reports to both TH1 and TH2.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_209"><a class="anchor" href="#_test_procedure_209"></a>Test Procedure</h5>
+<h5 id="_test_procedure_211"><a class="anchor" href="#_test_procedure_211"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -56149,7 +56829,7 @@ If <em>RegisteredClients</em> is not empty, TH1 sends <em>UnregisterClient</em> 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_160"><a class="anchor" href="#_notestesting_considerations_160"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_162"><a class="anchor" href="#_notestesting_considerations_162"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -56160,13 +56840,13 @@ If <em>RegisteredClients</em> is not empty, TH1 sends <em>UnregisterClient</em> 
 <div class="sect3">
 <h4 id="_tc_icdb_3_1_icd_dynamic_sitlit_verify_operatingmode_transition_between_lit_and_sit_when_there_is_client_registration_with_dut_as_server"><a class="anchor" href="#_tc_icdb_3_1_icd_dynamic_sitlit_verify_operatingmode_transition_between_lit_and_sit_when_there_is_client_registration_with_dut_as_server"></a>58.3.1. [TC-ICDB-3.1] ICD Dynamic SIT/LIT - Verify OperatingMode transition between LIT and SIT when there is client registration with DUT as Server</h4>
 <div class="sect4">
-<h5 id="_purpose_211"><a class="anchor" href="#_purpose_211"></a>Purpose</h5>
+<h5 id="_purpose_213"><a class="anchor" href="#_purpose_213"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the LIT ICD has the capacity to switch between LIT and SIT operating modes with vendor specific trigger when there is client registration present.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_210"><a class="anchor" href="#_pics_210"></a>PICS</h5>
+<h5 id="_pics_212"><a class="anchor" href="#_pics_212"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -56179,7 +56859,7 @@ If <em>RegisteredClients</em> is not empty, TH1 sends <em>UnregisterClient</em> 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_210"><a class="anchor" href="#_required_devices_210"></a>Required Devices</h5>
+<h5 id="_required_devices_212"><a class="anchor" href="#_required_devices_212"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -56227,7 +56907,7 @@ If <em>RegisteredClients</em> is not empty, TH1 sends <em>UnregisterClient</em> 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_210"><a class="anchor" href="#_test_procedure_210"></a>Test Procedure</h5>
+<h5 id="_test_procedure_212"><a class="anchor" href="#_test_procedure_212"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -56380,7 +57060,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_161"><a class="anchor" href="#_notestesting_considerations_161"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_163"><a class="anchor" href="#_notestesting_considerations_163"></a>Notes/Testing Considerations</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -56399,13 +57079,13 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <div class="sect3">
 <h4 id="_tc_icdb_3_2_icd_dynamic_sitlit_verify_operatingmode_does_not_transition_between_lit_and_sit_when_there_is_no_client_registration_with_dut_as_server"><a class="anchor" href="#_tc_icdb_3_2_icd_dynamic_sitlit_verify_operatingmode_does_not_transition_between_lit_and_sit_when_there_is_no_client_registration_with_dut_as_server"></a>58.3.2. [TC-ICDB-3.2] ICD Dynamic SIT/LIT - Verify OperatingMode does not transition between LIT and SIT when there is no client registration with DUT as Server</h4>
 <div class="sect4">
-<h5 id="_purpose_212"><a class="anchor" href="#_purpose_212"></a>Purpose</h5>
+<h5 id="_purpose_214"><a class="anchor" href="#_purpose_214"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies the LIT ICD does not switch between LIT and SIT operating modes with vendor specific trigger when there is no client registration present.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_211"><a class="anchor" href="#_pics_211"></a>PICS</h5>
+<h5 id="_pics_213"><a class="anchor" href="#_pics_213"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -56418,7 +57098,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_211"><a class="anchor" href="#_required_devices_211"></a>Required Devices</h5>
+<h5 id="_required_devices_213"><a class="anchor" href="#_required_devices_213"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -56466,7 +57146,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_211"><a class="anchor" href="#_test_procedure_211"></a>Test Procedure</h5>
+<h5 id="_test_procedure_213"><a class="anchor" href="#_test_procedure_213"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -56531,7 +57211,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_162"><a class="anchor" href="#_notestesting_considerations_162"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_164"><a class="anchor" href="#_notestesting_considerations_164"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
@@ -56573,13 +57253,13 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <div class="sect3">
 <h4 id="_tc_rr_1_1_minimal_resource_requirements_for_matter_node"><a class="anchor" href="#_tc_rr_1_1_minimal_resource_requirements_for_matter_node"></a>60.1.1. [TC-RR-1.1] Minimal Resource Requirements for Matter Node</h4>
 <div class="sect4">
-<h5 id="_purpose_213"><a class="anchor" href="#_purpose_213"></a>Purpose</h5>
+<h5 id="_purpose_215"><a class="anchor" href="#_purpose_215"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the device meets the minimal requirements for each resource type from the list of various resources required by a Matter Node implementation.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_212"><a class="anchor" href="#_pics_212"></a>PICS</h5>
+<h5 id="_pics_214"><a class="anchor" href="#_pics_214"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -56589,7 +57269,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_212"><a class="anchor" href="#_required_devices_212"></a>Required Devices</h5>
+<h5 id="_required_devices_214"><a class="anchor" href="#_required_devices_214"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -56616,13 +57296,13 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_142"><a class="anchor" href="#_device_topology_142"></a>Device Topology</h5>
+<h5 id="_device_topology_144"><a class="anchor" href="#_device_topology_144"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_212"><a class="anchor" href="#_test_procedure_212"></a>Test Procedure</h5>
+<h5 id="_test_procedure_214"><a class="anchor" href="#_test_procedure_214"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4%;">
@@ -56980,7 +57660,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_163"><a class="anchor" href="#_notestesting_considerations_163"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_165"><a class="anchor" href="#_notestesting_considerations_165"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -57053,13 +57733,13 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <div class="sect3">
 <h4 id="_tc_sm_1_1_device_composition_root_node_dut_as_server"><a class="anchor" href="#_tc_sm_1_1_device_composition_root_node_dut_as_server"></a>63.1.1. [TC-SM-1.1] Device composition - Root Node [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_214"><a class="anchor" href="#_purpose_214"></a>Purpose</h5>
+<h5 id="_purpose_216"><a class="anchor" href="#_purpose_216"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests root node requirements</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_213"><a class="anchor" href="#_pics_213"></a>PICS</h5>
+<h5 id="_pics_215"><a class="anchor" href="#_pics_215"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -57069,7 +57749,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_213"><a class="anchor" href="#_required_devices_213"></a>Required Devices</h5>
+<h5 id="_required_devices_215"><a class="anchor" href="#_required_devices_215"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -57096,13 +57776,13 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_143"><a class="anchor" href="#_device_topology_143"></a>Device Topology</h5>
+<h5 id="_device_topology_145"><a class="anchor" href="#_device_topology_145"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_213"><a class="anchor" href="#_test_procedure_213"></a>Test Procedure</h5>
+<h5 id="_test_procedure_215"><a class="anchor" href="#_test_procedure_215"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -57161,13 +57841,13 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <div class="sect3">
 <h4 id="_tc_sm_1_2_device_composition_topology_dut_as_server"><a class="anchor" href="#_tc_sm_1_2_device_composition_topology_dut_as_server"></a>63.1.2. [TC-SM-1.2] Device composition - Topology [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_215"><a class="anchor" href="#_purpose_215"></a>Purpose</h5>
+<h5 id="_purpose_217"><a class="anchor" href="#_purpose_217"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that the topology indicated by the descriptor cluster PartsList matches the requirements in {REF_SM_ENDPOINT}.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_214"><a class="anchor" href="#_pics_214"></a>PICS</h5>
+<h5 id="_pics_216"><a class="anchor" href="#_pics_216"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -57177,7 +57857,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_214"><a class="anchor" href="#_required_devices_214"></a>Required Devices</h5>
+<h5 id="_required_devices_216"><a class="anchor" href="#_required_devices_216"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -57204,13 +57884,13 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_144"><a class="anchor" href="#_device_topology_144"></a>Device Topology</h5>
+<h5 id="_device_topology_146"><a class="anchor" href="#_device_topology_146"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_214"><a class="anchor" href="#_test_procedure_214"></a>Test Procedure</h5>
+<h5 id="_test_procedure_216"><a class="anchor" href="#_test_procedure_216"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -57358,13 +58038,13 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <div class="sect3">
 <h4 id="_tc_dt_1_1_base_device_type_dut_as_server"><a class="anchor" href="#_tc_dt_1_1_base_device_type_dut_as_server"></a>66.1.1. [TC-DT-1.1] Base Device Type [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_216"><a class="anchor" href="#_purpose_216"></a>Purpose</h5>
+<h5 id="_purpose_218"><a class="anchor" href="#_purpose_218"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that every device type conforms to the requirements of the base device type</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_215"><a class="anchor" href="#_pics_215"></a>PICS</h5>
+<h5 id="_pics_217"><a class="anchor" href="#_pics_217"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -57374,7 +58054,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_215"><a class="anchor" href="#_required_devices_215"></a>Required Devices</h5>
+<h5 id="_required_devices_217"><a class="anchor" href="#_required_devices_217"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -57401,13 +58081,13 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_145"><a class="anchor" href="#_device_topology_145"></a>Device Topology</h5>
+<h5 id="_device_topology_147"><a class="anchor" href="#_device_topology_147"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_215"><a class="anchor" href="#_test_procedure_215"></a>Test Procedure</h5>
+<h5 id="_test_procedure_217"><a class="anchor" href="#_test_procedure_217"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 8.3333%;">
@@ -57448,8 +58128,8 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 941a183<br>
-Last updated 2024-07-26 23:29:10 UTC
+Version master e35ebe2<br>
+Last updated 2024-07-29 17:03:35 UTC
 </div>
 </div>
 </body>
