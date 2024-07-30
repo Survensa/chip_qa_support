@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Application Clusters</h1>
 <div class="details">
-<span id="revnumber">version master 3878b10 (local changes),</span>
-<span id="revdate">2024-07-29 11:05:01 -0700</span>
+<span id="revnumber">version master 12e2fa3 (local changes),</span>
+<span id="revdate">2024-07-29 14:28:27 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -17604,15 +17604,14 @@ including configuration and provision of notifications of occupancy status.</p>
 <div class="paragraph">
 <p>With the introduction of new sensor modalities in cluster revision 5, the indication for those modalities SHALL be done using feature bits.
 Indication of those new modalities is not feasible via the legacy attributes OccupancySensorType and OccupancySensorTypeBitmap.
-Servers SHALL set these attributes for backward compatibility with clients with ClusterRevision \$&lt;=\$ 4 as described in <a href="#ref_OccupancySensorTypeAndBitmap">OccupancySensorType and OccupancySensorTypeBitmap Attributes</a>.
-Clients with ClusterRevision \$&gt;=\$ 5 SHOULD use a server&#8217;s ClientRevision attribute, and SHOULD ignore these legacy attributes.</p>
+Servers SHALL set these attributes for backward compatibility with clients implementing a cluster revision \$&lt;=\$ 4 as described in <a href="#ref_OccupancySensorTypeAndBitmap">OccupancySensorType and OccupancySensorTypeBitmap Attributes</a>.
+Clients implementing a cluster revision \$&gt;=\$ 5 SHOULD use the server&#8217;s ClientRevision attribute, and SHOULD ignore these legacy attributes.</p>
 </div>
 <div class="paragraph">
 <p>With the same revision 5, the attribute HoldTime (along with the HoldTimeLimits) is used to determine the reporting when occupancy is no longer detected.
-This replaces the legacy attributes PIROccupiedToUnoccupiedDelay through PhysicalContactUnoccupiedToOccupiedThreshold.
+This replaces the 9 legacy attributes PIROccupiedToUnoccupiedDelay through PhysicalContactUnoccupiedToOccupiedThreshold.
 Servers MAY use the applicable attributes from this set of legacy attributes if and only if HoldTime is supported
-(see Attribute table and <a href="#ref_OccupancyLegacyTiming">the corresponding explanation</a> for details on conformance).
-Clients with ClusterRevision \$&gt;=\$ 5 SHOULD use a server&#8217;s ClientRevision attribute, and SHOULD ignore these legacy attributes.</p>
+(see Attribute table and <a href="#ref_OccupancyLegacyTiming">the corresponding explanation</a> for details on conformance).</p>
 </div>
 <div class="paragraph">
 <p>For the case of a server which supports none of the modalities supported in ClusterRevision \$&lt;=\$ 4 (i.e. none of PIR, US and PHY),
@@ -17840,7 +17839,7 @@ else if the bit if not set, it SHALL indicate the unoccupied state.</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-This enum is as defined in ClusterRevision 4 and its definition SHALL not be extended;
+This enum is as defined in ClusterRevision 4 and its definition SHALL NOT be extended;
 the feature flags provide the sensor modality (or modalities) for later cluster revisions.
 See <a href="#ref_OccupancyBackwardCompatibility">Backward Compatibility section</a>.
 </td>
@@ -17902,7 +17901,7 @@ See <a href="#ref_OccupancyBackwardCompatibility">Backward Compatibility section
 <div class="title">Note</div>
 </td>
 <td class="content">
-This enum is as defined in ClusterRevision 4 and its definition SHALL not be extended;
+This enum is as defined in ClusterRevision 4 and its definition SHALL NOT be extended;
 the feature flags provide the sensor modality (or modalities) for later cluster revisions.
 See <a href="#ref_OccupancyBackwardCompatibility">Backward Compatibility section</a>.
 </td>
@@ -18165,15 +18164,19 @@ This is the value that a client who wants to reset the settings to a valid defau
 <div class="sect4">
 <h5 id="_occupancy_attribute"><a class="anchor" href="#_occupancy_attribute"></a>2.7.6.1. Occupancy Attribute</h5>
 <div class="paragraph">
-<p>Bit 0 of this attribute SHALL indicate the sensed (processed) status of occupancy (1 means occupied, 0 means unoccupied).</p>
+<p>This attribute SHALL indicate the sensed (processed) status of occupancy.
+For compatibility reasons this is expressed as a bitmap where the status is indicated in bit 0:
+a value of 1 means occupied, and 0 means unoccupied, with the other bits set to 0;
+this can be considered equivalent to a boolean.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="ref_OccupancySensorTypeAndBitmap"><a class="anchor" href="#ref_OccupancySensorTypeAndBitmap"></a>2.7.6.2. OccupancySensorType and OccupancySensorTypeBitmap Attributes</h5>
 <div class="paragraph">
-<p>These attributes were used in ClusterRevision \$&lt;=\$ 4 to specify the type of the occupancy sensor.
+<p>These attributes SHALL indicate the type of sensor.
+In ClusterRevision \$&lt;=\$ 4, these were used to specify the type of the occupancy sensor using a bitmap.
 For ClusterRevision \$&gt;=\$ 5, the server SHALL indicate the type of sensor using the feature flags,
-and the server SHALL provide these attributes for the backward compatibility with clients of ClusterRevision \$&lt;=\$ 4,
+and the server SHALL provide these attributes for the backward compatibility with clients implementing a cluster revision \$&lt;=\$ 4,
 using the mapping according to the following table.
 Also see <a href="#ref_OccupancyBackwardCompatibility">Backward Compatibility section</a>.</p>
 </div>
@@ -18187,9 +18190,9 @@ Also see <a href="#ref_OccupancyBackwardCompatibility">Backward Compatibility se
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="3">feature flag value</th>
-<th class="tableblock halign-left valign-top" rowspan="2">value of OccupancySensorTypeBitmap</th>
-<th class="tableblock halign-left valign-top" rowspan="2">value of OccupancySensorType</th>
+<th class="tableblock halign-center valign-top" colspan="3">Feature Flag Value</th>
+<th class="tableblock halign-left valign-top" rowspan="2">Value of OccupancySensorTypeBitmap</th>
+<th class="tableblock halign-left valign-top" rowspan="2">Value of OccupancySensorType</th>
 </tr>
 </thead>
 <tbody>
@@ -18238,29 +18241,35 @@ Also see <a href="#ref_OccupancyBackwardCompatibility">Backward Compatibility se
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PhysicalContact + PIR</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PIR <sup>**</sup></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PhysicalContact + Ultrasonic</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ultrasonic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ultrasonic <sup>**</sup></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PhysicalContact + PIR + Ultrasonic</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PIRAndUltrasonic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PIRAndUltrasonic <sup>**</sup></p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
 <p><sup>*</sup> In case the feature flags PIR, US and PHY are all set to 0, these attributes are set to mimic a PIR sensor
-since this likely will give the best compatibility with clients of ClusterRevision \$&lt;=\$ 4,
+since this likely will give the best compatibility with clients implementing a cluster revision \$&lt;=\$ 4,
 which are not aware of the feature flags and the added modalities. In this case, timing parameters (when HoldTime is supported)
 are expressed using the PIROccupiedToUnoccupiedDelay, PIRUnoccupiedToOccupiedDelay and PIRUnoccupiedToOccupiedThreshold attributes.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>^**^ These combinations of sensor type were not defined for OccupancySensorType in ClusterRevision stem:[&lt;=] 4,
+so they are mapped to a combination which _was_ defined in that version.</pre>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -18270,14 +18279,14 @@ are expressed using the PIROccupiedToUnoccupiedDelay, PIRUnoccupiedToOccupiedDel
 its unoccupied state after the last detection of occupancy in the sensed area.</p>
 </div>
 <div class="paragraph">
-<p>The value of HoldTime SHALL be within the limits provided in HoldTimeLimits, i.e.<br>
+<p>The value of HoldTime SHALL be within the limits provided in the HoldTimeLimits attribute, i.e.<br>
 HoldTimeMin \$&lt;=\$ HoldTime \$&lt;=\$ HoldTimeMax</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_holdtimelimits_attribute"><a class="anchor" href="#_holdtimelimits_attribute"></a>2.7.6.4. HoldTimeLimits Attribute</h5>
 <div class="paragraph">
-<p>This attribute SHALL indicate the server&#8217;s limits, and basic default value, for the HoldTime attribute.</p>
+<p>This attribute SHALL indicate the server&#8217;s limits, and default value, for the HoldTime attribute.</p>
 </div>
 </div>
 <div class="sect4">
@@ -18287,7 +18296,7 @@ HoldTimeMin \$&lt;=\$ HoldTime \$&lt;=\$ HoldTimeMax</p>
 to tune the reporting by the sensor - separately for each of the three sensor modalities defined in that revision.
 In ClusterRevision \$&gt;=\$ 5, these are replaced by attribute HoldTime (shared for all modalities).
 A server with ClusterRevision \$&gt;=\$ 5 SHALL (under the conformance conditions stated in the attributes table above) provide these attributes
-for the backward compatibility with clients of ClusterRevision \$&lt;=\$ 4.
+for the backward compatibility with clients implementing a cluster revision \$&lt;=\$ 4.
 When doing so, the provided values SHALL be consistent with the values in the HoldTime attribute.
 Also see <a href="#ref_OccupancyBackwardCompatibility">Backward Compatibility section</a>.</p>
 </div>
@@ -18300,7 +18309,7 @@ Also see <a href="#ref_OccupancyBackwardCompatibility">Backward Compatibility se
 <p>if attribute HoldTime is not supported, these 9 legacy attributes SHALL NOT be supported</p>
 </li>
 <li>
-<p>if modality PIR is supported, or none of the modalities PIR, US, and PHY is supported:</p>
+<p>if modality PIR is supported, while both PHY and US modalities are not supported,</p>
 <div class="ulist">
 <ul>
 <li>
@@ -18313,7 +18322,7 @@ Also see <a href="#ref_OccupancyBackwardCompatibility">Backward Compatibility se
 </div>
 </li>
 <li>
-<p>if modality US is supported:</p>
+<p>if modality US is supported while both PIR and PHY modalities are not supported:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -18326,7 +18335,7 @@ Also see <a href="#ref_OccupancyBackwardCompatibility">Backward Compatibility se
 </div>
 </li>
 <li>
-<p>if modality PHY is supported:</p>
+<p>if modality PHY is supported while both PIR and US modalities are not supported:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -18340,6 +18349,19 @@ Also see <a href="#ref_OccupancyBackwardCompatibility">Backward Compatibility se
 </li>
 <li>
 <p>the legacy attributes related to UnoccupiedToOccupiedDelay and UnoccupiedToOccupiedThreshold for a certain modality SHALL be both supported or both not supported</p>
+</li>
+<li>
+<p>if none of the modalities PIR, US, and PHY is supported (this case is presented as a PIR sensor for compatibility):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the 3 legacy attributes related to PIR MAY be supported (if allowed by the other rules)</p>
+</li>
+<li>
+<p>the 6 legacy attributes related to Ultrasonic and PhysicalContact SHALL NOT be supported</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -18355,7 +18377,7 @@ its unoccupied state after the last detection of occupancy in the sensed area.</
 <h5 id="_pirunoccupiedtooccupieddelay_attribute"><a class="anchor" href="#_pirunoccupiedtooccupieddelay_attribute"></a>2.7.6.7. PIRUnoccupiedToOccupiedDelay Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL specify the time delay, in seconds, before the PIR sensor changes to
-its occupied state after the detection of occupancy in the sensed area.</p>
+its occupied state after the first detection of occupancy in the sensed area.</p>
 </div>
 </div>
 <div class="sect4">
@@ -18376,7 +18398,7 @@ changes to its unoccupied state after the last detection of occupancy in the sen
 <h5 id="_ultrasonicunoccupiedtooccupieddelay_attribute"><a class="anchor" href="#_ultrasonicunoccupiedtooccupieddelay_attribute"></a>2.7.6.10. UltrasonicUnoccupiedToOccupiedDelay Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL specify the time delay, in seconds, before the Ultrasonic sensor
-changes to its occupied state after the detection of occupancy in the sensed area.</p>
+changes to its occupied state after the first detection of occupancy in the sensed area.</p>
 </div>
 </div>
 <div class="sect4">
@@ -18399,7 +18421,7 @@ the unoccupied event.</p>
 <h5 id="_physicalcontactunoccupiedtooccupieddelay_attribute"><a class="anchor" href="#_physicalcontactunoccupiedtooccupieddelay_attribute"></a>2.7.6.13. PhysicalContactUnoccupiedToOccupiedDelay Attribute</h5>
 <div class="paragraph">
 <p>This attribute SHALL specify the time delay, in seconds, before the physical
-contact sensor changes to its occupied state after the detection of the
+contact sensor changes to its occupied state after the first detection of the
 occupied event.</p>
 </div>
 </div>
@@ -18474,7 +18496,7 @@ before the PhysicalContact sensor changes to its occupied state.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Occupancy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_OccupancyBitmap">OccupancyBitmap</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -30719,7 +30741,44 @@ range are still satisfactory.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ProgrammingOperationModeBitmap"><a class="anchor" href="#ref_ProgrammingOperationModeBitmap"></a>4.3.8.7. ProgrammingOperationModeBitmap Type</h5>
+<h5 id="ref_ThermostatOccupancyBitmap"><a class="anchor" href="#ref_ThermostatOccupancyBitmap"></a>4.3.8.7. OccupancyBitmap Type</h5>
+<div class="paragraph">
+<p>This data type is derived from map8.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Bit</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Summary</th>
+<th class="tableblock halign-left valign-top">Conformance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Occupied</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates the occupancy state</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect5">
+<h6 id="_occupied_bit_2"><a class="anchor" href="#_occupied_bit_2"></a>4.3.8.7.1. Occupied Bit</h6>
+<div class="paragraph">
+<p>If this bit is set, it SHALL indicate the occupied state
+else if the bit if not set, it SHALL indicate the unoccupied state.</p>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="ref_ProgrammingOperationModeBitmap"><a class="anchor" href="#ref_ProgrammingOperationModeBitmap"></a>4.3.8.8. ProgrammingOperationModeBitmap Type</h5>
 <div class="paragraph">
 <p>This data type is derived from map8.</p>
 </div>
@@ -30761,7 +30820,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_RelayStateBitmap"><a class="anchor" href="#ref_RelayStateBitmap"></a>4.3.8.8. RelayStateBitmap Type</h5>
+<h5 id="ref_RelayStateBitmap"><a class="anchor" href="#ref_RelayStateBitmap"></a>4.3.8.9. RelayStateBitmap Type</h5>
 <div class="paragraph">
 <p>This data type is derived from map16.</p>
 </div>
@@ -30827,7 +30886,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_RemoteSensingBitmap"><a class="anchor" href="#ref_RemoteSensingBitmap"></a>4.3.8.9. RemoteSensingBitmap Type</h5>
+<h5 id="ref_RemoteSensingBitmap"><a class="anchor" href="#ref_RemoteSensingBitmap"></a>4.3.8.10. RemoteSensingBitmap Type</h5>
 <div class="paragraph">
 <p>This data type is derived from map8.</p>
 </div>
@@ -30868,14 +30927,14 @@ range are still satisfactory.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_outdoortemperature_bit"><a class="anchor" href="#_outdoortemperature_bit"></a>4.3.8.9.1. OutdoorTemperature Bit</h6>
+<h6 id="_outdoortemperature_bit"><a class="anchor" href="#_outdoortemperature_bit"></a>4.3.8.10.1. OutdoorTemperature Bit</h6>
 <div class="paragraph">
 <p>This bit SHALL be supported if the <a href="#ref_OutdoorTemperature">OutdoorTemperature</a> attribute is supported.</p>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_ScheduleDayOfWeekBitmap"><a class="anchor" href="#ref_ScheduleDayOfWeekBitmap"></a>4.3.8.10. ScheduleDayOfWeekBitmap Type</h5>
+<h5 id="ref_ScheduleDayOfWeekBitmap"><a class="anchor" href="#ref_ScheduleDayOfWeekBitmap"></a>4.3.8.11. ScheduleDayOfWeekBitmap Type</h5>
 <div class="paragraph">
 <p>This data type is derived from map8.</p>
 </div>
@@ -30947,7 +31006,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_ScheduleModeBitmap"><a class="anchor" href="#ref_ScheduleModeBitmap"></a>4.3.8.11. ScheduleModeBitmap Type</h5>
+<h5 id="ref_ScheduleModeBitmap"><a class="anchor" href="#ref_ScheduleModeBitmap"></a>4.3.8.12. ScheduleModeBitmap Type</h5>
 <div class="paragraph">
 <p>This data type is derived from map8.</p>
 </div>
@@ -30983,7 +31042,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_AcCapacityFormatEnum"><a class="anchor" href="#ref_AcCapacityFormatEnum"></a>4.3.8.12. ACCapacityFormatEnum Type</h5>
+<h5 id="ref_AcCapacityFormatEnum"><a class="anchor" href="#ref_AcCapacityFormatEnum"></a>4.3.8.13. ACCapacityFormatEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -31013,7 +31072,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_AcCompressorTypeEnum"><a class="anchor" href="#ref_AcCompressorTypeEnum"></a>4.3.8.13. ACCompressorTypeEnum Type</h5>
+<h5 id="ref_AcCompressorTypeEnum"><a class="anchor" href="#ref_AcCompressorTypeEnum"></a>4.3.8.14. ACCompressorTypeEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -31061,7 +31120,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_AcLouverPositionEnum"><a class="anchor" href="#ref_AcLouverPositionEnum"></a>4.3.8.14. ACLouverPositionEnum Type</h5>
+<h5 id="ref_AcLouverPositionEnum"><a class="anchor" href="#ref_AcLouverPositionEnum"></a>4.3.8.15. ACLouverPositionEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -31115,7 +31174,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_AcRefrigerantTypeEnum"><a class="anchor" href="#ref_AcRefrigerantTypeEnum"></a>4.3.8.15. ACRefrigerantTypeEnum Type</h5>
+<h5 id="ref_AcRefrigerantTypeEnum"><a class="anchor" href="#ref_AcRefrigerantTypeEnum"></a>4.3.8.16. ACRefrigerantTypeEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -31163,7 +31222,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_AcTypeEnum"><a class="anchor" href="#ref_AcTypeEnum"></a>4.3.8.16. ACTypeEnum Type</h5>
+<h5 id="ref_AcTypeEnum"><a class="anchor" href="#ref_AcTypeEnum"></a>4.3.8.17. ACTypeEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -31217,7 +31276,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_SetpointRaiseLowerModeEnum"><a class="anchor" href="#ref_SetpointRaiseLowerModeEnum"></a>4.3.8.17. SetpointRaiseLowerModeEnum Type</h5>
+<h5 id="ref_SetpointRaiseLowerModeEnum"><a class="anchor" href="#ref_SetpointRaiseLowerModeEnum"></a>4.3.8.18. SetpointRaiseLowerModeEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -31259,7 +31318,7 @@ range are still satisfactory.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_ControlSequenceOfOperationEnum"><a class="anchor" href="#ref_ControlSequenceOfOperationEnum"></a>4.3.8.18. ControlSequenceOfOperationEnum Type</h5>
+<h5 id="ref_ControlSequenceOfOperationEnum"><a class="anchor" href="#ref_ControlSequenceOfOperationEnum"></a>4.3.8.19. ControlSequenceOfOperationEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -31340,7 +31399,7 @@ HeatingOnly based on the current capability.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ref_SetpointChangeSourceEnum"><a class="anchor" href="#ref_SetpointChangeSourceEnum"></a>4.3.8.19. SetpointChangeSourceEnum Type</h5>
+<h5 id="ref_SetpointChangeSourceEnum"><a class="anchor" href="#ref_SetpointChangeSourceEnum"></a>4.3.8.20. SetpointChangeSourceEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -31382,7 +31441,7 @@ HeatingOnly based on the current capability.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_StartOfWeekEnum"><a class="anchor" href="#ref_StartOfWeekEnum"></a>4.3.8.20. StartOfWeekEnum Type</h5>
+<h5 id="ref_StartOfWeekEnum"><a class="anchor" href="#ref_StartOfWeekEnum"></a>4.3.8.21. StartOfWeekEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -31448,7 +31507,7 @@ HeatingOnly based on the current capability.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_SystemModeEnum"><a class="anchor" href="#ref_SystemModeEnum"></a>4.3.8.21. SystemModeEnum Type</h5>
+<h5 id="ref_SystemModeEnum"><a class="anchor" href="#ref_SystemModeEnum"></a>4.3.8.22. SystemModeEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -31563,7 +31622,7 @@ HeatingOnly based on the current capability.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_ThermostatRunningModeEnum"><a class="anchor" href="#ref_ThermostatRunningModeEnum"></a>4.3.8.22. ThermostatRunningModeEnum Type</h5>
+<h5 id="ref_ThermostatRunningModeEnum"><a class="anchor" href="#ref_ThermostatRunningModeEnum"></a>4.3.8.23. ThermostatRunningModeEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -31605,7 +31664,7 @@ HeatingOnly based on the current capability.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_TemperatureSetpointHoldEnum"><a class="anchor" href="#ref_TemperatureSetpointHoldEnum"></a>4.3.8.23. TemperatureSetpointHoldEnum Type</h5>
+<h5 id="ref_TemperatureSetpointHoldEnum"><a class="anchor" href="#ref_TemperatureSetpointHoldEnum"></a>4.3.8.24. TemperatureSetpointHoldEnum Type</h5>
 <div class="paragraph">
 <p>This data type is derived from enum8.</p>
 </div>
@@ -31641,7 +31700,7 @@ HeatingOnly based on the current capability.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="ref_WeeklyScheduleTransitionStruct"><a class="anchor" href="#ref_WeeklyScheduleTransitionStruct"></a>4.3.8.24. WeeklyScheduleTransitionStruct Type</h5>
+<h5 id="ref_WeeklyScheduleTransitionStruct"><a class="anchor" href="#ref_WeeklyScheduleTransitionStruct"></a>4.3.8.25. WeeklyScheduleTransitionStruct Type</h5>
 <div class="paragraph">
 <p>This represents a single transition in a Thermostat schedule</p>
 </div>
@@ -31702,7 +31761,7 @@ HeatingOnly based on the current capability.</p>
 </tbody>
 </table>
 <div class="sect5">
-<h6 id="_transitiontime_field_13"><a class="anchor" href="#_transitiontime_field_13"></a>4.3.8.24.1. TransitionTime Field</h6>
+<h6 id="_transitiontime_field_13"><a class="anchor" href="#_transitiontime_field_13"></a>4.3.8.25.1. TransitionTime Field</h6>
 <div class="paragraph">
 <p>This field SHALL represent the start time of the schedule transition during
 the associated day. The time will be represented by a 16 bits unsigned
@@ -31712,13 +31771,13 @@ be represented by 1410 minutes since midnight.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_heatsetpoint_field"><a class="anchor" href="#_heatsetpoint_field"></a>4.3.8.24.2. HeatSetpoint Field</h6>
+<h6 id="_heatsetpoint_field"><a class="anchor" href="#_heatsetpoint_field"></a>4.3.8.25.2. HeatSetpoint Field</h6>
 <div class="paragraph">
 <p>This field SHALL represent the heat setpoint to be applied at this associated transition start time.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_coolsetpoint_field"><a class="anchor" href="#_coolsetpoint_field"></a>4.3.8.24.3. CoolSetpoint Field</h6>
+<h6 id="_coolsetpoint_field"><a class="anchor" href="#_coolsetpoint_field"></a>4.3.8.25.3. CoolSetpoint Field</h6>
 <div class="paragraph">
 <p>This field SHALL represent the cool setpoint to be applied at this associated transition start time.</p>
 </div>
@@ -31774,8 +31833,8 @@ be represented by 1410 minutes since midnight.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x0002</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Occupancy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_OccupancyBitmap">OccupancyBitmap</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">desc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ref_ThermostatOccupancyBitmap">OccupancyBitmap</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R V</p></td>
@@ -71359,8 +71418,8 @@ This tag cannot be included with any of the other tags defined below in a mode.<
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 3878b10 (local changes)<br>
-Last updated 2024-07-29 18:05:17 UTC
+Version master 12e2fa3 (local changes)<br>
+Last updated 2024-07-30 00:00:38 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
