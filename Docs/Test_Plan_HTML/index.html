@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 9163478,</span>
-<span id="revdate">2024-08-08 11:39:59 -0400</span>
+<span id="revnumber">version master 472588e,</span>
+<span id="revdate">2024-08-08 17:23:00 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -846,7 +846,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_subscription_transaction_test_cases">33.4. Subscription Transaction Test Cases</a>
 <ul class="sectlevel3">
 <li><a href="#_tc_idm_4_1_subscriptionrequestmessage_from_dut_test_cases_dut_as_client">33.4.1. [TC-IDM-4.1] SubscriptionRequestMessage from DUT test cases. [DUT as Client]</a></li>
-<li><a href="#_tc_idm_4_2_subscription_response_messages_from_dut_test_cases_dut_as_server_removed">33.4.2. [TC-IDM-4.2] Subscription Response Messages from DUT Test Cases. [DUT as Server] - REMOVED</a></li>
+<li><a href="#_tc_idm_4_2_subscription_response_messages_from_dut_test_cases_dut_as_server">33.4.2. [TC-IDM-4.2] Subscription Response Messages from DUT Test Cases. [DUT as Server]</a></li>
 <li><a href="#_tc_idm_4_3_report_data_messages_post_subscription_activation_from_dut_test_cases_dut_as_server">33.4.3. [TC-IDM-4.3] Report Data Messages post Subscription Activation from DUT Test Cases. [DUT as Server]</a></li>
 <li><a href="#_tc_idm_4_4_persistent_subscription_test_cases_dut_as_server">33.4.4. [TC-IDM-4.4] Persistent Subscription Test Cases. [DUT as Server]</a></li>
 </ul>
@@ -2026,6 +2026,10 @@ Davis, CA 95616, USA</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Power Topology Cluster</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./cluster/power_topology.adoc">Document #</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thread Border Router Management Cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./cluster/thread_border_router_management.adoc">Document #</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ecosystem Information Cluster</p></td>
@@ -33501,7 +33505,7 @@ corresponding CSRRequest Command</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TC-IDM-4.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Subscription Response Action from DUT. [DUT as Server] - REMOVED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subscription Response Action from DUT. [DUT as Server]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TC-IDM-4.3</p></td>
@@ -35873,7 +35877,7 @@ Vendor needs to specify how to trigger the subscription on the DUT.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tc_idm_4_2_subscription_response_messages_from_dut_test_cases_dut_as_server_removed"><a class="anchor" href="#_tc_idm_4_2_subscription_response_messages_from_dut_test_cases_dut_as_server_removed"></a>33.4.2. [TC-IDM-4.2] Subscription Response Messages from DUT Test Cases. [DUT as Server] - REMOVED</h4>
+<h4 id="_tc_idm_4_2_subscription_response_messages_from_dut_test_cases_dut_as_server"><a class="anchor" href="#_tc_idm_4_2_subscription_response_messages_from_dut_test_cases_dut_as_server"></a>33.4.2. [TC-IDM-4.2] Subscription Response Messages from DUT Test Cases. [DUT as Server]</h4>
 <div class="sect4">
 <h5 id="_purpose_122"><a class="anchor" href="#_purpose_122"></a>Purpose</h5>
 <div class="paragraph">
@@ -38701,7 +38705,13 @@ This test should be run for each endpoint on the device, using the appropriate P
 </div>
 <div class="sect4">
 <h5 id="_pics_139"><a class="anchor" href="#_pics_139"></a>PICS</h5>
-
+<div class="ulist">
+<ul>
+<li>
+<p>MCORE.IDM.S</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect4">
 <h5 id="_required_devices_139"><a class="anchor" href="#_required_devices_139"></a>Required Devices</h5>
@@ -51852,6 +51862,9 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <li>
 <p>MCORE.ROLE.COMMISSIONEE</p>
 </li>
+<li>
+<p>APPDEVICE.S</p>
+</li>
 </ul>
 </div>
 </div>
@@ -52037,7 +52050,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT attribute PIXIT.ACE.APPATTRIBUTE from cluster PIXIT.ACE.APPCLUSTER on endpoint PIXIT.ACE.APPENDPOINT</p>
 </div></div></td>
@@ -52124,7 +52137,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT attribute PIXIT.ACE.APPATTRIBUTE from cluster PIXIT.ACE.APPCLUSTER on endpoint PIXIT.ACE.APPENDPOINT</p>
 </div></div></td>
@@ -52135,7 +52148,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 writes DUT Endpoint 0 AccessControl cluster ACL attribute,<br>
                 value is list of AccessControlEntryStruct containing 2 elements</p>
@@ -52189,7 +52202,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint 0 Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52200,7 +52213,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint PIXIT.ACE.APPENDPOINT Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52211,7 +52224,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT attribute PIXIT.ACE.APPATTRIBUTE from cluster PIXIT.ACE.APPCLUSTER on endpoint PIXIT.ACE.APPENDPOINT</p>
 </div></div></td>
@@ -52222,7 +52235,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 writes DUT Endpoint 0 AccessControl cluster ACL attribute,<br>
                 value is list of AccessControlEntryStruct containing 2 elements</p>
@@ -52276,7 +52289,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint 0 Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52287,7 +52300,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint PIXIT.ACE.APPENDPOINT Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52298,7 +52311,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT attribute PIXIT.ACE.APPATTRIBUTE from cluster PIXIT.ACE.APPCLUSTER on endpoint PIXIT.ACE.APPENDPOINT</p>
 </div></div></td>
@@ -52309,7 +52322,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 writes DUT Endpoint 0 AccessControl cluster ACL attribute,<br>
                 value is list of AccessControlEntryStruct containing 2 elements</p>
@@ -52363,7 +52376,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint 0 Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52374,7 +52387,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint PIXIT.ACE.APPENDPOINT Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52385,7 +52398,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT attribute PIXIT.ACE.APPATTRIBUTE from cluster PIXIT.ACE.APPCLUSTER on endpoint PIXIT.ACE.APPENDPOINT</p>
 </div></div></td>
@@ -52396,7 +52409,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 writes DUT Endpoint 0 AccessControl cluster ACL attribute,<br>
                 value is list of AccessControlEntryStruct containing 2 elements</p>
@@ -52450,7 +52463,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint 0 Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52461,7 +52474,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint PIXIT.ACE.APPENDPOINT Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52472,7 +52485,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT attribute PIXIT.ACE.APPATTRIBUTE from cluster PIXIT.ACE.APPCLUSTER on endpoint PIXIT.ACE.APPENDPOINT</p>
 </div></div></td>
@@ -52548,7 +52561,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint PIXIT.ACE.APPENDPOINT Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52559,7 +52572,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">29</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT attribute PIXIT.ACE.APPATTRIBUTE from cluster PIXIT.ACE.APPCLUSTER on endpoint PIXIT.ACE.APPENDPOINT</p>
 </div></div></td>
@@ -52570,7 +52583,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 writes DUT Endpoint 0 AccessControl cluster ACL attribute,<br>
                 value is list of AccessControlEntryStruct containing 2 elements</p>
@@ -52624,7 +52637,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">31</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint 0 Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52635,7 +52648,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">32</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint PIXIT.ACE.APPENDPOINT Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52646,7 +52659,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">33</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT attribute PIXIT.ACE.APPATTRIBUTE from cluster PIXIT.ACE.APPCLUSTER on endpoint PIXIT.ACE.APPENDPOINT</p>
 </div></div></td>
@@ -52657,7 +52670,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">34</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 writes DUT Endpoint 0 AccessControl cluster ACL attribute,<br>
                 value is list of AccessControlEntryStruct containing 2 elements</p>
@@ -52711,7 +52724,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">35</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint 0 Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52722,7 +52735,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">36</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint PIXIT.ACE.APPENDPOINT Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52733,7 +52746,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">37</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT attribute PIXIT.ACE.APPATTRIBUTE from cluster PIXIT.ACE.APPCLUSTER on endpoint PIXIT.ACE.APPENDPOINT</p>
 </div></div></td>
@@ -52744,7 +52757,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">38</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 writes DUT Endpoint 0 AccessControl cluster ACL attribute,<br>
                 value is list of AccessControlEntryStruct containing 2 elements</p>
@@ -52798,7 +52811,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">39</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint 0 Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52809,7 +52822,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint PIXIT.ACE.APPENDPOINT Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52820,7 +52833,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">41</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT attribute PIXIT.ACE.APPATTRIBUTE from cluster PIXIT.ACE.APPCLUSTER on endpoint PIXIT.ACE.APPENDPOINT</p>
 </div></div></td>
@@ -52831,7 +52844,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">42</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 writes DUT Endpoint 0 AccessControl cluster ACL attribute,<br>
                 value is list of AccessControlEntryStruct containing 2 elements</p>
@@ -52886,7 +52899,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">43</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint 0 Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52897,7 +52910,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">44</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT Endpoint PIXIT.ACE.APPENDPOINT Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52908,7 +52921,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">45</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT attribute PIXIT.ACE.APPATTRIBUTE from cluster PIXIT.ACE.APPCLUSTER on endpoint PIXIT.ACE.APPENDPOINT</p>
 </div></div></td>
@@ -52919,7 +52932,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">46</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT wildcard Endpoint Descriptor cluster DeviceTypeList attribute</p>
 </div></div></td>
@@ -52940,7 +52953,7 @@ Once the update is finished, verify the <em>SoftwareVersion</em> attribute from 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">47</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9.10.5.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">APPDEVICE.S</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>TH1 reads DUT wildcard Endpoint PIXIT.ACE.APPCLUSTER cluster PIXIT.ACE.APPATTRIBUTE attribute</p>
 </div></div></td>
@@ -60071,8 +60084,8 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 9163478<br>
-Last updated 2024-08-08 15:40:15 UTC
+Version master 472588e<br>
+Last updated 2024-08-09 00:23:14 UTC
 </div>
 </div>
 </body>
