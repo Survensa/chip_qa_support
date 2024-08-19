@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master e7654e2,</span>
-<span id="revdate">2024-08-14 10:27:28 -0700</span>
+<span id="revnumber">version master f71b4a1,</span>
+<span id="revdate">2024-08-19 10:49:57 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -54584,6 +54584,31 @@ Support for an item is considered as "true" for conditional statements within th
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p><strong>Table 3.2: PIXIT Variable Values</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Variable</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mandatory/Optional</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Notes/Additional Constraints</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{PIXIT.WAITTIME.REBOOT}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Integer indicating the wait time for the DUT to wait before continuing after a reboot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIP:M</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -55157,39 +55182,45 @@ Verify that the DUT response contains the value(s) of <em>ICDCounter(s)</em> whi
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>RegisteredClients</em> is empty. If not empty, TH sends command <em>UnregisterClient</em> to clear all clients in <em>RegisteredClients</em>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
 - CheckInNodeID: <em>CheckInNodeID1</em><br>
 - MonitoredSubject: <em>MonitoredSubID1</em><br>
 - Key: <em>Key1</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
-Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing an entry of registered client with the <em>CheckInNodeID1</em> and <em>MonitoredSubID1</em> from Step 1a.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2c</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Power cycle DUT</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2d</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH waits for {PIXIT.WAITTIME.REBOOT}</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2e</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
@@ -55203,8 +55234,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 - CheckInNodeID: <em>CheckInNodeID1</em><br>
 - MonitoredSubject: <em>MonitoredSubID2</em><br>
 - Key: <em>Key2</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00);<br>
-Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00); +</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3b</p></td>
@@ -55214,7 +55244,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing the updated registered client entry of <em>CheckInNodeID1</em> and <em>MonitoredSubID2</em> from Step 3a.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID1</em> as in Step 1a and different <em>MonitoredSubID3</em> and <em>Key3</em>, and an invalid <em>VerificationKey3</em><br>
@@ -55223,18 +55253,17 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 - Key: <em>Key3</em><br>
 - VerificationKey: <em>VerificationKey3</em> +</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00);<br>
-Verify that the DUT response contains <em>ICDCounter</em>. <br>
 The invalid <em>VerificationKey3</em> is ignored.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing the updated registered client entry of <em>CheckInNodeID1</em> and <em>MonitoredSubID3</em> from Step 3c.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID1</em> as in Step 1a and different <em>MonitoredSubID4</em> and <em>Key4</em>, and a valid wrong <em>VerificationKey4</em><br>
@@ -55243,32 +55272,31 @@ The invalid <em>VerificationKey3</em> is ignored.</p></td>
 - Key: <em>Key4</em><br>
 - VerificationKey: <em>VerificationKey4</em> +</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00);<br>
-Verify that the DUT response contains <em>ICDCounter</em>. <br>
 The valid wrong <em>VerificationKey4</em> is ignored.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3f</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> containing the updated registered client entry of <em>CheckInNodeID1</em> and <em>MonitoredSubID4</em> from Step 3e.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with <em>CheckInNodeID1</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.4</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains the value of <em>RegisteredClients</em> where the registered client entry of <em>CheckInNodeID1</em> is removed.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -55326,19 +55354,17 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
 - CheckInNodeID: <em>CheckInNodeID5</em><br>
 - MonitoredSubject: <em>MonitoredSubID5</em><br>
-- Key: <em>Key5</em><br>
-- VerificationKey: <em>VerificationKey5</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
-Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+- Key: <em>Key5</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID5</em> as in Step 6a and different <em>MonitoredSubID6</em> and <em>Key6</em>, and an invalid <em>VerificationKey6</em><br>
@@ -55349,7 +55375,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status FAILURE(0x01).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8c</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID5</em> as in Step 6a and different <em>MonitoredSubID7</em> and <em>Key7</em>, and an valid wrong <em>VerificationKey7</em><br>
@@ -55360,7 +55386,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status FAILURE(0x01).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8d</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command with same <em>CheckInNodeID5</em> and <em>VerificationKey5</em> as in Step 6a and different <em>MonitoredSubID9</em> and <em>Key9</em><br>
@@ -55368,14 +55394,13 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 - MonitoredSubject: <em>MonitoredSubID9</em><br>
 - Key: <em>Key9</em><br>
 - VerificationKey: <em>VerificationKey5</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
-Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the <em>CheckInNodeID5</em> and <em>VerificationKey5</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the <em>CheckInNodeID5</em> and <em>Key5</em> as VerificationKey.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 </tbody>
@@ -55397,36 +55422,16 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Re-enable TH admin access to ICD management cluster.<br>
-TH writes the ACL attribute with a list of AccessControlEntryStruct entries containing a single element, restoring full access to the node.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>struct</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Fabric Index: 1</p>
-</li>
-<li>
-<p>Privilege field: Administer (5)</p>
-</li>
-<li>
-<p>AuthMode field: CASE (2)</p>
-</li>
-<li>
-<p>Subjects field: [<code>N1</code>]</p>
-</li>
-<li>
-<p>Targets field: null</p>
-</li>
-</ul>
-</div>
-</li>
-</ol>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Re-enable TH admin access to ICD management cluster.<br>
+TH writes the ACL attribute with a list of AccessControlEntryStruct entries containing a single element, restoring full access to the node.<br>
+<br>
+                . struct<br>
+                  - Fabric Index: 1<br>
+                  - Privilege field: Administer (5)<br>
+                  - AuthMode field: CASE (2)<br>
+                  - Subjects field: [<code>N1</code>]<br>
+                  - Targets field: null<br>
+2</p></td>
 </tr>
 </tbody>
 </table>
@@ -55609,8 +55614,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 - CheckInNodeID: <em>CheckInNodeID4</em><br>
 - MonitoredSubject: <em>MonitoredSubID4</em><br>
 - Key: <em>Key4</em>, a 16-byte octstr, eg, <em>hex:1234567890abcdef1234567890abcdef</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
-Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5b</p></td>
@@ -55625,7 +55629,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the <em>CheckInNodeID4</em> as in Step 5a and an invalid <em>VerificationKey5</em>.<br>
 - CheckInNodeID: <em>CheckInNodeID4</em><br>
-- VerificationKey: <em>VerificationKey5</em>, a 16-byte octstr, eg, <em>hex:abcdef1234567890abcdef1234567890</em></p></td>
+- VerificationKey: <em>VerificationKey5</em>, a 16-byte octstr, eg, <em>hex:abcdef1234567890abcdeg1234567890</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
 The invalid <em>VerificationKey5</em> is ignored.</p></td>
 </tr>
@@ -55643,9 +55647,8 @@ The invalid <em>VerificationKey5</em> is ignored.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
 - CheckInNodeID: <em>CheckInNodeID6</em><br>
 - MonitoredSubject: <em>MonitoredSubID6</em><br>
-- Key: <em>Key6</em> +</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
-Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+- Key: <em>Key6</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6b</p></td>
@@ -55737,8 +55740,7 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 - CheckInNodeID: <em>CheckInNodeID8</em><br>
 - MonitoredSubject: <em>MonitoredSubID8</em><br>
 - Key: <em>Key8</em> +</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).<br>
-Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8b</p></td>
@@ -55819,10 +55821,6 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends command <em>UnregisterClient</em> to clear all clients in <em>RegisteredClients</em>, if any.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute. <em>RegisteredClients</em> is empty.</p></td>
 </tr>
 </tbody>
@@ -55956,11 +55954,18 @@ TH writes the ACL attribute with a list of AccessControlEntryStruct entries cont
 <td class="tableblock halign-left valign-top"><p class="tableblock">2a</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reboot DUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Power cycle DUT</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2b</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH waits for {PIXIT.WAITTIME.REBOOT}</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>ICDCounter</em> attribute.</p></td>
@@ -56196,46 +56201,45 @@ Verify that the DUT response contains <em>PromisedActiveDuration2</em>, which sh
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>RegisteredClients</em> is empty. If not empty, TH sends command <em>UnregisterClient</em> to clear all clients in <em>RegisteredClients</em>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.9</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>OperatingMode</em> attribute.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains value of <em>OperatingMode=0 (SIT Operating Mode)</em>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1c</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2b</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the ICD DNS-SD TXT key is present.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that ICD DNS-SD TXT key shows <em>ICD=0</em>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
 - CheckInNodeID: <em>CheckInNodeID1</em><br>
 - MonitoredSubject: <em>MonitoredSubID1</em><br>
 - Key: <em>Key1</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00);<br>
-Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00);</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3b</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.9</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>OperatingMode</em> attribute.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains value of <em>OperatingMode=1 (LIT Operating Mode)</em>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3c</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that mDNS is advertising ICD key.</p></td>
@@ -56261,6 +56265,27 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that mDNS is advertising ICD key.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify that ICD DNS-SD TXT key shows <em>ICD=0</em>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_post_conditions_3"><a class="anchor" href="#_post_conditions_3"></a>Post-Conditions</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>#</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Post-Condition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute. <em>RegisteredClients</em> is empty.</p></td>
 </tr>
 </tbody>
 </table>
@@ -56859,7 +56884,7 @@ Verify that the DUT response contains <em>ICDCounter_</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_post_conditions_3"><a class="anchor" href="#_post_conditions_3"></a>Post-Conditions</h5>
+<h5 id="_post_conditions_4"><a class="anchor" href="#_post_conditions_4"></a>Post-Conditions</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -57046,7 +57071,7 @@ Vendor specific interaction/action is required.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_post_conditions_4"><a class="anchor" href="#_post_conditions_4"></a>Post-Conditions</h5>
+<h5 id="_post_conditions_5"><a class="anchor" href="#_post_conditions_5"></a>Post-Conditions</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -58234,7 +58259,7 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_post_conditions_5"><a class="anchor" href="#_post_conditions_5"></a>Post-Conditions</h5>
+<h5 id="_post_conditions_6"><a class="anchor" href="#_post_conditions_6"></a>Post-Conditions</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 5%;">
@@ -59985,8 +60010,8 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master e7654e2<br>
-Last updated 2024-08-14 17:27:41 UTC
+Version master f71b4a1<br>
+Last updated 2024-08-19 17:50:08 UTC
 </div>
 </div>
 </body>
