@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master ddcabb8,</span>
-<span id="revdate">2024-08-21 08:20:31 -0700</span>
+<span id="revnumber">version master ab9fdc7,</span>
+<span id="revdate">2024-08-21 11:55:46 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -45451,14 +45451,20 @@ Fabric Synchronization capabilities.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MCORE.FS.FabricSynchronization</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Read SupportedDeviceCategories attribute from Commissioner Control cluster on Aggregator node</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the FabricSynchronization bit is set</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the FabricSynchronization bit is set to 1</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
 <h5 id="_notestesting_considerations_127"><a class="anchor" href="#_notestesting_considerations_127"></a>Notes/Testing Considerations</h5>
-
+<div class="ulist">
+<ul>
+<li>
+<p>When validating SupportedDeviceCategories we check that FabricSynchronization is set to 1 because this is a test that only runs on Fabric Sync device (as per PICS).</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -59991,8 +59997,8 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master ddcabb8<br>
-Last updated 2024-08-21 15:20:45 UTC
+Version master ab9fdc7<br>
+Last updated 2024-08-21 18:55:58 UTC
 </div>
 </div>
 </body>
