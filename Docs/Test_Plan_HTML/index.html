@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 9a468d5,</span>
-<span id="revdate">2024-08-26 14:26:54 -0700</span>
+<span id="revnumber">version master 7831ca2,</span>
+<span id="revdate">2024-08-27 11:03:59 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -57673,7 +57673,7 @@ DUT does not send check-in message to client.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Wait for DUT to transition to Idle Mode.<br>
-Device maker will provide a way to put the device in active mode.<br>
+Then, wait for DUT to transition to Active Mode.<sup>1</sup> <br>
 Modify one or more device attributes by either manual trigger or write access attribute(s).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify on the TH that DUT is able to send report data messages for the attribute(s) which was subscribed to in Step 3a within the <em>MaxInterval</em> time.</p></td>
 </tr>
@@ -57689,7 +57689,13 @@ Modify one or more device attributes by either manual trigger or write access at
 </div>
 <div class="sect4">
 <h5 id="_notestesting_considerations_167"><a class="anchor" href="#_notestesting_considerations_167"></a>Notes/Testing Considerations</h5>
-
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If DUT supports <em>ICDM.S.F01(UAT)</em>, transition from Idle Mode to Active Mode can be achieved by using a supported <em>UserActiveModeTriggerHint</em>.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -60146,8 +60152,8 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 9a468d5<br>
-Last updated 2024-08-26 21:27:07 UTC
+Version master 7831ca2<br>
+Last updated 2024-08-27 18:04:14 UTC
 </div>
 </div>
 </body>
