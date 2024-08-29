@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master 645d0e3,</span>
-<span id="revdate">2024-08-28 11:11:10 -0700</span>
+<span id="revnumber">version master 7641e49,</span>
+<span id="revdate">2024-08-29 10:45:59 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -1189,7 +1189,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel3">
 <li><a href="#_tc_mcore_fs_1_1_fs_setup_dut_initial_commissionee">62.1.1. [TC-MCORE.FS-1.1] FS Setup [DUT - Initial Commissionee]</a></li>
 <li><a href="#_tc_mcore_fs_1_2_fs_synchronization_no_common_devices_dut_commissioning_end_device">62.1.2. [TC-MCORE.FS-1.2] FS Synchronization - No common devices [DUT - Commissioning End Device]</a></li>
-<li><a href="#_tc_mcore_fs_1_3_fs_synchronization_devices_without_uniqueid_dut_commissioning_end_device">62.1.3. [TC-MCORE.FS-1.3] FS Synchronization - devices without UniqueID [DUT - Commissioning End Device]</a></li>
+<li><a href="#_tc_mcore_fs_1_3_fs_synchronization_dut_fabric_synchronization_administrator_commissions_device_without_uniqueid">62.1.3. [TC-MCORE.FS-1.3] FS Synchronization - DUT Fabric Synchronization Administrator commissions device without UniqueID</a></li>
+<li><a href="#_tc_mcore_fs_1_4_fs_synchronization_dut_fabric_synchronization_administrator_syncs_device_from_other_fsa_without_uniqueid">62.1.4. [TC-MCORE.FS-1.4] FS Synchronization - DUT Fabric Synchronization Administrator syncs device from other FSA without UniqueID</a></li>
 </ul>
 </li>
 </ul>
@@ -58636,7 +58637,11 @@ Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TC-MCORE.FS-1.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FS Synchronization - Common device without UniqueID [DUT - Commissioning End Device]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FS Synchronization - DUT Fabric Synchronization Administrator commissions device without UniqueID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC-MCORE.FS-1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FS Synchronization - DUT Fabric Synchronization Administrator syncs device from other FSA without UniqueID</p></td>
 </tr>
 </tbody>
 </table>
@@ -59021,15 +59026,12 @@ Administrator Commissioning Cluster on the new endpoint identified in the previo
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tc_mcore_fs_1_3_fs_synchronization_devices_without_uniqueid_dut_commissioning_end_device"><a class="anchor" href="#_tc_mcore_fs_1_3_fs_synchronization_devices_without_uniqueid_dut_commissioning_end_device"></a>62.1.3. [TC-MCORE.FS-1.3] FS Synchronization - devices without UniqueID [DUT - Commissioning End Device]</h4>
+<h4 id="_tc_mcore_fs_1_3_fs_synchronization_dut_fabric_synchronization_administrator_commissions_device_without_uniqueid"><a class="anchor" href="#_tc_mcore_fs_1_3_fs_synchronization_dut_fabric_synchronization_administrator_commissions_device_without_uniqueid"></a>62.1.3. [TC-MCORE.FS-1.3] FS Synchronization - DUT Fabric Synchronization Administrator commissions device without UniqueID</h4>
 <div class="sect4">
 <h5 id="_purpose_225"><a class="anchor" href="#_purpose_225"></a>Purpose</h5>
 <div class="paragraph">
-<p>This test validates that a Fabric Synchronizing Administrator copies the UniqueID for Synchronized End Devices<br>
-from other Fabric Synchronizing Administrator if the Synchronized End Device does not provide the UniqueID.</p>
-</div>
-<div class="paragraph">
-<p>Additionally, for devices commissioned by the Fabric Synchronizing Administrator, a UniqueID is generated.</p>
+<p>This test validates that a Fabric Synchronizing Administrator generates a UniqueID for an End Device that do<br>
+not provide a UniqueID.</p>
 </div>
 </div>
 <div class="sect4">
@@ -59068,18 +59070,9 @@ from other Fabric Synchronizing Administrator if the Synchronized End Device doe
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH_FSA</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Fabric Synchronizing Administrator running on TH. (Administrator and Aggregator nodes.)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH_SERVER_FOR_DUT_FSA</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Test Harness Server application that will be commissioned onto DUT_FSA fabric during test.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH_SERVER_FOR_TH_FSA</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Test Harness Server application that will be commissioned onto TH_FSA fabric during test.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_SERVER_NO_UID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test Harness Server application which does not provide the UniqueID that will be commissioned<br>
+onto DUT_FSA fabric during test.</p></td>
 </tr>
 </tbody>
 </table>
@@ -59109,25 +59102,185 @@ from other Fabric Synchronizing Administrator if the Synchronized End Device doe
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_FSA&#8217;s aggregator is commissioned to TH fabric</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_SERVER_NO_UID is not commissioned onto any fabric.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_device_topology_154"><a class="anchor" href="#_device_topology_154"></a>Device Topology</h5>
+<div class="paragraph">
+<p>Starting Topology:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TH has commissioned DUT_FSA&#8217;s aggregator.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Final Topology:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TH has commissioned a Node presenting the Fabric Synchronization feature provided by DUT_FSA.</p>
+</li>
+<li>
+<p>DUT_FSA&#8217;s fabric contains TH_SERVER_NO_UID.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_test_procedure_224"><a class="anchor" href="#_test_procedure_224"></a>Test Procedure</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 36.3636%;">
+<col style="width: 36.3637%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ref</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PICS</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Test Step</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH commissions TH_SERVER_NO_UID to TH&#8217;s fabric.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH verifies that the TH_SERVER_NO_UID does not provide a UniqueID.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12.5.4.1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_FSA commissions TH_SERVER_NO_UID to DUT_FSA&#8217;s fabric and generates a UniqueID.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH verifies a value is visible for the UniqueID from the DUT_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_notestesting_considerations_175"><a class="anchor" href="#_notestesting_considerations_175"></a>Notes/Testing Considerations</h5>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tc_mcore_fs_1_4_fs_synchronization_dut_fabric_synchronization_administrator_syncs_device_from_other_fsa_without_uniqueid"><a class="anchor" href="#_tc_mcore_fs_1_4_fs_synchronization_dut_fabric_synchronization_administrator_syncs_device_from_other_fsa_without_uniqueid"></a>62.1.4. [TC-MCORE.FS-1.4] FS Synchronization - DUT Fabric Synchronization Administrator syncs device from other FSA without UniqueID</h4>
+<div class="sect4">
+<h5 id="_purpose_226"><a class="anchor" href="#_purpose_226"></a>Purpose</h5>
+<div class="paragraph">
+<p>This test validates that a Fabric Synchronizing Administrator copies the UniqueID for Synchronized End Devices<br>
+from other Fabric Synchronizing Administrator if the Synchronized End Device does not provide the UniqueID.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pics_225"><a class="anchor" href="#_pics_225"></a>PICS</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>MCORE.FS</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_required_devices_225"><a class="anchor" href="#_required_devices_225"></a>Required Devices</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Device Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_FSA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT - Fabric Synchronizing Administrator. (Administrator and Aggregator nodes.)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test Harness as Administrator, Controller</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_FSA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fabric Synchronizing Administrator running on TH. (Administrator and Aggregator nodes.)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_SERVER_NO_UID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test Harness Server application which does not provide the UniqueID that will be synchronized<br>
+from TH_FSA to DUT_FSA fabric during test.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_preconditions_90"><a class="anchor" href="#_preconditions_90"></a>Preconditions</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>#</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Doc. Ref.</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Condition</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Notes</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_FSA is reset to factory defaults</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT_FSA&#8217;s fabric is not present on TH_FSA.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_FSA is configured to synchronize devices and expose devices to TH_FSA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_FSA&#8217;s aggregator is commissioned to TH fabric</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH_SERVER_FOR_DUT_FSA is not commissioned onto any fabric.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_FSA is configured to synchronize devices and expose devices to TH_FSA</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH_SERVER_FOR_TH_FSA is not commissioned onto any fabric.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH_SERVER_NO_UID is not commissioned onto any fabric.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -59140,7 +59293,7 @@ from other Fabric Synchronizing Administrator if the Synchronized End Device doe
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_154"><a class="anchor" href="#_device_topology_154"></a>Device Topology</h5>
+<h5 id="_device_topology_155"><a class="anchor" href="#_device_topology_155"></a>Device Topology</h5>
 <div class="paragraph">
 <p>Starting Topology:</p>
 </div>
@@ -59166,16 +59319,19 @@ from other Fabric Synchronizing Administrator if the Synchronized End Device doe
 <p>TH_FSA has commissioned a Node presenting the Fabric Synchronization feature provided by DUT_FSA.</p>
 </li>
 <li>
-<p>TH_FSA&#8217;s fabric contains TH_SERVER_FOR_TH_FSA.</p>
+<p>TH_FSA&#8217;s fabric contains TH_SERVER_NO_UID.</p>
 </li>
 <li>
-<p>DUT_FSA&#8217;s fabric contains TH_SERVER_FOR_TH_FSA and TH_SERVER_FOR_DUT_FSA.</p>
+<p>DUT_FSA&#8217;s fabric contains TH_SERVER_NO_UID.</p>
+</li>
+<li>
+<p>TH&#8217;s fabric contains TH_SERVER_NO_UID.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_224"><a class="anchor" href="#_test_procedure_224"></a>Test Procedure</h5>
+<h5 id="_test_procedure_225"><a class="anchor" href="#_test_procedure_225"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 9.0909%;">
@@ -59194,18 +59350,18 @@ from other Fabric Synchronizing Administrator if the Synchronized End Device doe
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12.5.4.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_FSA commissions TH_SERVER_FOR_DUT_FSA to DUT_FSA&#8217;s fabric and generates a UniqueID.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH verifies a value is visible for the UniqueID from the DUT_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH commissions TH_SERVER_NO_UID to TH&#8217;s fabric.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH verifies that the TH_SERVER_NO_UID does not provide a UniqueID.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH instructs TH_FSA to commission TH_SERVER_FOR_TH_FSA to TH_FSA&#8217;s fabric.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH instructs TH_FSA to commission TH_SERVER_NO_UID to TH_FSA&#8217;s fabric.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH verifies a value is visible for the UniqueID from the TH_FSA&#8217;s Bridged Device Basic Information Cluster. Failure<br>
-here indicates an issue with TH. Endpoint on which TH_SERVER_FOR_TH_FSA was added is saved for future use.</p></td>
+here indicates an issue with TH. Endpoint on which TH_SERVER_NO_UID was added is saved for future use.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
@@ -59225,14 +59381,15 @@ here indicates an issue with TH. Endpoint on which TH_SERVER_FOR_TH_FSA was adde
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Follow manufacturer provided instructions to enable DUT_FSA to synchronize TH_SERVER_FOR_TH_FSA from TH_FSA onto DUT_FSA&#8217;s fabric. TH to provide endpoint saved from step 2 in user prompt.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Follow manufacturer provided instructions to enable DUT_FSA to synchronize TH_SERVER_NO_UID from TH_FSA onto<br>
+DUT_FSA&#8217;s fabric. TH to provide endpoint saved from step 2 in user prompt.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12.5.4.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_FSA synchronizes TH_SERVER_FOR_TH_FSA onto DUT_FSA&#8217;s fabric and copies the UniqueID presented by<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT_FSA synchronizes TH_SERVER_NO_UID onto DUT_FSA&#8217;s fabric and copies the UniqueID presented by<br>
 TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH_FSA and DUT_FSA both have a Bridged Device Basic Information Cluster with a matching UniqueID.</p></td>
 </tr>
@@ -59240,7 +59397,7 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_175"><a class="anchor" href="#_notestesting_considerations_175"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_176"><a class="anchor" href="#_notestesting_considerations_176"></a>Notes/Testing Considerations</h5>
 
 </div>
 </div>
@@ -59282,13 +59439,13 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 <div class="sect3">
 <h4 id="_tc_rr_1_1_minimal_resource_requirements_for_matter_node"><a class="anchor" href="#_tc_rr_1_1_minimal_resource_requirements_for_matter_node"></a>64.1.1. [TC-RR-1.1] Minimal Resource Requirements for Matter Node</h4>
 <div class="sect4">
-<h5 id="_purpose_226"><a class="anchor" href="#_purpose_226"></a>Purpose</h5>
+<h5 id="_purpose_227"><a class="anchor" href="#_purpose_227"></a>Purpose</h5>
 <div class="paragraph">
 <p>This test case verifies that the device meets the minimal requirements for each resource type from the list of various resources required by a Matter Node implementation.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_225"><a class="anchor" href="#_pics_225"></a>PICS</h5>
+<h5 id="_pics_226"><a class="anchor" href="#_pics_226"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -59298,7 +59455,7 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_225"><a class="anchor" href="#_required_devices_225"></a>Required Devices</h5>
+<h5 id="_required_devices_226"><a class="anchor" href="#_required_devices_226"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -59325,13 +59482,13 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_155"><a class="anchor" href="#_device_topology_155"></a>Device Topology</h5>
+<h5 id="_device_topology_156"><a class="anchor" href="#_device_topology_156"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH and DUT are on the same fabric.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_225"><a class="anchor" href="#_test_procedure_225"></a>Test Procedure</h5>
+<h5 id="_test_procedure_226"><a class="anchor" href="#_test_procedure_226"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 4%;">
@@ -59689,7 +59846,7 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_notestesting_considerations_176"><a class="anchor" href="#_notestesting_considerations_176"></a>Notes/Testing Considerations</h5>
+<h5 id="_notestesting_considerations_177"><a class="anchor" href="#_notestesting_considerations_177"></a>Notes/Testing Considerations</h5>
 <hr>
 </div>
 </div>
@@ -59762,13 +59919,13 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 <div class="sect3">
 <h4 id="_tc_sm_1_1_device_composition_root_node_dut_as_server"><a class="anchor" href="#_tc_sm_1_1_device_composition_root_node_dut_as_server"></a>67.1.1. [TC-SM-1.1] Device composition - Root Node [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_227"><a class="anchor" href="#_purpose_227"></a>Purpose</h5>
+<h5 id="_purpose_228"><a class="anchor" href="#_purpose_228"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests root node requirements</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_226"><a class="anchor" href="#_pics_226"></a>PICS</h5>
+<h5 id="_pics_227"><a class="anchor" href="#_pics_227"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -59778,7 +59935,7 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_226"><a class="anchor" href="#_required_devices_226"></a>Required Devices</h5>
+<h5 id="_required_devices_227"><a class="anchor" href="#_required_devices_227"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -59805,13 +59962,13 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_156"><a class="anchor" href="#_device_topology_156"></a>Device Topology</h5>
+<h5 id="_device_topology_157"><a class="anchor" href="#_device_topology_157"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_226"><a class="anchor" href="#_test_procedure_226"></a>Test Procedure</h5>
+<h5 id="_test_procedure_227"><a class="anchor" href="#_test_procedure_227"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 9.0909%;">
@@ -59870,13 +60027,13 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 <div class="sect3">
 <h4 id="_tc_sm_1_2_device_composition_topology_dut_as_server"><a class="anchor" href="#_tc_sm_1_2_device_composition_topology_dut_as_server"></a>67.1.2. [TC-SM-1.2] Device composition - Topology [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_228"><a class="anchor" href="#_purpose_228"></a>Purpose</h5>
+<h5 id="_purpose_229"><a class="anchor" href="#_purpose_229"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that the topology indicated by the descriptor cluster PartsList matches the requirements in {REF_SM_ENDPOINT}.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_227"><a class="anchor" href="#_pics_227"></a>PICS</h5>
+<h5 id="_pics_228"><a class="anchor" href="#_pics_228"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -59886,7 +60043,7 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_227"><a class="anchor" href="#_required_devices_227"></a>Required Devices</h5>
+<h5 id="_required_devices_228"><a class="anchor" href="#_required_devices_228"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -59913,13 +60070,13 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_157"><a class="anchor" href="#_device_topology_157"></a>Device Topology</h5>
+<h5 id="_device_topology_158"><a class="anchor" href="#_device_topology_158"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_227"><a class="anchor" href="#_test_procedure_227"></a>Test Procedure</h5>
+<h5 id="_test_procedure_228"><a class="anchor" href="#_test_procedure_228"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 9.0909%;">
@@ -60067,13 +60224,13 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 <div class="sect3">
 <h4 id="_tc_dt_1_1_base_device_type_dut_as_server"><a class="anchor" href="#_tc_dt_1_1_base_device_type_dut_as_server"></a>70.1.1. [TC-DT-1.1] Base Device Type [DUT as Server]</h4>
 <div class="sect4">
-<h5 id="_purpose_229"><a class="anchor" href="#_purpose_229"></a>Purpose</h5>
+<h5 id="_purpose_230"><a class="anchor" href="#_purpose_230"></a>Purpose</h5>
 <div class="paragraph">
 <p>Tests that every device type conforms to the requirements of the base device type</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_pics_228"><a class="anchor" href="#_pics_228"></a>PICS</h5>
+<h5 id="_pics_229"><a class="anchor" href="#_pics_229"></a>PICS</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -60083,7 +60240,7 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_devices_228"><a class="anchor" href="#_required_devices_228"></a>Required Devices</h5>
+<h5 id="_required_devices_229"><a class="anchor" href="#_required_devices_229"></a>Required Devices</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -60110,13 +60267,13 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_device_topology_158"><a class="anchor" href="#_device_topology_158"></a>Device Topology</h5>
+<h5 id="_device_topology_159"><a class="anchor" href="#_device_topology_159"></a>Device Topology</h5>
 <div class="paragraph">
 <p>TH can connect to DUT over PASE or CASE.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_test_procedure_228"><a class="anchor" href="#_test_procedure_228"></a>Test Procedure</h5>
+<h5 id="_test_procedure_229"><a class="anchor" href="#_test_procedure_229"></a>Test Procedure</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 9.0909%;">
@@ -60157,8 +60314,8 @@ TH_FSA&#8217;s Bridged Device Basic Information Cluster.</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master 645d0e3<br>
-Last updated 2024-08-28 18:11:22 UTC
+Version master 7641e49<br>
+Last updated 2024-08-29 17:46:10 UTC
 </div>
 </div>
 </body>
