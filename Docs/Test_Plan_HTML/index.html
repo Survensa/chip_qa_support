@@ -440,8 +440,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Matter Test Plan</h1>
 <div class="details">
-<span id="revnumber">version master d1e1aa5,</span>
-<span id="revdate">2024-09-03 14:41:33 -0700</span>
+<span id="revnumber">version master bb2bcde,</span>
+<span id="revdate">2024-09-04 10:16:34 -0700</span>
 <br><span id="revremark">Draft</span>
 </div>
 <div id="toc" class="toc2">
@@ -57460,7 +57460,7 @@ Test event trigger is required in Step 2.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH (can be skipped if done in a preceding test).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT not commission to TH.</p></td>
 </tr>
 </tbody>
 </table>
@@ -57484,49 +57484,38 @@ Test event trigger is required in Step 2.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.<br>
-If <em>RegisteredClients</em> is not empty, TH sends <em>UnregisterClient</em> command to all <em>CheckInNodeID(s)</em> in <em>RegisteredClients</em> and TH reads from the DUT the <em>RegisteredClients</em> attribute again.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>RegisteredClients</em> is empty.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH using <em>NodeID</em> and register ICD client during commissioning.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>CheckInNodeID</em>, <em>MonitoredSubID</em>, <em>Key</em>, and <em>ICDCounter</em>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>IdleModeDuration</em> attribute.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Store the value of <em>IdleModeDuration</em>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
-- CheckInNodeID: <em>CheckInNodeID</em> = TH&#8217;s <em>NodeID</em><br>
-- MonitoredSubject: <em>MonitoredSubID</em><br>
-- Key: <em>Key</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Wait for 1 or more <em>IdleModeDuration</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends periodic check-in message to TH with updated <em>ICDCounter</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wait for 1 or more <em>IdleModeDuration</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends periodic check-in message to TH with updated ICDCounter: <em>ICDCounter + Offset</em>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the <em>CheckInNodeID</em> from Step 2.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>UnregisterClient</em> command with the <em>CheckInNodeID</em> from Step 1.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Wait for 1 or more <em>IdleModeDuration</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wait for 1 or more <em>IdleModeDuration</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT stops sending check-in message to TH.</p></td>
 </tr>
 </tbody>
@@ -57601,16 +57590,10 @@ If <em>RegisteredClients</em> is not empty, TH sends <em>UnregisterClient</em> c
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH (can be skipped if done in a preceding test).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT not commission to TH.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="sect4">
-<h5 id="_test_setup_94"><a class="anchor" href="#_test_setup_94"></a>Test Setup</h5>
-<div class="paragraph">
-<p>Commission DUT to TH.</p>
-</div>
 </div>
 <div class="sect4">
 <h5 id="_test_procedure_216"><a class="anchor" href="#_test_procedure_216"></a>Test Procedure</h5>
@@ -57631,29 +57614,18 @@ If <em>RegisteredClients</em> is not empty, TH sends <em>UnregisterClient</em> c
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expected Outcome</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>RegisteredClients</em> attribute.<br>
-If <em>RegisteredClients</em> is not empty, TH sends <em>UnregisterClient</em> command to all <em>CheckInNodeID(s)</em> in <em>RegisteredClients</em> and TH reads from the DUT the <em>RegisteredClients</em> attribute again.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>RegisteredClients</em> is empty.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH using <em>NodeID</em> and register ICD client during commissioning.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>CheckInNodeID</em>, <em>MonitoredSubID</em>, <em>Key</em>, and <em>ICDCounter</em>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH reads from the DUT the <em>IdleModeDuration</em>, <em>ActiveModeDuration</em>, and <em>ActiveModeThreshold</em> attributes.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Store the values of <em>IdleModeDuration</em>, <em>ActiveModeDuration</em>, and <em>ActiveModeThreshold</em>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH sends <em>RegisterClient</em> command.<br>
-- CheckInNodeID: <em>CheckInNodeID</em> = TH&#8217;s <em>NodeID</em><br>
-- MonitoredSubject: <em>MonitoredSubID</em><br>
-- Key: <em>Key</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3a</p></td>
@@ -57668,7 +57640,7 @@ If <em>RegisteredClients</em> is not empty, TH sends <em>UnregisterClient</em> c
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Wait for 1 or more <em>MaxInterval</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DUT resumes subscription reports periodically within <em>MaxInterval</em> time.<br>
-DUT does not send check-in message to client.</p></td>
+DUT does not send check-in message to TH.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
@@ -57684,7 +57656,7 @@ Modify one or more device attributes by either manual trigger or write access at
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deactivate subscriptions between DUT and TH, and Wait for 1 or more <em>IdleModeDuration</em>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends periodic check-in message to TH with updated <em>ICDCounter</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends periodic check-in message to TH with updated ICDCounter: <em>ICDCounter + Offset</em>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -57769,11 +57741,11 @@ Modify one or more device attributes by either manual trigger or write access at
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH1&#8217;s Fabric with <em>NodeId1</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT not commission to TH1.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH2&#8217;s Fabric with <em>NodeId2</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT not commission to TH2.</p></td>
 </tr>
 </tbody>
 </table>
@@ -57800,50 +57772,37 @@ Modify one or more device attributes by either manual trigger or write access at
 <td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads <em>RegisteredClients</em> attribute.<br>
-If <em>RegisteredClients</em> is not empty, TH1 sends <em>UnregisterClient</em> command to all <em>CheckInNodeID(s)</em> in <em>RegisteredClients</em> and TH1 reads <em>RegisteredClients</em> attribute again.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>RegisteredClients</em> is empty.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH1 using <em>NodeID1</em> and register ICD client during commissioning.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>CheckInNodeID1</em>, <em>MonitoredSubID1</em>, <em>Key1</em>, and <em>ICDCounter1</em>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH2 using <em>NodeID2</em> and register ICD client during commissioning.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>CheckInNodeID2</em>, <em>MonitoredSubID2</em>, <em>Key2</em>, and <em>ICDCounter2</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads from the DUT the <em>IdleModeDuration</em>, <em>ActiveModeDuration</em>, and <em>ActiveModeThreshold</em> attributes.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Store the values of <em>IdleModeDuration</em>, <em>ActiveModeDuration</em>, and <em>ActiveModeThreshold</em>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2a</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends <em>RegisterClient</em> command.<br>
-- CheckInNodeID: <em>CheckInNodeID1</em> = <em>NodeId1</em><br>
-- MonitoredSubject: <em>MonitoredSubID1</em><br>
-- Key: <em>Key1</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2b</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH2 sends <em>RegisterClient</em> command.<br>
-- CheckInNodeID: <em>CheckInNodeID2</em> = <em>NodeId2</em><br>
-- MonitoredSubject: <em>MonitoredSubID2</em><br>
-- Key: <em>Key2</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Wait for 1 or more <em>IdleModeDuration</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends periodic check-in message to TH1 and TH2 with updated <em>ICDCounter</em>.<br>
-Both TH1 and TH2 receive the same <em>ICDCounter</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends periodic check-in message to TH1 and TH2 with updated <em>ICDCounters</em>.<br>
+Both TH1 and TH2 receive the same <em>ICDCounter</em>:<br>
+<em>ICDCounter1 + Offset1</em> = <em>ICDCounter2 + Offset2</em>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH2 sends <em>UnregisterClient</em> command with the <em>CheckInNodeID</em> from Step 2b.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH2 sends <em>UnregisterClient</em> command with the <em>CheckInNodeID2</em> from Step 1b.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
@@ -57858,7 +57817,7 @@ DUT stops sending check-in message to TH2.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.3</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends <em>UnregisterClient</em> command with the <em>CheckInNodeID</em> from Step 2a.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends <em>UnregisterClient</em> command with the <em>CheckInNodeID1</em> from Step 1a.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
@@ -57946,11 +57905,11 @@ ICD state machine would return to check-in state and resume periodic check-in me
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH1&#8217;s Fabric with <em>NodeId1</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT not commission to TH1.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH2&#8217;s Fabric with <em>NodeId2</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT not commission to TH2.</p></td>
 </tr>
 </tbody>
 </table>
@@ -57977,36 +57936,22 @@ ICD state machine would return to check-in state and resume periodic check-in me
 <td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads <em>RegisteredClients</em> attribute.<br>
-If <em>RegisteredClients</em> is not empty, TH1 sends <em>UnregisterClient</em> command to all <em>CheckInNodeID(s)</em> in <em>RegisteredClients</em> and TH1 reads <em>RegisteredClients</em> attribute again.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>RegisteredClients</em> is empty.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH1 using <em>NodeID1</em> and register ICD client during commissioning.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>CheckInNodeID1</em>, <em>MonitoredSubID1</em>, <em>Key1</em>, and <em>ICDCounter1</em>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH2 using <em>NodeID2</em> and register ICD client during commissioning.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>CheckInNodeID2</em>, <em>MonitoredSubID2</em>, <em>Key2</em>, and <em>ICDCounter2</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads from the DUT the <em>IdleModeDuration</em>, <em>ActiveModeDuration</em>, and <em>ActiveModeThreshold</em> attributes.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Store the values of <em>IdleModeDuration</em>, <em>ActiveModeDuration</em>, and <em>ActiveModeThreshold</em>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2a</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends <em>RegisterClient</em> command.<br>
-- CheckInNodeID: <em>CheckInNodeID1</em> = <em>NodeId1</em><br>
-- MonitoredSubject: <em>MonitoredSubID1</em><br>
-- Key: <em>Key1</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2b</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH2 sends <em>RegisterClient</em> command.<br>
-- CheckInNodeID: <em>CheckInNodeID2</em> = <em>NodeId2</em><br>
-- MonitoredSubject: <em>MonitoredSubID2</em><br>
-- Key: <em>Key2</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3a</p></td>
@@ -58036,7 +57981,8 @@ DUT resumes subscription reports periodically within <em>MaxInterval</em> time t
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deactivate subscriptions between DUT and TH2, and wait for 1 or more <em>IdleModeDuration</em>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends periodic check-in message to both TH1 and TH2 with updated <em>ICDCounter</em>.<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends periodic check-in message to both TH1 and TH2 with updated <em>ICDCounter</em>:<br>
+<em>ICDCounter1 + Offset1</em> = <em>ICDCounter2 + Offset2</em>.<br>
 DUT stops subscription reports to both TH1 and TH2.</p></td>
 </tr>
 </tbody>
@@ -58116,11 +58062,11 @@ DUT stops subscription reports to both TH1 and TH2.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH1&#8217;s Fabric with <em>NodeId1</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT not commission to TH1.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH2&#8217;s Fabric with <em>NodeId2</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT not commission to TH2.</p></td>
 </tr>
 </tbody>
 </table>
@@ -58147,26 +58093,22 @@ DUT stops subscription reports to both TH1 and TH2.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1a</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads <em>RegisteredClients</em> attribute.<br>
-If <em>RegisteredClients</em> is not empty, TH1 sends <em>UnregisterClient</em> command to all <em>CheckInNodeID(s)</em> in <em>RegisteredClients</em> and TH1 reads <em>RegisteredClients</em> attribute again.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>RegisteredClients</em> is empty.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH1 using <em>NodeID1</em> and register ICD client during commissioning.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>CheckInNodeID1</em>, <em>MonitoredSubID1</em>, <em>Key1</em>, and <em>ICDCounter1</em>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1b</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads <em>IdleModeDuration</em> attribute.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify that the DUT response contains <em>IdleModeDuration</em>.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commission DUT to TH2 using <em>NodeID2</em> and not register ICD client during commissioning.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C.9.17.6.1</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 sends <em>RegisterClient</em> command.<br>
-- CheckInNodeID: registering client’s node ID (<em>CheckInNodeID1</em> = <em>NodeId1</em>)<br>
-- MonitoredSubject: monitored subject ID (<em>MonitoredSubID1</em>)<br>
-- Key: shared secret between the client and the ICD (<em>Key1</em>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verify DUT responds w/ status SUCCESS(0x00). Verify that the DUT response contains <em>ICDCounter</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TH1 reads from the DUT the <em>IdleModeDuration</em>, <em>ActiveModeDuration</em>, and <em>ActiveModeThreshold</em> attributes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Store the values of <em>IdleModeDuration</em>, <em>ActiveModeDuration</em>, and <em>ActiveModeThreshold</em>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3a</p></td>
@@ -58180,7 +58122,7 @@ If <em>RegisteredClients</em> is not empty, TH1 sends <em>UnregisterClient</em> 
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Wait for 1 or more max of <em>MaxInterval1</em> and <em>MaxInterval2</em>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends subscription reports periodically to TH1 and TH2 within their perspective <em>MaxInterval1</em> and <em>MaxInterval2</em> time. DUT does not send check-in message to client.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DUT sends subscription reports periodically to TH1 and TH2 within their perspective <em>MaxInterval1</em> and <em>MaxInterval2</em> time. DUT does not send check-in message to TH1.</p></td>
 </tr>
 </tbody>
 </table>
@@ -60518,8 +60460,8 @@ Administrator Commissioning Cluster on the new endpoint identified in the previo
 </div>
 <div id="footer">
 <div id="footer-text">
-Version master d1e1aa5<br>
-Last updated 2024-09-03 21:41:47 UTC
+Version master bb2bcde<br>
+Last updated 2024-09-04 17:16:48 UTC
 </div>
 </div>
 </body>
