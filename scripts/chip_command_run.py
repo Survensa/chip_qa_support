@@ -4,6 +4,7 @@ import yaml
 import argparse
 import re
 import time
+import traceback
 from datetime import datetime
 from dataclasses import fields
 from cluster_data import Cluster
@@ -44,6 +45,64 @@ def remove_ansi_escape_codes(text):
     return ansi_escape.sub("", text)
 
 
+def extarct_response(logs_of_steps):
+    list_of_response = []
+    for logs in logs_of_steps:
+        read = False
+        status = []
+        for log in logs:
+            if "Data = " in log :
+                start_index = logs.index(log)
+                read = True
+           
+            if "status = " in log:
+                status.append(log)
+        
+        if read:
+            end_pos = [pos for pos, char in enumerate(logs) if '},' in char]
+            list_of_data = logs[start_index:end_pos[-2]]
+            response = ' '.join(list_of_data)
+            list_of_response.append(response.replace(" ",""))
+        elif status:
+            response = ' '.join(status)
+            list_of_response.append(response.replace(" ",""))
+
+    return list_of_response
+
+def get_list_of_logs(output_file):
+    logs_of_steps =[]
+    temp_log =[]
+    capture_log = False
+    prefix = re.compile(r'\[.*?\]')
+    with open(output_file, "r") as log_file:
+        for line in log_file:
+            if line.startswith('Command:'):
+                if temp_log:
+                    logs_of_steps.append(temp_log)
+                    temp_log =[]
+                capture_log = True
+                continue
+
+            if capture_log:
+                if not line.startswith('Command:') and not line.startswith('#'):
+                    clean_log = prefix.sub('',line).strip()
+                    if clean_log:
+                        temp_log.append(clean_log)
+
+        if temp_log:
+            logs_of_steps.append(temp_log)
+        print(logs_of_steps)
+    
+    return extarct_response(logs_of_steps)
+
+def check_logs(logs, output_file):
+    list_of_response = get_list_of_logs(output_file)
+    if logs == list_of_response:
+        return True
+    
+    else:
+        return False
+
 def run_command_from_yaml(yaml_file_path):
     with open(yaml_file_path, "r") as yaml_file:
         yaml_input = yaml.safe_load(yaml_file)
@@ -51,8 +110,15 @@ def run_command_from_yaml(yaml_file_path):
     for testcase_data in yaml_input:
         testcase_name = testcase_data["testcase"]
         commands = testcase_data.get("commands", [])
-        if not commands:
+        logs =[]
+        commands_list = testcase_data.get("commands", [])
+        
+        if not commands_list:
             continue
+
+        for step in commands_list:
+            log = re.sub(r'[\n\t\r]', '', step["logs"])
+            logs.append(log.replace(" ",""))
 
         file_path = os.path.join(os.path.expanduser("~"), build)
         save_path = os.path.join(
@@ -87,9 +153,17 @@ def run_command_from_yaml(yaml_file_path):
             os.path.expanduser("~"), "chip_qa_support", "logs", "validation_logs"
         )
         process_log_file(log_file_path, output_directory)
+        output_file = os.path.join(output_directory, log_filename)
         print(f"{Fore.GREEN}EXT:CMP : {testcase_name}{Style.RESET_ALL}")
         print(f"{Fore.GREEN}EXT:LOG : {log_filename}{Style.RESET_ALL}")
+        check = check_logs(logs, output_file)
+        if check:
+            print(f"{Fore.GREEN}EXT:RESULT : {testcase_name} is PASS {Style.RESET_ALL}")
+        else:
+            print(f"{Fore.RED}EXT:RESULT :  {testcase_name} is FAIL {Style.RESET_ALL}")
         print(f"{Fore.YELLOW}EXT:COS : {'*' * 64}{Style.RESET_ALL}")
+        
+
 
 
 # Function to get the current epoch time
@@ -187,6 +261,7 @@ if __name__ == "__main__":
                                 f"{Fore.CYAN}EXT:STP : {cluster_name} COMPLETED{Style.RESET_ALL}"
                             )
                         except Exception as e:
+                            traceback.print_exc()
                             print(
                                 f"{Fore.RED}EXT:ERR : {cluster_name}: {str(e)}{Style.RESET_ALL}"
                             )
